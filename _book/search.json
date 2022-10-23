@@ -1,0 +1,30 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Ciência de Dados Aplicada à Saúde Materno-Infantil",
+    "section": "",
+    "text": "This is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Introdução",
+    "section": "",
+    "text": "Os dados que consideramos nas aplicações deste livro são baseados em gestantes e puérperas de 10 a 55 anos hospitalizadas com Síndrome Respiratória Aguda Grave (SRAG) por COVID-19, confirmada por teste de PCR, no período de março de 2020 a dezembro de 2021, disponíveis no Sistema de Informação da Vigilância Epidemiológica da Gripe (SIVEP-Gripe), sistema oficial para o registro dos casos e óbitos por SRAG disponibilizado pelo Ministério da Saúde.\nNa base dados_covid estão contidas 11.485 observações e 50 variáveis. Assim, são as características observadas:\n\n\n\n\n\n\n\nVariável\nDescrição\n\n\n\n\nsem_pri\nSemana epidemiológia dos primeiros sintomas.\n\n\nidade_anos\nIdade, em anos, da gestante ou puérpera.\n\n\nsg_uf\nSigla da Unidade Federativa de residência da gestante ou puérpera.\n\n\nid_mn_resi\nMunicípio de residência da gestante ou puérpera.\n\n\nco_mun_res\nCódigo do município de residência da gestante ou puérpera.\n\n\nco_mu_inte\nCódigo do município onde está localizado a Unidade de Saúde onde a gestante ou puérpera internou.\n\n\ndt_sin_pri\nData de primeiros sintomas do caso.\n\n\ndt_evoluca_2\nData da alta ou do óbito da gestante ou puérpera.\n\n\nano\nAno da infecção pelo COVID-19.\n\n\nclassi_gesta_puerp\nIdade gestacional da gestante e puerpério.\n\n\nraca\nRaça da gestante ou puérpera.\n\n\nescol\nNível de escolaridade da gestante ou puérpera.\n\n\nmudou_muni\nSe gestante ou puérpera precisou se deslocar para outro município para realizar atendimento.\n\n\nzona\nTipo de zona de residência da gestante ou puérpera.\n\n\nfaixa_et\nFaixa etária da gestante ou puérpera.\n\n\nhospital\nSe gestante ou puérpera foi hospitalizada.\n\n\nhist_viagem\nSe gestante ou puérpera fez viagem internacional até 14 dias antes do início dos sintomas.\n\n\nsg_para_srag\nSe o caso é proveniente de síndrome gripal (SG) que evoluiu para síndrome respiratória aguda grave (SRAG).\n\n\ninf_inter\nSe trata-se de caso nosocomial (infecção adquirida no hospital).\n\n\ncont_ave_suino\nSe a gestante ou puérpera trabalha ou tem contato direto com aves, suínos ou outros animais.\n\n\nvacina\nSe a gestante ou puérpera recebeu vacina contra influenza.\n\n\nvacina_cov\nSe a gestante ou puérpera recebeu vacina contra COVID-19.\n\n\nantiviral\nSe gestante ou puérpera usou antiviral para gripe e qual antiviral.\n\n\nfebre\nSe gestante ou puérpera manifestou sintoma de febre.\n\n\ntosse\nSe gestante ou puérpera manifestou sintoma de tosse.\n\n\ngarganta\nSe gestante ou puérpera manifestou sintoma de dor de garganta.\n\n\ndispneia\nSe gestante ou puérpera manifestou sintoma de dispneia.\n\n\ndesc_resp\nSe gestante ou puérpera manifestou sintoma de desconforto respiratório.\n\n\nsaturacao\nSe gestante ou puérpera manifestou sintoma de saturação.\n\n\ndiarreia\nSe gestante ou puérpera manifestou sintoma de diarreia.\n\n\nvomito\nSe gestante ou puérpera manifestou sintoma de vômito.\n\n\ndor_abd\nSe gestante ou puérpera manifestou sintoma de dor abdominal.\n\n\nfadiga\nSe gestante ou puérpera manifestou sintoma de fadiga.\n\n\nperd_olft\nSe gestante ou puérpera manifestou sintoma de perda de olfato.\n\n\nperd_pala\nSe gestante ou puérpera manifestou sintoma de perda de paladar.\n\n\ncardiopati\nSe gestante ou puérpera tem doença cardiovascular crônica.\n\n\nhematologi\nSe gestante ou puérpera tem doença hematológica crônica.\n\n\nhepatica\nSe gestante ou puérpera tem doença hepática crônica.\n\n\nasma\nSe gestante ou puérpera tem asma.\n\n\ndiabetes\nSe gestante ou puérpera tem diabetes mellitus.\n\n\nneuro\nSe gestante ou puérpera tem doença neurológica.\n\n\npneumopati\nSe gestante ou puérpera tem outra pneumopatia crônica.\n\n\nimunodepre\nSe gestante ou puérpera tem imunodeficiência ou imunodepressão (diminuição da função do sistema imunológico).\n\n\nrenal\nSe gestante ou puérpera tem doença renal crônica.\n\n\nobesidade\nSe gestante ou puérpera tem obesidade.\n\n\nuti\nSe gestante ou puérpera foi internada na UTI.\n\n\nsuport_ven\nSe gestante ou puérpera precisou de ventilação mecânica; se sim, se foi invasiva ou não.\n\n\nevolucao\nEvolução do caso da gestante ou puérpera.\n\n\nvariante\nVariante do vírus SARS-CoV-2 (vírus do COVID-19)."
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "2  Summary",
+    "section": "",
+    "text": "1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  }
+]

@@ -1,0 +1,59 @@
+# Introdução
+
+## Base de dados
+
+Os dados que consideramos nas aplicações deste livro são baseados em gestantes e puérperas de 10 a 55 anos hospitalizadas com Síndrome Respiratória Aguda Grave (SRAG) por COVID-19, confirmada por teste de PCR, no período de março de 2020 a dezembro de 2021, disponíveis no Sistema de Informação da Vigilância Epidemiológica da Gripe (SIVEP-Gripe), sistema oficial para o registro dos casos e óbitos por SRAG disponibilizado pelo Ministério da Saúde.
+
+Na base `dados_covid` estão contidas 11.485 observações e 50 variáveis. Assim, são as características observadas:
+
+| Variável           | Descrição                                                                                                     |
+|--------------------|---------------------------------------------------------------------------------------------------------------|
+| sem_pri            | Semana epidemiológia dos primeiros sintomas.                                                                  |
+| idade_anos         | Idade, em anos, da gestante ou puérpera.                                                                      |
+| sg_uf              | Sigla da Unidade Federativa de residência da gestante ou puérpera.                                            |
+| id_mn_resi         | Município de residência da gestante ou puérpera.                                                              |
+| co_mun_res         | Código do município de residência da gestante ou puérpera.                                                    |
+| co_mu_inte         | Código do município onde está localizado a Unidade de Saúde onde a gestante ou puérpera internou.             |
+| dt_sin_pri         | Data de primeiros sintomas do caso.                                                                           |
+| dt_evoluca_2       | Data da alta ou do óbito da gestante ou puérpera.                                                             |
+| ano                | Ano da infecção pelo COVID-19.                                                                                |
+| classi_gesta_puerp | Idade gestacional da gestante e puerpério.                                                                    |
+| raca               | Raça da gestante ou puérpera.                                                                                 |
+| escol              | Nível de escolaridade da gestante ou puérpera.                                                                |
+| mudou_muni         | Se gestante ou puérpera precisou se deslocar para outro município para realizar atendimento.                  |
+| zona               | Tipo de zona de residência da gestante ou puérpera.                                                           |
+| faixa_et           | Faixa etária da gestante ou puérpera.                                                                         |
+| hospital           | Se gestante ou puérpera foi hospitalizada.                                                                    |
+| hist_viagem        | Se gestante ou puérpera fez viagem internacional até 14 dias antes do início dos sintomas.                    |
+| sg_para_srag       | Se o caso é proveniente de síndrome gripal (SG) que evoluiu para síndrome respiratória aguda grave (SRAG).    |
+| inf_inter          | Se trata-se de caso nosocomial (infecção adquirida no hospital).                                              |
+| cont_ave_suino     | Se a gestante ou puérpera trabalha ou tem contato direto com aves, suínos ou outros animais.                  |
+| vacina             | Se a gestante ou puérpera recebeu vacina contra *influenza*.                                                  |
+| vacina_cov         | Se a gestante ou puérpera recebeu vacina contra COVID-19.                                                     |
+| antiviral          | Se gestante ou puérpera usou antiviral para gripe e qual antiviral.                                           |
+| febre              | Se gestante ou puérpera manifestou sintoma de febre.                                                          |
+| tosse              | Se gestante ou puérpera manifestou sintoma de tosse.                                                          |
+| garganta           | Se gestante ou puérpera manifestou sintoma de dor de garganta.                                                |
+| dispneia           | Se gestante ou puérpera manifestou sintoma de dispneia.                                                       |
+| desc_resp          | Se gestante ou puérpera manifestou sintoma de desconforto respiratório.                                       |
+| saturacao          | Se gestante ou puérpera manifestou sintoma de saturação.                                                      |
+| diarreia           | Se gestante ou puérpera manifestou sintoma de diarreia.                                                       |
+| vomito             | Se gestante ou puérpera manifestou sintoma de vômito.                                                         |
+| dor_abd            | Se gestante ou puérpera manifestou sintoma de dor abdominal.                                                  |
+| fadiga             | Se gestante ou puérpera manifestou sintoma de fadiga.                                                         |
+| perd_olft          | Se gestante ou puérpera manifestou sintoma de perda de olfato.                                                |
+| perd_pala          | Se gestante ou puérpera manifestou sintoma de perda de paladar.                                               |
+| cardiopati         | Se gestante ou puérpera tem doença cardiovascular crônica.                                                    |
+| hematologi         | Se gestante ou puérpera tem doença hematológica crônica.                                                      |
+| hepatica           | Se gestante ou puérpera tem doença hepática crônica.                                                          |
+| asma               | Se gestante ou puérpera tem asma.                                                                             |
+| diabetes           | Se gestante ou puérpera tem diabetes *mellitus*.                                                              |
+| neuro              | Se gestante ou puérpera tem doença neurológica.                                                               |
+| pneumopati         | Se gestante ou puérpera tem outra pneumopatia crônica.                                                        |
+| imunodepre         | Se gestante ou puérpera tem imunodeficiência ou imunodepressão (diminuição da função do sistema imunológico). |
+| renal              | Se gestante ou puérpera tem doença renal crônica.                                                             |
+| obesidade          | Se gestante ou puérpera tem obesidade.                                                                        |
+| uti                | Se gestante ou puérpera foi internada na UTI.                                                                 |
+| suport_ven         | Se gestante ou puérpera precisou de ventilação mecânica; se sim, se foi invasiva ou não.                      |
+| evolucao           | Evolução do caso da gestante ou puérpera.                                                                     |
+| variante           | Variante do vírus SARS-CoV-2 (vírus do COVID-19).                                                             |
