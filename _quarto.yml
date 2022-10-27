@@ -5,7 +5,7 @@ book:
   title: "Ciência de Dados Aplicada à Saúde Materno-Infantil"
   author: "Observatório Obstétrico Brasileiro"
   date: "22/10/2022"
-  lang: pt
+  language: pt
   chapters:
     - index.qmd
     - intro.qmd
