@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Ciência de Dados Aplicada à Saúde Materno-Infantil - 1&nbsp; Introdução</title>
+<title>Ciência de Dados Aplicada à Saúde Materno-Infantil - Tutorial de R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./tutorialr.html" rel="next">
-<link href="./summary.html" rel="prev">
+<link href="./instalar.html" rel="next">
+<link href="./intro.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -70,7 +70,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></h1>
+      <h1 class="quarto-secondary-nav-title">Tutorial de R</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -105,12 +105,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></a>
+  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorialr.html" class="sidebar-item-text sidebar-link">Tutorial de R</a>
+  <a href="./tutorialr.html" class="sidebar-item-text sidebar-link active">Tutorial de R</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -130,6 +130,11 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./comecando_r.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Primeiros passos no R</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">Referências</a>
   </div>
 </li>
@@ -142,7 +147,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#base-de-dados" id="toc-base-de-dados" class="nav-link active" data-scroll-target="#base-de-dados"><span class="toc-section-number">1.1</span>  Base de dados</a></li>
+  <li><a href="#sobre-o-software-r" id="toc-sobre-o-software-r" class="nav-link active" data-scroll-target="#sobre-o-software-r">Sobre o software R</a></li>
   </ul>
 </nav>
     </div>
@@ -151,7 +156,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></h1>
+<h1 class="title d-none d-lg-block">Tutorial de R</h1>
 </div>
 
 
@@ -166,220 +171,14 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="base-de-dados" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="base-de-dados"><span class="header-section-number">1.1</span> Base de dados</h2>
-<p>Os dados que consideramos nas aplicações deste livro são baseados em gestantes e puérperas de 10 a 55 anos hospitalizadas com Síndrome Respiratória Aguda Grave (SRAG) por COVID-19, confirmada por teste de PCR, no período de março de 2020 a dezembro de 2021, disponíveis no Sistema de Informação da Vigilância Epidemiológica da Gripe (SIVEP-Gripe), sistema oficial para o registro dos casos e óbitos por SRAG disponibilizado pelo Ministério da Saúde.</p>
-<p>Na base <code>dados_covid</code> estão contidas 11.485 observações e 50 variáveis. Assim, são as características observadas:</p>
-<table class="table">
-<colgroup>
-<col style="width: 15%">
-<col style="width: 84%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Variável</th>
-<th>Descrição</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>sem_pri</td>
-<td>Semana epidemiológia dos primeiros sintomas.</td>
-</tr>
-<tr class="even">
-<td>idade_anos</td>
-<td>Idade, em anos, da gestante ou puérpera.</td>
-</tr>
-<tr class="odd">
-<td>sg_uf</td>
-<td>Sigla da Unidade Federativa de residência da gestante ou puérpera.</td>
-</tr>
-<tr class="even">
-<td>id_mn_resi</td>
-<td>Município de residência da gestante ou puérpera.</td>
-</tr>
-<tr class="odd">
-<td>co_mun_res</td>
-<td>Código do município de residência da gestante ou puérpera.</td>
-</tr>
-<tr class="even">
-<td>co_mu_inte</td>
-<td>Código do município onde está localizado a Unidade de Saúde onde a gestante ou puérpera internou.</td>
-</tr>
-<tr class="odd">
-<td>dt_sin_pri</td>
-<td>Data de primeiros sintomas do caso.</td>
-</tr>
-<tr class="even">
-<td>dt_evoluca_2</td>
-<td>Data da alta ou do óbito da gestante ou puérpera.</td>
-</tr>
-<tr class="odd">
-<td>ano</td>
-<td>Ano da infecção pelo COVID-19.</td>
-</tr>
-<tr class="even">
-<td>classi_gesta_puerp</td>
-<td>Idade gestacional da gestante e puerpério.</td>
-</tr>
-<tr class="odd">
-<td>raca</td>
-<td>Raça da gestante ou puérpera.</td>
-</tr>
-<tr class="even">
-<td>escol</td>
-<td>Nível de escolaridade da gestante ou puérpera.</td>
-</tr>
-<tr class="odd">
-<td>mudou_muni</td>
-<td>Se gestante ou puérpera precisou se deslocar para outro município para realizar atendimento.</td>
-</tr>
-<tr class="even">
-<td>zona</td>
-<td>Tipo de zona de residência da gestante ou puérpera.</td>
-</tr>
-<tr class="odd">
-<td>faixa_et</td>
-<td>Faixa etária da gestante ou puérpera.</td>
-</tr>
-<tr class="even">
-<td>hospital</td>
-<td>Se gestante ou puérpera foi hospitalizada.</td>
-</tr>
-<tr class="odd">
-<td>hist_viagem</td>
-<td>Se gestante ou puérpera fez viagem internacional até 14 dias antes do início dos sintomas.</td>
-</tr>
-<tr class="even">
-<td>sg_para_srag</td>
-<td>Se o caso é proveniente de síndrome gripal (SG) que evoluiu para síndrome respiratória aguda grave (SRAG).</td>
-</tr>
-<tr class="odd">
-<td>inf_inter</td>
-<td>Se trata-se de caso nosocomial (infecção adquirida no hospital).</td>
-</tr>
-<tr class="even">
-<td>cont_ave_suino</td>
-<td>Se a gestante ou puérpera trabalha ou tem contato direto com aves, suínos ou outros animais.</td>
-</tr>
-<tr class="odd">
-<td>vacina</td>
-<td>Se a gestante ou puérpera recebeu vacina contra <em>influenza</em>.</td>
-</tr>
-<tr class="even">
-<td>vacina_cov</td>
-<td>Se a gestante ou puérpera recebeu vacina contra COVID-19.</td>
-</tr>
-<tr class="odd">
-<td>antiviral</td>
-<td>Se gestante ou puérpera usou antiviral para gripe e qual antiviral.</td>
-</tr>
-<tr class="even">
-<td>febre</td>
-<td>Se gestante ou puérpera manifestou sintoma de febre.</td>
-</tr>
-<tr class="odd">
-<td>tosse</td>
-<td>Se gestante ou puérpera manifestou sintoma de tosse.</td>
-</tr>
-<tr class="even">
-<td>garganta</td>
-<td>Se gestante ou puérpera manifestou sintoma de dor de garganta.</td>
-</tr>
-<tr class="odd">
-<td>dispneia</td>
-<td>Se gestante ou puérpera manifestou sintoma de dispneia.</td>
-</tr>
-<tr class="even">
-<td>desc_resp</td>
-<td>Se gestante ou puérpera manifestou sintoma de desconforto respiratório.</td>
-</tr>
-<tr class="odd">
-<td>saturacao</td>
-<td>Se gestante ou puérpera manifestou sintoma de saturação.</td>
-</tr>
-<tr class="even">
-<td>diarreia</td>
-<td>Se gestante ou puérpera manifestou sintoma de diarreia.</td>
-</tr>
-<tr class="odd">
-<td>vomito</td>
-<td>Se gestante ou puérpera manifestou sintoma de vômito.</td>
-</tr>
-<tr class="even">
-<td>dor_abd</td>
-<td>Se gestante ou puérpera manifestou sintoma de dor abdominal.</td>
-</tr>
-<tr class="odd">
-<td>fadiga</td>
-<td>Se gestante ou puérpera manifestou sintoma de fadiga.</td>
-</tr>
-<tr class="even">
-<td>perd_olft</td>
-<td>Se gestante ou puérpera manifestou sintoma de perda de olfato.</td>
-</tr>
-<tr class="odd">
-<td>perd_pala</td>
-<td>Se gestante ou puérpera manifestou sintoma de perda de paladar.</td>
-</tr>
-<tr class="even">
-<td>cardiopati</td>
-<td>Se gestante ou puérpera tem doença cardiovascular crônica.</td>
-</tr>
-<tr class="odd">
-<td>hematologi</td>
-<td>Se gestante ou puérpera tem doença hematológica crônica.</td>
-</tr>
-<tr class="even">
-<td>hepatica</td>
-<td>Se gestante ou puérpera tem doença hepática crônica.</td>
-</tr>
-<tr class="odd">
-<td>asma</td>
-<td>Se gestante ou puérpera tem asma.</td>
-</tr>
-<tr class="even">
-<td>diabetes</td>
-<td>Se gestante ou puérpera tem diabetes <em>mellitus</em>.</td>
-</tr>
-<tr class="odd">
-<td>neuro</td>
-<td>Se gestante ou puérpera tem doença neurológica.</td>
-</tr>
-<tr class="even">
-<td>pneumopati</td>
-<td>Se gestante ou puérpera tem outra pneumopatia crônica.</td>
-</tr>
-<tr class="odd">
-<td>imunodepre</td>
-<td>Se gestante ou puérpera tem imunodeficiência ou imunodepressão (diminuição da função do sistema imunológico).</td>
-</tr>
-<tr class="even">
-<td>renal</td>
-<td>Se gestante ou puérpera tem doença renal crônica.</td>
-</tr>
-<tr class="odd">
-<td>obesidade</td>
-<td>Se gestante ou puérpera tem obesidade.</td>
-</tr>
-<tr class="even">
-<td>uti</td>
-<td>Se gestante ou puérpera foi internada na UTI.</td>
-</tr>
-<tr class="odd">
-<td>suport_ven</td>
-<td>Se gestante ou puérpera precisou de ventilação mecânica; se sim, se foi invasiva ou não.</td>
-</tr>
-<tr class="even">
-<td>evolucao</td>
-<td>Evolução do caso da gestante ou puérpera.</td>
-</tr>
-<tr class="odd">
-<td>variante</td>
-<td>Variante do vírus SARS-CoV-2 (vírus do COVID-19).</td>
-</tr>
-</tbody>
-</table>
+<section id="sobre-o-software-r" class="level2">
+<h2 class="anchored" data-anchor-id="sobre-o-software-r">Sobre o software R</h2>
+<p>R é um ambiente computacional e uma linguagem de programação para manipulação, análise e visualização de dados. É considerado um dos melhores ambiente computacional para essa finalidade. O R é mantido pela <a href="https://cran.r-project.org/">R Development Core Team</a> e está disponível para diferentes sistemas operacionais: Linux, Mac e Windows.</p>
+<p>O software é livre, ou seja, gratuito, com código aberto em uma linguagem acessível. Nele, estão implementadas muitas metodologias estatísticas. Muitas dessas fazem parte do ambiente base de R e outras acompanham o ambiente sob a forma de pacotes, o que torna o R altamente expansível. Os pacotes são bibliotecas com dados e funções para diferentes áreas do conhecimento relacionados à estatística e áreas afins, devidamente documentados.</p>
+<p>O R possui uma comunidade extremamente ativa, engajada desde o aprimoramento de ferramentas e desenvolvimento de novas bibliotecas, até o suporte aos usuários. Sobre o desenvolvimento de novas bibliotecas, um pesquisador em Estatística que desenvolve um novo modelo estatístico pode disponibilizá-lo em um pacote acessível a que se interessam pelo modelo.</p>
+<p>Além disso, a disponibilidade e compartilhamento da pesquisa em um pacote no R é uma boa prática quando falamos de reprodutibilidade na Ciência. Ainda nesse ponto, realizar as análises de uma pesquisa aplicada em um programa livre e acessível a todos é um dos principais pontos para permitir reprodutibilidade.</p>
+<p>Ao optar por programar em R também implica na escolha de uma IDE (Integrated Development Environment) que, na grande maioria dos casos, será o <a href="https://rstudio.com">RStudio</a>. O RStudio é um conjunto de ferramentas integradas projetadas para editar e executar os códigos em R. Assim, quando for o interesse utilizar o R, só precisa abrir o RStudio (R é automaticamente carregado).</p>
+<p>Para instalação do R e do RStudio, veja a Seção que segue.</p>
 
 
 </section>
@@ -520,13 +319,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./summary.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Sumário</span>
+      <a href="./intro.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./tutorialr.html" class="pagination-link">
-        <span class="nav-page-text">Tutorial de R</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./instalar.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Instalação R</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

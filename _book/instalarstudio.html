@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Observatório Obstétrico Brasileiro">
-<meta name="dcterms.date" content="2023-10-10">
 
-<title>Ciência de Dados Aplicada à Saúde Materno-Infantil</title>
+<title>Ciência de Dados Aplicada à Saúde Materno-Infantil - 3&nbsp; Instalação RStudio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./summary.html" rel="next">
+<link href="./comecando_rstudio.html" rel="next">
+<link href="./instalar.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -71,7 +70,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Ciência de Dados Aplicada à Saúde Materno-Infantil</h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Instalação RStudio</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -96,7 +95,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">Prefácio</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Prefácio</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -121,7 +120,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./instalarstudio.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Instalação RStudio</span></a>
+  <a href="./instalarstudio.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Instalação RStudio</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -148,7 +147,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#prefácio" id="toc-prefácio" class="nav-link active" data-scroll-target="#prefácio">Prefácio</a></li>
+  <li><a href="#para-windows" id="toc-para-windows" class="nav-link active" data-scroll-target="#para-windows"><span class="toc-section-number">3.0.1</span>  Para Windows</a></li>
+  <li><a href="#para-mac" id="toc-para-mac" class="nav-link" data-scroll-target="#para-mac"><span class="toc-section-number">3.0.2</span>  Para MAC</a></li>
+  <li><a href="#para-linux" id="toc-para-linux" class="nav-link" data-scroll-target="#para-linux"><span class="toc-section-number">3.0.3</span>  Para Linux</a></li>
   </ul>
 </nav>
     </div>
@@ -157,26 +158,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Ciência de Dados Aplicada à Saúde Materno-Infantil</h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Instalação RStudio</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Observatório Obstétrico Brasileiro </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">October 10, 2023</p>
-    </div>
-  </div>
   
     
   </div>
@@ -184,8 +173,204 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="prefácio" class="level1 unnumbered">
-<h1 class="unnumbered">Prefácio</h1>
+<p>O RStudio é um conjunto de ferramentas integradas projetadas (IDE - Integrated Development Environment) da linguagem R para auxiliar na produtividade ao utilizar o R.</p>
+<section id="para-windows" class="level3" data-number="3.0.1">
+<h3 data-number="3.0.1" class="anchored" data-anchor-id="para-windows"><span class="header-section-number">3.0.1</span> Para Windows</h3>
+<ol type="1">
+<li>Entre neste <a href="https://www.rstudio.com/products/rstudio/download/">link</a> e clique em Download como em destaque na Figura @ref(fig:rswindows1).</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/install_Rstudio1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Site para download do RStudio</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Clique no instalador em destaque na Figura @ref(fig:rswindows2).</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/install_Rstudio2.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Link para download do RStudio</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Ao clicar no link, será feito o download do instalador e salvo na pasta de interesse. No caso da Figura @ref(fig:rswindows3), o instalador está na pasta Downloads. Dê dois cliques no botão esquerdo no arquivo para iniciar o download do arquivo.</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/install_Rstudio3.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption"> Instalador</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="4" type="1">
+<li>Clique em “Próximo” nas próximas janelas e na última “Instalar”, como nas Figuras @ref(fig:rswindows4) a @ref(fig:rswindows6).</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/install_Rstudio4.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption"> Instalação</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/install_Rstudio5.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption"> Instalação</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/install_Rstudio6.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption"> Instalação</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="5" type="1">
+<li>Pronto, a instalação será iniciada, como na Figura @ref(fig:rswindows7).</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/install_Rstudio7.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption"> Instalação</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="para-mac" class="level3" data-number="3.0.2">
+<h3 data-number="3.0.2" class="anchored" data-anchor-id="para-mac"><span class="header-section-number">3.0.2</span> Para MAC</h3>
+<ol type="1">
+<li>Entre neste <a href="https://www.rstudio.com/products/rstudio/download/">link</a> e clique em Download como em destaque na Figura @ref(fig:rsmac1).</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/install_Rstudio1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Site para download do RStudio</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Clique no instalador como destacado na Figura @ref(fig:rsmac2).</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/mac_RSt_1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Site para download do RStudio para Mac</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Ao clicar no link, será feito o download do instalador e salvo na pasta de interesse. Caso você não tenha configurado a pasta de descargas, o instalador ficará na pasta “Downloads”, como na Figura @ref(fig:rsmac3).</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/mac_RSt_2.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption"> Instalador salvo em pasta</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="4" type="1">
+<li>Clicando duas vezes no arquivo “RStudio-1.2.1335.dmg” (versãos mais atual do RStudio), será feita a descarga do mesmo abrindo a janela conforme na Figura @ref(fig:rsmac4). Clique no aplicativo de RStudio destacado em vermelho também na Figura @ref(fig:rsmac4).</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/mac_RSt_3.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption"> Instalação</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="5" type="1">
+<li>O instalador pode perguntar se está seguro que o aplicativo será baixado da internet e clique em “Open” (Figura @ref(fig:rsmac5)).</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/mac_RSt_4.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption"> Instalação</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="6" type="1">
+<li>Pronto! Imediatamente abre o RStudio, como na Figura @ref(fig:rsmac6), e você já pode utilizá-lo.</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/mac_RSt_5.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption"> Instalação</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="para-linux" class="level3" data-number="3.0.3">
+<h3 data-number="3.0.3" class="anchored" data-anchor-id="para-linux"><span class="header-section-number">3.0.3</span> Para Linux</h3>
+<ol type="1">
+<li>Entre neste <a href="https://www.rstudio.com/products/rstudio/download/">link</a> e clique em Download como em destaque na Figura @ref(fig:rslinux1).</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/install_Rstudio1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Site para download do RStudio</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Clique no link referente à distribuição utilizada (Figura @ref(fig:rslinux2)).</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/install_Rstudio_linux.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption"> Download do RStudio</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 </section>
@@ -326,10 +511,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./instalar.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Instalação R</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./summary.html" class="pagination-link">
-        <span class="nav-page-text">Sumário</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./comecando_rstudio.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Primeiros passos no RStudio</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

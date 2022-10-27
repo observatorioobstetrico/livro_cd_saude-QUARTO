@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Ciência de Dados Aplicada à Saúde Materno-Infantil - 1&nbsp; Introdução</title>
+<title>Ciência de Dados Aplicada à Saúde Materno-Infantil - 4&nbsp; Primeiros passos no RStudio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./tutorialr.html" rel="next">
-<link href="./summary.html" rel="prev">
+<link href="./comecando_r.html" rel="next">
+<link href="./instalarstudio.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -70,7 +70,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Primeiros passos no RStudio</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -105,7 +105,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></a>
+  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -125,7 +125,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./comecando_rstudio.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Primeiros passos no RStudio</span></a>
+  <a href="./comecando_rstudio.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Primeiros passos no RStudio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./comecando_r.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Primeiros passos no R</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -142,7 +147,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#base-de-dados" id="toc-base-de-dados" class="nav-link active" data-scroll-target="#base-de-dados"><span class="toc-section-number">1.1</span>  Base de dados</a></li>
+  <li><a href="#projetos" id="toc-projetos" class="nav-link active" data-scroll-target="#projetos"><span class="toc-section-number">4.0.1</span>  Projetos</a></li>
+  <li><a href="#boas-práticas" id="toc-boas-práticas" class="nav-link" data-scroll-target="#boas-práticas"><span class="toc-section-number">4.0.2</span>  Boas práticas</a></li>
   </ul>
 </nav>
     </div>
@@ -151,7 +157,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Primeiros passos no RStudio</span></h1>
 </div>
 
 
@@ -166,220 +172,100 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="base-de-dados" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="base-de-dados"><span class="header-section-number">1.1</span> Base de dados</h2>
-<p>Os dados que consideramos nas aplicações deste livro são baseados em gestantes e puérperas de 10 a 55 anos hospitalizadas com Síndrome Respiratória Aguda Grave (SRAG) por COVID-19, confirmada por teste de PCR, no período de março de 2020 a dezembro de 2021, disponíveis no Sistema de Informação da Vigilância Epidemiológica da Gripe (SIVEP-Gripe), sistema oficial para o registro dos casos e óbitos por SRAG disponibilizado pelo Ministério da Saúde.</p>
-<p>Na base <code>dados_covid</code> estão contidas 11.485 observações e 50 variáveis. Assim, são as características observadas:</p>
-<table class="table">
-<colgroup>
-<col style="width: 15%">
-<col style="width: 84%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Variável</th>
-<th>Descrição</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>sem_pri</td>
-<td>Semana epidemiológia dos primeiros sintomas.</td>
-</tr>
-<tr class="even">
-<td>idade_anos</td>
-<td>Idade, em anos, da gestante ou puérpera.</td>
-</tr>
-<tr class="odd">
-<td>sg_uf</td>
-<td>Sigla da Unidade Federativa de residência da gestante ou puérpera.</td>
-</tr>
-<tr class="even">
-<td>id_mn_resi</td>
-<td>Município de residência da gestante ou puérpera.</td>
-</tr>
-<tr class="odd">
-<td>co_mun_res</td>
-<td>Código do município de residência da gestante ou puérpera.</td>
-</tr>
-<tr class="even">
-<td>co_mu_inte</td>
-<td>Código do município onde está localizado a Unidade de Saúde onde a gestante ou puérpera internou.</td>
-</tr>
-<tr class="odd">
-<td>dt_sin_pri</td>
-<td>Data de primeiros sintomas do caso.</td>
-</tr>
-<tr class="even">
-<td>dt_evoluca_2</td>
-<td>Data da alta ou do óbito da gestante ou puérpera.</td>
-</tr>
-<tr class="odd">
-<td>ano</td>
-<td>Ano da infecção pelo COVID-19.</td>
-</tr>
-<tr class="even">
-<td>classi_gesta_puerp</td>
-<td>Idade gestacional da gestante e puerpério.</td>
-</tr>
-<tr class="odd">
-<td>raca</td>
-<td>Raça da gestante ou puérpera.</td>
-</tr>
-<tr class="even">
-<td>escol</td>
-<td>Nível de escolaridade da gestante ou puérpera.</td>
-</tr>
-<tr class="odd">
-<td>mudou_muni</td>
-<td>Se gestante ou puérpera precisou se deslocar para outro município para realizar atendimento.</td>
-</tr>
-<tr class="even">
-<td>zona</td>
-<td>Tipo de zona de residência da gestante ou puérpera.</td>
-</tr>
-<tr class="odd">
-<td>faixa_et</td>
-<td>Faixa etária da gestante ou puérpera.</td>
-</tr>
-<tr class="even">
-<td>hospital</td>
-<td>Se gestante ou puérpera foi hospitalizada.</td>
-</tr>
-<tr class="odd">
-<td>hist_viagem</td>
-<td>Se gestante ou puérpera fez viagem internacional até 14 dias antes do início dos sintomas.</td>
-</tr>
-<tr class="even">
-<td>sg_para_srag</td>
-<td>Se o caso é proveniente de síndrome gripal (SG) que evoluiu para síndrome respiratória aguda grave (SRAG).</td>
-</tr>
-<tr class="odd">
-<td>inf_inter</td>
-<td>Se trata-se de caso nosocomial (infecção adquirida no hospital).</td>
-</tr>
-<tr class="even">
-<td>cont_ave_suino</td>
-<td>Se a gestante ou puérpera trabalha ou tem contato direto com aves, suínos ou outros animais.</td>
-</tr>
-<tr class="odd">
-<td>vacina</td>
-<td>Se a gestante ou puérpera recebeu vacina contra <em>influenza</em>.</td>
-</tr>
-<tr class="even">
-<td>vacina_cov</td>
-<td>Se a gestante ou puérpera recebeu vacina contra COVID-19.</td>
-</tr>
-<tr class="odd">
-<td>antiviral</td>
-<td>Se gestante ou puérpera usou antiviral para gripe e qual antiviral.</td>
-</tr>
-<tr class="even">
-<td>febre</td>
-<td>Se gestante ou puérpera manifestou sintoma de febre.</td>
-</tr>
-<tr class="odd">
-<td>tosse</td>
-<td>Se gestante ou puérpera manifestou sintoma de tosse.</td>
-</tr>
-<tr class="even">
-<td>garganta</td>
-<td>Se gestante ou puérpera manifestou sintoma de dor de garganta.</td>
-</tr>
-<tr class="odd">
-<td>dispneia</td>
-<td>Se gestante ou puérpera manifestou sintoma de dispneia.</td>
-</tr>
-<tr class="even">
-<td>desc_resp</td>
-<td>Se gestante ou puérpera manifestou sintoma de desconforto respiratório.</td>
-</tr>
-<tr class="odd">
-<td>saturacao</td>
-<td>Se gestante ou puérpera manifestou sintoma de saturação.</td>
-</tr>
-<tr class="even">
-<td>diarreia</td>
-<td>Se gestante ou puérpera manifestou sintoma de diarreia.</td>
-</tr>
-<tr class="odd">
-<td>vomito</td>
-<td>Se gestante ou puérpera manifestou sintoma de vômito.</td>
-</tr>
-<tr class="even">
-<td>dor_abd</td>
-<td>Se gestante ou puérpera manifestou sintoma de dor abdominal.</td>
-</tr>
-<tr class="odd">
-<td>fadiga</td>
-<td>Se gestante ou puérpera manifestou sintoma de fadiga.</td>
-</tr>
-<tr class="even">
-<td>perd_olft</td>
-<td>Se gestante ou puérpera manifestou sintoma de perda de olfato.</td>
-</tr>
-<tr class="odd">
-<td>perd_pala</td>
-<td>Se gestante ou puérpera manifestou sintoma de perda de paladar.</td>
-</tr>
-<tr class="even">
-<td>cardiopati</td>
-<td>Se gestante ou puérpera tem doença cardiovascular crônica.</td>
-</tr>
-<tr class="odd">
-<td>hematologi</td>
-<td>Se gestante ou puérpera tem doença hematológica crônica.</td>
-</tr>
-<tr class="even">
-<td>hepatica</td>
-<td>Se gestante ou puérpera tem doença hepática crônica.</td>
-</tr>
-<tr class="odd">
-<td>asma</td>
-<td>Se gestante ou puérpera tem asma.</td>
-</tr>
-<tr class="even">
-<td>diabetes</td>
-<td>Se gestante ou puérpera tem diabetes <em>mellitus</em>.</td>
-</tr>
-<tr class="odd">
-<td>neuro</td>
-<td>Se gestante ou puérpera tem doença neurológica.</td>
-</tr>
-<tr class="even">
-<td>pneumopati</td>
-<td>Se gestante ou puérpera tem outra pneumopatia crônica.</td>
-</tr>
-<tr class="odd">
-<td>imunodepre</td>
-<td>Se gestante ou puérpera tem imunodeficiência ou imunodepressão (diminuição da função do sistema imunológico).</td>
-</tr>
-<tr class="even">
-<td>renal</td>
-<td>Se gestante ou puérpera tem doença renal crônica.</td>
-</tr>
-<tr class="odd">
-<td>obesidade</td>
-<td>Se gestante ou puérpera tem obesidade.</td>
-</tr>
-<tr class="even">
-<td>uti</td>
-<td>Se gestante ou puérpera foi internada na UTI.</td>
-</tr>
-<tr class="odd">
-<td>suport_ven</td>
-<td>Se gestante ou puérpera precisou de ventilação mecânica; se sim, se foi invasiva ou não.</td>
-</tr>
-<tr class="even">
-<td>evolucao</td>
-<td>Evolução do caso da gestante ou puérpera.</td>
-</tr>
-<tr class="odd">
-<td>variante</td>
-<td>Variante do vírus SARS-CoV-2 (vírus do COVID-19).</td>
-</tr>
-</tbody>
-</table>
+<p>O RStudio é um conjunto de ferramentas integradas projetadas (IDE - Integrated Development Environment) da linguagem R para editar e executar os códigos em R.</p>
+<p>Tem quatro áreas, conforme a Figura @ref(fig:telarstudio1).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/rstudio1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption"> Visualização do RStudio</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>A seguir descrevemos melhor os painéis e abas do RStudio:</p>
+<ul>
+<li><p>Editor/Scripts: é onde escrever os códigos. Arquivos do tipo .R.</p></li>
+<li><p>Console: executar os comandos e ver os resultados.</p></li>
+<li><p>Enviroment: painel com todos os objetos criados.</p></li>
+<li><p>History: história dos comandos executados.</p></li>
+<li><p>Files: navegar em pastas e arquivos.</p></li>
+<li><p>Plots: onde os gráficos serão apresentados.</p></li>
+<li><p>Packages: pacotes instalados (sem ticar) e habilitados (ticados).</p></li>
+<li><p>Help: retorna o tutorial de ajuda do comando solicitado com help() ou ?comando. Ver melhor como pedir ajuda no R no final deste capítulo.</p></li>
+</ul>
+<p>O usuário pode alterar a aparência do RStudio, como fonte e cor. Como exemplo, as Figuras @ref(fig:telarstudio2) e @ref(fig:telarstudio3) apresentam os passos para mudar o tema do script. No exemplo, deixar com fundo preto.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/rstudio2.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption"> Ferramentas de aparência do RStudio</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/rstudio3.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption"> Ferramentas de aparência do RStudio</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Ainda no menu Tools –&gt; Global Options –&gt; Pane Layout, o usuário pode organizar a ordem dos quadrantes do RStudio, como apresentado nas Figuras @ref(fig:telarstudio4), @ref(fig:telarstudio5) e @ref(fig:telarstudio6). No exemplo, o painel Console foi transferido para o lado do painel Script, o que facilita a visualização dos comandos rodados.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/rstudio4.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption"> Ferramentas de aparência do RStudio</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/rstudio5.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption"> Ferramentas de aparência do RStudio</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/rstudio6.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption"> Ferramentas de aparência do RStudio</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="projetos" class="level3" data-number="4.0.1">
+<h3 data-number="4.0.1" class="anchored" data-anchor-id="projetos"><span class="header-section-number">4.0.1</span> Projetos</h3>
+<p>Uma funcionalidade importante é a criação de projetos, permitindo dividir o trabalho em múltiplos ambientes, cada um com o seu diretório, documentos e workspace.</p>
+<p>Para criar um projeto, os seguintes passos podem ser seguidos:</p>
+<ol type="1">
+<li><p>Clique na opção “File” do menu, e então em “New Project”.</p></li>
+<li><p>Clique em “New Directory”.</p></li>
+<li><p>Clique em “New Project”.</p></li>
+<li><p>Escreva o nome do diretório (pasta) onde deseja manter seu projeto, exemplo: “my_project”.</p></li>
+<li><p>Clique no botão “Create Project”.</p></li>
+</ol>
+<p>Para criar um novo script para escrever os códigos, vá em File -&gt; New File -&gt; R Script</p>
+</section>
+<section id="boas-práticas" class="level3" data-number="4.0.2">
+<h3 data-number="4.0.2" class="anchored" data-anchor-id="boas-práticas"><span class="header-section-number">4.0.2</span> Boas práticas</h3>
+<p>Comente bem o seu código: é possível fazer comentários usando o símbolo ‘#’. É sempre bom explicar o que uma variável armazena, o que uma função faz, por que alguns parâmetros são passados para uma determinada função, qual é o objetivo de um trecho de código etc.</p>
+<p>Evite linhas de código muito longas: usar linhas de código mais curtas ajuda na leitura do código.</p>
+<p>Escreva um código organizado. Por exemplo, adote um padrão no uso de minúsculas e maiúsculas, uma lógica única na organização de pastas e arquivos, pode ser adotada uma breve descrição (como comentário) indicando o que um determinado script faz.</p>
+<p>Carregue todos os pacotes que irá usar sempre no início do arquivo: quando alguém abrir o seu código será fácil identificar quais são os pacotes que devem ser instalados e quais dependências podem existir.</p>
 
 
 </section>
@@ -520,13 +406,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./summary.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Sumário</span>
+      <a href="./instalarstudio.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Instalação RStudio</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./tutorialr.html" class="pagination-link">
-        <span class="nav-page-text">Tutorial de R</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./comecando_r.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Primeiros passos no R</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -1,0 +1,95 @@
+# Instalação RStudio
+
+O RStudio é um conjunto de ferramentas integradas projetadas (IDE - Integrated Development Environment) da linguagem R para auxiliar na produtividade ao utilizar o R.
+
+### Para Windows
+
+1)  Entre neste [link](https://www.rstudio.com/products/rstudio/download/) e clique em Download como em destaque na Figura \@ref(fig:rswindows1).
+
+```{r rswindows1, echo=FALSE, fig.cap="\\label{fig:rswindows1}Site para download do RStudio", out.width = '100%'}
+knitr::include_graphics("figures/install_Rstudio1.png")
+```
+
+2)  Clique no instalador em destaque na Figura \@ref(fig:rswindows2).
+
+```{r rswindows2, echo=FALSE, fig.cap="\\label{fig:rswindows2}Link para download do RStudio", out.width = '100%'}
+knitr::include_graphics("figures/install_Rstudio2.png")
+```
+
+3)  Ao clicar no link, será feito o download do instalador e salvo na pasta de interesse. No caso da Figura \@ref(fig:rswindows3), o instalador está na pasta Downloads. Dê dois cliques no botão esquerdo no arquivo para iniciar o download do arquivo.
+
+```{r rswindows3, echo=FALSE, fig.cap="\\label{fig:rswindows3} Instalador", out.width = '100%'}
+knitr::include_graphics("figures/install_Rstudio3.png")
+```
+
+4)  Clique em "Próximo" nas próximas janelas e na última "Instalar", como nas Figuras \@ref(fig:rswindows4) a \@ref(fig:rswindows6).
+
+```{r rswindows4, echo=FALSE, fig.cap="\\label{fig:rswindows4} Instalação", out.width = '100%'}
+knitr::include_graphics("figures/install_Rstudio4.png")
+```
+
+```{r rswindows5, echo=FALSE, fig.cap="\\label{fig:rswindows5} Instalação", out.width = '100%'}
+knitr::include_graphics("figures/install_Rstudio5.png")
+```
+
+```{r rswindows6, echo=FALSE, fig.cap="\\label{fig:rswindows6} Instalação", out.width = '100%'}
+knitr::include_graphics("figures/install_Rstudio6.png")
+```
+
+5)  Pronto, a instalação será iniciada, como na Figura \@ref(fig:rswindows7).
+
+```{r rswindows7, echo=FALSE, fig.cap="\\label{fig:rswindows7} Instalação", out.width = '100%'}
+knitr::include_graphics("figures/install_Rstudio7.png")
+```
+
+### Para MAC
+
+1)  Entre neste [link](https://www.rstudio.com/products/rstudio/download/) e clique em Download como em destaque na Figura \@ref(fig:rsmac1).
+
+```{r rsmac1, echo=FALSE, fig.cap="\\label{fig:rsmac1}Site para download do RStudio", out.width = '100%'}
+knitr::include_graphics("figures/install_Rstudio1.png")
+```
+
+2)  Clique no instalador como destacado na Figura \@ref(fig:rsmac2).
+
+```{r rsmac2, echo=FALSE, fig.cap="\\label{fig:rsmac2}Site para download do RStudio para Mac", out.width = '100%'}
+knitr::include_graphics("figures/mac_RSt_1.png")
+```
+
+3)  Ao clicar no link, será feito o download do instalador e salvo na pasta de interesse. Caso você não tenha configurado a pasta de descargas, o instalador ficará na pasta "Downloads", como na Figura \@ref(fig:rsmac3).
+
+```{r rsmac3, echo=FALSE, fig.cap="\\label{fig:rsmac3} Instalador salvo em pasta", out.width = '100%'}
+knitr::include_graphics("figures/mac_RSt_2.png")
+```
+
+4)  Clicando duas vezes no arquivo "RStudio-1.2.1335.dmg" (versãos mais atual do RStudio), será feita a descarga do mesmo abrindo a janela conforme na Figura \@ref(fig:rsmac4). Clique no aplicativo de RStudio destacado em vermelho também na Figura \@ref(fig:rsmac4).
+
+```{r rsmac4, echo=FALSE, fig.cap="\\label{fig:rsmac4} Instalação", out.width = '100%'}
+knitr::include_graphics("figures/mac_RSt_3.png")
+```
+
+5)  O instalador pode perguntar se está seguro que o aplicativo será baixado da internet e clique em "Open" (Figura \@ref(fig:rsmac5)).
+
+```{r rsmac5, echo=FALSE, fig.cap="\\label{fig:rsmac5} Instalação", out.width = '100%'}
+knitr::include_graphics("figures/mac_RSt_4.png")
+```
+
+6)  Pronto! Imediatamente abre o RStudio, como na Figura \@ref(fig:rsmac6), e você já pode utilizá-lo.
+
+```{r rsmac6, echo=FALSE, fig.cap="\\label{fig:rsmac6} Instalação", out.width = '100%'}
+knitr::include_graphics("figures/mac_RSt_5.png")
+```
+
+### Para Linux
+
+1)  Entre neste [link](https://www.rstudio.com/products/rstudio/download/) e clique em Download como em destaque na Figura \@ref(fig:rslinux1).
+
+```{r rslinux1, echo=FALSE, fig.cap="\\label{fig:rslinux1}Site para download do RStudio", out.width = '100%'}
+knitr::include_graphics("figures/install_Rstudio1.png")
+```
+
+2)  Clique no link referente à distribuição utilizada (Figura \@ref(fig:rslinux2)).
+
+```{r rslinux2, echo=FALSE, fig.cap="\\label{fig:rslinux2} Download do RStudio", out.width = '100%'}
+knitr::include_graphics("figures/install_Rstudio_linux.png")
+```
