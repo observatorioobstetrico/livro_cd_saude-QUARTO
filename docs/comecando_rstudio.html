@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.237">
+<meta name="generator" content="quarto-1.1.251">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Ciência de Dados Aplicada à Saúde Materno-Infantil - Tutorial de R</title>
+<title>Ciência de Dados Aplicada à Saúde Materno-Infantil - 4&nbsp; Primeiros passos no RStudio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./instalar.html" rel="next">
-<link href="./intro.html" rel="prev">
+<link href="./comecando_r.html" rel="next">
+<link href="./instalarstudio.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -70,7 +70,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Tutorial de R</h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Primeiros passos no RStudio</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -110,7 +110,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorialr.html" class="sidebar-item-text sidebar-link active">Tutorial de R</a>
+  <a href="./tutorialr.html" class="sidebar-item-text sidebar-link">Tutorial de R</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -125,7 +125,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./comecando_rstudio.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Primeiros passos no RStudio</span></a>
+  <a href="./comecando_rstudio.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Primeiros passos no RStudio</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -147,7 +147,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sobre-o-software-r" id="toc-sobre-o-software-r" class="nav-link active" data-scroll-target="#sobre-o-software-r">Sobre o software R</a></li>
+  <li><a href="#projetos" id="toc-projetos" class="nav-link active" data-scroll-target="#projetos"><span class="toc-section-number">4.0.1</span>  Projetos</a></li>
+  <li><a href="#boas-práticas" id="toc-boas-práticas" class="nav-link" data-scroll-target="#boas-práticas"><span class="toc-section-number">4.0.2</span>  Boas práticas</a></li>
   </ul>
 </nav>
     </div>
@@ -156,7 +157,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Tutorial de R</h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Primeiros passos no RStudio</span></h1>
 </div>
 
 
@@ -164,21 +165,106 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta">
 
     
-  
     
   </div>
   
 
 </header>
 
-<section id="sobre-o-software-r" class="level2">
-<h2 class="anchored" data-anchor-id="sobre-o-software-r">Sobre o software R</h2>
-<p>R é um ambiente computacional e uma linguagem de programação para manipulação, análise e visualização de dados. É considerado um dos melhores ambiente computacional para essa finalidade. O R é mantido pela <a href="https://cran.r-project.org/">R Development Core Team</a> e está disponível para diferentes sistemas operacionais: Linux, Mac e Windows.</p>
-<p>O software é livre, ou seja, gratuito, com código aberto em uma linguagem acessível. Nele, estão implementadas muitas metodologias estatísticas. Muitas dessas fazem parte do ambiente base de R e outras acompanham o ambiente sob a forma de pacotes, o que torna o R altamente expansível. Os pacotes são bibliotecas com dados e funções para diferentes áreas do conhecimento relacionados à estatística e áreas afins, devidamente documentados.</p>
-<p>O R possui uma comunidade extremamente ativa, engajada desde o aprimoramento de ferramentas e desenvolvimento de novas bibliotecas, até o suporte aos usuários. Sobre o desenvolvimento de novas bibliotecas, um pesquisador em Estatística que desenvolve um novo modelo estatístico pode disponibilizá-lo em um pacote acessível a que se interessam pelo modelo.</p>
-<p>Além disso, a disponibilidade e compartilhamento da pesquisa em um pacote no R é uma boa prática quando falamos de reprodutibilidade na Ciência. Ainda nesse ponto, realizar as análises de uma pesquisa aplicada em um programa livre e acessível a todos é um dos principais pontos para permitir reprodutibilidade.</p>
-<p>Ao optar por programar em R também implica na escolha de uma IDE (Integrated Development Environment) que, na grande maioria dos casos, será o <a href="https://rstudio.com">RStudio</a>. O RStudio é um conjunto de ferramentas integradas projetadas para editar e executar os códigos em R. Assim, quando for o interesse utilizar o R, só precisa abrir o RStudio (R é automaticamente carregado).</p>
-<p>Para instalação do R e do RStudio, veja a Seção que segue.</p>
+<p>O RStudio é um conjunto de ferramentas integradas projetadas (IDE - Integrated Development Environment) da linguagem R para editar e executar os códigos em R.</p>
+<p>Tem quatro áreas, conforme a Figura @ref(fig:telarstudio1).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/rstudio1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption"> Visualização do RStudio</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>A seguir descrevemos melhor os painéis e abas do RStudio:</p>
+<ul>
+<li><p>Editor/Scripts: é onde escrever os códigos. Arquivos do tipo .R.</p></li>
+<li><p>Console: executar os comandos e ver os resultados.</p></li>
+<li><p>Enviroment: painel com todos os objetos criados.</p></li>
+<li><p>History: história dos comandos executados.</p></li>
+<li><p>Files: navegar em pastas e arquivos.</p></li>
+<li><p>Plots: onde os gráficos serão apresentados.</p></li>
+<li><p>Packages: pacotes instalados (sem ticar) e habilitados (ticados).</p></li>
+<li><p>Help: retorna o tutorial de ajuda do comando solicitado com help() ou ?comando. Ver melhor como pedir ajuda no R no final deste capítulo.</p></li>
+</ul>
+<p>O usuário pode alterar a aparência do RStudio, como fonte e cor. Como exemplo, as Figuras @ref(fig:telarstudio2) e @ref(fig:telarstudio3) apresentam os passos para mudar o tema do script. No exemplo, deixar com fundo preto.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/rstudio2.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption"> Ferramentas de aparência do RStudio</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/rstudio3.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption"> Ferramentas de aparência do RStudio</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Ainda no menu Tools –&gt; Global Options –&gt; Pane Layout, o usuário pode organizar a ordem dos quadrantes do RStudio, como apresentado nas Figuras @ref(fig:telarstudio4), @ref(fig:telarstudio5) e @ref(fig:telarstudio6). No exemplo, o painel Console foi transferido para o lado do painel Script, o que facilita a visualização dos comandos rodados.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/rstudio4.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption"> Ferramentas de aparência do RStudio</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/rstudio5.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption"> Ferramentas de aparência do RStudio</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/rstudio6.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption"> Ferramentas de aparência do RStudio</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="projetos" class="level3" data-number="4.0.1">
+<h3 data-number="4.0.1" class="anchored" data-anchor-id="projetos"><span class="header-section-number">4.0.1</span> Projetos</h3>
+<p>Uma funcionalidade importante é a criação de projetos, permitindo dividir o trabalho em múltiplos ambientes, cada um com o seu diretório, documentos e workspace.</p>
+<p>Para criar um projeto, os seguintes passos podem ser seguidos:</p>
+<ol type="1">
+<li><p>Clique na opção “File” do menu, e então em “New Project”.</p></li>
+<li><p>Clique em “New Directory”.</p></li>
+<li><p>Clique em “New Project”.</p></li>
+<li><p>Escreva o nome do diretório (pasta) onde deseja manter seu projeto, exemplo: “my_project”.</p></li>
+<li><p>Clique no botão “Create Project”.</p></li>
+</ol>
+<p>Para criar um novo script para escrever os códigos, vá em File -&gt; New File -&gt; R Script</p>
+</section>
+<section id="boas-práticas" class="level3" data-number="4.0.2">
+<h3 data-number="4.0.2" class="anchored" data-anchor-id="boas-práticas"><span class="header-section-number">4.0.2</span> Boas práticas</h3>
+<p>Comente bem o seu código: é possível fazer comentários usando o símbolo ‘#’. É sempre bom explicar o que uma variável armazena, o que uma função faz, por que alguns parâmetros são passados para uma determinada função, qual é o objetivo de um trecho de código etc.</p>
+<p>Evite linhas de código muito longas: usar linhas de código mais curtas ajuda na leitura do código.</p>
+<p>Escreva um código organizado. Por exemplo, adote um padrão no uso de minúsculas e maiúsculas, uma lógica única na organização de pastas e arquivos, pode ser adotada uma breve descrição (como comentário) indicando o que um determinado script faz.</p>
+<p>Carregue todos os pacotes que irá usar sempre no início do arquivo: quando alguém abrir o seu código será fácil identificar quais são os pacotes que devem ser instalados e quais dependências podem existir.</p>
 
 
 </section>
@@ -225,24 +311,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
     setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -278,54 +347,36 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
       });
-    }
+      return popup.innerHTML;
+    });
   }
 });
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./intro.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></span>
+      <a href="./instalarstudio.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Instalação RStudio</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./instalar.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Instalação R</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./comecando_r.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Primeiros passos no R</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
