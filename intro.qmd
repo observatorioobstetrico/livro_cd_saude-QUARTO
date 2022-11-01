@@ -2,7 +2,7 @@
 
 ## Bases de dados
 
-Os dados considerados nas aplicações deste livro são provenientes do Sistema de Informação da Vigilância Epidemiológica da Gripe (SIVEP-Gripe), sistema oficial para o registro dos casos e óbitos por Síndrome Respiratória Aguda Grave (SRAG) disponibilizado pelo Ministério da Saúde. Os dados correspondem a registros de gestantes e puérperas de 10 a 55 anos hospitalizadas com SRAG por COVID-19 confirmada por teste de PCR.
+Os dados considerados nas aplicações deste livro são provenientes do Sistema de Informação da Vigilância Epidemiológica da Gripe (SIVEP-Gripe), sistema oficial para o registro de casos e óbitos por Síndrome Respiratória Aguda Grave (SRAG) disponibilizado pelo Ministério da Saúde, e correspondem a registros de gestantes e puérperas de 10 a 55 anos hospitalizadas com SRAG por COVID-19 confirmada por teste de PCR. Dois conjuntos de dados diferentes são utilizados para ilustrar e demonstrar diversos aspectos dos conceitos abordados no texto.
 
 ### Dados de COVID-19 em gestantes e puérperas
 
@@ -11,7 +11,7 @@ Essa base consiste em 11.485 de registros de gestantes e puérperas diagnosticad
 O dicionários das variáveis a ser considerado neste livro está na @tbl-covid19.
 
 | Variável           | Descrição                                                                                                    | Valores                                                                                                                                                     |
-|-------------------|------------------------------|------------------------|
+|-------------------|-----------------------------|------------------------|
 | sem_pri            | Semana epidemiológia dos primeiros sintomas                                                                  | 1 a 52                                                                                                                                                      |
 | idade_anos         | Idade, em anos, da gestante ou puérpera                                                                      | 10 a 55                                                                                                                                                     |
 | sg_uf              | Sigla da Unidade Federativa de residência da gestante ou puérpera                                            | Código definido pelo IBGE                                                                                                                                   |
