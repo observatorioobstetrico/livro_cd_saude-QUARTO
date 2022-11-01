@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.237">
+<meta name="generator" content="quarto-1.1.251">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./tutorialr.html" rel="next">
-<link href="./summary.html" rel="prev">
+<link href="./summary.html" rel="next">
+<link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -100,37 +100,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">Sumário</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorialr.html" class="sidebar-item-text sidebar-link">Tutorial de R</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./instalar.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Instalação R</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./instalarstudio.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Instalação RStudio</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./comecando_rstudio.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Primeiros passos no RStudio</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./comecando_r.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Primeiros passos no R</span></a>
+  <a href="./summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">summary.html</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -147,7 +122,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#base-de-dados" id="toc-base-de-dados" class="nav-link active" data-scroll-target="#base-de-dados"><span class="toc-section-number">1.1</span>  Base de dados</a></li>
+  <li><a href="#bases-de-dados" id="toc-bases-de-dados" class="nav-link active" data-scroll-target="#bases-de-dados"><span class="toc-section-number">1.1</span>  Bases de dados</a>
+  <ul class="collapse">
+  <li><a href="#dados-de-covid-19-em-gestantes-e-puérperas" id="toc-dados-de-covid-19-em-gestantes-e-puérperas" class="nav-link" data-scroll-target="#dados-de-covid-19-em-gestantes-e-puérperas"><span class="toc-section-number">1.1.1</span>  Dados de COVID-19 em gestantes e puérperas</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -164,229 +142,286 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta">
 
     
-  
     
   </div>
   
 
 </header>
 
-<section id="base-de-dados" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="base-de-dados"><span class="header-section-number">1.1</span> Base de dados</h2>
-<p>Os dados que consideramos nas aplicações deste livro são baseados em gestantes e puérperas de 10 a 55 anos hospitalizadas com Síndrome Respiratória Aguda Grave (SRAG) por COVID-19, confirmada por teste de PCR, no período de março de 2020 a dezembro de 2021, disponíveis no Sistema de Informação da Vigilância Epidemiológica da Gripe (SIVEP-Gripe), sistema oficial para o registro dos casos e óbitos por SRAG disponibilizado pelo Ministério da Saúde.</p>
-<p>Na base <code>dados_covid</code> estão contidas 11.485 observações e 50 variáveis. Assim, são as características observadas:</p>
+<section id="bases-de-dados" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="bases-de-dados"><span class="header-section-number">1.1</span> Bases de dados</h2>
+<p>Os dados considerados nas aplicações deste livro são provenientes do Sistema de Informação da Vigilância Epidemiológica da Gripe (SIVEP-Gripe), sistema oficial para o registro dos casos e óbitos por Síndrome Respiratória Aguda Grave (SRAG) disponibilizado pelo Ministério da Saúde. Os dados correspondem a registros de gestantes e puérperas de 10 a 55 anos hospitalizadas com SRAG por COVID-19 confirmada por teste de PCR.</p>
+<section id="dados-de-covid-19-em-gestantes-e-puérperas" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="dados-de-covid-19-em-gestantes-e-puérperas"><span class="header-section-number">1.1.1</span> Dados de COVID-19 em gestantes e puérperas</h3>
+<p>Essa base consiste em 11.485 de registros de gestantes e puérperas diagnosticadas com COVID-19 no período de março de 2020 a dezembro de 2021. Alguns estudos conduzidos pelo OOBr usaram esses dados, dentre os quais podem ser citados: <a href="https://observatorioobstetricobr.org/publicacoes/caracteristicas-demograficas-e-epidemiologicas-sobre-mulheres-gravidas-e-puerperas-que-morreram-de-sindrome-respiratoria-aguda-grave-no-brasil/">Características demográficas e epidemiológicas sobre mulheres grávidas e puérperas que morreram de Síndrome Respiratória Aguda Grave no Brasil</a>, <a href="https://observatorioobstetricobr.org/publicacoes/desfechos-da-covid-19-em-puerperas-gestantes-e-mulheres-nao-gestantes-e-nem-puerperas-hospitalizadas/">Mortalidade materna associada à COVID-19 no Brasil em 2020 e 2021: comparação com mulheres não grávidas e homens</a> e <a href="https://observatorioobstetricobr.org/publicacoes/desfechos-da-covid-em-puerperas-gestantes-mulheres-nao-gestantes-nao-puerperas/">Desfechos da COVID-19 em puérperas, gestantes e mulheres não gestantes e nem puérperas hospitalizadas</a>.</p>
+<p>O dicionários das variáveis a ser considerado neste livro está na <a href="#tbl-covid19">Table&nbsp;<span>1.1</span></a>.</p>
+<div id="tbl-covid19" class="anchored">
 <table class="table">
+<caption>Table&nbsp;1.1: Dicionário das variáveis da base de dados de COVID-19 em gestantes e puérperas.</caption>
 <colgroup>
-<col style="width: 15%">
-<col style="width: 84%">
+<col style="width: 26%">
+<col style="width: 41%">
+<col style="width: 32%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>Variável</th>
 <th>Descrição</th>
+<th>Valores</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>sem_pri</td>
-<td>Semana epidemiológia dos primeiros sintomas.</td>
+<td>Semana epidemiológia dos primeiros sintomas</td>
+<td>1 a 52</td>
 </tr>
 <tr class="even">
 <td>idade_anos</td>
-<td>Idade, em anos, da gestante ou puérpera.</td>
+<td>Idade, em anos, da gestante ou puérpera</td>
+<td>10 a 55</td>
 </tr>
 <tr class="odd">
 <td>sg_uf</td>
-<td>Sigla da Unidade Federativa de residência da gestante ou puérpera.</td>
+<td>Sigla da Unidade Federativa de residência da gestante ou puérpera</td>
+<td>Código definido pelo IBGE</td>
 </tr>
 <tr class="even">
 <td>id_mn_resi</td>
-<td>Município de residência da gestante ou puérpera.</td>
+<td>Nome do município de residência da gestante ou puérpera</td>
+<td>Nomes padronizados pelo IBGE</td>
 </tr>
 <tr class="odd">
 <td>co_mun_res</td>
-<td>Código do município de residência da gestante ou puérpera.</td>
+<td>Código do município de residência da gestante ou puérpera</td>
+<td>Código definido pelo IBGE</td>
 </tr>
 <tr class="even">
 <td>co_mu_inte</td>
-<td>Código do município onde está localizado a Unidade de Saúde onde a gestante ou puérpera internou.</td>
+<td>Código do município onde está localizado a Unidade de Saúde onde a gestante ou puérpera internou</td>
+<td>Código definido pelo IBGE</td>
 </tr>
 <tr class="odd">
 <td>dt_sin_pri</td>
-<td>Data de primeiros sintomas do caso.</td>
+<td>Data de primeiros sintomas do caso</td>
+<td>Dia/Mês/Ano</td>
 </tr>
 <tr class="even">
 <td>dt_evoluca_2</td>
-<td>Data da alta ou do óbito da gestante ou puérpera.</td>
+<td>Data da alta ou do óbito da gestante ou puérpera</td>
+<td>Ano/Mês/Dia</td>
 </tr>
 <tr class="odd">
 <td>ano</td>
-<td>Ano da infecção pelo COVID-19.</td>
+<td>Ano da infecção pelo COVID-19</td>
+<td>2020; 2021</td>
 </tr>
 <tr class="even">
 <td>classi_gesta_puerp</td>
-<td>Idade gestacional da gestante e puerpério.</td>
+<td>Idade gestacional da gestante e puerpério</td>
+<td>1tri- 1° trimestre; 2tri- 2° trimestre; 3tri- 3° trimestre; puerp- puérpera</td>
 </tr>
 <tr class="odd">
 <td>raca</td>
-<td>Raça da gestante ou puérpera.</td>
+<td>Raça da gestante ou puérpera</td>
+<td>amarela; branca; indígena; parda; preta</td>
 </tr>
 <tr class="even">
 <td>escol</td>
-<td>Nível de escolaridade da gestante ou puérpera.</td>
+<td>Nível de escolaridade da gestante ou puérpera</td>
+<td>sem escol- sem escolaridade (analfabeto); fund1- fundamental 1° ciclo (1ª a 5ª série); fund2- fundamental 2 (6ª a 9ª série); medio (1° ao 3° ano); superior</td>
 </tr>
 <tr class="odd">
 <td>mudou_muni</td>
-<td>Se gestante ou puérpera precisou se deslocar para outro município para realizar atendimento.</td>
+<td>Se gestante ou puérpera precisou se deslocar para outro município para realizar atendimento</td>
+<td>sim; não</td>
 </tr>
 <tr class="even">
 <td>zona</td>
-<td>Tipo de zona de residência da gestante ou puérpera.</td>
+<td>Tipo de zona de residência da gestante ou puérpera</td>
+<td>rural; urbana; periurbana</td>
 </tr>
 <tr class="odd">
 <td>faixa_et</td>
-<td>Faixa etária da gestante ou puérpera.</td>
+<td>Faixa etária da gestante ou puérpera</td>
+<td>&lt;20; 20-34; &gt;=35</td>
 </tr>
 <tr class="even">
 <td>hospital</td>
-<td>Se gestante ou puérpera foi hospitalizada.</td>
+<td>Se gestante ou puérpera foi hospitalizada</td>
+<td>sim; não</td>
 </tr>
 <tr class="odd">
 <td>hist_viagem</td>
-<td>Se gestante ou puérpera fez viagem internacional até 14 dias antes do início dos sintomas.</td>
+<td>Se gestante ou puérpera fez viagem internacional até 14 dias antes do início dos sintomas</td>
+<td>sim; não</td>
 </tr>
 <tr class="even">
 <td>sg_para_srag</td>
-<td>Se o caso é proveniente de síndrome gripal (SG) que evoluiu para síndrome respiratória aguda grave (SRAG).</td>
+<td>Se o caso é proveniente de síndrome gripal (SG) que evoluiu para síndrome respiratória aguda grave (SRAG)</td>
+<td>sim; não</td>
 </tr>
 <tr class="odd">
 <td>inf_inter</td>
-<td>Se trata-se de caso nosocomial (infecção adquirida no hospital).</td>
+<td>Se trata-se de caso nosocomial (infecção adquirida no hospital)</td>
+<td>sim; não</td>
 </tr>
 <tr class="even">
 <td>cont_ave_suino</td>
-<td>Se a gestante ou puérpera trabalha ou tem contato direto com aves, suínos ou outros animais.</td>
+<td>Se a gestante ou puérpera trabalha ou tem contato direto com aves, suínos ou outros animais</td>
+<td>sim; não</td>
 </tr>
 <tr class="odd">
 <td>vacina</td>
-<td>Se a gestante ou puérpera recebeu vacina contra <em>influenza</em>.</td>
+<td>Se a gestante ou puérpera recebeu vacina contra <em>influenza</em></td>
+<td>sim; não</td>
 </tr>
 <tr class="even">
 <td>vacina_cov</td>
-<td>Se a gestante ou puérpera recebeu vacina contra COVID-19.</td>
+<td>Se a gestante ou puérpera recebeu vacina contra COVID-19</td>
+<td>sim; não</td>
 </tr>
 <tr class="odd">
 <td>antiviral</td>
-<td>Se gestante ou puérpera usou antiviral para gripe e qual antiviral.</td>
+<td>Qual antiviral que gestante ou puérpera usou para gripe</td>
+<td>Oseltamivir; Zanamivir</td>
 </tr>
 <tr class="even">
 <td>febre</td>
-<td>Se gestante ou puérpera manifestou sintoma de febre.</td>
+<td>Se gestante ou puérpera manifestou sintoma de febre</td>
+<td>sim; não</td>
 </tr>
 <tr class="odd">
 <td>tosse</td>
-<td>Se gestante ou puérpera manifestou sintoma de tosse.</td>
+<td>Se gestante ou puérpera manifestou sintoma de tosse</td>
+<td>sim; não</td>
 </tr>
 <tr class="even">
 <td>garganta</td>
-<td>Se gestante ou puérpera manifestou sintoma de dor de garganta.</td>
+<td>Se gestante ou puérpera manifestou sintoma de dor de garganta</td>
+<td>sim; não</td>
 </tr>
 <tr class="odd">
 <td>dispneia</td>
-<td>Se gestante ou puérpera manifestou sintoma de dispneia.</td>
+<td>Se gestante ou puérpera manifestou sintoma de dispneia</td>
+<td>sim; não</td>
 </tr>
 <tr class="even">
 <td>desc_resp</td>
-<td>Se gestante ou puérpera manifestou sintoma de desconforto respiratório.</td>
+<td>Se gestante ou puérpera manifestou sintoma de desconforto respiratório</td>
+<td>sim; não</td>
 </tr>
 <tr class="odd">
 <td>saturacao</td>
-<td>Se gestante ou puérpera manifestou sintoma de saturação.</td>
+<td>Se gestante ou puérpera manifestou sintoma de saturação</td>
+<td>sim; não</td>
 </tr>
 <tr class="even">
 <td>diarreia</td>
-<td>Se gestante ou puérpera manifestou sintoma de diarreia.</td>
+<td>Se gestante ou puérpera manifestou sintoma de diarreia</td>
+<td>sim; não</td>
 </tr>
 <tr class="odd">
 <td>vomito</td>
-<td>Se gestante ou puérpera manifestou sintoma de vômito.</td>
+<td>Se gestante ou puérpera manifestou sintoma de vômito</td>
+<td>sim; não</td>
 </tr>
 <tr class="even">
 <td>dor_abd</td>
-<td>Se gestante ou puérpera manifestou sintoma de dor abdominal.</td>
+<td>Se gestante ou puérpera manifestou sintoma de dor abdominal</td>
+<td>sim; não</td>
 </tr>
 <tr class="odd">
 <td>fadiga</td>
-<td>Se gestante ou puérpera manifestou sintoma de fadiga.</td>
+<td>Se gestante ou puérpera manifestou sintoma de fadiga</td>
+<td>sim; não</td>
 </tr>
 <tr class="even">
 <td>perd_olft</td>
-<td>Se gestante ou puérpera manifestou sintoma de perda de olfato.</td>
+<td>Se gestante ou puérpera manifestou sintoma de perda de olfato</td>
+<td>sim; não</td>
 </tr>
 <tr class="odd">
 <td>perd_pala</td>
-<td>Se gestante ou puérpera manifestou sintoma de perda de paladar.</td>
+<td>Se gestante ou puérpera manifestou sintoma de perda de paladar</td>
+<td>sim; não</td>
 </tr>
 <tr class="even">
 <td>cardiopati</td>
-<td>Se gestante ou puérpera tem doença cardiovascular crônica.</td>
+<td>Se gestante ou puérpera tem doença cardiovascular crônica</td>
+<td>sim; não</td>
 </tr>
 <tr class="odd">
 <td>hematologi</td>
-<td>Se gestante ou puérpera tem doença hematológica crônica.</td>
+<td>Se gestante ou puérpera tem doença hematológica crônica</td>
+<td>sim; não</td>
 </tr>
 <tr class="even">
 <td>hepatica</td>
-<td>Se gestante ou puérpera tem doença hepática crônica.</td>
+<td>Se gestante ou puérpera tem doença hepática crônica</td>
+<td>sim; não</td>
 </tr>
 <tr class="odd">
 <td>asma</td>
-<td>Se gestante ou puérpera tem asma.</td>
+<td>Se gestante ou puérpera tem asma</td>
+<td>sim; não</td>
 </tr>
 <tr class="even">
 <td>diabetes</td>
-<td>Se gestante ou puérpera tem diabetes <em>mellitus</em>.</td>
+<td>Se gestante ou puérpera tem diabetes <em>mellitus</em></td>
+<td>sim; não</td>
 </tr>
 <tr class="odd">
 <td>neuro</td>
-<td>Se gestante ou puérpera tem doença neurológica.</td>
+<td>Se gestante ou puérpera tem doença neurológica</td>
+<td>sim; não</td>
 </tr>
 <tr class="even">
 <td>pneumopati</td>
-<td>Se gestante ou puérpera tem outra pneumopatia crônica.</td>
+<td>Se gestante ou puérpera tem outra pneumopatia crônica</td>
+<td>sim; não</td>
 </tr>
 <tr class="odd">
 <td>imunodepre</td>
-<td>Se gestante ou puérpera tem imunodeficiência ou imunodepressão (diminuição da função do sistema imunológico).</td>
+<td>Se gestante ou puérpera tem imunodeficiência ou imunodepressão (diminuição da função do sistema imunológico)</td>
+<td>sim; não</td>
 </tr>
 <tr class="even">
 <td>renal</td>
-<td>Se gestante ou puérpera tem doença renal crônica.</td>
+<td>Se gestante ou puérpera tem doença renal crônica</td>
+<td>sim; não</td>
 </tr>
 <tr class="odd">
 <td>obesidade</td>
-<td>Se gestante ou puérpera tem obesidade.</td>
+<td>Se gestante ou puérpera tem obesidade</td>
+<td>sim; não</td>
 </tr>
 <tr class="even">
 <td>uti</td>
-<td>Se gestante ou puérpera foi internada na UTI.</td>
+<td>Se gestante ou puérpera foi internada na UTI</td>
+<td>sim; não</td>
 </tr>
 <tr class="odd">
 <td>suport_ven</td>
-<td>Se gestante ou puérpera precisou de ventilação mecânica; se sim, se foi invasiva ou não.</td>
+<td>Se gestante ou puérpera precisou de ventilação mecânica; se sim, se foi invasiva ou não</td>
+<td>não; sim, não invasivo; sim, invasivo</td>
 </tr>
 <tr class="even">
 <td>evolucao</td>
-<td>Evolução do caso da gestante ou puérpera.</td>
+<td>Evolução do caso da gestante ou puérpera</td>
+<td>cura; óbito</td>
 </tr>
 <tr class="odd">
 <td>variante</td>
-<td>Variante do vírus SARS-CoV-2 (vírus do COVID-19).</td>
+<td>Variante do vírus SARS-CoV-2 (vírus do COVID-19)</td>
+<td>original; delta; gama; omicron</td>
 </tr>
 </tbody>
 </table>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -431,24 +466,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
     setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -484,54 +502,36 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
       });
-    }
+      return popup.innerHTML;
+    });
   }
 });
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./summary.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Sumário</span>
+      <a href="./index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Prefácio</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./tutorialr.html" class="pagination-link">
-        <span class="nav-page-text">Tutorial de R</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./summary.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">summary.html</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
