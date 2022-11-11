@@ -170,7 +170,7 @@ ul.task-list{list-style: none;}
 
 <section id="bases-de-dados" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="bases-de-dados"><span class="header-section-number">1.1</span> Bases de dados</h2>
-<p>Os dados considerados nas aplicações deste livro são provenientes do Sistema de Informação da Vigilância Epidemiológica da Gripe (SIVEP-Gripe), sistema oficial para o registro dos casos e óbitos por Síndrome Respiratória Aguda Grave (SRAG) disponibilizado pelo Ministério da Saúde. Os dados correspondem a registros de gestantes e puérperas de 10 a 55 anos hospitalizadas com SRAG por COVID-19 confirmada por teste de PCR. O conjunto de dados é utilizado para ilustrar e demonstrar diversos aspectos dos conceitos abordados no texto.</p>
+<p>Os dados considerados nas aplicações deste livro são provenientes do Sistema de Informação da Vigilância Epidemiológica da Gripe (SIVEP-Gripe), sistema oficial para o registro dos casos e óbitos por Síndrome Respiratória Aguda Grave (SRAG) disponibilizado pelo Ministério da Saúde. Os dados correspondem a registros de gestantes e puérperas de 10 a 55 anos hospitalizadas com SRAG por COVID-19 confirmada por teste de PCR. O conjunto de dados é utilizado para ilustrar e demonstrar diversos aspectos dos conceitos abordados no texto, e pode ser baixado em <a href="https://github.com/observatorioobstetrico/dados_livro_cd_saude" class="uri">https://github.com/observatorioobstetrico/dados_livro_cd_saude</a>.</p>
 <section id="dados-de-covid-19-em-gestantes-e-puérperas" class="level3" data-number="1.1.1">
 <h3 data-number="1.1.1" class="anchored" data-anchor-id="dados-de-covid-19-em-gestantes-e-puérperas"><span class="header-section-number">1.1.1</span> Dados de COVID-19 em gestantes e puérperas</h3>
 <p>Essa base consiste em 11.523 registros de gestantes e puérperas diagnosticadas com COVID-19 no período de março de 2020 a dezembro de 2021. Alguns estudos conduzidos pelo OOBr usaram esses dados, dentre os quais podem ser citados: <a href="https://observatorioobstetricobr.org/publicacoes/caracteristicas-demograficas-e-epidemiologicas-sobre-mulheres-gravidas-e-puerperas-que-morreram-de-sindrome-respiratoria-aguda-grave-no-brasil/">Características demográficas e epidemiológicas sobre mulheres grávidas e puérperas que morreram de Síndrome Respiratória Aguda Grave no Brasil</a>, <a href="https://observatorioobstetricobr.org/publicacoes/desfechos-da-covid-19-em-puerperas-gestantes-e-mulheres-nao-gestantes-e-nem-puerperas-hospitalizadas/">Mortalidade materna associada à COVID-19 no Brasil em 2020 e 2021: comparação com mulheres não grávidas e homens</a> e <a href="https://observatorioobstetricobr.org/publicacoes/desfechos-da-covid-em-puerperas-gestantes-mulheres-nao-gestantes-nao-puerperas/">Desfechos da COVID-19 em puérperas, gestantes e mulheres não gestantes e nem puérperas hospitalizadas</a>.</p>
@@ -302,106 +302,6 @@ ul.task-list{list-style: none;}
 <td>1- sim; 2- não; 9- ignorado</td>
 </tr>
 <tr class="odd">
-<td>CARDIOPATI</td>
-<td>Se gestante ou puérpera tem doença cardiovascular crônica</td>
-<td>1- sim; 2- não; 9- ignorado</td>
-</tr>
-<tr class="even">
-<td>HEMATOLOGI</td>
-<td>Se gestante ou puérpera tem doença hematológica crônica</td>
-<td>1- sim; 2- não; 9- ignorado</td>
-</tr>
-<tr class="odd">
-<td>HEPATICA</td>
-<td>Se gestante ou puérpera tem doença hepática crônica</td>
-<td>1- sim; 2- não; 9- ignorado</td>
-</tr>
-<tr class="even">
-<td>ASMA</td>
-<td>Se gestante ou puérpera tem asma</td>
-<td>1- sim; 2- não; 9- ignorado</td>
-</tr>
-<tr class="odd">
-<td>DIABETES</td>
-<td>Se gestante ou puérpera tem diabetes <em>mellitus</em></td>
-<td>1- sim; 2- não; 9- ignorado</td>
-</tr>
-<tr class="even">
-<td>NEUROLOGIC</td>
-<td>Se gestante ou puérpera tem doença neurológica</td>
-<td>1- sim; 2- não; 9- ignorado</td>
-</tr>
-<tr class="odd">
-<td>PNEUMOPATI</td>
-<td>Se gestante ou puérpera tem outra pneumopatia crônica</td>
-<td>1- sim; 2- não; 9- ignorado</td>
-</tr>
-<tr class="even">
-<td>IMUNODEPRE</td>
-<td>Se gestante ou puérpera tem imunodeficiência ou imunodepressão (diminuição da função do sistema imunológico)</td>
-<td>1- sim; 2- não; 9- ignorado</td>
-</tr>
-<tr class="odd">
-<td>RENAL</td>
-<td>Se gestante ou puérpera tem doença renal crônica</td>
-<td>1- sim; 2- não; 9- ignorado</td>
-</tr>
-<tr class="even">
-<td>OBESIDADE</td>
-<td>Se gestante ou puérpera tem obesidade</td>
-<td>1- sim; 2- não; 9- ignorado</td>
-</tr>
-<tr class="odd">
-<td>VACINA_COV</td>
-<td>Se gestante ou puérpera recebeu vacina COVID-19</td>
-<td>1- sim; 2- não; 9- ignorado</td>
-</tr>
-<tr class="even">
-<td>DOSE_1_COV</td>
-<td>Data em que gestante ou puérpera recebeu a 1ª dose da vacina COVID-19</td>
-<td>Dia/Mês/Ano</td>
-</tr>
-<tr class="odd">
-<td>DOSE_2_COV</td>
-<td>Data em que gestante ou puérpera recebeu a 2ª dose da vacina COVID-19</td>
-<td>Dia/Mês/Ano</td>
-</tr>
-<tr class="even">
-<td>FAB_COV_1</td>
-<td>Fabricante da vacina que a gestante ou puérpera recebeu na 1ª dose</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>FAB_COV_2</td>
-<td>Fabricante da vacina que a gestante ou puérpera recebeu na 2ª dose</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>SUPORT_VEN</td>
-<td>Se gestante ou puérpera precisou de ventilação mecânica; se sim, se foi invasiva ou não</td>
-<td>1- sim, invasivo; 2- sim, não invasivo; 3- não; 9- ignorado</td>
-</tr>
-<tr class="odd">
-<td>UTI</td>
-<td>Se gestante ou puérpera foi internada na UTI</td>
-<td>1- sim; 2- não; 9- ignorado</td>
-</tr>
-<tr class="even">
-<td>DT_ENTUTI</td>
-<td>Data de entrada da gestante ou puérpera na UTI</td>
-<td>Dia/Mês/Ano</td>
-</tr>
-<tr class="odd">
-<td>DT_SAIDUTI</td>
-<td>Data de saída da gestante ou puérpera na UTI</td>
-<td>Dia/Mês/Ano</td>
-</tr>
-<tr class="even">
-<td>EVOLUCAO</td>
-<td>Evolução do caso da gestante ou puérpera</td>
-<td>1- cura; 2- óbito; 3- óbito por outras causas; 9- ignorado</td>
-</tr>
-<tr class="odd">
 <td>DOR_ABD</td>
 <td>Se gestante ou puérpera manifestou sintoma de dor abdominal</td>
 <td>1- sim; 2- não; 9- ignorado</td>
@@ -420,6 +320,91 @@ ul.task-list{list-style: none;}
 <td>PERD_PALA</td>
 <td>Se gestante ou puérpera manifestou sintoma de perda de paladar</td>
 <td>1- sim; 2- não; 9- ignorado</td>
+</tr>
+<tr class="odd">
+<td>ASMA</td>
+<td>Se gestante ou puérpera tem asma</td>
+<td>1- sim; 2- não; 9- ignorado</td>
+</tr>
+<tr class="even">
+<td>DIABETES</td>
+<td>Se gestante ou puérpera tem diabetes <em>mellitus</em></td>
+<td>1- sim; 2- não; 9- ignorado</td>
+</tr>
+<tr class="odd">
+<td>NEUROLOGIC</td>
+<td>Se gestante ou puérpera tem doença neurológica</td>
+<td>1- sim; 2- não; 9- ignorado</td>
+</tr>
+<tr class="even">
+<td>PNEUMOPATI</td>
+<td>Se gestante ou puérpera tem outra pneumopatia crônica</td>
+<td>1- sim; 2- não; 9- ignorado</td>
+</tr>
+<tr class="odd">
+<td>IMUNODEPRE</td>
+<td>Se gestante ou puérpera tem imunodeficiência ou imunodepressão (diminuição da função do sistema imunológico)</td>
+<td>1- sim; 2- não; 9- ignorado</td>
+</tr>
+<tr class="even">
+<td>RENAL</td>
+<td>Se gestante ou puérpera tem doença renal crônica</td>
+<td>1- sim; 2- não; 9- ignorado</td>
+</tr>
+<tr class="odd">
+<td>OBESIDADE</td>
+<td>Se gestante ou puérpera tem obesidade</td>
+<td>1- sim; 2- não; 9- ignorado</td>
+</tr>
+<tr class="even">
+<td>VACINA_COV</td>
+<td>Se gestante ou puérpera recebeu vacina COVID-19</td>
+<td>1- sim; 2- não; 9- ignorado</td>
+</tr>
+<tr class="odd">
+<td>DOSE_1_COV</td>
+<td>Data em que gestante ou puérpera recebeu a 1ª dose da vacina COVID-19</td>
+<td>Dia/Mês/Ano</td>
+</tr>
+<tr class="even">
+<td>DOSE_2_COV</td>
+<td>Data em que gestante ou puérpera recebeu a 2ª dose da vacina COVID-19</td>
+<td>Dia/Mês/Ano</td>
+</tr>
+<tr class="odd">
+<td>FAB_COV_1</td>
+<td>Fabricante da vacina que a gestante ou puérpera recebeu na 1ª dose</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>FAB_COV_2</td>
+<td>Fabricante da vacina que a gestante ou puérpera recebeu na 2ª dose</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>SUPORT_VEN</td>
+<td>Se gestante ou puérpera precisou de ventilação mecânica; se sim, se foi invasiva ou não</td>
+<td>1- sim, invasivo; 2- sim, não invasivo; 3- não; 9- ignorado</td>
+</tr>
+<tr class="even">
+<td>UTI</td>
+<td>Se gestante ou puérpera foi internada na UTI</td>
+<td>1- sim; 2- não; 9- ignorado</td>
+</tr>
+<tr class="odd">
+<td>DT_ENTUTI</td>
+<td>Data de entrada da gestante ou puérpera na UTI</td>
+<td>Dia/Mês/Ano</td>
+</tr>
+<tr class="even">
+<td>DT_SAIDUTI</td>
+<td>Data de saída da gestante ou puérpera na UTI</td>
+<td>Dia/Mês/Ano</td>
+</tr>
+<tr class="odd">
+<td>EVOLUCAO</td>
+<td>Evolução do caso da gestante ou puérpera</td>
+<td>1- cura; 2- óbito; 3- óbito por outras causas; 9- ignorado</td>
 </tr>
 </tbody>
 </table>
