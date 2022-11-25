@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.550">
+<meta name="generator" content="quarto-1.1.251">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,10 +11,15 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 </style>
 
 
@@ -35,7 +40,7 @@ ul.task-list{list-style: none;}
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -138,13 +143,13 @@ ul.task-list{list-style: none;}
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#bases-de-dados" id="toc-bases-de-dados" class="nav-link active" data-scroll-target="#bases-de-dados"> <span class="header-section-number">1.1</span> Bases de dados</a>
+  <li><a href="#bases-de-dados" id="toc-bases-de-dados" class="nav-link active" data-scroll-target="#bases-de-dados"><span class="toc-section-number">1.1</span>  Bases de dados</a>
   <ul class="collapse">
-  <li><a href="#dados-de-covid-19-em-gestantes-e-puérperas" id="toc-dados-de-covid-19-em-gestantes-e-puérperas" class="nav-link" data-scroll-target="#dados-de-covid-19-em-gestantes-e-puérperas"> <span class="header-section-number">1.1.1</span> Dados de COVID-19 em gestantes e puérperas</a></li>
+  <li><a href="#dados-de-covid-19-em-gestantes-e-puérperas" id="toc-dados-de-covid-19-em-gestantes-e-puérperas" class="nav-link" data-scroll-target="#dados-de-covid-19-em-gestantes-e-puérperas"><span class="toc-section-number">1.1.1</span>  Dados de COVID-19 em gestantes e puérperas</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -177,7 +182,7 @@ ul.task-list{list-style: none;}
 <p>O dicionários das variáveis a ser considerado neste livro está na <a href="#tbl-covid19">Table&nbsp;<span>1.1</span></a>.</p>
 <div id="tbl-covid19" class="anchored">
 <table class="table">
-<caption>Table 1.1: Dicionário das variáveis da base de dados de COVID-19 em gestantes e puérperas.</caption>
+<caption>Table&nbsp;1.1: Dicionário das variáveis da base de dados de COVID-19 em gestantes e puérperas.</caption>
 <colgroup>
 <col style="width: 26%">
 <col style="width: 40%">
@@ -357,51 +362,66 @@ ul.task-list{list-style: none;}
 <td>1- sim; 2- não; 9- ignorado</td>
 </tr>
 <tr class="even">
+<td>CARDIOPATI</td>
+<td>Se gestante ou puérpera tem doença cardiovascular crônica</td>
+<td>1- sim; 2- não; 9- ignorado</td>
+</tr>
+<tr class="odd">
+<td>HEMATOLOGI</td>
+<td>Se gestante ou puérpera tem doença hematológica crônica</td>
+<td>1- sim; 2- não; 9- ignorado</td>
+</tr>
+<tr class="even">
+<td>HEPATICA</td>
+<td>Se gestante ou puérpera tem doença hepática crônica</td>
+<td>1- sim; 2- não; 9- ignorado</td>
+</tr>
+<tr class="odd">
 <td>VACINA_COV</td>
 <td>Se gestante ou puérpera recebeu vacina COVID-19</td>
 <td>1- sim; 2- não; 9- ignorado</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>DOSE_1_COV</td>
 <td>Data em que gestante ou puérpera recebeu a 1ª dose da vacina COVID-19</td>
 <td>Dia/Mês/Ano</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>DOSE_2_COV</td>
 <td>Data em que gestante ou puérpera recebeu a 2ª dose da vacina COVID-19</td>
 <td>Dia/Mês/Ano</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>FAB_COV_1</td>
 <td>Fabricante da vacina que a gestante ou puérpera recebeu na 1ª dose</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>FAB_COV_2</td>
 <td>Fabricante da vacina que a gestante ou puérpera recebeu na 2ª dose</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>SUPORT_VEN</td>
 <td>Se gestante ou puérpera precisou de ventilação mecânica; se sim, se foi invasiva ou não</td>
 <td>1- sim, invasivo; 2- sim, não invasivo; 3- não; 9- ignorado</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>UTI</td>
 <td>Se gestante ou puérpera foi internada na UTI</td>
 <td>1- sim; 2- não; 9- ignorado</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>DT_ENTUTI</td>
 <td>Data de entrada da gestante ou puérpera na UTI</td>
 <td>Dia/Mês/Ano</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>DT_SAIDUTI</td>
 <td>Data de saída da gestante ou puérpera na UTI</td>
 <td>Dia/Mês/Ano</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>EVOLUCAO</td>
 <td>Evolução do caso da gestante ou puérpera</td>
 <td>1- cura; 2- óbito; 3- óbito por outras causas; 9- ignorado</td>
@@ -417,6 +437,24 @@ ul.task-list{list-style: none;}
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -466,7 +504,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
