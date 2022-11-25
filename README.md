@@ -8,4 +8,4 @@
 
 Este livro tem como objetivo abordar todas as etapas de uma análise de dados, utilizando o software R como ferramenta de análise de dados e com motivações da área da saúde materno-infantil.
 
-Baixe as bases de dados utilizadas nas aplicações ao longo do livro em <href>https://github.com/observatorioobstetrico/dados_livro_cd_saude</href>.
+Baixe as bases de dados utilizadas nas aplicações deste livro em <href>https://github.com/observatorioobstetrico/dados_livro_cd_saude</href>.
