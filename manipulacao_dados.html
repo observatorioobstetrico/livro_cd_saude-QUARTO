@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>manipulacao_dados</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="manipulacao_dados_files/libs/clipboard/clipboard.min.js"></script>
+<script src="manipulacao_dados_files/libs/quarto-html/quarto.js"></script>
+<script src="manipulacao_dados_files/libs/quarto-html/popper.min.js"></script>
+<script src="manipulacao_dados_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="manipulacao_dados_files/libs/quarto-html/anchor.min.js"></script>
+<link href="manipulacao_dados_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="manipulacao_dados_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="manipulacao_dados_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="manipulacao_dados_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="manipulacao_dados_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="manipulação-de-dados" class="level1">
+<h1>Manipulação de dados</h1>
+<p>Neste capítulo falaremos alguns princípios básicos sobre manipulação de dados. Iremos trabalhar em um cenário mais próximo da realidade possível, ou seja, iremos trabalhar em cima de uma base de dados real. O objetivo é manipular a base e torná-la pronta para ser usada nos capítulos seguintes. Será mostrado desde como importar a base até como criar novas variáveis que poderão ser utilizadas em análises. Não será possível cobrir todo o ramo de manipulação em um só capítulo, mas iremos trabalhar com o máximo de ferramentas possíveis. Pacotes ou funções que não forem utilizadas aqui, mas que são interessantes serão mencionados ao longo do capítulo junto a links que contenham explicações de como utilizá-las. Vale ressaltar que estamos em um cenário mais básico e introdutório. Vamos começar.</p>
+<section id="importação-de-dados" class="level3">
+<h3 class="anchored" data-anchor-id="importação-de-dados">Importação de dados</h3>
+<p>Um dos caminhos mais simples para importar dados no R é utilizando a função <code>read.table()</code>. Está função é simples pois ja vem instalada com o R, faz parte do pacote base <code>utils</code>, e importa arquivos nos formatos cvs e txt.</p>
+<p>A utilização do pacote é bem simples, não preciso carregá-lo na memória usando <code>library()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dados1 <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">"dados.csv"</span>, <span class="at">sep =</span> <span class="st">";"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>dados2 <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">"caminho-para-o-arquivo/dados.csv"</span>, <span class="at">sep =</span> <span class="st">";"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Observe que na função temos os argumentos <code>file</code> e <code>sep</code>. O <code>file</code> indica o nome do arquivo que será importado e <code>sep</code> indica qual o símbolo separador de colunas, que neste caso é a virgula. Note também que usamos dois exemplos, o primeiro considera que o seu arquivo está no diretório de trabalho (quando criamos o projeto e colocamos os arquivos de dados na pasta criada pelo projeto), não sendo necessário especificar o caminho até do arquivo. O outro exemplo mostra como especificar o local do seu arquivo. A função possui mais argumentos que você pode explorar usando o help, mas no geral, esses dois são os mais utilizados.</p>
+<section id="extensão-.txt-ou-.csv" class="level4">
+<h4 class="anchored" data-anchor-id="extensão-.txt-ou-.csv">Extensão .txt ou .csv</h4>
+<p>Caso esteja trabalhando com arquivos do tipo cvs ou txt o pacote <code>readr</code> irá servir muito bem. As funções deste pacote são bem rapidas e algumas delas são focadas em tranformar arquivos simples em <code>data.frame</code>. Aglumas funções do pacote são</p>
+<ul>
+<li><p><code>read_cvs()</code>: para arquivos delimitados por vírgulas.</p></li>
+<li><p><code>read_cvs2()</code>: para arquivos delimitados por ponto e vírgula.</p></li>
+<li><p><code>read_tsv()</code>: para arquivos delimitados por tabulações.</p></li>
+<li><p><code>read_delim()</code>: para aquivos com qualquer delimitador.</p></li>
+<li><p><code>read_fwf()</code>: para arquivos compactos que devem ter a largura de cada coluna especificada.</p></li>
+<li><p><code>read_table()</code>: para arquivos de texto tabulas com colunas separas por espaço.</p></li>
+</ul>
+<p>Caso esta seja a primeira vez que você ira utilizar este pacote, será necessário instalá-lo em seu computar. Você pode fazer isso utilizando a função <code>install.packages("readr")</code> e é claro, antes de usar qualquer pacote que não faça parte do R base, você deve carregá-lo. Como exemplo, consideramos um arquivo chamado dados1 que queremos importar para o R.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>dados_csv <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"caminho-para-o-arquivo/dados1.csv"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>dados_txt <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="at">file =</span> <span class="st">"caminho-para-o-arquivo/dados1.txt"</span>, <span class="at">delim =</span> <span class="st">" "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Apesar dos argumentos deste pacote serem semelhantes aos da função <code>read.table()</code>, devemos nos atentar a algumas diferenças. Aqui é o argumento <code>delim</code> que indica qual o separador das colunas no arquivo texto.</p>
+<p>Vale ressaltar que para cada função <code>read_</code>, existe umas respectiva função <code>write_</code> para exportar o arquivo no formato de interesse. Como exemplo, queremos salvar a base de dados mtcars na pasta do meu computador com o nome cars:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(<span class="at">x =</span> mtcars, <span class="at">path =</span> <span class="st">"cars.csv"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_delim</span>(<span class="at">x =</span> mtcars, <span class="at">delim =</span> <span class="st">" "</span>, <span class="at">path =</span> <span class="st">"cars.txt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="arquivos-em-excel" class="level4">
+<h4 class="anchored" data-anchor-id="arquivos-em-excel">Arquivos em Excel</h4>
+<p>Arquivos em formato xlsx são muito utilizados, porém o R não possui uma função nativa para importar este tipo de arquivo. Existem diversos pacotes para importar dados neste e formato e os principais são <code>redxl</code>, <code>xlsx</code>, <code>XLConnect</code> e <code>tydixl</code>. Apesar destes pacotes terem objetivos semelhantes, cada um tem suas peculiaridades, então aconselhamos estudar cada um desses pacotes e assim decidir qual melhor atende às suas necessidades. Aqui vamos mostrar apenas o pacote <code>readxl</code>, pois é um dos mais facéis e diretos de se utilizar. Este pacote serve para importar e ler planilhas do Excel nos formatos xlsx ou xls. A seguir estão listadas algumas funções para importação e leitura de dados:</p>
+<ul>
+<li><p><code>read_excel()</code>: esta função detecta automaticamente a extensão do arquivo, e importa arquivos do tipo xsl e xlsx.</p></li>
+<li><p><code>read_xsl()</code>: importa arquivos no formato xsl.</p></li>
+<li><p><code>read_xlsx()</code>: importa arquivos no formato xlsx.</p></li>
+</ul>
+<p>Novamente, é necessário à instalação e carregamento do pacote caso não o tenha em seu computador. Para exemplicar consideramos um arquivo chamado dados2 que queremos importar para o R.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>dados_excel1 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">"dados2.xls"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>dados_excelx1 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">"dados2.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Por meio da função <code>read_excel</code> conseguimos importar tanto um arquivo no formato xls quanto no formato xlsx.</p>
+<p>Podemos também exportar um arquivo em excel (.xls e .xlsx) ao considerar a função <code>write_xlsx</code> do pacote <code>writexl</code>. Suponha que temos o interesse em salvar a base de dados <code>dados</code> em excel na pasta do computador (exportar) com o nome de <code>dados_correto</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(writexl)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_xlsx</span>(dados, <span class="st">"dados_correto.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="análise-de-consistência-e-tratamento-de-dados" class="level3">
+<h3 class="anchored" data-anchor-id="análise-de-consistência-e-tratamento-de-dados">Análise de consistência e tratamento de dados</h3>
+<p>O tratamento dos dados toma muitas vezes a maior parte do tempo de uma análise estatística.</p>
+<p>A análise de consistência consiste em realizar uma primeira análise dos dados com o intuito de encontrar inconsistências. São exemplos de inconsistências:</p>
+<ul>
+<li><p>boas práticas para nome das variáveis.</p></li>
+<li><p>como erros de digitação;</p></li>
+<li><p>indivíduos imputados mais de uma vez na planilha de dados de maneira errada;</p></li>
+<li><p>identificar casos missings e avaliar se a observação está ausente de maneira correta ou não;</p></li>
+<li><p>identificar as categorias de variáveis qualitativas.</p></li>
+</ul>
+<p>A partir daqui iremos trabalhar com a nossa base de dados de COVID-19 em gestantes e puérperas.</p>
+<p>Importando os dados</p>
+<p>Como já aprendemos a importar os dados, vamos direto ao ponto. Nos dados estão no forma <strong>rds</strong> que não foi mencionado anteriormente, mas o pacote <code>readr</code> tem uma função para importar este tipo de arquivo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_rds</span>(<span class="st">"dados/dados_covid[SUJO].rds"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(dados))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 4%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 0%">
+<col style="width: 2%">
+<col style="width: 2%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">DT_NOTIFIC</th>
+<th style="text-align: left;">DT_SIN_PRI</th>
+<th style="text-align: left;">DT_NASC</th>
+<th style="text-align: left;">DT_INTERNA</th>
+<th style="text-align: right;">SEM_PRI</th>
+<th style="text-align: left;">SG_UF</th>
+<th style="text-align: left;">ID_MN_RESI</th>
+<th style="text-align: right;">CO_MUN_RES</th>
+<th style="text-align: right;">CS_ZONA</th>
+<th style="text-align: right;">CS_RACA</th>
+<th style="text-align: right;">CS_ESCOL_N</th>
+<th style="text-align: right;">idade</th>
+<th style="text-align: right;">CS_GESTANT</th>
+<th style="text-align: right;">PUERPERA</th>
+<th style="text-align: right;">FEBRE</th>
+<th style="text-align: right;">TOSSE</th>
+<th style="text-align: right;">GARGANTA</th>
+<th style="text-align: right;">DISPNEIA</th>
+<th style="text-align: right;">DESC_RESP</th>
+<th style="text-align: right;">SATURACAO</th>
+<th style="text-align: right;">DIARREIA</th>
+<th style="text-align: right;">VOMITO</th>
+<th style="text-align: right;">FADIGA</th>
+<th style="text-align: right;">PERD_OLFT</th>
+<th style="text-align: right;">PERD_PALA</th>
+<th style="text-align: right;">DOR_ABD</th>
+<th style="text-align: right;">CARDIOPATI</th>
+<th style="text-align: right;">HEMATOLOGI</th>
+<th style="text-align: right;">HEPATICA</th>
+<th style="text-align: right;">ASMA</th>
+<th style="text-align: right;">DIABETES</th>
+<th style="text-align: right;">NEUROLOGIC</th>
+<th style="text-align: right;">PNEUMOPATI</th>
+<th style="text-align: right;">IMUNODEPRE</th>
+<th style="text-align: right;">RENAL</th>
+<th style="text-align: right;">OBESIDADE</th>
+<th style="text-align: right;">VACINA_COV</th>
+<th style="text-align: left;">DOSE_1_COV</th>
+<th style="text-align: left;">DOSE_2_COV</th>
+<th style="text-align: left;">FAB_COV_1</th>
+<th style="text-align: left;">FAB_COV_2</th>
+<th style="text-align: left;">DT_ENTUTI</th>
+<th style="text-align: left;">DT_SAIDUTI</th>
+<th style="text-align: right;">UTI</th>
+<th style="text-align: right;">SUPORT_VEN</th>
+<th style="text-align: right;">EVOLUCAO</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">15/05/2020</td>
+<td style="text-align: left;">06/05/2020</td>
+<td style="text-align: left;">03/06/2003</td>
+<td style="text-align: left;">15/05/2020</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: left;">CE</td>
+<td style="text-align: left;">MORRINHOS</td>
+<td style="text-align: right;">230890</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">18/05/2020</td>
+<td style="text-align: left;">10/05/2020</td>
+<td style="text-align: left;">07/07/1996</td>
+<td style="text-align: left;">15/05/2020</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: left;">PR</td>
+<td style="text-align: left;">CURITIBA</td>
+<td style="text-align: right;">410690</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">30/04/2020</td>
+<td style="text-align: left;">20/04/2020</td>
+<td style="text-align: left;">26/03/1996</td>
+<td style="text-align: left;">24/04/2020</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: left;">SP</td>
+<td style="text-align: left;">SAO CAETANO DO SUL</td>
+<td style="text-align: right;">354880</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">11/05/2020</td>
+<td style="text-align: left;">04/05/2020</td>
+<td style="text-align: left;">02/06/1986</td>
+<td style="text-align: left;">09/05/2020</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: left;">PA</td>
+<td style="text-align: left;">MARABA</td>
+<td style="text-align: right;">150420</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">01/07/2020</td>
+<td style="text-align: left;">12/06/2020</td>
+<td style="text-align: left;">11/12/1996</td>
+<td style="text-align: left;">30/06/2020</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: left;">DF</td>
+<td style="text-align: left;">SANTA MARIA</td>
+<td style="text-align: right;">530150</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">09/06/2020</td>
+<td style="text-align: left;">09/06/2020</td>
+<td style="text-align: left;">09/12/1984</td>
+<td style="text-align: left;">09/06/2020</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: left;">RO</td>
+<td style="text-align: left;">PORTO VELHO</td>
+<td style="text-align: right;">110020</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<section id="tratamento-da-base-de-dados" class="level4">
+<h4 class="anchored" data-anchor-id="tratamento-da-base-de-dados">Tratamento da base de dados</h4>
+<p>Inicialmente, vamos verificar os nomes das variáveis na base de dados por meio da função <code>names</code>. Note que os nomes estão, de certa forma, padronizados. Todos maíusculos (com exceção de “idade”), separados por “_”. Este ainda não é o cenário ideal para trabalharmos, mas poderia ser pior, contendo maiúsculas, espaços e acentos. Utilizar os dados com essas características não impossibilita as futuras análises, mas pode atrapalhar quando precisamos selecionar algumas dessas variáveis.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(dados)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "DT_NOTIFIC" "DT_SIN_PRI" "DT_NASC"    "DT_INTERNA" "SEM_PRI"   
+ [6] "SG_UF"      "ID_MN_RESI" "CO_MUN_RES" "CS_ZONA"    "CS_RACA"   
+[11] "CS_ESCOL_N" "idade"      "CS_GESTANT" "PUERPERA"   "FEBRE"     
+[16] "TOSSE"      "GARGANTA"   "DISPNEIA"   "DESC_RESP"  "SATURACAO" 
+[21] "DIARREIA"   "VOMITO"     "FADIGA"     "PERD_OLFT"  "PERD_PALA" 
+[26] "DOR_ABD"    "CARDIOPATI" "HEMATOLOGI" "HEPATICA"   "ASMA"      
+[31] "DIABETES"   "NEUROLOGIC" "PNEUMOPATI" "IMUNODEPRE" "RENAL"     
+[36] "OBESIDADE"  "VACINA_COV" "DOSE_1_COV" "DOSE_2_COV" "FAB_COV_1" 
+[41] "FAB_COV_2"  "DT_ENTUTI"  "DT_SAIDUTI" "UTI"        "SUPORT_VEN"
+[46] "EVOLUCAO"  </code></pre>
+</div>
+</div>
+<p>uma boa prática consiste em padronizar os nomes das variáveis, até para facilitar a lembrança deles. Para isso, utilizaremos o pacote <code>janitor</code> para a arrumação da base de dados. Usamos a função <code>clean_names()</code> para primeiro ajuste dos nomes das variáveis.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> janitor<span class="sc">::</span><span class="fu">clean_names</span>(dados) </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(dados)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "dt_notific" "dt_sin_pri" "dt_nasc"    "dt_interna" "sem_pri"   
+ [6] "sg_uf"      "id_mn_resi" "co_mun_res" "cs_zona"    "cs_raca"   
+[11] "cs_escol_n" "idade"      "cs_gestant" "puerpera"   "febre"     
+[16] "tosse"      "garganta"   "dispneia"   "desc_resp"  "saturacao" 
+[21] "diarreia"   "vomito"     "fadiga"     "perd_olft"  "perd_pala" 
+[26] "dor_abd"    "cardiopati" "hematologi" "hepatica"   "asma"      
+[31] "diabetes"   "neurologic" "pneumopati" "imunodepre" "renal"     
+[36] "obesidade"  "vacina_cov" "dose_1_cov" "dose_2_cov" "fab_cov_1" 
+[41] "fab_cov_2"  "dt_entuti"  "dt_saiduti" "uti"        "suport_ven"
+[46] "evolucao"  </code></pre>
+</div>
+</div>
+<p>Veja que ele deixou todos os nomes minúsculos. Neste caso não foi feito, mas a função substitui o espaço por “_” e tira acentos. Isso ajuda a evitar problemas futuros em algumas análises que não lidam muito bem com acentos e espaços nos nomes das variáveis.</p>
+<p>Outro problema comum é a presença de linhas e colunas vazias. Na base de dados em questão, não há linhas nem colunas em branco, como pode ser visto na saída abaixo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>janitor<span class="sc">::</span><span class="fu">remove_empty</span>(dados,<span class="st">"rows"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>janitor<span class="sc">::</span><span class="fu">remove_empty</span>(dados,<span class="st">"cols"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="section" class="level4">
+<h4 class="anchored" data-anchor-id="section"></h4>
+<p>Identificando casos duplicados</p>
+<p>Outra boa prática é identificar casos duplicados, isto é, identificar se há casos erroneamente repetidos. O ideal é utilizar variável chave do seu banco de dados, ou seja, aquela em que cada observação é única. Por exemplo, em uma base de dados de funcionários de uma empresa, uma variável chave poderia ser o CPF. Uma variável chave também pode ser a combinação de variáveis, gerando assim observações únicas. Para identificar casos duplicados, usamos a função <code>get_dupes</code> do pacote <code>janitor</code>. Em nosso banco de dados não tempos uma varíavel chave, então não vamos especificá-la na função, assim a função irá procurar observações repetidas considerando todas as variáveis, ou seja, linhas repetidas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>janitor<span class="sc">::</span><span class="fu">get_dupes</span>(dados)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>No variable names specified - using all columns.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>No duplicate combinations found of: dt_notific, dt_sin_pri, dt_nasc, dt_interna, sem_pri, sg_uf, id_mn_resi, co_mun_res, cs_zona, ... and 37 other variables</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] dt_notific dt_sin_pri dt_nasc    dt_interna sem_pri    sg_uf     
+ [7] id_mn_resi co_mun_res cs_zona    cs_raca    cs_escol_n idade     
+[13] cs_gestant puerpera   febre      tosse      garganta   dispneia  
+[19] desc_resp  saturacao  diarreia   vomito     fadiga     perd_olft 
+[25] perd_pala  dor_abd    cardiopati hematologi hepatica   asma      
+[31] diabetes   neurologic pneumopati imunodepre renal      obesidade 
+[37] vacina_cov dose_1_cov dose_2_cov fab_cov_1  fab_cov_2  dt_entuti 
+[43] dt_saiduti uti        suport_ven evolucao   dupe_count
+&lt;0 linhas&gt; (ou row.names de comprimento 0)</code></pre>
+</div>
+</div>
+<p>Em nosso caso, não temos casos duplicados. Caso tivesse, seria necessário remover as linhas duplicadas. Isto pode ser feito com o uso da função <a href="https://dplyr.tidyverse.org/reference/distinct.html"><code>distinct</code></a> do pacote <code>dplyr</code>.</p>
+</section>
+</section>
+<section id="identificar-problemas-nas-variáveis-da-base-de-dados" class="level3">
+<h3 class="anchored" data-anchor-id="identificar-problemas-nas-variáveis-da-base-de-dados">Identificar problemas nas variáveis da base de dados</h3>
+<p>Outra etapa importante na análise de consistência é identificar o tipo de variável e ver se o R está interpretando corretamente o tipo de cada variável.</p>
+<p>Temos na nossa base de dados variáveis de data, além de variáveis qualitativas e quantitativas (veja o dicionário das variáveis na em: <strong>refenciar parte</strong>). Assim, precisamos entender se o R realmente entendeu todas as variáveis da maneira correta. Uma maneira de identificar isso e também de ver algumas descritivas das variáveis que nos auxiliam a ver possíveis inconsistências na base de dados é a a função <code>glimpse</code> do pacote <code>dplyr</code>. A função <code>skim</code> do pacote <code>skimr</code> também pode ajudar nisso.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 11,523
+Columns: 46
+$ dt_notific &lt;chr&gt; "15/05/2020", "18/05/2020", "30/04/2020", "11/05/2020", "01…
+$ dt_sin_pri &lt;chr&gt; "06/05/2020", "10/05/2020", "20/04/2020", "04/05/2020", "12…
+$ dt_nasc    &lt;chr&gt; "03/06/2003", "07/07/1996", "26/03/1996", "02/06/1986", "11…
+$ dt_interna &lt;chr&gt; "15/05/2020", "15/05/2020", "24/04/2020", "09/05/2020", "30…
+$ sem_pri    &lt;int&gt; 19, 20, 17, 19, 24, 24, 26, 27, 28, 24, 14, 29, 28, 10, 36,…
+$ sg_uf      &lt;chr&gt; "CE", "PR", "SP", "PA", "DF", "RO", "PI", "RS", "PE", "MA",…
+$ id_mn_resi &lt;chr&gt; "MORRINHOS", "CURITIBA", "SAO CAETANO DO SUL", "MARABA", "S…
+$ co_mun_res &lt;int&gt; 230890, 410690, 354880, 150420, 530150, 110020, 221100, 431…
+$ cs_zona    &lt;int&gt; NA, 1, 1, 1, 1, 1, 1, 1, 1, 1, NA, 1, 1, 1, NA, 1, 1, NA, 2…
+$ cs_raca    &lt;int&gt; 4, 1, 9, 4, 9, 4, 9, 1, 4, 9, 4, 4, 4, 4, 4, 9, 4, 9, 4, 4,…
+$ cs_escol_n &lt;int&gt; NA, 2, 9, 4, NA, 2, 4, 2, NA, NA, NA, 9, 9, 3, 3, NA, 3, NA…
+$ idade      &lt;dbl&gt; 16, 23, 24, 33, 23, 35, 31, 17, 22, 29, 28, 22, 27, 25, 26,…
+$ cs_gestant &lt;int&gt; 2, 2, 9, 5, 5, 3, 1, 5, 3, 3, 4, 3, 5, 3, 3, 3, 3, 9, 3, 3,…
+$ puerpera   &lt;int&gt; NA, 2, 1, 1, 1, 2, NA, 1, NA, 1, NA, NA, 1, 2, 1, NA, NA, 1…
+$ febre      &lt;int&gt; 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, NA, 1, 1, 1, 1, 1, 1, 1, 1…
+$ tosse      &lt;int&gt; 1, 2, 2, 1, 2, 1, 1, 1, NA, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1…
+$ garganta   &lt;int&gt; NA, 2, 2, 2, 2, 2, 2, NA, 1, NA, 2, NA, 2, 1, 1, 2, 2, NA, …
+$ dispneia   &lt;int&gt; NA, 1, 2, 2, 2, 2, 2, 1, NA, NA, 1, NA, 2, 1, 2, 1, 1, NA, …
+$ desc_resp  &lt;int&gt; NA, 2, 2, 1, 2, 2, 1, 1, NA, 1, 1, NA, 2, 1, 2, 2, 1, NA, 1…
+$ saturacao  &lt;int&gt; NA, 2, 2, 2, 2, 2, 2, 1, NA, NA, 2, NA, 2, 2, 2, 1, 1, NA, …
+$ diarreia   &lt;int&gt; NA, 1, 2, 2, 1, 2, 2, 1, NA, NA, 2, NA, 2, 1, 2, 2, 2, NA, …
+$ vomito     &lt;int&gt; NA, 2, 2, 2, 2, 2, 2, 2, NA, NA, 2, NA, 2, 1, 2, 2, 2, NA, …
+$ fadiga     &lt;int&gt; NA, NA, NA, NA, NA, 2, NA, NA, NA, NA, 2, NA, NA, 2, 2, 2, …
+$ perd_olft  &lt;int&gt; NA, NA, NA, NA, 1, 2, NA, NA, NA, NA, 2, NA, NA, 1, 2, 1, 2…
+$ perd_pala  &lt;int&gt; NA, NA, NA, NA, NA, 2, NA, NA, NA, NA, 2, NA, NA, 1, 2, 2, …
+$ dor_abd    &lt;int&gt; NA, NA, NA, NA, NA, 2, NA, NA, NA, NA, 2, NA, NA, 2, 2, 2, …
+$ cardiopati &lt;int&gt; NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 1, NA, NA, …
+$ hematologi &lt;int&gt; NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, …
+$ hepatica   &lt;int&gt; NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, …
+$ asma       &lt;int&gt; NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, …
+$ diabetes   &lt;int&gt; NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, …
+$ neurologic &lt;int&gt; NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 1, NA, NA, …
+$ pneumopati &lt;int&gt; NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, …
+$ imunodepre &lt;int&gt; NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, …
+$ renal      &lt;int&gt; NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, …
+$ obesidade  &lt;int&gt; NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, …
+$ vacina_cov &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ dose_1_cov &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ dose_2_cov &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ fab_cov_1  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ fab_cov_2  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ dt_entuti  &lt;chr&gt; "", "", "", "", "", "", "", "30/06/2020", "", "12/07/2020",…
+$ dt_saiduti &lt;chr&gt; "", "", "", "", "", "", "", "29/07/2020", "", "", "", "", "…
+$ uti        &lt;int&gt; 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 2, 2, 2, 1, 1, NA, 2…
+$ suport_ven &lt;int&gt; 2, 3, 3, 2, 3, 3, 9, 1, 3, 3, 3, 3, 3, 2, 3, 2, 1, 2, 3, 2,…
+$ evolucao   &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, NA, 1, 1, 1, 1, 1, 1…</code></pre>
+</div>
+</div>
+<p>No R, as variáveis qualititativas são nomeadas “factor”, as variáveis quantitativas são nomeadas “numeric” e as variáveis de data são “date”. Note que na importação dos dados o R não entendeu corretamente os tipos de variáveis. Mas vamos corrigir isso no que segue.</p>
+<p>Começando pela data, vamos rodar o seguinte código:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>dt_notific  <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(dados<span class="sc">$</span>dt_notific, <span class="at">format =</span> <span class="st">"%d/%m/%Y"</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>dt_sin_pri  <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(dados<span class="sc">$</span>dt_sin_pri, <span class="at">format =</span> <span class="st">"%d/%m/%Y"</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>dt_nasc  <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(dados<span class="sc">$</span>dt_nasc, <span class="at">format =</span> <span class="st">"%d/%m/%Y"</span>)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>dt_interna  <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(dados<span class="sc">$</span>dt_interna, <span class="at">format =</span> <span class="st">"%d/%m/%Y"</span>)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>dt_entuti  <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(dados<span class="sc">$</span>dt_entuti, <span class="at">format =</span> <span class="st">"%d/%m/%Y"</span>)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>dt_saiduti  <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(dados<span class="sc">$</span>dt_saiduti, <span class="at">format =</span> <span class="st">"%d/%m/%Y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>A função <code>as.Date</code> informa para o R que a variável indicada é de data. O argumento <code>format</code> indica o formato que está a data, nesse caso, “dia/mês/ano”. <a href="https://www.statmethods.net/input/dates.html#:~:text=You%20can%20use%20the%20as,format%20gives%20the%20appropriate%20format.">Aqui</a> é possível verificar todos os formatos de datas da função. Vamos ver como ficou:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 11,523
+Columns: 46
+$ dt_notific &lt;date&gt; 2020-05-15, 2020-05-18, 2020-04-30, 2020-05-11, 2020-07-01…
+$ dt_sin_pri &lt;date&gt; 2020-05-06, 2020-05-10, 2020-04-20, 2020-05-04, 2020-06-12…
+$ dt_nasc    &lt;date&gt; 2003-06-03, 1996-07-07, 1996-03-26, 1986-06-02, 1996-12-11…
+$ dt_interna &lt;date&gt; 2020-05-15, 2020-05-15, 2020-04-24, 2020-05-09, 2020-06-30…
+$ sem_pri    &lt;int&gt; 19, 20, 17, 19, 24, 24, 26, 27, 28, 24, 14, 29, 28, 10, 36,…
+$ sg_uf      &lt;chr&gt; "CE", "PR", "SP", "PA", "DF", "RO", "PI", "RS", "PE", "MA",…
+$ id_mn_resi &lt;chr&gt; "MORRINHOS", "CURITIBA", "SAO CAETANO DO SUL", "MARABA", "S…
+$ co_mun_res &lt;int&gt; 230890, 410690, 354880, 150420, 530150, 110020, 221100, 431…
+$ cs_zona    &lt;int&gt; NA, 1, 1, 1, 1, 1, 1, 1, 1, 1, NA, 1, 1, 1, NA, 1, 1, NA, 2…
+$ cs_raca    &lt;int&gt; 4, 1, 9, 4, 9, 4, 9, 1, 4, 9, 4, 4, 4, 4, 4, 9, 4, 9, 4, 4,…
+$ cs_escol_n &lt;int&gt; NA, 2, 9, 4, NA, 2, 4, 2, NA, NA, NA, 9, 9, 3, 3, NA, 3, NA…
+$ idade      &lt;dbl&gt; 16, 23, 24, 33, 23, 35, 31, 17, 22, 29, 28, 22, 27, 25, 26,…
+$ cs_gestant &lt;int&gt; 2, 2, 9, 5, 5, 3, 1, 5, 3, 3, 4, 3, 5, 3, 3, 3, 3, 9, 3, 3,…
+$ puerpera   &lt;int&gt; NA, 2, 1, 1, 1, 2, NA, 1, NA, 1, NA, NA, 1, 2, 1, NA, NA, 1…
+$ febre      &lt;int&gt; 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, NA, 1, 1, 1, 1, 1, 1, 1, 1…
+$ tosse      &lt;int&gt; 1, 2, 2, 1, 2, 1, 1, 1, NA, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1…
+$ garganta   &lt;int&gt; NA, 2, 2, 2, 2, 2, 2, NA, 1, NA, 2, NA, 2, 1, 1, 2, 2, NA, …
+$ dispneia   &lt;int&gt; NA, 1, 2, 2, 2, 2, 2, 1, NA, NA, 1, NA, 2, 1, 2, 1, 1, NA, …
+$ desc_resp  &lt;int&gt; NA, 2, 2, 1, 2, 2, 1, 1, NA, 1, 1, NA, 2, 1, 2, 2, 1, NA, 1…
+$ saturacao  &lt;int&gt; NA, 2, 2, 2, 2, 2, 2, 1, NA, NA, 2, NA, 2, 2, 2, 1, 1, NA, …
+$ diarreia   &lt;int&gt; NA, 1, 2, 2, 1, 2, 2, 1, NA, NA, 2, NA, 2, 1, 2, 2, 2, NA, …
+$ vomito     &lt;int&gt; NA, 2, 2, 2, 2, 2, 2, 2, NA, NA, 2, NA, 2, 1, 2, 2, 2, NA, …
+$ fadiga     &lt;int&gt; NA, NA, NA, NA, NA, 2, NA, NA, NA, NA, 2, NA, NA, 2, 2, 2, …
+$ perd_olft  &lt;int&gt; NA, NA, NA, NA, 1, 2, NA, NA, NA, NA, 2, NA, NA, 1, 2, 1, 2…
+$ perd_pala  &lt;int&gt; NA, NA, NA, NA, NA, 2, NA, NA, NA, NA, 2, NA, NA, 1, 2, 2, …
+$ dor_abd    &lt;int&gt; NA, NA, NA, NA, NA, 2, NA, NA, NA, NA, 2, NA, NA, 2, 2, 2, …
+$ cardiopati &lt;int&gt; NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 1, NA, NA, …
+$ hematologi &lt;int&gt; NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, …
+$ hepatica   &lt;int&gt; NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, …
+$ asma       &lt;int&gt; NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, …
+$ diabetes   &lt;int&gt; NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, …
+$ neurologic &lt;int&gt; NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 1, NA, NA, …
+$ pneumopati &lt;int&gt; NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, …
+$ imunodepre &lt;int&gt; NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, …
+$ renal      &lt;int&gt; NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, …
+$ obesidade  &lt;int&gt; NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, …
+$ vacina_cov &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ dose_1_cov &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ dose_2_cov &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ fab_cov_1  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ fab_cov_2  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ dt_entuti  &lt;date&gt; NA, NA, NA, NA, NA, NA, NA, 2020-06-30, NA, 2020-07-12, NA…
+$ dt_saiduti &lt;date&gt; NA, NA, NA, NA, NA, NA, NA, 2020-07-29, NA, NA, NA, NA, NA…
+$ uti        &lt;int&gt; 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 2, 2, 2, 1, 1, NA, 2…
+$ suport_ven &lt;int&gt; 2, 3, 3, 2, 3, 3, 9, 1, 3, 3, 3, 3, 3, 2, 3, 2, 1, 2, 3, 2,…
+$ evolucao   &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, NA, 1, 1, 1, 1, 1, 1…</code></pre>
+</div>
+</div>
+<p>Agora vamos lidar com as variáveis qualitativas. Veja que “cs_zona” foi identificada como <em>int</em>. Isso acontece porque ela foi tabulada como número, como posteriormente variáveis deste tipo serão recodificadas de acordo com o dicionário, precisamos tratá-la como fator. Já as demais variáveis qualitativas estão identificadas como <em>numeric</em>, <em>dbl</em> ou <em>chacacter</em> pois na tabulação suas categorias estão codificadas com números ou textos. Para então dizer ao R o verdadeiro tipo dessas variáveis, vamos utilizar os seguintes comandos:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>cs_raca <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dados<span class="sc">$</span>cs_raca)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>cs_escol_n <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dados<span class="sc">$</span>cs_escol_n)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>cs_gestant <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dados<span class="sc">$</span>cs_gestant)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>puerpera <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dados<span class="sc">$</span>puerpera)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>cs_zona <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dados<span class="sc">$</span>cs_zona)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>febre <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dados<span class="sc">$</span>febre)</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>tosse <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dados<span class="sc">$</span>tosse)</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>suport_ven <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dados<span class="sc">$</span>suport_ven)</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>uti <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dados<span class="sc">$</span>uti)</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>evolucao <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dados<span class="sc">$</span>evolucao)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Uma forma um pouco mais eficiente de fazer isso é selecionar as variáveis por meio de um vetor, por exemplo, quero que as variáveis da coluna 10 até a coluna 20 sejam fatores. Podemos fazer isso com a ajuda a função <a href="https://www.geeksforgeeks.org/apply-lapply-sapply-and-tapply-in-r/"><code>lapply</code></a>. Essa função, em resumo, nos possibilita aplicar uma função em uma lista de elementos e retorna uma lista de mesmo tamanho em que o resultado é a aplicação desta função a cada elemento da lista. Neste caso, aplicamos a função <code>as.factor</code> nas colunas selecionadas (lista de elementos). Veja como é feito.<br>
+</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>dados[,<span class="fu">c</span>(<span class="dv">17</span><span class="sc">:</span><span class="dv">37</span>)] <span class="ot">&lt;-</span> <span class="fu">lapply</span>(dados[,<span class="fu">c</span>(<span class="dv">17</span><span class="sc">:</span><span class="dv">37</span>)], as.factor)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 11,523
+Columns: 46
+$ dt_notific &lt;date&gt; 2020-05-15, 2020-05-18, 2020-04-30, 2020-05-11, 2020-07-01…
+$ dt_sin_pri &lt;date&gt; 2020-05-06, 2020-05-10, 2020-04-20, 2020-05-04, 2020-06-12…
+$ dt_nasc    &lt;date&gt; 2003-06-03, 1996-07-07, 1996-03-26, 1986-06-02, 1996-12-11…
+$ dt_interna &lt;date&gt; 2020-05-15, 2020-05-15, 2020-04-24, 2020-05-09, 2020-06-30…
+$ sem_pri    &lt;int&gt; 19, 20, 17, 19, 24, 24, 26, 27, 28, 24, 14, 29, 28, 10, 36,…
+$ sg_uf      &lt;chr&gt; "CE", "PR", "SP", "PA", "DF", "RO", "PI", "RS", "PE", "MA",…
+$ id_mn_resi &lt;chr&gt; "MORRINHOS", "CURITIBA", "SAO CAETANO DO SUL", "MARABA", "S…
+$ co_mun_res &lt;int&gt; 230890, 410690, 354880, 150420, 530150, 110020, 221100, 431…
+$ cs_zona    &lt;fct&gt; NA, 1, 1, 1, 1, 1, 1, 1, 1, 1, NA, 1, 1, 1, NA, 1, 1, NA, 2…
+$ cs_raca    &lt;fct&gt; 4, 1, 9, 4, 9, 4, 9, 1, 4, 9, 4, 4, 4, 4, 4, 9, 4, 9, 4, 4,…
+$ cs_escol_n &lt;fct&gt; NA, 2, 9, 4, NA, 2, 4, 2, NA, NA, NA, 9, 9, 3, 3, NA, 3, NA…
+$ idade      &lt;dbl&gt; 16, 23, 24, 33, 23, 35, 31, 17, 22, 29, 28, 22, 27, 25, 26,…
+$ cs_gestant &lt;fct&gt; 2, 2, 9, 5, 5, 3, 1, 5, 3, 3, 4, 3, 5, 3, 3, 3, 3, 9, 3, 3,…
+$ puerpera   &lt;fct&gt; NA, 2, 1, 1, 1, 2, NA, 1, NA, 1, NA, NA, 1, 2, 1, NA, NA, 1…
+$ febre      &lt;fct&gt; 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, NA, 1, 1, 1, 1, 1, 1, 1, 1…
+$ tosse      &lt;fct&gt; 1, 2, 2, 1, 2, 1, 1, 1, NA, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1…
+$ garganta   &lt;fct&gt; NA, 2, 2, 2, 2, 2, 2, NA, 1, NA, 2, NA, 2, 1, 1, 2, 2, NA, …
+$ dispneia   &lt;fct&gt; NA, 1, 2, 2, 2, 2, 2, 1, NA, NA, 1, NA, 2, 1, 2, 1, 1, NA, …
+$ desc_resp  &lt;fct&gt; NA, 2, 2, 1, 2, 2, 1, 1, NA, 1, 1, NA, 2, 1, 2, 2, 1, NA, 1…
+$ saturacao  &lt;fct&gt; NA, 2, 2, 2, 2, 2, 2, 1, NA, NA, 2, NA, 2, 2, 2, 1, 1, NA, …
+$ diarreia   &lt;fct&gt; NA, 1, 2, 2, 1, 2, 2, 1, NA, NA, 2, NA, 2, 1, 2, 2, 2, NA, …
+$ vomito     &lt;fct&gt; NA, 2, 2, 2, 2, 2, 2, 2, NA, NA, 2, NA, 2, 1, 2, 2, 2, NA, …
+$ fadiga     &lt;fct&gt; NA, NA, NA, NA, NA, 2, NA, NA, NA, NA, 2, NA, NA, 2, 2, 2, …
+$ perd_olft  &lt;fct&gt; NA, NA, NA, NA, 1, 2, NA, NA, NA, NA, 2, NA, NA, 1, 2, 1, 2…
+$ perd_pala  &lt;fct&gt; NA, NA, NA, NA, NA, 2, NA, NA, NA, NA, 2, NA, NA, 1, 2, 2, …
+$ dor_abd    &lt;fct&gt; NA, NA, NA, NA, NA, 2, NA, NA, NA, NA, 2, NA, NA, 2, 2, 2, …
+$ cardiopati &lt;fct&gt; NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 1, NA, NA, …
+$ hematologi &lt;fct&gt; NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, …
+$ hepatica   &lt;fct&gt; NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, …
+$ asma       &lt;fct&gt; NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, …
+$ diabetes   &lt;fct&gt; NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, …
+$ neurologic &lt;fct&gt; NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 1, NA, NA, …
+$ pneumopati &lt;fct&gt; NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, …
+$ imunodepre &lt;fct&gt; NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, …
+$ renal      &lt;fct&gt; NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, …
+$ obesidade  &lt;fct&gt; NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, …
+$ vacina_cov &lt;fct&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ dose_1_cov &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ dose_2_cov &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ fab_cov_1  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ fab_cov_2  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ dt_entuti  &lt;date&gt; NA, NA, NA, NA, NA, NA, NA, 2020-06-30, NA, 2020-07-12, NA…
+$ dt_saiduti &lt;date&gt; NA, NA, NA, NA, NA, NA, NA, 2020-07-29, NA, NA, NA, NA, NA…
+$ uti        &lt;fct&gt; 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 2, 2, 2, 1, 1, NA, 2…
+$ suport_ven &lt;fct&gt; 2, 3, 3, 2, 3, 3, 9, 1, 3, 3, 3, 3, 3, 2, 3, 2, 1, 2, 3, 2,…
+$ evolucao   &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, NA, 1, 1, 1, 1, 1, 1…</code></pre>
+</div>
+</div>
+<p>Ótimo! Corrigimos as inconsistências das variáveis qualitativas. Mas outra questão surge: como faço para usar um rótulo nos números codificados nas categorias das variáveis qualitativas? Para o grupo, por exemplo, ao invés de aparecer 1 quero que apareça “sim”. Para isso, vamos utilizar o pacote <code>forcats</code> que lida com variáveis qualitativas (categóricas). Para renomear as categorias das variáveis, vamos usar a função <code>fct_recode</code> desse pacote:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>cs_raca <span class="ot">&lt;-</span> forcats<span class="sc">::</span><span class="fu">fct_recode</span>(dados<span class="sc">$</span>cs_raca,</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">branca =</span> <span class="st">"1"</span>,</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">preta =</span> <span class="st">"2"</span>,</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">amarela =</span> <span class="st">"3"</span>,</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">parda =</span> <span class="st">"4"</span>,</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">indigena =</span> <span class="st">"5"</span>,</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">ignorado =</span> <span class="st">"9"</span>)</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>cs_escol_n <span class="ot">&lt;-</span> forcats<span class="sc">::</span><span class="fu">fct_recode</span>(dados<span class="sc">$</span>cs_escol_n,</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">"sem escola"</span>  <span class="ot">=</span> <span class="st">"0"</span>,</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">fund1 =</span> <span class="st">"1"</span>,</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">fund2 =</span> <span class="st">"2"</span>,</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">medio =</span> <span class="st">"3"</span>,</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">superior =</span> <span class="st">"4"</span>,</span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">ignorado =</span> <span class="st">"9"</span>)</span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>cs_gestant <span class="ot">&lt;-</span> forcats<span class="sc">::</span><span class="fu">fct_recode</span>(dados<span class="sc">$</span>cs_gestant,</span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">"1tri"</span> <span class="ot">=</span> <span class="st">"1"</span>,</span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">"2tri"</span> <span class="ot">=</span> <span class="st">"2"</span>,</span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">"3tri"</span> <span class="ot">=</span> <span class="st">"3"</span>,</span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">IG_ig =</span> <span class="st">"4"</span>,</span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">nao =</span> <span class="st">"5"</span>,</span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">ignorado =</span> <span class="st">"9"</span>)</span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>puerpera <span class="ot">&lt;-</span> forcats<span class="sc">::</span><span class="fu">fct_recode</span>(dados<span class="sc">$</span>puerpera,</span>
+<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">sim =</span> <span class="st">"1"</span>,</span>
+<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">nao =</span> <span class="st">"2"</span>,</span>
+<span id="cb28-28"><a href="#cb28-28" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">ignorado =</span> <span class="st">"9"</span>)</span>
+<span id="cb28-29"><a href="#cb28-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-30"><a href="#cb28-30" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>cs_zona <span class="ot">&lt;-</span> forcats<span class="sc">::</span><span class="fu">fct_recode</span>(dados<span class="sc">$</span>cs_zona,</span>
+<span id="cb28-31"><a href="#cb28-31" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">urbana =</span> <span class="st">"1"</span>,</span>
+<span id="cb28-32"><a href="#cb28-32" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">rural =</span> <span class="st">"2"</span>,</span>
+<span id="cb28-33"><a href="#cb28-33" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">periurbana =</span> <span class="st">"3"</span>,</span>
+<span id="cb28-34"><a href="#cb28-34" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">ignorado =</span> <span class="st">"9"</span>)</span>
+<span id="cb28-35"><a href="#cb28-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-36"><a href="#cb28-36" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>febre <span class="ot">&lt;-</span> forcats<span class="sc">::</span><span class="fu">fct_recode</span>(dados<span class="sc">$</span>febre,</span>
+<span id="cb28-37"><a href="#cb28-37" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">sim =</span> <span class="st">"1"</span>,</span>
+<span id="cb28-38"><a href="#cb28-38" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">nao =</span> <span class="st">"2"</span>,</span>
+<span id="cb28-39"><a href="#cb28-39" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">ignorado =</span> <span class="st">"9"</span>)</span>
+<span id="cb28-40"><a href="#cb28-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-41"><a href="#cb28-41" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>suport_ven <span class="ot">&lt;-</span>forcats<span class="sc">::</span><span class="fu">fct_recode</span>(dados<span class="sc">$</span>suport_ven,</span>
+<span id="cb28-42"><a href="#cb28-42" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"sim, invasivo"</span> <span class="ot">=</span> <span class="st">"1"</span>,</span>
+<span id="cb28-43"><a href="#cb28-43" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"sim, nao invasivo"</span> <span class="ot">=</span> <span class="st">"2"</span>,</span>
+<span id="cb28-44"><a href="#cb28-44" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">nao =</span> <span class="st">"3"</span>,</span>
+<span id="cb28-45"><a href="#cb28-45" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">ignorado =</span> <span class="st">"9"</span>)</span>
+<span id="cb28-46"><a href="#cb28-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-47"><a href="#cb28-47" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>uti <span class="ot">&lt;-</span>forcats<span class="sc">::</span><span class="fu">fct_recode</span>(dados<span class="sc">$</span>uti,</span>
+<span id="cb28-48"><a href="#cb28-48" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">sim =</span> <span class="st">"1"</span>,</span>
+<span id="cb28-49"><a href="#cb28-49" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">nao =</span> <span class="st">"2"</span>,</span>
+<span id="cb28-50"><a href="#cb28-50" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">ignorado =</span> <span class="st">"9"</span>)</span>
+<span id="cb28-51"><a href="#cb28-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-52"><a href="#cb28-52" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>evolucao <span class="ot">&lt;-</span>forcats<span class="sc">::</span><span class="fu">fct_recode</span>(dados<span class="sc">$</span>evolucao,</span>
+<span id="cb28-53"><a href="#cb28-53" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">cura =</span> <span class="st">"1"</span>,</span>
+<span id="cb28-54"><a href="#cb28-54" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">obito =</span> <span class="st">"2"</span>,</span>
+<span id="cb28-55"><a href="#cb28-55" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"obito por outras causas"</span> <span class="ot">=</span> <span class="st">"3"</span>,</span>
+<span id="cb28-56"><a href="#cb28-56" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">ignorado =</span> <span class="st">"9"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Este tramanto foi feito para todas as variáveis qualitativas da base, mas por conta do tamanho do código, omitimos algumas da saída.</p>
+<p>Finalmente chegamos nas variáveis quantitativas. Uma forma de identificar problemas em variáveis quantitativas é avaliar os valores mínimo e máximo de cada variável e ver se tem algum valor impossível para a mesma. Em nosso caso podemos verificar a variável idade. Seria meio estranho encontrar alguém com valores extremamente altos ou negativos, concorda?! A função <code>summary</code> pode ser uma opção boa aqui, ela nos formece algumas medidas descritivas como, media, mínimo, máximo, entre outros.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dados<span class="sc">$</span>idade)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  10.00   25.00   30.00   30.25   35.00   55.00       9 </code></pre>
+</div>
+</div>
+<p>Aparentemente nossa variável esta dentro do esperado, sem valores inesperados.</p>
+<section id="transformação-de-dados" class="level4">
+<h4 class="anchored" data-anchor-id="transformação-de-dados">Transformação de dados</h4>
+<p>É possível modificar ou criar novas variáveis na base de dados por meio da função <code>mutate</code> do pacote <code>dplyr</code>, você pode veificar melhor essa função clicando <a href="https://dplyr.tidyverse.org/reference/mutate.html">aqui</a>. Também podemos criar categorias com base em alguma condição por meio da função <code>case_when</code> também do pacote <code>dplyr</code>, veja melhor <a href="https://dplyr.tidyverse.org/reference/case_when.html?q=case_when#ref-usage">aqui</a>. Para ficar mais claro, vamos a um exemplo combinando as duas funções. Vamos criar a variável “faixa_et”, onde as observações serão as faixas etárias. São essas: “&lt;20”, “20-34” e “&gt;=”. Veja como faz:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> dados <span class="sc">|&gt;</span> </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">faixa_et =</span> <span class="fu">case_when</span>(</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    idade <span class="sc">&lt;</span> <span class="dv">20</span> <span class="sc">~</span> <span class="st">"&lt;20"</span>,</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    idade <span class="sc">&gt;=</span> <span class="dv">20</span> <span class="sc">&amp;</span> idade <span class="sc">&lt;</span> <span class="dv">34</span> <span class="sc">~</span> <span class="st">"20-34"</span>,</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    idade <span class="sc">&gt;=</span> <span class="dv">34</span> <span class="sc">~</span> <span class="st">"&gt;=34"</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(dados<span class="sc">$</span>faixa_et)<span class="co">#table nos mostra as observações da quela variável e a sua frequência. </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  &lt;20  &gt;=34 20-34 
+  714  3862  6938 </code></pre>
+</div>
+</div>
+<p>Aqui fizemos a utilização da função “pipe” <code>|&gt;</code> que agora está no pacote base do R, mas que antes era necessário carregá-la por meio de pacotes. Essa função é de extrema importância, facilita a programção no R de uma forma inimaginável. É válido dedicar um pouco de seu tempo para entender melhor essa função. Separamos alguns links que pode te ajudar a entender melhor e você pode acessá-los clickando <a href="https://uc-r.github.io/pipe">aqui</a>, <a href="https://towardsdatascience.com/an-introduction-to-the-pipe-in-r-823090760d64#:~:text=What%20does%20the%20pipe%20do,a%20sequence%20of%20analysis%20steps.">aqui</a> ou <a href="https://www.datacamp.com/tutorial/pipe-r-tutorial">aqui</a>. Como foi mencionado acima, a função foi adicionada ao R base há pouco tempo, então esses links se referem ao pipe “antigo”, mas fique tranquilo, a função é a mesma. Para resumir, o pipe pega a saída de uma função e a passa para outra função como um argumento. Isso nos permite vincular uma sequência de etapas de análise.</p>
+</section>
+<section id="manipulação-de-datas" class="level4">
+<h4 class="anchored" data-anchor-id="manipulação-de-datas">Manipulação de datas</h4>
+<p>Algo interessante também é trabalhar com a varíavel de datas. Podemos calulcar a diferença entre duas datas no R de forma bem simples por meio da função <a href="https://statisticsglobe.com/difftime-r-function/"><code>difftime</code></a> do pacote base do R. Para exemplificar vamos criar a variável “dias_uti” que vai ser ser quantos dias a pessoa ficou internada na uti. Vamos fazer isso calculando a diferença entre a data de saída e a data de entrada na uti e queremos o resultado em dias.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>dias_uti <span class="ot">&lt;-</span> <span class="fu">difftime</span>(dados<span class="sc">$</span>dt_saiduti, dados<span class="sc">$</span>dt_entuti, <span class="at">units =</span> <span class="st">"days"</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 11,523
+Columns: 48
+$ dt_notific &lt;date&gt; 2020-05-15, 2020-05-18, 2020-04-30, 2020-05-11, 2020-07-01…
+$ dt_sin_pri &lt;date&gt; 2020-05-06, 2020-05-10, 2020-04-20, 2020-05-04, 2020-06-12…
+$ dt_nasc    &lt;date&gt; 2003-06-03, 1996-07-07, 1996-03-26, 1986-06-02, 1996-12-11…
+$ dt_interna &lt;date&gt; 2020-05-15, 2020-05-15, 2020-04-24, 2020-05-09, 2020-06-30…
+$ sem_pri    &lt;int&gt; 19, 20, 17, 19, 24, 24, 26, 27, 28, 24, 14, 29, 28, 10, 36,…
+$ sg_uf      &lt;chr&gt; "CE", "PR", "SP", "PA", "DF", "RO", "PI", "RS", "PE", "MA",…
+$ id_mn_resi &lt;chr&gt; "MORRINHOS", "CURITIBA", "SAO CAETANO DO SUL", "MARABA", "S…
+$ co_mun_res &lt;int&gt; 230890, 410690, 354880, 150420, 530150, 110020, 221100, 431…
+$ cs_zona    &lt;fct&gt; NA, urbana, urbana, urbana, urbana, urbana, urbana, urbana,…
+$ cs_raca    &lt;fct&gt; parda, branca, ignorado, parda, ignorado, parda, ignorado, …
+$ cs_escol_n &lt;fct&gt; NA, fund2, ignorado, superior, NA, fund2, superior, fund2, …
+$ idade      &lt;dbl&gt; 16, 23, 24, 33, 23, 35, 31, 17, 22, 29, 28, 22, 27, 25, 26,…
+$ cs_gestant &lt;fct&gt; 2tri, 2tri, ignorado, nao, nao, 3tri, 1tri, nao, 3tri, 3tri…
+$ puerpera   &lt;fct&gt; NA, nao, sim, sim, sim, nao, NA, sim, NA, sim, NA, NA, sim,…
+$ febre      &lt;fct&gt; sim, nao, sim, sim, nao, sim, sim, sim, sim, sim, sim, NA, …
+$ tosse      &lt;fct&gt; sim, nao, nao, sim, nao, sim, sim, sim, NA, sim, sim, sim, …
+$ garganta   &lt;fct&gt; NA, nao, nao, nao, nao, nao, nao, NA, sim, NA, nao, NA, nao…
+$ dispneia   &lt;fct&gt; NA, sim, nao, nao, nao, nao, nao, sim, NA, NA, sim, NA, nao…
+$ desc_resp  &lt;fct&gt; NA, nao, nao, sim, nao, nao, sim, sim, NA, sim, sim, NA, na…
+$ saturacao  &lt;fct&gt; NA, nao, nao, nao, nao, nao, nao, sim, NA, NA, nao, NA, nao…
+$ diarreia   &lt;fct&gt; NA, sim, nao, nao, sim, nao, nao, sim, NA, NA, nao, NA, nao…
+$ vomito     &lt;fct&gt; NA, nao, nao, nao, nao, nao, nao, nao, NA, NA, nao, NA, nao…
+$ fadiga     &lt;fct&gt; NA, NA, NA, NA, NA, nao, NA, NA, NA, NA, nao, NA, NA, nao, …
+$ perd_olft  &lt;fct&gt; NA, NA, NA, NA, sim, nao, NA, NA, NA, NA, nao, NA, NA, sim,…
+$ perd_pala  &lt;fct&gt; NA, NA, NA, NA, NA, nao, NA, NA, NA, NA, nao, NA, NA, sim, …
+$ dor_abd    &lt;fct&gt; NA, NA, NA, NA, NA, nao, NA, NA, NA, NA, nao, NA, NA, nao, …
+$ cardiopati &lt;fct&gt; NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, …
+$ hematologi &lt;fct&gt; NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, …
+$ hepatica   &lt;fct&gt; NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, …
+$ asma       &lt;fct&gt; NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, …
+$ diabetes   &lt;fct&gt; NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, …
+$ neurologic &lt;fct&gt; NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, …
+$ pneumopati &lt;fct&gt; NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, …
+$ imunodepre &lt;fct&gt; NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, …
+$ renal      &lt;fct&gt; NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, …
+$ obesidade  &lt;fct&gt; NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, …
+$ vacina_cov &lt;fct&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ dose_1_cov &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ dose_2_cov &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ fab_cov_1  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ fab_cov_2  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ dt_entuti  &lt;date&gt; NA, NA, NA, NA, NA, NA, NA, 2020-06-30, NA, 2020-07-12, NA…
+$ dt_saiduti &lt;date&gt; NA, NA, NA, NA, NA, NA, NA, 2020-07-29, NA, NA, NA, NA, NA…
+$ uti        &lt;fct&gt; nao, nao, nao, nao, nao, nao, nao, sim, nao, sim, nao, nao,…
+$ suport_ven &lt;fct&gt; "sim, nao invasivo", "nao", "nao", "sim, nao invasivo", "na…
+$ evolucao   &lt;fct&gt; cura, cura, cura, cura, cura, cura, cura, obito, cura, cura…
+$ faixa_et   &lt;chr&gt; "&lt;20", "20-34", "20-34", "20-34", "20-34", "&gt;=34", "20-34",…
+$ dias_uti   &lt;drtn&gt; NA days, NA days, NA days, NA days, NA days, NA days, NA d…</code></pre>
+</div>
+</div>
+<p>Note que não utilizamos a função <code>mutate</code> para criar está nova variável, utilizamos apenas o <code>$</code> para representar a variável e atribuímos a função. Assim, o R já entende como uma variável.</p>
+</section>
+<section id="manipulação-de-dados-1" class="level4">
+<h4 class="anchored" data-anchor-id="manipulação-de-dados-1">Manipulação de dados</h4>
+<p>Já temos a nossa base de dados devidamente tratada para prosseguir com a análise descritiva, mas quando falamos de manipulação de dados, um leque de possibilidades aparece. Em diversos cenários precisamos filtrar observações, reordená-las, selecionar variáveis específicas, entre outras coisas. Não poderíamos deixar de mencionar o poderoso <code>tidyverse</code>. O <code>tidyverse</code> é um pacote que contém um coleção de outros pacotes que são utilizados para manipulação, exploração e visualização de dados e que compartilham uma filosofia de design bem parecida, por isso de forma combinada permitem que você consiga fazer inúmeros trabalhos. Os pacotes que fazem parte desse universo são: <code>dplyr</code>, <code>tidyr</code>, <code>ggplot2</code>, <code>forcats</code>, <code>purrr</code>, <code>stringr</code>, <code>tibble</code> e <code>readr</code>. Anteriormente já trabalhamos com alguns destes pacotes, mas agora é válido aprofundarmos um pouco mais em alguns deles. <a href="https://www.tidyverse.org/">Aqui</a> você irá acessar o site do <code>tidyverse</code> onde podera navegar por cada pacote e aprender mais sobre suas utilidades e <a href="https://daslab-ufes.github.io/tidyverse/">aqui</a> você irá acessar um post escrito pelo <strong>Laboratório de Data Scinence - UFES</strong> (daslab) que contem diversos exemplos práticos de uso de todos os pacotes do universo <code>tidyverse</code>. Neste capítulo iremos trabalhar com algumas funções específicas.</p>
+<section id="pacote-dplyr" class="level5">
+<h5 class="anchored" data-anchor-id="pacote-dplyr">Pacote dplyr</h5>
+<p>O <code>dplyr</code> é extremamente útil e nos ajuda a resolver os desafios mais comuns de manipulação de dados.</p>
+<p>Suas principais funções são:</p>
+<ul>
+<li><p>filter() - filtra linhas;</p></li>
+<li><p>group_by() - agrupa pela(s) variável(is) no argumento. Função muito útil quando usada a funçaõ summurise.</p></li>
+<li><p>summarise() - reduz vários valores a um único resumo.</p></li>
+<li><p>select() - seleciona colunas;</p></li>
+<li><p>arrange() - ordena a base;</p></li>
+<li><p>mutate() - cria/modifica colunas.</p></li>
+</ul>
+<p>Já utilizamos algumas funções do pacote, vamos falar sobre outras. Como já avançamos um pouco sobre a utilização de funções, vamos combinar algumas funções, o que geralmente é feito no dia a dia.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">#criando um novo banco de dados selecionando 3 variáveis</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>dados_tratamento <span class="ot">&lt;-</span> dados <span class="sc">|&gt;</span> </span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sg_uf, cs_zona, idade)</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados_tratamento)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 11,523
+Columns: 3
+$ sg_uf   &lt;chr&gt; "CE", "PR", "SP", "PA", "DF", "RO", "PI", "RS", "PE", "MA", "M…
+$ cs_zona &lt;fct&gt; NA, urbana, urbana, urbana, urbana, urbana, urbana, urbana, ur…
+$ idade   &lt;dbl&gt; 16, 23, 24, 33, 23, 35, 31, 17, 22, 29, 28, 22, 27, 25, 26, 20…</code></pre>
+</div>
+</div>
+<p>Aqui criamos a base “dados_tratamento” onde apenas selecionamos algumas colunas da base de dados inicial com a função <code>select</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>dados_tratamento2 <span class="ot">&lt;-</span> dados_tratamento <span class="sc">|&gt;</span> </span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(cs_zona <span class="sc">==</span> <span class="st">"urbana"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sg_uf) <span class="sc">|&gt;</span> </span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">media =</span> <span class="fu">mean</span>(idade, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(media))</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(dados_tratamento2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;">sg_uf</th>
+<th style="text-align: right;">media</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">AP</td>
+<td style="text-align: right;">36.66667</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BA</td>
+<td style="text-align: right;">31.04152</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">RR</td>
+<td style="text-align: right;">31.00000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SP</td>
+<td style="text-align: right;">30.94237</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">RJ</td>
+<td style="text-align: right;">30.93570</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MG</td>
+<td style="text-align: right;">30.93257</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Vamos entender o código acima. Primeiro acessamos a base “dados_tratamento” e com função <code>filter</code> selecionamos apenas as observações “urbana”. Após isso utilizamos a função <code>group_by</code> para agrupar nossas observações pela variável “sg_uf” e por últimos, combinamos com a função <code>summarise</code> para criar a variável “media” que será a media da variável idade. Note que nesta função utilizamos o argumento <code>na.rm - TRUE</code>. Este argumento serve para indicar para a função se ela deve ou não remover valores <code>NA's</code> do cálculo, o default é <code>FALSE</code>. Como não é possível calcular a média de valores ausentes e temos variáveis ausentes, foi necessário utilizar este argumento. Caso contrário, Estados com valores faltantes ficariam com <code>NA</code>. Por último, utilizamos a função <code>arrange</code> para ordernar os dados em em ordem descrente pela variavel media. Uma dica para tentar entender melhor o funcionamento das funções é tentar refazer o código utilizando uma função de cada vez e ir vendo como fica. Então, em poucas linhas de códigos conseguimos criar uma base com a idade média dos Estados considerando apenas zonas urbanas, legal né?</p>
+</section>
+<section id="pacote-stringr" class="level5">
+<h5 class="anchored" data-anchor-id="pacote-stringr">Pacote stringr</h5>
+<p>Um desafio muito grande na manipulação de dados é extrair informações de caracteres. Em resumo caracteres são letras, símbolos, sinais, números que representem algo escrito, etc.. Essa sequência de caracteres formam o que chamamos de <code>string</code>. Diversas vezes encontramos variáveis com categorias não padronizadas, como, por exemplo, uma variável contendo “São Paulo”, “sao paulo” e “sp”. Apesar de representarem o mesmo estado, elas são diferentes. Nesse sentido, uma parte muito importante no tratamento de dados é “lapidar” esse conjunto de caracteres para que seja possível usá-los nas análises. Essa é a introdução do post do <strong>daslab</strong> onde é passado de uma maneira muito prática como trabalhar com strings utilizando o pacote <code>stringr</code>, la você vai aprender também sobre expressões regulares, que com certeza serão úteis em vários momentos da sua carreira. <a href="https://daslab-ufes.github.io/stringr/">Link do post</a>. Como as variáveis de texto do nosso banco de dados já estão bem padronizadas não será necessário realizar nenhum tratamento, mas por ser um pacote de extrema importância e que não havia sido mencionado ainda, deixamos ele aqui para que você possa se aprofundar mais. Como em nossa base dados as variáveis de texto estão padrozinados, não será necessário realizar nenhum tratamento.</p>
+</section>
+</section>
+<section id="manipulando-o-formato-da-base-de-dados" class="level4">
+<h4 class="anchored" data-anchor-id="manipulando-o-formato-da-base-de-dados">Manipulando o formato da base de dados</h4>
+<p>Em certos casos é necessário mudar o formato das bases de dados, fazer com que colunas se tornem linhas vice-versa. Vamos utilizar a base “dados_tratamento”. Veja que ela está no formato <em>long</em>, em que as avaliações do mesmo indivíduo (variável de identificação de indivíduo é “registro”) estão nas linhas. Queremos que as zonas fiquem nas colunas, com as três colunas (vamos tirar valores ignorados): urbana, rural e periurbana, ou seja, queremos o formato <em>wide</em>. Um pacote do R que pode nos auxiliar a transformar formato <em>long</em> em <em>wide</em> e vice-versa é o <code>tidyr</code>. A função que usaremos é <code>spread</code>, como segue:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>dados_formato <span class="ot">&lt;-</span> dados_tratamento <span class="sc">|&gt;</span> </span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(cs_zona) <span class="sc">&amp;</span> cs_zona <span class="sc">!=</span> <span class="st">"ignorado"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="fu">row_number</span>())</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(dados_formato))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;">sg_uf</th>
+<th style="text-align: left;">cs_zona</th>
+<th style="text-align: right;">idade</th>
+<th style="text-align: right;">id</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">PR</td>
+<td style="text-align: left;">urbana</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SP</td>
+<td style="text-align: left;">urbana</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PA</td>
+<td style="text-align: left;">urbana</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DF</td>
+<td style="text-align: left;">urbana</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">RO</td>
+<td style="text-align: left;">urbana</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PI</td>
+<td style="text-align: left;">urbana</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">6</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Fizemos pequenas alterações na base de dados. Primeiro realizamos um filtro para retirarmos valores faltantes da variável “cs_zona”, pois essa passará a</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>dados_formato2 <span class="ot">&lt;-</span> dados_formato <span class="sc">|&gt;</span> </span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> cs_zona, <span class="at">values_from =</span> idade)  </span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(dados_formato2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;">sg_uf</th>
+<th style="text-align: right;">id</th>
+<th style="text-align: right;">urbana</th>
+<th style="text-align: right;">rural</th>
+<th style="text-align: right;">periurbana</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">PR</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SP</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PA</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DF</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">RO</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PI</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>dados_formato3 <span class="ot">&lt;-</span> dados_formato2 <span class="sc">|&gt;</span> </span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"urbana"</span>,   <span class="st">"rural"</span>,    <span class="st">"periurbana"</span>), <span class="at">names_to =</span> <span class="st">"cs_zona"</span>, <span class="at">values_to =</span> <span class="st">"idade"</span>)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(dados_formato3))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;">sg_uf</th>
+<th style="text-align: right;">id</th>
+<th style="text-align: left;">cs_zona</th>
+<th style="text-align: right;">idade</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">PR</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">urbana</td>
+<td style="text-align: right;">23</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PR</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">rural</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PR</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">periurbana</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SP</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">urbana</td>
+<td style="text-align: right;">24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SP</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">rural</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SP</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">periurbana</td>
+<td style="text-align: right;">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="combinando-bases-de-dados" class="level4">
+<h4 class="anchored" data-anchor-id="combinando-bases-de-dados">Combinando bases de dados</h4>
+<p>Quando estamos trabalhando com dados, nem sempre uma única base irá conter todas as informações que precisamos, na verdade, isso é mais comum do que se possa imaginar. Assim, saber juntar duas bases de dados é indispensável. Vamos começar então falando sobre chave primária. Em resumo, chave primária se refere a um ou mais campos, onde combinados (no caso de mais de uma chave primária), não se repete na mesma tabela. Em outras palavras, uma chave primária no meu banco dados seria uma variável onde as observações não se repetem ou a combinação de variáveis que tornam as observações únicas. Para exemplicar vamos pegar nossa base de dados e separar em duas, para que posteriormente possamos juntalas. Como em nossa base de dados não temos naturalmente nenhuma chave primária, vamos utilizar a função <code>mutate(id = row_number())</code> para criarmos um identificar único para este exemplo. Após isso, vamos dividir a nossa base de dados em duas, mantendo em comum entre elas apenas a nossa chave primária, neste caso, a variável “id”</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> dados <span class="sc">|&gt;</span> </span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="fu">row_number</span>()) <span class="sc">|&gt;</span> </span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, <span class="fu">everything</span>())<span class="co">#selecionar variavel id e todas as outras </span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>dados1 <span class="ot">&lt;-</span> dados[, <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">24</span>)]</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 11,523
+Columns: 24
+$ id         &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, …
+$ dt_notific &lt;date&gt; 2020-05-15, 2020-05-18, 2020-04-30, 2020-05-11, 2020-07-01…
+$ dt_sin_pri &lt;date&gt; 2020-05-06, 2020-05-10, 2020-04-20, 2020-05-04, 2020-06-12…
+$ dt_nasc    &lt;date&gt; 2003-06-03, 1996-07-07, 1996-03-26, 1986-06-02, 1996-12-11…
+$ dt_interna &lt;date&gt; 2020-05-15, 2020-05-15, 2020-04-24, 2020-05-09, 2020-06-30…
+$ sem_pri    &lt;int&gt; 19, 20, 17, 19, 24, 24, 26, 27, 28, 24, 14, 29, 28, 10, 36,…
+$ sg_uf      &lt;chr&gt; "CE", "PR", "SP", "PA", "DF", "RO", "PI", "RS", "PE", "MA",…
+$ id_mn_resi &lt;chr&gt; "MORRINHOS", "CURITIBA", "SAO CAETANO DO SUL", "MARABA", "S…
+$ co_mun_res &lt;int&gt; 230890, 410690, 354880, 150420, 530150, 110020, 221100, 431…
+$ cs_zona    &lt;fct&gt; NA, urbana, urbana, urbana, urbana, urbana, urbana, urbana,…
+$ cs_raca    &lt;fct&gt; parda, branca, ignorado, parda, ignorado, parda, ignorado, …
+$ cs_escol_n &lt;fct&gt; NA, fund2, ignorado, superior, NA, fund2, superior, fund2, …
+$ idade      &lt;dbl&gt; 16, 23, 24, 33, 23, 35, 31, 17, 22, 29, 28, 22, 27, 25, 26,…
+$ cs_gestant &lt;fct&gt; 2tri, 2tri, ignorado, nao, nao, 3tri, 1tri, nao, 3tri, 3tri…
+$ puerpera   &lt;fct&gt; NA, nao, sim, sim, sim, nao, NA, sim, NA, sim, NA, NA, sim,…
+$ febre      &lt;fct&gt; sim, nao, sim, sim, nao, sim, sim, sim, sim, sim, sim, NA, …
+$ tosse      &lt;fct&gt; sim, nao, nao, sim, nao, sim, sim, sim, NA, sim, sim, sim, …
+$ garganta   &lt;fct&gt; NA, nao, nao, nao, nao, nao, nao, NA, sim, NA, nao, NA, nao…
+$ dispneia   &lt;fct&gt; NA, sim, nao, nao, nao, nao, nao, sim, NA, NA, sim, NA, nao…
+$ desc_resp  &lt;fct&gt; NA, nao, nao, sim, nao, nao, sim, sim, NA, sim, sim, NA, na…
+$ saturacao  &lt;fct&gt; NA, nao, nao, nao, nao, nao, nao, sim, NA, NA, nao, NA, nao…
+$ diarreia   &lt;fct&gt; NA, sim, nao, nao, sim, nao, nao, sim, NA, NA, nao, NA, nao…
+$ vomito     &lt;fct&gt; NA, nao, nao, nao, nao, nao, nao, nao, NA, NA, nao, NA, nao…
+$ fadiga     &lt;fct&gt; NA, NA, NA, NA, NA, nao, NA, NA, NA, NA, nao, NA, NA, nao, …</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>dados2 <span class="ot">&lt;-</span> dados[, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">25</span><span class="sc">:</span><span class="dv">49</span>)]</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 11,523
+Columns: 26
+$ id         &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, …
+$ perd_olft  &lt;fct&gt; NA, NA, NA, NA, sim, nao, NA, NA, NA, NA, nao, NA, NA, sim,…
+$ perd_pala  &lt;fct&gt; NA, NA, NA, NA, NA, nao, NA, NA, NA, NA, nao, NA, NA, sim, …
+$ dor_abd    &lt;fct&gt; NA, NA, NA, NA, NA, nao, NA, NA, NA, NA, nao, NA, NA, nao, …
+$ cardiopati &lt;fct&gt; NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, …
+$ hematologi &lt;fct&gt; NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, …
+$ hepatica   &lt;fct&gt; NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, …
+$ asma       &lt;fct&gt; NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, …
+$ diabetes   &lt;fct&gt; NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, …
+$ neurologic &lt;fct&gt; NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, …
+$ pneumopati &lt;fct&gt; NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, …
+$ imunodepre &lt;fct&gt; NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, …
+$ renal      &lt;fct&gt; NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, …
+$ obesidade  &lt;fct&gt; NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, …
+$ vacina_cov &lt;fct&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ dose_1_cov &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ dose_2_cov &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ fab_cov_1  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ fab_cov_2  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ dt_entuti  &lt;date&gt; NA, NA, NA, NA, NA, NA, NA, 2020-06-30, NA, 2020-07-12, NA…
+$ dt_saiduti &lt;date&gt; NA, NA, NA, NA, NA, NA, NA, 2020-07-29, NA, NA, NA, NA, NA…
+$ uti        &lt;fct&gt; nao, nao, nao, nao, nao, nao, nao, sim, nao, sim, nao, nao,…
+$ suport_ven &lt;fct&gt; "sim, nao invasivo", "nao", "nao", "sim, nao invasivo", "na…
+$ evolucao   &lt;fct&gt; cura, cura, cura, cura, cura, cura, cura, obito, cura, cura…
+$ faixa_et   &lt;chr&gt; "&lt;20", "20-34", "20-34", "20-34", "20-34", "&gt;=34", "20-34",…
+$ dias_uti   &lt;drtn&gt; NA days, NA days, NA days, NA days, NA days, NA days, NA d…</code></pre>
+</div>
+</div>
+<p>Em “dados1” selecionamos as colunas de 1 até a 24, onde a coluna 1 é a variável “id”. Em dados 2 selecionamos a coluna depois e as colunas de 25 até a 49. Agora temos dois banco de dados e precisamos juntá-los.</p>
+<p>Há algumas funções de combinação de duas bases de dados no pacote <code>dplyr</code>. Elas recebem três argumentos: a primeira base a ser declarada <code>(x=)</code>, a segunda base a ser declarada <code>(y=)</code> e a variável de identificação informada no argumento <code>by=</code>. Aqui estão as funções mais úteis:</p>
+<ul>
+<li><p><code>left_join()</code> - retorna todas as linhas da base de dados no argumento <code>x</code> e todas as colunas das duas bases de dados. Linhas da base de dados de <code>x</code> sem correspondentes em <code>y</code> receberão <code>NA</code> na base de dados combinada.</p></li>
+<li><p><code>right_join()</code> - retorna todas as linhas da base de dados no argumento <code>y</code> e todas as colunas das duas bases de dados. Linhas da base de dados de <code>y</code> sem correspondentes em <code>x</code> receberão <code>NA</code> na base de dados combinada.</p></li>
+<li><p><code>full_join()</code> - retorna todas as linhas e todas as colunas de <code>x</code> e de <code>y</code>. As linhas sem correspondência entre as bases receberão <code>NA</code> na base de dados combinada.</p></li>
+<li><p><code>inner_join()</code> - filtra a base de dados no argumento <code>x</code> apenas onde tem valores correspondentes na base de dados no argumento <code>y</code> e todas as colunas das duas bases de dados.</p></li>
+<li><p><code>semi_join()</code> - filtra a base de dados no argumento <code>x</code> apenas onde tem valores correspondentes na base de dados no argumento <code>y</code>, mantendo apenas as colunas da base de dados de <code>x</code>.</p></li>
+<li><p><code>anti_join()</code> - filtra a base de dados no argumento <code>x</code> para incluir apenas valores que <strong>não possuem</strong> correspondências na base de dados no argumento <code>y</code>.</p></li>
+</ul>
+<p>Assim sendo, no nosso exemplo, tanto as funções <code>left_join()</code>, <code>right_join()</code>, <code>full_join()</code> e <code>inner_join()</code> retornarão a mesma combinação, pois “dados1” e “dados2” possuem exatamente os mesmos indivíduos, ou seja, não há nenhuma linha que esteja em uma das bases de dados e que não está na outra. Este cenário foi um pouco mais simples, mas pense que no dia a dia você irá encontrar bases onde você precisará encontrar chaves primarias entre elas. Além disso, varios problemas podem vir acompanhados, por exemplo, imagine que para juntar duas bases você utilizará uma chave formada pela combinação de duas variáveis: UF e Município. Em uma base a sua UF está no formato de sigla e na outra está sendo representada pelo código da UF atribuido pelo IBGE. Já na variável de Município, Em uma base os dados estão todos padronizados, maiúsculos e sem acentuação, já na outra base está no formato “padrão” com a primeira letra maiúscula e acentuação. Veja que será necessário um bom tratamento de dados para pode juntar essas bases. Voltando para o nosso exemplo, vamos a prática.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>dados_todos <span class="ot">&lt;-</span> <span class="fu">full_join</span>(dados1, dados2, <span class="at">by=</span><span class="fu">c</span>(<span class="st">"id"</span>)) </span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados_todos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 11,523
+Columns: 49
+$ id         &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, …
+$ dt_notific &lt;date&gt; 2020-05-15, 2020-05-18, 2020-04-30, 2020-05-11, 2020-07-01…
+$ dt_sin_pri &lt;date&gt; 2020-05-06, 2020-05-10, 2020-04-20, 2020-05-04, 2020-06-12…
+$ dt_nasc    &lt;date&gt; 2003-06-03, 1996-07-07, 1996-03-26, 1986-06-02, 1996-12-11…
+$ dt_interna &lt;date&gt; 2020-05-15, 2020-05-15, 2020-04-24, 2020-05-09, 2020-06-30…
+$ sem_pri    &lt;int&gt; 19, 20, 17, 19, 24, 24, 26, 27, 28, 24, 14, 29, 28, 10, 36,…
+$ sg_uf      &lt;chr&gt; "CE", "PR", "SP", "PA", "DF", "RO", "PI", "RS", "PE", "MA",…
+$ id_mn_resi &lt;chr&gt; "MORRINHOS", "CURITIBA", "SAO CAETANO DO SUL", "MARABA", "S…
+$ co_mun_res &lt;int&gt; 230890, 410690, 354880, 150420, 530150, 110020, 221100, 431…
+$ cs_zona    &lt;fct&gt; NA, urbana, urbana, urbana, urbana, urbana, urbana, urbana,…
+$ cs_raca    &lt;fct&gt; parda, branca, ignorado, parda, ignorado, parda, ignorado, …
+$ cs_escol_n &lt;fct&gt; NA, fund2, ignorado, superior, NA, fund2, superior, fund2, …
+$ idade      &lt;dbl&gt; 16, 23, 24, 33, 23, 35, 31, 17, 22, 29, 28, 22, 27, 25, 26,…
+$ cs_gestant &lt;fct&gt; 2tri, 2tri, ignorado, nao, nao, 3tri, 1tri, nao, 3tri, 3tri…
+$ puerpera   &lt;fct&gt; NA, nao, sim, sim, sim, nao, NA, sim, NA, sim, NA, NA, sim,…
+$ febre      &lt;fct&gt; sim, nao, sim, sim, nao, sim, sim, sim, sim, sim, sim, NA, …
+$ tosse      &lt;fct&gt; sim, nao, nao, sim, nao, sim, sim, sim, NA, sim, sim, sim, …
+$ garganta   &lt;fct&gt; NA, nao, nao, nao, nao, nao, nao, NA, sim, NA, nao, NA, nao…
+$ dispneia   &lt;fct&gt; NA, sim, nao, nao, nao, nao, nao, sim, NA, NA, sim, NA, nao…
+$ desc_resp  &lt;fct&gt; NA, nao, nao, sim, nao, nao, sim, sim, NA, sim, sim, NA, na…
+$ saturacao  &lt;fct&gt; NA, nao, nao, nao, nao, nao, nao, sim, NA, NA, nao, NA, nao…
+$ diarreia   &lt;fct&gt; NA, sim, nao, nao, sim, nao, nao, sim, NA, NA, nao, NA, nao…
+$ vomito     &lt;fct&gt; NA, nao, nao, nao, nao, nao, nao, nao, NA, NA, nao, NA, nao…
+$ fadiga     &lt;fct&gt; NA, NA, NA, NA, NA, nao, NA, NA, NA, NA, nao, NA, NA, nao, …
+$ perd_olft  &lt;fct&gt; NA, NA, NA, NA, sim, nao, NA, NA, NA, NA, nao, NA, NA, sim,…
+$ perd_pala  &lt;fct&gt; NA, NA, NA, NA, NA, nao, NA, NA, NA, NA, nao, NA, NA, sim, …
+$ dor_abd    &lt;fct&gt; NA, NA, NA, NA, NA, nao, NA, NA, NA, NA, nao, NA, NA, nao, …
+$ cardiopati &lt;fct&gt; NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, …
+$ hematologi &lt;fct&gt; NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, …
+$ hepatica   &lt;fct&gt; NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, …
+$ asma       &lt;fct&gt; NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, …
+$ diabetes   &lt;fct&gt; NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, …
+$ neurologic &lt;fct&gt; NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, …
+$ pneumopati &lt;fct&gt; NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, …
+$ imunodepre &lt;fct&gt; NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, …
+$ renal      &lt;fct&gt; NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, …
+$ obesidade  &lt;fct&gt; NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, …
+$ vacina_cov &lt;fct&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ dose_1_cov &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ dose_2_cov &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ fab_cov_1  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ fab_cov_2  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ dt_entuti  &lt;date&gt; NA, NA, NA, NA, NA, NA, NA, 2020-06-30, NA, 2020-07-12, NA…
+$ dt_saiduti &lt;date&gt; NA, NA, NA, NA, NA, NA, NA, 2020-07-29, NA, NA, NA, NA, NA…
+$ uti        &lt;fct&gt; nao, nao, nao, nao, nao, nao, nao, sim, nao, sim, nao, nao,…
+$ suport_ven &lt;fct&gt; "sim, nao invasivo", "nao", "nao", "sim, nao invasivo", "na…
+$ evolucao   &lt;fct&gt; cura, cura, cura, cura, cura, cura, cura, obito, cura, cura…
+$ faixa_et   &lt;chr&gt; "&lt;20", "20-34", "20-34", "20-34", "20-34", "&gt;=34", "20-34",…
+$ dias_uti   &lt;drtn&gt; NA days, NA days, NA days, NA days, NA days, NA days, NA d…</code></pre>
+</div>
+</div>
+<p>Pronto, temos nossa base completa e aprendemos um pouco sobre manipular dados. O pacote <code>tidyverse</code> será um grande aliado seu no R de forma geral. Como mencionado anteriormente, não cobrimos tudo o que é necessário saber para trabalhar com manipulação de dados, é necessário entender a demanda e pesquisar soluções. Saber traduzir o seu problema para que consiga pesquisar com mais facilidade é uma habilidade muito importante. Recomendamos que treine, trabalhe com diferentes tipos de dados, pesquise pacotes, funções, etc. Com o tempo fará com tranquilidade coisas que hoje considera difícil. Lembre-se, a pratica leva a perfeição.</p>
+</section>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
