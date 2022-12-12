@@ -46,11 +46,11 @@ O sobreajustamento é um conceito que ocorre quando nosso modelo (não só um mo
 
 -   **Aumento de dados:** Essa técnica consiste em aumentar ligeiramente os dados da amostra toda vez que o modelo os processa, ou seja, injevar dados limpos e relevantes nos dados de treino. Isso faz com que os conjuntos de treino pareçam "exclusivos" do modelo, impedindo que ele aprenda suas características. Mas isso deve ser feito com moderação, pode injetar dados que não estão limpos pode fazer mais mal do que bem. Além disso, não é um método garantido.
 
-##### Existem outras técnicas que podem ser utilizadas para evitar o sobreajustamento. Mas precisamos falar também sobre como detectá-los. 
+##### Existem outras técnicas que podem ser utilizadas para evitar o sobreajustamento. Mas precisamos falar também sobre como detectá-los.
 
 Uma forma não técnica e que não deve ser a sua única forma de tentar identificar o sobreajustamento é por meio da visualização gráfica. A visualização gráfica pode ser usada apenas para levantar hipotéses, nunca para tomar uma decisão final. Até mesmo porque nem sempre é possível verificar esse problema visualmente. Vamos falar agora sobre a técnica mais utilizada para detectar sobreajustamento, a Validação Cruzada de k-Fold
 
-###### Validação Cruzada de k-Fold (k-Fold  Cross-Validation)
+###### Validação Cruzada de k-Fold (k-Fold Cross-Validation)
 
 -   Escrever
 
@@ -58,7 +58,7 @@ Uma forma não técnica e que não deve ser a sua única forma de tentar identif
 
 Como pode ter imaginado, subajustamento é o oposto do sobreajustamto. Ocorre quando seu modelo é muito simples para aprender a estrutura dos dados. O subjastumento leva à um erro elevado tanto nos dados detreino quanto nos dados de teste. Pode ocorrer quando o modelo não foi treinado por tempo suficiente ou as variáveis ​​de entrada não são significativas o suficiente para determinar uma relação significativa entre as variáveis ​​de entrada e saída. Aqui também estamos em um cenário a ser evitado e apesar de ser contrário ao sobreajustamento, as téncias tanto para identificar quanto para evitar o problema são semelhantes. Um adendo, geralmente, identificar um subajustamento é mais fácil que identificar um sobreajustamento.
 
-#### Modelo de Regressão Linear 
+#### Modelo de Regressão Linear
 
 Já temos uma breve noção sobre o que é aprendizado supervisionado, agora vamos aprofundar um pouco dentro dos modelos. Como foi mencionado aprendizado supervisionado é usado principalmente para métodos de classificação e regressão. Modelo de regressão linear, como o próprio nome já diz, se enquadra nos métodos de regressão. A regressão consiste em modelar um valor de previsão com base em variáveis independentes. De forma mais geral, o modelo conquiste em fazer uma previsão "simples" calculando uma ponderação entre as somas dos recusrso de entrada e uma constante chamada intercepto. Assim, obtemos uma relação linear entre a variável de saída e as variáveis de entrada. A linha de regressão é a linha de melhor ajuste para o modelo
 
@@ -93,7 +93,3 @@ Existem algumas suposições importantes quue devem ser feitas para utilizar um 
 -   **Multicolinearidade:** O modelo de regressão linear não assume nenhuma autocorrelação em termos de erro. Se houver alguma correlação no termo de erro, isso reduzirá drasticamente a precisão do modelo. A autocorrelação geralmente ocorre se houver uma dependência entre os erros residuais. Considere calcular correlações pareadas para seus dados de entrada e remover os mais correlacionados.
 
     #### Modelo de Regressão logística
-
-
-
-

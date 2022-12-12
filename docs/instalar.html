@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.550">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,10 +11,15 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 </style>
 
 
@@ -35,7 +40,7 @@ ul.task-list{list-style: none;}
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -130,6 +135,16 @@ ul.task-list{list-style: none;}
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./manipulacao_dados.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Manipulação de dados</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tabulacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Tabulação de dados</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">Referências</a>
   </div>
 </li>
@@ -138,13 +153,13 @@ ul.task-list{list-style: none;}
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#para-windows" id="toc-para-windows" class="nav-link active" data-scroll-target="#para-windows"> <span class="header-section-number">2.0.1</span> Para Windows</a></li>
-  <li><a href="#para-mac" id="toc-para-mac" class="nav-link" data-scroll-target="#para-mac"> <span class="header-section-number">2.0.2</span> Para MAC</a></li>
-  <li><a href="#para-linux" id="toc-para-linux" class="nav-link" data-scroll-target="#para-linux"> <span class="header-section-number">2.0.3</span> Para Linux</a></li>
+  <li><a href="#para-windows" id="toc-para-windows" class="nav-link active" data-scroll-target="#para-windows"><span class="toc-section-number">2.0.1</span>  Para Windows</a></li>
+  <li><a href="#para-mac" id="toc-para-mac" class="nav-link" data-scroll-target="#para-mac"><span class="toc-section-number">2.0.2</span>  Para MAC</a></li>
+  <li><a href="#para-linux" id="toc-para-linux" class="nav-link" data-scroll-target="#para-linux"><span class="toc-section-number">2.0.3</span>  Para Linux</a></li>
   </ul>
 </nav>
     </div>
@@ -161,6 +176,7 @@ ul.task-list{list-style: none;}
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -179,7 +195,7 @@ ul.task-list{list-style: none;}
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/install_Windows.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Download R para Windows</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Download R para Windows</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -192,7 +208,7 @@ ul.task-list{list-style: none;}
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/install_Windows2.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Instalador</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Instalador</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -205,7 +221,7 @@ ul.task-list{list-style: none;}
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/install_Windows3.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Escolha da lingua para instalação</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Escolha da lingua para instalação</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -218,7 +234,7 @@ ul.task-list{list-style: none;}
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/install_Windows4.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Próximo</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Próximo</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -228,7 +244,7 @@ ul.task-list{list-style: none;}
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/install_Windows5.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Próximo</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Próximo</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -238,7 +254,7 @@ ul.task-list{list-style: none;}
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/install_Windows6.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Próximo</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Próximo</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -248,7 +264,7 @@ ul.task-list{list-style: none;}
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/install_Windows7.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Próximo</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Próximo</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -258,7 +274,7 @@ ul.task-list{list-style: none;}
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/install_Windows8.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Próximo</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Próximo</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -268,7 +284,7 @@ ul.task-list{list-style: none;}
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/install_Windows9.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Próximo</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Próximo</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -281,7 +297,7 @@ ul.task-list{list-style: none;}
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/install_Windows10.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Instalação do R</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Instalação do R</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -291,7 +307,7 @@ ul.task-list{list-style: none;}
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/install_Windows11.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Pronto: R instalado</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Pronto: R instalado</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -308,7 +324,7 @@ ul.task-list{list-style: none;}
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/mac_R_1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"> Download R para Mac</figcaption><p></p>
+<p></p><figcaption class="figure-caption"> Download R para Mac</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -321,7 +337,7 @@ ul.task-list{list-style: none;}
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/mac_R_2.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"> Download R para Mac</figcaption><p></p>
+<p></p><figcaption class="figure-caption"> Download R para Mac</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -334,7 +350,7 @@ ul.task-list{list-style: none;}
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/mac_R_3.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"> Pasta para instalação</figcaption><p></p>
+<p></p><figcaption class="figure-caption"> Pasta para instalação</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -347,7 +363,7 @@ ul.task-list{list-style: none;}
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/mac_R_4.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"> Instalação</figcaption><p></p>
+<p></p><figcaption class="figure-caption"> Instalação</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -360,7 +376,7 @@ ul.task-list{list-style: none;}
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/mac_R_5.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"> Instalação</figcaption><p></p>
+<p></p><figcaption class="figure-caption"> Instalação</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -373,7 +389,7 @@ ul.task-list{list-style: none;}
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/mac_R_6.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"> Instalação</figcaption><p></p>
+<p></p><figcaption class="figure-caption"> Instalação</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -383,7 +399,7 @@ ul.task-list{list-style: none;}
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/mac_R_7.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"> Instalação</figcaption><p></p>
+<p></p><figcaption class="figure-caption"> Instalação</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -396,7 +412,7 @@ ul.task-list{list-style: none;}
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/mac_R_8.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"> Instalação</figcaption><p></p>
+<p></p><figcaption class="figure-caption"> Instalação</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -409,7 +425,7 @@ ul.task-list{list-style: none;}
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/mac_R_9.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"> Instalação</figcaption><p></p>
+<p></p><figcaption class="figure-caption"> Instalação</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -419,7 +435,7 @@ ul.task-list{list-style: none;}
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/mac_R_10.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"> Instalação</figcaption><p></p>
+<p></p><figcaption class="figure-caption"> Instalação</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -433,7 +449,7 @@ ul.task-list{list-style: none;}
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/install_R_linux.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Download em Linux</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Download em Linux</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -443,7 +459,7 @@ ul.task-list{list-style: none;}
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/install_R_linux2.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Download em Linux</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Download em Linux</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -455,6 +471,24 @@ ul.task-list{list-style: none;}
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -476,7 +510,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -504,31 +555,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
