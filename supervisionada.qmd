@@ -1,0 +1,99 @@
+# Aprendizado supervisionado
+
+Tópicos:
+
+-   conceitos iniciais
+
+-   algoritmos supervisionados
+
+-   aplicações e interpretabilidade
+
+### Machine learning
+
+-   falar sobre ml
+
+-   mecionar um pouco sobre Aprendizado supervisionado VS não supervisionado
+
+-   "neste capítulo vamos falar sobre aprendizado supervisionado
+
+### Aprendizado supervisionado (conceitos iniciais)
+
+Aprendizado supervisionado pode ser definido como a tarefa de aprender uma função que mapeia uma entrada em uma saída e isso é feito com base em exemplos e treinos. Em outras palavras, uma máquina é treinada para encontrar soluções chamadas rótulos, onde esses rótulos identificam alguma característica. Apesar de também poder ser usada para regressão, o aprendizado supervisionado tem como tafera típica a classificação. Um exemplo bem simples de classificação é: suponha que eu queira classificar imagens de animais, nesse caso possuo um banco de dados com imagens de cachorros e gatos. Quero que meu algoritmo classifique as imagens identificando o tipo do animal na imagem. Para isso o algoritmo é treinado utilizando vários exemplos para que ele consiga classificar novas imagens posteriormente. Outra tafera é predizer um valor com base em características, por exemplo, prever o valor de um carro dado um conjunto de características (quilometragem, idade, marca, etc.) chamadas preditores. Este tipo de tarefa é chamada regressão. Para treinar o sistema é preciso incluir diversos exemplos, assim o banco de dado é separado em treino e teste, onde o é feito o treinamento na base treino para posteriormente serem feitos os testes de predição e avaliação da qualidade do ajuste na base teste.
+
+#### Dificuldades gerais do machine learnig
+
+Como dito ateriormente, a idéia geral do aprendizado de máquina é contruir um algorito para solucionar os meus problemas, onde esse algoritmo será treinado com dados. Mas, o que acontece se o meu algorito for ruim ou os dados serem ruins.
+
+##### Quantidade insuficiente de dados
+
+Falando sobre dados ruins, o primeiro problema é a quantidade de dados. Já parou pra pensar em quão difícil é treinar uma máquina? voltando no exemplo anterior, para você aprender a diferenciar um cachorro de um gato quando era criança, bastou alguém lhe apontar qual era qual algumas vezes e você se tornou capaz de diferenciar cães de gatos independente das caracteristicas. Uma máquina não consegue fazer isso fácilmente, é necessário uma quantidade grande de dados para a maioria dos algoritmos, até mesmo para problemas simples como o do exemplo citado e para problemas complexos, como reconhecimento de imagem ou fala você pode precisar de milhões de exemplos.
+
+##### Dados de treino não representativos
+
+Como mencionado anteriormente, o treinamento de um algoritmo é feito por meio de uma base de dados, onde está é separada em dados de treinamento e de teste, para que eu possa usá-lo e generalizá-lo em dados futuros. Dados de treinamento que não representem bem os dados que serão uzados no futuro podem um modelo que não funcionará bem. Utilizando o exemplo do algoritmo de regressão onde o objetivo era prever os valores dos carros com base em suas características. Digamos que meu algoritmo foi treinado com uma da base de dados de carros apenas do estado de São Paulo, mas meu algoritmo será utilizado para prever carros de todo o país, pode ser que não funcione tão bem. O estados podem alterar significamente os preços dos carros por meio de impostos por exemplo. É de extrema importância utilizar um conjunto de dados de treino que represente bem os dados que você deseja generalizar. Isso pode não ser uma tarefa fácil, pode encontrar problemas com amostras, principalmente se ela for muito pequena e até mesmo uma amostra grande pode não ser representativa.
+
+##### Qualidade dos dados
+
+Como pode ter imaginado, a qualidade dos dados também é de extrema importância. Dados com discrenpâncias, vários erros, e gerados a partir de medições de baixa qualidade fará com que fique mais difícil o seu algoritmo identificar padrões e tomar decisões. Se você convive com pessoas do ramo da ciência de dados em geral, é bem provável que ja tenha ouvido alguém dizer algo o tipo: "gastamos a maior parte do nosso tempo para limpar os dados". Isso não é em vão. Na maioria dos casos, principalmente no ramo de aprendizagem de máquinas é gasto um enorme tempo para limpar os dados pois pode influênciar muito na qualidade do modelo. Por exemplo, se algumas informações forem muito discrepantes, é preciso decidir entre tentar corrigir ou excluí-las. Se uma variável tiver uma quantidade significativa de valores faltantes, deverá ser decidido se essas observações serão excluídas ou se será possível utilizar métodos de imputação de dados. Treinar mais de um modelo com diferentes decisões tomadas sobre os dados também pode ser efetivo.
+
+##### Sobreajustamento dos dados (**Overfitting**)
+
+O sobreajustamento é um conceito que ocorre quando nosso modelo (não só um modelo de aprendizado de máquinas), se ajusta exatamento aos nossos dados de treinamento. Ouvir isso uma primeira vez pode parecer excelente, ou até mesmo o cenário ideal, afinal, queremos que o nosso modelo se ajuste o máximo possível, certo? bom.. não exatamente. O que acontece neste caso, é que o modelo mostra-se adequado **apenas para os dados de treino**, como se o modelo tivesse apenas decorado os dados de treino e não fosse capaz de generalizar para outros dados nunca vistos antes. Assim, o desempenho do nosso modelo quando usado em novos dados cai drasticamente. Algumas razões que podem levar a um sobreajustamento: base de treino muito pequena, não contendo dados suficientes para representar bem todos valores de entrada possíveis; grande quantidade de informações irrelevantes (dados ruidosos); treinamento excessivo em um único conjunto de amostra; modelo muito complexo, fazendo com que ele aprenda os ruídos nos dados de treinamento. Agora que sabemos o problema que é um sobreajustamento e as razões que podem levar a isso, precisamos falar sobre como evitar que isso aconteça. Existem algumas tecnicas comumente utilizadas.
+
+-   **Regularização:** Foi dito anteriormente que uma razão para o sobreajustamento é a complexidade do modelo, então, faz sentido diminuírmos sua complexidade. Isso pode ser feito removendo ou dimuindo o número de parâmetros.
+
+-   **Parada antecipada:** Quando um modelo está sendo treinado por radadas de repetição, é possível avaliar cara uma dessa repetição. Nomermalmente o desempenho de um modelo melhora a cada repetição, mas chega um momento em que começa a acontecer o sobreajustamento. A ideia da parada antecipada é pausar o treinamento anter que chegue a esse ponto.
+
+-   **Aumento de dados:** Essa técnica consiste em aumentar ligeiramente os dados da amostra toda vez que o modelo os processa, ou seja, injevar dados limpos e relevantes nos dados de treino. Isso faz com que os conjuntos de treino pareçam "exclusivos" do modelo, impedindo que ele aprenda suas características. Mas isso deve ser feito com moderação, pode injetar dados que não estão limpos pode fazer mais mal do que bem. Além disso, não é um método garantido.
+
+##### Existem outras técnicas que podem ser utilizadas para evitar o sobreajustamento. Mas precisamos falar também sobre como detectá-los. 
+
+Uma forma não técnica e que não deve ser a sua única forma de tentar identificar o sobreajustamento é por meio da visualização gráfica. A visualização gráfica pode ser usada apenas para levantar hipotéses, nunca para tomar uma decisão final. Até mesmo porque nem sempre é possível verificar esse problema visualmente. Vamos falar agora sobre a técnica mais utilizada para detectar sobreajustamento, a Validação Cruzada de k-Fold
+
+###### Validação Cruzada de k-Fold (k-Fold  Cross-Validation)
+
+-   Escrever
+
+##### Subajustamento dos dados (**Underfitting**)
+
+Como pode ter imaginado, subajustamento é o oposto do sobreajustamto. Ocorre quando seu modelo é muito simples para aprender a estrutura dos dados. O subjastumento leva à um erro elevado tanto nos dados detreino quanto nos dados de teste. Pode ocorrer quando o modelo não foi treinado por tempo suficiente ou as variáveis ​​de entrada não são significativas o suficiente para determinar uma relação significativa entre as variáveis ​​de entrada e saída. Aqui também estamos em um cenário a ser evitado e apesar de ser contrário ao sobreajustamento, as téncias tanto para identificar quanto para evitar o problema são semelhantes. Um adendo, geralmente, identificar um subajustamento é mais fácil que identificar um sobreajustamento.
+
+#### Modelo de Regressão Linear 
+
+Já temos uma breve noção sobre o que é aprendizado supervisionado, agora vamos aprofundar um pouco dentro dos modelos. Como foi mencionado aprendizado supervisionado é usado principalmente para métodos de classificação e regressão. Modelo de regressão linear, como o próprio nome já diz, se enquadra nos métodos de regressão. A regressão consiste em modelar um valor de previsão com base em variáveis independentes. De forma mais geral, o modelo conquiste em fazer uma previsão "simples" calculando uma ponderação entre as somas dos recusrso de entrada e uma constante chamada intercepto. Assim, obtemos uma relação linear entre a variável de saída e as variáveis de entrada. A linha de regressão é a linha de melhor ajuste para o modelo
+
+$$
+\hat y = \theta_0 + \theta_1x_1 + \theta_2x_2 + ...+ \theta_nx_n
+$$
+
+onde:
+
+-   $\hat y$ é o valor predito
+
+-   $n$ o número de características
+
+-   $x_i$ é a $i^{th}$ característica
+
+-   $\theta_j$ é o $j^{th}$ parâmetro do modelo
+
+Certo, temos uma definição matemática do nosso modelo, mas como posso treiná-lo? Treinar um modelo significa também definir os parâmetros para que o modelo se ajuste melhor aos meus dados. Em outras palavras, um modelo treinado irá se ajustar a melhor linha para prever o valor de $y$ para um dado valor de $x$. Assim, ao encontrar os melhores valores de $\theta 's$ obtemos a melhor linha de ajuste. Para isso, primeiro precisamos de uma medida de quão bem (ou mal) o modelo se ajusta aos meus dados. A medida mais comum usada em um modelo de regressão é a Raiz do Erro Quadrático Médio (REQM). Em resumo, o REQM é uma medida de quão espalhados estão esses resíduos. Ele avalia a diferença média quadrática entre os valores observados e previstos. Portanto, treinar um modelo consiste em encontrar os valores de $\theta's$ que irá minimizar o REQM.
+
+$$
+REQM = \sqrt{\frac{1}{n}\sum_{i = 1}^{n}  (\hat y_i - y_i)^2}
+$$
+
+Existem algumas suposições importantes quue devem ser feitas para utilizar um modelo de regressão linear. Estas são algumas verificações formais durante a construção de um modelo de regressão linear, o que garante a obtenção do melhor resultado possível do conjunto de dados fornecido.
+
+-   **Suposição de linearidade:** A regressão linear assume que a relação entre a entrada e saída é linear. Pode parecer um pouco óbvio, mas em alguns casos onde, em um primeiro olhar, faça sentido usar uma regressão linar, nossos dados não permitam isso. Pode ser necessário transformar os dados.
+
+-   **Homocedasticidade:** Homocedasticidade é uma situação em que o termo de erro é o mesmo para todos os valores de variáveis ​​independentes. Com homocedasticidade, não deve haver uma distribuição padrão clara de dados no gráfico de dispersão.
+
+-   **Erros normalmente distribuídos:** A regressão linear assume que o termo de erro deve seguir o padrão de distribuição normal. Se os termos de erro não forem normalmente distribuídos, os intervalos de confiança se tornarão muito amplos ou muito estreitos, o que pode causar dificuldades em encontrar coeficientes. Você pode obter algum benefício usando transformações (por exemplo, log ou BoxCox) em suas variáveis ​​para tornar sua distribuição mais gaussiana.
+
+-   **Multicolinearidade:** O modelo de regressão linear não assume nenhuma autocorrelação em termos de erro. Se houver alguma correlação no termo de erro, isso reduzirá drasticamente a precisão do modelo. A autocorrelação geralmente ocorre se houver uma dependência entre os erros residuais. Considere calcular correlações pareadas para seus dados de entrada e remover os mais correlacionados.
+
+    #### Modelo de Regressão logística
+
+
+
+
