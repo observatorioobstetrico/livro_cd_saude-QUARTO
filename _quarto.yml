@@ -17,6 +17,7 @@ book:
     - comecando_rstudio.qmd
     - comecando_r.qmd
     - manipulacao_dados.qmd
+    - tabulacao.qmd
     - references.qmd
 
 bibliography: references.bib
