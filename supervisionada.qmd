@@ -48,11 +48,7 @@ O sobreajustamento é um conceito que ocorre quando nosso modelo (não só um mo
 
 ##### Existem outras técnicas que podem ser utilizadas para evitar o sobreajustamento. Mas precisamos falar também sobre como detectá-los.
 
-Uma forma não técnica e que não deve ser a sua única forma de tentar identificar o sobreajustamento é por meio da visualização gráfica. A visualização gráfica pode ser usada apenas para levantar hipotéses, nunca para tomar uma decisão final. Até mesmo porque nem sempre é possível verificar esse problema visualmente. Vamos falar agora sobre a técnica mais utilizada para detectar sobreajustamento, a Validação Cruzada de k-Fold
-
-###### Validação Cruzada de k-Fold (k-Fold Cross-Validation)
-
--   Escrever
+Uma forma não técnica e que não deve ser a sua única forma de tentar identificar o sobreajustamento é por meio da visualização gráfica. A visualização gráfica pode ser usada apenas para levantar hipotéses, nunca para tomar uma decisão final. Até mesmo porque nem sempre é possível verificar esse problema visualmente. Tavelz a técnica mais eficiente para isso é a Validação Cruzada k-fold (k-fold Cross Validation). Valos falar sobre posteriormente.
 
 ##### Subajustamento dos dados (**Underfitting**)
 
@@ -63,7 +59,7 @@ Como pode ter imaginado, subajustamento é o oposto do sobreajustamto. Ocorre qu
 Já temos uma breve noção sobre o que é aprendizado supervisionado, agora vamos aprofundar um pouco dentro dos modelos. Como foi mencionado aprendizado supervisionado é usado principalmente para métodos de classificação e regressão. Modelo de regressão linear, como o próprio nome já diz, se enquadra nos métodos de regressão. A regressão consiste em modelar um valor de previsão com base em variáveis independentes. De forma mais geral, o modelo conquiste em fazer uma previsão "simples" calculando uma ponderação entre as somas dos recusrso de entrada e uma constante chamada intercepto. Assim, obtemos uma relação linear entre a variável de saída e as variáveis de entrada. A linha de regressão é a linha de melhor ajuste para o modelo
 
 $$
-\hat y = \theta_0 + \theta_1x_1 + \theta_2x_2 + ...+ \theta_nx_n
+\hat y = \beta_0 + \beta_1x_1 + \beta_2x_2 + ...+ \beta_nx_n
 $$
 
 onde:
@@ -74,9 +70,9 @@ onde:
 
 -   $x_i$ é a $i^{th}$ característica
 
--   $\theta_j$ é o $j^{th}$ parâmetro do modelo
+-   $\beta_j$ é o $j^{th}$ parâmetro do modelo
 
-Certo, temos uma definição matemática do nosso modelo, mas como posso treiná-lo? Treinar um modelo significa também definir os parâmetros para que o modelo se ajuste melhor aos meus dados. Em outras palavras, um modelo treinado irá se ajustar a melhor linha para prever o valor de $y$ para um dado valor de $x$. Assim, ao encontrar os melhores valores de $\theta 's$ obtemos a melhor linha de ajuste. Para isso, primeiro precisamos de uma medida de quão bem (ou mal) o modelo se ajusta aos meus dados. A medida mais comum usada em um modelo de regressão é a Raiz do Erro Quadrático Médio (REQM). Em resumo, o REQM é uma medida de quão espalhados estão esses resíduos. Ele avalia a diferença média quadrática entre os valores observados e previstos. Portanto, treinar um modelo consiste em encontrar os valores de $\theta's$ que irá minimizar o REQM.
+Certo, temos uma definição matemática do nosso modelo, mas como posso treiná-lo? Treinar um modelo significa também definir os parâmetros para que o modelo se ajuste melhor aos meus dados. Em outras palavras, um modelo treinado irá se ajustar a melhor linha para prever o valor de $y$ para um dado valor de $x$. Assim, ao encontrar os melhores valores de $\beta 's$ obtemos a melhor linha de ajuste. Para isso, primeiro precisamos de uma medida de quão bem (ou mal) o modelo se ajusta aos meus dados. A medida mais comum usada em um modelo de regressão é a Raiz do Erro Quadrático Médio (REQM). Em resumo, o REQM é uma medida de quão espalhados estão esses resíduos. Ele avalia a diferença média quadrática entre os valores observados e previstos. Portanto, treinar um modelo consiste em encontrar os valores de $\beta's$ que irá minimizar o REQM.
 
 $$
 REQM = \sqrt{\frac{1}{n}\sum_{i = 1}^{n}  (\hat y_i - y_i)^2}
@@ -92,4 +88,66 @@ Existem algumas suposições importantes quue devem ser feitas para utilizar um 
 
 -   **Multicolinearidade:** O modelo de regressão linear não assume nenhuma autocorrelação em termos de erro. Se houver alguma correlação no termo de erro, isso reduzirá drasticamente a precisão do modelo. A autocorrelação geralmente ocorre se houver uma dependência entre os erros residuais. Considere calcular correlações pareadas para seus dados de entrada e remover os mais correlacionados.
 
-    #### Modelo de Regressão logística
+#### Modelo de Regressão logística
+
+Alguns algoritmos de regressão podem ser usados para classificação (o contrário também é valido). A regressão logística é um dos algoritmos mais populares do machine leranrning e geralmente é usada para estimar a probabilidade de que uma instância pertença a uma classe. Por exemplo, qual a probalidade de que o objeto de uma imgagem seja um cachorro? ou um gato? neste caso, se a probabilidade estimada for maior que 50%, então o modelo pode prever que naquela imagem tem um cachorro (classe rotulada como "1"), se for menor, prevê que é um gato (classe rotulada como "0"). Este tipo de regressão pode retornar valores categóricos ou discretos, como: Sim ou Não, 0 ou 1, verdadeiro ou falso, entre outros. Mas aqui, ela fornece os valores probabilísticos que estão entre 0 e 1. Apresar de ser semelhante a regressão linear, aqui não ajustamos uma linha de regressão, mas sim uma função logistica em forma de "S" que prevê os dois valores máximos (0 ou 1).
+
+-   inserir imagem
+
+A equação de regressão Logística pode ser obtida a partir da equação de Regressão Linear.
+
+$$
+\hat y = \beta_0 + \beta_1x_1 + \beta_2x_2 + ...+ \beta_nx_n
+$$
+
+O problema de usar essa abordagem é que podemos prever probalidades negativas em alguns casos e valores maiores que 1 em outros. Essas previsões não são sensatas, pois sabemos que a verdadeira probabilidade deve ser um número entre 0 e 1. Para resolver esse problema, devemos modelar $\hat y$ usando uma função que fornceça saídas entre 0 e 1 para todos os valores de $\hat y$. Na regressão logística usamos a função logística como sendo:
+
+$$
+\hat y = \frac{e^{\beta_0+\beta_1X}}{1 + e^{\beta_0+\beta_1X}}
+$$
+
+Depois de algumas manipulações, chegamos que
+
+$$
+\frac{\hat y}{1- \hat y} = e^{\beta_0+\beta_1X}
+$$
+
+Mas precisamos variar de $-\infty$ até $\infty$, então pegue o logaritmo da equação e temos:
+
+$$
+\log\bigg[\frac{\hat y}{1- \hat y} \bigg ] = {\beta_0+\beta_1X}
+$$
+
+Existem alguns tipos de regressão logística:
+
+-   Binomial: Aqui deve haver apenas dois tipos de possível variáveis, como 0 ou 1, Falso ou Verdadeiro, etc.
+
+-   Multinomial: Pode também haver 3 ou mais tipos não ordenados possíveis da variável dependende, como, cachorro, gato ou tigre.
+
+-   Ordinal: Na regressão logística ordinal, pode haver 3 ou mais tipos ordenados possíveis de variáveis ​​dependentes, como "baixo", "médio" ou "alto".
+
+#### Validação Cruzada (Cross-Validation)
+
+Até aqui falamos um pouco sobre alguns problemas que podem ser encontrados no aprendizado de máquinas e superficialmente sobre dois modelos de regressão. Vamos falar agora sobre um método que é bem utilizado para validar a estabilidade do seu modelo. Como mencionamos anteriormente, não podemos simplismente ajustar um modelo aos meus dados de treino e esperar que ele funcione perfeitamente, ou até mesmo esperar que aquele seja o melhor modelo possível ser fazer nenhuma validação. Falamos um pouco sobre isso quando discutimos sobre sobreajustamento e subajustamento. Então, vamos nos aprofundar sobre um método que nos garanta que o nosso modelo obteve a maioria dos padrões dos dados corretos sem captar muitos ruídos.
+
+##### O que é validação cruzada? 
+
+Validação cruzada é uma técnica para avaliar um modelo de aprendizado de máquina e tester o seu desempenho. Pode ajudar a comparar e selecionar um modelo mais apropriado para o nosso problema. É bem fácil de entender, de implementar e tende a ter um viés menor do que outros métodos usados para o mesmo objetivo. Por isso é uma ferramenta tão utilizada. Tanto a vaildação cruzada quanto outros algoritmos funcionam de maneira semelhantes, consistem em: divider o conjunto de dados em treino e teste; treinar o modelo no conjunto treino; validar o modelo no conjunto teste e repetir as etapas anteriores algumas vezes. Dentro da validação cruzada existem diversas técnicas onde umas são mais utilizadas. Já mencionamos anteriormente o método **k-fold,** mas exite também os métodos, **hold-out**, **leave-p-out**, **k-fold stratified**, entre outros. Vamos falar sobre alguns deles.
+
+-   **Hold-Out Cross Validation:** Está é a tecnica mais simples e comum. Ele consiste em remover uma parte dos dados de treinamento e usá-la para obter previsões do modelo treinado no restante dos dados. A estimativa de erro informa como nosso modelo está se saindo em dados não vistos ou no conjunto de vailidação. A implementação é extremamente fácil e existem pacotes que podem ajudar nisso. Mas apesar disto, esse método tem um grande desvantagem. Se estivermos trabalhando com um conjunto de dados que não é completamente uniforme, podemos acabar em uma situação difícil após a separação. O conjunto de treino pode não representar muito bem o conjunto de teste, ou seja, os conjuntos podem ser bem diferentes, onde um é mais fácil do que o outro.
+
+-   **K-Fold Cross Validation:** O K-Fold pode se apresentar como um técnica que minimiza a desvantagens do método Hold-Out apresentando uma nova maneira de difidir o banco de dados. Neste método os dados são divididos em k subconjuntos (daí o nome). O método de validação é repetido k vezes, onde, a cade vez, um dos k subconjuntos é usado como conjunto de teste e os outros k-1 conjuntos são unidos para formar o conjunto de treinamento. A estimativa de erro é a média de todas as k tentativas. Como cada ponto de dados chega a um conjunto de validação exatamente uma vez e a um conjunto de treinamento k-1 vezes, isso reduz significativamente o viés. Como "regra geral", k=5 ou k=10 é escolhido, mas não existe nada fixo. Comparando diretamente ao método Hold-Out, o método K-Fold tende a ser melhor, mas também possui uma desvantagem. Aumentar o k resulta no treinamento de mais modelos e o processo de treinamento pode ser custoso e demorado.
+
+-   **Leave-P-Out Cross Validation:** Este método consiste em criar todos os conjuntos de treinamento e testes possíveis usando **p** amostras como conjunto de teste. Em outras palavras, deixa **p** pontos de dados fora dos dados de treino, ou seja, se houver n pontos de dados na amostra original, np amostras são usadas para treinar o modelo p pontos são usadas como conjunto teste. Como pode imaginar, este método e extremamente exaustivo, tento em vista que é preciso validar o modelo para todas as comibanções possíveis e para um **p** demasiadamente grande, pode ser computacionalmente inviável.
+
+O método de validação cruzada também pode nos ajudar a ajustar **hiperparâmetros,** falaremos sobre isso posteriormente.
+
+#### Precisão vs intrerpretabilidade 
+
+Até aqui, discutimos muito sobre métodos para obter modelos precisos, com desempenhos ótimos. Obter um modelo que irá prever com excelência um evento em dados não é visto como um modelo valioso, mas, onde entra a interpretabilidade?
+
+a interpretabilidade fornece informações sobre o relacionamento entre as entradas e a saída de um modelo. Um modelo que pode ser interpretado permite responder perguntas sobre por que os recursos independentes predizer aquele atributo dependente. Por exemplo: Um modelo extremamente preciso preciso pode permitir que eu saiba quais os meus clientes "podem" receber créditos ou não, mas se ele não for interpretável, eu nunca saberei o porque. Pense no cenário da saúde, onde eu tenho diversas informações sobre paciêntes e meu modelo pode predizer precisamente quais tem mais probalidade de ser diagnosticado com um doença. Mas já pensou em qual importante é saber quais fatores influênciam isso? porque aquele paciente é mais provável de ser diagnostico com tal doença em relação a outro. Em diversos cenários a interpretabilidade torna-se indispensável dentro dos modelos. A depender do cenário, a interpretabilidade é mais importante que a precisão e vice-versa.
+
+Saber qual priorizar vai depender muito do cenário em que se encontra. Normalmente a escolha de um determinado algoritmo em detrimento de outro e como a seleção do algoritmo está relacionada ao caso de uso que estamos tentando resolver e ao objetivo de negócios que queremos alcançar. Um modelo com menos parâmetros é mais fácil de interpretar. Isso é intuitivo. Um modelo de regressão linear tem um coeficiente por recurso de entrada e um termo de interceptação. Por exemplo, você pode examinar cada termo e entender como eles contribuem para a saída. Uma árvore de decisões (falaremos mais sobre elas) também costuma ser de fácil interpretação, mas mesmo modelos considerados "interpretáveis" podem se tornar rapidamente não interpretáveis.
+
+
