@@ -14,6 +14,7 @@ book:
     - intro.qmd
     - manipulacao_dados.qmd
     - tabulacao.qmd
+    - supervisionada.qmd
   appendices: 
     - href: tutorialr.qmd
       text: Tutorial de R

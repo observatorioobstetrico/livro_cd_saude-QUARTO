@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.237">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Ciência de Dados Aplicada à Saúde Materno-Infantil - 4&nbsp; Aprendizado supervisionado</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./tutorialr.html" rel="next">
+<link href="./tabulacao.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Ciência de Dados Aplicada à Saúde Materno-Infantil</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Prefácio</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">Sumário</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./manipulacao_dados.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Manipulação de dados</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tabulacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tabulação de dados</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./supervisionada.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Apêndices</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorialr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Tutorial de R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./instalar.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Instalação R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./instalarstudio.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Instalação RStudio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./comecando_rstudio.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Primeiros passos RStudio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./comecando_r.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Primeiros passos R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">Referências</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#machine-learning" id="toc-machine-learning" class="nav-link active" data-scroll-target="#machine-learning"><span class="toc-section-number">4.0.1</span>  Machine learning</a></li>
+  <li><a href="#aprendizado-supervisionado-conceitos-iniciais" id="toc-aprendizado-supervisionado-conceitos-iniciais" class="nav-link" data-scroll-target="#aprendizado-supervisionado-conceitos-iniciais"><span class="toc-section-number">4.0.2</span>  Aprendizado supervisionado (conceitos iniciais)</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Tópicos:</p>
+<ul>
+<li><p>conceitos iniciais</p></li>
+<li><p>algoritmos supervisionados</p></li>
+<li><p>aplicações e interpretabilidade</p></li>
+</ul>
+<section id="machine-learning" class="level3" data-number="4.0.1">
+<h3 data-number="4.0.1" class="anchored" data-anchor-id="machine-learning"><span class="header-section-number">4.0.1</span> Machine learning</h3>
+<ul>
+<li><p>falar sobre ml</p></li>
+<li><p>mecionar um pouco sobre Aprendizado supervisionado VS não supervisionado</p></li>
+<li><p>“neste capítulo vamos falar sobre aprendizado supervisionado</p></li>
+</ul>
+</section>
+<section id="aprendizado-supervisionado-conceitos-iniciais" class="level3" data-number="4.0.2">
+<h3 data-number="4.0.2" class="anchored" data-anchor-id="aprendizado-supervisionado-conceitos-iniciais"><span class="header-section-number">4.0.2</span> Aprendizado supervisionado (conceitos iniciais)</h3>
+<p>Aprendizado supervisionado pode ser definido como a tarefa de aprender uma função que mapeia uma entrada em uma saída e isso é feito com base em exemplos e treinos. Em outras palavras, uma máquina é treinada para encontrar soluções chamadas rótulos, onde esses rótulos identificam alguma característica. Apesar de também poder ser usada para regressão, o aprendizado supervisionado tem como tafera típica a classificação. Um exemplo bem simples de classificação é: suponha que eu queira classificar imagens de animais, nesse caso possuo um banco de dados com imagens de cachorros e gatos. Quero que meu algoritmo classifique as imagens identificando o tipo do animal na imagem. Para isso o algoritmo é treinado utilizando vários exemplos para que ele consiga classificar novas imagens posteriormente. Outra tafera é predizer um valor com base em características, por exemplo, prever o valor de um carro dado um conjunto de características (quilometragem, idade, marca, etc.) chamadas preditores. Este tipo de tarefa é chamada regressão. Para treinar o sistema é preciso incluir diversos exemplos, assim o banco de dado é separado em treino e teste, onde o é feito o treinamento na base treino para posteriormente serem feitos os testes de predição e avaliação da qualidade do ajuste na base teste.</p>
+<section id="dificuldades-gerais-do-machine-learnig" class="level4" data-number="4.0.2.1">
+<h4 data-number="4.0.2.1" class="anchored" data-anchor-id="dificuldades-gerais-do-machine-learnig"><span class="header-section-number">4.0.2.1</span> Dificuldades gerais do machine learnig</h4>
+<p>Como dito ateriormente, a idéia geral do aprendizado de máquina é contruir um algorito para solucionar os meus problemas, onde esse algoritmo será treinado com dados. Mas, o que acontece se o meu algorito for ruim ou os dados serem ruins.</p>
+<section id="quantidade-insuficiente-de-dados" class="level5" data-number="4.0.2.1.1">
+<h5 data-number="4.0.2.1.1" class="anchored" data-anchor-id="quantidade-insuficiente-de-dados"><span class="header-section-number">4.0.2.1.1</span> Quantidade insuficiente de dados</h5>
+<p>Falando sobre dados ruins, o primeiro problema é a quantidade de dados. Já parou pra pensar em quão difícil é treinar uma máquina? voltando no exemplo anterior, para você aprender a diferenciar um cachorro de um gato quando era criança, bastou alguém lhe apontar qual era qual algumas vezes e você se tornou capaz de diferenciar cães de gatos independente das caracteristicas. Uma máquina não consegue fazer isso fácilmente, é necessário uma quantidade grande de dados para a maioria dos algoritmos, até mesmo para problemas simples como o do exemplo citado e para problemas complexos, como reconhecimento de imagem ou fala você pode precisar de milhões de exemplos.</p>
+</section>
+<section id="dados-de-treino-não-representativos" class="level5" data-number="4.0.2.1.2">
+<h5 data-number="4.0.2.1.2" class="anchored" data-anchor-id="dados-de-treino-não-representativos"><span class="header-section-number">4.0.2.1.2</span> Dados de treino não representativos</h5>
+<p>Como mencionado anteriormente, o treinamento de um algoritmo é feito por meio de uma base de dados, onde está é separada em dados de treinamento e de teste, para que eu possa usá-lo e generalizá-lo em dados futuros. Dados de treinamento que não representem bem os dados que serão uzados no futuro podem um modelo que não funcionará bem. Utilizando o exemplo do algoritmo de regressão onde o objetivo era prever os valores dos carros com base em suas características. Digamos que meu algoritmo foi treinado com uma da base de dados de carros apenas do estado de São Paulo, mas meu algoritmo será utilizado para prever carros de todo o país, pode ser que não funcione tão bem. O estados podem alterar significamente os preços dos carros por meio de impostos por exemplo. É de extrema importância utilizar um conjunto de dados de treino que represente bem os dados que você deseja generalizar. Isso pode não ser uma tarefa fácil, pode encontrar problemas com amostras, principalmente se ela for muito pequena e até mesmo uma amostra grande pode não ser representativa.</p>
+</section>
+<section id="qualidade-dos-dados" class="level5" data-number="4.0.2.1.3">
+<h5 data-number="4.0.2.1.3" class="anchored" data-anchor-id="qualidade-dos-dados"><span class="header-section-number">4.0.2.1.3</span> Qualidade dos dados</h5>
+<p>Como pode ter imaginado, a qualidade dos dados também é de extrema importância. Dados com discrenpâncias, vários erros, e gerados a partir de medições de baixa qualidade fará com que fique mais difícil o seu algoritmo identificar padrões e tomar decisões. Se você convive com pessoas do ramo da ciência de dados em geral, é bem provável que ja tenha ouvido alguém dizer algo o tipo: “gastamos a maior parte do nosso tempo para limpar os dados”. Isso não é em vão. Na maioria dos casos, principalmente no ramo de aprendizagem de máquinas é gasto um enorme tempo para limpar os dados pois pode influênciar muito na qualidade do modelo. Por exemplo, se algumas informações forem muito discrepantes, é preciso decidir entre tentar corrigir ou excluí-las. Se uma variável tiver uma quantidade significativa de valores faltantes, deverá ser decidido se essas observações serão excluídas ou se será possível utilizar métodos de imputação de dados. Treinar mais de um modelo com diferentes decisões tomadas sobre os dados também pode ser efetivo.</p>
+</section>
+<section id="sobreajustamento-dos-dados-overfitting" class="level5" data-number="4.0.2.1.4">
+<h5 data-number="4.0.2.1.4" class="anchored" data-anchor-id="sobreajustamento-dos-dados-overfitting"><span class="header-section-number">4.0.2.1.4</span> Sobreajustamento dos dados (<strong>Overfitting</strong>)</h5>
+<p>O sobreajustamento é um conceito que ocorre quando nosso modelo (não só um modelo de aprendizado de máquinas), se ajusta exatamento aos nossos dados de treinamento. Ouvir isso uma primeira vez pode parecer excelente, ou até mesmo o cenário ideal, afinal, queremos que o nosso modelo se ajuste o máximo possível, certo? bom.. não exatamente. O que acontece neste caso, é que o modelo mostra-se adequado <strong>apenas para os dados de treino</strong>, como se o modelo tivesse apenas decorado os dados de treino e não fosse capaz de generalizar para outros dados nunca vistos antes. Assim, o desempenho do nosso modelo quando usado em novos dados cai drasticamente. Algumas razões que podem levar a um sobreajustamento: base de treino muito pequena, não contendo dados suficientes para representar bem todos valores de entrada possíveis; grande quantidade de informações irrelevantes (dados ruidosos); treinamento excessivo em um único conjunto de amostra; modelo muito complexo, fazendo com que ele aprenda os ruídos nos dados de treinamento. Agora que sabemos o problema que é um sobreajustamento e as razões que podem levar a isso, precisamos falar sobre como evitar que isso aconteça. Existem algumas tecnicas comumente utilizadas.</p>
+<ul>
+<li><p><strong>Regularização:</strong> Foi dito anteriormente que uma razão para o sobreajustamento é a complexidade do modelo, então, faz sentido diminuírmos sua complexidade. Isso pode ser feito removendo ou dimuindo o número de parâmetros.</p></li>
+<li><p><strong>Parada antecipada:</strong> Quando um modelo está sendo treinado por radadas de repetição, é possível avaliar cara uma dessa repetição. Nomermalmente o desempenho de um modelo melhora a cada repetição, mas chega um momento em que começa a acontecer o sobreajustamento. A ideia da parada antecipada é pausar o treinamento anter que chegue a esse ponto.</p></li>
+<li><p><strong>Aumento de dados:</strong> Essa técnica consiste em aumentar ligeiramente os dados da amostra toda vez que o modelo os processa, ou seja, injevar dados limpos e relevantes nos dados de treino. Isso faz com que os conjuntos de treino pareçam “exclusivos” do modelo, impedindo que ele aprenda suas características. Mas isso deve ser feito com moderação, pode injetar dados que não estão limpos pode fazer mais mal do que bem. Além disso, não é um método garantido.</p></li>
+</ul>
+</section>
+<section id="existem-outras-técnicas-que-podem-ser-utilizadas-para-evitar-o-sobreajustamento.-mas-precisamos-falar-também-sobre-como-detectá-los." class="level5" data-number="4.0.2.1.5">
+<h5 data-number="4.0.2.1.5" class="anchored" data-anchor-id="existem-outras-técnicas-que-podem-ser-utilizadas-para-evitar-o-sobreajustamento.-mas-precisamos-falar-também-sobre-como-detectá-los."><span class="header-section-number">4.0.2.1.5</span> Existem outras técnicas que podem ser utilizadas para evitar o sobreajustamento. Mas precisamos falar também sobre como detectá-los.</h5>
+<p>Uma forma não técnica e que não deve ser a sua única forma de tentar identificar o sobreajustamento é por meio da visualização gráfica. A visualização gráfica pode ser usada apenas para levantar hipotéses, nunca para tomar uma decisão final. Até mesmo porque nem sempre é possível verificar esse problema visualmente. Tavelz a técnica mais eficiente para isso é a Validação Cruzada k-fold (k-fold Cross Validation). Valos falar sobre posteriormente.</p>
+</section>
+<section id="subajustamento-dos-dados-underfitting" class="level5" data-number="4.0.2.1.6">
+<h5 data-number="4.0.2.1.6" class="anchored" data-anchor-id="subajustamento-dos-dados-underfitting"><span class="header-section-number">4.0.2.1.6</span> Subajustamento dos dados (<strong>Underfitting</strong>)</h5>
+<p>Como pode ter imaginado, subajustamento é o oposto do sobreajustamto. Ocorre quando seu modelo é muito simples para aprender a estrutura dos dados. O subjastumento leva à um erro elevado tanto nos dados detreino quanto nos dados de teste. Pode ocorrer quando o modelo não foi treinado por tempo suficiente ou as variáveis ​​de entrada não são significativas o suficiente para determinar uma relação significativa entre as variáveis ​​de entrada e saída. Aqui também estamos em um cenário a ser evitado e apesar de ser contrário ao sobreajustamento, as téncias tanto para identificar quanto para evitar o problema são semelhantes. Um adendo, geralmente, identificar um subajustamento é mais fácil que identificar um sobreajustamento.</p>
+</section>
+</section>
+<section id="modelo-de-regressão-linear" class="level4" data-number="4.0.2.2">
+<h4 data-number="4.0.2.2" class="anchored" data-anchor-id="modelo-de-regressão-linear"><span class="header-section-number">4.0.2.2</span> Modelo de Regressão Linear</h4>
+<p>Já temos uma breve noção sobre o que é aprendizado supervisionado, agora vamos aprofundar um pouco dentro dos modelos. Como foi mencionado aprendizado supervisionado é usado principalmente para métodos de classificação e regressão. Modelo de regressão linear, como o próprio nome já diz, se enquadra nos métodos de regressão. A regressão consiste em modelar um valor de previsão com base em variáveis independentes. De forma mais geral, o modelo conquiste em fazer uma previsão “simples” calculando uma ponderação entre as somas dos recusrso de entrada e uma constante chamada intercepto. Assim, obtemos uma relação linear entre a variável de saída e as variáveis de entrada. A linha de regressão é a linha de melhor ajuste para o modelo</p>
+<p><span class="math display">\[
+\hat y = \beta_0 + \beta_1x_1 + \beta_2x_2 + ...+ \beta_nx_n
+\]</span></p>
+<p>onde:</p>
+<ul>
+<li><p><span class="math inline">\(\hat y\)</span> é o valor predito</p></li>
+<li><p><span class="math inline">\(n\)</span> o número de características</p></li>
+<li><p><span class="math inline">\(x_i\)</span> é a <span class="math inline">\(i^{th}\)</span> característica</p></li>
+<li><p><span class="math inline">\(\beta_j\)</span> é o <span class="math inline">\(j^{th}\)</span> parâmetro do modelo</p></li>
+</ul>
+<p>Certo, temos uma definição matemática do nosso modelo, mas como posso treiná-lo? Treinar um modelo significa também definir os parâmetros para que o modelo se ajuste melhor aos meus dados. Em outras palavras, um modelo treinado irá se ajustar a melhor linha para prever o valor de <span class="math inline">\(y\)</span> para um dado valor de <span class="math inline">\(x\)</span>. Assim, ao encontrar os melhores valores de <span class="math inline">\(\beta 's\)</span> obtemos a melhor linha de ajuste. Para isso, primeiro precisamos de uma medida de quão bem (ou mal) o modelo se ajusta aos meus dados. A medida mais comum usada em um modelo de regressão é a Raiz do Erro Quadrático Médio (REQM). Em resumo, o REQM é uma medida de quão espalhados estão esses resíduos. Ele avalia a diferença média quadrática entre os valores observados e previstos. Portanto, treinar um modelo consiste em encontrar os valores de <span class="math inline">\(\beta's\)</span> que irá minimizar o REQM.</p>
+<p><span class="math display">\[
+REQM = \sqrt{\frac{1}{n}\sum_{i = 1}^{n}  (\hat y_i - y_i)^2}
+\]</span></p>
+<p>Existem algumas suposições importantes quue devem ser feitas para utilizar um modelo de regressão linear. Estas são algumas verificações formais durante a construção de um modelo de regressão linear, o que garante a obtenção do melhor resultado possível do conjunto de dados fornecido.</p>
+<ul>
+<li><p><strong>Suposição de linearidade:</strong> A regressão linear assume que a relação entre a entrada e saída é linear. Pode parecer um pouco óbvio, mas em alguns casos onde, em um primeiro olhar, faça sentido usar uma regressão linar, nossos dados não permitam isso. Pode ser necessário transformar os dados.</p></li>
+<li><p><strong>Homocedasticidade:</strong> Homocedasticidade é uma situação em que o termo de erro é o mesmo para todos os valores de variáveis ​​independentes. Com homocedasticidade, não deve haver uma distribuição padrão clara de dados no gráfico de dispersão.</p></li>
+<li><p><strong>Erros normalmente distribuídos:</strong> A regressão linear assume que o termo de erro deve seguir o padrão de distribuição normal. Se os termos de erro não forem normalmente distribuídos, os intervalos de confiança se tornarão muito amplos ou muito estreitos, o que pode causar dificuldades em encontrar coeficientes. Você pode obter algum benefício usando transformações (por exemplo, log ou BoxCox) em suas variáveis ​​para tornar sua distribuição mais gaussiana.</p></li>
+<li><p><strong>Multicolinearidade:</strong> O modelo de regressão linear não assume nenhuma autocorrelação em termos de erro. Se houver alguma correlação no termo de erro, isso reduzirá drasticamente a precisão do modelo. A autocorrelação geralmente ocorre se houver uma dependência entre os erros residuais. Considere calcular correlações pareadas para seus dados de entrada e remover os mais correlacionados.</p></li>
+</ul>
+</section>
+<section id="modelo-de-regressão-logística" class="level4" data-number="4.0.2.3">
+<h4 data-number="4.0.2.3" class="anchored" data-anchor-id="modelo-de-regressão-logística"><span class="header-section-number">4.0.2.3</span> Modelo de Regressão logística</h4>
+<p>Alguns algoritmos de regressão podem ser usados para classificação (o contrário também é valido). A regressão logística é um dos algoritmos mais populares do machine leranrning e geralmente é usada para estimar a probabilidade de que uma instância pertença a uma classe. Por exemplo, qual a probalidade de que o objeto de uma imgagem seja um cachorro? ou um gato? neste caso, se a probabilidade estimada for maior que 50%, então o modelo pode prever que naquela imagem tem um cachorro (classe rotulada como “1”), se for menor, prevê que é um gato (classe rotulada como “0”). Este tipo de regressão pode retornar valores categóricos ou discretos, como: Sim ou Não, 0 ou 1, verdadeiro ou falso, entre outros. Mas aqui, ela fornece os valores probabilísticos que estão entre 0 e 1. Apresar de ser semelhante a regressão linear, aqui não ajustamos uma linha de regressão, mas sim uma função logistica em forma de “S” que prevê os dois valores máximos (0 ou 1).</p>
+<ul>
+<li>inserir imagem</li>
+</ul>
+<p>A equação de regressão Logística pode ser obtida a partir da equação de Regressão Linear.</p>
+<p><span class="math display">\[
+\hat y = \beta_0 + \beta_1x_1 + \beta_2x_2 + ...+ \beta_nx_n
+\]</span></p>
+<p>O problema de usar essa abordagem é que podemos prever probalidades negativas em alguns casos e valores maiores que 1 em outros. Essas previsões não são sensatas, pois sabemos que a verdadeira probabilidade deve ser um número entre 0 e 1. Para resolver esse problema, devemos modelar <span class="math inline">\(\hat y\)</span> usando uma função que fornceça saídas entre 0 e 1 para todos os valores de <span class="math inline">\(\hat y\)</span>. Na regressão logística usamos a função logística como sendo:</p>
+<p><span class="math display">\[
+\hat y = \frac{e^{\beta_0+\beta_1X}}{1 + e^{\beta_0+\beta_1X}}
+\]</span></p>
+<p>Depois de algumas manipulações, chegamos que</p>
+<p><span class="math display">\[
+\frac{\hat y}{1- \hat y} = e^{\beta_0+\beta_1X}
+\]</span></p>
+<p>Mas precisamos variar de <span class="math inline">\(-\infty\)</span> até <span class="math inline">\(\infty\)</span>, então pegue o logaritmo da equação e temos:</p>
+<p><span class="math display">\[
+\log\bigg[\frac{\hat y}{1- \hat y} \bigg ] = {\beta_0+\beta_1X}
+\]</span></p>
+<p>Existem alguns tipos de regressão logística:</p>
+<ul>
+<li><p>Binomial: Aqui deve haver apenas dois tipos de possível variáveis, como 0 ou 1, Falso ou Verdadeiro, etc.</p></li>
+<li><p>Multinomial: Pode também haver 3 ou mais tipos não ordenados possíveis da variável dependende, como, cachorro, gato ou tigre.</p></li>
+<li><p>Ordinal: Na regressão logística ordinal, pode haver 3 ou mais tipos ordenados possíveis de variáveis ​​dependentes, como “baixo”, “médio” ou “alto”.</p></li>
+</ul>
+</section>
+<section id="validação-cruzada-cross-validation" class="level4" data-number="4.0.2.4">
+<h4 data-number="4.0.2.4" class="anchored" data-anchor-id="validação-cruzada-cross-validation"><span class="header-section-number">4.0.2.4</span> Validação Cruzada (Cross-Validation)</h4>
+<p>Até aqui falamos um pouco sobre alguns problemas que podem ser encontrados no aprendizado de máquinas e superficialmente sobre dois modelos de regressão. Vamos falar agora sobre um método que é bem utilizado para validar a estabilidade do seu modelo. Como mencionamos anteriormente, não podemos simplismente ajustar um modelo aos meus dados de treino e esperar que ele funcione perfeitamente, ou até mesmo esperar que aquele seja o melhor modelo possível ser fazer nenhuma validação. Falamos um pouco sobre isso quando discutimos sobre sobreajustamento e subajustamento. Então, vamos nos aprofundar sobre um método que nos garanta que o nosso modelo obteve a maioria dos padrões dos dados corretos sem captar muitos ruídos.</p>
+<section id="o-que-é-validação-cruzada" class="level5" data-number="4.0.2.4.1">
+<h5 data-number="4.0.2.4.1" class="anchored" data-anchor-id="o-que-é-validação-cruzada"><span class="header-section-number">4.0.2.4.1</span> O que é validação cruzada?</h5>
+<p>Validação cruzada é uma técnica para avaliar um modelo de aprendizado de máquina e tester o seu desempenho. Pode ajudar a comparar e selecionar um modelo mais apropriado para o nosso problema. É bem fácil de entender, de implementar e tende a ter um viés menor do que outros métodos usados para o mesmo objetivo. Por isso é uma ferramenta tão utilizada. Tanto a vaildação cruzada quanto outros algoritmos funcionam de maneira semelhantes, consistem em: divider o conjunto de dados em treino e teste; treinar o modelo no conjunto treino; validar o modelo no conjunto teste e repetir as etapas anteriores algumas vezes. Dentro da validação cruzada existem diversas técnicas onde umas são mais utilizadas. Já mencionamos anteriormente o método <strong>k-fold,</strong> mas exite também os métodos, <strong>hold-out</strong>, <strong>leave-p-out</strong>, <strong>k-fold stratified</strong>, entre outros. Vamos falar sobre alguns deles.</p>
+<ul>
+<li><p><strong>Hold-Out Cross Validation:</strong> Está é a tecnica mais simples e comum. Ele consiste em remover uma parte dos dados de treinamento e usá-la para obter previsões do modelo treinado no restante dos dados. A estimativa de erro informa como nosso modelo está se saindo em dados não vistos ou no conjunto de vailidação. A implementação é extremamente fácil e existem pacotes que podem ajudar nisso. Mas apesar disto, esse método tem um grande desvantagem. Se estivermos trabalhando com um conjunto de dados que não é completamente uniforme, podemos acabar em uma situação difícil após a separação. O conjunto de treino pode não representar muito bem o conjunto de teste, ou seja, os conjuntos podem ser bem diferentes, onde um é mais fácil do que o outro.</p></li>
+<li><p><strong>K-Fold Cross Validation:</strong> O K-Fold pode se apresentar como um técnica que minimiza a desvantagens do método Hold-Out apresentando uma nova maneira de difidir o banco de dados. Neste método os dados são divididos em k subconjuntos (daí o nome). O método de validação é repetido k vezes, onde, a cade vez, um dos k subconjuntos é usado como conjunto de teste e os outros k-1 conjuntos são unidos para formar o conjunto de treinamento. A estimativa de erro é a média de todas as k tentativas. Como cada ponto de dados chega a um conjunto de validação exatamente uma vez e a um conjunto de treinamento k-1 vezes, isso reduz significativamente o viés. Como “regra geral”, k=5 ou k=10 é escolhido, mas não existe nada fixo. Comparando diretamente ao método Hold-Out, o método K-Fold tende a ser melhor, mas também possui uma desvantagem. Aumentar o k resulta no treinamento de mais modelos e o processo de treinamento pode ser custoso e demorado.</p></li>
+<li><p><strong>Leave-P-Out Cross Validation:</strong> Este método consiste em criar todos os conjuntos de treinamento e testes possíveis usando <strong>p</strong> amostras como conjunto de teste. Em outras palavras, deixa <strong>p</strong> pontos de dados fora dos dados de treino, ou seja, se houver n pontos de dados na amostra original, np amostras são usadas para treinar o modelo p pontos são usadas como conjunto teste. Como pode imaginar, este método e extremamente exaustivo, tento em vista que é preciso validar o modelo para todas as comibanções possíveis e para um <strong>p</strong> demasiadamente grande, pode ser computacionalmente inviável.</p></li>
+</ul>
+<p>O método de validação cruzada também pode nos ajudar a ajustar <strong>hiperparâmetros,</strong> falaremos sobre isso posteriormente.</p>
+</section>
+</section>
+<section id="precisão-vs-intrerpretabilidade" class="level4" data-number="4.0.2.5">
+<h4 data-number="4.0.2.5" class="anchored" data-anchor-id="precisão-vs-intrerpretabilidade"><span class="header-section-number">4.0.2.5</span> Precisão vs intrerpretabilidade</h4>
+<p>Até aqui, discutimos muito sobre métodos para obter modelos precisos, com desempenhos ótimos. Obter um modelo que irá prever com excelência um evento em dados não é visto como um modelo valioso, mas, onde entra a interpretabilidade?</p>
+<p>a interpretabilidade fornece informações sobre o relacionamento entre as entradas e a saída de um modelo. Um modelo que pode ser interpretado permite responder perguntas sobre por que os recursos independentes predizer aquele atributo dependente. Por exemplo: Um modelo extremamente preciso preciso pode permitir que eu saiba quais os meus clientes “podem” receber créditos ou não, mas se ele não for interpretável, eu nunca saberei o porque. Pense no cenário da saúde, onde eu tenho diversas informações sobre paciêntes e meu modelo pode predizer precisamente quais tem mais probalidade de ser diagnosticado com um doença. Mas já pensou em qual importante é saber quais fatores influênciam isso? porque aquele paciente é mais provável de ser diagnostico com tal doença em relação a outro. Em diversos cenários a interpretabilidade torna-se indispensável dentro dos modelos. A depender do cenário, a interpretabilidade é mais importante que a precisão e vice-versa.</p>
+<p>Saber qual priorizar vai depender muito do cenário em que se encontra. Normalmente a escolha de um determinado algoritmo em detrimento de outro e como a seleção do algoritmo está relacionada ao caso de uso que estamos tentando resolver e ao objetivo de negócios que queremos alcançar. Um modelo com menos parâmetros é mais fácil de interpretar. Isso é intuitivo. Um modelo de regressão linear tem um coeficiente por recurso de entrada e um termo de interceptação. Por exemplo, você pode examinar cada termo e entender como eles contribuem para a saída. Uma árvore de decisões (falaremos mais sobre elas) também costuma ser de fácil interpretação, mas mesmo modelos considerados “interpretáveis” podem se tornar rapidamente não interpretáveis.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiada");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiada");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./tabulacao.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tabulação de dados</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./tutorialr.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Tutorial de R</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
