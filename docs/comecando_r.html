@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.2.237">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Ciência de Dados Aplicada à Saúde Materno-Infantil - 5&nbsp; Primeiros passos no R</title>
+<title>Ciência de Dados Aplicada à Saúde Materno-Infantil - Appendix E — Primeiros passos no R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -93,7 +93,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./manipulacao_dados.html" rel="next">
+<link href="./references.html" rel="next">
 <link href="./comecando_rstudio.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -112,15 +112,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   "type": "textbox",
   "limit": 20,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar"
   }
 }</script>
 
@@ -133,7 +133,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Primeiros passos no R</span></h1>
+      <h1 class="quarto-secondary-nav-title">Appendix E — Primeiros passos no R</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -173,75 +173,85 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorialr.html" class="sidebar-item-text sidebar-link">Tutorial de R</a>
+  <a href="./manipulacao_dados.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Manipulação de dados</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./instalar.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Instalação R</span></a>
+  <a href="./tabulacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tabulação de dados</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Apêndices</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./instalarstudio.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Instalação RStudio</span></a>
+  <a href="./tutorialr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Tutorial de R</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./comecando_rstudio.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Primeiros passos no RStudio</span></a>
+  <a href="./instalar.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Instalação R</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./comecando_r.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Primeiros passos no R</span></a>
+  <a href="./instalarstudio.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Instalação RStudio</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./manipulacao_dados.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Manipulação de dados</span></a>
+  <a href="./comecando_rstudio.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Primeiros passos RStudio</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tabulacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Tabulação de dados</span></a>
+  <a href="./comecando_r.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Primeiros passos R</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">Referências</a>
   </div>
 </li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+    <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#r-como-calculadora" id="toc-r-como-calculadora" class="nav-link active" data-scroll-target="#r-como-calculadora"><span class="toc-section-number">5.1</span>  R como calculadora</a></li>
-  <li><a href="#atribuição" id="toc-atribuição" class="nav-link" data-scroll-target="#atribuição"><span class="toc-section-number">5.2</span>  Atribuição</a></li>
-  <li><a href="#objetos-em-r" id="toc-objetos-em-r" class="nav-link" data-scroll-target="#objetos-em-r"><span class="toc-section-number">5.3</span>  Objetos em R</a>
+  <li><a href="#r-como-calculadora" id="toc-r-como-calculadora" class="nav-link active" data-scroll-target="#r-como-calculadora"><span class="toc-section-number">E.1</span>  R como calculadora</a></li>
+  <li><a href="#atribuição" id="toc-atribuição" class="nav-link" data-scroll-target="#atribuição"><span class="toc-section-number">E.2</span>  Atribuição</a></li>
+  <li><a href="#objetos-em-r" id="toc-objetos-em-r" class="nav-link" data-scroll-target="#objetos-em-r"><span class="toc-section-number">E.3</span>  Objetos em R</a>
   <ul class="collapse">
-  <li><a href="#apagar-objetos" id="toc-apagar-objetos" class="nav-link" data-scroll-target="#apagar-objetos"><span class="toc-section-number">5.3.1</span>  Apagar objetos</a></li>
+  <li><a href="#apagar-objetos" id="toc-apagar-objetos" class="nav-link" data-scroll-target="#apagar-objetos"><span class="toc-section-number">E.3.1</span>  Apagar objetos</a></li>
   </ul></li>
-  <li><a href="#vetores" id="toc-vetores" class="nav-link" data-scroll-target="#vetores"><span class="toc-section-number">5.4</span>  Vetores</a></li>
-  <li><a href="#matrizes" id="toc-matrizes" class="nav-link" data-scroll-target="#matrizes"><span class="toc-section-number">5.5</span>  Matrizes</a></li>
-  <li><a href="#fatores" id="toc-fatores" class="nav-link" data-scroll-target="#fatores"><span class="toc-section-number">5.6</span>  Fatores</a></li>
-  <li><a href="#data-frame" id="toc-data-frame" class="nav-link" data-scroll-target="#data-frame"><span class="toc-section-number">5.7</span>  Data frame</a></li>
-  <li><a href="#operadores-lógicos" id="toc-operadores-lógicos" class="nav-link" data-scroll-target="#operadores-lógicos"><span class="toc-section-number">5.8</span>  Operadores lógicos</a></li>
-  <li><a href="#dados-faltantes-infinitos-e-indefinições-matemáticas" id="toc-dados-faltantes-infinitos-e-indefinições-matemáticas" class="nav-link" data-scroll-target="#dados-faltantes-infinitos-e-indefinições-matemáticas"><span class="toc-section-number">5.9</span>  Dados faltantes, infinitos e indefinições matemáticas</a></li>
-  <li><a href="#condicionamento-if-e-else" id="toc-condicionamento-if-e-else" class="nav-link" data-scroll-target="#condicionamento-if-e-else"><span class="toc-section-number">5.10</span>  Condicionamento: If e else</a></li>
-  <li><a href="#iterador-for" id="toc-iterador-for" class="nav-link" data-scroll-target="#iterador-for"><span class="toc-section-number">5.11</span>  Iterador for</a></li>
-  <li><a href="#funções" id="toc-funções" class="nav-link" data-scroll-target="#funções"><span class="toc-section-number">5.12</span>  Funções</a></li>
-  <li><a href="#como-obter-ajuda-no-r" id="toc-como-obter-ajuda-no-r" class="nav-link" data-scroll-target="#como-obter-ajuda-no-r"><span class="toc-section-number">5.13</span>  Como obter ajuda no R</a></li>
-  <li><a href="#pacotes" id="toc-pacotes" class="nav-link" data-scroll-target="#pacotes"><span class="toc-section-number">5.14</span>  Pacotes</a>
+  <li><a href="#vetores" id="toc-vetores" class="nav-link" data-scroll-target="#vetores"><span class="toc-section-number">E.4</span>  Vetores</a></li>
+  <li><a href="#matrizes" id="toc-matrizes" class="nav-link" data-scroll-target="#matrizes"><span class="toc-section-number">E.5</span>  Matrizes</a></li>
+  <li><a href="#fatores" id="toc-fatores" class="nav-link" data-scroll-target="#fatores"><span class="toc-section-number">E.6</span>  Fatores</a></li>
+  <li><a href="#data-frame" id="toc-data-frame" class="nav-link" data-scroll-target="#data-frame"><span class="toc-section-number">E.7</span>  Data frame</a></li>
+  <li><a href="#operadores-lógicos" id="toc-operadores-lógicos" class="nav-link" data-scroll-target="#operadores-lógicos"><span class="toc-section-number">E.8</span>  Operadores lógicos</a></li>
+  <li><a href="#dados-faltantes-infinitos-e-indefinições-matemáticas" id="toc-dados-faltantes-infinitos-e-indefinições-matemáticas" class="nav-link" data-scroll-target="#dados-faltantes-infinitos-e-indefinições-matemáticas"><span class="toc-section-number">E.9</span>  Dados faltantes, infinitos e indefinições matemáticas</a></li>
+  <li><a href="#condicionamento-if-e-else" id="toc-condicionamento-if-e-else" class="nav-link" data-scroll-target="#condicionamento-if-e-else"><span class="toc-section-number">E.10</span>  Condicionamento: If e else</a></li>
+  <li><a href="#iterador-for" id="toc-iterador-for" class="nav-link" data-scroll-target="#iterador-for"><span class="toc-section-number">E.11</span>  Iterador for</a></li>
+  <li><a href="#funções" id="toc-funções" class="nav-link" data-scroll-target="#funções"><span class="toc-section-number">E.12</span>  Funções</a></li>
+  <li><a href="#como-obter-ajuda-no-r" id="toc-como-obter-ajuda-no-r" class="nav-link" data-scroll-target="#como-obter-ajuda-no-r"><span class="toc-section-number">E.13</span>  Como obter ajuda no R</a></li>
+  <li><a href="#pacotes" id="toc-pacotes" class="nav-link" data-scroll-target="#pacotes"><span class="toc-section-number">E.14</span>  Pacotes</a>
   <ul class="collapse">
-  <li><a href="#instalação-de-pacotes" id="toc-instalação-de-pacotes" class="nav-link" data-scroll-target="#instalação-de-pacotes"><span class="toc-section-number">5.14.1</span>  Instalação de pacotes</a></li>
-  <li><a href="#carregar-pacotes" id="toc-carregar-pacotes" class="nav-link" data-scroll-target="#carregar-pacotes"><span class="toc-section-number">5.14.2</span>  Carregar pacotes</a></li>
+  <li><a href="#instalação-de-pacotes" id="toc-instalação-de-pacotes" class="nav-link" data-scroll-target="#instalação-de-pacotes"><span class="toc-section-number">E.14.1</span>  Instalação de pacotes</a></li>
+  <li><a href="#carregar-pacotes" id="toc-carregar-pacotes" class="nav-link" data-scroll-target="#carregar-pacotes"><span class="toc-section-number">E.14.2</span>  Carregar pacotes</a></li>
   </ul></li>
-  <li><a href="#materiais-complementares" id="toc-materiais-complementares" class="nav-link" data-scroll-target="#materiais-complementares"><span class="toc-section-number">5.15</span>  Materiais complementares</a></li>
+  <li><a href="#materiais-complementares" id="toc-materiais-complementares" class="nav-link" data-scroll-target="#materiais-complementares"><span class="toc-section-number">E.15</span>  Materiais complementares</a></li>
   </ul>
 </nav>
     </div>
@@ -250,7 +260,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Primeiros passos no R</span></h1>
+<h1 class="title d-none d-lg-block">Appendix E — Primeiros passos no R</h1>
 </div>
 
 
@@ -266,39 +276,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </header>
 
 <p>Posso escrever o código no Script e submetê-lo ao apertar o botão “Run” ou com o atalho no teclado Cmd/Ctrl+Enter.</p>
-<section id="r-como-calculadora" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="r-como-calculadora"><span class="header-section-number">5.1</span> R como calculadora</h2>
+<section id="r-como-calculadora" class="level2" data-number="E.1">
+<h2 data-number="E.1" class="anchored" data-anchor-id="r-como-calculadora"><span class="header-section-number">E.1</span> R como calculadora</h2>
 <ol type="1">
 <li>Operadores</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#adição</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">+</span><span class="dv">15</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">+</span><span class="dv">15</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 25</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#subtração</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="dv">10-2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="dv">10-2</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 8</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#multiplicação</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="dv">10</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 20</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#divisão</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="dv">30</span><span class="sc">/</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="dv">30</span><span class="sc">/</span><span class="dv">2</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 15</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#raiz quadrada</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">4</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#potência</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">^</span><span class="dv">2</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4</code></pre>
 </div>
@@ -306,27 +316,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Se você digitar um comando incompleto, como 10 *, o R mostrará um +. Isso não tem a ver com a soma e apenas que o R está esperando você completar seu comando. Termine seu comando ou aperte Esc para recomeçar.</p>
 <p>Vale também ressaltar que se você digitar um comando que o R não reconhece, ele retornará uma mensagem de erro e você pode digitar outro comando normalmente em seguida.</p>
 </section>
-<section id="atribuição" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="atribuição"><span class="header-section-number">5.2</span> Atribuição</h2>
+<section id="atribuição" class="level2" data-number="E.2">
+<h2 data-number="E.2" class="anchored" data-anchor-id="atribuição"><span class="header-section-number">E.2</span> Atribuição</h2>
 <p>Podemos salvar valores dentro de um objeto, que é simplemente um nome que guarda um valor, vetor, matriz, lista ou base de dados.</p>
 <p>Para atribuir a um objeto, o sinal de atribuição é <code>=</code> ou <code>&lt;-</code> (preferível).</p>
 <p>Exemplos:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">/</span><span class="dv">2</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>X</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>X</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in eval(expr, envir, enclos): objeto 'X' não encontrado</code></pre>
+<pre><code>Error in eval(expr, envir, enclos): object 'X' not found</code></pre>
 </div>
 </div>
 <p>Por que tivemos um erro acima?</p>
 <p>O R é case sensitive, isto é, faz a diferenciação entre as letras minúsculas e maiúsculas. Portanto, x é diferente de X.</p>
 </section>
-<section id="objetos-em-r" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="objetos-em-r"><span class="header-section-number">5.3</span> Objetos em R</h2>
+<section id="objetos-em-r" class="level2" data-number="E.3">
+<h2 data-number="E.3" class="anchored" data-anchor-id="objetos-em-r"><span class="header-section-number">E.3</span> Objetos em R</h2>
 <p>Existem cinco classes básicas no R:</p>
 <ul>
 <li><p>character: “UAH!”</p></li>
@@ -337,12 +347,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Vamos atribuir a x a string banana.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> banana </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> banana </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in eval(expr, envir, enclos): objeto 'banana' não encontrado</code></pre>
+<pre><code>Error in eval(expr, envir, enclos): object 'banana' not found</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">"banana"</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "banana"</code></pre>
 </div>
@@ -351,7 +361,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>banana <span class="ot">&lt;-</span> <span class="dv">30</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> banana</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 30</code></pre>
 </div>
@@ -359,70 +369,70 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Para saber a classe de um objeto, use a função <code>class()</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="st">"ola"</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(y)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "character"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fl">2.5</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "numeric"</code></pre>
 </div>
 </div>
-<section id="apagar-objetos" class="level3" data-number="5.3.1">
-<h3 data-number="5.3.1" class="anchored" data-anchor-id="apagar-objetos"><span class="header-section-number">5.3.1</span> Apagar objetos</h3>
+<section id="apagar-objetos" class="level3" data-number="E.3.1">
+<h3 data-number="E.3.1" class="anchored" data-anchor-id="apagar-objetos"><span class="header-section-number">E.3.1</span> Apagar objetos</h3>
 <p>E se eu quiser apagar um objeto?</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">20</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 20</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">remove</span>(x)</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in eval(expr, envir, enclos): objeto 'x' não encontrado</code></pre>
+<pre><code>Error in eval(expr, envir, enclos): object 'x' not found</code></pre>
 </div>
 </div>
 <p>E se eu quiser limpar o console - apaga todos os objetos atribuídos até aqui:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
-<section id="vetores" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="vetores"><span class="header-section-number">5.4</span> Vetores</h2>
+<section id="vetores" class="level2" data-number="E.4">
+<h2 data-number="E.4" class="anchored" data-anchor-id="vetores"><span class="header-section-number">E.4</span> Vetores</h2>
 <p>Como atribuir vários valores a um objeto? Para entrar com vários números (ou nomes, ou qualquer outro grupo de coisas), precisamos usar uma função para dizer ao programa que os valores serão combinados em um único vetor.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2 3 4</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">10</span>)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>y</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">10</span>)</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>z</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 1 1 1 1 1 1 1 1 1 1</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>bicho <span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">"macaco"</span>,<span class="st">"pato"</span>,<span class="st">"galinha"</span>,<span class="st">"porco"</span>)</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>bicho</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>bicho</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "macaco"  "pato"    "galinha" "porco"  </code></pre>
 </div>
 </div>
 <p>E se quisermos visualizar o conteúdo da posição 2 no vetor bicho?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>bicho[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>bicho[<span class="dv">2</span>]</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "pato"</code></pre>
 </div>
@@ -430,17 +440,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>As operações vetoriais podem ser realizadas de maneira bastante intuitiva. Como exemplos:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2 3 4</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>ops <span class="ot">&lt;-</span> x<span class="dv">-1</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>ops</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>ops</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 2 3</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> x<span class="sc">*</span><span class="dv">2</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>k</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>k</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4 6 8</code></pre>
 </div>
@@ -448,12 +458,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Vamos agora considerar um vetor de pesos em kg e altura em metros de 6 pessoas.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>peso <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">62</span>, <span class="dv">70</span>, <span class="dv">52</span>, <span class="dv">98</span>, <span class="dv">90</span>, <span class="dv">70</span>)</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>peso</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>peso</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 62 70 52 98 90 70</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>altura <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.70</span>, <span class="fl">1.82</span>, <span class="fl">1.75</span>, <span class="fl">1.94</span>, <span class="fl">1.84</span>, <span class="fl">1.61</span>)</span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>altura</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>altura</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.70 1.82 1.75 1.94 1.84 1.61</code></pre>
 </div>
@@ -462,25 +472,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Como calcularia o IMC? Lembrando que o IMC é dado pelo peso (em kg) dividido pela altura (em metros) ao quadrado.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>imc <span class="ot">&lt;-</span> peso<span class="sc">/</span>(altura<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>imc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>imc</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 21.45329 21.13271 16.97959 26.03890 26.58318 27.00513</code></pre>
 </div>
 </div>
 <p>Para saber o tamanho do vetor, use a função <code>length()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(imc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(imc)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6</code></pre>
 </div>
 </div>
 </section>
-<section id="matrizes" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="matrizes"><span class="header-section-number">5.5</span> Matrizes</h2>
+<section id="matrizes" class="level2" data-number="E.5">
+<h2 data-number="E.5" class="anchored" data-anchor-id="matrizes"><span class="header-section-number">E.5</span> Matrizes</h2>
 <p>Matrizes são vetores numéricos com duas dimensões, que são simplesmente a linha e a coluna às quais o elemento pertence.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">16</span>), <span class="at">nrow=</span><span class="dv">4</span>,<span class="at">ncol=</span><span class="dv">4</span>)</span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3] [,4]
 [1,]    1    5    9   13
@@ -492,19 +502,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Note que os números de 1 a 16 foram dispostos na matriz coluna por coluna ou seja, preenchendo de cima para baixo e depois da esquerda para a direita.</p>
 <p>Como sei qual elemento está na segunda linha e terceira coluna da matriz x?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">2</span>,<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">2</span>,<span class="dv">3</span>]</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">3</span>,  ]   <span class="co"># seleciona a 3ª linha</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">3</span>,  ]   <span class="co"># seleciona a 3ª linha</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  3  7 11 15</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>x[ , <span class="dv">2</span>]   <span class="co"># seleciona a 2ª coluna</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>x[ , <span class="dv">2</span>]   <span class="co"># seleciona a 2ª coluna</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5 6 7 8</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>, <span class="dv">2</span>]   <span class="co"># seleciona o elemento da primeira linha e segunda coluna</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>, <span class="dv">2</span>]   <span class="co"># seleciona o elemento da primeira linha e segunda coluna</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5</code></pre>
 </div>
@@ -513,7 +523,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>,] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">13</span>,<span class="dv">15</span>,<span class="dv">19</span>,<span class="dv">30</span>)</span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3] [,4]
 [1,]   13   15   19   30
@@ -524,23 +534,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Seja o vetor d:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">128</span>,<span class="dv">124</span>,<span class="dv">213</span>,<span class="dv">234</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">128</span>,<span class="dv">124</span>,<span class="dv">213</span>,<span class="dv">234</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>E se quisermos substituir a terceira coluna por d?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>x[,<span class="dv">3</span>] <span class="ot">&lt;-</span> d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>x[,<span class="dv">3</span>] <span class="ot">&lt;-</span> d</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Qual a dimensão da matriz x?</p>
 <p>Vimos que para vetor usamos o comando <code>length()</code>. Serve para matriz também? Vamos testar!</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 16</code></pre>
 </div>
 </div>
 <p>Note que retorna o número de colunas vezes o número de linhas (4*4=16). Mas o que quero saber é o numero de linhas e de colunas. Para isso, o comando é <code>dim()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4 4</code></pre>
 </div>
@@ -549,7 +559,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>vet <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">20</span>,<span class="dv">12</span>,<span class="dv">34</span>)</span>
 <span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(x,vet)</span>
-<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>x2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>x2</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    [,1] [,2] [,3] [,4]
       13   15  128   30
@@ -563,7 +573,7 @@ vet    2   20   12   34</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">25</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">4</span>) </span>
 <span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>x3 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(x,v2)</span>
-<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>x3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>x3</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                  v2
 [1,] 13 15 128 30 25
@@ -573,25 +583,25 @@ vet    2   20   12   34</code></pre>
 </div>
 </div>
 </section>
-<section id="fatores" class="level2" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="fatores"><span class="header-section-number">5.6</span> Fatores</h2>
+<section id="fatores" class="level2" data-number="E.6">
+<h2 data-number="E.6" class="anchored" data-anchor-id="fatores"><span class="header-section-number">E.6</span> Fatores</h2>
 <p>Fatores podem ser vistos como vetores de inteiros que possuem rótulos (labels). Eles são úteis para representar uma variável categórica (nominal e ordinal).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>sexo <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"M"</span>, <span class="st">"H"</span>, <span class="st">"H"</span>, <span class="st">"H"</span>, <span class="st">"M"</span>, <span class="st">"M"</span>, <span class="st">"H"</span>)</span>
 <span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>sex <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(sexo)</span>
-<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>sex</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>sex</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] M H H H M M H
 Levels: H M</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(sex)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "H" "M"</code></pre>
 </div>
 </div>
 </section>
-<section id="data-frame" class="level2" data-number="5.7">
-<h2 data-number="5.7" class="anchored" data-anchor-id="data-frame"><span class="header-section-number">5.7</span> Data frame</h2>
+<section id="data-frame" class="level2" data-number="E.7">
+<h2 data-number="E.7" class="anchored" data-anchor-id="data-frame"><span class="header-section-number">E.7</span> Data frame</h2>
 <p>Trata-se de uma “tabela de dados” onde as colunas são as variáveis e as linhas são os registros. Essas colunas podem ser de classes diferentes.</p>
 <p>Essa é a grande diferença entre data.frame’s e matrizes (matriz é só numerica).</p>
 <p>Posso criar um data frame no R com os vetores, por exemplo:</p>
@@ -601,7 +611,7 @@ Levels: H M</code></pre>
 <span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>alt <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.70</span>, <span class="fl">1.82</span>, <span class="fl">1.75</span>, <span class="fl">1.94</span>, <span class="fl">1.84</span>, <span class="fl">1.61</span>)</span>
 <span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a>imc <span class="ot">&lt;-</span> pes<span class="sc">/</span>(alt<span class="sc">^</span><span class="dv">2</span>)</span>
 <span id="cb84-5"><a href="#cb84-5" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">ID=</span>ID,<span class="at">peso=</span>pes,<span class="at">altura=</span>alt, <span class="at">imc=</span>imc)</span>
-<span id="cb84-6"><a href="#cb84-6" aria-hidden="true" tabindex="-1"></a>dados</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb84-6"><a href="#cb84-6" aria-hidden="true" tabindex="-1"></a>dados</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  ID peso altura      imc
 1  1   62   1.70 21.45329
@@ -614,7 +624,7 @@ Levels: H M</code></pre>
 </div>
 <p>Posso pensar que o data frame tem a mesma ideia de matriz. Quero olhar os dados de altura, que sei que está na coluna 3.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>dados[,<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>dados[,<span class="dv">3</span>]</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.70 1.82 1.75 1.94 1.84 1.61</code></pre>
 </div>
@@ -622,7 +632,7 @@ Levels: H M</code></pre>
 <p>Mas existe uma maneira mais fácil de selecionar a variável de interesse sem ter que saber em qual coluna ela está.</p>
 <p>Por ser um data frame, posso usar <code>$</code> da seguinte maneira:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>altura</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>altura</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.70 1.82 1.75 1.94 1.84 1.61</code></pre>
 </div>
@@ -632,7 +642,7 @@ Levels: H M</code></pre>
 <div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>gr <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">3</span>),<span class="fu">rep</span>(<span class="dv">2</span>,<span class="dv">3</span>))</span>
 <span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>grupo <span class="ot">&lt;-</span> gr</span>
 <span id="cb90-3"><a href="#cb90-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-4"><a href="#cb90-4" aria-hidden="true" tabindex="-1"></a>dados</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb90-4"><a href="#cb90-4" aria-hidden="true" tabindex="-1"></a>dados</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  ID peso altura      imc grupo
 1  1   62   1.70 21.45329     1
@@ -654,7 +664,7 @@ Levels: H M</code></pre>
 <li><p>str() - Estrutura do data.frame. Mostra, entre outras coisas, as classes de cada coluna.</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dados)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  ID peso altura      imc grupo
 1  1   62   1.70 21.45329     1
@@ -664,15 +674,15 @@ Levels: H M</code></pre>
 5  5   90   1.84 26.58318     2
 6  6   70   1.61 27.00513     2</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(dados)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(dados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6 5</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(dados)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(dados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "ID"     "peso"   "altura" "imc"    "grupo" </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(dados)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(dados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   6 obs. of  5 variables:
  $ ID    : int  1 2 3 4 5 6
@@ -683,8 +693,8 @@ Levels: H M</code></pre>
 </div>
 </div>
 </section>
-<section id="operadores-lógicos" class="level2" data-number="5.8">
-<h2 data-number="5.8" class="anchored" data-anchor-id="operadores-lógicos"><span class="header-section-number">5.8</span> Operadores lógicos</h2>
+<section id="operadores-lógicos" class="level2" data-number="E.8">
+<h2 data-number="E.8" class="anchored" data-anchor-id="operadores-lógicos"><span class="header-section-number">E.8</span> Operadores lógicos</h2>
 <p>A operação lógica nada mais é do que um teste que retorna verdadeiro (<code>TRUE</code>) ou falso (<code>FALSE</code>). Esses dois valores recebem uma classe especial: <code>logical</code>.</p>
 <ul>
 <li>Igual a: ==</li>
@@ -692,11 +702,11 @@ Levels: H M</code></pre>
 <p>Vamos testar se um valor é igual ao outro.</p>
 <p>Exemplo:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">==</span><span class="dv">11</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">==</span><span class="dv">11</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="dv">11</span><span class="sc">==</span><span class="dv">11</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="dv">11</span><span class="sc">==</span><span class="dv">11</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
@@ -708,7 +718,7 @@ Levels: H M</code></pre>
 </ul>
 <p>Exemplo:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">!=</span><span class="dv">11</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">!=</span><span class="dv">11</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
@@ -721,19 +731,19 @@ Levels: H M</code></pre>
 </ul>
 <p>Exemplos:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">&gt;</span><span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">&gt;</span><span class="dv">5</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">&gt;=</span><span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">&gt;=</span><span class="dv">10</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="sc">&lt;</span><span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="sc">&lt;</span><span class="dv">4</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="sc">&lt;=</span><span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="sc">&lt;=</span><span class="dv">4</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
@@ -743,7 +753,7 @@ Levels: H M</code></pre>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a>ex <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">15</span></span>
-<span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="sc">%in%</span> ex</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="sc">%in%</span> ex</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
@@ -753,11 +763,11 @@ Levels: H M</code></pre>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb116"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">15</span></span>
-<span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&gt;</span> <span class="dv">10</span> <span class="sc">&amp;</span> x <span class="sc">&lt;</span> <span class="dv">30</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&gt;</span> <span class="dv">10</span> <span class="sc">&amp;</span> x <span class="sc">&lt;</span> <span class="dv">30</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&lt;</span> <span class="dv">10</span> <span class="sc">&amp;</span> x <span class="sc">&lt;</span> <span class="dv">30</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&lt;</span> <span class="dv">10</span> <span class="sc">&amp;</span> x <span class="sc">&lt;</span> <span class="dv">30</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
@@ -767,11 +777,11 @@ Levels: H M</code></pre>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb120"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">15</span></span>
-<span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&gt;</span> <span class="dv">10</span> <span class="sc">|</span> x <span class="sc">&lt;</span> <span class="dv">30</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&gt;</span> <span class="dv">10</span> <span class="sc">|</span> x <span class="sc">&lt;</span> <span class="dv">30</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&lt;</span> <span class="dv">10</span> <span class="sc">|</span> x <span class="sc">&lt;</span> <span class="dv">30</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&lt;</span> <span class="dv">10</span> <span class="sc">|</span> x <span class="sc">&lt;</span> <span class="dv">30</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
@@ -781,20 +791,20 @@ Levels: H M</code></pre>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb124"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">15</span></span>
-<span id="cb124-2"><a href="#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>x<span class="sc">&lt;</span><span class="dv">30</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb124-2"><a href="#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>x<span class="sc">&lt;</span><span class="dv">30</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
 </div>
 </section>
-<section id="dados-faltantes-infinitos-e-indefinições-matemáticas" class="level2" data-number="5.9">
-<h2 data-number="5.9" class="anchored" data-anchor-id="dados-faltantes-infinitos-e-indefinições-matemáticas"><span class="header-section-number">5.9</span> Dados faltantes, infinitos e indefinições matemáticas</h2>
+<section id="dados-faltantes-infinitos-e-indefinições-matemáticas" class="level2" data-number="E.9">
+<h2 data-number="E.9" class="anchored" data-anchor-id="dados-faltantes-infinitos-e-indefinições-matemáticas"><span class="header-section-number">E.9</span> Dados faltantes, infinitos e indefinições matemáticas</h2>
 <ul>
 <li>NA (Not Available): dado faltante/indisponível. Exemplo:</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb126"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">6</span>,<span class="dv">9</span>)</span>
-<span id="cb126-2"><a href="#cb126-2" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb126-2"><a href="#cb126-2" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">4</span>]</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NA</code></pre>
 </div>
@@ -804,7 +814,7 @@ Levels: H M</code></pre>
 <li>NaN (Not a Number): indefinições matemáticas. Como 0/0 e log(-1). Exemplo:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="sc">-</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="sc">-</span><span class="dv">10</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NaN</code></pre>
 </div>
@@ -813,14 +823,14 @@ Levels: H M</code></pre>
 <li>Inf (Infinito): número muito grande ou o limite matemático. Aceita sinal negativo (-Inf). Exemplo:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">^</span><span class="dv">14321</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">^</span><span class="dv">14321</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] Inf</code></pre>
 </div>
 </div>
 </section>
-<section id="condicionamento-if-e-else" class="level2" data-number="5.10">
-<h2 data-number="5.10" class="anchored" data-anchor-id="condicionamento-if-e-else"><span class="header-section-number">5.10</span> Condicionamento: If e else</h2>
+<section id="condicionamento-if-e-else" class="level2" data-number="E.10">
+<h2 data-number="E.10" class="anchored" data-anchor-id="condicionamento-if-e-else"><span class="header-section-number">E.10</span> Condicionamento: If e else</h2>
 <p>As estruturas <em>if</em> e <em>else</em> servem para executar um código apenas se uma condição (teste lógico) for satisfeita.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb132"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">224</span></span>
@@ -830,7 +840,7 @@ Levels: H M</code></pre>
 <span id="cb132-5"><a href="#cb132-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
 <span id="cb132-6"><a href="#cb132-6" aria-hidden="true" tabindex="-1"></a>  v <span class="ot">&lt;-</span> <span class="dv">15</span></span>
 <span id="cb132-7"><a href="#cb132-7" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb132-8"><a href="#cb132-8" aria-hidden="true" tabindex="-1"></a>v</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb132-8"><a href="#cb132-8" aria-hidden="true" tabindex="-1"></a>v</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 15</code></pre>
 </div>
@@ -848,19 +858,19 @@ Levels: H M</code></pre>
 <span id="cb134-7"><a href="#cb134-7" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
 <span id="cb134-8"><a href="#cb134-8" aria-hidden="true" tabindex="-1"></a>    v <span class="ot">&lt;-</span> <span class="dv">25</span></span>
 <span id="cb134-9"><a href="#cb134-9" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb134-10"><a href="#cb134-10" aria-hidden="true" tabindex="-1"></a>v</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb134-10"><a href="#cb134-10" aria-hidden="true" tabindex="-1"></a>v</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 25</code></pre>
 </div>
 </div>
 <p>Veja que nesse exemplo gostaria de usar mais de duas condições, e por isso usamos a estrutura intermediária else if.</p>
 </section>
-<section id="iterador-for" class="level2" data-number="5.11">
-<h2 data-number="5.11" class="anchored" data-anchor-id="iterador-for"><span class="header-section-number">5.11</span> Iterador for</h2>
+<section id="iterador-for" class="level2" data-number="E.11">
+<h2 data-number="E.11" class="anchored" data-anchor-id="iterador-for"><span class="header-section-number">E.11</span> Iterador for</h2>
 <p>O <em>for</em> serve para repetir uma mesma tarefa para um conjunto de valores diferentes. Cada repetição é chamada de iteração.</p>
 <p>Como exemplo, considere o vetor atribuído ao objeto m como segue:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">20</span>,<span class="dv">50</span>,<span class="dv">60</span>,<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">20</span>,<span class="dv">50</span>,<span class="dv">60</span>,<span class="dv">100</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Quero criar um novo vetor, p digamos, que seja formado por cada elemento de m dividido por sua posição.</p>
 <div class="cell">
@@ -868,7 +878,7 @@ Levels: H M</code></pre>
 <span id="cb137-2"><a href="#cb137-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span> <span class="fu">length</span>(m)){</span>
 <span id="cb137-3"><a href="#cb137-3" aria-hidden="true" tabindex="-1"></a>  p[i] <span class="ot">&lt;-</span> m[i]<span class="sc">/</span>i</span>
 <span id="cb137-4"><a href="#cb137-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb137-5"><a href="#cb137-5" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb137-5"><a href="#cb137-5" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  1.00000 10.00000 16.66667 15.00000 20.00000</code></pre>
 </div>
@@ -876,38 +886,38 @@ Levels: H M</code></pre>
 <p>Note que primeiro definimos o objeto p, recebendo <code>NULL</code>. O <code>NULL</code> representa a ausência de um objeto e serve para já declarar algum objeto que receberá valor na sequência. No caso, ao rodar o for, o p é um vetor de tamanho 5 (tamanho do vetor m).</p>
 <p>No exemplo, temos 5 iterações e para cada valor de i, correndo de 1 até 5 (tamanho de m), pegamos o valor de m na posição i e dividimos por sua posição. Assim, formamos o vetor p.</p>
 </section>
-<section id="funções" class="level2" data-number="5.12">
-<h2 data-number="5.12" class="anchored" data-anchor-id="funções"><span class="header-section-number">5.12</span> Funções</h2>
+<section id="funções" class="level2" data-number="E.12">
+<h2 data-number="E.12" class="anchored" data-anchor-id="funções"><span class="header-section-number">E.12</span> Funções</h2>
 <p>Funções no R são nomes que guardam um código de R. A ideia é que sempre que rodar a função com os seus argumentos, o código que ela guarda será executado e o resultado será retornado.</p>
 <p>Já usamos anteriormente algumas funções que estão na base do R. Por exemplo, quando usamos <code>class()</code> para entender a classe do objeto que o R está entendendo. Colocamos um argumento dentro do parênteses e o R retornou qual a classe do objeto em questão. Relembre o que falamos ao perguntar ao R qual a classe do vetor oi criado:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb139"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a>oi <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="fl">0.5</span>)</span>
-<span id="cb139-2"><a href="#cb139-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(oi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb139-2"><a href="#cb139-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(oi)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "numeric"</code></pre>
 </div>
 </div>
 <p>Agora vamos conversar sobre outra função já criada e disponibilizada na base do R: <code>mean</code>. Essa função retorna a média do vetor que está em seu argumento. Vamos calcular a média dos valores do vetor oi:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb141"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(oi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb141"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(oi)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6.7</code></pre>
 </div>
 </div>
 <p>Considere que, por algum motivo, tenha no vetor oi uma observação faltante. No R, dado faltante é caracterizado por <code>NA</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb143"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a>oi <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="fl">0.5</span>,<span class="cn">NA</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb143"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a>oi <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="fl">0.5</span>,<span class="cn">NA</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Perceba que, apesar de <code>NA</code> ser um texto, não coloquei entre aspas porque quero falar para o R que naquela posição não tem valor e o R entende isso ao ler <code>NA</code> (sem aspas). Se colocar entre aspas, ele entenderá como sendo um texto e não mais como valor faltante.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb144"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(oi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb144"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(oi)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NA</code></pre>
 </div>
 </div>
 <p>Como não sabemos o valor do elemento na posição 6 do vetor oi, o R não teria como calcular a média de todos os 6 valores e por isso devolve <code>NA</code>. No entanto, queremos calcular a média dos elementos de oi ao retirar os valores faltantes, ou seja, queremos fazer: (10+20+2+1+0.5)/5. Então devemos falar para o R o que queremos, e para isso podemos utilizar o argumento <code>na.rm = TRUE</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb146"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb146-1"><a href="#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(oi,<span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb146"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb146-1"><a href="#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(oi,<span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6.7</code></pre>
 </div>
@@ -918,12 +928,12 @@ Levels: H M</code></pre>
 <li><p>Cada função tem os seus próprios argumentos. Para saber quais são e como usar os argumentos de uma função, basta acessar a sua documentação. Uma forma de fazer isso é pela função <code>help</code>, cujo argumento é o nome da função que precisa de ajuda:</p></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb148"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb148-1"><a href="#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb148"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb148-1"><a href="#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(mean)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Veja que abrirá a documentação sobre a função <code>mean</code> no menu “Help” do RStudio, e lá é possível ver os argumentos e exemplos de uso da função em questão.</p>
 <p>Ainda sobre funções já presentes no R, vamos considerar agora a função <code>sample</code>. Veja a documentação dessa função para ver o que ela faz:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb149"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb149-1"><a href="#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb149"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb149-1"><a href="#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(sample)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>A função <code>sample</code> retorna uma amostra de um vetor com tamanho especificado em um de seus argumentos com ou sem reposição. Ela apresenta quatro argumentos: <code>sample(x, size, replace = FALSE, prob = NULL)</code>, em que: <code>x</code> é o vetor do qual será amostrado o número de elementos especificado no argumento <code>size</code>, seja com ou sem reposição (argumento <code>replace</code>) e com dadas probabilidades de seleção, especificadas em <code>prob</code>.</p>
 <p>Quero usar essa função para amostrar do objeto oi (<code>x=oi</code>) dois elementos (<code>size=2</code>) em uma seleção com reposição (<code>replace = TRUE</code>) e que a probabilidade de seleção seja a mesma para todos os elementos do vetor oi. No caso da probabilidade, como podemos ver na documentação da função <code>sample</code>, o <em>default</em> (padrão se o usuário não mudar o argumento) é ser a mesma probabilidade de seleção para todos os elementos. Assim, se o usuário nada especificar para esse argumento, o R entenderá o seu <em>default</em>. O mesmo vale para o argumento <code>replace</code>: caso fosse o interesse fazer a seleção sem reposição, não precisaríamos colocar esse argumento porque seu <em>default</em> é <code>FALSE</code>.</p>
@@ -931,16 +941,16 @@ Levels: H M</code></pre>
 
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb150"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb150-1"><a href="#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="at">x=</span>oi,<span class="at">size=</span><span class="dv">2</span>,<span class="at">replace=</span><span class="cn">TRUE</span>) <span class="co">#não colocamos argumento prob porque vamos usar o seu default (probs iguais).</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb150"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb150-1"><a href="#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="at">x=</span>oi,<span class="at">size=</span><span class="dv">2</span>,<span class="at">replace=</span><span class="cn">TRUE</span>) <span class="co">#não colocamos argumento prob porque vamos usar o seu default (probs iguais).</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 20  2</code></pre>
+<pre><code>[1] 20 20</code></pre>
 </div>
 </div>
 <p>Também poderíamos usar a mesma função sem colocar o nome dos argumentos:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb152"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb152-1"><a href="#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(oi,<span class="dv">2</span>,<span class="cn">TRUE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb152"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb152-1"><a href="#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(oi,<span class="dv">2</span>,<span class="cn">TRUE</span>) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5 2.0</code></pre>
+<pre><code>[1] 20 10</code></pre>
 </div>
 </div>
 <p>Mas, nesse caso, é importante que se respeite a ordem dos argumentos: o vetor tem que ser o primeiro, o segundo argumento é <code>size</code> e assim por diante.</p>
@@ -950,7 +960,7 @@ Levels: H M</code></pre>
 <div class="sourceCode cell-code" id="cb154"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb154-1"><a href="#cb154-1" aria-hidden="true" tabindex="-1"></a>f_conta <span class="ot">&lt;-</span> <span class="cf">function</span>(x,y) {</span>
 <span id="cb154-2"><a href="#cb154-2" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> x<span class="sc">+</span><span class="dv">3</span><span class="sc">*</span>y</span>
 <span id="cb154-3"><a href="#cb154-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
-<span id="cb154-4"><a href="#cb154-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb154-4"><a href="#cb154-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>A função acima tem:</p>
 <ul>
@@ -961,42 +971,42 @@ Levels: H M</code></pre>
 </ul>
 <p>Suponha que eu queira fazer a conta 10+3*20. Podemos fazer isso ao chamar a função criada <code>f_conta</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb155"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb155-1"><a href="#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f_conta</span>(<span class="at">x=</span><span class="dv">10</span>,<span class="at">y=</span><span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb155"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb155-1"><a href="#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f_conta</span>(<span class="at">x=</span><span class="dv">10</span>,<span class="at">y=</span><span class="dv">20</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 70</code></pre>
 </div>
 </div>
 <p>Veja que o cálculo acima retorna exatamente o mesmo que o seguinte:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb157"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb157-1"><a href="#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f_conta</span>(<span class="at">y=</span><span class="dv">20</span>,<span class="at">x=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb157"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb157-1"><a href="#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f_conta</span>(<span class="at">y=</span><span class="dv">20</span>,<span class="at">x=</span><span class="dv">10</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 70</code></pre>
 </div>
 </div>
 <p>Isso acontece porque mudei a ordem dos argumentos, mas acompanhado com os nomes dos argumentos. Se eu não quiser colocar os nomes dos argumentos, precisa tomar cuidado para não errar a ordem deles. Pois:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb159"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb159-1"><a href="#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f_conta</span>(<span class="dv">10</span>,<span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb159"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb159-1"><a href="#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f_conta</span>(<span class="dv">10</span>,<span class="dv">20</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 70</code></pre>
 </div>
 </div>
 <p>é diferente de</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb161"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb161-1"><a href="#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f_conta</span>(<span class="dv">20</span>,<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb161"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb161-1"><a href="#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f_conta</span>(<span class="dv">20</span>,<span class="dv">10</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 50</code></pre>
 </div>
 </div>
 </section>
-<section id="como-obter-ajuda-no-r" class="level2" data-number="5.13">
-<h2 data-number="5.13" class="anchored" data-anchor-id="como-obter-ajuda-no-r"><span class="header-section-number">5.13</span> Como obter ajuda no R</h2>
+<section id="como-obter-ajuda-no-r" class="level2" data-number="E.13">
+<h2 data-number="E.13" class="anchored" data-anchor-id="como-obter-ajuda-no-r"><span class="header-section-number">E.13</span> Como obter ajuda no R</h2>
 <p>Listamos aqui 3 maneiras para buscar ajuda no R:</p>
 <ul>
 <li>Help/documentação do R (comandos help(nome_da_funcao) ou ?nome_da_funcao). Como exemplo,</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb163"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb163-1"><a href="#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(mean) <span class="co">#ou</span></span>
-<span id="cb163-2"><a href="#cb163-2" aria-hidden="true" tabindex="-1"></a>?mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb163-2"><a href="#cb163-2" aria-hidden="true" tabindex="-1"></a>?mean</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Google Na Figura @ref(fig:help) está o exemplo de busca de ajuda no Google. Repare no ‘r’ no início da busca, isso pode ajudar.</li>
@@ -1015,56 +1025,56 @@ Levels: H M</code></pre>
 <li>Comunidade O <a href="https://stackoverflow.com/">Stack Overflow</a> e o <a href="https://pt.stackoverflow.com/">Stack Overflow em Português</a> são sites de Pergunta e Resposta amplamente utilizados por todas as linguagens de programação, e o R é uma delas.</li>
 </ul>
 </section>
-<section id="pacotes" class="level2" data-number="5.14">
-<h2 data-number="5.14" class="anchored" data-anchor-id="pacotes"><span class="header-section-number">5.14</span> Pacotes</h2>
+<section id="pacotes" class="level2" data-number="E.14">
+<h2 data-number="E.14" class="anchored" data-anchor-id="pacotes"><span class="header-section-number">E.14</span> Pacotes</h2>
 <p>Como dito quando falamos “Sobre o R”, o R apresenta funções na sua base e também em forma de pacotes (conjunto de funções bem documentado), que precisam ser instalados (uma vez no seu computador) e carregados na sessão de utilização do R (carregado em toda sessão aberta).</p>
 <p>Dificilmente você vai fazer uma análise apenas com as funções básicas do R e dificilmente não vai existir um pacote com as funções que você precisa. Por esse motivo, falamos a seguir em como instalar e carregar pacotes.</p>
-<section id="instalação-de-pacotes" class="level3" data-number="5.14.1">
-<h3 data-number="5.14.1" class="anchored" data-anchor-id="instalação-de-pacotes"><span class="header-section-number">5.14.1</span> Instalação de pacotes</h3>
+<section id="instalação-de-pacotes" class="level3" data-number="E.14.1">
+<h3 data-number="E.14.1" class="anchored" data-anchor-id="instalação-de-pacotes"><span class="header-section-number">E.14.1</span> Instalação de pacotes</h3>
 <ul>
 <li><strong>Via CRAN:</strong></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb164"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb164-1"><a href="#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"nome-do-pacote"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb164"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb164-1"><a href="#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"nome-do-pacote"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Exemplo: Instalação do pacote <code>dplyr</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb165"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb165-1"><a href="#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"dplyr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb165"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb165-1"><a href="#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"dplyr"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note que o nome do pacote está entre aspas.</p>
 <ul>
 <li><strong>Via Github:</strong> Para instalar via Github, precisa primeiramente instalar o pacote <code>devtools</code>.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb166"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb166-1"><a href="#cb166-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"nome-do-repo/nome-do-pacote"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb166"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb166-1"><a href="#cb166-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"nome-do-repo/nome-do-pacote"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Exemplo:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb167"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb167-1"><a href="#cb167-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"tidyverse/dplyr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb167"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb167-1"><a href="#cb167-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"tidyverse/dplyr"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="carregar-pacotes" class="level3" data-number="5.14.2">
-<h3 data-number="5.14.2" class="anchored" data-anchor-id="carregar-pacotes"><span class="header-section-number">5.14.2</span> Carregar pacotes</h3>
+<section id="carregar-pacotes" class="level3" data-number="E.14.2">
+<h3 data-number="E.14.2" class="anchored" data-anchor-id="carregar-pacotes"><span class="header-section-number">E.14.2</span> Carregar pacotes</h3>
 <p>Uma vez que um pacote de interesse está instalado em sua máquina, para carregá-lo na sessão atual do R é só rodar a seguinte linha de comando:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb168"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb168-1"><a href="#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nome<span class="sc">-</span>do<span class="sc">-</span>pacote)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb168"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb168-1"><a href="#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nome<span class="sc">-</span>do<span class="sc">-</span>pacote)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Veja que para carregar o pacote não se usa aspas.</p>
 <p>Como exemplo, o carregamento do pacote <code>dplyr</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb169"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb169-1"><a href="#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb169"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb169-1"><a href="#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Só é necessário instalar o pacote uma vez, mas é necessário carregá-lo toda vez que começar uma nova sessão.</p>
 <p>Dado que o pacote está carregado ao rodar a função <code>library()</code>, todas as funções desse pacote podem ser usadas sem problemas.</p>
 <p>Caso você não queira carregar o pacote e apenas usar uma função específica do pacote, você pode usar <code>nome-do-pacote::nome-da-funcao</code>. Por exemplo:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb170"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb170-1"><a href="#cb170-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">distinct</span>(...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb170"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb170-1"><a href="#cb170-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">distinct</span>(...)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Se você tivesse carregado o pacote <code>dplyr</code> anteriormente (pela função <code>library()</code>), não seria necessário colocar <code>dplyr::</code> antes da função <code>distinct</code> do pacote.</p>
 </section>
 </section>
-<section id="materiais-complementares" class="level2" data-number="5.15">
-<h2 data-number="5.15" class="anchored" data-anchor-id="materiais-complementares"><span class="header-section-number">5.15</span> Materiais complementares</h2>
+<section id="materiais-complementares" class="level2" data-number="E.15">
+<h2 data-number="E.15" class="anchored" data-anchor-id="materiais-complementares"><span class="header-section-number">E.15</span> Materiais complementares</h2>
 <ul>
 <li><p>Critical Thinking in Clinical Research. Felipe Fregni &amp; Ben M. W. Illigens. 2018.</p></li>
 <li><p>Sites:</p>
@@ -1123,12 +1133,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "Copiada");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "Copiada");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
@@ -1219,12 +1229,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./comecando_rstudio.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Primeiros passos no RStudio</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Primeiros passos RStudio</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./manipulacao_dados.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Manipulação de dados</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link">
+        <span class="nav-page-text">Referências</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -2,24 +2,32 @@ project:
   type: book
   output-dir: docs/
 
+lang: pt
+  
 book:
   title: "Ciência de Dados Aplicada à Saúde Materno-Infantil"
   author: "Observatório Obstétrico Brasileiro"
   date: "22/10/2022"
-  language: pt
   chapters:
     - index.qmd
     - summary.qmd
     - intro.qmd
-    - tutorialr.qmd
-    - instalar.qmd
-    - instalarstudio.qmd
-    - comecando_rstudio.qmd
-    - comecando_r.qmd
     - manipulacao_dados.qmd
     - tabulacao.qmd
-    - references.qmd
-
+  appendices: 
+    - href: tutorialr.qmd
+      text: Tutorial de R
+    - href: instalar.qmd
+      text: Instalação R
+    - href: instalarstudio.qmd
+      text: Instalação RStudio 
+    - href: comecando_rstudio.qmd
+      text: Primeiros passos RStudio
+    - href: comecando_r.qmd
+      text: Primeiros passos R
+    - href: references.qmd
+      text: Referências 
+  
 bibliography: references.bib
 
 format:

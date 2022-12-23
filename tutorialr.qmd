@@ -1,4 +1,4 @@
-# Tutorial de R {.unnumbered}
+# Tutorial de R 
 
 ## Sobre o software R
 

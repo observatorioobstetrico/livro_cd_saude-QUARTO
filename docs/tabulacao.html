@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.2.237">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Ciência de Dados Aplicada à Saúde Materno-Infantil - 7&nbsp; Tabulação de dados</title>
+<title>Ciência de Dados Aplicada à Saúde Materno-Infantil - 3&nbsp; Tabulação de dados</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -93,7 +93,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
+<link href="./tutorialr.html" rel="next">
 <link href="./manipulacao_dados.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -112,15 +112,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   "type": "textbox",
   "limit": 20,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar"
   }
 }</script>
 
@@ -133,7 +133,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Tabulação de dados</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tabulação de dados</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -173,56 +173,66 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorialr.html" class="sidebar-item-text sidebar-link">Tutorial de R</a>
+  <a href="./manipulacao_dados.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Manipulação de dados</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./instalar.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Instalação R</span></a>
+  <a href="./tabulacao.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tabulação de dados</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Apêndices</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./instalarstudio.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Instalação RStudio</span></a>
+  <a href="./tutorialr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Tutorial de R</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./comecando_rstudio.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Primeiros passos no RStudio</span></a>
+  <a href="./instalar.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Instalação R</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./comecando_r.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Primeiros passos no R</span></a>
+  <a href="./instalarstudio.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Instalação RStudio</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./manipulacao_dados.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Manipulação de dados</span></a>
+  <a href="./comecando_rstudio.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Primeiros passos RStudio</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tabulacao.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Tabulação de dados</span></a>
+  <a href="./comecando_r.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Primeiros passos R</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">Referências</a>
   </div>
 </li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+    <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#variáveis" id="toc-variáveis" class="nav-link active" data-scroll-target="#variáveis"><span class="toc-section-number">7.1</span>  Variáveis</a></li>
-  <li><a href="#como-tabular" id="toc-como-tabular" class="nav-link" data-scroll-target="#como-tabular"><span class="toc-section-number">7.2</span>  Como tabular</a></li>
-  <li><a href="#alguns-problemas-no-meio-do-caminho" id="toc-alguns-problemas-no-meio-do-caminho" class="nav-link" data-scroll-target="#alguns-problemas-no-meio-do-caminho"><span class="toc-section-number">7.3</span>  Alguns problemas no meio do caminho</a></li>
+  <li><a href="#variáveis" id="toc-variáveis" class="nav-link active" data-scroll-target="#variáveis"><span class="toc-section-number">3.1</span>  Variáveis</a></li>
+  <li><a href="#como-tabular" id="toc-como-tabular" class="nav-link" data-scroll-target="#como-tabular"><span class="toc-section-number">3.2</span>  Como tabular</a></li>
+  <li><a href="#alguns-problemas-no-meio-do-caminho" id="toc-alguns-problemas-no-meio-do-caminho" class="nav-link" data-scroll-target="#alguns-problemas-no-meio-do-caminho"><span class="toc-section-number">3.3</span>  Alguns problemas no meio do caminho</a></li>
   </ul>
 </nav>
     </div>
@@ -231,7 +241,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Tabulação de dados</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tabulação de dados</span></h1>
 </div>
 
 
@@ -247,8 +257,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </header>
 
 <p>Na sessão 5 obtivemos nosso primeiro contato com os vários tipos e estrutura de dados no qual basearemos nossas análises, integer, Character, Complex etc. Além das possíveis formas de disposição desses dados nos atuais softwares de programação, tomando como exemplos os <em>DataFrames</em> apresentados para a linguagem R.</p>
-<section id="variáveis" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="variáveis"><span class="header-section-number">7.1</span> Variáveis</h2>
+<section id="variáveis" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="variáveis"><span class="header-section-number">3.1</span> Variáveis</h2>
 <p>Os objetos apresentados, ou variáveis, podem ser denotados como o armazenamento de informações sobre a característica de interesse a respeito de cada unidade amostral, variáveis socioeconômicas como raça, renda e escolaridade são um ótimo exemplo. As variáveis podem ser divididas em dois tipos:</p>
 <ul>
 <li><p>Variáveis Qualitativas: cujos valores podem ser separados por categorias não numéricas. Sendo chamadas de variáveis qualitativas ordinais quando há presença de uma ordenação entre as categorias (Ex.: Escolaridade), e variáveis qualitativas nominais caso contrário (Ex.: Raça, Sexo)</p></li>
@@ -342,7 +352,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>classificacao <span class="sc">|&gt;</span> </span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unlist</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cbind</span>(idade_anos) <span class="sc">|&gt;</span> </span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>) <span class="sc">|&gt;</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>) <span class="sc">|&gt;</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table table-sm table-striped">
 <thead>
@@ -398,8 +408,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Agora, temos uma variável categórica ordinal.</p>
 </section>
-<section id="como-tabular" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="como-tabular"><span class="header-section-number">7.2</span> Como tabular</h2>
+<section id="como-tabular" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="como-tabular"><span class="header-section-number">3.2</span> Como tabular</h2>
 <p>É perceptível, até mesmo quando trabalhamos com <em>DataFrames</em> e matrizes, a forma proposta de visualização e armazenamento dessas variáveis. Por colunas onde cada coluna representa uma das características (no nosso exemplo, idade, raça e escolaridade).</p>
 <p>Fazemos isso de forma a facilitar nossa análise, sendo cada linha um indíviduo e, cada uma das observações dentro dessa linha, suas características.</p>
 <p>Assim como discutido, podemos obter nossas bases de dados de diversas fontes, como planilhas excel, arquivos .csv, bases SQL, ou até mesmo criá-las no nosso próprio <em>R script</em> com a função <code>data.frame()</code> como já apresentado. Por ser mais intuitivo e mais utilizado no dia a dia, vamos tomar o excel para exemplificar todo o processo. Você irá notar que o processo é realizado de forma bem simples.</p>
@@ -415,8 +425,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Cada uma das células receberá um valor <em>x</em> referente a alguma característica indicada pela coluna e um indivíduo representado pela linha, em nosso caso temos 3 características para cada uma das 4 observações.</p>
 </section>
-<section id="alguns-problemas-no-meio-do-caminho" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="alguns-problemas-no-meio-do-caminho"><span class="header-section-number">7.3</span> Alguns problemas no meio do caminho</h2>
+<section id="alguns-problemas-no-meio-do-caminho" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="alguns-problemas-no-meio-do-caminho"><span class="header-section-number">3.3</span> Alguns problemas no meio do caminho</h2>
 <p>É valido ressaltar que é possível se deparar com alguns problemas que talvez possam vir a ser solucionados da maneira errada.</p>
 <p>A forma como tabulamos nossos dados pode vir a ser um facilitar ou empecilho em nossas análises, um belo exemplo é a forma citada anteriormente de classificação dos dados ou transformação para que sejam salvos em alguma outra categoria, como faixa etária ou idade.</p>
 <p>Outro problema é quando trabalhamos com dados que possas vir a ter mais de uma resposta. Por exemplo: Quais sintomas estava sentindo? O melhor a se fazer nesse caso é criar uma coluna para cada um dos possíveis sintomas.</p>
@@ -495,12 +505,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "Copiada");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "Copiada");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
@@ -591,12 +601,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./manipulacao_dados.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Manipulação de dados</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Manipulação de dados</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link">
-        <span class="nav-page-text">Referências</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./tutorialr.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Tutorial de R</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
