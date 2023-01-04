@@ -1,0 +1,180 @@
+# Aprendizado não supervisionado
+
+## Alguns conceitos básicos de algebra
+
+Para melhor introduzir o campo do aprendizado não supervisionado, alguns conceitos de álgebra são necessários para compreender o que se passa por trás de cada algoritmo da análise de dados multivariada. Vamos introduzir com vetores e matriz, seguindo com decomposição espectral para então darmos inicio a área da estatística multivariada ou aprendizado não supervisionado. Não é objetivo desse livro demonstrar conceitos algébricos e nem se aprofundar demais no assunto [veja @anton2001algebra, e @johnson2002applied para mais demonstrações e conceitos].
+
+### Definições importantes
+
+**Vetor Aleatório** : Seja X um vetor contendo *p* componentes, onde cada componente é uma variável aleatória, isto é, $X_i$ é uma variável aleatória, $\forall\quad i =1,2,...,p$. Então *X* é chamado de vetor aleatório e é denotado por:
+
+$$
+ \begin{align}
+  X &= \begin{bmatrix}
+           X_{1} \\
+           X_{2} \\
+           \vdots \\
+           X_{p}
+         \end{bmatrix}
+  \end{align}
+$$
+
+O vetor transposto do vetor aleatório *X* é denotadopor $X' = [X_1 X_2 X_3 ...X_p]$
+
+**Vetor de Médias** : O vetor $\mu$ é chamado vetor de médias quando $E(X) = \mu$ onde *X* é um vetor aleatório. Dessa forma
+
+$$
+\begin{align}
+  E(X) &= \begin{bmatrix}
+           E(X_{1}) \\
+           E(X_{2}) \\
+           \vdots \\
+           E(X_{p})
+         \end{bmatrix}
+  \end{align} = \mu = \begin{bmatrix}
+           \mu_1 \\
+           \mu_2 \\
+           \vdots \\
+           \mu_p
+         \end{bmatrix}
+$$
+
+**Matriz de covariâncias** : A matriz de variâncias e covariâncias do vetor *X* é denotada por,
+
+$$
+Cov(X) = V(X) = Var(X) = \Sigma_{p\times p} = \begin{bmatrix}
+           \sigma_{11} & \sigma_{12} & ... & \sigma_{1p}  \\
+          \sigma_{21} & \sigma_{22} & ... & \sigma_{2p}  \\
+            \vdots &\vdots & \ddots &\vdots \\
+           \sigma_{p1} & \sigma_{p2} & ... & \sigma_{pp}
+         \end{bmatrix}
+$$
+
+Onde $\sigma_{ii}$ representa a variância do elemento $X_i$ do vetor aleatório e $\sigma_{ij} = E[(X_i- \mu_i)(X_j - \mu_j)]$ $\forall\quad i,j = 1,\dots,p$. A matriz de covariância é uma matriz simétrica, sua transposta é igual a ela mesma, ou seja $\Sigma = '\Sigma$. Sendo tambem não negativa definida, $a'\Sigma a \geq 0$ para todo vetor de constantes pertencentes aos reais.
+
+**Matriz de correlação** : A matriz de correlação do vetor *X* é denotada por,
+
+$$
+P_{p\times p} = \begin{bmatrix}
+           1 & \rho_{12} & \rho_{13}& ... & \rho_{1p}  \\
+          \rho_{21} & 1 & \rho_{23}&... & \rho_{2p}  \\
+          \rho_{31} & \rho_{32} & 1 &... & \rho_{3p}  \\
+            \vdots &\vdots & \ddots &\vdots \\
+           \rho_{p1} & \rho_{p2} &\rho_{p3}& ... & 1
+         \end{bmatrix}
+$$
+
+Em que
+
+$$
+\rho_{ij} = \frac{\sigma_{ij}}{\sqrt{\sigma_{ii}\sigma_{jj}}} = \frac{\sigma_{ij}}{\sigma_i\sigma_j}
+$$
+
+**Auto Valores e Auto Vetores** : Se $\Sigma$ for uma matriz quadrada, ou seja $\Sigma_{p\times p}$, então um vetore não nulo $e$ em $R^n$ é denominado *autovetor* de $\Sigma$ se $\Sigma e$ for um múltiplo escalar de $e$, isto é,
+
+$$
+\Sigma e = \lambda e
+$$
+
+com algum escalar $\lambda$. O escalar $\lambda$ é denominado de *autovalor* de $\Sigma$, e dizemos que $e$ é um *autovetor associado a* $\lambda$. Por $\Sigma$ ser uma matriz não negativa definida seus autovalores $\lambda_i$ associados tambem serão não negativos. Os autovetores e autovalores serão necessários para a análise de componentes principais mais a frente abordada.
+
+#### Equação característica
+
+Ainda é necessário uma forma de encontrar os autovetores e autovalores associados a uma matriz $\Sigma$. Se $\Sigma$ for uma matriz quadrada, então $\lambda$ se, e somente se, $\lambda$ satisfaz a equação
+
+$$
+det(\lambda I - \Sigma) = 0
+$$
+
+Onde *det* é o determinante e $I$ a matriz identidade. Para esclarecimento, suponha como exemplo que,
+
+$$
+\Sigma = \begin{bmatrix}
+8 & -2 \\
+-2 & 5
+\end{bmatrix}
+$$
+
+Então,
+
+$$
+\begin{split}
+det\left(\begin{bmatrix}
+\lambda& 0\\
+0 & \lambda
+\end{bmatrix}
+-  
+\begin{bmatrix}
+8 & -2 \\
+-2 & 5
+\end{bmatrix}
+\right) = 0\\
+det\left(\begin{bmatrix}
+\lambda - 8 & 2 \\
+2 & \lambda-5
+\end{bmatrix}
+\right) = 0 \\
+(\lambda - 8)\times(\lambda-5) - (2)\times(2) = 0
+\end{split}
+$$
+
+Resolvendo a equação obtemos os valores de $\lambda_1 = 9$ e $lambda_2 = 4$, podemos encontrar os autovetores $v$ associados seguindo a definição:
+
+$$
+\begin{bmatrix}
+8&-2\\
+-2 & 5
+\end{bmatrix}
+\begin{bmatrix}
+v_{11}\\
+v_{12}
+\end{bmatrix} = 
+9\begin{bmatrix}
+v_{11}\\
+v_{12}
+\end{bmatrix} \rightarrow v_{11} =- 2v_{12}
+$$
+
+Note que para cada autovalor temos infinitos possíveis autovetores dentro dos reais. Nos restringiremos aos autovetores normalizados.Dizemos que um vetor $e_i$ é normalizado quando:
+
+$$
+e_i = \begin{bmatrix}
+e_{i1}\\
+e_{i2}\\
+\vdots\\
+e_{ip}
+\end{bmatrix}
+$$ Em que
+
+$$
+||e_i|| = \sqrt{e^2_{i1} + e^2_{i2} + \dots + e^2_{ip}} = 1
+$$
+
+### Decomposição Espectral de Matrizes de correlação e Covariância em seus Autovetores e Autovalores normalizados.
+
+O teorema da decomposição espectral é de extrema importância em álgebra matricial e estatística multivariada, ele relaciona a matriz com seus autovalores e autovetores normalizados.
+
+Suponha $\Sigma$ a matriz de covariâncias. Então existe uma matriz ortogonal $O$(matriz no qual sua transposta é igual a sua inversa) tal que,
+
+$$
+O'\Sigma O = \begin{bmatrix}
+\lambda_1 & 0 & 0 &\dots & 0\\
+0&\lambda_2& 0 & \dots & 0 \\
+0 & 0 &\lambda_3 &\dots & 0\\
+\vdots& \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & 0 & \dots& \lambda_p
+\end{bmatrix} = \Lambda
+$$
+Onde $\lambda_1 \geq \lambda_2 \geq \dots \lambda_p\geq0 $ são os autovalores ordenados em ordem decrescente da matriz $\Sigma$. Nesse caso, dizemos que a matriz $\Sigma$ é similar à matriz $\Lambda$, que implica em:
+
++ $det(\Sigma) = det(\Lambda) = \prod^p_{i=1} \lambda_i$
+
++ traço$(\Sigma) =$ traço$(\Lambda) = \lambda_1 +\dots+\lambda_p$
+
+Tem-se que a i-ésima coluna da matriz $O$ é o autovetor normalizado $e_i$ relacionado ao autovalor $\lambda_i$. Então a matriz $O$ é dada por $O = [e_1,e_2,\dots,e_p]$ e pelo teorema da decomposição espectral, podemos ver que:
+
+$$
+\Sigma = O \Lambda O' = \sum_{i=1}^p \lambda_i e_i e_i'
+$$
+
+## Análise de Componentes Principais (PCA)
