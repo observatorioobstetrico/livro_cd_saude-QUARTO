@@ -165,11 +165,12 @@ O'\Sigma O = \begin{bmatrix}
 0 & 0 & 0 & \dots& \lambda_p
 \end{bmatrix} = \Lambda
 $$
-Onde $\lambda_1 \geq \lambda_2 \geq \dots \lambda_p\geq0 $ são os autovalores ordenados em ordem decrescente da matriz $\Sigma$. Nesse caso, dizemos que a matriz $\Sigma$ é similar à matriz $\Lambda$, que implica em:
 
-+ $det(\Sigma) = det(\Lambda) = \prod^p_{i=1} \lambda_i$
+Onde $\lambda\_1 \geq \lambda\_2 \geq \dots \lambda\_p\geq0$ são os autovalores ordenados em ordem decrescente da matriz $\Sigma$. Nesse caso, dizemos que a matriz $\Sigma$ é similar à matriz $\Lambda$, que implica em:
 
-+ traço$(\Sigma) =$ traço$(\Lambda) = \lambda_1 +\dots+\lambda_p$
+-   $det(\Sigma) = det(\Lambda) = \prod^p_{i=1} \lambda_i$
+
+-   traço$(\Sigma) =$ traço$(\Lambda) = \lambda_1 +\dots+\lambda_p$
 
 Tem-se que a i-ésima coluna da matriz $O$ é o autovetor normalizado $e_i$ relacionado ao autovalor $\lambda_i$. Então a matriz $O$ é dada por $O = [e_1,e_2,\dots,e_p]$ e pelo teorema da decomposição espectral, podemos ver que:
 
