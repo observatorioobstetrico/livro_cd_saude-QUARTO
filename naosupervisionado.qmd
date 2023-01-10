@@ -144,7 +144,9 @@ e_{i2}\\
 \vdots\\
 e_{ip}
 \end{bmatrix}
-$$ Em que
+$$
+
+Em que
 
 $$
 ||e_i|| = \sqrt{e^2_{i1} + e^2_{i2} + \dots + e^2_{ip}} = 1
@@ -178,4 +180,45 @@ $$
 \Sigma = O \Lambda O' = \sum_{i=1}^p \lambda_i e_i e_i'
 $$
 
+Dentro do **R** é possível realizar a decomposição espectral usando a função `eigen()`,
+
+```{r}
+sigma <- matrix(c(8,-2,-2,5),nrow = 2)
+sigma
+eigen(sigma)
+```
+
 ## Análise de Componentes Principais (PCA)
+
+A análise de componentes principais se preocupa em conseguir explicar a variância e covariância de uma estrutura de variáveis através de algumas poucas combinações lineares dessas variáveis. Tendo como principal objetivo dessa análise a redução de dimensionalidade e interpretação das relações. Essas combinações lineares são os componentes principais e são não correlacionadas entre sí. Quando assumimos que as variáveis originiais possuem distribuição normal, a PCA, além de não correlacionadas são normalmente distribuidas e idependentes. Os componentes principais são extraidos através da decomposição da matriz de covariância do vetor aleatório. Caso alguma trasnformação seja realizada nesse vetor, a decomposição será realizada na matriz de covariância do vetor transformado. Um caso muito utilizado, suponha que nossas variáveis estão em escalas muito diferentes, o PCA pode acabar por dar mais variabilidade a essa variável com escala superior, para isso então padronizamos o vetor. Utilizar a matriz de covariância do vetor transformado e a matriz de correlação do vetor originais são ações equivalentes.
+
+**Definição**: Seja *X* um vetor aleatório com $\mu = E(X)$ e $\Sigma = Var(X)$ e $(\lambda_i,e_i), i = 1,\dots,p$ os pares de autovalores e autovetores normalizados associados de $\Sigma$. Então,
+
+$$
+\begin{split}
+Y = O'X,\quad \textrm{com}\quad O = [e_1,e_2,\dots,e_p],\textrm{ os componentes principais de X}\\
+\textrm{ou seja}\\
+Y = 
+\begin{bmatrix}
+Y_1\\
+\vdots\\
+Y_d
+\end{bmatrix} \textrm{ com  } \quad Y_1 = e_1'X = e_{11}X_1 + e_{12}X_2 +  \dots + e_{1p}X_p 
+\end{split}
+$$
+
+O primeiro componente principal. Os componentes principais de _X_, _Y_, são tais que,
+
+$$
+\begin{split}
+\mu_y = E(Y) = E(O'X) = O'E(X) = O'\mu_x\\
+\Sigma_y = Var(Y) = Var(O'X) = O'Var(X)O = O'\Sigma_xO = \Lambda
+\end{split}
+$$
+
+ou seja
+
+$$
+cov(Y_i,Y_j) = 0, \forall i \neq j \textrm{ e } Var(Y_i) = \lambda_i
+$$
+
