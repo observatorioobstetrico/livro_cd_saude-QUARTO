@@ -1,5 +1,7 @@
 # Aprendizado não supervisionado
 
+Aprendizado não supervisionado é o ramo da aprendizagem de maquina, ou aprendizado estatístico, que trabalho majoritariamente com o agrupamento de variáveis com ou sem o conhecimento prévio de como essas variáveis estão subdivididas na natureza, ou ainda criar um subdivisão para essas com base nas características em estudo, como por exemplo fatores fatores socioeconômicos. Nesse texto falaremos de forma explicativa e aplicável sobre análise de componentes principais e métodos de agrupamentos, hierárquicos e não hierárquicos, com suas devidas funções na linguagem de programação proposta.
+
 ## Alguns conceitos básicos de algebra
 
 Para melhor introduzir o campo do aprendizado não supervisionado, alguns conceitos de álgebra são necessários para compreender o que se passa por trás de cada algoritmo da análise de dados multivariada. Vamos introduzir com vetores e matriz, seguindo com decomposição espectral para então darmos inicio a área da estatística multivariada ou aprendizado não supervisionado. Não é objetivo desse livro demonstrar conceitos algébricos e nem se aprofundar demais no assunto [veja @anton2001algebra, e @johnson2002applied para mais demonstrações e conceitos].
@@ -532,10 +534,131 @@ Dentro desse conjunto de métodos iremos trabalhar com o mais usual e conhecido,
 
 #### K-Médias.
 
-K-médias é um método simples que consiste em anexar cada observação ao centróide mais perto. Dividimos o conjunto de dados para os respectivos centróides mais próximos, em seguida alteramos a posição dos $k$ centróides de forma a minimizar a soma dos quadrados dos erros em comparação com o posicionamento anterior, repetindo o processo até que a alteração na $SQE$ seja mínima. Ou seja, queremos:
+K-médias é um método simples de particionamento, onde é necessário estabelecer um número $k$ de grupos previamente a separação das variáveis. Definindo um número inicial de centróides, podendo esses ser observações do próprio conjunto de dados ou coordenadas aleatórias, é realizada a divisão do conjunto de dados, sendo cada observação anexada ao centro de menor distância, ou mais próximo. Com base nesse novo grupo criado, é determinado o nomo ponto central, que passa a ser a média do grupo. Baseado nesses novos pontos realizamos os passos anteriores por um número $N$ de vezes até que não se tenha mais alteração na posição dos centróides.
+O resultado do processo são grupos heterogêneos entre sí com variáveis homogêneas entre sí, tendo a menor variância interna possível e a maior variação externa possível.
+O núemero de iterações do processo pode também ser pré estabelecido, considerando o custo computacional para bancos de dados grandes, é inviável a realização do processo até a falta de alteração dos clusters.
+
+Exemplo:
+
+Suponha os seguintes dados para 20 variáveis, e suponha que vamos fazer inicialmente para $k=3$ grupos. 
+
+```{r,echo=FALSE,warning=FALSE}
+df <- dados[1:40, c('idade_anos','sem_pri')]
+df.kmeans <- df |> kmeans(centers = 3,iter.max = 1)
+df |> knitr::kable(row.names = T)
+```
+Suponha que os clusters são tidos inicialmente nas cordenadas:
+
+```{r,echo =FALSE}
+df.kmeans$centers |> round() |> knitr::kable(row.names = T)
+```
+
+Agregando cada variável a um cluster obtemos então.
+
+```{r echo=FALSE}
+df_aux <- df.kmeans |> broom::augment(df) |> as.data.frame()
+colnames(df_aux)[3] <- "Centróide"
+df_aux |> knitr::kable(row.names = T)
+```
+
+Com base nesses novos grupos definimos então o novo centróide como sendo a média das variáveis de cada grupo, ou seja:
+
+```{r,echo=FALSE}
+
+idade_anos <-aggregate(df_aux$idade_anos, list(df_aux$Centróide), FUN=mean)
+sem_pri<-aggregate(df_aux$sem_pri, list(df_aux$Centróide), FUN=mean)
+idade_anos$sem_pri <- sem_pri$x
+colnames(idade_anos) <- c('centroide','idade_anos','sem_pri')
+idade_anos |> knitr::kable()
+```
+
+Agregando cada variável a seu novo grupo e seguindo o processo até o número de iterações pré definidas ou até que não tenha mais alterações nas coordenadas dos centros de cada _cluster_.
+
+No `R` base já está incluso uma função para o método _k-médias_, `kmeans()`, que pode ser implementado de maneira simples. considere o banco já discutido
+
+```{r}
+kmeans.df <- df |>
+  kmeans(centers = 3, iter.max = 300)
+kmeans.df
+```
+De forma simples podemos identificar os centros e em qual cada uma das variáveis foi atribuida após as $N$ iterações. Identificamos também a variância entre _clusters_, bem como a variância total e entre as variáveis de cada grupo. Essa variância se torna importânte na identificação do valor $k$ estabelecido.
+
+```{r}
+dados_grupos <- kmeans.df |> broom::augment(df)
+cent <- kmeans.df$centers
+dados_grupos |> 
+  ggplot(aes(x = idade_anos, y = sem_pri,col = .cluster)) +
+  geom_point() +
+  geom_point(aes(x = cent[1,1], y = cent[1,2]), color = "black", size = 3)+
+  geom_point(aes(x = cent[2,1], y = cent[2,2]), color = "black", size = 3)+
+  geom_point(aes(x = cent[3,1], y = cent[3,2]), color = "black", size = 3)
+kmeans.df
+```
+
+#### Número Ideal de Grupos
+
+Uma das formas já discutidas aqui sobre seleção do número ideal de $k$ grupos é a pré utilização de um método hierárquico e análise de seu dendrograma. Porém, retomando os assuntos apresentados quando foi discutido _PCA_, podemos utilizar o _scree plot_ da variação total como metodologia de definição do número ideal de clusters para o algorítmo.
+A utilização é realizada da mesma maneira, é feita a identificação do número $k$ que sofra grande decréscimo da soma da variação dentro dos _clusters_ para um número $k-1$ e um pequeno em comparação com $k+1$. A variação total é dada como:
 
 $$
- \min_{c_i}\left( \sum_{i = 1}^k \sum_{x \in S_i}|| x - c_i|| ^2\right)
+\sum^k_{i=1}\sum_{j\in C_i}d^2(x_j,c_i)
 $$
+Sendo $C_i$ centro do i-ésimo grupo e $x_j$ a j-ésima variável do i-ésimo grupo. A função de distância mais usual é a euclidiana discutida anteriormente.
 
-Onde $C_i$ representa os centróides e cada $x$ uma observação.
+```{r}
+var_totais <- vector()
+for(i in 1:10){
+  var_totais[i] <- (df |> kmeans(centers = i, iter.max = 400))$tot.withinss
+}
+qplot(1:10, var_totais, geom = "line")
+qplot(c(1:10), var_totais) + 
+  geom_line() + 
+  xlab("Número de clusters") + 
+  ylab("Soma das variâncias dentro dos grupos") +
+  ggtitle("Scree Plot") +
+  scale_x_discrete(limits=c(1:10))
+```
+
+Podemos definir a partir disso possíveis números ideais como 3, 4 ou até mesmo 6. 
+
+#### Algumas conclusões
+
+Para definirmos um modelo como sendo ótimo para aplicação, é necessário defir alguns parâmetros para determinar a qualidade de um modelo ou método. O _k-médias_ por exemplo é um algoritmo muito sucetível a _outliers_, dados fora do padrão encontrado no banco de dados, que podem acabar por deixar de agrupar uma determinada variável ou simplesmente formar um grupo amais, sem que haja necessidade.
+Outro fator que é necessário manter a atenção é a determinação do formato do cluster. Muitos dos algoritmos consideram um formato esférico ou circular para as variáveis, veja o exemplo:
+
+```{r}
+dados_circulo <- data.frame(
+ X = runif(5000, -1, 1),
+  Y = runif(5000, -1, 1)
+) |>
+  dplyr::filter(X^2 + Y^2 <= 0.2 | (X^2 + Y^2 <= 0.8 & X^2 + Y^2 >= 0.6))
+
+qplot(dados_circulo$X, dados_circulo$Y)
+```
+É notável como o agrupamento deve ser realizando simplesmente olhando para o gráfico proposto, porém, algoritmos como _k-médias_ não pensam da mesma forma,
+
+```{r}
+dados_circulo.km <- dados_circulo |> kmeans(centers = 2)
+dados_circulo <- dados_circulo.km |> broom::augment(dados_circulo)
+cent <- dados_circulo.km$centers
+dados_circulo |> 
+  ggplot(aes(x = X, y = Y,col = .cluster)) +
+  geom_point() +
+  geom_point(aes(x = cent[1,1], y = cent[1,2]), color = "black", size = 3)+
+  geom_point(aes(x = cent[2,1], y = cent[2,2]), color = "black", size = 3)
+kmeans.df
+```
+
+É perceptível que o método por particionamento em médias não foi eficaz para o banco de dados em questão. Ao utilizar a função `hcut()` para particionamento utilizando um método hierárquico obtemos uma melhor resposta para o agrupamento das variáveis
+
+```{r}
+dados_circulo.h <- hcut(dados_circulo[,1:2], k = 2, hc_method = "single")
+d_circulo.h <- cbind(dados_circulo[,1:2],cluster=dados_circulo.h$cluster)
+d_circulo.h |> 
+  ggplot(aes(x = X, y = Y,col = cluster)) +
+  geom_point()
+```
+
+Os métodos hierárquicos apresentados no entanto, por utilizarem  da distância de uma variável a outra são limitados a utilização de banco de dados numéricos, o que nem sempre é o encontrado nos problemas reais, é necessário optar nesse caso por métodos e algoritmos que consigam fazer a distinção mesmo na presença de variáveis categóricas. 
+Fator relevante para a escolha do melhor algoritmo é a capacidade de lidar com um grande volume de dados. No _k-médias_ temos a opção por exemplo de pré definirmos o número de iterações. Considere um grupo com milhões de variáveis, ao utilizar um método de ligação simples hierárquico faremos aproximadamente um milhão de ligações para depois identificar o número ideal de grupos, caso esse não seja conhecido (Caso mais comum).
+O ideal então é a análise exploratória de seus dados para com base nos conhecimentos sobre os diferentes tipos de métodos, saber qual será o de melhor aplicação para o determinado problema. Nada o impede de aplicar mais de um método e após sua aplicação identificar qual foi o modelo ótimo para o problema.
