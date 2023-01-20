@@ -182,7 +182,7 @@ $$
 
 Dentro do **R** é possível realizar a decomposição espectral usando a função `eigen()`,
 
-```{r echo=TRUE}
+```{r echo=TRUE, warning=FALSE}
 sigma <- matrix(c(8,-2,-2,5),nrow = 2)
 sigma
 eigen(sigma)
@@ -246,9 +246,9 @@ Para realmente entender a aplicabilidade da análise de componentes, vamos pegar
 
 (deixei um exemplo com mtcars pois o banco de dados trabalhado no livro tem poucas variaveis numericas)
 
-```{r echo=FALSE}
+```{r echo=FALSE,warning=FALSE}
 dados <- mtcars[,c(1:7,10,11)]
-dados |> head()
+dados |> head() |> knitr::kable()
 ```
 
 Podemos obter de forma simples no *R* as componentes, bem como a proporção da variância explicada, com a função `prcomp()`. Bem como citado tambem é comum padronização das variáveis devido a escala de cada característica, para isso basta informar o parâmetro `scale.` como *TRUE* dentro da função.
@@ -271,8 +271,7 @@ dados.pca.padr |> summary()
 dados.pca.padr |> print()
 ```
 
-Da informação obtida por `print(dados.pca.padr)`, podemos identificar os *_loadings_* da análise. Os _loadings_ podem ser definidos como os coeficientes da combinação linear das variáveis originais de onde as componentes principais são construidas. De um ponto de vista matemático os _loadings_ são iguais às coordenadas das variáveis divididas pela raiz quadrada do autovalor associado ao componente. são úteis quando você deseja entender os resultados. Lembre-se de que cada nova variável  Y é uma combinação linear de todas as variáveis. A matriz de _loadings_ representa verticalmente quanto da variância de cada componente é explicada por cada variável original. Vemos por exemplo que, conforme `mpg` aumenta, a `PC1` tem um descrécimo. Os _loadings_ são muito úteis na hora de nomear nossas componentes por essa relação que faz com cada uma das variáveis.
-
+Da informação obtida por `print(dados.pca.padr)`, podemos identificar os *loadings* da análise. Os *loadings* podem ser definidos como os coeficientes da combinação linear das variáveis originais de onde as componentes principais são construidas. De um ponto de vista matemático os *loadings* são iguais às coordenadas das variáveis divididas pela raiz quadrada do autovalor associado ao componente. são úteis quando você deseja entender os resultados. Lembre-se de que cada nova variável Y é uma combinação linear de todas as variáveis. A matriz de *loadings* representa verticalmente quanto da variância de cada componente é explicada por cada variável original. Vemos por exemplo que, conforme `mpg` aumenta, a `PC1` tem um descrécimo. Os *loadings* são muito úteis na hora de nomear nossas componentes por essa relação que faz com cada uma das variáveis.
 
 ### Número de Componentes Principais
 
@@ -282,11 +281,11 @@ $$
 \frac{\sum^d_{j=1}\lambda_j}{\sum_{i=1}^p \lambda_i}
 $$
 
-Esse valor é observado na função `prcomp()` já citada, como _cumulative Proportion_ no resultado do `summary()` da função.
+Esse valor é observado na função `prcomp()` já citada, como *cumulative Proportion* no resultado do `summary()` da função.
 
-Podemos utilizar como apoio gráfico e auxílio na tomada de decisão para o número de componentes é o *scree plot*, conhecido também como gráfico do cotovelo. Consiste na ordenação dos autovalores do maior para o menor, procurando por uma espécie de cotovelo dentro do gráfico. Selecionamos o número $i $ de componentes em que há um grande valor para observação $\lambda_{i-1}$ em comparação a observação $\lambda_i$ e uma pequena alteração da observação $\lambda_i$ para a observação $\lambda_{i+1}$. Observe a seguir
+Podemos utilizar como apoio gráfico e auxílio na tomada de decisão para o número de componentes é o *scree plot*, conhecido também como gráfico do cotovelo. Consiste na ordenação dos autovalores do maior para o menor, procurando por uma espécie de cotovelo dentro do gráfico. Selecionamos o número \$i \$ de componentes em que há um grande valor para observação $\lambda_{i-1}$ em comparação a observação $\lambda_i$ e uma pequena alteração da observação $\lambda_i$ para a observação $\lambda_{i+1}$. Observe a seguir
 
-```{r}
+```{r,warning=FALSE}
 #variancia explicada por cada componente
 var_explicada = dados.pca.padr$sdev^2 / sum(dados.pca.padr$sdev^2)
 library(ggplot2)
@@ -300,7 +299,7 @@ qplot(c(1:9), var_explicada) +
   scale_x_discrete(limits=c(1:9))
 ```
 
-Podemos por meio, tanto do _scree plot_, quanto pelo valor da variância explicada acumulada, selecionar $d= 3$ componentes para reter, pela queda de 2 para 3 ser significante, enquanto a de 3 para 4 nem tanto. Reduzindo número de variáveis a 3.
+Podemos por meio, tanto do *scree plot*, quanto pelo valor da variância explicada acumulada, selecionar $d= 3$ componentes para reter, pela queda de 2 para 3 ser significante, enquanto a de 3 para 4 nem tanto. Reduzindo número de variáveis a 3.
 
 ##Métodos de Agrupamentos
 
@@ -314,13 +313,13 @@ De forma mais intutitiva, essas medidas de dissimilaridade seriam formas de nume
 
 $$
 d(X,Y) = \sqrt{\sum^p_{i=1}(X_i - Y_i)^2}
-$$ 
+$$
 
 **Distância de Canberra**: A distância de Camberra examina a soma das séries de diferenças fracionárias entre as coordenadas do par de observações.
 
 $$
 d(X,Y) = \sum^p_{i=1}\frac{|X_i - Y_i|}{|X_i| + |Y_i|}
-$$ 
+$$
 
 **Distância de Manhattan**: A distância de Manhattan ("City Block" ou "Geometria do Táxi") é uma forma de geometria em que a distância entre dois pontos é a soma das diferenças absolutas de suas coordenadas.
 
@@ -338,17 +337,19 @@ $$
 
 $$
 d(X,Y) = \left(\sum^p_{i=1}|X_i - Y_i|^k\right)^\frac{1}{k}
-$$ Todas essas distâncias aqui citadas podem ser acessadas pela função `dist()` do *R*, alterando o parãmetro `method` para a distância desejada, da seguinte forma :
+$$
 
-```{r include=FALSE}
+Todas essas distâncias aqui citadas podem ser acessadas pela função `dist()` do *R*, alterando o parãmetro `method` para a distância desejada, da seguinte forma :
+
+```{r include=FALSE,warning=FALSE}
 dados <- readRDS("~/LIVRO OOBR/dados/dados_covid[LIMPO].rds")
 ```
 
-```{r}
+```{r,warning=FALSE}
 db<- dados[1:10,c('sem_pri','idade_anos','dt_evoluca_2','ano','dt_sint')]
 db$ano <- db
-db |> na.omit() |> dist(method = 'euclidean')
-
+db.dist <- db |> na.omit() |> dist(method = 'euclidean')
+db.dist
 ```
 
 Consguindo a distância euclidiana entre cada uma das 10 primeiras observações para as características selecionadas.
@@ -359,7 +360,182 @@ Dentro da estatística multivariada dividimos frequêntemente as técnicas aglom
 
 #### Técnicas Hierárquicas Aglomerativas
 
-Considere cada observação como um grupo único, nos métodos aglomerativos vamos anexando cada grupo um ao outro em cada passo, usando suas medidas de similaridade para esse agrupamentos. Em cada instância do processo o par de grupos com a menor medida de dissimilaridade. Suponha a distância euclidiana por exemplo, em cada passo, verificaremos os $p$ grupos e anexamos o par com a menor distância euclidiana, seguindo para o próximo passo realizamos o mesmo com os $p-1$ grupos, até q sobre apenas 1 grupo com todas as observações. Mas esse é apenas um dos metodos de ligamento entre os grupos, observaremos outros nesse capítulo.
+Considere cada observação como um grupo único, nos métodos aglomerativos vamos anexando cada grupo um ao outro em cada passo, usando suas medidas de similaridade para esse agrupamentos. Em cada instância do processo o par de grupos com a menor medida de dissimilaridade. Suponha a distância euclidiana por exemplo, em cada passo, verificaremos os $p$ grupos e anexamos o par com a menor distância euclidiana, seguindo para o próximo passo realizamos o mesmo com os $p-1$ grupos, até q sobre apenas 1 grupo com todas as observações. Seguindo o processo por $p-1$ passos.
 
-**Ligamento Simples**:
+**Ligamento Simples**: Assumindo que cada observação é um *cluster* incialmente, suponha as observações *X* e *Y* sendo as com menor distância, ou os vizinhos mais próximos, formando o novo cluster {XY}. A distância entre o grupo {XY} e os demais grupos, suponha *W*, é definida como:
 
+$$
+d(\{XY\},W) = \min\{d_{XW},d_{YW}\}
+$$
+
+Considere a matriz de distâncias do exemplo anterior das 5 primeiras observações:
+
+$$
+\begin{bmatrix}
+d_{1,2}=21.63 &  & & \\
+d_{1,3}= 21.63 & d_{2,3}=8.48 & & \\
+d_{1,4}=31.29 & d_{2,4}=24.73 & d_{3,4}=16.32 \\
+d_{1,5}=50.52 & d_{2,5}=28.96 & d_{3,5}=30.88 & d_{4,5}=37.80
+\end{bmatrix}
+$$
+
+Sendo a distância entre a observação 3 e 2 a menor distância dentre todas as observações. Anexaremos as duas observações em um único grupo, assumindo a nova distância desse grupo com as demais observações como sendo o minimo da distância das variaveis do grupo os demais grupos:
+
+$$
+\begin{bmatrix}
+d_{23,1}=21.63 &  & & \\
+d_{23,4}= 16.32 & d_{1,4}=31.29 & & \\
+d_{23,5}=28.96 & d_{1,5}=50.52 & d_{4,5}=37.80 
+\end{bmatrix}
+$$
+
+Dando prosseguimento com o processo, note que agora a menor distância se da entre os grupos {23} e o grupo {4}, logo os dois serão reagrupados em um único *cluster*, seguindo com esse mesmo processo até que reste apenas um grupo.
+
+$$
+\begin{bmatrix}
+d_{234,1}=21.63 \\
+d_{234,5}= 28.96 & d_{4,5} = 37.80
+\end{bmatrix} \rightarrow
+\begin{bmatrix}
+d_{1234,5}=28.96
+\end{bmatrix}
+$$
+
+Os resultados do agrupamento de ligação simples podem ser exibidos graficamente na forma de um dendrograma, ou diagrama de árvore. Os ramos na árvore representam clusters. As ramificações se unem em nós cujas posições ao longo de uma distância (ou similaridade) indicam o nível em que as junções ocorrem. Veja para o exemplo acima considerando agora as 10 observações, passando na função `hclust()` para ligação dos grupos, o parâmetro `method` para tipo de ligação, no caso atual `method = "single"`.
+
+```{r,warning=FALSE}
+hc <-  db.dist |> 
+  hclust( method = "single") 
+library(factoextra)
+fviz_dend(hc, cex = 0.5,
+          main = "Dendrogram - Simples",
+          xlab = "observacoes", ylab = "distancia", sub = "")
+```
+
+**Ligação Completa** : Funciona de maneira parecida com a ligação simples, uniremos os grupos com menor distância entre sí até que reste apenas um único grupo. Porém, as distâncias entre as variáveis unidas, digamos *X* e *Y*, das demais variáveis *W* será definida como:
+
+$$
+d(\{XY\},W) = \max\{d_{XW},d_{YW}\}
+$$
+
+Mas o procedimento das demais iterações será da mesma forma, fazendo o *link* entre os grupos de menor distância. Suponha o exemplo anterior:
+
+$$
+\begin{bmatrix}
+d_{1,2}=21.63 &  & & \\
+d_{1,3}= 21.63 & d_{2,3}=8.48 & & \\
+d_{1,4}=31.29 & d_{2,4}=24.73 & d_{3,4}=16.32 \\
+d_{1,5}=50.52 & d_{2,5}=28.96 & d_{3,5}=30.88 & d_{4,5}=37.80
+\end{bmatrix}
+$$
+
+Uniremos as observações 2 e 3 assim como anteriormente, e a cada passo, a nova distância será a distância máxima entre as variáveis do grupo e os demais grupos:
+
+$$
+\begin{split}
+\begin{bmatrix}
+d_{23,1}=21.63 &  & & \\
+d_{23,4}= 24.73 & d_{1,4}=31.29 & & \\
+d_{23,5}=30.88 & d_{1,5}=50.52 & d_{4,5}=37.80 
+\end{bmatrix}\\
+\\
+\rightarrow
+\begin{bmatrix}
+d_{123,4}=31.29 \\
+d_{123,5}= 50.52 & d_{4,5} = 37.80
+\end{bmatrix} \rightarrow
+\begin{bmatrix}
+d_{1234,5}=50.52
+\end{bmatrix}
+\end{split}
+$$
+
+Observe agora o dendrograma para ligação completa com 10 observações.
+
+```{r,warning=FALSE}
+hc <-  db.dist |> 
+  hclust( method = "complete") 
+library(factoextra)
+fviz_dend(hc, cex = 0.5,
+          main = "Dendrogram - Completa",
+          xlab = "observacoes", ylab = "distancia", sub = "")
+```
+
+**Ligação Média**: A ligação média trata a distância entre dois clusters como a distância média entre todos os pares de itens onde um membro de um par pertence a cada cluster. Considere o grupo {XY} e o grupo {W}, e $N_w$ como sendo número de elementos em {W}, e $N_{XY}$ número de elementos em {XY}, então:
+
+$$
+d(\{XY\},W) = \frac{\sum^{N_{xy}}_{i=1}\sum_{j=1}^{N_w}d_{ij}}{N_{xy}N_w}
+$$
+
+Onde $d_{ij}$ representa a distância entre a i-ésima observação do grupo {XY} e j-ésima observação do grupo {w}. Seguindo com o exemplo anterior e seu dendrograma obtemos:
+
+$$
+\begin{split}
+\begin{bmatrix}
+d_{1,2}=21.63 &  & & \\
+d_{1,3}= 21.63 & d_{2,3}=8.48 & & \\
+d_{1,4}=31.29 & d_{2,4}=24.73 & d_{3,4}=16.32 \\
+d_{1,5}=50.52 & d_{2,5}=28.96 & d_{3,5}=30.88 & d_{4,5}=37.80
+\end{bmatrix}\\
+\\\rightarrow
+\begin{bmatrix}
+d_{23,1}=21.63 &  & & \\
+d_{23,4}= 20.525 & d_{1,4}=31.29 & & \\
+d_{23,5}=29.92 & d_{1,5}=50.52 & d_{4,5}=37.80 
+\end{bmatrix}
+\\
+\\ \rightarrow
+\begin{bmatrix}
+d_{234,1}=24.85 \\
+d_{234,5}= 32.54 & d_{1,5} = 50.52
+\end{bmatrix} \rightarrow
+\begin{bmatrix}
+d_{1234,5}=37.04
+\end{bmatrix}
+\end{split}
+$$
+
+```{r,warning=FALSE}
+hc <-  db.dist |> 
+  hclust( method = "average") 
+library(factoextra)
+fviz_dend(hc, cex = 0.5,
+          main = "Dendrogram - Média",
+          xlab = "observacoes", ylab = "distancia", sub = "")
+```
+
+**Método Ward de clusterização** : O método de ward se baseia na minimização da "perda de informação" ao juntar dois grupos. É tido como perda de informação o crescimento da soma dos quadrados dos erros, $SQE$. Suponha o grupo {W}, a $SQE_W$ pode ser descrita como a soma dos quadrados das distâncias de cada item do grupo para a média do grupo. Definindo $SQE$ como a soma dos $SQE_i$, onde $i$ representa cada um dos $N$ grupos. Em cada instância do processo é realizado a junção de todos os possiveis pares de grupos, optamos pela união que obtiver o menor incremento da $SQE$. Note que no passo 0 essa soma é equivalente a 0, considerando que para cada $SQE_i$, com apenas uma observação por cluster, a média será a própria observação. Enquanto que ao considerar o grupo final com todas as observações é possível obter a $SQE$ por:
+
+$$
+SQE = \sum^N_{j=1}(X_j - \bar{X})'(X_j - \bar{X})
+$$
+
+Onde $X_j$ representa a j-ésima observação do grupo.
+
+```{r,warning=FALSE}
+hc <-  db.dist |> 
+  hclust( method = "ward.D2") 
+library(factoextra)
+fviz_dend(hc, cex = 0.5,
+          main = "Dendrogram - Ward",
+          xlab = "observacoes", ylab = "distancia", sub = "")
+
+```
+
+#### Algumas conclusões
+
+Os métodos hierárquicos são muito utilizados na exploração dos dados, bem como para pré definição do número de *clusters*, pois como veremos a seguir nos métodos não hierarquicos temos a necessidade de informar um número prévio de grupos. O dendograma é tido como principal forma de definição desses $k$ grupos. Para definir o número ideal de *clusters* vamos utilizar o exemplo do método Ward. Observe que a distância para união do grupo {5,6} e {2,3,4,8,10} é relativamente grande se comparada as outras junções, uma forma de definir então seria $k = 3$ grupos onde os grupos seriam, {1,7,9},{5,6} e {2,3,4,8,10} olhando o nível de fusão (distância) em que cada grupo precisou para se unir. Podemos então já utilizar $k$ aproximado de 3 para iniciarmos nossos métodos não hieráquicos como veremos a seguir.
+
+### Métodos de Agrupamentos Não Hierárquicos
+
+Dentro desse conjunto de métodos iremos trabalhar com o mais usual e conhecido, *k-médias*. Bem como dito, os métodos não hierárquicos precisam de um número pré definido de grupos $k$, anexando cada observação a um grupo com base em $k$ centróides que serão definidos pelo algoritmo.
+
+#### K-Médias.
+
+K-médias é um método simples que consiste em anexar cada observação ao centróide mais perto. Dividimos o conjunto de dados para os respectivos centróides mais próximos, em seguida alteramos a posição dos $k$ centróides de forma a minimizar a soma dos quadrados dos erros em comparação com o posicionamento anterior, repetindo o processo até que a alteração na $SQE$ seja mínima. Ou seja, queremos:
+
+$$
+ \min_{c_i}\left( \sum_{i = 1}^k \sum_{x \in S_i}|| x - c_i|| ^2\right)
+$$
+
+Onde $C_i$ representa os centróides e cada $x$ uma observação.

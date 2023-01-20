@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
@@ -202,7 +265,14 @@ div.csl-indent {
   <li><a href="#definições-importantes" id="toc-definições-importantes" class="nav-link" data-scroll-target="#definições-importantes"><span class="toc-section-number">5.1.1</span>  Definições importantes</a></li>
   <li><a href="#decomposição-espectral-de-matrizes-de-correlação-e-covariância-em-seus-autovetores-e-autovalores-normalizados." id="toc-decomposição-espectral-de-matrizes-de-correlação-e-covariância-em-seus-autovetores-e-autovalores-normalizados." class="nav-link" data-scroll-target="#decomposição-espectral-de-matrizes-de-correlação-e-covariância-em-seus-autovetores-e-autovalores-normalizados."><span class="toc-section-number">5.1.2</span>  Decomposição Espectral de Matrizes de correlação e Covariância em seus Autovetores e Autovalores normalizados.</a></li>
   </ul></li>
-  <li><a href="#análise-de-componentes-principais-pca" id="toc-análise-de-componentes-principais-pca" class="nav-link" data-scroll-target="#análise-de-componentes-principais-pca"><span class="toc-section-number">5.2</span>  Análise de Componentes Principais (PCA)</a></li>
+  <li><a href="#análise-de-componentes-principais-pca" id="toc-análise-de-componentes-principais-pca" class="nav-link" data-scroll-target="#análise-de-componentes-principais-pca"><span class="toc-section-number">5.2</span>  Análise de Componentes Principais (PCA)</a>
+  <ul class="collapse">
+  <li><a href="#exemplo." id="toc-exemplo." class="nav-link" data-scroll-target="#exemplo."><span class="toc-section-number">5.2.1</span>  Exemplo.</a></li>
+  <li><a href="#número-de-componentes-principais" id="toc-número-de-componentes-principais" class="nav-link" data-scroll-target="#número-de-componentes-principais"><span class="toc-section-number">5.2.2</span>  Número de Componentes Principais</a></li>
+  <li><a href="#medidas-de-dissimilaridade" id="toc-medidas-de-dissimilaridade" class="nav-link" data-scroll-target="#medidas-de-dissimilaridade"><span class="toc-section-number">5.2.3</span>  Medidas de dissimilaridade</a></li>
+  <li><a href="#técnicas-hierárquicas" id="toc-técnicas-hierárquicas" class="nav-link" data-scroll-target="#técnicas-hierárquicas"><span class="toc-section-number">5.2.4</span>  Técnicas Hierárquicas</a></li>
+  <li><a href="#métodos-de-agrupamentos-não-hierárquicos" id="toc-métodos-de-agrupamentos-não-hierárquicos" class="nav-link" data-scroll-target="#métodos-de-agrupamentos-não-hierárquicos"><span class="toc-section-number">5.2.5</span>  Métodos de Agrupamentos Não Hierárquicos</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -345,7 +415,8 @@ e_{i2}\\
 \vdots\\
 e_{ip}
 \end{bmatrix}
-\]</span> Em que</p>
+\]</span></p>
+<p>Em que</p>
 <p><span class="math display">\[
 ||e_i|| = \sqrt{e^2_{i1} + e^2_{i2} + \dots + e^2_{ip}} = 1
 \]</span></p>
@@ -363,7 +434,8 @@ O'\Sigma O = \begin{bmatrix}
 \vdots&amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
 0 &amp; 0 &amp; 0 &amp; \dots&amp; \lambda_p
 \end{bmatrix} = \Lambda
-\]</span> Onde $_1 _2 _p $ são os autovalores ordenados em ordem decrescente da matriz <span class="math inline">\(\Sigma\)</span>. Nesse caso, dizemos que a matriz <span class="math inline">\(\Sigma\)</span> é similar à matriz <span class="math inline">\(\Lambda\)</span>, que implica em:</p>
+\]</span></p>
+<p>Onde <span class="math inline">\(\lambda\_1 \geq \lambda\_2 \geq \dots \lambda\_p\geq0\)</span> são os autovalores ordenados em ordem decrescente da matriz <span class="math inline">\(\Sigma\)</span>. Nesse caso, dizemos que a matriz <span class="math inline">\(\Sigma\)</span> é similar à matriz <span class="math inline">\(\Lambda\)</span>, que implica em:</p>
 <ul>
 <li><p><span class="math inline">\(det(\Sigma) = det(\Lambda) = \prod^p_{i=1} \lambda_i\)</span></p></li>
 <li><p>traço<span class="math inline">\((\Sigma) =\)</span> traço<span class="math inline">\((\Lambda) = \lambda_1 +\dots+\lambda_p\)</span></p></li>
@@ -372,10 +444,501 @@ O'\Sigma O = \begin{bmatrix}
 <p><span class="math display">\[
 \Sigma = O \Lambda O' = \sum_{i=1}^p \lambda_i e_i e_i'
 \]</span></p>
+<p>Dentro do <strong>R</strong> é possível realizar a decomposição espectral usando a função <code>eigen()</code>,</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">8</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">5</span>),<span class="at">nrow =</span> <span class="dv">2</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sigma</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]    8   -2
+[2,]   -2    5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eigen</span>(sigma)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>eigen() decomposition
+$values
+[1] 9 4
+
+$vectors
+           [,1]       [,2]
+[1,] -0.8944272 -0.4472136
+[2,]  0.4472136 -0.8944272</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="análise-de-componentes-principais-pca" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="análise-de-componentes-principais-pca"><span class="header-section-number">5.2</span> Análise de Componentes Principais (PCA)</h2>
+<p>A análise de componentes principais se preocupa em conseguir explicar a variância e covariância de uma estrutura de variáveis através de algumas poucas combinações lineares. Tendo como principal objetivo dessa análise a redução de dimensionalidade e interpretação das relações. Essas combinações lineares são os componentes principais e são não correlacionadas entre sí. Quando assumimos que as variáveis originiais possuem distribuição normal, as componentes, além de não correlacionadas são normalmente distribuidas e idependentes. Os componentes principais são extraidos através da decomposição da matriz de covariância do vetor aleatório. Caso alguma trasnformação seja realizada nesse vetor, a decomposição será realizada na matriz de covariância do vetor transformado. Um caso muito utilizado, suponha que nossas variáveis estão em escalas muito diferentes, o PCA pode acabar por dar mais variabilidade a essa variável com escala superior, para isso então padronizamos o vetor. Utilizar a matriz de covariância do vetor transformado e a matriz de correlação do vetor originais são ações equivalentes nessa situação.</p>
+<p><strong>Definição</strong>: Seja <em>X</em> um vetor aleatório com <span class="math inline">\(\mu = E(X)\)</span> e <span class="math inline">\(\Sigma = Var(X)\)</span> e <span class="math inline">\((\lambda_i,e_i), i = 1,\dots,p\)</span> os pares de autovalores e autovetores normalizados associados de <span class="math inline">\(\Sigma\)</span>. Então,</p>
+<p><span class="math display">\[
+\begin{split}
+Y = O'X,\quad \textrm{com}\quad O = [e_1,e_2,\dots,e_p],\textrm{ os componentes principais de X}\\
+\textrm{ou seja}\\
+Y =
+\begin{bmatrix}
+Y_1\\
+\vdots\\
+Y_d
+\end{bmatrix} \textrm{ com  } \quad Y_1 = e_1'X = e_{11}X_1 + e_{12}X_2 +  \dots + e_{1p}X_p
+\end{split}
+\]</span></p>
+<p>O primeiro componente principal. Os componentes principais de <em>X</em>, <em>Y</em>, são tais que,</p>
+<p><span class="math display">\[
+\begin{split}
+\mu_y = E(Y) = E(O'X) = O'E(X) = O'\mu_x\\
+\Sigma_y = Var(Y) = Var(O'X) = O'Var(X)O = O'\Sigma_xO = \Lambda
+\end{split}
+\]</span></p>
+<p>ou seja</p>
+<p><span class="math display">\[
+cov(Y_i,Y_j) = 0, \forall i \neq j \textrm{ e } Var(Y_i) = \lambda_i
+\]</span></p>
+<p>A prova desse resultado pode ser vista em <span class="citation" data-cites="johnson2002applied">(<a href="references.html#ref-johnson2002applied" role="doc-biblioref">Johnson, Wichern, et al. 2002, 5:432</a>)</span>.</p>
+<p>Descrevemos a variância total da população como sendo o somatório de todos os autovalores <span class="math inline">\(\lambda\)</span>. A partir disso, podemos descrever a proporção da variância total explicada pela j-ésima componente como sendo:</p>
+<p><span class="math display">\[
+\frac{\lambda_j}{\sum_{i=1}^p \lambda_i} \qquad \forall j =1,\dots,p
+\]</span></p>
+<p>Para algum <span class="math inline">\(p\)</span> significativamente grande, podemos utilizar <span class="math inline">\(d&lt;p\)</span> componentes ao invés das <span class="math inline">\(p\)</span> variáveis originais, considerando que, podemos descrever uma proporção relativamente alta da variância com essas <span class="math inline">\(d\)</span> componentes.</p>
+<p>Se <span class="math inline">\(Y_i = e'_iX, i =1\dots,p\)</span> são as componentes principais obtidas da matriz de covariância, então</p>
+<p><span class="math display">\[
+\rho_{Y_i,X_j} = \frac{e_{ij}\sqrt{\lambda_i}}{\sigma_{jj}}, \quad \forall i,j=1,\dots p
+\]</span></p>
+<p>São os coeficientes de correlação entre a componente <span class="math inline">\(Y_i\)</span> e a variável <span class="math inline">\(X_j\)</span></p>
+<section id="exemplo." class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="exemplo."><span class="header-section-number">5.2.1</span> Exemplo.</h3>
+<p>Para realmente entender a aplicabilidade da análise de componentes, vamos pegar um subconjunto do banco de dados mtcars, conjunto de dados no R base, consiste nas características de modelos de carros. Selecionaremos um subconjunto de colunas numéricas para conseguirmos trabalhar, considerando que PCA funciona melhor com variáveis numéricas. Há possibilidade de transformação de variáveis categoricas em variáveis <em>dummy</em>, porem o algoritmo não será tão preciso, também não sendo possível trabalhar com variáveis categóricas ordinais nesse caso.</p>
+<p>(deixei um exemplo com mtcars pois o banco de dados trabalhado no livro tem poucas variaveis numericas)</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 7%">
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 7%">
+<col style="width: 7%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">mpg</th>
+<th style="text-align: right;">cyl</th>
+<th style="text-align: right;">disp</th>
+<th style="text-align: right;">hp</th>
+<th style="text-align: right;">drat</th>
+<th style="text-align: right;">wt</th>
+<th style="text-align: right;">qsec</th>
+<th style="text-align: right;">gear</th>
+<th style="text-align: right;">carb</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Mazda RX4</td>
+<td style="text-align: right;">21.0</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">160</td>
+<td style="text-align: right;">110</td>
+<td style="text-align: right;">3.90</td>
+<td style="text-align: right;">2.620</td>
+<td style="text-align: right;">16.46</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mazda RX4 Wag</td>
+<td style="text-align: right;">21.0</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">160</td>
+<td style="text-align: right;">110</td>
+<td style="text-align: right;">3.90</td>
+<td style="text-align: right;">2.875</td>
+<td style="text-align: right;">17.02</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Datsun 710</td>
+<td style="text-align: right;">22.8</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">108</td>
+<td style="text-align: right;">93</td>
+<td style="text-align: right;">3.85</td>
+<td style="text-align: right;">2.320</td>
+<td style="text-align: right;">18.61</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hornet 4 Drive</td>
+<td style="text-align: right;">21.4</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">258</td>
+<td style="text-align: right;">110</td>
+<td style="text-align: right;">3.08</td>
+<td style="text-align: right;">3.215</td>
+<td style="text-align: right;">19.44</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hornet Sportabout</td>
+<td style="text-align: right;">18.7</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">360</td>
+<td style="text-align: right;">175</td>
+<td style="text-align: right;">3.15</td>
+<td style="text-align: right;">3.440</td>
+<td style="text-align: right;">17.02</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Valiant</td>
+<td style="text-align: right;">18.1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">225</td>
+<td style="text-align: right;">105</td>
+<td style="text-align: right;">2.76</td>
+<td style="text-align: right;">3.460</td>
+<td style="text-align: right;">20.22</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Podemos obter de forma simples no <em>R</em> as componentes, bem como a proporção da variância explicada, com a função <code>prcomp()</code>. Bem como citado tambem é comum padronização das variáveis devido a escala de cada característica, para isso basta informar o parâmetro <code>scale.</code> como <em>TRUE</em> dentro da função.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dados.pca <span class="ot">&lt;-</span> dados <span class="sc">|&gt;</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prcomp</span>()</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">'dados não padronizados: '</span>,<span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "dados não padronizados: "</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dados.pca <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Importance of components:
+                           PC1      PC2     PC3     PC4     PC5     PC6    PC7
+Standard deviation     136.532 38.14735 3.06642 1.27492 0.90474 0.64734 0.3054
+Proportion of Variance   0.927  0.07237 0.00047 0.00008 0.00004 0.00002 0.0000
+Cumulative Proportion    0.927  0.99938 0.99985 0.99993 0.99997 0.99999 1.0000
+                          PC8    PC9
+Standard deviation     0.2859 0.2159
+Proportion of Variance 0.0000 0.0000
+Cumulative Proportion  1.0000 1.0000</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#padronizando as variaveis devido a diferenca de escalas</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>dados.pca.padr <span class="ot">&lt;-</span> dados <span class="sc">|&gt;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prcomp</span>(<span class="at">scale. =</span> T)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">'dados padronizados:'</span>,<span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "dados padronizados:"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dados.pca.padr <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Importance of components:
+                          PC1    PC2     PC3     PC4     PC5     PC6     PC7
+Standard deviation     2.3782 1.4429 0.71008 0.51481 0.42797 0.35184 0.32413
+Proportion of Variance 0.6284 0.2313 0.05602 0.02945 0.02035 0.01375 0.01167
+Cumulative Proportion  0.6284 0.8598 0.91581 0.94525 0.96560 0.97936 0.99103
+                          PC8     PC9
+Standard deviation     0.2419 0.14896
+Proportion of Variance 0.0065 0.00247
+Cumulative Proportion  0.9975 1.00000</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#outras informacoes</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>dados.pca.padr <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Standard deviations (1, .., p=9):
+[1] 2.3782219 1.4429485 0.7100809 0.5148082 0.4279704 0.3518426 0.3241326
+[8] 0.2418962 0.1489644
+
+Rotation (n x k) = (9 x 9):
+            PC1         PC2         PC3          PC4        PC5         PC6
+mpg  -0.3931477  0.02753861 -0.22119309 -0.006126378 -0.3207620  0.72015586
+cyl   0.4025537  0.01570975 -0.25231615  0.040700251  0.1171397  0.22432550
+disp  0.3973528 -0.08888469 -0.07825139  0.339493732 -0.4867849 -0.01967516
+hp    0.3670814  0.26941371 -0.01721159  0.068300993 -0.2947317  0.35394225
+drat -0.3118165  0.34165268  0.14995507  0.845658485  0.1619259 -0.01536794
+wt    0.3734771 -0.17194306  0.45373418  0.191260029 -0.1874822 -0.08377237
+qsec -0.2243508 -0.48404435  0.62812782 -0.030329127 -0.1482495  0.25752940
+gear -0.2094749  0.55078264  0.20658376 -0.282381831 -0.5624860 -0.32298239
+carb  0.2445807  0.48431310  0.46412069 -0.214492216  0.3997820  0.35706914
+             PC7         PC8         PC9
+mpg  -0.38138068 -0.12465987  0.11492862
+cyl  -0.15893251  0.81032177  0.16266295
+disp -0.18233095 -0.06416707 -0.66190812
+hp    0.69620751 -0.16573993  0.25177306
+drat  0.04767957  0.13505066  0.03809096
+wt   -0.42777608 -0.19839375  0.56918844
+qsec  0.27622581  0.35613350 -0.16873731
+gear -0.08555707  0.31636479  0.04719694
+carb -0.20604210 -0.10832772 -0.32045892</code></pre>
+</div>
+</div>
+<p>Da informação obtida por <code>print(dados.pca.padr)</code>, podemos identificar os <em>loadings</em> da análise. Os <em>loadings</em> podem ser definidos como os coeficientes da combinação linear das variáveis originais de onde as componentes principais são construidas. De um ponto de vista matemático os <em>loadings</em> são iguais às coordenadas das variáveis divididas pela raiz quadrada do autovalor associado ao componente. são úteis quando você deseja entender os resultados. Lembre-se de que cada nova variável Y é uma combinação linear de todas as variáveis. A matriz de <em>loadings</em> representa verticalmente quanto da variância de cada componente é explicada por cada variável original. Vemos por exemplo que, conforme <code>mpg</code> aumenta, a <code>PC1</code> tem um descrécimo. Os <em>loadings</em> são muito úteis na hora de nomear nossas componentes por essa relação que faz com cada uma das variáveis.</p>
+</section>
+<section id="número-de-componentes-principais" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="número-de-componentes-principais"><span class="header-section-number">5.2.2</span> Número de Componentes Principais</h3>
+<p>Até agora foi descrito que podemos utilizar um número <span class="math inline">\(d &lt; p\)</span> de componentes principais que contenha uma explicabilidade aproximada dos dados originais, mas qual seria esse valor <span class="math inline">\(d\)</span>? Há um conjunto de técnicas para essa tomada de decisão, sendo uma delas por exemplo a proporção de variância acumulada total explicada pelas componentes <span class="math inline">\(Y_1,\dots,Y_p\)</span>:</p>
+<p><span class="math display">\[
+\frac{\sum^d_{j=1}\lambda_j}{\sum_{i=1}^p \lambda_i}
+\]</span></p>
+<p>Esse valor é observado na função <code>prcomp()</code> já citada, como <em>cumulative Proportion</em> no resultado do <code>summary()</code> da função.</p>
+<p>Podemos utilizar como apoio gráfico e auxílio na tomada de decisão para o número de componentes é o <em>scree plot</em>, conhecido também como gráfico do cotovelo. Consiste na ordenação dos autovalores do maior para o menor, procurando por uma espécie de cotovelo dentro do gráfico. Selecionamos o número $i $ de componentes em que há um grande valor para observação <span class="math inline">\(\lambda_{i-1}\)</span> em comparação a observação <span class="math inline">\(\lambda_i\)</span> e uma pequena alteração da observação <span class="math inline">\(\lambda_i\)</span> para a observação <span class="math inline">\(\lambda_{i+1}\)</span>. Observe a seguir</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#variancia explicada por cada componente</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>var_explicada <span class="ot">=</span> dados.pca.padr<span class="sc">$</span>sdev<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> <span class="fu">sum</span>(dados.pca.padr<span class="sc">$</span>sdev<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>), var_explicada) <span class="sc">+</span> </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Principal Componente"</span>) <span class="sc">+</span> </span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"variancia explicada"</span>) <span class="sc">+</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Scree Plot"</span>) <span class="sc">+</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">limits=</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="naosupervisionado_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Podemos por meio, tanto do <em>scree plot</em>, quanto pelo valor da variância explicada acumulada, selecionar <span class="math inline">\(d= 3\)</span> componentes para reter, pela queda de 2 para 3 ser significante, enquanto a de 3 para 4 nem tanto. Reduzindo número de variáveis a 3.</p>
+<p>##Métodos de Agrupamentos</p>
+<p>A análise de agrupamentos ou <em>clusterização</em>, tem como objetivo, agrupar indivíduos da população usando como base medidas de similaridade entre eles, formando grupos heterogêneos entre sí com homogenuidade entre indivíduos de mesmo <em>cluster</em>. Muito utilizado na classificação de tipos de clientes de mercado, usuários de aplicativos, ou até mesmo em áres como psicologia, para agrupamentos de perfis de personalidade. Outro exemplo pode ser visto no trabalho (colocar link mariana).</p>
+</section>
+<section id="medidas-de-dissimilaridade" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="medidas-de-dissimilaridade"><span class="header-section-number">5.2.3</span> Medidas de dissimilaridade</h3>
+<p>De forma mais intutitiva, essas medidas de dissimilaridade seriam formas de numerar o quão próximo ou distânte a característica de um indivíduo (Idade por exemplo), se aproxima da mesma característica de outro indivíduo da mesma população. Não possuimos uma única forma de medida. Aqui apresentaremos as mais conhecidas e mais trabalhadas. Não existe uma métrica melhor, a eficácia de uma medida dependerá do caso em que a mesma será aplicada. Suponha que para cada elemento amostral será obtido o vetor <span class="math inline">\(X = [X_{1},X_{2},\dots,X_{p}]'\)</span> de medidas, onde <span class="math inline">\(X_{i}\)</span> representa a medida da i-ésima característica para a unidade amostral.</p>
+<p><strong>Distância Euclidiana</strong>: Essa é provavelmente a mais conhecida e usada medida de distância. Ela simplesmente é a distância geométrica no espaço multidimensional. Considere o i-ésimo e o j-ésimo indivíduo:</p>
+<p><span class="math display">\[
+d(X,Y) = \sqrt{\sum^p_{i=1}(X_i - Y_i)^2}
+\]</span></p>
+<p><strong>Distância de Canberra</strong>: A distância de Camberra examina a soma das séries de diferenças fracionárias entre as coordenadas do par de observações.</p>
+<p><span class="math display">\[
+d(X,Y) = \sum^p_{i=1}\frac{|X_i - Y_i|}{|X_i| + |Y_i|}
+\]</span></p>
+<p><strong>Distância de Manhattan</strong>: A distância de Manhattan (“City Block” ou “Geometria do Táxi”) é uma forma de geometria em que a distância entre dois pontos é a soma das diferenças absolutas de suas coordenadas.</p>
+<p><span class="math display">\[
+d(X,Y) = \sum^p_{i=1}|X_i- Y_i|
+\]</span></p>
+<p><strong>Distância de Chebyshev</strong>: Em matemática, distância de Chebyshev (ou distância de Tchebychev), métrica máxima ou <span class="math inline">\(L_{\infty}\)</span> métrica, é uma métrica definida em um espaço vetorial onde a distância entre dois vetores é a maior de suas diferenças ao longo de qualquer característica.</p>
+<p><span class="math display">\[
+d(X,Y) = \max_i(|X_i - Y_i|)
+\]</span></p>
+<p><strong>Distância de Minkowski</strong>: A distância de Minkowski de ordem <span class="math inline">\(k\)</span>, sendo <span class="math inline">\(k\)</span> inteiro, pode ser considerada uma generalização tanto da distância euclidiana quanto da distância de manhattan.</p>
+<p><span class="math display">\[
+d(X,Y) = \left(\sum^p_{i=1}|X_i - Y_i|^k\right)^\frac{1}{k}
+\]</span></p>
+<p>Todas essas distâncias aqui citadas podem ser acessadas pela função <code>dist()</code> do <em>R</em>, alterando o parãmetro <code>method</code> para a distância desejada, da seguinte forma :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>db<span class="ot">&lt;-</span> dados[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="fu">c</span>(<span class="st">'sem_pri'</span>,<span class="st">'idade_anos'</span>,<span class="st">'dt_evoluca_2'</span>,<span class="st">'ano'</span>,<span class="st">'dt_sint'</span>)]</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>db<span class="sc">$</span>ano <span class="ot">&lt;-</span> db</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>db.dist <span class="ot">&lt;-</span> db <span class="sc">|&gt;</span> <span class="fu">na.omit</span>() <span class="sc">|&gt;</span> <span class="fu">dist</span>(<span class="at">method =</span> <span class="st">'euclidean'</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>db.dist</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           1         2         3         4         5         6         7
+2  21.633308                                                            
+3  21.633308  8.485281                                                  
+4  31.292172 24.738634 16.321765                                        
+5  50.521283 28.962044 30.886890 37.804762                              
+6  67.242843 47.774470 45.615787 43.266615 24.665766                    
+7  20.435264 11.063453 18.782971 34.985711 35.445733 56.920998          
+8  31.805660 13.813037 10.217632 17.076299 22.126907 35.445733 24.665766
+9  37.994736 28.962044 37.421919 53.699162 40.958516 65.424766 19.809089
+10 44.009090 27.626075 22.768399 18.782971 22.847319 24.738634 38.418745
+           8         9
+2                     
+3                     
+4                     
+5                     
+6                     
+7                     
+8                     
+9  40.249224          
+10 13.813037 52.752251</code></pre>
+</div>
+</div>
+<p>Consguindo a distância euclidiana entre cada uma das 10 primeiras observações para as características selecionadas.</p>
+</section>
+<section id="técnicas-hierárquicas" class="level3" data-number="5.2.4">
+<h3 data-number="5.2.4" class="anchored" data-anchor-id="técnicas-hierárquicas"><span class="header-section-number">5.2.4</span> Técnicas Hierárquicas</h3>
+<p>Dentro da estatística multivariada dividimos frequêntemente as técnicas aglomerativas em dois tipos: hierárquicos e não hierárquicos, sendo as hierárquicas classificadas em aglomerativa e divisivas. Métodos hierárquicos são geralmente utilizados na análise exploratória afim de encontrar um número ótimo de <em>clusters</em> para o conjunto de variáveis, para as técnicas não hierárquicas é necessário um valor prévio de grupos.</p>
+<section id="técnicas-hierárquicas-aglomerativas" class="level4" data-number="5.2.4.1">
+<h4 data-number="5.2.4.1" class="anchored" data-anchor-id="técnicas-hierárquicas-aglomerativas"><span class="header-section-number">5.2.4.1</span> Técnicas Hierárquicas Aglomerativas</h4>
+<p>Considere cada observação como um grupo único, nos métodos aglomerativos vamos anexando cada grupo um ao outro em cada passo, usando suas medidas de similaridade para esse agrupamentos. Em cada instância do processo o par de grupos com a menor medida de dissimilaridade. Suponha a distância euclidiana por exemplo, em cada passo, verificaremos os <span class="math inline">\(p\)</span> grupos e anexamos o par com a menor distância euclidiana, seguindo para o próximo passo realizamos o mesmo com os <span class="math inline">\(p-1\)</span> grupos, até q sobre apenas 1 grupo com todas as observações. Seguindo o processo por <span class="math inline">\(p-1\)</span> passos.</p>
+<p><strong>Ligamento Simples</strong>: Assumindo que cada observação é um <em>cluster</em> incialmente, suponha as observações <em>X</em> e <em>Y</em> sendo as com menor distância, ou os vizinhos mais próximos, formando o novo cluster {XY}. A distância entre o grupo {XY} e os demais grupos, suponha <em>W</em>, é definida como:</p>
+<p><span class="math display">\[
+d(\{XY\},W) = \min\{d_{XW},d_{YW}\}
+\]</span></p>
+<p>Considere a matriz de distâncias do exemplo anterior das 5 primeiras observações:</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+d_{1,2}=21.63 &amp;  &amp; &amp; \\
+d_{1,3}= 21.63 &amp; d_{2,3}=8.48 &amp; &amp; \\
+d_{1,4}=31.29 &amp; d_{2,4}=24.73 &amp; d_{3,4}=16.32 \\
+d_{1,5}=50.52 &amp; d_{2,5}=28.96 &amp; d_{3,5}=30.88 &amp; d_{4,5}=37.80
+\end{bmatrix}
+\]</span></p>
+<p>Sendo a distância entre a observação 3 e 2 a menor distância dentre todas as observações. Anexaremos as duas observações em um único grupo, assumindo a nova distância desse grupo com as demais observações como sendo o minimo da distância das variaveis do grupo os demais grupos:</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+d_{23,1}=21.63 &amp;  &amp; &amp; \\
+d_{23,4}= 16.32 &amp; d_{1,4}=31.29 &amp; &amp; \\
+d_{23,5}=28.96 &amp; d_{1,5}=50.52 &amp; d_{4,5}=37.80
+\end{bmatrix}
+\]</span></p>
+<p>Dando prosseguimento com o processo, note que agora a menor distância se da entre os grupos {23} e o grupo {4}, logo os dois serão reagrupados em um único <em>cluster</em>, seguindo com esse mesmo processo até que reste apenas um grupo.</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+d_{234,1}=21.63 \\
+d_{234,5}= 28.96 &amp; d_{4,5} = 37.80
+\end{bmatrix} \rightarrow
+\begin{bmatrix}
+d_{1234,5}=28.96
+\end{bmatrix}
+\]</span></p>
+<p>Os resultados do agrupamento de ligação simples podem ser exibidos graficamente na forma de um dendrograma, ou diagrama de árvore. Os ramos na árvore representam clusters. As ramificações se unem em nós cujas posições ao longo de uma distância (ou similaridade) indicam o nível em que as junções ocorrem. Veja para o exemplo acima considerando agora as 10 observações, passando na função <code>hclust()</code> para ligação dos grupos, o parâmetro <code>method</code> para tipo de ligação, no caso atual <code>method = "single"</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>hc <span class="ot">&lt;-</span>  db.dist <span class="sc">|&gt;</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hclust</span>( <span class="at">method =</span> <span class="st">"single"</span>) </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(factoextra)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Welcome! Want to learn more? See two factoextra-related books at https://goo.gl/ve3WBa</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_dend</span>(hc, <span class="at">cex =</span> <span class="fl">0.5</span>,</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">main =</span> <span class="st">"Dendrogram - Simples"</span>,</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">xlab =</span> <span class="st">"observacoes"</span>, <span class="at">ylab =</span> <span class="st">"distancia"</span>, <span class="at">sub =</span> <span class="st">""</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="naosupervisionado_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><strong>Ligação Completa</strong> : Funciona de maneira parecida com a ligação simples, uniremos os grupos com menor distância entre sí até que reste apenas um único grupo. Porém, as distâncias entre as variáveis unidas, digamos <em>X</em> e <em>Y</em>, das demais variáveis <em>W</em> será definida como:</p>
+<p><span class="math display">\[
+d(\{XY\},W) = \max\{d_{XW},d_{YW}\}
+\]</span></p>
+<p>Mas o procedimento das demais iterações será da mesma forma, fazendo o <em>link</em> entre os grupos de menor distância. Suponha o exemplo anterior:</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+d_{1,2}=21.63 &amp;  &amp; &amp; \\
+d_{1,3}= 21.63 &amp; d_{2,3}=8.48 &amp; &amp; \\
+d_{1,4}=31.29 &amp; d_{2,4}=24.73 &amp; d_{3,4}=16.32 \\
+d_{1,5}=50.52 &amp; d_{2,5}=28.96 &amp; d_{3,5}=30.88 &amp; d_{4,5}=37.80
+\end{bmatrix}
+\]</span></p>
+<p>Uniremos as observações 2 e 3 assim como anteriormente, e a cada passo, a nova distância será a distância máxima entre as variáveis do grupo e os demais grupos:</p>
+<p><span class="math display">\[
+\begin{split}
+\begin{bmatrix}
+d_{23,1}=21.63 &amp;  &amp; &amp; \\
+d_{23,4}= 24.73 &amp; d_{1,4}=31.29 &amp; &amp; \\
+d_{23,5}=30.88 &amp; d_{1,5}=50.52 &amp; d_{4,5}=37.80
+\end{bmatrix}\\
+\\
+\rightarrow
+\begin{bmatrix}
+d_{123,4}=31.29 \\
+d_{123,5}= 50.52 &amp; d_{4,5} = 37.80
+\end{bmatrix} \rightarrow
+\begin{bmatrix}
+d_{1234,5}=50.52
+\end{bmatrix}
+\end{split}
+\]</span></p>
+<p>Observe agora o dendrograma para ligação completa com 10 observações.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>hc <span class="ot">&lt;-</span>  db.dist <span class="sc">|&gt;</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hclust</span>( <span class="at">method =</span> <span class="st">"complete"</span>) </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(factoextra)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_dend</span>(hc, <span class="at">cex =</span> <span class="fl">0.5</span>,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">main =</span> <span class="st">"Dendrogram - Completa"</span>,</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">xlab =</span> <span class="st">"observacoes"</span>, <span class="at">ylab =</span> <span class="st">"distancia"</span>, <span class="at">sub =</span> <span class="st">""</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="naosupervisionado_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><strong>Ligação Média</strong>: A ligação média trata a distância entre dois clusters como a distância média entre todos os pares de itens onde um membro de um par pertence a cada cluster. Considere o grupo {XY} e o grupo {W}, e <span class="math inline">\(N_w\)</span> como sendo número de elementos em {W}, e <span class="math inline">\(N_{XY}\)</span> número de elementos em {XY}, então:</p>
+<p><span class="math display">\[
+d(\{XY\},W) = \frac{\sum^{N_{xy}}_{i=1}\sum_{j=1}^{N_w}d_{ij}}{N_{xy}N_w}
+\]</span></p>
+<p>Onde <span class="math inline">\(d_{ij}\)</span> representa a distância entre a i-ésima observação do grupo {XY} e j-ésima observação do grupo {w}. Seguindo com o exemplo anterior e seu dendrograma obtemos:</p>
+<p><span class="math display">\[
+\begin{split}
+\begin{bmatrix}
+d_{1,2}=21.63 &amp;  &amp; &amp; \\
+d_{1,3}= 21.63 &amp; d_{2,3}=8.48 &amp; &amp; \\
+d_{1,4}=31.29 &amp; d_{2,4}=24.73 &amp; d_{3,4}=16.32 \\
+d_{1,5}=50.52 &amp; d_{2,5}=28.96 &amp; d_{3,5}=30.88 &amp; d_{4,5}=37.80
+\end{bmatrix}\\
+\\\rightarrow
+\begin{bmatrix}
+d_{23,1}=21.63 &amp;  &amp; &amp; \\
+d_{23,4}= 20.525 &amp; d_{1,4}=31.29 &amp; &amp; \\
+d_{23,5}=29.92 &amp; d_{1,5}=50.52 &amp; d_{4,5}=37.80
+\end{bmatrix}
+\\
+\\ \rightarrow
+\begin{bmatrix}
+d_{234,1}=24.85 \\
+d_{234,5}= 32.54 &amp; d_{1,5} = 50.52
+\end{bmatrix} \rightarrow
+\begin{bmatrix}
+d_{1234,5}=37.04
+\end{bmatrix}
+\end{split}
+\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>hc <span class="ot">&lt;-</span>  db.dist <span class="sc">|&gt;</span> </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hclust</span>( <span class="at">method =</span> <span class="st">"average"</span>) </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(factoextra)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_dend</span>(hc, <span class="at">cex =</span> <span class="fl">0.5</span>,</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">main =</span> <span class="st">"Dendrogram - Média"</span>,</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">xlab =</span> <span class="st">"observacoes"</span>, <span class="at">ylab =</span> <span class="st">"distancia"</span>, <span class="at">sub =</span> <span class="st">""</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="naosupervisionado_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><strong>Método Ward de clusterização</strong> : O método de ward se baseia na minimização da “perda de informação” ao juntar dois grupos. É tido como perda de informação o crescimento da soma dos quadrados dos erros, <span class="math inline">\(SQE\)</span>. Suponha o grupo {W}, a <span class="math inline">\(SQE_W\)</span> pode ser descrita como a soma dos quadrados das distâncias de cada item do grupo para a média do grupo. Definindo <span class="math inline">\(SQE\)</span> como a soma dos <span class="math inline">\(SQE_i\)</span>, onde <span class="math inline">\(i\)</span> representa cada um dos <span class="math inline">\(N\)</span> grupos. Em cada instância do processo é realizado a junção de todos os possiveis pares de grupos, optamos pela união que obtiver o menor incremento da <span class="math inline">\(SQE\)</span>. Note que no passo 0 essa soma é equivalente a 0, considerando que para cada <span class="math inline">\(SQE_i\)</span>, com apenas uma observação por cluster, a média será a própria observação. Enquanto que ao considerar o grupo final com todas as observações é possível obter a <span class="math inline">\(SQE\)</span> por:</p>
+<p><span class="math display">\[
+SQE = \sum^N_{j=1}(X_j - \bar{X})'(X_j - \bar{X})
+\]</span></p>
+<p>Onde <span class="math inline">\(X_j\)</span> representa a j-ésima observação do grupo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>hc <span class="ot">&lt;-</span>  db.dist <span class="sc">|&gt;</span> </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hclust</span>( <span class="at">method =</span> <span class="st">"ward.D2"</span>) </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(factoextra)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_dend</span>(hc, <span class="at">cex =</span> <span class="fl">0.5</span>,</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">main =</span> <span class="st">"Dendrogram - Ward"</span>,</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">xlab =</span> <span class="st">"observacoes"</span>, <span class="at">ylab =</span> <span class="st">"distancia"</span>, <span class="at">sub =</span> <span class="st">""</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="naosupervisionado_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="algumas-conclusões" class="level4" data-number="5.2.4.2">
+<h4 data-number="5.2.4.2" class="anchored" data-anchor-id="algumas-conclusões"><span class="header-section-number">5.2.4.2</span> Algumas conclusões</h4>
+<p>Os métodos hierárquicos são muito utilizados na exploração dos dados, bem como para pré definição do número de <em>clusters</em>, pois como veremos a seguir nos métodos não hierarquicos temos a necessidade de informar um número prévio de grupos. O dendograma é tido como principal forma de definição desses <span class="math inline">\(k\)</span> grupos. Para definir o número ideal de <em>clusters</em> vamos utilizar o exemplo do método Ward. Observe que a distância para união do grupo {5,6} e {2,3,4,8,10} é relativamente grande se comparada as outras junções, uma forma de definir então seria <span class="math inline">\(k = 3\)</span> grupos onde os grupos seriam, {1,7,9},{5,6} e {2,3,4,8,10} olhando o nível de fusão (distância) em que cada grupo precisou para se unir. Podemos então já utilizar <span class="math inline">\(k\)</span> aproximado de 3 para iniciarmos nossos métodos não hieráquicos como veremos a seguir.</p>
+</section>
+</section>
+<section id="métodos-de-agrupamentos-não-hierárquicos" class="level3" data-number="5.2.5">
+<h3 data-number="5.2.5" class="anchored" data-anchor-id="métodos-de-agrupamentos-não-hierárquicos"><span class="header-section-number">5.2.5</span> Métodos de Agrupamentos Não Hierárquicos</h3>
+<p>Dentro desse conjunto de métodos iremos trabalhar com o mais usual e conhecido, <em>k-médias</em>. Bem como dito, os métodos não hierárquicos precisam de um número pré definido de grupos <span class="math inline">\(k\)</span>, anexando cada observação a um grupo com base em <span class="math inline">\(k\)</span> centróides que serão definidos pelo algoritmo.</p>
+<section id="k-médias." class="level4" data-number="5.2.5.1">
+<h4 data-number="5.2.5.1" class="anchored" data-anchor-id="k-médias."><span class="header-section-number">5.2.5.1</span> K-Médias.</h4>
+<p>K-médias é um método simples que consiste em anexar cada observação ao centróide mais perto. Dividimos o conjunto de dados para os respectivos centróides mais próximos, em seguida alteramos a posição dos <span class="math inline">\(k\)</span> centróides de forma a minimizar a soma dos quadrados dos erros em comparação com o posicionamento anterior, repetindo o processo até que a alteração na <span class="math inline">\(SQE\)</span> seja mínima. Ou seja, queremos:</p>
+<p><span class="math display">\[
+\min_{c_i}\left( \sum_{i = 1}^k \sum_{x \in S_i}|| x - c_i|| ^2\right)
+\]</span></p>
+<p>Onde <span class="math inline">\(C_i\)</span> representa os centróides e cada <span class="math inline">\(x\)</span> uma observação.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
@@ -386,6 +949,8 @@ Anton, Howard, e Chris Rorres. 2001. <em><span>Á</span>lgebra linear com aplica
 Johnson, Richard Arnold, Dean W Wichern, et al. 2002. <em>Applied multivariate statistical analysis</em>. Vol. 5. 8. Prentice hall Upper Saddle River, NJ.
 </div>
 </div>
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
