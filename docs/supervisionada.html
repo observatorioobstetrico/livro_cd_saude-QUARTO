@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Ciência de Dados Aplicada à Saúde Materno-Infantil - 4&nbsp; Aprendizado supervisionado</title>
+<title>Ciência de Dados Aplicada à Saúde Materno-Infantil - 5&nbsp; Aprendizado supervisionado</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./naosupervisionado.html" rel="next">
-<link href="./tabulacao.html" rel="prev">
+<link href="./descritiva.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -71,7 +71,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -121,12 +121,17 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./supervisionada.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></a>
+  <a href="./descritiva.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análise exploratória dos dados</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./naosupervisionado.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Aprendizado não supervisionado</span></a>
+  <a href="./supervisionada.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./naosupervisionado.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Aprendizado não supervisionado</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -140,26 +145,6 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./tutorialr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Tutorial de R</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./instalar.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Instalação R</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./instalarstudio.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Instalação RStudio</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./comecando_rstudio.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Primeiros passos RStudio</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./comecando_r.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Primeiros passos R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -178,8 +163,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#machine-learning" id="toc-machine-learning" class="nav-link active" data-scroll-target="#machine-learning"><span class="toc-section-number">4.0.1</span>  Machine learning</a></li>
-  <li><a href="#aprendizado-supervisionado-conceitos-iniciais" id="toc-aprendizado-supervisionado-conceitos-iniciais" class="nav-link" data-scroll-target="#aprendizado-supervisionado-conceitos-iniciais"><span class="toc-section-number">4.0.2</span>  Aprendizado supervisionado (conceitos iniciais)</a></li>
+  <li><a href="#machine-learning" id="toc-machine-learning" class="nav-link active" data-scroll-target="#machine-learning"><span class="toc-section-number">5.0.1</span>  Machine learning</a></li>
+  <li><a href="#aprendizado-supervisionado-conceitos-iniciais" id="toc-aprendizado-supervisionado-conceitos-iniciais" class="nav-link" data-scroll-target="#aprendizado-supervisionado-conceitos-iniciais"><span class="toc-section-number">5.0.2</span>  Aprendizado supervisionado (conceitos iniciais)</a></li>
   </ul>
 </nav>
     </div>
@@ -188,7 +173,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></h1>
 </div>
 
 
@@ -209,34 +194,34 @@ ul.task-list li input[type="checkbox"] {
 <li><p>algoritmos supervisionados</p></li>
 <li><p>aplicações e interpretabilidade</p></li>
 </ul>
-<section id="machine-learning" class="level3" data-number="4.0.1">
-<h3 data-number="4.0.1" class="anchored" data-anchor-id="machine-learning"><span class="header-section-number">4.0.1</span> Machine learning</h3>
+<section id="machine-learning" class="level3" data-number="5.0.1">
+<h3 data-number="5.0.1" class="anchored" data-anchor-id="machine-learning"><span class="header-section-number">5.0.1</span> Machine learning</h3>
 <ul>
 <li><p>falar sobre ml</p></li>
 <li><p>mecionar um pouco sobre Aprendizado supervisionado VS não supervisionado</p></li>
 <li><p>“neste capítulo vamos falar sobre aprendizado supervisionado</p></li>
 </ul>
 </section>
-<section id="aprendizado-supervisionado-conceitos-iniciais" class="level3" data-number="4.0.2">
-<h3 data-number="4.0.2" class="anchored" data-anchor-id="aprendizado-supervisionado-conceitos-iniciais"><span class="header-section-number">4.0.2</span> Aprendizado supervisionado (conceitos iniciais)</h3>
+<section id="aprendizado-supervisionado-conceitos-iniciais" class="level3" data-number="5.0.2">
+<h3 data-number="5.0.2" class="anchored" data-anchor-id="aprendizado-supervisionado-conceitos-iniciais"><span class="header-section-number">5.0.2</span> Aprendizado supervisionado (conceitos iniciais)</h3>
 <p>Aprendizado supervisionado pode ser definido como a tarefa de aprender uma função que mapeia uma entrada em uma saída e isso é feito com base em exemplos e treinos. Em outras palavras, uma máquina é treinada para encontrar soluções chamadas rótulos, onde esses rótulos identificam alguma característica. Apesar de também poder ser usada para regressão, o aprendizado supervisionado tem como tafera típica a classificação. Um exemplo bem simples de classificação é: suponha que eu queira classificar imagens de animais, nesse caso possuo um banco de dados com imagens de cachorros e gatos. Quero que meu algoritmo classifique as imagens identificando o tipo do animal na imagem. Para isso o algoritmo é treinado utilizando vários exemplos para que ele consiga classificar novas imagens posteriormente. Outra tafera é predizer um valor com base em características, por exemplo, prever o valor de um carro dado um conjunto de características (quilometragem, idade, marca, etc.) chamadas preditores. Este tipo de tarefa é chamada regressão. Para treinar o sistema é preciso incluir diversos exemplos, assim o banco de dado é separado em treino e teste, onde o é feito o treinamento na base treino para posteriormente serem feitos os testes de predição e avaliação da qualidade do ajuste na base teste.</p>
-<section id="dificuldades-gerais-do-machine-learnig" class="level4" data-number="4.0.2.1">
-<h4 data-number="4.0.2.1" class="anchored" data-anchor-id="dificuldades-gerais-do-machine-learnig"><span class="header-section-number">4.0.2.1</span> Dificuldades gerais do machine learnig</h4>
+<section id="dificuldades-gerais-do-machine-learnig" class="level4" data-number="5.0.2.1">
+<h4 data-number="5.0.2.1" class="anchored" data-anchor-id="dificuldades-gerais-do-machine-learnig"><span class="header-section-number">5.0.2.1</span> Dificuldades gerais do machine learnig</h4>
 <p>Como dito ateriormente, a idéia geral do aprendizado de máquina é contruir um algorito para solucionar os meus problemas, onde esse algoritmo será treinado com dados. Mas, o que acontece se o meu algorito for ruim ou os dados serem ruins.</p>
-<section id="quantidade-insuficiente-de-dados" class="level5" data-number="4.0.2.1.1">
-<h5 data-number="4.0.2.1.1" class="anchored" data-anchor-id="quantidade-insuficiente-de-dados"><span class="header-section-number">4.0.2.1.1</span> Quantidade insuficiente de dados</h5>
+<section id="quantidade-insuficiente-de-dados" class="level5" data-number="5.0.2.1.1">
+<h5 data-number="5.0.2.1.1" class="anchored" data-anchor-id="quantidade-insuficiente-de-dados"><span class="header-section-number">5.0.2.1.1</span> Quantidade insuficiente de dados</h5>
 <p>Falando sobre dados ruins, o primeiro problema é a quantidade de dados. Já parou pra pensar em quão difícil é treinar uma máquina? voltando no exemplo anterior, para você aprender a diferenciar um cachorro de um gato quando era criança, bastou alguém lhe apontar qual era qual algumas vezes e você se tornou capaz de diferenciar cães de gatos independente das caracteristicas. Uma máquina não consegue fazer isso fácilmente, é necessário uma quantidade grande de dados para a maioria dos algoritmos, até mesmo para problemas simples como o do exemplo citado e para problemas complexos, como reconhecimento de imagem ou fala você pode precisar de milhões de exemplos.</p>
 </section>
-<section id="dados-de-treino-não-representativos" class="level5" data-number="4.0.2.1.2">
-<h5 data-number="4.0.2.1.2" class="anchored" data-anchor-id="dados-de-treino-não-representativos"><span class="header-section-number">4.0.2.1.2</span> Dados de treino não representativos</h5>
+<section id="dados-de-treino-não-representativos" class="level5" data-number="5.0.2.1.2">
+<h5 data-number="5.0.2.1.2" class="anchored" data-anchor-id="dados-de-treino-não-representativos"><span class="header-section-number">5.0.2.1.2</span> Dados de treino não representativos</h5>
 <p>Como mencionado anteriormente, o treinamento de um algoritmo é feito por meio de uma base de dados, onde está é separada em dados de treinamento e de teste, para que eu possa usá-lo e generalizá-lo em dados futuros. Dados de treinamento que não representem bem os dados que serão uzados no futuro podem um modelo que não funcionará bem. Utilizando o exemplo do algoritmo de regressão onde o objetivo era prever os valores dos carros com base em suas características. Digamos que meu algoritmo foi treinado com uma da base de dados de carros apenas do estado de São Paulo, mas meu algoritmo será utilizado para prever carros de todo o país, pode ser que não funcione tão bem. O estados podem alterar significamente os preços dos carros por meio de impostos por exemplo. É de extrema importância utilizar um conjunto de dados de treino que represente bem os dados que você deseja generalizar. Isso pode não ser uma tarefa fácil, pode encontrar problemas com amostras, principalmente se ela for muito pequena e até mesmo uma amostra grande pode não ser representativa.</p>
 </section>
-<section id="qualidade-dos-dados" class="level5" data-number="4.0.2.1.3">
-<h5 data-number="4.0.2.1.3" class="anchored" data-anchor-id="qualidade-dos-dados"><span class="header-section-number">4.0.2.1.3</span> Qualidade dos dados</h5>
+<section id="qualidade-dos-dados" class="level5" data-number="5.0.2.1.3">
+<h5 data-number="5.0.2.1.3" class="anchored" data-anchor-id="qualidade-dos-dados"><span class="header-section-number">5.0.2.1.3</span> Qualidade dos dados</h5>
 <p>Como pode ter imaginado, a qualidade dos dados também é de extrema importância. Dados com discrenpâncias, vários erros, e gerados a partir de medições de baixa qualidade fará com que fique mais difícil o seu algoritmo identificar padrões e tomar decisões. Se você convive com pessoas do ramo da ciência de dados em geral, é bem provável que ja tenha ouvido alguém dizer algo o tipo: “gastamos a maior parte do nosso tempo para limpar os dados”. Isso não é em vão. Na maioria dos casos, principalmente no ramo de aprendizagem de máquinas é gasto um enorme tempo para limpar os dados pois pode influênciar muito na qualidade do modelo. Por exemplo, se algumas informações forem muito discrepantes, é preciso decidir entre tentar corrigir ou excluí-las. Se uma variável tiver uma quantidade significativa de valores faltantes, deverá ser decidido se essas observações serão excluídas ou se será possível utilizar métodos de imputação de dados. Treinar mais de um modelo com diferentes decisões tomadas sobre os dados também pode ser efetivo.</p>
 </section>
-<section id="sobreajustamento-dos-dados-overfitting" class="level5" data-number="4.0.2.1.4">
-<h5 data-number="4.0.2.1.4" class="anchored" data-anchor-id="sobreajustamento-dos-dados-overfitting"><span class="header-section-number">4.0.2.1.4</span> Sobreajustamento dos dados (<strong>Overfitting</strong>)</h5>
+<section id="sobreajustamento-dos-dados-overfitting" class="level5" data-number="5.0.2.1.4">
+<h5 data-number="5.0.2.1.4" class="anchored" data-anchor-id="sobreajustamento-dos-dados-overfitting"><span class="header-section-number">5.0.2.1.4</span> Sobreajustamento dos dados (<strong>Overfitting</strong>)</h5>
 <p>O sobreajustamento é um conceito que ocorre quando nosso modelo (não só um modelo de aprendizado de máquinas), se ajusta exatamento aos nossos dados de treinamento. Ouvir isso uma primeira vez pode parecer excelente, ou até mesmo o cenário ideal, afinal, queremos que o nosso modelo se ajuste o máximo possível, certo? bom.. não exatamente. O que acontece neste caso, é que o modelo mostra-se adequado <strong>apenas para os dados de treino</strong>, como se o modelo tivesse apenas decorado os dados de treino e não fosse capaz de generalizar para outros dados nunca vistos antes. Assim, o desempenho do nosso modelo quando usado em novos dados cai drasticamente. Algumas razões que podem levar a um sobreajustamento: base de treino muito pequena, não contendo dados suficientes para representar bem todos valores de entrada possíveis; grande quantidade de informações irrelevantes (dados ruidosos); treinamento excessivo em um único conjunto de amostra; modelo muito complexo, fazendo com que ele aprenda os ruídos nos dados de treinamento. Agora que sabemos o problema que é um sobreajustamento e as razões que podem levar a isso, precisamos falar sobre como evitar que isso aconteça. Existem algumas tecnicas comumente utilizadas.</p>
 <ul>
 <li><p><strong>Regularização:</strong> Foi dito anteriormente que uma razão para o sobreajustamento é a complexidade do modelo, então, faz sentido diminuírmos sua complexidade. Isso pode ser feito removendo ou dimuindo o número de parâmetros.</p></li>
@@ -244,17 +229,17 @@ ul.task-list li input[type="checkbox"] {
 <li><p><strong>Aumento de dados:</strong> Essa técnica consiste em aumentar ligeiramente os dados da amostra toda vez que o modelo os processa, ou seja, injevar dados limpos e relevantes nos dados de treino. Isso faz com que os conjuntos de treino pareçam “exclusivos” do modelo, impedindo que ele aprenda suas características. Mas isso deve ser feito com moderação, pode injetar dados que não estão limpos pode fazer mais mal do que bem. Além disso, não é um método garantido.</p></li>
 </ul>
 </section>
-<section id="existem-outras-técnicas-que-podem-ser-utilizadas-para-evitar-o-sobreajustamento.-mas-precisamos-falar-também-sobre-como-detectá-los." class="level5" data-number="4.0.2.1.5">
-<h5 data-number="4.0.2.1.5" class="anchored" data-anchor-id="existem-outras-técnicas-que-podem-ser-utilizadas-para-evitar-o-sobreajustamento.-mas-precisamos-falar-também-sobre-como-detectá-los."><span class="header-section-number">4.0.2.1.5</span> Existem outras técnicas que podem ser utilizadas para evitar o sobreajustamento. Mas precisamos falar também sobre como detectá-los.</h5>
+<section id="existem-outras-técnicas-que-podem-ser-utilizadas-para-evitar-o-sobreajustamento.-mas-precisamos-falar-também-sobre-como-detectá-los." class="level5" data-number="5.0.2.1.5">
+<h5 data-number="5.0.2.1.5" class="anchored" data-anchor-id="existem-outras-técnicas-que-podem-ser-utilizadas-para-evitar-o-sobreajustamento.-mas-precisamos-falar-também-sobre-como-detectá-los."><span class="header-section-number">5.0.2.1.5</span> Existem outras técnicas que podem ser utilizadas para evitar o sobreajustamento. Mas precisamos falar também sobre como detectá-los.</h5>
 <p>Uma forma não técnica e que não deve ser a sua única forma de tentar identificar o sobreajustamento é por meio da visualização gráfica. A visualização gráfica pode ser usada apenas para levantar hipotéses, nunca para tomar uma decisão final. Até mesmo porque nem sempre é possível verificar esse problema visualmente. Tavelz a técnica mais eficiente para isso é a Validação Cruzada k-fold (k-fold Cross Validation). Valos falar sobre posteriormente.</p>
 </section>
-<section id="subajustamento-dos-dados-underfitting" class="level5" data-number="4.0.2.1.6">
-<h5 data-number="4.0.2.1.6" class="anchored" data-anchor-id="subajustamento-dos-dados-underfitting"><span class="header-section-number">4.0.2.1.6</span> Subajustamento dos dados (<strong>Underfitting</strong>)</h5>
+<section id="subajustamento-dos-dados-underfitting" class="level5" data-number="5.0.2.1.6">
+<h5 data-number="5.0.2.1.6" class="anchored" data-anchor-id="subajustamento-dos-dados-underfitting"><span class="header-section-number">5.0.2.1.6</span> Subajustamento dos dados (<strong>Underfitting</strong>)</h5>
 <p>Como pode ter imaginado, subajustamento é o oposto do sobreajustamto. Ocorre quando seu modelo é muito simples para aprender a estrutura dos dados. O subjastumento leva à um erro elevado tanto nos dados detreino quanto nos dados de teste. Pode ocorrer quando o modelo não foi treinado por tempo suficiente ou as variáveis ​​de entrada não são significativas o suficiente para determinar uma relação significativa entre as variáveis ​​de entrada e saída. Aqui também estamos em um cenário a ser evitado e apesar de ser contrário ao sobreajustamento, as téncias tanto para identificar quanto para evitar o problema são semelhantes. Um adendo, geralmente, identificar um subajustamento é mais fácil que identificar um sobreajustamento.</p>
 </section>
 </section>
-<section id="modelo-de-regressão-linear" class="level4" data-number="4.0.2.2">
-<h4 data-number="4.0.2.2" class="anchored" data-anchor-id="modelo-de-regressão-linear"><span class="header-section-number">4.0.2.2</span> Modelo de Regressão Linear</h4>
+<section id="modelo-de-regressão-linear" class="level4" data-number="5.0.2.2">
+<h4 data-number="5.0.2.2" class="anchored" data-anchor-id="modelo-de-regressão-linear"><span class="header-section-number">5.0.2.2</span> Modelo de Regressão Linear</h4>
 <p>Já temos uma breve noção sobre o que é aprendizado supervisionado, agora vamos aprofundar um pouco dentro dos modelos. Como foi mencionado aprendizado supervisionado é usado principalmente para métodos de classificação e regressão. Modelo de regressão linear, como o próprio nome já diz, se enquadra nos métodos de regressão. A regressão consiste em modelar um valor de previsão com base em variáveis independentes. De forma mais geral, o modelo conquiste em fazer uma previsão “simples” calculando uma ponderação entre as somas dos recusrso de entrada e uma constante chamada intercepto. Assim, obtemos uma relação linear entre a variável de saída e as variáveis de entrada. A linha de regressão é a linha de melhor ajuste para o modelo</p>
 <p><span class="math display">\[
 \hat y = \beta_0 + \beta_1x_1 + \beta_2x_2 + ...+ \beta_nx_n
@@ -278,8 +263,8 @@ REQM = \sqrt{\frac{1}{n}\sum_{i = 1}^{n}  (\hat y_i - y_i)^2}
 <li><p><strong>Multicolinearidade:</strong> O modelo de regressão linear não assume nenhuma autocorrelação em termos de erro. Se houver alguma correlação no termo de erro, isso reduzirá drasticamente a precisão do modelo. A autocorrelação geralmente ocorre se houver uma dependência entre os erros residuais. Considere calcular correlações pareadas para seus dados de entrada e remover os mais correlacionados.</p></li>
 </ul>
 </section>
-<section id="modelo-de-regressão-logística" class="level4" data-number="4.0.2.3">
-<h4 data-number="4.0.2.3" class="anchored" data-anchor-id="modelo-de-regressão-logística"><span class="header-section-number">4.0.2.3</span> Modelo de Regressão logística</h4>
+<section id="modelo-de-regressão-logística" class="level4" data-number="5.0.2.3">
+<h4 data-number="5.0.2.3" class="anchored" data-anchor-id="modelo-de-regressão-logística"><span class="header-section-number">5.0.2.3</span> Modelo de Regressão logística</h4>
 <p>Alguns algoritmos de regressão podem ser usados para classificação (o contrário também é valido). A regressão logística é um dos algoritmos mais populares do machine leranrning e geralmente é usada para estimar a probabilidade de que uma instância pertença a uma classe. Por exemplo, qual a probalidade de que o objeto de uma imgagem seja um cachorro? ou um gato? neste caso, se a probabilidade estimada for maior que 50%, então o modelo pode prever que naquela imagem tem um cachorro (classe rotulada como “1”), se for menor, prevê que é um gato (classe rotulada como “0”). Este tipo de regressão pode retornar valores categóricos ou discretos, como: Sim ou Não, 0 ou 1, verdadeiro ou falso, entre outros. Mas aqui, ela fornece os valores probabilísticos que estão entre 0 e 1. Apresar de ser semelhante a regressão linear, aqui não ajustamos uma linha de regressão, mas sim uma função logistica em forma de “S” que prevê os dois valores máximos (0 ou 1).</p>
 <ul>
 <li>inserir imagem</li>
@@ -307,11 +292,11 @@ REQM = \sqrt{\frac{1}{n}\sum_{i = 1}^{n}  (\hat y_i - y_i)^2}
 <li><p>Ordinal: Na regressão logística ordinal, pode haver 3 ou mais tipos ordenados possíveis de variáveis ​​dependentes, como “baixo”, “médio” ou “alto”.</p></li>
 </ul>
 </section>
-<section id="validação-cruzada-cross-validation" class="level4" data-number="4.0.2.4">
-<h4 data-number="4.0.2.4" class="anchored" data-anchor-id="validação-cruzada-cross-validation"><span class="header-section-number">4.0.2.4</span> Validação Cruzada (Cross-Validation)</h4>
+<section id="validação-cruzada-cross-validation" class="level4" data-number="5.0.2.4">
+<h4 data-number="5.0.2.4" class="anchored" data-anchor-id="validação-cruzada-cross-validation"><span class="header-section-number">5.0.2.4</span> Validação Cruzada (Cross-Validation)</h4>
 <p>Até aqui falamos um pouco sobre alguns problemas que podem ser encontrados no aprendizado de máquinas e superficialmente sobre dois modelos de regressão. Vamos falar agora sobre um método que é bem utilizado para validar a estabilidade do seu modelo. Como mencionamos anteriormente, não podemos simplismente ajustar um modelo aos meus dados de treino e esperar que ele funcione perfeitamente, ou até mesmo esperar que aquele seja o melhor modelo possível ser fazer nenhuma validação. Falamos um pouco sobre isso quando discutimos sobre sobreajustamento e subajustamento. Então, vamos nos aprofundar sobre um método que nos garanta que o nosso modelo obteve a maioria dos padrões dos dados corretos sem captar muitos ruídos.</p>
-<section id="o-que-é-validação-cruzada" class="level5" data-number="4.0.2.4.1">
-<h5 data-number="4.0.2.4.1" class="anchored" data-anchor-id="o-que-é-validação-cruzada"><span class="header-section-number">4.0.2.4.1</span> O que é validação cruzada?</h5>
+<section id="o-que-é-validação-cruzada" class="level5" data-number="5.0.2.4.1">
+<h5 data-number="5.0.2.4.1" class="anchored" data-anchor-id="o-que-é-validação-cruzada"><span class="header-section-number">5.0.2.4.1</span> O que é validação cruzada?</h5>
 <p>Validação cruzada é uma técnica para avaliar um modelo de aprendizado de máquina e tester o seu desempenho. Pode ajudar a comparar e selecionar um modelo mais apropriado para o nosso problema. É bem fácil de entender, de implementar e tende a ter um viés menor do que outros métodos usados para o mesmo objetivo. Por isso é uma ferramenta tão utilizada. Tanto a vaildação cruzada quanto outros algoritmos funcionam de maneira semelhantes, consistem em: divider o conjunto de dados em treino e teste; treinar o modelo no conjunto treino; validar o modelo no conjunto teste e repetir as etapas anteriores algumas vezes. Dentro da validação cruzada existem diversas técnicas onde umas são mais utilizadas. Já mencionamos anteriormente o método <strong>k-fold,</strong> mas exite também os métodos, <strong>hold-out</strong>, <strong>leave-p-out</strong>, <strong>k-fold stratified</strong>, entre outros. Vamos falar sobre alguns deles.</p>
 <ul>
 <li><p><strong>Hold-Out Cross Validation:</strong> Está é a tecnica mais simples e comum. Ele consiste em remover uma parte dos dados de treinamento e usá-la para obter previsões do modelo treinado no restante dos dados. A estimativa de erro informa como nosso modelo está se saindo em dados não vistos ou no conjunto de vailidação. A implementação é extremamente fácil e existem pacotes que podem ajudar nisso. Mas apesar disto, esse método tem um grande desvantagem. Se estivermos trabalhando com um conjunto de dados que não é completamente uniforme, podemos acabar em uma situação difícil após a separação. O conjunto de treino pode não representar muito bem o conjunto de teste, ou seja, os conjuntos podem ser bem diferentes, onde um é mais fácil do que o outro.</p></li>
@@ -321,8 +306,8 @@ REQM = \sqrt{\frac{1}{n}\sum_{i = 1}^{n}  (\hat y_i - y_i)^2}
 <p>O método de validação cruzada também pode nos ajudar a ajustar <strong>hiperparâmetros,</strong> falaremos sobre isso posteriormente.</p>
 </section>
 </section>
-<section id="precisão-vs-intrerpretabilidade" class="level4" data-number="4.0.2.5">
-<h4 data-number="4.0.2.5" class="anchored" data-anchor-id="precisão-vs-intrerpretabilidade"><span class="header-section-number">4.0.2.5</span> Precisão vs intrerpretabilidade</h4>
+<section id="precisão-vs-intrerpretabilidade" class="level4" data-number="5.0.2.5">
+<h4 data-number="5.0.2.5" class="anchored" data-anchor-id="precisão-vs-intrerpretabilidade"><span class="header-section-number">5.0.2.5</span> Precisão vs intrerpretabilidade</h4>
 <p>Até aqui, discutimos muito sobre métodos para obter modelos precisos, com desempenhos ótimos. Obter um modelo que irá prever com excelência um evento em dados não é visto como um modelo valioso, mas, onde entra a interpretabilidade?</p>
 <p>a interpretabilidade fornece informações sobre o relacionamento entre as entradas e a saída de um modelo. Um modelo que pode ser interpretado permite responder perguntas sobre por que os recursos independentes predizer aquele atributo dependente. Por exemplo: Um modelo extremamente preciso preciso pode permitir que eu saiba quais os meus clientes “podem” receber créditos ou não, mas se ele não for interpretável, eu nunca saberei o porque. Pense no cenário da saúde, onde eu tenho diversas informações sobre paciêntes e meu modelo pode predizer precisamente quais tem mais probalidade de ser diagnosticado com um doença. Mas já pensou em qual importante é saber quais fatores influênciam isso? porque aquele paciente é mais provável de ser diagnostico com tal doença em relação a outro. Em diversos cenários a interpretabilidade torna-se indispensável dentro dos modelos. A depender do cenário, a interpretabilidade é mais importante que a precisão e vice-versa.</p>
 <p>Saber qual priorizar vai depender muito do cenário em que se encontra. Normalmente a escolha de um determinado algoritmo em detrimento de outro e como a seleção do algoritmo está relacionada ao caso de uso que estamos tentando resolver e ao objetivo de negócios que queremos alcançar. Um modelo com menos parâmetros é mais fácil de interpretar. Isso é intuitivo. Um modelo de regressão linear tem um coeficiente por recurso de entrada e um termo de interceptação. Por exemplo, você pode examinar cada termo e entender como eles contribuem para a saída. Uma árvore de decisões (falaremos mais sobre elas) também costuma ser de fácil interpretação, mas mesmo modelos considerados “interpretáveis” podem se tornar rapidamente não interpretáveis.</p>
@@ -467,13 +452,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./tabulacao.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tabulação de dados</span></span>
+      <a href="./descritiva.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análise exploratória dos dados</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./naosupervisionado.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Aprendizado não supervisionado</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Aprendizado não supervisionado</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

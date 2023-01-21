@@ -1671,14 +1671,14 @@ Levels: Homem Mulher</code></pre>
 <p>Podemos usar essa função para amostrar de um objeto dois elementos (<code>size = 2</code>) em uma seleção com reposição (<code>replace = TRUE</code>) e que a probabilidade de seleção seja a mesma para todos os elementos do vetor. No caso da probabilidade, como podemos ver na documentação da função <code>sample</code>, o default (padrão se o usuário não mudar o argumento) é ser a mesma probabilidade de seleção para todos os elementos. Assim, se o usuário nada especificar para esse argumento, o R entenderá o seu default. O mesmo vale para o argumento <code>replace</code>: caso fosse o interesse fazer a seleção sem reposição, não precisaríamos colocar esse argumento por seu default ser <code>FALSE</code>.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2 2</code></pre>
+<pre><code>[1] 20 20</code></pre>
 </div>
 </div>
 <p>Também poderíamos usar a mesma função sem colocar o nome dos argumentos, desde que o usuário entenda o que ela está fazendo.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb297"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb297-1"><a href="#cb297-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(vetor_am, <span class="dv">2</span> , <span class="cn">TRUE</span>) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 10  2</code></pre>
+<pre><code>[1] 1 2</code></pre>
 </div>
 </div>
 <p>Nesse caso, é importante que se respeite a ordem dos argumentos: o vetor tem que ser o primeiro, o segundo argumento é <code>size</code> e assim por diante.</p>
