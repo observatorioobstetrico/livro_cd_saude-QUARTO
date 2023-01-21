@@ -1,0 +1,2104 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.237">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Ciência de Dados Aplicada à Saúde Materno-Infantil - 4&nbsp; Análise exploratória dos dados</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./supervisionada.html" rel="next">
+<link href="./tabulacao.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar"
+  }
+}</script>
+
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análise exploratória dos dados</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Ciência de Dados Aplicada à Saúde Materno-Infantil</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Prefácio</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">Sumário</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./manipulacao_dados.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Manipulação de dados</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tabulacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tabulação de dados</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./descritiva.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análise exploratória dos dados</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./supervisionada.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./naosupervisionado.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Aprendizado não supervisionado</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Apêndices</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorialr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Tutorial de R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">Referências</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#medidas-resumo" id="toc-medidas-resumo" class="nav-link active" data-scroll-target="#medidas-resumo"><span class="toc-section-number">4.1</span>  Medidas-resumo</a>
+  <ul class="collapse">
+  <li><a href="#medidas-de-posição" id="toc-medidas-de-posição" class="nav-link" data-scroll-target="#medidas-de-posição"><span class="toc-section-number">4.1.1</span>  Medidas de posição</a></li>
+  <li><a href="#medidas-de-dispersão" id="toc-medidas-de-dispersão" class="nav-link" data-scroll-target="#medidas-de-dispersão"><span class="toc-section-number">4.1.2</span>  Medidas de dispersão</a></li>
+  <li><a href="#medidas-de-assimetria-e-curtose" id="toc-medidas-de-assimetria-e-curtose" class="nav-link" data-scroll-target="#medidas-de-assimetria-e-curtose"><span class="toc-section-number">4.1.3</span>  Medidas de assimetria e curtose</a></li>
+  </ul></li>
+  <li><a href="#tabelas-cruzadas---duas-variáveis-qualitativas" id="toc-tabelas-cruzadas---duas-variáveis-qualitativas" class="nav-link" data-scroll-target="#tabelas-cruzadas---duas-variáveis-qualitativas"><span class="toc-section-number">4.2</span>  Tabelas cruzadas - duas variáveis qualitativas</a></li>
+  <li><a href="#gráficos" id="toc-gráficos" class="nav-link" data-scroll-target="#gráficos"><span class="toc-section-number">4.3</span>  Gráficos</a>
+  <ul class="collapse">
+  <li><a href="#pacote-ggplot2" id="toc-pacote-ggplot2" class="nav-link" data-scroll-target="#pacote-ggplot2"><span class="toc-section-number">4.3.1</span>  Pacote ggplot2</a></li>
+  <li><a href="#pacote-esquisse" id="toc-pacote-esquisse" class="nav-link" data-scroll-target="#pacote-esquisse"><span class="toc-section-number">4.3.2</span>  Pacote esquisse</a></li>
+  <li><a href="#materiais-complementares" id="toc-materiais-complementares" class="nav-link" data-scroll-target="#materiais-complementares"><span class="toc-section-number">4.3.3</span>  Materiais complementares</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análise exploratória dos dados</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Após o tratamento de uma base de dados, em geral, temos o interesse em examinar e estudar as características de cada uma das variáveis presentes no banco, de forma a identificar comportamentos e relações entre as variáveis. Morettin e Singer (2020) apresentam um conjunto de questões que normalmente se tenta responder ao se realizar uma análise dos dados, sendo elas:</p>
+<ol type="i">
+<li><p>qual a frequência com que cada valor aparece no conjunto de dados ou seja, qual a distribuição de frequências dos dados?</p></li>
+<li><p>quais são alguns valores típicos do conjunto de dados, como mínimo e máximo?</p></li>
+<li><p>qual seria um valor para representar a posição (ou localização) central do conjunto de dados?</p></li>
+<li><p>qual seria uma medida da variabilidade ou dispersão dos dados?</p></li>
+<li><p>existem valores atípicos ou discrepantes (<span class="math inline">\(outliers\)</span>) no conjunto de dados?</p></li>
+<li><p>os dados podem ser considerados simétricos?</p></li>
+</ol>
+<p>Para responder a essas questões, fazemos uso de um conjunto de técnicas numéricas e gráficas que nos permitem detectar padrões, resumir informação e apresentar visivelmente características das variáveis de um conjunto de dados. A essa metodologia denominamos análise descritiva ou análise exploratória de dados e será objeto de estudo desse capítulo. Para ilustrar as técnicas apresentadas, vamos realizar a análise descritiva de algumas das variáveis presentes no banco de dados de COVID-19 em gestantes e puérperas já devidamente tratadas no capítulo anterior.</p>
+<p>A decisão por qual técnica empregar para a análise descritiva de uma variável, passa por qualificar corretamente a natureza da variável em estudo em qualitativa nominal, qualitativa ordinal, quantitativa discreta ou quantitativa contínua. Maiores detalhes sobre essa teoria podem ser vistos na Seção XX.</p>
+<p>Uma das principais ferramentas de resumo de informações de variáveis qualitativas é a organização tabular que fornece a distribuição de frequências de cada variável, conforme apresentado na Seção XX.</p>
+<p>Em se tratando de variáveis quantitativas, utilizar uma tabela de frequências para resumir informações da variável, especialmente nos casos de variáveis contínuas, pode não ser a melhor estratégia, visto que é comum obter frequências muito pequenas (em geral, 1) para os diferentes valores da variável, não atingindo o propósito de resumir a informação. Nesse sentido, vamos apresentar aqui medidas-resumo que podem ser utilizadas para variáveis quantitativas.</p>
+<section id="medidas-resumo" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="medidas-resumo"><span class="header-section-number">4.1</span> Medidas-resumo</h2>
+<p>Uma medida-resumo é uma construção matemático/estatística que tenta capturar em um único número um comportamento presente nos dados. Quatro grandes grupos de medidas podem ser considerados para resumir variáveis quantitativas, são elas: posição, dispersão, assimetria e curtose. Vejamos agora que medidas são essas e como interpretá-las.</p>
+<section id="medidas-de-posição" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="medidas-de-posição"><span class="header-section-number">4.1.1</span> Medidas de posição</h3>
+<p>As medidas de posição, como o nome diz, indicam posições de interesse de valores da variável. Por exemplo, se idade é a variável de interesse investigada em um grupo de pessoas, e se quer trazer um informação resumida dela no grupo, apresentar a menor e a maior idade encontrada, valores típicos da idade no grupo, são exemplos de medidas de posição.</p>
+<p>De maneira geral, vamos explorar aqui as seguintes medidas posição: valor mínimo, valor máximo, percentis e medidas de tendência central, tais como moda, média e mediana. Os valores mínimo e máximo de uma variável quantitativa estão relacionados, respectivamente, com o menor e o maior valor observado da variável analisada.</p>
+<p>Medidas que buscam descrever um valor típico que a variável apresenta são chamados de medidas de tendência ou posição central. Mas o que seria uma valor típico? Como podemos definir isso? A resposta não é única e, por isso, existem diferentes medidas de tendência central. Por exemplo, se o valor típico considerado for aquele que mais se repete no conjunto de dados para variável, o que temos é a moda. Se o valor típico for aquele que ocupa uma posição central no conjunto de dados, de tal forma que 50% dos dados observados estão abaixo desse valor e os demais 50% estão acima, o que temos é a mediana. Agora, se o valor típico considerado for pensado como um ponto de equilíbrio das observações da variável, então temos a média.</p>
+<p>Por definição, a medida estatística moda corresponde aos(s) valor(es) mais frequente(s) do conjunto de dados observados para uma variável. Conjunto de dados que não apresentam valores repetidos são considerados amodais. Um conjunto de dados é bimodal se tiver duas modas, indicando que não apenas um único valor, mas dois valores do conjunto de dados apresentam frequências igualmente mais altas que os demais valores. Usando de mesmo raciocínio, havendo três ou mais valores modais em um conjunto de dados, dizemos que o conjunto de dados é trimodal ou multimodal, respectivamente. Vale citar que a moda também pode ser obtida para variáveis qualitativas.</p>
+<p>A média é a medida obtida ao somar todos os valores da variável e dividí-la pela quantidade de dados observados. Matematicamente, considere <span class="math inline">\(x_1\)</span>, <span class="math inline">\(x_2\)</span>, …, <span class="math inline">\(x_n\)</span> as observações de uma variável <span class="math inline">\(X\)</span>, assim a média é definida como:</p>
+<span class="math display">\[\begin{equation}
+\bar{x} = \frac{\sum_{i = 1}^n x_i}{n}.
+\end{equation}\]</span>
+<p>Para entender essa medida como ponto de equilíbrio, vamos representar cada valor observado como pesos de mesma massa e distribuí-los sobre uma reta de massa desprezível nas posições referentes aos valores da variável em questão. Nosso objetivo agora é encontrar um ponto de apoio nessa reta de tal forma que ela e os pesos corretamente posicionados nela fiquem perfeitamente equilibrados, similar a uma balança. A média é o único local em que se pode localizar o ponto de apoio na reta de forma a obter um perfeito equilíbrio da reta e dos pesos. Para ilustrar essa ideia, apresentamos a seguir uma representação gráfica considerando o subconjunto da variável idade {22, 28, 29, 34, 34, 35, 36, 36, 37, 39}, cuja média é 33.</p>
+<div id="fig-medias" class="quarto-layout-panel">
+<figure class="figure">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figuras_descritiva/Media_eq.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">(a) Ponto de equilíbrio na média</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figuras_descritiva/Media_des.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">(b) Ponto de equilíbrio fora da média</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p></p><figcaption class="figure-caption">Figura&nbsp;4.1: Apresentando a média como ponto de equilíbrio</figcaption><p></p>
+</figure>
+</div>
+<p>No início dessa seção, apresentamos a noção intuitiva do que representa o valor mediano, mas não como obtê-lo formalmente. A construção dessa medida passa por organizar os dados de maneira crescente e calcular a posição central dos dados via <span class="math inline">\(\frac{n+1}{2}\)</span>, em que <span class="math inline">\(n\)</span> representa o tamanho do conjunto de dados relacionada a variável de interesse. O valor mediano é o valor na amostra ordenada que ocupa a posição <span class="math inline">\(\frac{n+1}{2}\)</span>.</p>
+<p>Quando <span class="math inline">\(n\)</span> é ímpar, a expressão <span class="math inline">\(\frac{n+1}{2}\)</span> vai sempre gerar um valor inteiro, facilitando a obtenção da mediana. Por exemplo, o subconjunto a seguir é formado por nove valores retirados da variável idade, sendo eles: 21, 28, 24, 22, 31, 26, 22, 38, 16.</p>
+<p>Ordenando esse subconjunto, obtemos 16, 21, 22, 22, 24, 26, 28, 31, 38.</p>
+<p>Como <span class="math inline">\(n=9\)</span>, a posição em que se encontra a mediana será <span class="math inline">\(\frac{9+1}{2}=5\)</span>. Assim, a mediana será 24, pois é o valor que está na quinta posição do subconjunto ordenado.</p>
+<p>Se <span class="math inline">\(n\)</span> é par, a expressão <span class="math inline">\(\frac{n+1}{2}\)</span> gerará um valor não inteiro que apresenta apenas uma única casa decimal após a vírgula igual a 5. Por exemplo, se a variável idade apresenta apenas 8 valores então <span class="math inline">\(n = 8\)</span> e a posição em que a mediana está localizada é dada por <span class="math inline">\(\frac{n+1}{2} = \frac{8+1}{2} = 4,5\)</span>. Como inferir um valor para a mediana quando a posição que ela ocupa é decimal? Note que a posição <span class="math inline">\(4,5\)</span> está exatamente no meio das posições 4 e 5, então o valor mediano será definido como a média entre os valores que ocupam as posições 4 e 5.</p>
+<p>O subconjunto abaixo também consiste de valores retirados da variável idade, porém note que nesse exemplo há 8 valores, ou seja, <span class="math inline">\(n=8\)</span>.</p>
+<p><span class="math display">\[ 27, 16, 31, 43, 26, 42, 17, 40. \]</span></p>
+<p>Ao ordenarmos, temos:</p>
+<p><span class="math display">\[ 16, 17, 26, 27, 31, 40, 42, 43. \]</span></p>
+<p>A mediana será o valor que está na posição <span class="math inline">\(\frac{8+1}{2} = 4,5\)</span>. Logo, visto que a mediana está entre os valores que ocupam a quarta e quinta posição, corresponde à média entre esses valores, sendo <span class="math inline">\(\frac{27+31}{2}=29\)</span>.</p>
+<p>Com ideia correlata a mediana, podemos apresentar medidas de posição não centrais, as quais denominamos quantis ou percentis. O percentil 20, por exemplo, é o valor da variável em que 20% das observações no conjunto de dados apresentam valores menores ou iguais a ele. Por consequência, as restantes 80% das observações possuem valores acima do percentil 20. De maneira geral, podemos definir o percentil de ordem <span class="math inline">\(p\)</span> como o valor da variável em que <span class="math inline">\(100p\%\)</span> <span class="math inline">\((0 &lt; p &lt; 1)\)</span> das observações estão à sua esquerda, ou seja, são menores ou iguais que ele.</p>
+<p>Alguns percentis destacam-se por serem muito utilizados na análise de dados, não só numericamente como graficamente. Esses percentis são conhecido como quartis e basicamente dividem o conjunto de dados em 4 partes de mesmo tamanho. O primeiro quartil (<span class="math inline">\(Q_1\)</span>) é o percentil 25, o segundo quartil (<span class="math inline">\(Q_2\)</span>) é o percentil 50 e o terceiro quartil (<span class="math inline">\(Q_3\)</span>) é o percentil 75. Vale notar que o segundo quartil é a mediana. De posse desses valores, como veremos mais a frente nesse capítulo, iremos construir o gráfico do tipo <span class="math inline">\(boxplot\)</span>, bastante utilizado na análise de dados da saúde.</p>
+<p>Ainda com respeito aos percentis, outro termo comum na literatura é o decil que refere-se a divisão em 10 partes de mesmo tamanho do conjunto de dados associado a variável analisada. O primeiro decil, por exemplo, é o percentil 10 e o sexto decil é o percentil 60.</p>
+<p>Todas as medidas de posição aqui apresentadas tem em comum terem a mesma unidade de medida dos valores da variável observada, o que traz bastante interpretabilidade.</p>
+</section>
+<section id="medidas-de-dispersão" class="level3" data-number="4.1.2">
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="medidas-de-dispersão"><span class="header-section-number">4.1.2</span> Medidas de dispersão</h3>
+<p>Por mais que as medidas de posição apresentadas sejam muito úteis na análise dados, elas por si só não se bastam como medidas resumo das observações de uma variável em um conjunto de dados. É possível construir diferentes conjuntos de dados para uma mesma variável que apresentam os mesmo valores de medida central (média, mediana e moda), mas tem comportamentos absolutamente diferentes. Por exemplo, veja a figura a seguir.</p>
+<div id="fig-var" class="quarto-layout-panel">
+<figure class="figure">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-var1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="figuras_descritiva/plot1.png" class="img-fluid figure-img" data-ref-parent="fig-var"></p>
+<p></p><figcaption class="figure-caption">(a) Dados: 2 ,3, 5 , 5, 7, 8.</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-var2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="figuras_descritiva/plot2.png" class="img-fluid figure-img" data-ref-parent="fig-var"></p>
+<p></p><figcaption class="figure-caption">(b) Dados: 5,5,5,5.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p></p><figcaption class="figure-caption">Figura&nbsp;4.2: Exemplos de conjuntos de dados com mesma média, moda e mediana.</figcaption><p></p>
+</figure>
+</div>
+<p>Os dois conjuntos de dados apresentam os mesmos valores de média, mediana e moda. O que diferencia os dois conjuntos? O quão diferentes ou parecidos são as observações entre si em cada conjunto da variável. Na Figura <a href="#fig-var2">Figura&nbsp;<span>4.2 (b)</span></a>, notamos que os quatro valores observados são iguais entre si e que, portanto, as observações nesse conjunto não variam, diferente do que ocorre para os dados que geraram o gráfico da Figura <a href="#fig-var1">Figura&nbsp;<span>4.2 (a)</span></a>. Medidas de dispersão ou variabilidade são as medidas responsáveis por quantificar o quão diferente são os dados entre si. De forma bastante intuitiva temos que se os dados observados da variável não variam, então a medida de dispersão dela é zero e, caso haja diferenças entre os valores observados, então essa medida vai ser um valor positivo. Quanto maior a medida de variabilidade, mais diferente são os dados observados da variável entre si.</p>
+<p>Não existe uma única medida de dispersão na literatura, aqui vamos considerar as seguintes medidas: amplitude, intervalo interquartil, variância, desvio padrão e coeficiente de variação.</p>
+<p>De fácil obtenção e interpretabilidade, a amplitude é a diferença entre o valor máximo e o valor mínimo da variável analisada no conjunto de dados e nos dá uma ideia do intervalo de variação dos dados. Uma desvantagem é que essa medida é absolutamente influenciada pela presença de valores discrepantes ou <span class="math inline">\(outliers\)</span>. O intervalo interquartil é uma medida mais robusta do que a amplitude intervalar e é calculada como a diferença entre o terceiro e o primeiro quartil, ou seja, é a amplitude entre os 50% dos dados centrais.</p>
+<p>Por mais informativas que sejam as medidas de amplitude e intervalo interquartil, queremos uma medida de dispersão que não considere apenas dois valores da amostra (mínimo e máximo ou primeiro e terceiro quartis) e sim todos os dados. Uma medida bastante intuitiva seria considerar a soma dos desvios de cada uma das observações em torno da média. Mas aí temos um problema: a soma dos desvios da média é sempre zero! Isso acontece porque sempre há desvios positivos e negativos que quando somados se anulam. Uma solução para essa questão é considerar alguma função que considere apenas o valor do desvio e não o seu sinal. Uma função candidata é a função quadrática (lembre que, por exemplo, <span class="math inline">\((−2)^2=4\)</span>). Nessa construção surge a variância: soma dos desvios quadrados dividida pelo total de observações (<span class="math inline">\(n\)</span>), ou seja, a média dos desvios quadrados. Assim, a variância quantifica o quanto os dados estão dispersos da média, em média.</p>
+<p>Matematicamente, considere <span class="math inline">\(x_1\)</span>, <span class="math inline">\(x_2\)</span>, …, <span class="math inline">\(x_n\)</span> as observações de uma variável <span class="math inline">\(X\)</span> e <span class="math inline">\(\bar{x}\)</span> a média observada dessa variável. A variância seria calculada como:</p>
+<p><span id="eq-var1"><span class="math display">\[
+\mbox{Var(X)} = \frac{\sum_{i = 1}^n (x_i - \bar{x})^2}{n}.
+\tag{4.1}\]</span></span></p>
+<p>Por mais intuitiva que seja essa construção, programas como o R e similares utilizam em sua análise uma versão modificada do cálculo da variância acima apresentado, em que a soma dos desvios quadrados é dividida por <span class="math inline">\(n-1\)</span>, não por <span class="math inline">\(n\)</span>. Justificativas para isso se devem a propriedades inferenciais. A maioria dos conjuntos de dados considerados nos estudos referem-se a análise de amostras de uma população e não a análise de todos os elementos de uma população. Ao mesmo tempo, um dos principais objetivos da análise estatística é fazer análises para a população e não apenas para a amostra considerada no estudo. Basicamente, se temos interesse de conhecer o valor médio de uma variável na população (<span class="math inline">\(\mu\)</span>), na impossibilidade de analisar todos os elementos dela e obter a medida, o fazemos de forma aproximada investigando o valor médio dessa variável na amostra (<span class="math inline">\(\bar{x}\)</span>). Esse mesmo raciocínio ocorre para a variância, na impossibilidade de obter a variância da variável para todos os elementos da população (<span class="math inline">\(\sigma^2\)</span>), analisamos essa medida via amostra, o caso é que é possível mostrar que para amostras de tamanho pequeno, a variância apresentada em (<a href="#eq-var1">Equação&nbsp;<span>4.1</span></a>) não aproxima-se bem do valor de <span class="math inline">\(\sigma^2\)</span>. Matematicamente, é possível mostrar que tal dificuldade é contornada fazendo uso do divisor igual a <span class="math inline">\(n-1\)</span> em (<a href="#eq-var1">Equação&nbsp;<span>4.1</span></a>). Na literatura esse cálculo muitas vezes é denominado como variância amostral e representado pelo símbolo <span class="math inline">\(S^2\)</span> de tal forma que</p>
+<p><span id="eq-var2"><span class="math display">\[
+S^2 = \frac{\sum_{i = 1}^n (x_i - \bar{x})^2}{n-1}.
+\tag{4.2}\]</span></span></p>
+<p>Vale ressaltar também que a medida que se considera tamanhos de amostra maiores, calcular a variância com divisor <span class="math inline">\(n\)</span> ou <span class="math inline">\(n-1\)</span> torna-se indiferente.</p>
+<p>Como a unidade de medida da variância é o quadrado da unidade de medida da variável correspondente, convém definir outra medida de dispersão que mantenha a unidade de medida original. Uma medida com essa propriedade é a raiz quadrada da variância, conhecida por desvio padrão.</p>
+<p>Caso o interesse seja calcular e comparar a dispersão entre variáveis com unidades dimensionais de natureza diferente, por exemplo, comprimento (em metros) e massa (em kg), não convém utilizar as medidas de dispersão apresentadas anteriormente pois todas as medidas apresentadas carregam consigo a unidade de medida considerada para a variável. Nesse caso, podemos fazer uso do coeficiente de variação (CV) para cada uma das variáveis analisadas, já que o CV é uma medida de dispersão relativa adimensional, calculada via razão entre o desvio-padrão e a média observada para a variável e quanto maior o seu valor, maior a dispersão dos dados em termos relativos a média.</p>
+</section>
+<section id="medidas-de-assimetria-e-curtose" class="level3" data-number="4.1.3">
+<h3 data-number="4.1.3" class="anchored" data-anchor-id="medidas-de-assimetria-e-curtose"><span class="header-section-number">4.1.3</span> Medidas de assimetria e curtose</h3>
+<p>Além das medidas de posição e variabilidade, existe um conjunto de medidas dedicadas a explorar a forma da distribuição de frequências dos dados. Especificamente aqui estudaremos algumas: coeficientes de assimetria e de curtose e variações destas.</p>
+<p>Como boa parte dos estudos na área de saúde é realizado através de amostras da variável de interesse na população, vamos precisar definir os momentos amostrais centrais que serão ferramenta fundamental para a construção dos coeficientes de assimetria, curtose e seus derivados. Por definição, o momento amostral centrado (na média) de ordem <span class="math inline">\(r\)</span> é dado por</p>
+<p><span class="math display">\[
+m_r = \frac{\sum_{i = 1}^n (x_i - \bar{x})^r}{n}, \; r = 1, 2, \cdots.
+\]</span></p>
+<div class="hidden">
+<p>A versão populacional do momento centrado de ordem <span class="math inline">\(r\)</span> é expressa por <span class="math inline">\(\mu_r = \frac{\sum_{i = 1}^n (x_i - \mu)^r}{N}\)</span>, em que <span class="math inline">\(r = 1, 2, \cdots \;\)</span> e <span class="math inline">\(\mu\)</span> e <span class="math inline">\(N\)</span> referem-se, respectivamente, a média da variável de interesse e a quantidade de elementos investigados na população.</p>
+</div>
+<p>Dessa forma, o coeficiente de assimetria amostral é dado por <span class="math inline">\(\frac{m_3}{m_2^{3/2}}\)</span>. Populações cuja a distribuição da variável é simétrica apresentam coeficiente de assimetria igual a zero. Distribuições assimétricas à direita apresentam valores positivos de coeficiente de assimetria para a variável analisada populacionalmente, assim como distribuições assimétricas à esquerda apresentam coeficiente de assimetria negativo.</p>
+<div class="hidden">
+<p>Analogamente, <span class="math inline">\(\frac{\mu_3}{\mu_2^{3/2}}\)</span> é o coeficiente de correlação populacional.</p>
+<p>Populações cuja a distribuição da variável é simétrica apresentam coeficiente de assimetria igual a zero. Distribuições assimétricas à direita apresentam valores positivos de coeficiente de assimetria para a variável analisada populacionalmente, assim como distribuições assimétricas à esquerda apresentam coeficiente de assimetria negativo.</p>
+</div>
+<div id="fig-assim" class="quarto-layout-panel">
+<figure class="figure">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figuras_descritiva/Fig1_N2.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">(a) Simétrico</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figuras_descritiva/Fig2_N2.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">(b) Simétrico</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figuras_descritiva/Fig3_N2.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">(c) Assimétrico à esquerda</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figuras_descritiva/Fig4_N2.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">(d) Assimétrico à direita</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p></p><figcaption class="figure-caption">Figura&nbsp;4.3: Histogramas e funções de densidade</figcaption><p></p>
+</figure>
+</div>
+<p>Coeficientes de assimetria amostrais diferentes de zero devem ser interpretados com cautela, uma vez que por se tratar de uma amostra não significa que necessariamente o comportamento da variável na população seja assimétrico. Testes estatísticos devem ser realizados para avaliar a hipotese de simetria da variável na população.</p>
+<p>Ainda com respeito a forma da distribuição da variável, podemos avaliar o comportamento em suas caudas através do coeficiente de curtose amostral que se define por <span class="math inline">\(\frac{m_4}{m_2^{2}}\)</span>. Distribuições de variáveis com valor de curtose igual a 3 são denominadas mesocúrticas. Tomada muitas vezes como referência, a distribuição normal apresenta coeficiente de curtose igual a três. Distribuições com coeficiente de curtose menores que 3 são denominadas platicúrticas e apresentam caudas mais leves (“finas”) do que a da distribuição normal. Distribuições com coeficiente de curtose maiores que 3 são denominadas leptocúrticas e apresentam caudas mais pesadas (“grossas”) do que a da distribuição normal. A distribuição t-Student é um exemplo de distribuição leptocúrtica.</p>
+<p>Na literatura é muito comum ser apresentado uma variante do coeficiente de curtose denominada excesso de curtose. Esse excesso é avaliado em relação a curtose do modelo normal por isso seu valor é calculado fazendo o coeficiente de curtose subtraído de 3. Dessa forma, o excesso de curtose em distribuições mesocúrticas é igual a zero, em distribuições leptocúrticas é maior que zero e em distribuições platicúrticas é menor que zero.</p>
+<div id="fig-Curto" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="figuras_descritiva/Curtose.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;4.4: Exemplo de funções de densidade com diferentes medidas de curtose.</figcaption><p></p>
+</figure>
+</div>
+<p>Ressalva similar feita ao coeficiente de assimetria deve ser considerado para o coeficiente de curtose ou de excesso de curtose. Um coeficiente de curtose amostral diferente de três ou, de forma equivalente, com excesso de curtose amostral diferente de zero, não implica necessariamente que a distribuição da variável na população possui caudas mais leves ou mais pesadas do que a da distribuição normal. Para que se possa fazer tal afirmação é necessária a realização de testes estatísticos inferenciais. Os coeficientes amostrais de assimetria e curtose tão somente nos dão uma medida da forma da distribuição de frequências e <span class="math inline">\(insights\)</span> do comportamento da variável na população, que devem ser verificados via análise inferencial estatística.</p>
+<p>No R, para obter essas medidas resumo vamos utilizar a função <code>descr</code> também do pacote <code>summarytools</code>. No comando abaixo pedimos ao R as medidas descritivas da variável quantitativa “idade”.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descr</span>(dados<span class="sc">$</span>idade)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Descriptive Statistics  
+dados$idade  
+N: 11523  
+
+                       idade
+----------------- ----------
+             Mean      30.25
+          Std.Dev       7.04
+              Min      10.00
+               Q1      25.00
+           Median      30.00
+               Q3      35.00
+              Max      55.00
+              MAD       7.41
+              IQR      10.00
+               CV       0.23
+         Skewness       0.17
+      SE.Skewness       0.02
+         Kurtosis      -0.10
+          N.Valid   11514.00
+        Pct.Valid      99.92</code></pre>
+</div>
+</div>
+<p>Note que os nomes de algumas das estatísticas apresentadas pela função <code>descr</code> estão em inglês. <span class="math inline">\(Mean\)</span> refere-se ao valor médio da variável analisada, <span class="math inline">\(Std.Dev\)</span> corresponde ao desvio-padrão, IQR é o símbolo para o intervalo interquartil, MAD é o desvio-médio absoluto, <span class="math inline">\(Skewness\)</span> é o coeficiente de assimetria, <span class="math inline">\(SE.Skewness\)</span> é o erro-padrão do coeficiente de assimetria, <span class="math inline">\(Kurtosis\)</span> é o coeficiente de excesso de curtose e <span class="math inline">\(N.Valid\)</span> e <span class="math inline">\(Pct.Valid\)</span> correspondem, respectivamente, ao número de observações válidas e seu percentual no conjunto de dados considerado para a variável.</p>
+<p>Especificamente para a variável idade, podemos notar que das 11523 observações, apenas 11514 (99.92 %) foram consideradas válidas. Isso acontece porque nesse conjunto de dados, 9 pessoas não declararam a idade, ficando com a casela vazia (NA). Todas as medidas-resumo foram calculadas considerando apenas as observações válidas. Sendo assim, algumas análises que podem ser realizadas para a variável idade através da função <code>descr</code> são que a idade média dentre as observações válidas foi de 30,25 anos, com desvio-padrão de 7,04 anos. A menor idade observada foi de 10 anos e a máxima foi de 55 anos. 50% das mulheres analisadas tem idade inferior a 30 anos (mediana) e 25% delas tem idade superior a 35 anos (Q3). O coeficiente de assimetria foi 0.17 (com erro-padrão de 0.02), indicando que a distribuição de frequências da variável idade é levemente assimétrica à direita. O coeficiente de excesso de curtose foi -0.10 e o intervalo interquartil (Q3 - Q1) foi 10.</p>
+<p>Se quiser que a tabela apresente apenas algumas medidas-resumo pré-selecionadas, podemos informar ao R por meio do argumento <code>stats</code>. Ainda, se quisermos que na tabela as medidas resumo fiquem na coluna, usamos o argumento <code>transpose = TRUE</code>, como segue:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descr</span>(dados<span class="sc">$</span>idade,<span class="at">stats =</span> <span class="fu">c</span>(<span class="st">"min"</span>, <span class="st">"mean"</span>, <span class="st">"med"</span>,<span class="st">"sd"</span>,<span class="st">"max"</span>), <span class="at">transpose =</span> <span class="cn">TRUE</span>) <span class="co">#sd é o desvio padrão (standard deviation)</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Descriptive Statistics  
+dados$idade  
+N: 11523  
+
+                Min    Mean   Median   Std.Dev     Max
+----------- ------- ------- -------- --------- -------
+      idade   10.00   30.25    30.00      7.04   55.00</code></pre>
+</div>
+</div>
+<p>Caso se tenha interesse em apresentar a natureza da variável e um <span class="math inline">\(preview\)</span> gráfico da distribuição de frequências, podemos fazer uso da função <code>dfSummary</code>. O argumento <code>method = "render"</code> para a função <code>print</code> permite uma melhor apresentação visual dos gráficos em documentos do tipo R <span class="math inline">\(Markdown\)</span>.</p>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">dfSummary</span>(dados<span class="sc">$</span>idade), <span class="at">method =</span> <span class="st">"render"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div class="container st-container">
+<h3 class="anchored">Data Frame Summary</h3>
+<h4 class="anchored">dados</h4>
+<strong>Dimensions</strong>: 11523 x 1
+  <br><strong>Duplicates</strong>: 11476
+<br>
+<table class="table table-striped table-bordered st-table st-table-striped st-table-bordered st-multiline ">
+  <thead>
+    <tr>
+      <th align="center" class="st-protect-top-border"><strong>No</strong></th>
+      <th align="center" class="st-protect-top-border"><strong>Variable</strong></th>
+      <th align="center" class="st-protect-top-border"><strong>Stats / Values</strong></th>
+      <th align="center" class="st-protect-top-border"><strong>Freqs (% of Valid)</strong></th>
+      <th align="center" class="st-protect-top-border"><strong>Graph</strong></th>
+      <th align="center" class="st-protect-top-border"><strong>Valid</strong></th>
+      <th align="center" class="st-protect-top-border"><strong>Missing</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center">1</td>
+      <td align="left">idade
+[numeric]</td>
+      <td align="left" style="padding:8;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Mean (sd) : 30.2 (7)</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">min ≤ med ≤ max:</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">10 ≤ 30 ≤ 55</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">IQR (CV) : 10 (0.2)</td></tr></tbody></table></td>
+      <td align="left" style="vertical-align:middle">46 distinct values</td>
+      <td align="left" style="vertical-align:middle;padding:0;background-color:transparent;"><img style="border:none;background-color:transparent;padding:0;max-width:max-content;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJgAAABuBAMAAAApJ8cWAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5wEVCyQFEOX1TwAAAIpJREFUaN7t2U0KgCAQQGGvUDfIbtDc/25BjAsH/EnHhfDeJpD8cCMphUAjHfWi1nitjiXklq9nClNEwMDAwMDAwMrYmX98J7Ec2QBrHGD+YVJfIRgYGBgYGBgYGBjYjli6NbhgZhYYGNhyTHfw5YLpEwwMDMwFs39F+7BoUqwwq4HZ4RVYdCnQSC8shXAViQ7V0QAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMy0wMS0yMVQxMTozNjowNSswMDowMB4PS64AAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjMtMDEtMjFUMTE6MzY6MDUrMDA6MDBvUvMSAAAAAElFTkSuQmCC"></td>
+      <td align="center">11514
+(99.9%)</td>
+      <td align="center">9
+(0.1%)</td>
+    </tr>
+  </tbody>
+</table>
+<p>Generated by <a href="https://github.com/dcomtois/summarytools">summarytools</a> 1.0.1 (<a href="https://www.r-project.org/">R</a> version 4.2.1)<br>2023-01-21</p>
+</div>
+</div>
+<p>Além do gráfico, uma informação adicional apresentada é que as 11514 observações válidas da variável idade estão distribuídas em 46 distintos valores.</p>
+<p>Outro pacote bastante interessante para medidas descritivas é o <code>modelsummary</code>. Destacamos algumas funções desse pacote:</p>
+<ul>
+<li><p>datasummary_skim: retorna as medidas descritivas das variáveis do banco de dados a depender do tipo identificado no argumento <code>type= (categorical ou numeric)</code>;</p></li>
+<li><p>datasummary: retorna as medidas descritivas das variáveis a depender de como monta os argumentos da função, permitindo retornar as medidas descritivas das variáveis quantitativas de interesse por categorias de outra(s) variável(is).</p></li>
+</ul>
+<div class="cell">
+
+</div>
+<p>Para explorar a funcionalidade desse pacote e suas funções, vamos filtrar o banco de dados original considerando apenas as informações das mulheres gestantes e puérperas internadas em UTI.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dados_uti <span class="ot">&lt;-</span> dados[<span class="sc">!</span><span class="fu">is.na</span>(dados<span class="sc">$</span>dias_uti),]</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Vamos selecionar algumas variáveis do banco de dados <code>dados_uti</code> e organizá-las em um novo <span class="math inline">\(data.frame\)</span>.</p>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>dados_uti_res <span class="ot">&lt;-</span> <span class="fu">select</span>(dados_uti,idade,cardiopati, faixa_et, evolucao, dias_uti)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Para esses dados, vamos fazer algumas análises via pacote <code>modelsummary</code>. Assim,</p>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Ao usar a função <code>datasummary_skim</code>, vamos obter as medidas descritivas das variáveis quantitativas (argumento <code>type = "numeric")</code> e das variáveis qualitativas (argumento <code>type = "categorical")</code>, respectivamente:</p>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">datasummary_skim</span>(dados_uti_res,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"numeric"</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">histogram =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> Unique (#) </th>
+   <th style="text-align:right;"> Missing (%) </th>
+   <th style="text-align:right;"> Mean </th>
+   <th style="text-align:right;"> SD </th>
+   <th style="text-align:right;"> Min </th>
+   <th style="text-align:right;"> Median </th>
+   <th style="text-align:right;"> Max </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> idade </td>
+   <td style="text-align:right;"> 42 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 31.2 </td>
+   <td style="text-align:right;"> 6.6 </td>
+   <td style="text-align:right;"> 10.0 </td>
+   <td style="text-align:right;"> 31.0 </td>
+   <td style="text-align:right;"> 55.0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> dias_uti </td>
+   <td style="text-align:right;"> 75 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 12.0 </td>
+   <td style="text-align:right;"> 13.7 </td>
+   <td style="text-align:right;"> 0.0 </td>
+   <td style="text-align:right;"> 8.0 </td>
+   <td style="text-align:right;"> 200.0 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">datasummary_skim</span>(dados_uti_res,</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"categorical"</span>, <span class="at">na.rm =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:left;">    </th>
+   <th style="text-align:right;"> N </th>
+   <th style="text-align:right;"> % </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> cardiopati </td>
+   <td style="text-align:left;"> sim </td>
+   <td style="text-align:right;"> 182 </td>
+   <td style="text-align:right;"> 7.8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> nao </td>
+   <td style="text-align:right;"> 791 </td>
+   <td style="text-align:right;"> 34.0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> ignorado </td>
+   <td style="text-align:right;"> 17 </td>
+   <td style="text-align:right;"> 0.7 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> faixa_et </td>
+   <td style="text-align:left;"> &lt;20 </td>
+   <td style="text-align:right;"> 98 </td>
+   <td style="text-align:right;"> 4.2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> &gt;=34 </td>
+   <td style="text-align:right;"> 908 </td>
+   <td style="text-align:right;"> 39.1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> 20-34 </td>
+   <td style="text-align:right;"> 1317 </td>
+   <td style="text-align:right;"> 56.7 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0.0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> evolucao </td>
+   <td style="text-align:left;"> cura </td>
+   <td style="text-align:right;"> 1645 </td>
+   <td style="text-align:right;"> 70.8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> obito </td>
+   <td style="text-align:right;"> 623 </td>
+   <td style="text-align:right;"> 26.8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> obito por outras causas </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 0.3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> ignorado </td>
+   <td style="text-align:right;"> 31 </td>
+   <td style="text-align:right;"> 1.3 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+<p>Como a variável faixa etária (<code>faixa_et</code>) foi declarada como fator, a função <code>datasummary_skim</code> apresenta 1 valor NA, indicando que apenas uma mulher que esteve em UTI não teve determinada sua faixa etária/idade. Para que as demais variáveis categóricas apresentem essa informação e não as deixe omitida, como no caso da variável cardiopatia, vamos precisar declarar essas variáveis como caracter e não como fator. Esse procedimento também será adotado para as demais variáveis categóricas.</p>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dados_uti_res<span class="sc">$</span>cardiopati <span class="ot">&lt;-</span> <span class="fu">as.character</span>(dados_uti_res<span class="sc">$</span>cardiopati)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>dados_uti_res<span class="sc">$</span>evolucao <span class="ot">&lt;-</span> <span class="fu">as.character</span>(dados_uti_res<span class="sc">$</span>evolucao)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">datasummary_skim</span>(dados_uti_res,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"categorical"</span>, <span class="at">na.rm =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:left;">    </th>
+   <th style="text-align:right;"> N </th>
+   <th style="text-align:right;"> % </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> cardiopati </td>
+   <td style="text-align:left;"> ignorado </td>
+   <td style="text-align:right;"> 17 </td>
+   <td style="text-align:right;"> 0.7 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> nao </td>
+   <td style="text-align:right;"> 791 </td>
+   <td style="text-align:right;"> 34.0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> sim </td>
+   <td style="text-align:right;"> 182 </td>
+   <td style="text-align:right;"> 7.8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 1334 </td>
+   <td style="text-align:right;"> 57.4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> faixa_et </td>
+   <td style="text-align:left;"> &lt;20 </td>
+   <td style="text-align:right;"> 98 </td>
+   <td style="text-align:right;"> 4.2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> &gt;=34 </td>
+   <td style="text-align:right;"> 908 </td>
+   <td style="text-align:right;"> 39.1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> 20-34 </td>
+   <td style="text-align:right;"> 1317 </td>
+   <td style="text-align:right;"> 56.7 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0.0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> evolucao </td>
+   <td style="text-align:left;"> cura </td>
+   <td style="text-align:right;"> 1645 </td>
+   <td style="text-align:right;"> 70.8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> ignorado </td>
+   <td style="text-align:right;"> 31 </td>
+   <td style="text-align:right;"> 1.3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> obito </td>
+   <td style="text-align:right;"> 623 </td>
+   <td style="text-align:right;"> 26.8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> obito por outras causas </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 0.3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 18 </td>
+   <td style="text-align:right;"> 0.8 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+<p>Uma das funções mais interessantes do pacote <code>modelsummary</code>é a <code>datasummary</code>, pois ela nos permite analisar variáveis quantitativas separada pelas categorias (grupos) de uma variável qualitativa. Por exemplo, suponha que tenhamos interesse em analisar o tempo de internação em UTI, estratificado pelos grupos faixa-etária e evolução do caso, fazendo uso das seguintes medidas descritivas: média, mediana, desvio padrão, mínimo, máximo e tamanho da amostra válido (sem considerar observações faltantes para a variável em questão). O primeiro passo é declarar as medidas-resumo de interesse como funções. O argumento <code>na.rm = TRUE</code> indica que o cálculo da função deve ser realizado excluindo os valores faltantes da variável.</p>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>media <span class="ot">&lt;-</span> <span class="cf">function</span>(x)   <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>mediana <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">median</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>dp <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">sd</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>minimo <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">min</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>maximo <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">max</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(x))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">datasummary</span>( (evolucao <span class="sc">+</span> faixa_et) <span class="sc">~</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>              dias_uti<span class="sc">*</span>(n<span class="sc">+</span>media<span class="sc">+</span>dp<span class="sc">+</span>minimo<span class="sc">+</span>mediana<span class="sc">+</span>maximo), <span class="at">data =</span> dados_uti_res)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:left;">    </th>
+   <th style="text-align:right;"> n </th>
+   <th style="text-align:right;"> media </th>
+   <th style="text-align:right;"> dp </th>
+   <th style="text-align:right;"> minimo </th>
+   <th style="text-align:right;"> mediana </th>
+   <th style="text-align:right;"> maximo </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> evolucao </td>
+   <td style="text-align:left;"> cura </td>
+   <td style="text-align:right;"> 1645 </td>
+   <td style="text-align:right;"> 10.78 </td>
+   <td style="text-align:right;"> 12.01 </td>
+   <td style="text-align:right;"> 0.00 </td>
+   <td style="text-align:right;"> 6.00 </td>
+   <td style="text-align:right;"> 107.00 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> ignorado </td>
+   <td style="text-align:right;"> 31 </td>
+   <td style="text-align:right;"> 7.94 </td>
+   <td style="text-align:right;"> 10.19 </td>
+   <td style="text-align:right;"> 0.00 </td>
+   <td style="text-align:right;"> 4.00 </td>
+   <td style="text-align:right;"> 40.00 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> obito </td>
+   <td style="text-align:right;"> 623 </td>
+   <td style="text-align:right;"> 15.18 </td>
+   <td style="text-align:right;"> 15.46 </td>
+   <td style="text-align:right;"> 0.00 </td>
+   <td style="text-align:right;"> 12.00 </td>
+   <td style="text-align:right;"> 200.00 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> obito por outras causas </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 51.71 </td>
+   <td style="text-align:right;"> 64.62 </td>
+   <td style="text-align:right;"> 2.00 </td>
+   <td style="text-align:right;"> 25.00 </td>
+   <td style="text-align:right;"> 183.00 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> faixa_et </td>
+   <td style="text-align:left;"> &lt;20 </td>
+   <td style="text-align:right;"> 98 </td>
+   <td style="text-align:right;"> 10.55 </td>
+   <td style="text-align:right;"> 11.07 </td>
+   <td style="text-align:right;"> 0.00 </td>
+   <td style="text-align:right;"> 6.00 </td>
+   <td style="text-align:right;"> 58.00 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> &gt;=34 </td>
+   <td style="text-align:right;"> 908 </td>
+   <td style="text-align:right;"> 12.91 </td>
+   <td style="text-align:right;"> 14.66 </td>
+   <td style="text-align:right;"> 0.00 </td>
+   <td style="text-align:right;"> 8.00 </td>
+   <td style="text-align:right;"> 200.00 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> 20-34 </td>
+   <td style="text-align:right;"> 1317 </td>
+   <td style="text-align:right;"> 11.55 </td>
+   <td style="text-align:right;"> 13.15 </td>
+   <td style="text-align:right;"> 0.00 </td>
+   <td style="text-align:right;"> 8.00 </td>
+   <td style="text-align:right;"> 183.00 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+<p>Agora veja como fica se eu considerar as medidas descritivas de mais de uma variável quantitativas por duas variáveis qualitativas, selecionando apenas as medidas descritivas, média, desvio-padrão e número de casos observados:</p>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">datasummary</span>((evolucao <span class="sc">+</span> cardiopati)  <span class="sc">~</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>              (dias_uti <span class="sc">+</span> idade)<span class="sc">*</span>(n<span class="sc">+</span>media<span class="sc">+</span>dp), <span class="at">data =</span> dados_uti_res)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="2"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">dias_uti</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">idade</div></th>
+</tr>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:left;">    </th>
+   <th style="text-align:right;"> n </th>
+   <th style="text-align:right;"> media </th>
+   <th style="text-align:right;"> dp </th>
+   <th style="text-align:right;"> n </th>
+   <th style="text-align:right;"> media </th>
+   <th style="text-align:right;"> dp </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> evolucao </td>
+   <td style="text-align:left;"> cura </td>
+   <td style="text-align:right;"> 1645 </td>
+   <td style="text-align:right;"> 10.78 </td>
+   <td style="text-align:right;"> 12.01 </td>
+   <td style="text-align:right;"> 1645 </td>
+   <td style="text-align:right;"> 31.05 </td>
+   <td style="text-align:right;"> 6.57 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> ignorado </td>
+   <td style="text-align:right;"> 31 </td>
+   <td style="text-align:right;"> 7.94 </td>
+   <td style="text-align:right;"> 10.19 </td>
+   <td style="text-align:right;"> 31 </td>
+   <td style="text-align:right;"> 31.29 </td>
+   <td style="text-align:right;"> 7.66 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> obito </td>
+   <td style="text-align:right;"> 623 </td>
+   <td style="text-align:right;"> 15.18 </td>
+   <td style="text-align:right;"> 15.46 </td>
+   <td style="text-align:right;"> 622 </td>
+   <td style="text-align:right;"> 31.61 </td>
+   <td style="text-align:right;"> 6.70 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> obito por outras causas </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 51.71 </td>
+   <td style="text-align:right;"> 64.62 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 32.14 </td>
+   <td style="text-align:right;"> 7.65 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> cardiopati </td>
+   <td style="text-align:left;"> ignorado </td>
+   <td style="text-align:right;"> 17 </td>
+   <td style="text-align:right;"> 8.76 </td>
+   <td style="text-align:right;"> 9.62 </td>
+   <td style="text-align:right;"> 17 </td>
+   <td style="text-align:right;"> 34.00 </td>
+   <td style="text-align:right;"> 6.20 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> nao </td>
+   <td style="text-align:right;"> 791 </td>
+   <td style="text-align:right;"> 12.74 </td>
+   <td style="text-align:right;"> 13.30 </td>
+   <td style="text-align:right;"> 791 </td>
+   <td style="text-align:right;"> 30.96 </td>
+   <td style="text-align:right;"> 6.82 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> sim </td>
+   <td style="text-align:right;"> 182 </td>
+   <td style="text-align:right;"> 14.12 </td>
+   <td style="text-align:right;"> 14.28 </td>
+   <td style="text-align:right;"> 182 </td>
+   <td style="text-align:right;"> 33.66 </td>
+   <td style="text-align:right;"> 6.86 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</section>
+</section>
+<section id="tabelas-cruzadas---duas-variáveis-qualitativas" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="tabelas-cruzadas---duas-variáveis-qualitativas"><span class="header-section-number">4.2</span> Tabelas cruzadas - duas variáveis qualitativas</h2>
+<p>Tabelas cruzadas ou tabelas de contingência são tabelas que apresentam frequências de duas ou mais variáveis qualitativas conjuntamente.</p>
+<p>No R, para obter tabelas cruzadas, vamos utilizar a função ´ctable´ também do pacote ´summarytools´. No comando abaixo, pedimos ao R uma tabela cruzada entre as variáveis qualitativas evolução (<code>evolucao</code>) e faixa etária (<code>faixa_et</code>) no banco de dados otiginal.</p>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ctable</span>(dados<span class="sc">$</span>evolucao,<span class="at">y=</span>dados<span class="sc">$</span>obesidade,<span class="at">prop=</span><span class="st">"t"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Cross-Tabulation, Total Proportions<br>
+evolucao * obesidade<br>
+Data Frame: dados</p>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td></td>
+<td style="text-align: right;">obesidade</td>
+<td style="text-align: right;">sim</td>
+<td style="text-align: right;">nao</td>
+<td style="text-align: right;">ignorado</td>
+<td style="text-align: right;"><na></na></td>
+<td style="text-align: right;">Total</td>
+</tr>
+<tr class="even">
+<td>evolucao</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="odd">
+<td>cura</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">555 (4.82%)</td>
+<td style="text-align: right;">2897 (25.1%)</td>
+<td style="text-align: right;">95 (0.82%)</td>
+<td style="text-align: right;">5943 (51.58%)</td>
+<td style="text-align: right;">9490 ( 82.4%)</td>
+</tr>
+<tr class="even">
+<td>obito</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">199 (1.73%)</td>
+<td style="text-align: right;">446 ( 3.9%)</td>
+<td style="text-align: right;">14 (0.12%)</td>
+<td style="text-align: right;">587 ( 5.09%)</td>
+<td style="text-align: right;">1246 ( 10.8%)</td>
+</tr>
+<tr class="odd">
+<td>obito por outras causas</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">3 (0.03%)</td>
+<td style="text-align: right;">13 ( 0.1%)</td>
+<td style="text-align: right;">0 (0.00%)</td>
+<td style="text-align: right;">6 ( 0.05%)</td>
+<td style="text-align: right;">22 ( 0.2%)</td>
+</tr>
+<tr class="even">
+<td>ignorado</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">10 (0.09%)</td>
+<td style="text-align: right;">71 ( 0.6%)</td>
+<td style="text-align: right;">0 (0.00%)</td>
+<td style="text-align: right;">206 ( 1.79%)</td>
+<td style="text-align: right;">287 ( 2.5%)</td>
+</tr>
+<tr class="odd">
+<td><na></na></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">23 (0.20%)</td>
+<td style="text-align: right;">129 ( 1.1%)</td>
+<td style="text-align: right;">4 (0.03%)</td>
+<td style="text-align: right;">322 ( 2.79%)</td>
+<td style="text-align: right;">478 ( 4.1%)</td>
+</tr>
+<tr class="even">
+<td>Total</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">790 (6.86%)</td>
+<td style="text-align: right;">3556 (30.9%)</td>
+<td style="text-align: right;">113 (0.98%)</td>
+<td style="text-align: right;">7064 (61.30%)</td>
+<td style="text-align: right;">11523 (100.0%)</td>
+</tr>
+</tbody>
+</table>
+<p>O argumento <code>prop</code> indica a forma como deve ser calculada a proporção. Por padrão, a proporção é sempre calculada tendo-se como referencial o total em linha, ou seja, <code>prop = "r"</code>. Outras opções são <code>prop = "t"</code>, indicando que a proporção é em relação ao número total de observações e <code>prop = "c"</code> se o referencial for o total por coluna.</p>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ctable</span>(dados<span class="sc">$</span>evolucao,<span class="at">y=</span>dados<span class="sc">$</span>obesidade,<span class="at">prop=</span><span class="st">"r"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Cross-Tabulation, Row Proportions<br>
+evolucao * obesidade<br>
+Data Frame: dados</p>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td></td>
+<td style="text-align: right;">obesidade</td>
+<td style="text-align: right;">sim</td>
+<td style="text-align: right;">nao</td>
+<td style="text-align: right;">ignorado</td>
+<td style="text-align: right;"><na></na></td>
+<td style="text-align: right;">Total</td>
+</tr>
+<tr class="even">
+<td>evolucao</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="odd">
+<td>cura</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">555 ( 5.8%)</td>
+<td style="text-align: right;">2897 (30.5%)</td>
+<td style="text-align: right;">95 (1.0%)</td>
+<td style="text-align: right;">5943 (62.6%)</td>
+<td style="text-align: right;">9490 (100.0%)</td>
+</tr>
+<tr class="even">
+<td>obito</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">199 (16.0%)</td>
+<td style="text-align: right;">446 (35.8%)</td>
+<td style="text-align: right;">14 (1.1%)</td>
+<td style="text-align: right;">587 (47.1%)</td>
+<td style="text-align: right;">1246 (100.0%)</td>
+</tr>
+<tr class="odd">
+<td>obito por outras causas</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">3 (13.6%)</td>
+<td style="text-align: right;">13 (59.1%)</td>
+<td style="text-align: right;">0 (0.0%)</td>
+<td style="text-align: right;">6 (27.3%)</td>
+<td style="text-align: right;">22 (100.0%)</td>
+</tr>
+<tr class="even">
+<td>ignorado</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">10 ( 3.5%)</td>
+<td style="text-align: right;">71 (24.7%)</td>
+<td style="text-align: right;">0 (0.0%)</td>
+<td style="text-align: right;">206 (71.8%)</td>
+<td style="text-align: right;">287 (100.0%)</td>
+</tr>
+<tr class="odd">
+<td><na></na></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">23 ( 4.8%)</td>
+<td style="text-align: right;">129 (27.0%)</td>
+<td style="text-align: right;">4 (0.8%)</td>
+<td style="text-align: right;">322 (67.4%)</td>
+<td style="text-align: right;">478 (100.0%)</td>
+</tr>
+<tr class="even">
+<td>Total</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">790 ( 6.9%)</td>
+<td style="text-align: right;">3556 (30.9%)</td>
+<td style="text-align: right;">113 (1.0%)</td>
+<td style="text-align: right;">7064 (61.3%)</td>
+<td style="text-align: right;">11523 (100.0%)</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ctable</span>(dados<span class="sc">$</span>evolucao,<span class="at">y=</span>dados<span class="sc">$</span>obesidade,<span class="at">prop=</span><span class="st">"c"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Cross-Tabulation, Column Proportions<br>
+evolucao * obesidade<br>
+Data Frame: dados</p>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td></td>
+<td style="text-align: right;">obesidade</td>
+<td style="text-align: right;">sim</td>
+<td style="text-align: right;">nao</td>
+<td style="text-align: right;">ignorado</td>
+<td style="text-align: right;"><na></na></td>
+<td style="text-align: right;">Total</td>
+</tr>
+<tr class="even">
+<td>evolucao</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="odd">
+<td>cura</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">555 ( 70.3%)</td>
+<td style="text-align: right;">2897 ( 81.5%)</td>
+<td style="text-align: right;">95 ( 84.1%)</td>
+<td style="text-align: right;">5943 ( 84.13%)</td>
+<td style="text-align: right;">9490 ( 82.4%)</td>
+</tr>
+<tr class="even">
+<td>obito</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">199 ( 25.2%)</td>
+<td style="text-align: right;">446 ( 12.5%)</td>
+<td style="text-align: right;">14 ( 12.4%)</td>
+<td style="text-align: right;">587 ( 8.31%)</td>
+<td style="text-align: right;">1246 ( 10.8%)</td>
+</tr>
+<tr class="odd">
+<td>obito por outras causas</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">3 ( 0.4%)</td>
+<td style="text-align: right;">13 ( 0.4%)</td>
+<td style="text-align: right;">0 ( 0.0%)</td>
+<td style="text-align: right;">6 ( 0.08%)</td>
+<td style="text-align: right;">22 ( 0.2%)</td>
+</tr>
+<tr class="even">
+<td>ignorado</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">10 ( 1.3%)</td>
+<td style="text-align: right;">71 ( 2.0%)</td>
+<td style="text-align: right;">0 ( 0.0%)</td>
+<td style="text-align: right;">206 ( 2.92%)</td>
+<td style="text-align: right;">287 ( 2.5%)</td>
+</tr>
+<tr class="odd">
+<td><na></na></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">23 ( 2.9%)</td>
+<td style="text-align: right;">129 ( 3.6%)</td>
+<td style="text-align: right;">4 ( 3.5%)</td>
+<td style="text-align: right;">322 ( 4.56%)</td>
+<td style="text-align: right;">478 ( 4.1%)</td>
+</tr>
+<tr class="even">
+<td>Total</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">790 (100.0%)</td>
+<td style="text-align: right;">3556 (100.0%)</td>
+<td style="text-align: right;">113 (100.0%)</td>
+<td style="text-align: right;">7064 (100.00%)</td>
+<td style="text-align: right;">11523 (100.0%)</td>
+</tr>
+</tbody>
+</table>
+<p>Note que em todas as tabelas de contingência há a existência de linha e coluna sem nome, isso acontece pois esta linha e/ou coluna está resumindo os valores faltantes (NA). Por exemplo, a distribuição de frequências da variável evolução para os que não preencheram o <span class="math inline">\(status\)</span> de obesidade nos diz que 5943 (84.13%) foram curados, 587 (8.31%) faleceram, 6 (0.08%) viram a óbito por motivos outros que não COVID-19, 206 (2.92%) ignoraram essa informação (preencheram com 9) e 322 (4.56%) deixaram em branco não só a informação da obesidade, mas também o desfecho final da evolução. Para obter a tabela de contingência apenas dos casos válidos simultâneos em ambas as variáveis, insira o argumento <code>useNA = "no""</code>.</p>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ctable</span>(dados<span class="sc">$</span>evolucao,<span class="at">y=</span>dados<span class="sc">$</span>obesidade, <span class="at">prop=</span><span class="st">"c"</span>, <span class="at">useNA =</span> <span class="st">"no"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Cross-Tabulation, Column Proportions<br>
+evolucao * obesidade<br>
+Data Frame: dados</p>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td></td>
+<td style="text-align: right;">obesidade</td>
+<td style="text-align: right;">sim</td>
+<td style="text-align: right;">nao</td>
+<td style="text-align: right;">ignorado</td>
+<td style="text-align: right;">Total</td>
+</tr>
+<tr class="even">
+<td>evolucao</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="odd">
+<td>cura</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">555 ( 72.4%)</td>
+<td style="text-align: right;">2897 ( 84.5%)</td>
+<td style="text-align: right;">95 ( 87.2%)</td>
+<td style="text-align: right;">3547 ( 82.4%)</td>
+</tr>
+<tr class="even">
+<td>obito</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">199 ( 25.9%)</td>
+<td style="text-align: right;">446 ( 13.0%)</td>
+<td style="text-align: right;">14 ( 12.8%)</td>
+<td style="text-align: right;">659 ( 15.3%)</td>
+</tr>
+<tr class="odd">
+<td>obito por outras causas</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">3 ( 0.4%)</td>
+<td style="text-align: right;">13 ( 0.4%)</td>
+<td style="text-align: right;">0 ( 0.0%)</td>
+<td style="text-align: right;">16 ( 0.4%)</td>
+</tr>
+<tr class="even">
+<td>ignorado</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">10 ( 1.3%)</td>
+<td style="text-align: right;">71 ( 2.1%)</td>
+<td style="text-align: right;">0 ( 0.0%)</td>
+<td style="text-align: right;">81 ( 1.9%)</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">767 (100.0%)</td>
+<td style="text-align: right;">3427 (100.0%)</td>
+<td style="text-align: right;">109 (100.0%)</td>
+<td style="text-align: right;">4303 (100.0%)</td>
+</tr>
+</tbody>
+</table>
+<p>Caso não haja interesse em se apresentar as proporções, basta considerar o argumento <code>prop="none"</code>, da seguinte forma:</p>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ctable</span>(dados<span class="sc">$</span>evolucao,<span class="at">y=</span>dados<span class="sc">$</span>obesidade,<span class="at">prop=</span><span class="st">"none"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Cross-Tabulation<br>
+evolucao * obesidade<br>
+Data Frame: dados</p>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td></td>
+<td style="text-align: right;">obesidade</td>
+<td style="text-align: right;">sim</td>
+<td style="text-align: right;">nao</td>
+<td style="text-align: right;">ignorado</td>
+<td style="text-align: right;"><na></na></td>
+<td style="text-align: right;">Total</td>
+</tr>
+<tr class="even">
+<td>evolucao</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="odd">
+<td>cura</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">555</td>
+<td style="text-align: right;">2897</td>
+<td style="text-align: right;">95</td>
+<td style="text-align: right;">5943</td>
+<td style="text-align: right;">9490</td>
+</tr>
+<tr class="even">
+<td>obito</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">199</td>
+<td style="text-align: right;">446</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">587</td>
+<td style="text-align: right;">1246</td>
+</tr>
+<tr class="odd">
+<td>obito por outras causas</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">22</td>
+</tr>
+<tr class="even">
+<td>ignorado</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">206</td>
+<td style="text-align: right;">287</td>
+</tr>
+<tr class="odd">
+<td><na></na></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">129</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">322</td>
+<td style="text-align: right;">478</td>
+</tr>
+<tr class="even">
+<td>Total</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">790</td>
+<td style="text-align: right;">3556</td>
+<td style="text-align: right;">113</td>
+<td style="text-align: right;">7064</td>
+<td style="text-align: right;">11523</td>
+</tr>
+</tbody>
+</table>
+<p>Para tabelas de contingência com mais de duas variáveis, podemos adotar o seguinte procedimento:</p>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(dados, <span class="fu">stby</span>(<span class="at">data =</span> <span class="fu">list</span>(<span class="at">x =</span> evolucao, <span class="at">y =</span> obesidade), </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">INDICES =</span> faixa_et, <span class="at">FUN =</span> ctable))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Cross-Tabulation, Row Proportions<br>
+evolucao * obesidade<br>
+Data Frame: dados<br>
+Group: faixa_et = &lt;20</p>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td></td>
+<td style="text-align: right;">obesidade</td>
+<td style="text-align: right;">sim</td>
+<td style="text-align: right;">nao</td>
+<td style="text-align: right;">ignorado</td>
+<td style="text-align: right;"><na></na></td>
+<td style="text-align: right;">Total</td>
+</tr>
+<tr class="even">
+<td>evolucao</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="odd">
+<td>cura</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">12 (2.0%)</td>
+<td style="text-align: right;">214 (35.0%)</td>
+<td style="text-align: right;">2 (0.3%)</td>
+<td style="text-align: right;">383 (62.7%)</td>
+<td style="text-align: right;">611 (100.0%)</td>
+</tr>
+<tr class="even">
+<td>obito</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">3 (6.5%)</td>
+<td style="text-align: right;">22 (47.8%)</td>
+<td style="text-align: right;">0 (0.0%)</td>
+<td style="text-align: right;">21 (45.7%)</td>
+<td style="text-align: right;">46 (100.0%)</td>
+</tr>
+<tr class="odd">
+<td>obito por outras causas</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">0 (0.0%)</td>
+<td style="text-align: right;">2 (66.7%)</td>
+<td style="text-align: right;">0 (0.0%)</td>
+<td style="text-align: right;">1 (33.3%)</td>
+<td style="text-align: right;">3 (100.0%)</td>
+</tr>
+<tr class="even">
+<td>ignorado</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">0 (0.0%)</td>
+<td style="text-align: right;">7 (20.0%)</td>
+<td style="text-align: right;">0 (0.0%)</td>
+<td style="text-align: right;">28 (80.0%)</td>
+<td style="text-align: right;">35 (100.0%)</td>
+</tr>
+<tr class="odd">
+<td><na></na></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">0 (0.0%)</td>
+<td style="text-align: right;">2 (10.5%)</td>
+<td style="text-align: right;">0 (0.0%)</td>
+<td style="text-align: right;">17 (89.5%)</td>
+<td style="text-align: right;">19 (100.0%)</td>
+</tr>
+<tr class="even">
+<td>Total</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">15 (2.1%)</td>
+<td style="text-align: right;">247 (34.6%)</td>
+<td style="text-align: right;">2 (0.3%)</td>
+<td style="text-align: right;">450 (63.0%)</td>
+<td style="text-align: right;">714 (100.0%)</td>
+</tr>
+</tbody>
+</table>
+<p>Group: faixa_et = &gt;=34</p>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td></td>
+<td style="text-align: right;">obesidade</td>
+<td style="text-align: right;">sim</td>
+<td style="text-align: right;">nao</td>
+<td style="text-align: right;">ignorado</td>
+<td style="text-align: right;"><na></na></td>
+<td style="text-align: right;">Total</td>
+</tr>
+<tr class="even">
+<td>evolucao</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="odd">
+<td>cura</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">231 ( 7.5%)</td>
+<td style="text-align: right;">972 (31.5%)</td>
+<td style="text-align: right;">37 (1.2%)</td>
+<td style="text-align: right;">1842 (59.8%)</td>
+<td style="text-align: right;">3082 (100.0%)</td>
+</tr>
+<tr class="even">
+<td>obito</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">73 (13.9%)</td>
+<td style="text-align: right;">182 (34.7%)</td>
+<td style="text-align: right;">6 (1.1%)</td>
+<td style="text-align: right;">263 (50.2%)</td>
+<td style="text-align: right;">524 (100.0%)</td>
+</tr>
+<tr class="odd">
+<td>obito por outras causas</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">1 (12.5%)</td>
+<td style="text-align: right;">6 (75.0%)</td>
+<td style="text-align: right;">0 (0.0%)</td>
+<td style="text-align: right;">1 (12.5%)</td>
+<td style="text-align: right;">8 (100.0%)</td>
+</tr>
+<tr class="even">
+<td>ignorado</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">1 ( 1.2%)</td>
+<td style="text-align: right;">22 (25.9%)</td>
+<td style="text-align: right;">0 (0.0%)</td>
+<td style="text-align: right;">62 (72.9%)</td>
+<td style="text-align: right;">85 (100.0%)</td>
+</tr>
+<tr class="odd">
+<td><na></na></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">12 ( 7.4%)</td>
+<td style="text-align: right;">44 (27.0%)</td>
+<td style="text-align: right;">0 (0.0%)</td>
+<td style="text-align: right;">107 (65.6%)</td>
+<td style="text-align: right;">163 (100.0%)</td>
+</tr>
+<tr class="even">
+<td>Total</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">318 ( 8.2%)</td>
+<td style="text-align: right;">1226 (31.7%)</td>
+<td style="text-align: right;">43 (1.1%)</td>
+<td style="text-align: right;">2275 (58.9%)</td>
+<td style="text-align: right;">3862 (100.0%)</td>
+</tr>
+</tbody>
+</table>
+<p>Group: faixa_et = 20-34</p>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td></td>
+<td style="text-align: right;">obesidade</td>
+<td style="text-align: right;">sim</td>
+<td style="text-align: right;">nao</td>
+<td style="text-align: right;">ignorado</td>
+<td style="text-align: right;"><na></na></td>
+<td style="text-align: right;">Total</td>
+</tr>
+<tr class="even">
+<td>evolucao</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="odd">
+<td>cura</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">310 ( 5.4%)</td>
+<td style="text-align: right;">1710 (29.5%)</td>
+<td style="text-align: right;">56 (1.0%)</td>
+<td style="text-align: right;">3715 (64.2%)</td>
+<td style="text-align: right;">5791 (100.0%)</td>
+</tr>
+<tr class="even">
+<td>obito</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">123 (18.2%)</td>
+<td style="text-align: right;">242 (35.9%)</td>
+<td style="text-align: right;">8 (1.2%)</td>
+<td style="text-align: right;">302 (44.7%)</td>
+<td style="text-align: right;">675 (100.0%)</td>
+</tr>
+<tr class="odd">
+<td>obito por outras causas</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">2 (18.2%)</td>
+<td style="text-align: right;">5 (45.5%)</td>
+<td style="text-align: right;">0 (0.0%)</td>
+<td style="text-align: right;">4 (36.4%)</td>
+<td style="text-align: right;">11 (100.0%)</td>
+</tr>
+<tr class="even">
+<td>ignorado</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">9 ( 5.4%)</td>
+<td style="text-align: right;">42 (25.1%)</td>
+<td style="text-align: right;">0 (0.0%)</td>
+<td style="text-align: right;">116 (69.5%)</td>
+<td style="text-align: right;">167 (100.0%)</td>
+</tr>
+<tr class="odd">
+<td><na></na></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">11 ( 3.7%)</td>
+<td style="text-align: right;">82 (27.9%)</td>
+<td style="text-align: right;">4 (1.4%)</td>
+<td style="text-align: right;">197 (67.0%)</td>
+<td style="text-align: right;">294 (100.0%)</td>
+</tr>
+<tr class="even">
+<td>Total</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">455 ( 6.6%)</td>
+<td style="text-align: right;">2081 (30.0%)</td>
+<td style="text-align: right;">68 (1.0%)</td>
+<td style="text-align: right;">4334 (62.5%)</td>
+<td style="text-align: right;">6938 (100.0%)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="gráficos" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="gráficos"><span class="header-section-number">4.3</span> Gráficos</h2>
+<p>Um gráfico pode ser a maneira mais adequada para resumir e apresentar um conjunto de dados. Tem a vantagem de facilitar a compreensão de uma determinada situação que queira ser descrita, permitindo uma interpretação rápida e visual das suas principais características.</p>
+<p>A visualização dos dados é uma etapa importantíssima da análise estatística, pois é também a partir dela que criamos a intuição necessária para escolher o teste ou modelo mais adequado para o nosso problema.</p>
+<section id="pacote-ggplot2" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="pacote-ggplot2"><span class="header-section-number">4.3.1</span> Pacote ggplot2</h3>
+<p>Um pacote maravilhoso para gráficos no R é o <code>ggplot2</code>. A ideia por trás desse pacote é um gráfico pode ser entendido como um mapeamento dos dados a partir de atributos estéticos (cores, formas, tamanho) de formas geométricas (pontos, linhas, barras).</p>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="atributos-estéticos" class="level4" data-number="4.3.1.1">
+<h4 data-number="4.3.1.1" class="anchored" data-anchor-id="atributos-estéticos"><span class="header-section-number">4.3.1.1</span> Atributos estéticos</h4>
+<p>A função <code>aes</code> descreve como as variáveis são mapeadas em aspectos visuais. Para isso, vamos precisar indicar qual variável será representada no eixo x, qual será representada no eixo y, a cor e o tamanho dos componentes geométricos, etc. de formas geométricas a serem pré-definidas pelos geoms. A escolha da forma geométrica vai depender da natureza das variáveis a serem analisadas e será discutido na sequencia. Além disso, os aspectos que podem ou devem ser mapeados vão depender do tipo de gráfico que estamos querendo construir. Basicamente, no pacote ´ggplot2´ temos as seguintes formas geométricas:</p>
+<ul>
+<li><p>geom_point() gera gráficos de dispersão transformando pares (x,y) em pontos.</p></li>
+<li><p>geom_line: para retas definidas por pares (x,y);</p></li>
+<li><p>geom_abline: para retas definidas por um intercepto e uma inclinação;</p></li>
+<li><p>geom_hline: para retas horizontais;</p></li>
+<li><p>geom_bar: para barras;</p></li>
+<li><p>geom_histogram: para histogramas;</p></li>
+<li><p>geom_boxplot: para boxplots;</p></li>
+<li><p>geom_density: para densidades;</p></li>
+<li><p>geom_area: para áreas.</p></li>
+</ul>
+<p>Para cada uma das formas geométricas podemos estabelecer aspectos visuais que podem melhorar a visualização dos dados. Aspectos visuais mais utilizados:</p>
+<ul>
+<li><p>color: altera a cor de formas que não têm área (pontos e retas);</p></li>
+<li><p>fill: altera a cor de formas com área (barras, caixas, densidades, áreas);</p></li>
+<li><p>size: altera o tamanho de formas;</p></li>
+<li><p>type: altera o tipo da forma, geralmente usada para pontos;</p></li>
+<li><p>linetype: altera o tipo da linha.</p></li>
+</ul>
+<p>Para exemplificar os diferentes tipos de gráficos associando-os a variáveis de diferentes naturezas, vamos considerar o banco de dados de COVID-19 em gestantes e puérperas. De maneira geral, é necessário seguir alguns passos gerais para a construção de qualquer gráfico via <code>ggplot2</code>, a saber:</p>
+<ul>
+<li>Passo 1: sempre iniciar a construção chamando a função <code>ggplot</code>.</li>
+<li>Passo 2: especificar na função <code>ggplot</code> o objeto que acomoda o banco de dados e apresenta a variável de interesse para a qual se quer fazer o gráfico. Esse objeto deve ser do tipo <span class="math inline">\(dataframe\)</span>.</li>
+<li>Passo 3: informar as variáveis a serem consideradas no eixo horizontal e vertical via função <code>aes</code> e demais funções estéticas dependentes das variáveis.<br>
+</li>
+<li>Passo 4: informar o tipo de gráfico que se quer fazer (barra, histograma, <span class="math inline">\(boxplot\)</span>, etc).</li>
+</ul>
+</section>
+<section id="gráficos-para-variáveis-qualitativas-e-quantitativas-discretas-com-poucos-valores-diferentes" class="level4" data-number="4.3.1.2">
+<h4 data-number="4.3.1.2" class="anchored" data-anchor-id="gráficos-para-variáveis-qualitativas-e-quantitativas-discretas-com-poucos-valores-diferentes"><span class="header-section-number">4.3.1.2</span> Gráficos para variáveis qualitativas e quantitativas discretas com poucos valores diferentes</h4>
+<p>Um dos gráficos mais utilizados para a apresentação visual de variáveis qualitativas e quantitativas discretas com poucas observações diferentes é o gráfico de barras. Para construí-lo, é necessário utilizar no Passo 4 a função <code>geom_bar</code>.<br>
+A seguir apresentamos um exemplo de gráfico de barras para a variável qualitativa evolução dos casos relacionado a gestantes e puérperas hospitalizadas por COVID-19.</p>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(<span class="at">x =</span> evolucao)) <span class="sc">+</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Tipos de evolução"</span>, <span class="at">y =</span> <span class="st">"Número de casos"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="descritiva_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
+</div>
+<p>Note que a função <code>labs</code> é responsável não só por inserir os títulos nos eixos, como poder visto no gráfico anterior, mas também títulos e subtítulos. Essa função pode ser sempre utilizada na construção de gráficos via pacote <code>ggplot2</code>, independente do tipo de gráfico a ser apresentado. Por exemplo,</p>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(<span class="at">x =</span> evolucao)) <span class="sc">+</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Tipos de evolução"</span>, <span class="at">y =</span> <span class="st">"Número de casos"</span>, <span class="at">title =</span> <span class="st">"Evolução dos casos hospitalizados por COVID-19"</span>, <span class="at">subtitle =</span> <span class="st">"Mulheres gestantes e puérperas"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="descritiva_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
+</div>
+<p>No código a seguir apresentamos como apresentar as barras organizadas de maneira decrescente. Note que há uma mudança na ordem das barras referente a óbitos e óbitos por outras causas. Além disso, independente da disposição escolhida para as barras, a categoria que representa as mulheres que não tiveram sua evolução preenchida na notificação (NA) sempre é apresentada como última barra, ainda que tenha uma alta frequência em relação as outras categorias.</p>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(evolucao, evolucao, <span class="cf">function</span>(x)<span class="sc">-</span><span class="fu">length</span>(x)))) <span class="sc">+</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Tipos de evolução"</span>, <span class="at">y =</span> <span class="st">"Número de casos"</span>, <span class="at">title =</span> <span class="st">"Evolução dos casos hospitalizados por COVID-19"</span>, <span class="at">subtitle =</span> <span class="st">"Mulheres gestantes e puérperas"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="descritiva_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
+</div>
+<p>Caso o interesse seja nas barras dispostas de maneira crescente, com exceção do NA, basta reordenar a variável da seguinte forma:</p>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(evolucao, evolucao, <span class="cf">function</span>(x) <span class="fu">length</span>(x)))) <span class="sc">+</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Tipos de evolução"</span>, <span class="at">y =</span> <span class="st">"Número de casos"</span>, <span class="at">title =</span> <span class="st">"Evolução dos casos hospitalizados por COVID-19"</span>, <span class="at">subtitle =</span> <span class="st">"Mulheres gestantes e puérperas"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="descritiva_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
+</div>
+<p>A variável evolução (<code>evolucao</code>) pode ser classificada como qualitativa nominal e, portanto, estamos livres para escolher a ordem com que as categorias são apresentadas. Vamos ver agora o caso da variável faixa-etária (<code>faixa_et</code>) que, intrinsecamente, é uma variável qualitativa ordinal. Se utilizássemos o mesmo código considerado inicialmente para a variável evolução, obteríamos o seguinte gráfico:</p>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(<span class="at">x =</span> faixa_et)) <span class="sc">+</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"purple"</span>) <span class="sc">+</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Faixa etária"</span>, <span class="at">y =</span> <span class="st">"Número de casos"</span>, <span class="at">title =</span> <span class="st">"Faixa etária das hospitalizadas por COVID-19"</span>, <span class="at">subtitle =</span> <span class="st">"Mulheres gestantes e puérperas"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="descritiva_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
+</div>
+<p>Note que a barra para as mulheres com pelo menos 34 anos e a barra que representa as mulheres com idade de 20 (incluso) a 34 anos estão em posições trocadas, não respeitando a ordenação natural da variável.</p>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Especificando a ordem dos níveis do fator </span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>faixa_et <span class="ot">=</span> <span class="fu">factor</span>(dados<span class="sc">$</span>faixa_et, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">'&lt;20'</span>, <span class="st">'20-34'</span>, <span class="st">'&gt;=34'</span>))</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Gerando o gráfico</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(<span class="at">x =</span> faixa_et)) <span class="sc">+</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"purple"</span>) <span class="sc">+</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Faixa etária"</span>, <span class="at">y =</span> <span class="st">"Número de casos"</span>, <span class="at">title =</span> <span class="st">"Faixa etária das hospitalizadas por COVID-19"</span>, <span class="at">subtitle =</span> <span class="st">"Mulheres gestantes e puérperas"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="descritiva_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid" width="672"></p>
+</div>
+<p>Todos os gráficos de barra apresentados anteriormente apresentaram no eixo vertical a contagem de indivíduos por categoria. vejamos agora o código para apresentar o gráfico de barras com as frequências relativas.</p>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(<span class="at">x =</span> faixa_et, <span class="at">y =</span> (..count..)<span class="sc">/</span><span class="fu">sum</span>(..count..))) <span class="sc">+</span>  </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill=</span><span class="st">"purple"</span>) <span class="sc">+</span> </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Faixa etária"</span>, <span class="at">y =</span> <span class="st">"Frequência relativa"</span>, <span class="at">title =</span> <span class="st">"Faixa etária das hospitalizadas por COVID-19"</span>, <span class="at">subtitle =</span> <span class="st">"Mulheres gestantes e puérperas"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="descritiva_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="672"></p>
+</div>
+<p>Se o interesse é apresentar o gráfico em termos percentuais, basta acrescentar a função <code>scale_y_continuous</code> com o argumento <code>labels=scales::percent</code>.</p>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(<span class="at">x =</span> faixa_et, <span class="at">y =</span> (..count..)<span class="sc">/</span><span class="fu">sum</span>(..count..))) <span class="sc">+</span>  </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill=</span><span class="st">"purple"</span>) <span class="sc">+</span> </span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels=</span>scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Faixa etária"</span>, <span class="at">y =</span> <span class="st">"Porcentagem"</span>, <span class="at">title =</span> <span class="st">"Faixa etária das hospitalizadas por COVID-19"</span>, <span class="at">subtitle =</span> <span class="st">"Mulheres gestantes e puérperas"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="descritiva_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="672"></p>
+</div>
+<p>Para inserir o percentual de cada categoria no gráfico, incluímos no código anterior a função <code>geom_text</code>, com o argumento <code>lab</code> declarando o cálculo da frequência arredondado a duas casas decimais. O argumento <code>vjust</code> indica a que altura se quer que o texto com o percentual apareça no gráfico. Quanto mais negativo for o valor, mais acima da barra estará o texto com o percentual. Se <code>vjust = 0</code> apresenta o texto encima da barra e, quanto mais positivo for o valor de <code>vjust</code> escolhido, mais interno da barra ficará o texto.</p>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(<span class="at">x =</span> faixa_et, <span class="at">y =</span> (..count..)<span class="sc">/</span><span class="fu">sum</span>(..count..))) <span class="sc">+</span>  </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill=</span><span class="st">"purple"</span>) <span class="sc">+</span> </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>((((..count..)<span class="sc">/</span><span class="fu">sum</span>(..count..))<span class="sc">*</span><span class="dv">100</span>), <span class="dv">2</span>)), <span class="at">stat=</span> <span class="st">"count"</span>, <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.1</span>)<span class="sc">+</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels=</span>scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Faixa etária"</span>, <span class="at">y =</span> <span class="st">"Porcentagem"</span>, <span class="at">title =</span> <span class="st">"Faixa etária das hospitalizadas por COVID-19"</span>, <span class="at">subtitle =</span> <span class="st">"Mulheres gestantes e puérperas"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="descritiva_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="672"></p>
+</div>
+<p>O argumento <code>width</code> da função <code>geom_bar</code> permite controlar a espessura da barra através de valores variando de 0 a 1, sendo que o tamanho 1 representa o maior tamanho.</p>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(<span class="at">x =</span> faixa_et, <span class="at">y =</span> (..count..)<span class="sc">/</span><span class="fu">sum</span>(..count..))) <span class="sc">+</span>  </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill=</span><span class="st">"purple"</span>, <span class="at">width=</span><span class="fl">0.2</span>) <span class="sc">+</span> </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>((((..count..)<span class="sc">/</span><span class="fu">sum</span>(..count..))<span class="sc">*</span><span class="dv">100</span>), <span class="dv">2</span>)), <span class="at">stat=</span> <span class="st">"count"</span>, <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.1</span>)<span class="sc">+</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels=</span>scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Faixa etária"</span>, <span class="at">y =</span> <span class="st">"Porcentagem"</span>, <span class="at">title =</span> <span class="st">"Faixa etária das hospitalizadas por COVID-19"</span>, <span class="at">subtitle =</span> <span class="st">"Mulheres gestantes e puérperas"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="descritiva_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid" width="672"></p>
+</div>
+<p>Para mudar a disposição das barras de vertical para horizontal, basta acrescentar basta inserir a função <code>coord_flip()</code>. Para diminuir o tamanho da letra, ajustamos na função <code>geom_text</code> alterando os valores do argumento <code>size</code>.</p>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(<span class="at">x =</span> faixa_et, <span class="at">y =</span> (..count..)<span class="sc">/</span><span class="fu">sum</span>(..count..))) <span class="sc">+</span>  </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill=</span><span class="st">"purple"</span>) <span class="sc">+</span> </span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>((((..count..)<span class="sc">/</span><span class="fu">sum</span>(..count..))<span class="sc">*</span><span class="dv">100</span>), <span class="dv">2</span>)), <span class="at">stat=</span> <span class="st">"count"</span>, <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">size  =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels=</span>scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Faixa etária"</span>, <span class="at">y =</span> <span class="st">"Porcentagem"</span>, <span class="at">title =</span> <span class="st">"Faixa etária das hospitalizadas por COVID-19"</span>, <span class="at">subtitle =</span> <span class="st">"Mulheres gestantes e puérperas"</span>)<span class="sc">+</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="descritiva_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid" width="672"></p>
+</div>
+<p>Vejamos agora como construir um gráfico de barras com duas variáveis qualitativas conjuntamente. Para exemplificar, vamos considerar as variáveis faixa etária (<code>faixa_et</code>) e cardiopatia (<code>cardiopat</code>). Nosso interesse é analisar a distribuição da faixa-etária estratificada pelas categorias da variável cardiopatia que, como vimos antes, podem assumir os resultados “sim”, “não”, “ignorado” e “NA”.</p>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(<span class="at">x =</span> faixa_et, <span class="at">group =</span> cardiopati)) <span class="sc">+</span>  </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..prop..), <span class="at">stat =</span> <span class="st">"count"</span>, <span class="at">fill=</span><span class="st">"green4"</span>) <span class="sc">+</span> </span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Faixa etária"</span>, <span class="at">y =</span> <span class="st">"Porcentagem"</span>, <span class="at">title =</span> <span class="st">"Faixa etária das hospitalizadas por COVID-19 pela presença de cardiopatia"</span>, <span class="at">subtitle =</span> <span class="st">"Mulheres gestantes e puérperas"</span>)<span class="sc">+</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels=</span>scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="sc">~</span>cardiopati)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="descritiva_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid" width="672"></p>
+</div>
+<p>O próximo código apresenta o gráfico anterior com as porcentagens inseridas na figura.</p>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(<span class="at">x =</span> faixa_et, <span class="at">group =</span> cardiopati)) <span class="sc">+</span>  </span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..prop..), <span class="at">stat =</span> <span class="st">"count"</span>, <span class="at">fill=</span><span class="st">"green4"</span>) <span class="sc">+</span> </span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> scales<span class="sc">::</span><span class="fu">percent</span>(..prop.., <span class="at">accuracy =</span> <span class="fl">0.1</span>), <span class="at">y=</span> ..prop..), <span class="at">stat =</span> <span class="st">"count"</span>, <span class="at">vjust =</span> <span class="sc">-</span>.<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Faixa etária"</span>, <span class="at">y =</span> <span class="st">"Porcentagem"</span>, <span class="at">title =</span> <span class="st">"Faixa etária das hospitalizadas por COVID-19 pela presença de cardiopatia"</span>, <span class="at">subtitle =</span> <span class="st">"Mulheres gestantes e puérperas"</span>)<span class="sc">+</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels=</span>scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="sc">~</span>cardiopati)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="descritiva_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid" width="672"></p>
+</div>
+<p>Vamos agora colocar cada categoria com a sua própria cor, a fim de facilitar a comparação. Para isso, vamos considerar o argumento <code>fill = factor(..x..)</code> na função <code>geom_bar</code>. Como as categorias da variável faixa-etária são autoexplicativas, o termo <code>theme(legend.position="none")</code> for inserido na construção do gráfico para se evitar a criação de uma nova legenda para as cores relacionadas as faixas de idade, evitando assim repetição de informação.</p>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(<span class="at">x=</span>faixa_et, <span class="at">group =</span> cardiopati))  <span class="sc">+</span> </span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..prop.., <span class="at">fill =</span> <span class="fu">factor</span>(..x..)), <span class="at">stat=</span><span class="st">"count"</span>) <span class="sc">+</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> scales<span class="sc">::</span><span class="fu">percent</span>(..prop.., <span class="at">accuracy =</span> <span class="fl">0.1</span>), <span class="at">y=</span> ..prop..), <span class="at">stat=</span> <span class="st">"count"</span>, <span class="at">vjust =</span> <span class="sc">-</span>.<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Faixa etária"</span>, <span class="at">y =</span> <span class="st">"Porcentagem"</span>, <span class="at">title =</span> <span class="st">"Faixa etária das hospitalizadas por COVID-19 pela presença de cardiopatia"</span>, <span class="at">subtitle =</span> <span class="st">"Mulheres gestantes e puérperas"</span>)<span class="sc">+</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"none"</span>)<span class="sc">+</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels=</span>scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="sc">~</span>cardiopati)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="descritiva_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid" width="672"></p>
+</div>
+<p>A escala de cores utilizada por padrão pela função <code>geom_bar</code> nem sempre atende a todos os públicos. O pacote <code>viridis</code> do R apresenta escalas de cores projetadas para melhorar a legibilidade dos gráficos para leitores com formas comuns de daltonismo e/ou deficiência em visão de cores. Para usá-lo, devemos inserir a função <code>scale_fill_manual(values = c(viridis(4)))</code>, com o valor 4 representando as 4 categorias da faixa etária.</p>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(<span class="at">x=</span>faixa_et, <span class="at">group =</span> cardiopati))  <span class="sc">+</span> </span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..prop.., <span class="at">fill =</span> <span class="fu">factor</span>(..x..)), <span class="at">stat=</span><span class="st">"count"</span>) <span class="sc">+</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> scales<span class="sc">::</span><span class="fu">percent</span>(..prop.., <span class="at">accuracy =</span> <span class="fl">0.1</span>), <span class="at">y=</span> ..prop..), <span class="at">stat=</span> <span class="st">"count"</span>, <span class="at">vjust =</span> <span class="sc">-</span>.<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Faixa etária"</span>, <span class="at">y =</span> <span class="st">"Porcentagem"</span>, <span class="at">title =</span> <span class="st">"Faixa etária das hospitalizadas por COVID-19 pela presença de cardiopatia"</span>, <span class="at">subtitle =</span> <span class="st">"Mulheres gestantes e puérperas"</span>)<span class="sc">+</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"none"</span>)<span class="sc">+</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels=</span>scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="fu">viridis</span>(<span class="dv">4</span>))) <span class="sc">+</span></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="sc">~</span>cardiopati)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="descritiva_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid" width="672"></p>
+</div>
+<p>Vários dos gráficos aqui mencionados podem construídos fazendo usos de outras funções e código do pacote do <code>ggplot2</code>. Especificamente sobre o gráfico de barras, na página (http://www.sthda.com/english/wiki/ggplot2-barplots-quick-start-guide-r-software-and-data-visualization#barplot-of-counts) podemos encontrar outras interessantes customizações gráficas que podem ser implementadas via pacote <code>ggplot2</code>.</p>
+</section>
+<section id="gráficos-para-variáveis-quantitativas" class="level4" data-number="4.3.1.3">
+<h4 data-number="4.3.1.3" class="anchored" data-anchor-id="gráficos-para-variáveis-quantitativas"><span class="header-section-number">4.3.1.3</span> Gráficos para variáveis quantitativas</h4>
+<p>Todos os códigos apresentados anteriormente podem ser usados quando a variável de interesse é quantitativa discreta com poucos valores diferentes. No caso de haver muitos diferentes valores para a variável quantitativa discreta, gráficos do tipo histograma costumam ser mais informativos. Vamos apresentar agora ferramentas para a construção de gráficos para esse tipo de variável e para variáveis quantitativas contínuas. Todos os gráficos a serem construídos daqui para frente farão uso da paleta <code>viridis</code>. Vejamos a construção do histograma de densidades para a variável <code>idade</code>.</p>
+<p>A função considerada agora é <code>geom_histogram</code>. O argumento <code>y = ..density..</code> indica que queremos apresentar o histograma de densidades, <code>bins = 15</code> refere-se ao número de barras contíguas que queremos que o gráfico apresente, ´fill´ designa a cor a preencher o gráfico e color é a cor da linha das barras.</p>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(<span class="at">x=</span>idade))  <span class="sc">+</span> </span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">bins =</span> <span class="dv">15</span>, <span class="at">fill =</span> <span class="fu">viridis</span>(<span class="dv">1</span>), <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Idade"</span>, <span class="at">y =</span> <span class="st">"Densidade"</span>, <span class="at">title =</span> <span class="st">"Histograma de densidades das idades de hospitalizadas por COVID-19"</span>, <span class="at">subtitle =</span> <span class="st">"Mulheres gestantes e puérperas"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="descritiva_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid" width="672"></p>
+</div>
+<p>Enquanto medida, densidade corresponde a razão entre o número de casos contabilizados em intervalo e a amplitude do intervalo. Uma das vantagens em considerar o histograma de densidades e não o histograma de frequências é que a área total sob o gráfico corresponde a 1, deixando o gráfico na mesma escala de funções de densidade. Por exemplo, na figura a seguir inserimos uma versão alisada empírica do histograma. O argumento <code>alpha</code> na função <code>geom_density</code> controla o nível de transparência das cores preenchidas no histograma alisado e varia de 0 a 1, com 1 representando a cor sólida.</p>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(<span class="at">x=</span>idade))  <span class="sc">+</span> </span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">bins =</span> <span class="dv">15</span>, <span class="at">fill =</span> <span class="fu">viridis</span>(<span class="dv">1</span>), <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">"grey55"</span>, <span class="at">color =</span> <span class="st">"grey80"</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Idade"</span>, <span class="at">y =</span> <span class="st">"Densidade"</span>, <span class="at">title =</span> <span class="st">"Histograma de densidades das idades de hospitalizadas por COVID-19 "</span>, <span class="at">subtitle =</span> <span class="st">"Mulheres gestantes e puérperas"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="descritiva_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid" width="672"></p>
+</div>
+<p>No código a seguir apresentamos uma maneira de construir o histograma de densidades de uma variável quantitativa nas diferentes categorias de uma variável qualitativa. Aqui a variável qualitativa refere-se a informações sobre o <span class="math inline">\(status\)</span> de cardiopatia e a variável quantitativa considerada foi a idade. Para facilitar a comparação das diferentes faixas de valores da variável quantitativa entre as categorias, vamos inserir uma escala inserir uma escala de cores entre as faixas de valores, deixando o gráfico com um aspecto bastante atrativo e informativo. O argumento considerado na função <code>geom_density</code> é <code>fill = ..x..</code>, informando que o preenchimento do histograma será realizado nas faixas de valores da variável quantitativa. Para a escala de cores, inserimos a função <code>scale_fill_gradientn(colours = c(viridis(15)))</code>, em que o valor 15 corresponde ao número de barras contíguas (<code>bins = 15</code>) considerado no histograma.</p>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(<span class="at">x=</span>idade))  <span class="sc">+</span> </span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density.., <span class="at">fill=</span>..x..), <span class="at">bins =</span> <span class="dv">15</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">"grey55"</span>, <span class="at">color =</span> <span class="st">"grey80"</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Idade"</span>, <span class="at">y =</span> <span class="st">"Densidade"</span>, <span class="at">title =</span> <span class="st">"Histogramas de densidades das idades fixado status de cardiopatia "</span>, <span class="at">subtitle =</span> <span class="st">"Gestantes e puérperas hospitalizadas por COVID-19"</span>)<span class="sc">+</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradientn</span>(<span class="at">colours =</span> <span class="fu">c</span>(<span class="fu">viridis</span>(<span class="dv">15</span>)))<span class="sc">+</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"none"</span>)<span class="sc">+</span></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="sc">~</span>cardiopati)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="descritiva_files/figure-html/unnamed-chunk-39-1.png" class="img-fluid" width="672"></p>
+</div>
+<p>Para que os histogramas sejam dispostos um abaixo do outro, basta substituir a função <code>facet_grid(~cardiopati)</code> por <code>facet_wrap(~cardiopati, ncol=1)</code>.</p>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(<span class="at">x=</span>idade))  <span class="sc">+</span> </span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density.., <span class="at">fill=</span>..x..), <span class="at">bins =</span> <span class="dv">15</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">"grey55"</span>, <span class="at">color =</span> <span class="st">"grey80"</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Idade"</span>, <span class="at">y =</span> <span class="st">"Densidade"</span>, <span class="at">title =</span> <span class="st">"Histogramas de densidades das idades fixado status de cardiopatia "</span>, <span class="at">subtitle =</span> <span class="st">"Gestantes e puérperas hospitalizadas por COVID-19"</span>)<span class="sc">+</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradientn</span>(<span class="at">colours =</span> <span class="fu">c</span>(<span class="fu">viridis</span>(<span class="dv">15</span>)))<span class="sc">+</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"none"</span>)<span class="sc">+</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>cardiopati, <span class="at">ncol=</span><span class="dv">1</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="descritiva_files/figure-html/unnamed-chunk-40-1.png" class="img-fluid" width="672"></p>
+</div>
+<p>Caso se queira apresentar os histogramas alisados sobrepostos por categoria, pode-se usar o código proposto na sequência.</p>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(<span class="at">x =</span> idade, <span class="at">fill =</span> cardiopati)) <span class="sc">+</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Idade"</span>, <span class="at">y =</span> <span class="st">"Densidade"</span>, <span class="at">title =</span> <span class="st">"Histogramas alisados das idades pelo status de cardiopatia"</span>, <span class="at">subtitle =</span> <span class="st">"Gestantes e puérperas hospitalizadas por COVID-19"</span>) <span class="sc">+</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="fu">viridis</span>(<span class="dv">3</span>)), <span class="at">name =</span> <span class="st">"Cardiopatia"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="descritiva_files/figure-html/unnamed-chunk-41-1.png" class="img-fluid" width="672"></p>
+</div>
+<p>Um outro gráfico muito utilizado na apresentação de uma variável quantitativa é o boxplot que apresenta, visualmente, os valores mínimo, primeiro quartil (Q1), mediana ou segundo quartil (Q2), terceiro quartil (Q3), máximo e possíveis <span class="math inline">\(outliers\)</span>. Baseado nessas medidas, temos uma ideia do comportamento da variável quantitativa em termos de posição, dispersão, assimetria e dados discrepantes. A posição central é dada pela mediana e a dispersão pelo intervalo interquartil. As posições relativas entre Q1, Q2 e Q3 nos dão uma ideia da simetria ou assimetria da distribuição.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figuras_descritiva/Boxplot2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>Os valores <span class="math inline">\(Q_1\)</span>, <span class="math inline">\(Q_2\)</span> e <span class="math inline">\(Q_3\)</span> já foram apresentados anteriormente. No gráfico, o segundo quartil (ou seja, a mediana) é representada pela linha que corta a caixa do boxplot. Já o primeiro quartil (<span class="math inline">\(Q_1\)</span>) é a base da caixa e o terceiro quartil (<span class="math inline">\(Q_3\)</span>), o topo. O intervalo interquartil está representado na altura da caixa. A escolha do tamanho da base da caixa é arbitrária, devendo-se tão somente garantir que as linhas <span class="math inline">\(Q_1\)</span>, <span class="math inline">\(Q_2\)</span> e <span class="math inline">\(Q3\)</span> estão localizadas na altura em que os valores dos quartis foram obtidos.</p>
+<p>As linhas em azul são linhas imaginárias (normalmente não aparecem graficadas nos gráficos) e representam valores que distinguem valores <span class="math inline">\(outliers\)</span> dos demais. Valores <span class="math inline">\(outliers\)</span> são valores considerados discrepantes dentro do conjunto de dados de uma variável. Para a representação no boxplot, são considerados <span class="math inline">\(outliers\)</span>, observações com valores maiores que o Limite Superior (LS) ou com valores menores que o Limite Inferior (LI), tal que <span class="math inline">\(LI = Q_1 - 1.5 (Q_3 - Q_1)\)</span> e <span class="math inline">\(LS = Q_3 + 1.5 (Q_3 - Q_1)\)</span>. Ainda na figura, observamos a presença de um <span class="math inline">\(\mbox{Mínimo}^*\)</span> e <span class="math inline">\(\mbox{Máximo}^*\)</span> que nem sempre representam o menor e a maior, respectivamente, observações na amostra. Por definição, <span class="math inline">\(\mbox{Mínimo}^*\)</span> é o menor valor maior que o Limite Inferior (LI), ou seja, é o menor valor observado no conjunto de dados desconsiderado os valores <span class="math inline">\(outliers\)</span>. Analogamente, <span class="math inline">\(\mbox{Máximo}^*\)</span> é o maior valor menor que o Limite Superior (LS), ou seja, é o maior valor observado no conjunto de dados desconsiderado os valores <span class="math inline">\(outliers\)</span>.</p>
+<p>No pacote <code>ggplot2</code>, esse gráfico é construído com a função <code>geom_boxplot</code> que apresenta argumentos similares aos gráficos de barras e histograma.</p>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(<span class="at">y=</span>idade))  <span class="sc">+</span> </span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="fu">viridis</span>(<span class="dv">1</span>), <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> <span class="st">"Idade"</span>, <span class="at">title =</span> <span class="st">"Boxplot das idades de hospitalizadas por COVID-19 "</span>, <span class="at">subtitle =</span> <span class="st">"Mulheres gestantes e puérperas"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="descritiva_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid" width="672"></p>
+</div>
+<p>O boxplot, assim como o histograma, também pode ser utilizado para apresentar o comportamento de variáveis quantitativas em função das categorias de variáveis qualitativas.</p>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(<span class="at">y=</span>idade, <span class="at">x =</span> cardiopati))  <span class="sc">+</span> </span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="fu">viridis</span>(<span class="dv">1</span>), <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> <span class="st">"Idade"</span>, <span class="at">title =</span> <span class="st">"Boxplot das idades fixado status de cardiopatia"</span>, <span class="at">subtitle =</span> <span class="st">"Gestantes e puérperas hospitalizadas por COVID-19"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="descritiva_files/figure-html/unnamed-chunk-43-1.png" class="img-fluid" width="672"></p>
+</div>
+<p>Para que cada categoria apresente sua própria cor, basta declarar qual a variável que será considerada para colorir os boxplots em suas categorias via argumento <code>fill</code> em <code>ggplot</code> e indicar quais as cores serão utilizadas. Como a variável cardiopatia (<code>cardiopati</code>) tem 4 categorias, informamos as cores na função <code>geom_boxplot</code> usando o termo <code>fill = viridis(4)</code>. Além disso, caso se tenha interesse em destacar as observações <span class="math inline">\(outliers\)</span> com outras cores, pode ser usado o argumento <code>outlier.color</code> na função <code>geom_boxplot</code>. Por exemplo, na figura abaixo, vamos destacar os <span class="math inline">\(outliers\)</span> em vermelho.</p>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(<span class="at">y=</span>idade, <span class="at">x =</span> cardiopati, <span class="at">fill =</span> cardiopati))  <span class="sc">+</span> </span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="fu">viridis</span>(<span class="dv">4</span>), <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">outlier.color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> <span class="st">"Idade"</span>, <span class="at">title =</span> <span class="st">"Boxplot das idades fixado status de cardiopatia"</span>, <span class="at">subtitle =</span> <span class="st">"Gestantes e puérperas hospitalizadas por COVID-19"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="descritiva_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid" width="672"></p>
+</div>
+<p>No código a seguir, vamos apresentar o boxplot da variável quantitativa idade pela variável qualitativa <span class="math inline">\(status\)</span> de cardiopatia, estratificado nas diferentes categorias de evolução do caso. Para clareza do texto no gráfico, a legenda da variável cardiopatia foi colocada abaixo dele, assim como o texto no eixo horizontal foi disposto de forma inclinada, através da função <code>theme(legend.position="bottom", axis.text.x=element_text(angle=30, hjust=0.8))</code>.</p>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(<span class="at">y=</span>idade, <span class="at">x =</span> cardiopati, <span class="at">fill =</span> cardiopati))  <span class="sc">+</span> </span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> <span class="st">"Idade"</span>, <span class="at">title =</span> <span class="st">"Boxplot das idades pelo status de cardiopatia, fixada a evolução"</span>, <span class="at">subtitle =</span> <span class="st">"Gestantes e puérperas hospitalizadas por COVID-19"</span>)<span class="sc">+</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"bottom"</span>, <span class="at">axis.text.x=</span><span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">30</span>, <span class="at">hjust=</span><span class="fl">0.8</span>)) <span class="sc">+</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="fu">viridis</span>(<span class="dv">4</span>)), <span class="at">name =</span> <span class="st">"Cardiopatia"</span>)<span class="sc">+</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="sc">~</span>evolucao)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="descritiva_files/figure-html/unnamed-chunk-45-1.png" class="img-fluid" width="672"></p>
+</div>
+<p>Nosso objetivo agora é explorar a construção de gráficos quando temos duas variáveis quantitativas através do diagrama de dispersão. Para exemplificar a construção, vamos considerar as variáveis do banco de dados <code>dados_uti_res</code> que contém as variáveis idade e quantidade de dias em uti (<code>dias_uti</code>).</p>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados_uti_res, <span class="fu">aes</span>(<span class="at">x=</span>idade, <span class="at">y =</span> dias_uti))  <span class="sc">+</span> </span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="fu">viridis</span>(<span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Idade"</span>, <span class="at">y =</span> <span class="st">"Dias em UTI "</span>, <span class="at">title =</span> <span class="st">"Gráfico de dispersão da idade pelo tempo em UTI"</span>, <span class="at">subtitle =</span> <span class="st">"Gestantes e puérperas hospitalizadas por COVID-19"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="descritiva_files/figure-html/unnamed-chunk-46-1.png" class="img-fluid" width="672"></p>
+</div>
+<p>O pacote <code>ggExtra</code> consegue inserir no gráfico de dispersão gerado pelo <code>ggplot2</code> histogramas, histogramas alisados e boxplot das variáveis marginais. Para isso, basta utilizar a função <code>ggMarginal</code> informando o nome do objeto em que está guardado o gráfico de dispersão e o tipo de gráfico marginal a ser inserido.</p>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dados_uti_res, <span class="fu">aes</span>(<span class="at">x=</span>idade, <span class="at">y =</span> dias_uti))  <span class="sc">+</span> </span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="fu">viridis</span>(<span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Idade"</span>, <span class="at">y =</span> <span class="st">"Dias em UTI "</span>, <span class="at">title =</span> <span class="st">"Gráfico de dispersão da idade pelo tempo em UTI"</span>, <span class="at">subtitle =</span> <span class="st">"Gestantes e puérperas hospitalizadas por COVID-19"</span>)</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggExtra)</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a><span class="co"># histograma marginal</span></span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggMarginal</span>(p, <span class="at">type=</span><span class="st">"histogram"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="descritiva_files/figure-html/unnamed-chunk-47-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># histograma alisado marginal</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggMarginal</span>(p, <span class="at">type=</span><span class="st">"density"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="descritiva_files/figure-html/unnamed-chunk-48-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplot marginal</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggMarginal</span>(p, <span class="at">type=</span><span class="st">"boxplot"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="descritiva_files/figure-html/unnamed-chunk-49-1.png" class="img-fluid" width="672"></p>
+</div>
+<p>Podemos construir gráficos de dispersão estratificados por categorias de uma variável qualitativa. No código abaixo, vamos utilizar o <span class="math inline">\(status\)</span> de cardiopatia e, para isso, usamos o argumento <code>color = cardiopati</code> na função <code>geom_point</code>.</p>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados_uti_res, <span class="fu">aes</span>(<span class="at">x=</span>idade, <span class="at">y =</span> dias_uti))  <span class="sc">+</span> </span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> cardiopati)) <span class="sc">+</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_viridis_d</span>(<span class="st">"Cardiopatia"</span>, <span class="at">na.value =</span> <span class="st">"grey50"</span>)<span class="sc">+</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Idade"</span>, <span class="at">y =</span> <span class="st">"Dias em UTI "</span>, <span class="at">title =</span> <span class="st">"Gráfico de dispersão da idade pelo tempo em UTI, fixado status de cardiopatia"</span>, <span class="at">subtitle =</span> <span class="st">"Gestantes e puérperas hospitalizadas por COVID-19"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="descritiva_files/figure-html/unnamed-chunk-50-1.png" class="img-fluid" width="672"></p>
+</div>
+<p>Como pontos de diferentes cores estão sobrepondo, uma visualização possível para facilitar a análise pode ser feita separando os diagramas de dispersão em diferentes planos cartesianos de mesma escala.</p>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados_uti_res, <span class="fu">aes</span>(<span class="at">x=</span>idade, <span class="at">y =</span> dias_uti))  <span class="sc">+</span> </span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> cardiopati)) <span class="sc">+</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_viridis_d</span>(<span class="st">"Cardiopatia"</span>, <span class="at">na.value =</span> <span class="st">"grey50"</span>)<span class="sc">+</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Idade"</span>, <span class="at">y =</span> <span class="st">"Dias em UTI "</span>, <span class="at">title =</span> <span class="st">"Gráfico de dispersão da idade pelo tempo em UTI, fixado status de cardiopatia"</span>, <span class="at">subtitle =</span> <span class="st">"Gestantes e puérperas hospitalizadas por COVID-19"</span>)<span class="sc">+</span></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>cardiopati, <span class="at">ncol=</span><span class="dv">1</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="descritiva_files/figure-html/unnamed-chunk-51-1.png" class="img-fluid" width="672"></p>
+</div>
+</section>
+</section>
+<section id="pacote-esquisse" class="level3" data-number="4.3.2">
+<h3 data-number="4.3.2" class="anchored" data-anchor-id="pacote-esquisse"><span class="header-section-number">4.3.2</span> Pacote esquisse</h3>
+<p>O pacote <code>esquisse</code> disponibiliza um <span class="math inline">\(dashboard\)</span> interativo para criação de gráficos por meio do pacote <code>ggplot2</code>.</p>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(esquisse)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Ao rodar a função <code>esquisser()</code>, um janela é aberta (veja <a href="#fig-Eq1">Figura&nbsp;<span>4.5</span></a>), em que usuário deve escolher a base de dados a trabalhar. Feito isso, uma outra janela será aberta apresentando todas as variáveis presentes no banco de dados escolhido (veja <a href="#fig-Eq2">Figura&nbsp;<span>4.6</span></a>), permitindo assim fazer os gráficos. Preparamos um tutorial para a utilização do pacote <code>esquisse</code> que pode ser acessado aqui <span style="color: red;">(https://www.youtube.com/watch?XXXXXXXXXXXXX)</span> .</p>
+<div id="fig-Eq1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="figuras_descritiva/Esquisser_1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;4.5: Primeira tela do esquisser.</figcaption><p></p>
+</figure>
+</div>
+<div id="fig-Eq2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="figuras_descritiva/Esquisser_2.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;4.6: Segunda tela do esquisser.</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="materiais-complementares" class="level3" data-number="4.3.3">
+<h3 data-number="4.3.3" class="anchored" data-anchor-id="materiais-complementares"><span class="header-section-number">4.3.3</span> Materiais complementares</h3>
+<p>Livros e Artigos:</p>
+<ul>
+<li><p>Mercier F, Consalvo N, Frey N, Phipps A, Ribba B. From waterfall plots to spaghetti plots in early oncology clinical development. Pharm Stat. 2019;18(5):526-532. doi:10.1002/pst.1944</p></li>
+<li><p>Gillespie TW. Understanding waterfall plots. J Adv Pract Oncol. 2012;3(2):106-111.</p></li>
+<li><p>Sonnad SS. Describing data: statistical and graphical methods. Radiology. 2002;225(3):622-628. doi:10.1148/radiol.2253012154</p></li>
+<li><p>In J, Lee S. Statistical data presentation. Korean J Anesthesiol. 2017;70(3):267-276. doi:10.4097/kjae.2017.70.3.267</p></li>
+<li><p>Morettin P, Singer J. Estatística e Ciência de Dados. 1nd ed.&nbsp;LTC; 2022.</p></li>
+</ul>
+<p><span class="math inline">\(Sites\)</span>:</p>
+<ul>
+<li>https://r-graph-gallery.com/index.html<br>
+</li>
+<li>http://www.sthda.com/english/wiki/data-visualization</li>
+<li>https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiada");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiada");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./tabulacao.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tabulação de dados</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./supervisionada.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
