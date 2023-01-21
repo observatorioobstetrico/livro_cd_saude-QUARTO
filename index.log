@@ -1,0 +1,4725 @@
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2023.1.21)  21 JAN 2023 10:10
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**index.tex
+(./index.tex
+LaTeX2e <2022-11-01> patch level 1
+L3 programming layer <2023-01-16> (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/koma-script/scrreprt.cls
+Document Class: scrreprt 2022/10/12 v3.38 KOMA-Script document class (report)
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/koma-script/scrkbase.sty
+Package: scrkbase 2022/10/12 v3.38 KOMA-Script package (KOMA-Script-dependent basics and keyval usage)
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/koma-script/scrbase.sty
+Package: scrbase 2022/10/12 v3.38 KOMA-Script package (KOMA-Script-independent basics and keyval usage)
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/koma-script/scrlfile.sty
+Package: scrlfile 2022/10/12 v3.38 KOMA-Script package (file load hooks)
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/koma-script/scrlfile-hook.sty
+Package: scrlfile-hook 2022/10/12 v3.38 KOMA-Script package (using LaTeX hooks)
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/koma-script/scrlogo.sty
+Package: scrlogo 2022/10/12 v3.38 KOMA-Script package (logo)
+))) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks16
+)
+Applying: [2021/05/01] Usage of raw or classic option list on input line 252.
+Already applied: [0000/00/00] Usage of raw or classic option list on input line 368.
+)) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/koma-script/tocbasic.sty
+Package: tocbasic 2022/10/12 v3.38 KOMA-Script package (handling toc-files)
+\scr@dte@tocline@numberwidth=\skip48
+\scr@dte@tocline@numbox=\box51
+)
+Package tocbasic Info: omitting babel extension for `toc'
+(tocbasic)             because of feature `nobabel' available
+(tocbasic)             for `toc' on input line 137.
+Class scrreprt Info: File `scrsize11pt.clo' used instead of
+(scrreprt)           file `scrsize11.clo' to setup font sizes on input line 2614.
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/koma-script/scrsize11pt.clo
+File: scrsize11pt.clo 2022/10/12 v3.38 KOMA-Script font size class option (11pt)
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/koma-script/typearea.sty
+Package: typearea 2022/10/12 v3.38 KOMA-Script package (type area)
+\ta@bcor=\skip49
+\ta@div=\count181
+Package typearea Info: You've used standard option `letterpaper'.
+(typearea)             This is correct!
+(typearea)             Internally I'm using `paper=letter'.
+(typearea)             If you'd like to set the option with \KOMAoptions,
+(typearea)             you'd have to use `paper=letter' there
+(typearea)             instead of `letterpaper', too.
+\ta@hblk=\skip50
+\ta@vblk=\skip51
+\ta@temp=\skip52
+\footheight=\skip53
+Package typearea Info: These are the values describing the layout:
+(typearea)             DIV  = 11
+(typearea)             BCOR = 0.0pt
+(typearea)             \paperwidth      = 614.295pt
+(typearea)              \textwidth      = 446.76004pt
+(typearea)              DIV departure   = -14%
+(typearea)              \evensidemargin = 11.49748pt
+(typearea)              \oddsidemargin  = 11.49748pt
+(typearea)             \paperheight     = 794.96999pt
+(typearea)              \textheight     = 582.20026pt
+(typearea)              \topmargin      = -37.40001pt
+(typearea)              \headheight     = 17.0pt
+(typearea)              \headsep        = 20.40001pt
+(typearea)              \topskip        = 11.0pt
+(typearea)              \footskip       = 47.6pt
+(typearea)              \baselineskip   = 13.6pt
+(typearea)              on input line 1767.
+)
+\c@part=\count182
+\c@chapter=\count183
+\c@section=\count184
+\c@subsection=\count185
+\c@subsubsection=\count186
+\c@paragraph=\count187
+\c@subparagraph=\count188
+\scr@dte@chapter@maxnumwidth=\skip54
+Class scrreprt Info: using compatibility default `afterindent=bysign'
+(scrreprt)           for `\chapter on input line 5902.
+\scr@dte@section@maxnumwidth=\skip55
+Class scrreprt Info: using compatibility default `runin=bysign'
+(scrreprt)           for `\section on input line 5913.
+Class scrreprt Info: using compatibility default `afterindent=bysign'
+(scrreprt)           for `\section on input line 5913.
+\scr@dte@part@maxnumwidth=\skip56
+Class scrreprt Info: using compatibility default `afterindent=true'
+(scrreprt)           for `\part on input line 5922.
+\scr@dte@subsection@maxnumwidth=\skip57
+Class scrreprt Info: using compatibility default `runin=bysign'
+(scrreprt)           for `\subsection on input line 5932.
+Class scrreprt Info: using compatibility default `afterindent=bysign'
+(scrreprt)           for `\subsection on input line 5932.
+\scr@dte@subsubsection@maxnumwidth=\skip58
+Class scrreprt Info: using compatibility default `runin=bysign'
+(scrreprt)           for `\subsubsection on input line 5942.
+Class scrreprt Info: using compatibility default `afterindent=bysign'
+(scrreprt)           for `\subsubsection on input line 5942.
+\scr@dte@paragraph@maxnumwidth=\skip59
+Class scrreprt Info: using compatibility default `runin=bysign'
+(scrreprt)           for `\paragraph on input line 5953.
+Class scrreprt Info: using compatibility default `afterindent=bysign'
+(scrreprt)           for `\paragraph on input line 5953.
+\scr@dte@subparagraph@maxnumwidth=\skip60
+Class scrreprt Info: using compatibility default `runin=bysign'
+(scrreprt)           for `\subparagraph on input line 5963.
+Class scrreprt Info: using compatibility default `afterindent=bysign'
+(scrreprt)           for `\subparagraph on input line 5963.
+\abovecaptionskip=\skip61
+\belowcaptionskip=\skip62
+\c@pti@nb@sid@b@x=\box52
+Package tocbasic Info: omitting babel extension for `lof'
+(tocbasic)             because of feature `nobabel' available
+(tocbasic)             for `lof' on input line 7140.
+\scr@dte@figure@maxnumwidth=\skip63
+\c@figure=\count189
+Package tocbasic Info: omitting babel extension for `lot'
+(tocbasic)             because of feature `nobabel' available
+(tocbasic)             for `lot' on input line 7157.
+\scr@dte@table@maxnumwidth=\skip64
+\c@table=\count190
+Class scrreprt Info: Redefining `\numberline' on input line 7328.
+\bibindent=\dimen140
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2022/04/08 v2.17n AMS math features
+\@mathmargin=\skip65
+For additional information on amsmath, use the `?' option.
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2021/08/26 v2.01 AMS text
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks17
+\ex@=\dimen141
+)) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen142
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count191
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count192
+\leftroot@=\count193
+LaTeX Info: Redefining \overline on input line 399.
+LaTeX Info: Redefining \colon on input line 410.
+\classnum@=\count194
+\DOTSCASE@=\count195
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box53
+\strutbox@=\box54
+LaTeX Info: Redefining \big on input line 722.
+LaTeX Info: Redefining \Big on input line 723.
+LaTeX Info: Redefining \bigg on input line 724.
+LaTeX Info: Redefining \Bigg on input line 725.
+\big@size=\dimen143
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count196
+LaTeX Info: Redefining \bmod on input line 905.
+LaTeX Info: Redefining \pmod on input line 910.
+LaTeX Info: Redefining \smash on input line 940.
+LaTeX Info: Redefining \relbar on input line 970.
+LaTeX Info: Redefining \Relbar on input line 971.
+\c@MaxMatrixCols=\count197
+\dotsspace@=\muskip16
+\c@parentequation=\count198
+\dspbrk@lvl=\count199
+\tag@help=\toks18
+\row@=\count266
+\column@=\count267
+\maxfields@=\count268
+\andhelp@=\toks19
+\eqnshift@=\dimen144
+\alignsep@=\dimen145
+\tagshift@=\dimen146
+\tagwidth@=\dimen147
+\totwidth@=\dimen148
+\lineht@=\dimen149
+\@envbody=\toks20
+\multlinegap=\skip66
+\multlinetaggap=\skip67
+\mathdisplay@stack=\toks21
+LaTeX Info: Redefining \[ on input line 2953.
+LaTeX Info: Redefining \] on input line 2954.
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/lmodern.sty
+Package: lmodern 2015/05/01 v1.6.1 Latin Modern Fonts
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/lmm/m/it on input line 23.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/lmsy/m/n on input line 24.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 25.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 26.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/lmm/b/it on input line 27.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/lmsy/b/n on input line 28.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 29.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 31.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 32.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/lmr/m/it on input line 33.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 34.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> OT1/lmss/bx/n on input line 36.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/unicode-math/unicode-math.sty (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2023-01-16 L3 programming layer (loader) 
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
+File: l3backend-xetex.def 2023-01-16 L3 backend support: XeTeX
+\g__graphics_track_int=\count269
+\l__pdf_internal_box=\box55
+\g__pdf_backend_object_int=\count270
+\g__pdf_backend_annotation_int=\count271
+\g__pdf_backend_link_int=\count272
+))
+Package: unicode-math 2020/01/31 v0.8q Unicode maths in XeLaTeX and LuaLaTeX
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/unicode-math/unicode-math-xetex.sty
+Package: unicode-math-xetex 2020/01/31 v0.8q Unicode maths in XeLaTeX and LuaLaTeX
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+Package: xparse 2023-01-16 L3 Experimental document command parser
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
+Package: l3keys2e 2023-01-16 LaTeX2e option processing using LaTeX3 keys
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fontspec/fontspec.sty
+Package: fontspec 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaTeX
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
+Package: fontspec-xetex 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaTeX
+\l__fontspec_script_int=\count273
+\l__fontspec_language_int=\count274
+\l__fontspec_strnum_int=\count275
+\l__fontspec_tmp_int=\count276
+\l__fontspec_tmpa_int=\count277
+\l__fontspec_tmpb_int=\count278
+\l__fontspec_tmpc_int=\count279
+\l__fontspec_em_int=\count280
+\l__fontspec_emdef_int=\count281
+\l__fontspec_strong_int=\count282
+\l__fontspec_strongdef_int=\count283
+\l__fontspec_tmpa_dim=\dimen150
+\l__fontspec_tmpb_dim=\dimen151
+\l__fontspec_tmpc_dim=\dimen152
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fontspec/fontspec.cfg))) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/fix-cm.sty
+Package: fix-cm 2020/11/24 v1.1t fixes to LaTeX
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/ts1enc.def
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding TS1 on input line 47.
+))
+\g__um_fam_int=\count284
+\g__um_fonts_used_int=\count285
+\l__um_primecount_int=\count286
+\g__um_primekern_muskip=\muskip17
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/unicode-math/unicode-math-table.tex))) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2022/06/12 v2.14 LaTeX color extensions (UK)
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: xetex.def on input line 227.
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-def/xetex.def
+File: xetex.def 2022/09/22 v5.0n Graphics/color driver for xetex
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1353.
+Package xcolor Info: Model `RGB' extended on input line 1369.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1371.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1372.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1373.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1374.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1375.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1376.
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/xcolor/svgnam.def
+File: svgnam.def 2022/06/12 v2.14 Predefined colors according to SVG 1.1 (UK)
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/xcolor/x11nam.def
+File: x11nam.def 2022/06/12 v2.14 Predefined colors according to Unix/X11 (UK)
+)) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2023/01/19 4.5a verbatim text (tvz,hv)
+\FV@CodeLineNo=\count287
+\FV@InFile=\read2
+\FV@TabBox=\box56
+\c@FancyVerbLine=\count288
+\FV@StepNumber=\count289
+\FV@OutFile=\write3
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/framed/framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip68
+\fb@frw=\dimen153
+\fb@frh=\dimen154
+\FrameRule=\dimen155
+\FrameSep=\dimen156
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2021-09-01 v4.17 Multi-page Table package (DPC)
+\LTleft=\skip69
+\LTright=\skip70
+\LTpre=\skip71
+\LTpost=\skip72
+\LTchunksize=\count290
+\LTcapwidth=\dimen157
+\LT@head=\box57
+\LT@firsthead=\box58
+\LT@foot=\box59
+\LT@lastfoot=\box60
+\LT@gbox=\box61
+\LT@cols=\count291
+\LT@rows=\count292
+\c@LT@tables=\count293
+\c@LT@chunks=\count294
+\LT@p@ftn=\toks22
+)
+Class scrreprt Info: longtable captions redefined on input line 95.
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen158
+\lightrulewidth=\dimen159
+\cmidrulewidth=\dimen160
+\belowrulesep=\dimen161
+\belowbottomsep=\dimen162
+\aboverulesep=\dimen163
+\abovetopsep=\dimen164
+\cmidrulesep=\dimen165
+\cmidrulekern=\dimen166
+\defaultaddspace=\dimen167
+\@cmidla=\count295
+\@cmidlb=\count296
+\@aboverulesep=\dimen168
+\@belowrulesep=\dimen169
+\@thisruleclass=\count297
+\@lastruleclass=\count298
+\@thisrulewidth=\dimen170
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/array.sty
+Package: array 2022/09/04 v2.5g Tabular extension package (FMi)
+\col@sep=\dimen171
+\ar@mcellbox=\box62
+\extrarowheight=\dimen172
+\NC@list=\toks23
+\extratabsurround=\skip73
+\backup@length=\skip74
+\ar@cellbox=\box63
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count299
+\calc@Bcount=\count300
+\calc@Adimen=\dimen173
+\calc@Bdimen=\dimen174
+\calc@Askip=\skip75
+\calc@Bskip=\skip76
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count301
+\calc@Cskip=\skip77
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count302
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/mdwtools/footnote.sty
+Package: footnote 1997/01/28 1.13 Save footnotes around boxes
+\fn@notes=\box64
+\fn@width=\dimen175
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: xetex.def on input line 107.
+)
+\Gin@req@height=\dimen176
+\Gin@req@width=\dimen177
+)
+\cslhangindent=\skip78
+\csllabelwidth=\skip79
+\cslentryspacingunit=\skip80
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/siunitx/siunitx.sty
+Package: siunitx 2023-01-03 v3.2.0 A comprehensive (SI) units package
+\l__siunitx_angle_tmp_dim=\dimen178
+\l__siunitx_angle_marker_box=\box65
+\l__siunitx_angle_unit_box=\box66
+\l__siunitx_compound_count_int=\count303
+\l__siunitx_number_exponent_fixed_int=\count304
+\l__siunitx_number_min_decimal_int=\count305
+\l__siunitx_number_min_integer_int=\count306
+\l__siunitx_number_round_precision_int=\count307
+\l__siunitx_number_lower_threshold_int=\count308
+\l__siunitx_number_upper_threshold_int=\count309
+\l__siunitx_number_group_first_int=\count310
+\l__siunitx_number_group_size_int=\count311
+\l__siunitx_number_group_minimum_int=\count312
+\l__siunitx_table_tmp_box=\box67
+\l__siunitx_table_tmp_dim=\dimen179
+\l__siunitx_table_column_width_dim=\dimen180
+\l__siunitx_table_integer_box=\box68
+\l__siunitx_table_decimal_box=\box69
+\l__siunitx_table_uncert_box=\box70
+\l__siunitx_table_before_box=\box71
+\l__siunitx_table_after_box=\box72
+\l__siunitx_table_before_dim=\dimen181
+\l__siunitx_table_carry_dim=\dimen182
+\l__siunitx_unit_tmp_int=\count313
+\l__siunitx_unit_position_int=\count314
+\l__siunitx_unit_total_int=\count315
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
+\multirow@colwidth=\skip81
+\multirow@cntb=\count316
+\multirow@dima=\skip82
+\bigstrutjot=\dimen183
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen184
+\WF@size=\dimen185
+\c@WF@wrappedlines=\count317
+\WF@box=\box73
+\WF@everypar=\toks24
+Package: wrapfig 2003/01/31  v 3.6
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count318
+\float@exts=\toks25
+\float@box=\box74
+\@float@everytoks=\toks26
+\@floatcapt=\box75
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2022/06/20 v1.0f Color table columns (DPC)
+\everycr=\toks27
+\minrowclearance=\skip83
+\rownum=\count319
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pdflscape/pdflscape.sty
+Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty
+Package: pdflscape-nometadata 2022-10-28 v0.13 Display of landscape pages in PDF (HO)
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/lscape.sty
+Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: dvipdfm (xetex) on input line 98.
+)) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tabu/tabu.sty
+Package: tabu 2019/01/11 v2.9 - flexible LaTeX tabulars (FC+tabu-fixed)
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/varwidth/varwidth.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box76
+\sift@deathcycles=\count320
+\@vwid@loff=\dimen186
+\@vwid@roff=\dimen187
+)
+\c@taburow=\count321
+\tabu@nbcols=\count322
+\tabu@cnt=\count323
+\tabu@Xcol=\count324
+\tabu@alloc=\count325
+\tabu@nested=\count326
+\tabu@target=\dimen188
+\tabu@spreadtarget=\dimen189
+\tabu@naturalX=\dimen190
+\tabucolX=\dimen191
+\tabu@Xsum=\dimen192
+\extrarowdepth=\dimen193
+\abovetabulinesep=\dimen194
+\belowtabulinesep=\dimen195
+\tabustrutrule=\dimen196
+\tabu@thebody=\toks28
+\tabu@footnotes=\toks29
+\tabu@box=\box77
+\tabu@arstrutbox=\box78
+\tabu@hleads=\box79
+\tabu@vleads=\box80
+\tabu@cellskip=\skip84
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/threeparttable/threeparttable.sty
+Package: threeparttable 2003/06/13  v 3.0
+\@tempboxb=\box81
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/threeparttablex/threeparttablex.sty
+Package: threeparttablex 2013/07/23 v0.3 by daleif
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/environ/environ.sty
+Package: environ 2014/05/04 v0.3 A new way to define environments
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/trimspaces/trimspaces.sty
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+))
+\TPTL@width=\skip85
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/ulem/ulem.sty
+\UL@box=\box82
+\UL@hyphenbox=\box83
+\UL@skip=\skip86
+\UL@hook=\toks30
+\UL@height=\dimen197
+\UL@pe=\count327
+\UL@pixel=\dimen198
+\ULC@box=\box84
+Package: ulem 2019/11/18
+\ULdepth=\dimen199
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/makecell/makecell.sty
+Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
+\rotheadsize=\dimen256
+\c@nlinenum=\count328
+\TeXr@lab=\toks31
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/bookmark/bookmark.sty
+Package: bookmark 2020-11-06 v1.29 PDF bookmarks (HO)
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2022-11-13 v7.00u Hypertext links for LaTeX
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode not found.
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/auxhook/auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2022-05-17 v2.50 Cross-referencing by name of section
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+))
+\c@section@level=\count329
+)
+\@linkdim=\dimen257
+\Hy@linkcounter=\count330
+\Hy@pagecounter=\count331
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2022-11-13 v7.00u Hyperref: PDFDocEncoding definition (HO)
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)
+\Hy@SavedSpaceFactor=\count332
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2022-11-13 v7.00u Hyperref: PDF Unicode definition (HO)
+)
+Package hyperref Info: Option `unicode' set `true' on input line 4045.
+Package hyperref Info: Hyper figures OFF on input line 4162.
+Package hyperref Info: Link nesting OFF on input line 4167.
+Package hyperref Info: Hyper index ON on input line 4170.
+Package hyperref Info: Plain pages OFF on input line 4177.
+Package hyperref Info: Backreferencing OFF on input line 4182.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4410.
+\c@Hy@tempcnt=\count333
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip18
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4748.
+\XeTeXLinkMargin=\dimen258
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
+))
+\Fld@menulength=\count334
+\Field@Width=\dimen259
+\Fld@charsize=\dimen260
+Package hyperref Info: Hyper figures OFF on input line 6027.
+Package hyperref Info: Link nesting OFF on input line 6032.
+Package hyperref Info: Hyper index ON on input line 6035.
+Package hyperref Info: backreferencing OFF on input line 6042.
+Package hyperref Info: Link coloring OFF on input line 6047.
+Package hyperref Info: Link coloring with OCG OFF on input line 6052.
+Package hyperref Info: PDF/A mode OFF on input line 6057.
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
+package with kernel methods
+)
+\Hy@abspage=\count335
+\c@Item=\count336
+\c@Hfootnote=\count337
+)
+Package hyperref Info: Driver (autodetected): hxetex.
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/hxetex.def
+File: hxetex.def 2022-11-13 v7.00u Hyperref driver for XeTeX
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/stringenc/stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
+)
+\pdfm@box=\box85
+\c@Hy@AnnotLevel=\count338
+\HyField@AnnotCount=\count339
+\Fld@listcount=\count340
+\c@bookmark@seq@number=\count341
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
+with kernel methods
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
+)
+\Hy@SectionHShift=\skip87
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/bookmark/bkm-dvipdfm.def
+File: bkm-dvipdfm.def 2020-11-06 v1.29 bookmark driver for dvipdfm (HO)
+\BKM@id=\count342
+)) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2022/03/01 v3.6b Customizing captions (AR)
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2022/03/17 v2.3b caption3 kernel (AR)
+\caption@tempdima=\dimen261
+\captionmargin=\dimen262
+\caption@leftmargin=\dimen263
+\caption@rightmargin=\dimen264
+\caption@width=\dimen265
+\caption@indent=\dimen266
+\caption@parindent=\dimen267
+\caption@hangindent=\dimen268
+Package caption Info: KOMA-Script document class detected.
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/caption/caption-koma.sto
+File: caption-koma.sto 2020/09/21 v2.0b Adaption of the caption package to the KOMA-Script document classes (AR)
+))
+\c@caption@flags=\count343
+\c@continuedfloat=\count344
+Package caption Info: float package is loaded.
+Package caption Info: hyperref package is loaded.
+Package caption Info: longtable package is loaded.
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/caption/ltcaption.sty
+Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
+)
+Package caption Info: threeparttable package is loaded.
+Package caption Info: wrapfig package is loaded.
+)
+\@float@every@codelisting=\toks32
+\c@codelisting=\count345
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2022/01/07 v1.5 Sub-captions (AR)
+\c@subfigure=\count346
+\c@subtable=\count347
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
+Package: tcolorbox 2022/06/24 version 5.1.1 text color boxes
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+\pgfutil@everybye=\toks33
+\pgfutil@tempdima=\dimen269
+\pgfutil@tempdimb=\dimen270
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box86
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/pgf.revision.tex)
+Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
+))
+Package: pgf 2023-01-15 v3.1.10 (3.1.10)
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks34
+\pgfkeys@temptoks=\toks35
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.tex
+\pgfkeys@tmptoks=\toks36
+))
+\pgf@x=\dimen271
+\pgf@y=\dimen272
+\pgf@xa=\dimen273
+\pgf@ya=\dimen274
+\pgf@xb=\dimen275
+\pgf@yb=\dimen276
+\pgf@xc=\dimen277
+\pgf@yc=\dimen278
+\pgf@xd=\dimen279
+\pgf@yd=\dimen280
+\w@pgf@writea=\write4
+\r@pgf@reada=\read3
+\c@pgf@counta=\count348
+\c@pgf@countb=\count349
+\c@pgf@countc=\count350
+\c@pgf@countd=\count351
+\t@pgf@toka=\toks37
+\t@pgf@tokb=\toks38
+\t@pgf@tokc=\toks39
+\pgf@sys@id@count=\count352
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
+)
+Driver file for pgf: pgfsys-xetex.def
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-xetex.def
+File: pgfsys-xetex.def 2023-01-15 v3.1.10 (3.1.10)
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-dvipdfmx.def
+File: pgfsys-dvipdfmx.def 2023-01-15 v3.1.10 (3.1.10)
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
+)
+\pgfsys@objnum=\count353
+))) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfsyssoftpath@smallbuffer@items=\count354
+\pgfsyssoftpath@bigbuffer@items=\count355
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen281
+\pgfmath@count=\count356
+\pgfmath@box=\box87
+\pgfmath@toks=\toks40
+\pgfmath@stack@operand=\toks41
+\pgfmath@stack@operation=\toks42
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count357
+)) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@picminx=\dimen282
+\pgf@picmaxx=\dimen283
+\pgf@picminy=\dimen284
+\pgf@picmaxy=\dimen285
+\pgf@pathminx=\dimen286
+\pgf@pathmaxx=\dimen287
+\pgf@pathminy=\dimen288
+\pgf@pathmaxy=\dimen289
+\pgf@xx=\dimen290
+\pgf@xy=\dimen291
+\pgf@yx=\dimen292
+\pgf@yy=\dimen293
+\pgf@zx=\dimen294
+\pgf@zy=\dimen295
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@path@lastx=\dimen296
+\pgf@path@lasty=\dimen297
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@shorten@end@additional=\dimen298
+\pgf@shorten@start@additional=\dimen299
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfpic=\box88
+\pgf@hbox=\box89
+\pgf@layerbox@main=\box90
+\pgf@picture@serial@count=\count358
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgflinewidth=\dimen300
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@pt@x=\dimen301
+\pgf@pt@y=\dimen302
+\pgf@pt@temp=\dimen303
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfarrowsep=\dimen304
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@max=\dimen305
+\pgf@sys@shading@range@num=\count359
+\pgf@shadingcount=\count360
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfexternal@startupbox=\box91
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfnodeparttextbox=\box92
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
+\pgf@nodesepstart=\dimen306
+\pgf@nodesepend=\dimen307
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
+)) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2022-07-02 v1.5u LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks43
+\verbatim@line=\toks44
+\verbatim@in@stream=\read4
+)
+\tcb@titlebox=\box93
+\tcb@upperbox=\box94
+\tcb@lowerbox=\box95
+\tcb@phantombox=\box96
+\c@tcbbreakpart=\count361
+\c@tcblayer=\count362
+\c@tcolorbox@number=\count363
+\tcb@temp=\box97
+\tcb@temp=\box98
+\tcb@temp=\box99
+\tcb@temp=\box100
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbraster.code.tex
+Library (tcolorbox): 'tcbraster.code.tex' version '5.1.1'
+\c@tcbrastercolumn=\count364
+\c@tcbrasterrow=\count365
+\c@tcbrasternum=\count366
+\c@tcbraster=\count367
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbskins.code.tex
+Library (tcolorbox): 'tcbskins.code.tex' version '5.1.1'
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/math/pgfmath.sty (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
+\pgffor@iter=\dimen308
+\pgffor@skip=\dimen309
+\pgffor@stack=\toks45
+\pgffor@toks=\toks46
+)) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+Package: tikz 2023-01-15 v3.1.10 (3.1.10)
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@plot@mark@count=\count368
+\pgfplotmarksize=\dimen310
+)
+\tikz@lastx=\dimen311
+\tikz@lasty=\dimen312
+\tikz@lastxsaved=\dimen313
+\tikz@lastysaved=\dimen314
+\tikz@lastmovetox=\dimen315
+\tikz@lastmovetoy=\dimen316
+\tikzleveldistance=\dimen317
+\tikzsiblingdistance=\dimen318
+\tikz@figbox=\box101
+\tikz@figbox@bg=\box102
+\tikz@tempbox=\box103
+\tikz@tempbox@bg=\box104
+\tikztreelevel=\count369
+\tikznumberofchildren=\count370
+\tikznumberofcurrentchild=\count371
+\tikz@fig@count=\count372
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfmatrixcurrentrow=\count373
+\pgfmatrixcurrentcolumn=\count374
+\pgf@matrix@numberofcolumns=\count375
+)
+\tikz@expandcount=\count376
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)))
+\tcb@waterbox=\box105
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbskinsjigsaw.code.tex
+Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '5.1.1'
+)) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbbreakable.code.tex
+Library (tcolorbox): 'tcbbreakable.code.tex' version '5.1.1'
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pdfcol/pdfcol.sty
+Package: pdfcol 2022-09-21 v1.7 Handle new color stacks for pdfTeX (HO)
+Package pdfcol Info: Interface disabled because of missing PDF mode of pdfTeX.
+)
+Package pdfcol Info: pdfTeX's color stacks are not available.
+\tcb@testbox=\box106
+\tcb@totalupperbox=\box107
+\tcb@totallowerbox=\box108
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbhooks.code.tex
+Library (tcolorbox): 'tcbhooks.code.tex' version '5.1.1'
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbtheorems.code.tex
+Library (tcolorbox): 'tcbtheorems.code.tex' version '5.1.1'
+) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbfitting.code.tex
+Library (tcolorbox): 'tcbfitting.code.tex' version '5.1.1'
+\tcbfitdim=\dimen319
+\tcb@lowerfitdim=\dimen320
+\tcb@upperfitdim=\dimen321
+\tcb@cur@hbadness=\count377
+)) (c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2022/12/26 3.84 The Babel package
+\babel@savecnt=\count378
+\U@D=\dimen322
+\l@unhyphenated=\language3
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel/xebabel.def)
+\bbl@readstream=\read5
+\bbl@dirlevel=\count379
+Package babel Info: You haven't specified a language as a class or package
+(babel)             option. I'll load 'nil'. Reported on input line 4406.
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel/nil.ldf
+Language: nil 2022/12/26 3.84 Nil language
+\l@nil=\language4
+))
+\everypar=\toks47
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/babel/locale/pt/babel-portuguese.tex)
+Package babel Info: Importing data for portuguese
+(babel)             from babel-pt.ini. Reported on input line 223.
+Package babel Info: Hyphen rules for 'portuguese' set to \l@nil
+(babel)             (\language4). Reported on input line 223.
+Package hyperref Info: Option `colorlinks' set `true' on input line 242.
+No file index.aux.
+\openout1 = `index.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 248.
+LaTeX Font Info:    ... okay on input line 248.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 248.
+LaTeX Font Info:    ... okay on input line 248.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 248.
+LaTeX Font Info:    ... okay on input line 248.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 248.
+LaTeX Font Info:    ... okay on input line 248.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 248.
+LaTeX Font Info:    ... okay on input line 248.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 248.
+LaTeX Font Info:    ... okay on input line 248.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 248.
+LaTeX Font Info:    ... okay on input line 248.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 248.
+LaTeX Font Info:    ... okay on input line 248.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 248.
+LaTeX Font Info:    ... okay on input line 248.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 248.
+LaTeX Font Info:    ... okay on input line 248.
+LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
+(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 248.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 248.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 248.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 248.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 248.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 248.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 248.
+
+Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: Font family 'latinmodern-math.otf(0)' created for font
+(fontspec)             'latinmodern-math.otf' with options
+(fontspec)             [Scale=MatchLowercase,BoldItalicFont={},ItalicFont={},SmallCapsFont={},Script=Math,BoldFont={latinmodern-math.otf}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->s*[0.9999967668407183]"[latinmodern-math.otf]/OT:script=math;language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[0.9999967668407183]"[latinmodern-math.otf]/OT:script=math;language=dflt;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(0)/m/n' will be
+(Font)              scaled to size 10.95pt on input line 248.
+
+Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: Font family 'latinmodern-math.otf(1)' created for font
+(fontspec)             'latinmodern-math.otf' with options
+(fontspec)             [Scale=MatchLowercase,BoldItalicFont={},ItalicFont={},SmallCapsFont={},Script=Math,SizeFeatures={{Size=9.3075-},{Size=6.57-9.3075,Font=latinmodern-math.otf,Style=MathScript},{Size=-6.57,Font=latinmodern-math.otf,Style=MathScriptScript}},BoldFont={latinmodern-math.otf}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <9.3075->s*[0.9999967668407183]"[latinmodern-math.otf]/OT:script=math;language=dflt;"<6.57-9.3075>s*[0.9999967668407183]"[latinmodern-math.otf]/OT:script=math;language=dflt;+ssty=0;"<-6.57>s*[0.9999967668407183]"[latinmodern-math.otf]/OT:script=math;language=dflt;+ssty=1;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[0.9999967668407183]"[latinmodern-math.otf]/OT:script=math;language=dflt;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 10.95pt on input line 248.
+LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
+(Font)              `operators' in the math version `normal' on input line 248.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input line 248.
+LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
+(Font)              `operators' in the math version `bold' on input line 248.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on input line 248.
+
+Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: latinmodern-math scale = 1.000096766517402.
+
+
+Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: latinmodern-math scale = 1.000096766517402.
+
+
+Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: latinmodern-math scale = 1.000096766517402.
+
+
+Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: latinmodern-math scale = 1.000096766517402.
+
+
+Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: latinmodern-math scale = 1.000096766517402.
+
+
+Package fontspec Info: Font family 'latinmodern-math.otf(2)' created for font
+(fontspec)             'latinmodern-math.otf' with options
+(fontspec)             [Scale=MatchLowercase,BoldItalicFont={},ItalicFont={},SmallCapsFont={},Script=Math,SizeFeatures={{Size=9.3075-},{Size=6.57-9.3075,Font=latinmodern-math.otf,Style=MathScript},{Size=-6.57,Font=latinmodern-math.otf,Style=MathScriptScript}},BoldFont={latinmodern-math.otf},ScaleAgain=1.0001,FontAdjustment={\fontdimen
+(fontspec)             8\font =7.41315pt\relax \fontdimen 9\font
+(fontspec)             =4.3143pt\relax \fontdimen 10\font =4.8618pt\relax
+(fontspec)             \fontdimen 11\font =7.5117pt\relax \fontdimen 12\font
+(fontspec)             =3.77776pt\relax \fontdimen 13\font =3.97485pt\relax
+(fontspec)             \fontdimen 14\font =3.97485pt\relax \fontdimen 15\font
+(fontspec)             =3.16455pt\relax \fontdimen 16\font =2.70465pt\relax
+(fontspec)             \fontdimen 17\font =2.70465pt\relax \fontdimen 18\font
+(fontspec)             =2.7375pt\relax \fontdimen 19\font =2.19pt\relax
+(fontspec)             \fontdimen 22\font =2.7375pt\relax \fontdimen 20\font
+(fontspec)             =0pt\relax \fontdimen 21\font =0pt\relax }].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <9.3075->s*[1.000096766517402]"[latinmodern-math.otf]/OT:script=math;language=dflt;"<6.57-9.3075>s*[1.000096766517402]"[latinmodern-math.otf]/OT:script=math;language=dflt;+ssty=0;"<-6.57>s*[1.000096766517402]"[latinmodern-math.otf]/OT:script=math;language=dflt;+ssty=1;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 8\font =7.41315pt\relax \fontdimen 9\font
+(fontspec)             =4.3143pt\relax \fontdimen 10\font =4.8618pt\relax
+(fontspec)             \fontdimen 11\font =7.5117pt\relax \fontdimen 12\font
+(fontspec)             =3.77776pt\relax \fontdimen 13\font =3.97485pt\relax
+(fontspec)             \fontdimen 14\font =3.97485pt\relax \fontdimen 15\font
+(fontspec)             =3.16455pt\relax \fontdimen 16\font =2.70465pt\relax
+(fontspec)             \fontdimen 17\font =2.70465pt\relax \fontdimen 18\font
+(fontspec)             =2.7375pt\relax \fontdimen 19\font =2.19pt\relax
+(fontspec)             \fontdimen 22\font =2.7375pt\relax \fontdimen 20\font
+(fontspec)             =0pt\relax \fontdimen 21\font =0pt\relax 
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[1.000096766517402]"[latinmodern-math.otf]/OT:script=math;language=dflt;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 8\font =7.41315pt\relax \fontdimen 9\font
+(fontspec)             =4.3143pt\relax \fontdimen 10\font =4.8618pt\relax
+(fontspec)             \fontdimen 11\font =7.5117pt\relax \fontdimen 12\font
+(fontspec)             =3.77776pt\relax \fontdimen 13\font =3.97485pt\relax
+(fontspec)             \fontdimen 14\font =3.97485pt\relax \fontdimen 15\font
+(fontspec)             =3.16455pt\relax \fontdimen 16\font =2.70465pt\relax
+(fontspec)             \fontdimen 17\font =2.70465pt\relax \fontdimen 18\font
+(fontspec)             =2.7375pt\relax \fontdimen 19\font =2.19pt\relax
+(fontspec)             \fontdimen 22\font =2.7375pt\relax \fontdimen 20\font
+(fontspec)             =0pt\relax \fontdimen 21\font =0pt\relax 
+
+LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
+(Font)              `symbols' in the math version `normal' on input line 248.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on input line 248.
+LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
+(Font)              `symbols' in the math version `bold' on input line 248.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on input line 248.
+
+Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: latinmodern-math scale = 0.9998967671640342.
+
+
+Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: latinmodern-math scale = 0.9998967671640342.
+
+
+Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: latinmodern-math scale = 0.9998967671640342.
+
+
+Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: latinmodern-math scale = 0.9998967671640342.
+
+
+Package fontspec Info: latinmodern-math scale = 0.9999967668407183.
+
+
+Package fontspec Info: latinmodern-math scale = 0.9998967671640342.
+
+
+Package fontspec Info: Font family 'latinmodern-math.otf(3)' created for font
+(fontspec)             'latinmodern-math.otf' with options
+(fontspec)             [Scale=MatchLowercase,BoldItalicFont={},ItalicFont={},SmallCapsFont={},Script=Math,SizeFeatures={{Size=9.3075-},{Size=6.57-9.3075,Font=latinmodern-math.otf,Style=MathScript},{Size=-6.57,Font=latinmodern-math.otf,Style=MathScriptScript}},BoldFont={latinmodern-math.otf},ScaleAgain=0.9999,FontAdjustment={\fontdimen
+(fontspec)             8\font =0.438pt\relax \fontdimen 9\font =2.19pt\relax
+(fontspec)             \fontdimen 10\font =1.82864pt\relax \fontdimen 11\font
+(fontspec)             =1.21545pt\relax \fontdimen 12\font =6.56999pt\relax
+(fontspec)             \fontdimen 13\font =0pt\relax }].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <9.3075->s*[0.9998967671640342]"[latinmodern-math.otf]/OT:script=math;language=dflt;"<6.57-9.3075>s*[0.9998967671640342]"[latinmodern-math.otf]/OT:script=math;language=dflt;+ssty=0;"<-6.57>s*[0.9998967671640342]"[latinmodern-math.otf]/OT:script=math;language=dflt;+ssty=1;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 8\font =0.438pt\relax \fontdimen 9\font
+(fontspec)             =2.19pt\relax \fontdimen 10\font =1.82864pt\relax
+(fontspec)             \fontdimen 11\font =1.21545pt\relax \fontdimen 12\font
+(fontspec)             =6.56999pt\relax \fontdimen 13\font =0pt\relax 
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[0.9998967671640342]"[latinmodern-math.otf]/OT:script=math;language=dflt;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 8\font =0.438pt\relax \fontdimen 9\font
+(fontspec)             =2.19pt\relax \fontdimen 10\font =1.82864pt\relax
+(fontspec)             \fontdimen 11\font =1.21545pt\relax \fontdimen 12\font
+(fontspec)             =6.56999pt\relax \fontdimen 13\font =0pt\relax 
+
+LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
+(Font)              `largesymbols' in the math version `normal' on input line 248.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on input line 248.
+LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
+(Font)              `largesymbols' in the math version `bold' on input line 248.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on input line 248.
+Package hyperref Info: Link coloring ON on input line 248.
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
+
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 14.4pt on input line 250.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 10.0pt on input line 250.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 7.0pt on input line 250.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 250.
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
+File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 14.4013pt on input line 250.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 10.00092pt on input line 250.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 7.00064pt on input line 250.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 14.39845pt on input line 250.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 9.99893pt on input line 250.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 6.99925pt on input line 250.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 250.
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 250.
+(c:/Users/xumim/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [1
+
+
+
+]
+No file index.toc.
+\tf@toc=\write5
+\openout5 = `index.toc'.
+
+[2
+
+] [3
+
+] [4
+
+]
+chapter 1.
+
+Class scrreprt Warning: \float@addtolists detected!
+(scrreprt)              Implementation of \float@addtolist became
+(scrreprt)              deprecated in KOMA-Script v3.01 2008/11/14 and
+(scrreprt)              has been replaced by several more flexible
+(scrreprt)              features of package `tocbasic`.
+(scrreprt)              Since Version 3.12 support for deprecated
+(scrreprt)              \float@addtolist interface has been
+(scrreprt)              restricted to only some of the KOMA-Script
+(scrreprt)              features and been removed from others.
+(scrreprt)              Loading of package `scrhack' may help to
+(scrreprt)              avoid this warning, if you are using a
+(scrreprt)              a package that still implements the
+(scrreprt)              deprecated \float@addtolist interface.
+
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 7.665pt on input line 290.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 5.475pt on input line 290.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 10.95099pt on input line 290.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 7.66568pt on input line 290.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 5.4755pt on input line 290.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 10.94882pt on input line 290.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 7.66417pt on input line 290.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 5.47441pt on input line 290.
+
+LaTeX Warning: Reference `tbl-covid19' on page 5 undefined on input line 311.
+
+Missing character: There is no ̧ (U+0327) in font [lmroman10-regular]:mapping=tex-text;!
+[5
+
+] [6] [7] [8]
+chapter 2.
+[9
+
+] [10] [11]
+Overfull \hbox (74.4427pt too wide) in paragraph at lines 682--683
+[]\TU/lmr/m/n/10.95 DT_NOTIFIC  
+ []
+
+
+Overfull \hbox (2.35887pt too wide) in paragraph at lines 681--683
+[]|[]|  
+ []
+
+
+Overfull \hbox (72.7783pt too wide) in paragraph at lines 684--685
+[]\TU/lmr/m/n/10.95 DT_SIN_PRI  
+ []
+
+
+Overfull \hbox (2.35887pt too wide) in paragraph at lines 683--685
+[]|[]|  
+ []
+
+
+Overfull \hbox (57.26216pt too wide) in paragraph at lines 686--687
+[]\TU/lmr/m/n/10.95 DT_NASC  
+ []
+
+
+Overfull \hbox (2.35887pt too wide) in paragraph at lines 685--687
+[]|[]|  
+ []
+
+
+Overfull \hbox (78.85556pt too wide) in paragraph at lines 688--689
+[]\TU/lmr/m/n/10.95 DT_INTERNA  
+ []
+
+
+Overfull \hbox (2.35887pt too wide) in paragraph at lines 687--689
+[]|[]|  
+ []
+
+
+Overfull \hbox (52.98369pt too wide) in paragraph at lines 690--691
+ []\TU/lmr/m/n/10.95 SEM_PRI
+ []
+
+
+Overfull \hbox (1.7158pt too wide) in paragraph at lines 689--691
+ []|[]|
+ []
+
+
+Overfull \hbox (39.54543pt too wide) in paragraph at lines 692--693
+[]\TU/lmr/m/n/10.95 SG_UF  
+ []
+
+
+Overfull \hbox (1.28613pt too wide) in paragraph at lines 691--693
+[]|[]|  
+ []
+
+
+Overfull \hbox (76.63791pt too wide) in paragraph at lines 694--695
+[]\TU/lmr/m/n/10.95 ID_MN_RESI  
+ []
+
+
+Overfull \hbox (4.08322pt too wide) in paragraph at lines 693--695
+[]|[]|  
+ []
+
+
+Overfull \hbox (83.27936pt too wide) in paragraph at lines 696--697
+ []\TU/lmr/m/n/10.95 CO_MUN_RES
+ []
+
+
+Overfull \hbox (2.35887pt too wide) in paragraph at lines 695--697
+ []|[]|
+ []
+
+
+Overfull \hbox (55.55695pt too wide) in paragraph at lines 698--699
+ []\TU/lmr/m/n/10.95 CS_ZONA
+ []
+
+
+Overfull \hbox (1.7158pt too wide) in paragraph at lines 697--699
+ []|[]|
+ []
+
+
+Overfull \hbox (56.00589pt too wide) in paragraph at lines 700--701
+ []\TU/lmr/m/n/10.95 CS_RACA
+ []
+
+
+Overfull \hbox (1.7158pt too wide) in paragraph at lines 699--701
+ []|[]|
+ []
+
+
+Overfull \hbox (77.80435pt too wide) in paragraph at lines 702--703
+ []\TU/lmr/m/n/10.95 CS_ESCOL_N
+ []
+
+
+Overfull \hbox (2.35887pt too wide) in paragraph at lines 701--703
+ []|[]|
+ []
+
+
+Overfull \hbox (26.84343pt too wide) in paragraph at lines 704--705
+ []\TU/lmr/m/n/10.95 idade
+ []
+
+
+Overfull \hbox (1.28613pt too wide) in paragraph at lines 703--705
+ []|[]|
+ []
+
+
+Overfull \hbox (78.0343pt too wide) in paragraph at lines 706--707
+ []\TU/lmr/m/n/10.95 CS_GESTANT
+ []
+
+
+Overfull \hbox (2.35887pt too wide) in paragraph at lines 705--707
+ []|[]|
+ []
+
+
+Overfull \hbox (64.30182pt too wide) in paragraph at lines 708--709
+ []\TU/lmr/m/n/10.95 PUERPERA
+ []
+
+
+Overfull \hbox (1.93063pt too wide) in paragraph at lines 707--709
+ []|[]|
+ []
+
+
+Overfull \hbox (39.16217pt too wide) in paragraph at lines 710--711
+ []\TU/lmr/m/n/10.95 FEBRE
+ []
+
+
+Overfull \hbox (1.28613pt too wide) in paragraph at lines 709--711
+ []|[]|
+ []
+
+
+Overfull \hbox (37.34447pt too wide) in paragraph at lines 712--713
+ []\TU/lmr/m/n/10.95 TOSSE
+ []
+
+
+Overfull \hbox (1.28613pt too wide) in paragraph at lines 711--713
+ []|[]|
+ []
+
+
+Overfull \hbox (66.72177pt too wide) in paragraph at lines 714--715
+ []\TU/lmr/m/n/10.95 GARGANTA
+ []
+
+
+Overfull \hbox (1.93063pt too wide) in paragraph at lines 713--715
+ []|[]|
+ []
+
+
+Overfull \hbox (55.62943pt too wide) in paragraph at lines 716--717
+ []\TU/lmr/m/n/10.95 DISPNEIA
+ []
+
+
+Overfull \hbox (1.93063pt too wide) in paragraph at lines 715--717
+ []|[]|
+ []
+
+
+Overfull \hbox (69.23468pt too wide) in paragraph at lines 718--719
+ []\TU/lmr/m/n/10.95 DESC_RESP
+ []
+
+
+Overfull \hbox (2.14404pt too wide) in paragraph at lines 717--719
+ []|[]|
+ []
+
+
+Overfull \hbox (71.95029pt too wide) in paragraph at lines 720--721
+ []\TU/lmr/m/n/10.95 SATURACAO
+ []
+
+
+Overfull \hbox (2.14404pt too wide) in paragraph at lines 719--721
+ []|[]|
+ []
+
+
+Overfull \hbox (58.20267pt too wide) in paragraph at lines 722--723
+ []\TU/lmr/m/n/10.95 DIARREIA
+ []
+
+
+Overfull \hbox (1.93063pt too wide) in paragraph at lines 721--723
+ []|[]|
+ []
+
+
+Overfull \hbox (48.34506pt too wide) in paragraph at lines 724--725
+ []\TU/lmr/m/n/10.95 VOMITO
+ []
+
+
+Overfull \hbox (1.50098pt too wide) in paragraph at lines 723--725
+ []|[]|
+ []
+
+
+Overfull \hbox (44.77536pt too wide) in paragraph at lines 726--727
+ []\TU/lmr/m/n/10.95 FADIGA
+ []
+
+
+Overfull \hbox (1.50098pt too wide) in paragraph at lines 725--727
+ []|[]|
+ []
+
+
+Overfull \hbox (72.11453pt too wide) in paragraph at lines 728--729
+ []\TU/lmr/m/n/10.95 PERD_OLFT
+ []
+
+
+Overfull \hbox (2.14404pt too wide) in paragraph at lines 727--729
+ []|[]|
+ []
+
+
+Overfull \hbox (71.51228pt too wide) in paragraph at lines 730--731
+ []\TU/lmr/m/n/10.95 PERD_PALA
+ []
+
+
+Overfull \hbox (2.14404pt too wide) in paragraph at lines 729--731
+ []|[]|
+ []
+
+
+Overfull \hbox (59.2033pt too wide) in paragraph at lines 732--733
+ []\TU/lmr/m/n/10.95 DOR_ABD
+ []
+
+
+Overfull \hbox (1.7158pt too wide) in paragraph at lines 731--733
+ []|[]|
+ []
+
+
+Overfull \hbox (73.0849pt too wide) in paragraph at lines 734--735
+ []\TU/lmr/m/n/10.95 CARDIOPATI
+ []
+
+
+Overfull \hbox (2.35887pt too wide) in paragraph at lines 733--735
+ []|[]|
+ []
+
+
+Overfull \hbox (79.70966pt too wide) in paragraph at lines 736--737
+ []\TU/lmr/m/n/10.95 HEMATOLOGI
+ []
+
+
+Overfull \hbox (2.35887pt too wide) in paragraph at lines 735--737
+ []|[]|
+ []
+
+
+Overfull \hbox (59.42906pt too wide) in paragraph at lines 738--739
+ []\TU/lmr/m/n/10.95 HEPATICA
+ []
+
+
+Overfull \hbox (1.93063pt too wide) in paragraph at lines 737--739
+ []|[]|
+ []
+
+
+Overfull \hbox (33.62706pt too wide) in paragraph at lines 740--741
+ []\TU/lmr/m/n/10.95 ASMA
+ []
+
+
+Overfull \hbox (1.07272pt too wide) in paragraph at lines 739--741
+ []|[]|
+ []
+
+
+Overfull \hbox (59.12247pt too wide) in paragraph at lines 742--743
+ []\TU/lmr/m/n/10.95 DIABETES
+ []
+
+
+Overfull \hbox (1.93063pt too wide) in paragraph at lines 741--743
+ []|[]|
+ []
+
+
+Overfull \hbox (78.32996pt too wide) in paragraph at lines 744--745
+ []\TU/lmr/m/n/10.95 NEUROLOGIC
+ []
+
+
+Overfull \hbox (2.35887pt too wide) in paragraph at lines 743--745
+ []|[]|
+ []
+
+
+Overfull \hbox (77.9686pt too wide) in paragraph at lines 746--747
+ []\TU/lmr/m/n/10.95 PNEUMOPATI
+ []
+
+
+Overfull \hbox (2.35887pt too wide) in paragraph at lines 745--747
+ []|[]|
+ []
+
+
+Overfull \hbox (80.09291pt too wide) in paragraph at lines 748--749
+ []\TU/lmr/m/n/10.95 IMUNODEPRE
+ []
+
+
+Overfull \hbox (2.35887pt too wide) in paragraph at lines 747--749
+ []|[]|
+ []
+
+
+Overfull \hbox (40.07103pt too wide) in paragraph at lines 750--751
+ []\TU/lmr/m/n/10.95 RENAL
+ []
+
+
+Overfull \hbox (1.28613pt too wide) in paragraph at lines 749--751
+ []|[]|
+ []
+
+
+Overfull \hbox (68.00829pt too wide) in paragraph at lines 752--753
+ []\TU/lmr/m/n/10.95 OBESIDADE
+ []
+
+
+Overfull \hbox (2.14404pt too wide) in paragraph at lines 751--753
+ []|[]|
+ []
+
+
+Overfull \hbox (78.08905pt too wide) in paragraph at lines 754--755
+ []\TU/lmr/m/n/10.95 VACINA_COV
+ []
+
+
+Overfull \hbox (2.35887pt too wide) in paragraph at lines 753--755
+ []|[]|
+ []
+
+
+Overfull \hbox (79.0198pt too wide) in paragraph at lines 756--757
+[]\TU/lmr/m/n/10.95 DOSE_1_COV  
+ []
+
+
+Overfull \hbox (2.35887pt too wide) in paragraph at lines 755--757
+[]|[]|  
+ []
+
+
+Overfull \hbox (79.0198pt too wide) in paragraph at lines 758--759
+[]\TU/lmr/m/n/10.95 DOSE_2_COV  
+ []
+
+
+Overfull \hbox (2.35887pt too wide) in paragraph at lines 757--759
+[]|[]|  
+ []
+
+
+Overfull \hbox (70.27493pt too wide) in paragraph at lines 760--761
+[]\TU/lmr/m/n/10.95 FAB_COV_1  
+ []
+
+
+Overfull \hbox (2.14404pt too wide) in paragraph at lines 759--761
+[]|[]|  
+ []
+
+
+Overfull \hbox (70.27493pt too wide) in paragraph at lines 762--763
+[]\TU/lmr/m/n/10.95 FAB_COV_2  
+ []
+
+
+Overfull \hbox (2.14404pt too wide) in paragraph at lines 761--763
+[]|[]|  
+ []
+
+
+Overfull \hbox (70.27493pt too wide) in paragraph at lines 764--765
+[]\TU/lmr/m/n/10.95 DT_ENTUTI  
+ []
+
+
+Overfull \hbox (2.14404pt too wide) in paragraph at lines 763--765
+[]|[]|  
+ []
+
+
+Overfull \hbox (73.53386pt too wide) in paragraph at lines 766--767
+[]\TU/lmr/m/n/10.95 DT_SAIDUTI  
+ []
+
+
+Overfull \hbox (2.35887pt too wide) in paragraph at lines 765--767
+[]|[]|  
+ []
+
+
+Overfull \hbox (20.92924pt too wide) in paragraph at lines 768--769
+ []\TU/lmr/m/n/10.95 UTI
+ []
+
+
+Overfull \hbox (0.8579pt too wide) in paragraph at lines 767--769
+ []|[]|
+ []
+
+
+Overfull \hbox (79.7863pt too wide) in paragraph at lines 770--771
+ []\TU/lmr/m/n/10.95 SUPORT_VEN
+ []
+
+
+Overfull \hbox (2.35887pt too wide) in paragraph at lines 769--771
+ []|[]|
+ []
+
+
+Overfull \hbox (65.19972pt too wide) in paragraph at lines 772--773
+ []\TU/lmr/m/n/10.95 EVOLUCAO
+ []
+
+
+Overfull \hbox (1.93063pt too wide) in paragraph at lines 771--774
+ []|[]|
+ []
+
+
+Overfull \hbox (93.23996pt too wide) in alignment at lines 679--775
+ [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (57.10886pt too wide) in paragraph at lines 776--776
+[]|\TU/lmr/m/n/10.95 15/05/2020|  
+ []
+
+
+Overfull \hbox (57.10886pt too wide) in paragraph at lines 776--776
+[]|\TU/lmr/m/n/10.95 06/05/2020|  
+ []
+
+
+Overfull \hbox (57.10886pt too wide) in paragraph at lines 776--776
+[]|\TU/lmr/m/n/10.95 03/06/2003|  
+ []
+
+
+Overfull \hbox (57.10886pt too wide) in paragraph at lines 776--776
+[]|\TU/lmr/m/n/10.95 15/05/2020|  
+ []
+
+
+Overfull \hbox (12.6658pt too wide) in paragraph at lines 776--776
+ []|\TU/lmr/m/n/10.95 19|
+ []
+
+
+Overfull \hbox (16.64897pt too wide) in paragraph at lines 776--776
+[]|\TU/lmr/m/n/10.95 CE|  
+ []
+
+
+Overfull \hbox (73.7471pt too wide) in paragraph at lines 776--777
+[]|\TU/lmr/m/n/10.95 MORRINHOS|  
+ []
+
+
+Overfull \hbox (35.20886pt too wide) in paragraph at lines 777--777
+ []|\TU/lmr/m/n/10.95 230890|
+ []
+
+
+Overfull \hbox (18.14081pt too wide) in paragraph at lines 777--777
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (7.19081pt too wide) in paragraph at lines 777--777
+ []|\TU/lmr/m/n/10.95 4|
+ []
+
+
+Overfull \hbox (18.78387pt too wide) in paragraph at lines 777--777
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (12.23613pt too wide) in paragraph at lines 777--777
+ []|\TU/lmr/m/n/10.95 16|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 777--777
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (18.35564pt too wide) in paragraph at lines 777--777
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (6.76114pt too wide) in paragraph at lines 777--777
+ []|\TU/lmr/m/n/10.95 1|
+ []
+
+
+Overfull \hbox (6.76114pt too wide) in paragraph at lines 777--777
+ []|\TU/lmr/m/n/10.95 1|
+ []
+
+
+Overfull \hbox (18.35564pt too wide) in paragraph at lines 777--777
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (18.35564pt too wide) in paragraph at lines 777--777
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (18.56905pt too wide) in paragraph at lines 777--777
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (18.56905pt too wide) in paragraph at lines 777--777
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (18.35564pt too wide) in paragraph at lines 777--777
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (17.92598pt too wide) in paragraph at lines 778--778
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (17.92598pt too wide) in paragraph at lines 778--778
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (18.56905pt too wide) in paragraph at lines 778--778
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (18.56905pt too wide) in paragraph at lines 778--778
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (18.14081pt too wide) in paragraph at lines 778--778
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (18.78387pt too wide) in paragraph at lines 778--778
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (18.78387pt too wide) in paragraph at lines 778--778
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (18.35564pt too wide) in paragraph at lines 778--778
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (17.49773pt too wide) in paragraph at lines 778--778
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (18.35564pt too wide) in paragraph at lines 778--778
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (18.78387pt too wide) in paragraph at lines 778--778
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (18.78387pt too wide) in paragraph at lines 778--778
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (18.78387pt too wide) in paragraph at lines 778--778
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (17.71114pt too wide) in paragraph at lines 778--778
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (18.56905pt too wide) in paragraph at lines 778--779
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (18.78387pt too wide) in paragraph at lines 779--779
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (18.78387pt too wide) in paragraph at lines 779--779
+[]|\TU/lmr/m/n/10.95 NA|  
+ []
+
+
+Overfull \hbox (18.78387pt too wide) in paragraph at lines 779--779
+[]|\TU/lmr/m/n/10.95 NA|  
+ []
+
+
+Overfull \hbox (18.56905pt too wide) in paragraph at lines 779--779
+[]|\TU/lmr/m/n/10.95 NA|  
+ []
+
+
+Overfull \hbox (18.56905pt too wide) in paragraph at lines 779--779
+[]|\TU/lmr/m/n/10.95 NA|  
+ []
+
+
+Overfull \hbox (2.14404pt too wide) in paragraph at lines 779--779
+[]||  
+ []
+
+
+Overfull \hbox (2.35887pt too wide) in paragraph at lines 779--779
+[]||  
+ []
+
+
+Overfull \hbox (6.3329pt too wide) in paragraph at lines 779--779
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 779--779
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 779--780
+ []|\TU/lmr/m/n/10.95 1|
+ []
+
+
+Overfull \hbox (57.10886pt too wide) in paragraph at lines 780--780
+[]|\TU/lmr/m/n/10.95 18/05/2020|  
+ []
+
+
+Overfull \hbox (57.10886pt too wide) in paragraph at lines 780--780
+[]|\TU/lmr/m/n/10.95 10/05/2020|  
+ []
+
+
+Overfull \hbox (57.10886pt too wide) in paragraph at lines 780--780
+[]|\TU/lmr/m/n/10.95 07/07/1996|  
+ []
+
+
+Overfull \hbox (57.10886pt too wide) in paragraph at lines 780--780
+[]|\TU/lmr/m/n/10.95 15/05/2020|  
+ []
+
+
+Overfull \hbox (12.6658pt too wide) in paragraph at lines 780--780
+ []|\TU/lmr/m/n/10.95 20|
+ []
+
+
+Overfull \hbox (16.80228pt too wide) in paragraph at lines 780--780
+[]|\TU/lmr/m/n/10.95 PR|  
+ []
+
+
+Overfull \hbox (60.0377pt too wide) in paragraph at lines 780--780
+[]|\TU/lmr/m/n/10.95 CURITIBA|  
+ []
+
+
+Overfull \hbox (35.20886pt too wide) in paragraph at lines 781--781
+ []|\TU/lmr/m/n/10.95 410690|
+ []
+
+
+Overfull \hbox (7.19081pt too wide) in paragraph at lines 781--781
+ []|\TU/lmr/m/n/10.95 1|
+ []
+
+
+Overfull \hbox (7.19081pt too wide) in paragraph at lines 781--781
+ []|\TU/lmr/m/n/10.95 1|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 781--781
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (12.23613pt too wide) in paragraph at lines 781--781
+ []|\TU/lmr/m/n/10.95 23|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 781--781
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 781--781
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (6.76114pt too wide) in paragraph at lines 781--781
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (6.76114pt too wide) in paragraph at lines 781--781
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 781--781
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 781--781
+ []|\TU/lmr/m/n/10.95 1|
+ []
+
+
+Overfull \hbox (7.61905pt too wide) in paragraph at lines 781--781
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.61905pt too wide) in paragraph at lines 781--781
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 781--781
+ []|\TU/lmr/m/n/10.95 1|
+ []
+
+
+Overfull \hbox (6.97598pt too wide) in paragraph at lines 781--781
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (17.92598pt too wide) in paragraph at lines 781--781
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (18.56905pt too wide) in paragraph at lines 782--782
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (18.56905pt too wide) in paragraph at lines 782--782
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (18.14081pt too wide) in paragraph at lines 782--782
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 782--782
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 782--782
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 782--782
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (6.54773pt too wide) in paragraph at lines 782--782
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 782--782
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 782--782
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 782--782
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 782--782
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (6.76114pt too wide) in paragraph at lines 782--782
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.61905pt too wide) in paragraph at lines 782--782
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (18.78387pt too wide) in paragraph at lines 782--782
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (18.78387pt too wide) in paragraph at lines 782--782
+[]|\TU/lmr/m/n/10.95 NA|  
+ []
+
+
+Overfull \hbox (18.78387pt too wide) in paragraph at lines 782--782
+[]|\TU/lmr/m/n/10.95 NA|  
+ []
+
+
+Overfull \hbox (18.56905pt too wide) in paragraph at lines 782--783
+[]|\TU/lmr/m/n/10.95 NA|  
+ []
+
+
+Overfull \hbox (18.56905pt too wide) in paragraph at lines 783--783
+[]|\TU/lmr/m/n/10.95 NA|  
+ []
+
+
+Overfull \hbox (2.14404pt too wide) in paragraph at lines 783--783
+[]||  
+ []
+
+
+Overfull \hbox (2.35887pt too wide) in paragraph at lines 783--783
+[]||  
+ []
+
+
+Overfull \hbox (6.3329pt too wide) in paragraph at lines 783--783
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 783--783
+ []|\TU/lmr/m/n/10.95 3|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 783--784
+ []|\TU/lmr/m/n/10.95 1|
+ []
+
+
+Overfull \hbox (57.10886pt too wide) in paragraph at lines 784--784
+[]|\TU/lmr/m/n/10.95 30/04/2020|  
+ []
+
+
+Overfull \hbox (57.10886pt too wide) in paragraph at lines 784--784
+[]|\TU/lmr/m/n/10.95 20/04/2020|  
+ []
+
+
+Overfull \hbox (57.10886pt too wide) in paragraph at lines 784--784
+[]|\TU/lmr/m/n/10.95 26/03/1996|  
+ []
+
+
+Overfull \hbox (57.10886pt too wide) in paragraph at lines 784--784
+[]|\TU/lmr/m/n/10.95 24/04/2020|  
+ []
+
+
+Overfull \hbox (12.6658pt too wide) in paragraph at lines 784--784
+ []|\TU/lmr/m/n/10.95 17|
+ []
+
+
+Overfull \hbox (14.83128pt too wide) in paragraph at lines 784--784
+[]|\TU/lmr/m/n/10.95 SP|  
+ []
+
+
+Overfull \hbox (26.59642pt too wide) in paragraph at lines 784--785
+[]|\TU/lmr/m/n/10.95 SAO 
+ []
+
+
+Overfull \hbox (59.5997pt too wide) in paragraph at lines 784--785
+\TU/lmr/m/n/10.95 CAETANO 
+ []
+
+
+Overfull \hbox (20.96812pt too wide) in paragraph at lines 784--785
+\TU/lmr/m/n/10.95 DO 
+ []
+
+
+Overfull \hbox (25.22766pt too wide) in paragraph at lines 784--785
+\TU/lmr/m/n/10.95 SUL|  
+ []
+
+
+Overfull \hbox (35.20886pt too wide) in paragraph at lines 785--785
+ []|\TU/lmr/m/n/10.95 354880|
+ []
+
+
+Overfull \hbox (7.19081pt too wide) in paragraph at lines 785--785
+ []|\TU/lmr/m/n/10.95 1|
+ []
+
+
+Overfull \hbox (7.19081pt too wide) in paragraph at lines 785--785
+ []|\TU/lmr/m/n/10.95 9|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 785--785
+ []|\TU/lmr/m/n/10.95 9|
+ []
+
+
+Overfull \hbox (12.23613pt too wide) in paragraph at lines 785--785
+ []|\TU/lmr/m/n/10.95 24|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 785--785
+ []|\TU/lmr/m/n/10.95 9|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 785--785
+ []|\TU/lmr/m/n/10.95 1|
+ []
+
+
+Overfull \hbox (6.76114pt too wide) in paragraph at lines 785--785
+ []|\TU/lmr/m/n/10.95 1|
+ []
+
+
+Overfull \hbox (6.76114pt too wide) in paragraph at lines 785--785
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 785--785
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 785--785
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.61905pt too wide) in paragraph at lines 785--785
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.61905pt too wide) in paragraph at lines 785--786
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 786--786
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (6.97598pt too wide) in paragraph at lines 786--786
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (17.92598pt too wide) in paragraph at lines 786--786
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (18.56905pt too wide) in paragraph at lines 786--786
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (18.56905pt too wide) in paragraph at lines 786--786
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (18.14081pt too wide) in paragraph at lines 786--786
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 786--786
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 786--786
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 786--786
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (6.54773pt too wide) in paragraph at lines 786--786
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 786--786
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 786--786
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 786--786
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 786--786
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (6.76114pt too wide) in paragraph at lines 786--786
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.61905pt too wide) in paragraph at lines 786--786
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (18.78387pt too wide) in paragraph at lines 786--787
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (18.78387pt too wide) in paragraph at lines 787--787
+[]|\TU/lmr/m/n/10.95 NA|  
+ []
+
+
+Overfull \hbox (18.78387pt too wide) in paragraph at lines 787--787
+[]|\TU/lmr/m/n/10.95 NA|  
+ []
+
+
+Overfull \hbox (18.56905pt too wide) in paragraph at lines 787--787
+[]|\TU/lmr/m/n/10.95 NA|  
+ []
+
+
+Overfull \hbox (18.56905pt too wide) in paragraph at lines 787--787
+[]|\TU/lmr/m/n/10.95 NA|  
+ []
+
+
+Overfull \hbox (2.14404pt too wide) in paragraph at lines 787--787
+[]||  
+ []
+
+
+Overfull \hbox (2.35887pt too wide) in paragraph at lines 787--787
+[]||  
+ []
+
+
+Overfull \hbox (6.3329pt too wide) in paragraph at lines 787--787
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 787--787
+ []|\TU/lmr/m/n/10.95 3|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 787--788
+ []|\TU/lmr/m/n/10.95 1|
+ []
+
+
+Overfull \hbox (57.10886pt too wide) in paragraph at lines 788--788
+[]|\TU/lmr/m/n/10.95 11/05/2020|  
+ []
+
+
+Overfull \hbox (57.10886pt too wide) in paragraph at lines 788--788
+[]|\TU/lmr/m/n/10.95 04/05/2020|  
+ []
+
+
+Overfull \hbox (57.10886pt too wide) in paragraph at lines 788--788
+[]|\TU/lmr/m/n/10.95 02/06/1986|  
+ []
+
+
+Overfull \hbox (57.10886pt too wide) in paragraph at lines 788--788
+[]|\TU/lmr/m/n/10.95 09/05/2020|  
+ []
+
+
+Overfull \hbox (12.6658pt too wide) in paragraph at lines 788--788
+ []|\TU/lmr/m/n/10.95 19|
+ []
+
+
+Overfull \hbox (16.04672pt too wide) in paragraph at lines 788--788
+[]|\TU/lmr/m/n/10.95 PA|  
+ []
+
+
+Overfull \hbox (54.57365pt too wide) in paragraph at lines 788--788
+[]|\TU/lmr/m/n/10.95 MARABA|  
+ []
+
+
+Overfull \hbox (35.20886pt too wide) in paragraph at lines 789--789
+ []|\TU/lmr/m/n/10.95 150420|
+ []
+
+
+Overfull \hbox (7.19081pt too wide) in paragraph at lines 789--789
+ []|\TU/lmr/m/n/10.95 1|
+ []
+
+
+Overfull \hbox (7.19081pt too wide) in paragraph at lines 789--789
+ []|\TU/lmr/m/n/10.95 4|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 789--789
+ []|\TU/lmr/m/n/10.95 4|
+ []
+
+
+Overfull \hbox (12.23613pt too wide) in paragraph at lines 789--789
+ []|\TU/lmr/m/n/10.95 33|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 789--789
+ []|\TU/lmr/m/n/10.95 5|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 789--789
+ []|\TU/lmr/m/n/10.95 1|
+ []
+
+
+Overfull \hbox (6.76114pt too wide) in paragraph at lines 789--789
+ []|\TU/lmr/m/n/10.95 1|
+ []
+
+
+Overfull \hbox (6.76114pt too wide) in paragraph at lines 789--789
+ []|\TU/lmr/m/n/10.95 1|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 789--789
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 789--789
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.61905pt too wide) in paragraph at lines 789--789
+ []|\TU/lmr/m/n/10.95 1|
+ []
+
+
+Overfull \hbox (7.61905pt too wide) in paragraph at lines 789--789
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 789--789
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (6.97598pt too wide) in paragraph at lines 789--789
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (17.92598pt too wide) in paragraph at lines 789--789
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (18.56905pt too wide) in paragraph at lines 790--790
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (18.56905pt too wide) in paragraph at lines 790--790
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (18.14081pt too wide) in paragraph at lines 790--790
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 790--790
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 790--790
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 790--790
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (6.54773pt too wide) in paragraph at lines 790--790
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 790--790
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 790--790
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 790--790
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 790--790
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (6.76114pt too wide) in paragraph at lines 790--790
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.61905pt too wide) in paragraph at lines 790--790
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (18.78387pt too wide) in paragraph at lines 790--790
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (18.78387pt too wide) in paragraph at lines 790--790
+[]|\TU/lmr/m/n/10.95 NA|  
+ []
+
+
+Overfull \hbox (18.78387pt too wide) in paragraph at lines 790--790
+[]|\TU/lmr/m/n/10.95 NA|  
+ []
+
+
+Overfull \hbox (18.56905pt too wide) in paragraph at lines 790--791
+[]|\TU/lmr/m/n/10.95 NA|  
+ []
+
+
+Overfull \hbox (18.56905pt too wide) in paragraph at lines 791--791
+[]|\TU/lmr/m/n/10.95 NA|  
+ []
+
+
+Overfull \hbox (2.14404pt too wide) in paragraph at lines 791--791
+[]||  
+ []
+
+
+Overfull \hbox (2.35887pt too wide) in paragraph at lines 791--791
+[]||  
+ []
+
+
+Overfull \hbox (6.3329pt too wide) in paragraph at lines 791--791
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 791--791
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 791--792
+ []|\TU/lmr/m/n/10.95 1|
+ []
+
+
+Overfull \hbox (57.10886pt too wide) in paragraph at lines 792--792
+[]|\TU/lmr/m/n/10.95 01/07/2020|  
+ []
+
+
+Overfull \hbox (57.10886pt too wide) in paragraph at lines 792--792
+[]|\TU/lmr/m/n/10.95 12/06/2020|  
+ []
+
+
+Overfull \hbox (57.10886pt too wide) in paragraph at lines 792--792
+[]|\TU/lmr/m/n/10.95 11/12/1996|  
+ []
+
+
+Overfull \hbox (57.10886pt too wide) in paragraph at lines 792--792
+[]|\TU/lmr/m/n/10.95 30/06/2020|  
+ []
+
+
+Overfull \hbox (12.6658pt too wide) in paragraph at lines 792--792
+ []|\TU/lmr/m/n/10.95 24|
+ []
+
+
+Overfull \hbox (16.80228pt too wide) in paragraph at lines 792--792
+[]|\TU/lmr/m/n/10.95 DF|  
+ []
+
+
+Overfull \hbox (41.80597pt too wide) in paragraph at lines 792--793
+[]|\TU/lmr/m/n/10.95 SANTA 
+ []
+
+
+Overfull \hbox (42.56151pt too wide) in paragraph at lines 792--793
+\TU/lmr/m/n/10.95 MARIA|  
+ []
+
+
+Overfull \hbox (35.20886pt too wide) in paragraph at lines 793--793
+ []|\TU/lmr/m/n/10.95 530150|
+ []
+
+
+Overfull \hbox (7.19081pt too wide) in paragraph at lines 793--793
+ []|\TU/lmr/m/n/10.95 1|
+ []
+
+
+Overfull \hbox (7.19081pt too wide) in paragraph at lines 793--793
+ []|\TU/lmr/m/n/10.95 9|
+ []
+
+
+Overfull \hbox (18.78387pt too wide) in paragraph at lines 793--793
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (12.23613pt too wide) in paragraph at lines 793--793
+ []|\TU/lmr/m/n/10.95 23|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 793--793
+ []|\TU/lmr/m/n/10.95 5|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 793--793
+ []|\TU/lmr/m/n/10.95 1|
+ []
+
+
+Overfull \hbox (6.76114pt too wide) in paragraph at lines 793--793
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (6.76114pt too wide) in paragraph at lines 793--793
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 793--793
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 793--793
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.61905pt too wide) in paragraph at lines 793--793
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.61905pt too wide) in paragraph at lines 793--793
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 793--793
+ []|\TU/lmr/m/n/10.95 1|
+ []
+
+
+Overfull \hbox (6.97598pt too wide) in paragraph at lines 793--794
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (17.92598pt too wide) in paragraph at lines 794--794
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (7.61905pt too wide) in paragraph at lines 794--794
+ []|\TU/lmr/m/n/10.95 1|
+ []
+
+
+Overfull \hbox (18.56905pt too wide) in paragraph at lines 794--794
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (18.14081pt too wide) in paragraph at lines 794--794
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 794--794
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 794--794
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 794--794
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (6.54773pt too wide) in paragraph at lines 794--794
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 794--794
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 794--794
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 794--794
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 794--794
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (6.76114pt too wide) in paragraph at lines 794--794
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.61905pt too wide) in paragraph at lines 794--794
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (18.78387pt too wide) in paragraph at lines 794--794
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (18.78387pt too wide) in paragraph at lines 794--794
+[]|\TU/lmr/m/n/10.95 NA|  
+ []
+
+
+Overfull \hbox (18.78387pt too wide) in paragraph at lines 795--795
+[]|\TU/lmr/m/n/10.95 NA|  
+ []
+
+
+Overfull \hbox (18.56905pt too wide) in paragraph at lines 795--795
+[]|\TU/lmr/m/n/10.95 NA|  
+ []
+
+
+Overfull \hbox (18.56905pt too wide) in paragraph at lines 795--795
+[]|\TU/lmr/m/n/10.95 NA|  
+ []
+
+
+Overfull \hbox (2.14404pt too wide) in paragraph at lines 795--795
+[]||  
+ []
+
+
+Overfull \hbox (2.35887pt too wide) in paragraph at lines 795--795
+[]||  
+ []
+
+
+Overfull \hbox (6.3329pt too wide) in paragraph at lines 795--795
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 795--795
+ []|\TU/lmr/m/n/10.95 3|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 795--796
+ []|\TU/lmr/m/n/10.95 1|
+ []
+
+
+Overfull \hbox (57.10886pt too wide) in paragraph at lines 796--796
+[]|\TU/lmr/m/n/10.95 09/06/2020|  
+ []
+
+
+Overfull \hbox (57.10886pt too wide) in paragraph at lines 796--796
+[]|\TU/lmr/m/n/10.95 09/06/2020|  
+ []
+
+
+Overfull \hbox (57.10886pt too wide) in paragraph at lines 796--796
+[]|\TU/lmr/m/n/10.95 09/12/1984|  
+ []
+
+
+Overfull \hbox (57.10886pt too wide) in paragraph at lines 796--796
+[]|\TU/lmr/m/n/10.95 09/06/2020|  
+ []
+
+
+Overfull \hbox (12.6658pt too wide) in paragraph at lines 796--796
+ []|\TU/lmr/m/n/10.95 24|
+ []
+
+
+Overfull \hbox (17.55783pt too wide) in paragraph at lines 796--796
+[]|\TU/lmr/m/n/10.95 RO|  
+ []
+
+
+Overfull \hbox (43.63461pt too wide) in paragraph at lines 796--797
+[]|\TU/lmr/m/n/10.95 PORTO 
+ []
+
+
+Overfull \hbox (43.32802pt too wide) in paragraph at lines 796--797
+\TU/lmr/m/n/10.95 VELHO|  
+ []
+
+
+Overfull \hbox (35.20886pt too wide) in paragraph at lines 797--797
+ []|\TU/lmr/m/n/10.95 110020|
+ []
+
+
+Overfull \hbox (7.19081pt too wide) in paragraph at lines 797--797
+ []|\TU/lmr/m/n/10.95 1|
+ []
+
+
+Overfull \hbox (7.19081pt too wide) in paragraph at lines 797--797
+ []|\TU/lmr/m/n/10.95 4|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 797--797
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (12.23613pt too wide) in paragraph at lines 797--797
+ []|\TU/lmr/m/n/10.95 35|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 797--797
+ []|\TU/lmr/m/n/10.95 3|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 797--797
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (6.76114pt too wide) in paragraph at lines 797--797
+ []|\TU/lmr/m/n/10.95 1|
+ []
+
+
+Overfull \hbox (6.76114pt too wide) in paragraph at lines 797--797
+ []|\TU/lmr/m/n/10.95 1|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 797--797
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 797--797
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.61905pt too wide) in paragraph at lines 797--797
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.61905pt too wide) in paragraph at lines 797--797
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 797--797
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (6.97598pt too wide) in paragraph at lines 797--798
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (6.97598pt too wide) in paragraph at lines 798--798
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.61905pt too wide) in paragraph at lines 798--798
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.61905pt too wide) in paragraph at lines 798--798
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.19081pt too wide) in paragraph at lines 798--798
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 798--798
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 798--798
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 798--798
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (6.54773pt too wide) in paragraph at lines 798--798
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 798--798
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 798--798
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 798--798
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 798--798
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (6.76114pt too wide) in paragraph at lines 798--798
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.61905pt too wide) in paragraph at lines 798--798
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (18.78387pt too wide) in paragraph at lines 798--798
+ []|\TU/lmr/m/n/10.95 NA|
+ []
+
+
+Overfull \hbox (18.78387pt too wide) in paragraph at lines 798--798
+[]|\TU/lmr/m/n/10.95 NA|  
+ []
+
+
+Overfull \hbox (18.78387pt too wide) in paragraph at lines 798--798
+[]|\TU/lmr/m/n/10.95 NA|  
+ []
+
+
+Overfull \hbox (18.56905pt too wide) in paragraph at lines 799--799
+[]|\TU/lmr/m/n/10.95 NA|  
+ []
+
+
+Overfull \hbox (18.56905pt too wide) in paragraph at lines 799--799
+[]|\TU/lmr/m/n/10.95 NA|  
+ []
+
+
+Overfull \hbox (2.14404pt too wide) in paragraph at lines 799--799
+[]||  
+ []
+
+
+Overfull \hbox (2.35887pt too wide) in paragraph at lines 799--799
+[]||  
+ []
+
+
+Overfull \hbox (6.3329pt too wide) in paragraph at lines 799--799
+ []|\TU/lmr/m/n/10.95 2|
+ []
+
+
+Overfull \hbox (7.83388pt too wide) in paragraph at lines 799--799
+ []|\TU/lmr/m/n/10.95 3|
+ []
+
+
+Overfull \hbox (7.40564pt too wide) in paragraph at lines 799--800
+ []|\TU/lmr/m/n/10.95 1|
+ []
+
+
+Overfull \hbox (93.23996pt too wide) in alignment at lines 775--801
+ [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] 
+ []
+
+[12] [13]
+Overfull \hbox (450.04477pt too wide) in paragraph at lines 904--904
+[]\TU/lmtt/m/n/10.95 No duplicate combinations found of: dt_notific, dt_sin_pri, dt_nasc, dt_interna, sem_pri, sg_uf, id_mn_resi, co_mun_res, cs_zona, ... and 37 other variables[] 
+ []
+
+[14]
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 974--974
+[]\TU/lmtt/m/n/10.95 $ dt_notific <chr> "15/05/2020", "18/05/2020", "30/04/2020", "11/05/2020", "01~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 975--975
+[]\TU/lmtt/m/n/10.95 $ dt_sin_pri <chr> "06/05/2020", "10/05/2020", "20/04/2020", "04/05/2020", "12~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 976--976
+[]\TU/lmtt/m/n/10.95 $ dt_nasc    <chr> "03/06/2003", "07/07/1996", "26/03/1996", "02/06/1986", "11~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 977--977
+[]\TU/lmtt/m/n/10.95 $ dt_interna <chr> "15/05/2020", "15/05/2020", "24/04/2020", "09/05/2020", "30~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 978--978
+[]\TU/lmtt/m/n/10.95 $ sem_pri    <int> 19, 20, 17, 19, 24, 24, 26, 27, 28, 24, 14, 29, 28, 10, 36,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 979--979
+[]\TU/lmtt/m/n/10.95 $ sg_uf      <chr> "CE", "PR", "SP", "PA", "DF", "RO", "PI", "RS", "PE", "MA",~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 980--980
+[]\TU/lmtt/m/n/10.95 $ id_mn_resi <chr> "MORRINHOS", "CURITIBA", "SAO CAETANO DO SUL", "MARABA", "S~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 981--981
+[]\TU/lmtt/m/n/10.95 $ co_mun_res <int> 230890, 410690, 354880, 150420, 530150, 110020, 221100, 431~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 982--982
+[]\TU/lmtt/m/n/10.95 $ cs_zona    <int> NA, 1, 1, 1, 1, 1, 1, 1, 1, 1, NA, 1, 1, 1, NA, 1, 1, NA, 2~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 983--983
+[]\TU/lmtt/m/n/10.95 $ cs_raca    <int> 4, 1, 9, 4, 9, 4, 9, 1, 4, 9, 4, 4, 4, 4, 4, 9, 4, 9, 4, 4,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 984--984
+[]\TU/lmtt/m/n/10.95 $ cs_escol_n <int> NA, 2, 9, 4, NA, 2, 4, 2, NA, NA, NA, 9, 9, 3, 3, NA, 3, NA~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 985--985
+[]\TU/lmtt/m/n/10.95 $ idade      <dbl> 16, 23, 24, 33, 23, 35, 31, 17, 22, 29, 28, 22, 27, 25, 26,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 986--986
+[]\TU/lmtt/m/n/10.95 $ cs_gestant <int> 2, 2, 9, 5, 5, 3, 1, 5, 3, 3, 4, 3, 5, 3, 3, 3, 3, 9, 3, 3,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 987--987
+[]\TU/lmtt/m/n/10.95 $ puerpera   <int> NA, 2, 1, 1, 1, 2, NA, 1, NA, 1, NA, NA, 1, 2, 1, NA, NA, 1~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 988--988
+[]\TU/lmtt/m/n/10.95 $ febre      <int> 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, NA, 1, 1, 1, 1, 1, 1, 1, 1~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 989--989
+[]\TU/lmtt/m/n/10.95 $ tosse      <int> 1, 2, 2, 1, 2, 1, 1, 1, NA, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 990--990
+[]\TU/lmtt/m/n/10.95 $ garganta   <int> NA, 2, 2, 2, 2, 2, 2, NA, 1, NA, 2, NA, 2, 1, 1, 2, 2, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 991--991
+[]\TU/lmtt/m/n/10.95 $ dispneia   <int> NA, 1, 2, 2, 2, 2, 2, 1, NA, NA, 1, NA, 2, 1, 2, 1, 1, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 992--992
+[]\TU/lmtt/m/n/10.95 $ desc_resp  <int> NA, 2, 2, 1, 2, 2, 1, 1, NA, 1, 1, NA, 2, 1, 2, 2, 1, NA, 1~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 993--993
+[]\TU/lmtt/m/n/10.95 $ saturacao  <int> NA, 2, 2, 2, 2, 2, 2, 1, NA, NA, 2, NA, 2, 2, 2, 1, 1, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 994--994
+[]\TU/lmtt/m/n/10.95 $ diarreia   <int> NA, 1, 2, 2, 1, 2, 2, 1, NA, NA, 2, NA, 2, 1, 2, 2, 2, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 995--995
+[]\TU/lmtt/m/n/10.95 $ vomito     <int> NA, 2, 2, 2, 2, 2, 2, 2, NA, NA, 2, NA, 2, 1, 2, 2, 2, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 996--996
+[]\TU/lmtt/m/n/10.95 $ fadiga     <int> NA, NA, NA, NA, NA, 2, NA, NA, NA, NA, 2, NA, NA, 2, 2, 2, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 997--997
+[]\TU/lmtt/m/n/10.95 $ perd_olft  <int> NA, NA, NA, NA, 1, 2, NA, NA, NA, NA, 2, NA, NA, 1, 2, 1, 2~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 998--998
+[]\TU/lmtt/m/n/10.95 $ perd_pala  <int> NA, NA, NA, NA, NA, 2, NA, NA, NA, NA, 2, NA, NA, 1, 2, 2, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 999--999
+[]\TU/lmtt/m/n/10.95 $ dor_abd    <int> NA, NA, NA, NA, NA, 2, NA, NA, NA, NA, 2, NA, NA, 2, 2, 2, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1000--1000
+[]\TU/lmtt/m/n/10.95 $ cardiopati <int> NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 1, NA, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1001--1001
+[]\TU/lmtt/m/n/10.95 $ hematologi <int> NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, ~[] 
+ []
+
+[15]
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1002--1002
+[]\TU/lmtt/m/n/10.95 $ hepatica   <int> NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1003--1003
+[]\TU/lmtt/m/n/10.95 $ asma       <int> NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1004--1004
+[]\TU/lmtt/m/n/10.95 $ diabetes   <int> NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1005--1005
+[]\TU/lmtt/m/n/10.95 $ neurologic <int> NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 1, NA, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1006--1006
+[]\TU/lmtt/m/n/10.95 $ pneumopati <int> NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1007--1007
+[]\TU/lmtt/m/n/10.95 $ imunodepre <int> NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1008--1008
+[]\TU/lmtt/m/n/10.95 $ renal      <int> NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1009--1009
+[]\TU/lmtt/m/n/10.95 $ obesidade  <int> NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1010--1010
+[]\TU/lmtt/m/n/10.95 $ vacina_cov <int> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1011--1011
+[]\TU/lmtt/m/n/10.95 $ dose_1_cov <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1012--1012
+[]\TU/lmtt/m/n/10.95 $ dose_2_cov <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1013--1013
+[]\TU/lmtt/m/n/10.95 $ fab_cov_1  <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1014--1014
+[]\TU/lmtt/m/n/10.95 $ fab_cov_2  <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1015--1015
+[]\TU/lmtt/m/n/10.95 $ dt_entuti  <chr> "", "", "", "", "", "", "", "30/06/2020", "", "12/07/2020",~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1016--1016
+[]\TU/lmtt/m/n/10.95 $ dt_saiduti <chr> "", "", "", "", "", "", "", "29/07/2020", "", "", "", "", "~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1017--1017
+[]\TU/lmtt/m/n/10.95 $ uti        <int> 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 2, 2, 2, 1, 1, NA, 2~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1018--1018
+[]\TU/lmtt/m/n/10.95 $ suport_ven <int> 2, 3, 3, 2, 3, 3, 9, 1, 3, 3, 3, 3, 3, 2, 3, 2, 1, 2, 3, 2,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1019--1019
+[]\TU/lmtt/m/n/10.95 $ evolucao   <int> 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, NA, 1, 1, 1, 1, 1, 1~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1056--1056
+[]\TU/lmtt/m/n/10.95 $ dt_notific <date> 2020-05-15, 2020-05-18, 2020-04-30, 2020-05-11, 2020-07-01~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1057--1057
+[]\TU/lmtt/m/n/10.95 $ dt_sin_pri <date> 2020-05-06, 2020-05-10, 2020-04-20, 2020-05-04, 2020-06-12~[] 
+ []
+
+[16]
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1058--1058
+[]\TU/lmtt/m/n/10.95 $ dt_nasc    <date> 2003-06-03, 1996-07-07, 1996-03-26, 1986-06-02, 1996-12-11~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1059--1059
+[]\TU/lmtt/m/n/10.95 $ dt_interna <date> 2020-05-15, 2020-05-15, 2020-04-24, 2020-05-09, 2020-06-30~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1060--1060
+[]\TU/lmtt/m/n/10.95 $ sem_pri    <int> 19, 20, 17, 19, 24, 24, 26, 27, 28, 24, 14, 29, 28, 10, 36,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1061--1061
+[]\TU/lmtt/m/n/10.95 $ sg_uf      <chr> "CE", "PR", "SP", "PA", "DF", "RO", "PI", "RS", "PE", "MA",~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1062--1062
+[]\TU/lmtt/m/n/10.95 $ id_mn_resi <chr> "MORRINHOS", "CURITIBA", "SAO CAETANO DO SUL", "MARABA", "S~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1063--1063
+[]\TU/lmtt/m/n/10.95 $ co_mun_res <int> 230890, 410690, 354880, 150420, 530150, 110020, 221100, 431~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1064--1064
+[]\TU/lmtt/m/n/10.95 $ cs_zona    <int> NA, 1, 1, 1, 1, 1, 1, 1, 1, 1, NA, 1, 1, 1, NA, 1, 1, NA, 2~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1065--1065
+[]\TU/lmtt/m/n/10.95 $ cs_raca    <int> 4, 1, 9, 4, 9, 4, 9, 1, 4, 9, 4, 4, 4, 4, 4, 9, 4, 9, 4, 4,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1066--1066
+[]\TU/lmtt/m/n/10.95 $ cs_escol_n <int> NA, 2, 9, 4, NA, 2, 4, 2, NA, NA, NA, 9, 9, 3, 3, NA, 3, NA~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1067--1067
+[]\TU/lmtt/m/n/10.95 $ idade      <dbl> 16, 23, 24, 33, 23, 35, 31, 17, 22, 29, 28, 22, 27, 25, 26,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1068--1068
+[]\TU/lmtt/m/n/10.95 $ cs_gestant <int> 2, 2, 9, 5, 5, 3, 1, 5, 3, 3, 4, 3, 5, 3, 3, 3, 3, 9, 3, 3,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1069--1069
+[]\TU/lmtt/m/n/10.95 $ puerpera   <int> NA, 2, 1, 1, 1, 2, NA, 1, NA, 1, NA, NA, 1, 2, 1, NA, NA, 1~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1070--1070
+[]\TU/lmtt/m/n/10.95 $ febre      <int> 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, NA, 1, 1, 1, 1, 1, 1, 1, 1~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1071--1071
+[]\TU/lmtt/m/n/10.95 $ tosse      <int> 1, 2, 2, 1, 2, 1, 1, 1, NA, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1072--1072
+[]\TU/lmtt/m/n/10.95 $ garganta   <int> NA, 2, 2, 2, 2, 2, 2, NA, 1, NA, 2, NA, 2, 1, 1, 2, 2, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1073--1073
+[]\TU/lmtt/m/n/10.95 $ dispneia   <int> NA, 1, 2, 2, 2, 2, 2, 1, NA, NA, 1, NA, 2, 1, 2, 1, 1, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1074--1074
+[]\TU/lmtt/m/n/10.95 $ desc_resp  <int> NA, 2, 2, 1, 2, 2, 1, 1, NA, 1, 1, NA, 2, 1, 2, 2, 1, NA, 1~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1075--1075
+[]\TU/lmtt/m/n/10.95 $ saturacao  <int> NA, 2, 2, 2, 2, 2, 2, 1, NA, NA, 2, NA, 2, 2, 2, 1, 1, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1076--1076
+[]\TU/lmtt/m/n/10.95 $ diarreia   <int> NA, 1, 2, 2, 1, 2, 2, 1, NA, NA, 2, NA, 2, 1, 2, 2, 2, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1077--1077
+[]\TU/lmtt/m/n/10.95 $ vomito     <int> NA, 2, 2, 2, 2, 2, 2, 2, NA, NA, 2, NA, 2, 1, 2, 2, 2, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1078--1078
+[]\TU/lmtt/m/n/10.95 $ fadiga     <int> NA, NA, NA, NA, NA, 2, NA, NA, NA, NA, 2, NA, NA, 2, 2, 2, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1079--1079
+[]\TU/lmtt/m/n/10.95 $ perd_olft  <int> NA, NA, NA, NA, 1, 2, NA, NA, NA, NA, 2, NA, NA, 1, 2, 1, 2~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1080--1080
+[]\TU/lmtt/m/n/10.95 $ perd_pala  <int> NA, NA, NA, NA, NA, 2, NA, NA, NA, NA, 2, NA, NA, 1, 2, 2, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1081--1081
+[]\TU/lmtt/m/n/10.95 $ dor_abd    <int> NA, NA, NA, NA, NA, 2, NA, NA, NA, NA, 2, NA, NA, 2, 2, 2, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1082--1082
+[]\TU/lmtt/m/n/10.95 $ cardiopati <int> NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 1, NA, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1083--1083
+[]\TU/lmtt/m/n/10.95 $ hematologi <int> NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1084--1084
+[]\TU/lmtt/m/n/10.95 $ hepatica   <int> NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1085--1085
+[]\TU/lmtt/m/n/10.95 $ asma       <int> NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1086--1086
+[]\TU/lmtt/m/n/10.95 $ diabetes   <int> NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1087--1087
+[]\TU/lmtt/m/n/10.95 $ neurologic <int> NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 1, NA, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1088--1088
+[]\TU/lmtt/m/n/10.95 $ pneumopati <int> NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1089--1089
+[]\TU/lmtt/m/n/10.95 $ imunodepre <int> NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1090--1090
+[]\TU/lmtt/m/n/10.95 $ renal      <int> NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1091--1091
+[]\TU/lmtt/m/n/10.95 $ obesidade  <int> NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1092--1092
+[]\TU/lmtt/m/n/10.95 $ vacina_cov <int> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1093--1093
+[]\TU/lmtt/m/n/10.95 $ dose_1_cov <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1094--1094
+[]\TU/lmtt/m/n/10.95 $ dose_2_cov <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1095--1095
+[]\TU/lmtt/m/n/10.95 $ fab_cov_1  <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1096--1096
+[]\TU/lmtt/m/n/10.95 $ fab_cov_2  <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1097--1097
+[]\TU/lmtt/m/n/10.95 $ dt_entuti  <date> NA, NA, NA, NA, NA, NA, NA, 2020-06-30, NA, 2020-07-12, NA~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1098--1098
+[]\TU/lmtt/m/n/10.95 $ dt_saiduti <date> NA, NA, NA, NA, NA, NA, NA, 2020-07-29, NA, NA, NA, NA, NA~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1099--1099
+[]\TU/lmtt/m/n/10.95 $ uti        <int> 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 2, 2, 2, 1, 1, NA, 2~[] 
+ []
+
+[17]
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1100--1100
+[]\TU/lmtt/m/n/10.95 $ suport_ven <int> 2, 3, 3, 2, 3, 3, 9, 1, 3, 3, 3, 3, 3, 2, 3, 2, 1, 2, 3, 2,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1101--1101
+[]\TU/lmtt/m/n/10.95 $ evolucao   <int> 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, NA, 1, 1, 1, 1, 1, 1~[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1129--1139
+
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1150--1150
+[]\TU/lmtt/m/n/10.95 $ dt_notific <date> 2020-05-15, 2020-05-18, 2020-04-30, 2020-05-11, 2020-07-01~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1151--1151
+[]\TU/lmtt/m/n/10.95 $ dt_sin_pri <date> 2020-05-06, 2020-05-10, 2020-04-20, 2020-05-04, 2020-06-12~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1152--1152
+[]\TU/lmtt/m/n/10.95 $ dt_nasc    <date> 2003-06-03, 1996-07-07, 1996-03-26, 1986-06-02, 1996-12-11~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1153--1153
+[]\TU/lmtt/m/n/10.95 $ dt_interna <date> 2020-05-15, 2020-05-15, 2020-04-24, 2020-05-09, 2020-06-30~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1154--1154
+[]\TU/lmtt/m/n/10.95 $ sem_pri    <int> 19, 20, 17, 19, 24, 24, 26, 27, 28, 24, 14, 29, 28, 10, 36,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1155--1155
+[]\TU/lmtt/m/n/10.95 $ sg_uf      <chr> "CE", "PR", "SP", "PA", "DF", "RO", "PI", "RS", "PE", "MA",~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1156--1156
+[]\TU/lmtt/m/n/10.95 $ id_mn_resi <chr> "MORRINHOS", "CURITIBA", "SAO CAETANO DO SUL", "MARABA", "S~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1157--1157
+[]\TU/lmtt/m/n/10.95 $ co_mun_res <int> 230890, 410690, 354880, 150420, 530150, 110020, 221100, 431~[] 
+ []
+
+[18]
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1158--1158
+[]\TU/lmtt/m/n/10.95 $ cs_zona    <fct> NA, 1, 1, 1, 1, 1, 1, 1, 1, 1, NA, 1, 1, 1, NA, 1, 1, NA, 2~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1159--1159
+[]\TU/lmtt/m/n/10.95 $ cs_raca    <fct> 4, 1, 9, 4, 9, 4, 9, 1, 4, 9, 4, 4, 4, 4, 4, 9, 4, 9, 4, 4,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1160--1160
+[]\TU/lmtt/m/n/10.95 $ cs_escol_n <fct> NA, 2, 9, 4, NA, 2, 4, 2, NA, NA, NA, 9, 9, 3, 3, NA, 3, NA~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1161--1161
+[]\TU/lmtt/m/n/10.95 $ idade      <dbl> 16, 23, 24, 33, 23, 35, 31, 17, 22, 29, 28, 22, 27, 25, 26,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1162--1162
+[]\TU/lmtt/m/n/10.95 $ cs_gestant <fct> 2, 2, 9, 5, 5, 3, 1, 5, 3, 3, 4, 3, 5, 3, 3, 3, 3, 9, 3, 3,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1163--1163
+[]\TU/lmtt/m/n/10.95 $ puerpera   <fct> NA, 2, 1, 1, 1, 2, NA, 1, NA, 1, NA, NA, 1, 2, 1, NA, NA, 1~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1164--1164
+[]\TU/lmtt/m/n/10.95 $ febre      <fct> 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, NA, 1, 1, 1, 1, 1, 1, 1, 1~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1165--1165
+[]\TU/lmtt/m/n/10.95 $ tosse      <fct> 1, 2, 2, 1, 2, 1, 1, 1, NA, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1166--1166
+[]\TU/lmtt/m/n/10.95 $ garganta   <fct> NA, 2, 2, 2, 2, 2, 2, NA, 1, NA, 2, NA, 2, 1, 1, 2, 2, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1167--1167
+[]\TU/lmtt/m/n/10.95 $ dispneia   <fct> NA, 1, 2, 2, 2, 2, 2, 1, NA, NA, 1, NA, 2, 1, 2, 1, 1, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1168--1168
+[]\TU/lmtt/m/n/10.95 $ desc_resp  <fct> NA, 2, 2, 1, 2, 2, 1, 1, NA, 1, 1, NA, 2, 1, 2, 2, 1, NA, 1~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1169--1169
+[]\TU/lmtt/m/n/10.95 $ saturacao  <fct> NA, 2, 2, 2, 2, 2, 2, 1, NA, NA, 2, NA, 2, 2, 2, 1, 1, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1170--1170
+[]\TU/lmtt/m/n/10.95 $ diarreia   <fct> NA, 1, 2, 2, 1, 2, 2, 1, NA, NA, 2, NA, 2, 1, 2, 2, 2, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1171--1171
+[]\TU/lmtt/m/n/10.95 $ vomito     <fct> NA, 2, 2, 2, 2, 2, 2, 2, NA, NA, 2, NA, 2, 1, 2, 2, 2, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1172--1172
+[]\TU/lmtt/m/n/10.95 $ fadiga     <fct> NA, NA, NA, NA, NA, 2, NA, NA, NA, NA, 2, NA, NA, 2, 2, 2, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1173--1173
+[]\TU/lmtt/m/n/10.95 $ perd_olft  <fct> NA, NA, NA, NA, 1, 2, NA, NA, NA, NA, 2, NA, NA, 1, 2, 1, 2~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1174--1174
+[]\TU/lmtt/m/n/10.95 $ perd_pala  <fct> NA, NA, NA, NA, NA, 2, NA, NA, NA, NA, 2, NA, NA, 1, 2, 2, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1175--1175
+[]\TU/lmtt/m/n/10.95 $ dor_abd    <fct> NA, NA, NA, NA, NA, 2, NA, NA, NA, NA, 2, NA, NA, 2, 2, 2, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1176--1176
+[]\TU/lmtt/m/n/10.95 $ cardiopati <fct> NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 1, NA, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1177--1177
+[]\TU/lmtt/m/n/10.95 $ hematologi <fct> NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1178--1178
+[]\TU/lmtt/m/n/10.95 $ hepatica   <fct> NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1179--1179
+[]\TU/lmtt/m/n/10.95 $ asma       <fct> NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1180--1180
+[]\TU/lmtt/m/n/10.95 $ diabetes   <fct> NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1181--1181
+[]\TU/lmtt/m/n/10.95 $ neurologic <fct> NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 1, NA, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1182--1182
+[]\TU/lmtt/m/n/10.95 $ pneumopati <fct> NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1183--1183
+[]\TU/lmtt/m/n/10.95 $ imunodepre <fct> NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1184--1184
+[]\TU/lmtt/m/n/10.95 $ renal      <fct> NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1185--1185
+[]\TU/lmtt/m/n/10.95 $ obesidade  <fct> NA, 2, 2, 2, 2, 2, NA, 2, NA, NA, NA, NA, 2, 2, 2, NA, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1186--1186
+[]\TU/lmtt/m/n/10.95 $ vacina_cov <fct> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1187--1187
+[]\TU/lmtt/m/n/10.95 $ dose_1_cov <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1188--1188
+[]\TU/lmtt/m/n/10.95 $ dose_2_cov <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1189--1189
+[]\TU/lmtt/m/n/10.95 $ fab_cov_1  <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1190--1190
+[]\TU/lmtt/m/n/10.95 $ fab_cov_2  <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1191--1191
+[]\TU/lmtt/m/n/10.95 $ dt_entuti  <date> NA, NA, NA, NA, NA, NA, NA, 2020-06-30, NA, 2020-07-12, NA~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1192--1192
+[]\TU/lmtt/m/n/10.95 $ dt_saiduti <date> NA, NA, NA, NA, NA, NA, NA, 2020-07-29, NA, NA, NA, NA, NA~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1193--1193
+[]\TU/lmtt/m/n/10.95 $ uti        <fct> 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 2, 2, 2, 1, 1, NA, 2~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1194--1194
+[]\TU/lmtt/m/n/10.95 $ suport_ven <fct> 2, 3, 3, 2, 3, 3, 9, 1, 3, 3, 3, 3, 3, 2, 3, 2, 1, 2, 3, 2,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1195--1195
+[]\TU/lmtt/m/n/10.95 $ evolucao   <fct> 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, NA, 1, 1, 1, 1, 1, 1~[] 
+ []
+
+[19] [20] [21]
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1366--1366
+[]\TU/lmtt/m/n/10.95 $ dt_notific <date> 2020-05-15, 2020-05-18, 2020-04-30, 2020-05-11, 2020-07-01~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1367--1367
+[]\TU/lmtt/m/n/10.95 $ dt_sin_pri <date> 2020-05-06, 2020-05-10, 2020-04-20, 2020-05-04, 2020-06-12~[] 
+ []
+
+[22]
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1368--1368
+[]\TU/lmtt/m/n/10.95 $ dt_nasc    <date> 2003-06-03, 1996-07-07, 1996-03-26, 1986-06-02, 1996-12-11~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1369--1369
+[]\TU/lmtt/m/n/10.95 $ dt_interna <date> 2020-05-15, 2020-05-15, 2020-04-24, 2020-05-09, 2020-06-30~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1370--1370
+[]\TU/lmtt/m/n/10.95 $ sem_pri    <int> 19, 20, 17, 19, 24, 24, 26, 27, 28, 24, 14, 29, 28, 10, 36,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1371--1371
+[]\TU/lmtt/m/n/10.95 $ sg_uf      <chr> "CE", "PR", "SP", "PA", "DF", "RO", "PI", "RS", "PE", "MA",~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1372--1372
+[]\TU/lmtt/m/n/10.95 $ id_mn_resi <chr> "MORRINHOS", "CURITIBA", "SAO CAETANO DO SUL", "MARABA", "S~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1373--1373
+[]\TU/lmtt/m/n/10.95 $ co_mun_res <int> 230890, 410690, 354880, 150420, 530150, 110020, 221100, 431~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1374--1374
+[]\TU/lmtt/m/n/10.95 $ cs_zona    <fct> NA, urbana, urbana, urbana, urbana, urbana, urbana, urbana,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1375--1375
+[]\TU/lmtt/m/n/10.95 $ cs_raca    <fct> parda, branca, ignorado, parda, ignorado, parda, ignorado, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1376--1376
+[]\TU/lmtt/m/n/10.95 $ cs_escol_n <fct> NA, fund2, ignorado, superior, NA, fund2, superior, fund2, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1377--1377
+[]\TU/lmtt/m/n/10.95 $ idade      <dbl> 16, 23, 24, 33, 23, 35, 31, 17, 22, 29, 28, 22, 27, 25, 26,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1378--1378
+[]\TU/lmtt/m/n/10.95 $ cs_gestant <fct> 2tri, 2tri, ignorado, nao, nao, 3tri, 1tri, nao, 3tri, 3tri~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1379--1379
+[]\TU/lmtt/m/n/10.95 $ puerpera   <fct> NA, nao, sim, sim, sim, nao, NA, sim, NA, sim, NA, NA, sim,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1380--1380
+[]\TU/lmtt/m/n/10.95 $ febre      <fct> sim, nao, sim, sim, nao, sim, sim, sim, sim, sim, sim, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1381--1381
+[]\TU/lmtt/m/n/10.95 $ tosse      <fct> sim, nao, nao, sim, nao, sim, sim, sim, NA, sim, sim, sim, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1382--1382
+[]\TU/lmtt/m/n/10.95 $ garganta   <fct> NA, nao, nao, nao, nao, nao, nao, NA, sim, NA, nao, NA, nao~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1383--1383
+[]\TU/lmtt/m/n/10.95 $ dispneia   <fct> NA, sim, nao, nao, nao, nao, nao, sim, NA, NA, sim, NA, nao~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1384--1384
+[]\TU/lmtt/m/n/10.95 $ desc_resp  <fct> NA, nao, nao, sim, nao, nao, sim, sim, NA, sim, sim, NA, na~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1385--1385
+[]\TU/lmtt/m/n/10.95 $ saturacao  <fct> NA, nao, nao, nao, nao, nao, nao, sim, NA, NA, nao, NA, nao~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1386--1386
+[]\TU/lmtt/m/n/10.95 $ diarreia   <fct> NA, sim, nao, nao, sim, nao, nao, sim, NA, NA, nao, NA, nao~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1387--1387
+[]\TU/lmtt/m/n/10.95 $ vomito     <fct> NA, nao, nao, nao, nao, nao, nao, nao, NA, NA, nao, NA, nao~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1388--1388
+[]\TU/lmtt/m/n/10.95 $ fadiga     <fct> NA, NA, NA, NA, NA, nao, NA, NA, NA, NA, nao, NA, NA, nao, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1389--1389
+[]\TU/lmtt/m/n/10.95 $ perd_olft  <fct> NA, NA, NA, NA, sim, nao, NA, NA, NA, NA, nao, NA, NA, sim,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1390--1390
+[]\TU/lmtt/m/n/10.95 $ perd_pala  <fct> NA, NA, NA, NA, NA, nao, NA, NA, NA, NA, nao, NA, NA, sim, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1391--1391
+[]\TU/lmtt/m/n/10.95 $ dor_abd    <fct> NA, NA, NA, NA, NA, nao, NA, NA, NA, NA, nao, NA, NA, nao, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1392--1392
+[]\TU/lmtt/m/n/10.95 $ cardiopati <fct> NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1393--1393
+[]\TU/lmtt/m/n/10.95 $ hematologi <fct> NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1394--1394
+[]\TU/lmtt/m/n/10.95 $ hepatica   <fct> NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1395--1395
+[]\TU/lmtt/m/n/10.95 $ asma       <fct> NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1396--1396
+[]\TU/lmtt/m/n/10.95 $ diabetes   <fct> NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1397--1397
+[]\TU/lmtt/m/n/10.95 $ neurologic <fct> NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1398--1398
+[]\TU/lmtt/m/n/10.95 $ pneumopati <fct> NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1399--1399
+[]\TU/lmtt/m/n/10.95 $ imunodepre <fct> NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1400--1400
+[]\TU/lmtt/m/n/10.95 $ renal      <fct> NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1401--1401
+[]\TU/lmtt/m/n/10.95 $ obesidade  <fct> NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1402--1402
+[]\TU/lmtt/m/n/10.95 $ vacina_cov <fct> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1403--1403
+[]\TU/lmtt/m/n/10.95 $ dose_1_cov <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1404--1404
+[]\TU/lmtt/m/n/10.95 $ dose_2_cov <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1405--1405
+[]\TU/lmtt/m/n/10.95 $ fab_cov_1  <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1406--1406
+[]\TU/lmtt/m/n/10.95 $ fab_cov_2  <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1407--1407
+[]\TU/lmtt/m/n/10.95 $ dt_entuti  <date> NA, NA, NA, NA, NA, NA, NA, 2020-06-30, NA, 2020-07-12, NA~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1408--1408
+[]\TU/lmtt/m/n/10.95 $ dt_saiduti <date> NA, NA, NA, NA, NA, NA, NA, 2020-07-29, NA, NA, NA, NA, NA~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1409--1409
+[]\TU/lmtt/m/n/10.95 $ uti        <fct> nao, nao, nao, nao, nao, nao, nao, sim, nao, sim, nao, nao,~[] 
+ []
+
+[23]
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1410--1410
+[]\TU/lmtt/m/n/10.95 $ suport_ven <fct> "sim, nao invasivo", "nao", "nao", "sim, nao invasivo", "na~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1411--1411
+[]\TU/lmtt/m/n/10.95 $ evolucao   <fct> cura, cura, cura, cura, cura, cura, cura, obito, cura, cura~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1412--1412
+[]\TU/lmtt/m/n/10.95 $ faixa_et   <chr> "<20", "20-34", "20-34", "20-34", "20-34", ">=34", "20-34",~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1413--1413
+[]\TU/lmtt/m/n/10.95 $ dias_uti   <drtn> NA days, NA days, NA days, NA days, NA days, NA days, NA d~[] 
+ []
+
+[24]
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1488--1488
+[]\TU/lmtt/m/n/10.95 $ sg_uf   <chr> "CE", "PR", "SP", "PA", "DF", "RO", "PI", "RS", "PE", "MA", "M~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1489--1489
+[]\TU/lmtt/m/n/10.95 $ cs_zona <fct> NA, urbana, urbana, urbana, urbana, urbana, urbana, urbana, ur~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1490--1490
+[]\TU/lmtt/m/n/10.95 $ idade   <dbl> 16, 23, 24, 33, 23, 35, 31, 17, 22, 29, 28, 22, 27, 25, 26, 20~[] 
+ []
+
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 2.2 on input line 1520.
+
+[25] [26]
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 2.5 on input line 1654.
+
+[27]
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1691--1691
+[]\TU/lmtt/m/n/10.95 $ id         <int> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1692--1692
+[]\TU/lmtt/m/n/10.95 $ dt_notific <date> 2020-05-15, 2020-05-18, 2020-04-30, 2020-05-11, 2020-07-01~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1693--1693
+[]\TU/lmtt/m/n/10.95 $ dt_sin_pri <date> 2020-05-06, 2020-05-10, 2020-04-20, 2020-05-04, 2020-06-12~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1694--1694
+[]\TU/lmtt/m/n/10.95 $ dt_nasc    <date> 2003-06-03, 1996-07-07, 1996-03-26, 1986-06-02, 1996-12-11~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1695--1695
+[]\TU/lmtt/m/n/10.95 $ dt_interna <date> 2020-05-15, 2020-05-15, 2020-04-24, 2020-05-09, 2020-06-30~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1696--1696
+[]\TU/lmtt/m/n/10.95 $ sem_pri    <int> 19, 20, 17, 19, 24, 24, 26, 27, 28, 24, 14, 29, 28, 10, 36,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1697--1697
+[]\TU/lmtt/m/n/10.95 $ sg_uf      <chr> "CE", "PR", "SP", "PA", "DF", "RO", "PI", "RS", "PE", "MA",~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1698--1698
+[]\TU/lmtt/m/n/10.95 $ id_mn_resi <chr> "MORRINHOS", "CURITIBA", "SAO CAETANO DO SUL", "MARABA", "S~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1699--1699
+[]\TU/lmtt/m/n/10.95 $ co_mun_res <int> 230890, 410690, 354880, 150420, 530150, 110020, 221100, 431~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1700--1700
+[]\TU/lmtt/m/n/10.95 $ cs_zona    <fct> NA, urbana, urbana, urbana, urbana, urbana, urbana, urbana,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1701--1701
+[]\TU/lmtt/m/n/10.95 $ cs_raca    <fct> parda, branca, ignorado, parda, ignorado, parda, ignorado, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1702--1702
+[]\TU/lmtt/m/n/10.95 $ cs_escol_n <fct> NA, fund2, ignorado, superior, NA, fund2, superior, fund2, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1703--1703
+[]\TU/lmtt/m/n/10.95 $ idade      <dbl> 16, 23, 24, 33, 23, 35, 31, 17, 22, 29, 28, 22, 27, 25, 26,~[] 
+ []
+
+[28]
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1704--1704
+[]\TU/lmtt/m/n/10.95 $ cs_gestant <fct> 2tri, 2tri, ignorado, nao, nao, 3tri, 1tri, nao, 3tri, 3tri~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1705--1705
+[]\TU/lmtt/m/n/10.95 $ puerpera   <fct> NA, nao, sim, sim, sim, nao, NA, sim, NA, sim, NA, NA, sim,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1706--1706
+[]\TU/lmtt/m/n/10.95 $ febre      <fct> sim, nao, sim, sim, nao, sim, sim, sim, sim, sim, sim, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1707--1707
+[]\TU/lmtt/m/n/10.95 $ tosse      <fct> sim, nao, nao, sim, nao, sim, sim, sim, NA, sim, sim, sim, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1708--1708
+[]\TU/lmtt/m/n/10.95 $ garganta   <fct> NA, nao, nao, nao, nao, nao, nao, NA, sim, NA, nao, NA, nao~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1709--1709
+[]\TU/lmtt/m/n/10.95 $ dispneia   <fct> NA, sim, nao, nao, nao, nao, nao, sim, NA, NA, sim, NA, nao~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1710--1710
+[]\TU/lmtt/m/n/10.95 $ desc_resp  <fct> NA, nao, nao, sim, nao, nao, sim, sim, NA, sim, sim, NA, na~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1711--1711
+[]\TU/lmtt/m/n/10.95 $ saturacao  <fct> NA, nao, nao, nao, nao, nao, nao, sim, NA, NA, nao, NA, nao~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1712--1712
+[]\TU/lmtt/m/n/10.95 $ diarreia   <fct> NA, sim, nao, nao, sim, nao, nao, sim, NA, NA, nao, NA, nao~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1713--1713
+[]\TU/lmtt/m/n/10.95 $ vomito     <fct> NA, nao, nao, nao, nao, nao, nao, nao, NA, NA, nao, NA, nao~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1714--1714
+[]\TU/lmtt/m/n/10.95 $ fadiga     <fct> NA, NA, NA, NA, NA, nao, NA, NA, NA, NA, nao, NA, NA, nao, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1728--1728
+[]\TU/lmtt/m/n/10.95 $ id         <int> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1729--1729
+[]\TU/lmtt/m/n/10.95 $ perd_olft  <fct> NA, NA, NA, NA, sim, nao, NA, NA, NA, NA, nao, NA, NA, sim,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1730--1730
+[]\TU/lmtt/m/n/10.95 $ perd_pala  <fct> NA, NA, NA, NA, NA, nao, NA, NA, NA, NA, nao, NA, NA, sim, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1731--1731
+[]\TU/lmtt/m/n/10.95 $ dor_abd    <fct> NA, NA, NA, NA, NA, nao, NA, NA, NA, NA, nao, NA, NA, nao, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1732--1732
+[]\TU/lmtt/m/n/10.95 $ cardiopati <fct> NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1733--1733
+[]\TU/lmtt/m/n/10.95 $ hematologi <fct> NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1734--1734
+[]\TU/lmtt/m/n/10.95 $ hepatica   <fct> NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1735--1735
+[]\TU/lmtt/m/n/10.95 $ asma       <fct> NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1736--1736
+[]\TU/lmtt/m/n/10.95 $ diabetes   <fct> NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1737--1737
+[]\TU/lmtt/m/n/10.95 $ neurologic <fct> NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1738--1738
+[]\TU/lmtt/m/n/10.95 $ pneumopati <fct> NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1739--1739
+[]\TU/lmtt/m/n/10.95 $ imunodepre <fct> NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1740--1740
+[]\TU/lmtt/m/n/10.95 $ renal      <fct> NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1741--1741
+[]\TU/lmtt/m/n/10.95 $ obesidade  <fct> NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1742--1742
+[]\TU/lmtt/m/n/10.95 $ vacina_cov <fct> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1743--1743
+[]\TU/lmtt/m/n/10.95 $ dose_1_cov <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1744--1744
+[]\TU/lmtt/m/n/10.95 $ dose_2_cov <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1745--1745
+[]\TU/lmtt/m/n/10.95 $ fab_cov_1  <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1746--1746
+[]\TU/lmtt/m/n/10.95 $ fab_cov_2  <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1747--1747
+[]\TU/lmtt/m/n/10.95 $ dt_entuti  <date> NA, NA, NA, NA, NA, NA, NA, 2020-06-30, NA, 2020-07-12, NA~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1748--1748
+[]\TU/lmtt/m/n/10.95 $ dt_saiduti <date> NA, NA, NA, NA, NA, NA, NA, 2020-07-29, NA, NA, NA, NA, NA~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1749--1749
+[]\TU/lmtt/m/n/10.95 $ uti        <fct> nao, nao, nao, nao, nao, nao, nao, sim, nao, sim, nao, nao,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1750--1750
+[]\TU/lmtt/m/n/10.95 $ suport_ven <fct> "sim, nao invasivo", "nao", "nao", "sim, nao invasivo", "na~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1751--1751
+[]\TU/lmtt/m/n/10.95 $ evolucao   <fct> cura, cura, cura, cura, cura, cura, cura, obito, cura, cura~[] 
+ []
+
+[29]
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1752--1752
+[]\TU/lmtt/m/n/10.95 $ faixa_et   <chr> "<20", "20-34", "20-34", "20-34", "20-34", ">=34", "20-34",~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1753--1753
+[]\TU/lmtt/m/n/10.95 $ dias_uti   <drtn> NA days, NA days, NA days, NA days, NA days, NA days, NA d~[] 
+ []
+
+[30]
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1823--1823
+[]\TU/lmtt/m/n/10.95 $ id         <int> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1824--1824
+[]\TU/lmtt/m/n/10.95 $ dt_notific <date> 2020-05-15, 2020-05-18, 2020-04-30, 2020-05-11, 2020-07-01~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1825--1825
+[]\TU/lmtt/m/n/10.95 $ dt_sin_pri <date> 2020-05-06, 2020-05-10, 2020-04-20, 2020-05-04, 2020-06-12~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1826--1826
+[]\TU/lmtt/m/n/10.95 $ dt_nasc    <date> 2003-06-03, 1996-07-07, 1996-03-26, 1986-06-02, 1996-12-11~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1827--1827
+[]\TU/lmtt/m/n/10.95 $ dt_interna <date> 2020-05-15, 2020-05-15, 2020-04-24, 2020-05-09, 2020-06-30~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1828--1828
+[]\TU/lmtt/m/n/10.95 $ sem_pri    <int> 19, 20, 17, 19, 24, 24, 26, 27, 28, 24, 14, 29, 28, 10, 36,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1829--1829
+[]\TU/lmtt/m/n/10.95 $ sg_uf      <chr> "CE", "PR", "SP", "PA", "DF", "RO", "PI", "RS", "PE", "MA",~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1830--1830
+[]\TU/lmtt/m/n/10.95 $ id_mn_resi <chr> "MORRINHOS", "CURITIBA", "SAO CAETANO DO SUL", "MARABA", "S~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1831--1831
+[]\TU/lmtt/m/n/10.95 $ co_mun_res <int> 230890, 410690, 354880, 150420, 530150, 110020, 221100, 431~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1832--1832
+[]\TU/lmtt/m/n/10.95 $ cs_zona    <fct> NA, urbana, urbana, urbana, urbana, urbana, urbana, urbana,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1833--1833
+[]\TU/lmtt/m/n/10.95 $ cs_raca    <fct> parda, branca, ignorado, parda, ignorado, parda, ignorado, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1834--1834
+[]\TU/lmtt/m/n/10.95 $ cs_escol_n <fct> NA, fund2, ignorado, superior, NA, fund2, superior, fund2, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1835--1835
+[]\TU/lmtt/m/n/10.95 $ idade      <dbl> 16, 23, 24, 33, 23, 35, 31, 17, 22, 29, 28, 22, 27, 25, 26,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1836--1836
+[]\TU/lmtt/m/n/10.95 $ cs_gestant <fct> 2tri, 2tri, ignorado, nao, nao, 3tri, 1tri, nao, 3tri, 3tri~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1837--1837
+[]\TU/lmtt/m/n/10.95 $ puerpera   <fct> NA, nao, sim, sim, sim, nao, NA, sim, NA, sim, NA, NA, sim,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1838--1838
+[]\TU/lmtt/m/n/10.95 $ febre      <fct> sim, nao, sim, sim, nao, sim, sim, sim, sim, sim, sim, NA, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1839--1839
+[]\TU/lmtt/m/n/10.95 $ tosse      <fct> sim, nao, nao, sim, nao, sim, sim, sim, NA, sim, sim, sim, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1840--1840
+[]\TU/lmtt/m/n/10.95 $ garganta   <fct> NA, nao, nao, nao, nao, nao, nao, NA, sim, NA, nao, NA, nao~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1841--1841
+[]\TU/lmtt/m/n/10.95 $ dispneia   <fct> NA, sim, nao, nao, nao, nao, nao, sim, NA, NA, sim, NA, nao~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1842--1842
+[]\TU/lmtt/m/n/10.95 $ desc_resp  <fct> NA, nao, nao, sim, nao, nao, sim, sim, NA, sim, sim, NA, na~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1843--1843
+[]\TU/lmtt/m/n/10.95 $ saturacao  <fct> NA, nao, nao, nao, nao, nao, nao, sim, NA, NA, nao, NA, nao~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1844--1844
+[]\TU/lmtt/m/n/10.95 $ diarreia   <fct> NA, sim, nao, nao, sim, nao, nao, sim, NA, NA, nao, NA, nao~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1845--1845
+[]\TU/lmtt/m/n/10.95 $ vomito     <fct> NA, nao, nao, nao, nao, nao, nao, nao, NA, NA, nao, NA, nao~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1846--1846
+[]\TU/lmtt/m/n/10.95 $ fadiga     <fct> NA, NA, NA, NA, NA, nao, NA, NA, NA, NA, nao, NA, NA, nao, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1847--1847
+[]\TU/lmtt/m/n/10.95 $ perd_olft  <fct> NA, NA, NA, NA, sim, nao, NA, NA, NA, NA, nao, NA, NA, sim,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1848--1848
+[]\TU/lmtt/m/n/10.95 $ perd_pala  <fct> NA, NA, NA, NA, NA, nao, NA, NA, NA, NA, nao, NA, NA, sim, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1849--1849
+[]\TU/lmtt/m/n/10.95 $ dor_abd    <fct> NA, NA, NA, NA, NA, nao, NA, NA, NA, NA, nao, NA, NA, nao, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1850--1850
+[]\TU/lmtt/m/n/10.95 $ cardiopati <fct> NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1851--1851
+[]\TU/lmtt/m/n/10.95 $ hematologi <fct> NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1852--1852
+[]\TU/lmtt/m/n/10.95 $ hepatica   <fct> NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1853--1853
+[]\TU/lmtt/m/n/10.95 $ asma       <fct> NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1854--1854
+[]\TU/lmtt/m/n/10.95 $ diabetes   <fct> NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1855--1855
+[]\TU/lmtt/m/n/10.95 $ neurologic <fct> NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1856--1856
+[]\TU/lmtt/m/n/10.95 $ pneumopati <fct> NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, ~[] 
+ []
+
+[31]
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1857--1857
+[]\TU/lmtt/m/n/10.95 $ imunodepre <fct> NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1858--1858
+[]\TU/lmtt/m/n/10.95 $ renal      <fct> NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1859--1859
+[]\TU/lmtt/m/n/10.95 $ obesidade  <fct> NA, nao, nao, nao, nao, nao, NA, nao, NA, NA, NA, NA, nao, ~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1860--1860
+[]\TU/lmtt/m/n/10.95 $ vacina_cov <fct> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1861--1861
+[]\TU/lmtt/m/n/10.95 $ dose_1_cov <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1862--1862
+[]\TU/lmtt/m/n/10.95 $ dose_2_cov <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1863--1863
+[]\TU/lmtt/m/n/10.95 $ fab_cov_1  <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1864--1864
+[]\TU/lmtt/m/n/10.95 $ fab_cov_2  <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1865--1865
+[]\TU/lmtt/m/n/10.95 $ dt_entuti  <date> NA, NA, NA, NA, NA, NA, NA, 2020-06-30, NA, 2020-07-12, NA~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1866--1866
+[]\TU/lmtt/m/n/10.95 $ dt_saiduti <date> NA, NA, NA, NA, NA, NA, NA, 2020-07-29, NA, NA, NA, NA, NA~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1867--1867
+[]\TU/lmtt/m/n/10.95 $ uti        <fct> nao, nao, nao, nao, nao, nao, nao, sim, nao, sim, nao, nao,~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1868--1868
+[]\TU/lmtt/m/n/10.95 $ suport_ven <fct> "sim, nao invasivo", "nao", "nao", "sim, nao invasivo", "na~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1869--1869
+[]\TU/lmtt/m/n/10.95 $ evolucao   <fct> cura, cura, cura, cura, cura, cura, cura, obito, cura, cura~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1870--1870
+[]\TU/lmtt/m/n/10.95 $ faixa_et   <chr> "<20", "20-34", "20-34", "20-34", "20-34", ">=34", "20-34",~[] 
+ []
+
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 1871--1871
+[]\TU/lmtt/m/n/10.95 $ dias_uti   <drtn> NA days, NA days, NA days, NA days, NA days, NA days, NA d~[] 
+ []
+
+[32]
+chapter 3.
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 3.1 on input line 1942.
+
+[33
+
+]
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 3.2 on input line 1981.
+
+[34]
+File: ./figuras_tabulacao/excel1.png Graphic file (type bmp)
+<./figuras_tabulacao/excel1.png>
+[35]
+File: ./figuras_tabulacao/excel2.png Graphic file (type bmp)
+<./figuras_tabulacao/excel2.png>
+File: ./figuras_tabulacao/excel3.png Graphic file (type bmp)
+<./figuras_tabulacao/excel3.png>
+[36] [37] [38]
+chapter 4.
+[39
+
+] [40]
+File: ./figuras_descritiva/Media_eq.png Graphic file (type bmp)
+<./figuras_descritiva/Media_eq.png>
+
+Overfull \hbox (7.2948pt too wide) in paragraph at lines 2228--2233
+ [][] 
+ []
+
+File: ./figuras_descritiva/Media_des.png Graphic file (type bmp)
+<./figuras_descritiva/Media_des.png>
+
+Overfull \hbox (7.2948pt too wide) in paragraph at lines 2244--2249
+ [][] 
+ []
+
+[41] [42]
+File: ./figuras_descritiva/plot1.png Graphic file (type bmp)
+<./figuras_descritiva/plot1.png>
+
+Overfull \hbox (7.29062pt too wide) in paragraph at lines 2349--2354
+ [][] 
+ []
+
+File: ./figuras_descritiva/plot2.png Graphic file (type bmp)
+<./figuras_descritiva/plot2.png>
+
+Overfull \hbox (7.29062pt too wide) in paragraph at lines 2364--2369
+ [][] 
+ []
+
+
+LaTeX Warning: Reference `fig-var2' on page 43 undefined on input line 2383.
+
+
+LaTeX Warning: Reference `fig-var1' on page 43 undefined on input line 2386.
+
+[43]
+
+LaTeX Warning: Reference `eq-var1' on page 44 undefined on input line 2447.
+
+
+LaTeX Warning: Reference `eq-var1' on page 44 undefined on input line 2450.
+
+[44]
+Underfull \hbox (badness 1383) in paragraph at lines 2467--2477
+[]\TU/lmr/m/n/10.95 Caso o interesse seja calcular e comparar a dispersão entre variáveis com unidades
+ []
+
+[45]
+File: ./figuras_descritiva/Fig1_N2.png Graphic file (type bmp)
+<./figuras_descritiva/Fig1_N2.png>
+
+Overfull \hbox (7.29152pt too wide) in paragraph at lines 2527--2532
+ [][] 
+ []
+
+File: ./figuras_descritiva/Fig2_N2.png Graphic file (type bmp)
+<./figuras_descritiva/Fig2_N2.png>
+
+Overfull \hbox (7.29152pt too wide) in paragraph at lines 2543--2548
+ [][] 
+ []
+
+File: ./figuras_descritiva/Fig3_N2.png Graphic file (type bmp)
+<./figuras_descritiva/Fig3_N2.png>
+
+Overfull \hbox (7.29152pt too wide) in paragraph at lines 2559--2564
+ [][] 
+ []
+
+File: ./figuras_descritiva/Fig4_N2.png Graphic file (type bmp)
+<./figuras_descritiva/Fig4_N2.png>
+
+Overfull \hbox (7.29152pt too wide) in paragraph at lines 2575--2580
+ [][] 
+ []
+
+[46]
+File: ./figuras_descritiva/Curtose.png Graphic file (type bmp)
+<./figuras_descritiva/Curtose.png>
+[47] [48]
+Overfull \hbox (0.10857pt too wide) in alignment at lines 2742--2760
+ [] [] [] [] [] [] [] 
+ []
+
+! TeX capacity exceeded, sorry [input stack size=10000].
+<to be read again> 
+                   {
+l.2762 \begin{longtable}[]{@{}l@{}}
+                                    
+Here is how much of TeX's memory you used:
+ 41616 strings out of 478775
+ 900694 string characters out of 5849272
+ 1916985 words of memory out of 5000000
+ 61042 multiletter control sequences out of 15000+600000
+ 518832 words of font info for 84 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 10000i,10n,19993p,10600b,1183s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+Output written on index.pdf (48 pages).
