@@ -14,19 +14,12 @@ book:
     - intro.qmd
     - manipulacao_dados.qmd
     - tabulacao.qmd
+    - descritiva.qmd
     - supervisionada.qmd
     - naosupervisionado.qmd
   appendices: 
     - href: tutorialr.qmd
       text: Tutorial de R
-    - href: instalar.qmd
-      text: Instalação R
-    - href: instalarstudio.qmd
-      text: Instalação RStudio 
-    - href: comecando_rstudio.qmd
-      text: Primeiros passos RStudio
-    - href: comecando_r.qmd
-      text: Primeiros passos R
     - href: references.qmd
       text: Referências 
   

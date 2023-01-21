@@ -291,7 +291,9 @@ Podemos utilizar como apoio gráfico e auxílio na tomada de decisão para o nú
 #variancia explicada por cada componente
 var_explicada = dados.pca.padr$sdev^2 / sum(dados.pca.padr$sdev^2)
 library(ggplot2)
+```
 
+```{r,warning=FALSE, eval=FALSE}
 qplot(c(1:9), var_explicada) + 
   geom_line() + 
   xlab("Principal Componente") + 
@@ -300,6 +302,8 @@ qplot(c(1:9), var_explicada) +
   ylim(0, 1) + 
   scale_x_discrete(limits=c(1:9))
 ```
+
+![](figuras_naosupervisionado/unnamed-chunk-4-1.png)
 
 Podemos por meio, tanto do *scree plot*, quanto pelo valor da variância explicada acumulada, selecionar $d= 3$ componentes para reter, pela queda de 2 para 3 ser significante, enquanto a de 3 para 4 nem tanto. Reduzindo número de variáveis a 3.
 
@@ -344,7 +348,7 @@ $$
 Todas essas distâncias aqui citadas podem ser acessadas pela função `dist()` do *R*, alterando o parãmetro `method` para a distância desejada, da seguinte forma :
 
 ```{r include=FALSE,warning=FALSE}
-dados <- readRDS("~/LIVRO OOBR/dados/dados_covid[LIMPO].rds")
+dados <- readRDS("dados/dados_covid[LIMPO].rds")
 ```
 
 ```{r,warning=FALSE}
@@ -409,10 +413,15 @@ Os resultados do agrupamento de ligação simples podem ser exibidos graficament
 hc <-  db.dist |> 
   hclust( method = "single") 
 library(factoextra)
+```
+
+```{r,warning=FALSE, eval=FALSE}
 fviz_dend(hc, cex = 0.5,
           main = "Dendrogram - Simples",
           xlab = "observacoes", ylab = "distancia", sub = "")
 ```
+
+![](figuras_naosupervisionado/unnamed-chunk-7-1.png)
 
 **Ligação Completa** : Funciona de maneira parecida com a ligação simples, uniremos os grupos com menor distância entre sí até que reste apenas um único grupo. Porém, as distâncias entre as variáveis unidas, digamos *X* e *Y*, das demais variáveis *W* será definida como:
 
@@ -458,10 +467,15 @@ Observe agora o dendrograma para ligação completa com 10 observações.
 hc <-  db.dist |> 
   hclust( method = "complete") 
 library(factoextra)
+```
+
+```{r,warning=FALSE, eval=FALSE}
 fviz_dend(hc, cex = 0.5,
           main = "Dendrogram - Completa",
           xlab = "observacoes", ylab = "distancia", sub = "")
 ```
+
+![](figuras_naosupervisionado/unnamed-chunk-8-1.png)
 
 **Ligação Média**: A ligação média trata a distância entre dois clusters como a distância média entre todos os pares de itens onde um membro de um par pertence a cada cluster. Considere o grupo {XY} e o grupo {W}, e $N_w$ como sendo número de elementos em {W}, e $N_{XY}$ número de elementos em {XY}, então:
 
@@ -501,10 +515,15 @@ $$
 hc <-  db.dist |> 
   hclust( method = "average") 
 library(factoextra)
+```
+
+```{r,warning=FALSE, eval=FALSE}
 fviz_dend(hc, cex = 0.5,
           main = "Dendrogram - Média",
           xlab = "observacoes", ylab = "distancia", sub = "")
 ```
+
+![](figuras_naosupervisionado/unnamed-chunk-9-1.png)
 
 **Método Ward de clusterização** : O método de ward se baseia na minimização da "perda de informação" ao juntar dois grupos. É tido como perda de informação o crescimento da soma dos quadrados dos erros, $SQE$. Suponha o grupo {W}, a $SQE_W$ pode ser descrita como a soma dos quadrados das distâncias de cada item do grupo para a média do grupo. Definindo $SQE$ como a soma dos $SQE_i$, onde $i$ representa cada um dos $N$ grupos. Em cada instância do processo é realizado a junção de todos os possiveis pares de grupos, optamos pela união que obtiver o menor incremento da $SQE$. Note que no passo 0 essa soma é equivalente a 0, considerando que para cada $SQE_i$, com apenas uma observação por cluster, a média será a própria observação. Enquanto que ao considerar o grupo final com todas as observações é possível obter a $SQE$ por:
 
@@ -518,11 +537,16 @@ Onde $X_j$ representa a j-ésima observação do grupo.
 hc <-  db.dist |> 
   hclust( method = "ward.D2") 
 library(factoextra)
+```
+
+```{r,warning=FALSE, eval=FALSE}
 fviz_dend(hc, cex = 0.5,
           main = "Dendrogram - Ward",
           xlab = "observacoes", ylab = "distancia", sub = "")
 
 ```
+
+![](figuras_naosupervisionado/unnamed-chunk-10-1.png)
 
 #### Algumas conclusões
 
@@ -534,19 +558,18 @@ Dentro desse conjunto de métodos iremos trabalhar com o mais usual e conhecido,
 
 #### K-Médias.
 
-K-médias é um método simples de particionamento, onde é necessário estabelecer um número $k$ de grupos previamente a separação das variáveis. Definindo um número inicial de centróides, podendo esses ser observações do próprio conjunto de dados ou coordenadas aleatórias, é realizada a divisão do conjunto de dados, sendo cada observação anexada ao centro de menor distância, ou mais próximo. Com base nesse novo grupo criado, é determinado o nomo ponto central, que passa a ser a média do grupo. Baseado nesses novos pontos realizamos os passos anteriores por um número $N$ de vezes até que não se tenha mais alteração na posição dos centróides.
-O resultado do processo são grupos heterogêneos entre sí com variáveis homogêneas entre sí, tendo a menor variância interna possível e a maior variação externa possível.
-O núemero de iterações do processo pode também ser pré estabelecido, considerando o custo computacional para bancos de dados grandes, é inviável a realização do processo até a falta de alteração dos clusters.
+K-médias é um método simples de particionamento, onde é necessário estabelecer um número $k$ de grupos previamente a separação das variáveis. Definindo um número inicial de centróides, podendo esses ser observações do próprio conjunto de dados ou coordenadas aleatórias, é realizada a divisão do conjunto de dados, sendo cada observação anexada ao centro de menor distância, ou mais próximo. Com base nesse novo grupo criado, é determinado o nomo ponto central, que passa a ser a média do grupo. Baseado nesses novos pontos realizamos os passos anteriores por um número $N$ de vezes até que não se tenha mais alteração na posição dos centróides. O resultado do processo são grupos heterogêneos entre sí com variáveis homogêneas entre sí, tendo a menor variância interna possível e a maior variação externa possível. O núemero de iterações do processo pode também ser pré estabelecido, considerando o custo computacional para bancos de dados grandes, é inviável a realização do processo até a falta de alteração dos clusters.
 
 Exemplo:
 
-Suponha os seguintes dados para 20 variáveis, e suponha que vamos fazer inicialmente para $k=3$ grupos. 
+Suponha os seguintes dados para 20 variáveis, e suponha que vamos fazer inicialmente para $k=3$ grupos.
 
 ```{r,echo=FALSE,warning=FALSE}
 df <- dados[1:40, c('idade_anos','sem_pri')]
 df.kmeans <- df |> kmeans(centers = 3,iter.max = 1)
 df |> knitr::kable(row.names = T)
 ```
+
 Suponha que os clusters são tidos inicialmente nas cordenadas:
 
 ```{r,echo =FALSE}
@@ -564,7 +587,6 @@ df_aux |> knitr::kable(row.names = T)
 Com base nesses novos grupos definimos então o novo centróide como sendo a média das variáveis de cada grupo, ou seja:
 
 ```{r,echo=FALSE}
-
 idade_anos <-aggregate(df_aux$idade_anos, list(df_aux$Centróide), FUN=mean)
 sem_pri<-aggregate(df_aux$sem_pri, list(df_aux$Centróide), FUN=mean)
 idade_anos$sem_pri <- sem_pri$x
@@ -572,44 +594,54 @@ colnames(idade_anos) <- c('centroide','idade_anos','sem_pri')
 idade_anos |> knitr::kable()
 ```
 
-Agregando cada variável a seu novo grupo e seguindo o processo até o número de iterações pré definidas ou até que não tenha mais alterações nas coordenadas dos centros de cada _cluster_.
+Agregando cada variável a seu novo grupo e seguindo o processo até o número de iterações pré definidas ou até que não tenha mais alterações nas coordenadas dos centros de cada *cluster*.
 
-No `R` base já está incluso uma função para o método _k-médias_, `kmeans()`, que pode ser implementado de maneira simples. considere o banco já discutido
+No `R` base já está incluso uma função para o método *k-médias*, `kmeans()`, que pode ser implementado de maneira simples. considere o banco já discutido
 
 ```{r}
 kmeans.df <- df |>
   kmeans(centers = 3, iter.max = 300)
 kmeans.df
 ```
-De forma simples podemos identificar os centros e em qual cada uma das variáveis foi atribuida após as $N$ iterações. Identificamos também a variância entre _clusters_, bem como a variância total e entre as variáveis de cada grupo. Essa variância se torna importânte na identificação do valor $k$ estabelecido.
+
+De forma simples podemos identificar os centros e em qual cada uma das variáveis foi atribuida após as $N$ iterações. Identificamos também a variância entre *clusters*, bem como a variância total e entre as variáveis de cada grupo. Essa variância se torna importânte na identificação do valor $k$ estabelecido.
 
 ```{r}
 dados_grupos <- kmeans.df |> broom::augment(df)
 cent <- kmeans.df$centers
+```
+
+```{r, eval=FALSE}
 dados_grupos |> 
   ggplot(aes(x = idade_anos, y = sem_pri,col = .cluster)) +
   geom_point() +
   geom_point(aes(x = cent[1,1], y = cent[1,2]), color = "black", size = 3)+
   geom_point(aes(x = cent[2,1], y = cent[2,2]), color = "black", size = 3)+
   geom_point(aes(x = cent[3,1], y = cent[3,2]), color = "black", size = 3)
+```
+
+![](figuras_naosupervisionado/unnamed-chunk-16-1.png)
+
+```{r}
 kmeans.df
 ```
 
 #### Número Ideal de Grupos
 
-Uma das formas já discutidas aqui sobre seleção do número ideal de $k$ grupos é a pré utilização de um método hierárquico e análise de seu dendrograma. Porém, retomando os assuntos apresentados quando foi discutido _PCA_, podemos utilizar o _scree plot_ da variação total como metodologia de definição do número ideal de clusters para o algorítmo.
-A utilização é realizada da mesma maneira, é feita a identificação do número $k$ que sofra grande decréscimo da soma da variação dentro dos _clusters_ para um número $k-1$ e um pequeno em comparação com $k+1$. A variação total é dada como:
+Uma das formas já discutidas aqui sobre seleção do número ideal de $k$ grupos é a pré utilização de um método hierárquico e análise de seu dendrograma. Porém, retomando os assuntos apresentados quando foi discutido *PCA*, podemos utilizar o *scree plot* da variação total como metodologia de definição do número ideal de clusters para o algorítmo. A utilização é realizada da mesma maneira, é feita a identificação do número $k$ que sofra grande decréscimo da soma da variação dentro dos *clusters* para um número $k-1$ e um pequeno em comparação com $k+1$. A variação total é dada como:
 
 $$
 \sum^k_{i=1}\sum_{j\in C_i}d^2(x_j,c_i)
-$$
-Sendo $C_i$ centro do i-ésimo grupo e $x_j$ a j-ésima variável do i-ésimo grupo. A função de distância mais usual é a euclidiana discutida anteriormente.
+$$ Sendo $C_i$ centro do i-ésimo grupo e $x_j$ a j-ésima variável do i-ésimo grupo. A função de distância mais usual é a euclidiana discutida anteriormente.
 
 ```{r}
 var_totais <- vector()
 for(i in 1:10){
   var_totais[i] <- (df |> kmeans(centers = i, iter.max = 400))$tot.withinss
 }
+```
+
+```{r, eval=FALSE}
 qplot(1:10, var_totais, geom = "line")
 qplot(c(1:10), var_totais) + 
   geom_line() + 
@@ -619,12 +651,15 @@ qplot(c(1:10), var_totais) +
   scale_x_discrete(limits=c(1:10))
 ```
 
-Podemos definir a partir disso possíveis números ideais como 3, 4 ou até mesmo 6. 
+![](figuras_naosupervisionado/unnamed-chunk-17-1.png)
+
+![](figuras_naosupervisionado/unnamed-chunk-17-2.png)
+
+Podemos definir a partir disso possíveis números ideais como 3, 4 ou até mesmo 6.
 
 #### Algumas conclusões
 
-Para definirmos um modelo como sendo ótimo para aplicação, é necessário defir alguns parâmetros para determinar a qualidade de um modelo ou método. O _k-médias_ por exemplo é um algoritmo muito sucetível a _outliers_, dados fora do padrão encontrado no banco de dados, que podem acabar por deixar de agrupar uma determinada variável ou simplesmente formar um grupo amais, sem que haja necessidade.
-Outro fator que é necessário manter a atenção é a determinação do formato do cluster. Muitos dos algoritmos consideram um formato esférico ou circular para as variáveis, veja o exemplo:
+Para definirmos um modelo como sendo ótimo para aplicação, é necessário defir alguns parâmetros para determinar a qualidade de um modelo ou método. O *k-médias* por exemplo é um algoritmo muito sucetível a *outliers*, dados fora do padrão encontrado no banco de dados, que podem acabar por deixar de agrupar uma determinada variável ou simplesmente formar um grupo amais, sem que haja necessidade. Outro fator que é necessário manter a atenção é a determinação do formato do cluster. Muitos dos algoritmos consideram um formato esférico ou circular para as variáveis, veja o exemplo:
 
 ```{r}
 dados_circulo <- data.frame(
@@ -632,20 +667,33 @@ dados_circulo <- data.frame(
   Y = runif(5000, -1, 1)
 ) |>
   dplyr::filter(X^2 + Y^2 <= 0.2 | (X^2 + Y^2 <= 0.8 & X^2 + Y^2 >= 0.6))
+```
 
+```{r, eval=FALSE}
 qplot(dados_circulo$X, dados_circulo$Y)
 ```
-É notável como o agrupamento deve ser realizando simplesmente olhando para o gráfico proposto, porém, algoritmos como _k-médias_ não pensam da mesma forma,
+
+![](figuras_naosupervisionado/unnamed-chunk-18-1.png)
+
+É notável como o agrupamento deve ser realizando simplesmente olhando para o gráfico proposto, porém, algoritmos como *k-médias* não pensam da mesma forma,
 
 ```{r}
 dados_circulo.km <- dados_circulo |> kmeans(centers = 2)
 dados_circulo <- dados_circulo.km |> broom::augment(dados_circulo)
 cent <- dados_circulo.km$centers
+```
+
+```{r, eval=FALSE}
 dados_circulo |> 
   ggplot(aes(x = X, y = Y,col = .cluster)) +
   geom_point() +
   geom_point(aes(x = cent[1,1], y = cent[1,2]), color = "black", size = 3)+
   geom_point(aes(x = cent[2,1], y = cent[2,2]), color = "black", size = 3)
+```
+
+![](figuras_naosupervisionado/unnamed-chunk-19-1.png)
+
+```{r}
 kmeans.df
 ```
 
@@ -654,11 +702,14 @@ kmeans.df
 ```{r}
 dados_circulo.h <- hcut(dados_circulo[,1:2], k = 2, hc_method = "single")
 d_circulo.h <- cbind(dados_circulo[,1:2],cluster=dados_circulo.h$cluster)
+```
+
+```{r, eval=FALSE}
 d_circulo.h |> 
   ggplot(aes(x = X, y = Y,col = cluster)) +
   geom_point()
 ```
 
-Os métodos hierárquicos apresentados no entanto, por utilizarem  da distância de uma variável a outra são limitados a utilização de banco de dados numéricos, o que nem sempre é o encontrado nos problemas reais, é necessário optar nesse caso por métodos e algoritmos que consigam fazer a distinção mesmo na presença de variáveis categóricas. 
-Fator relevante para a escolha do melhor algoritmo é a capacidade de lidar com um grande volume de dados. No _k-médias_ temos a opção por exemplo de pré definirmos o número de iterações. Considere um grupo com milhões de variáveis, ao utilizar um método de ligação simples hierárquico faremos aproximadamente um milhão de ligações para depois identificar o número ideal de grupos, caso esse não seja conhecido (Caso mais comum).
-O ideal então é a análise exploratória de seus dados para com base nos conhecimentos sobre os diferentes tipos de métodos, saber qual será o de melhor aplicação para o determinado problema. Nada o impede de aplicar mais de um método e após sua aplicação identificar qual foi o modelo ótimo para o problema.
+![](figuras_naosupervisionado/unnamed-chunk-20-1.png)
+
+Os métodos hierárquicos apresentados no entanto, por utilizarem da distância de uma variável a outra são limitados a utilização de banco de dados numéricos, o que nem sempre é o encontrado nos problemas reais, é necessário optar nesse caso por métodos e algoritmos que consigam fazer a distinção mesmo na presença de variáveis categóricas. Fator relevante para a escolha do melhor algoritmo é a capacidade de lidar com um grande volume de dados. No *k-médias* temos a opção por exemplo de pré definirmos o número de iterações. Considere um grupo com milhões de variáveis, ao utilizar um método de ligação simples hierárquico faremos aproximadamente um milhão de ligações para depois identificar o número ideal de grupos, caso esse não seja conhecido (Caso mais comum). O ideal então é a análise exploratória de seus dados para com base nos conhecimentos sobre os diferentes tipos de métodos, saber qual será o de melhor aplicação para o determinado problema. Nada o impede de aplicar mais de um método e após sua aplicação identificar qual foi o modelo ótimo para o problema.

@@ -46,7 +46,7 @@ Fazemos isso de forma a facilitar nossa análise, sendo cada linha um indíviduo
 Assim como discutido, podemos obter nossas bases de dados de diversas fontes, como planilhas excel, arquivos .csv, bases SQL, ou até mesmo criá-las no nosso próprio *R script* com a função `data.frame()` como já apresentado. Por ser mais intuitivo e mais utilizado no dia a dia, vamos tomar o excel para exemplificar todo o processo. Você irá notar que o processo é realizado de forma bem simples.
 
 ```{r excel1, echo=FALSE, fig.cap="Tabulação das variáveis no excel", out.width = '100%'}
-knitr::include_graphics("figures/excel1.png")
+knitr::include_graphics("figuras_tabulacao/excel1.png")
 ```
 
 Cada uma das células receberá um valor *x* referente a alguma característica indicada pela coluna e um indivíduo representado pela linha, em nosso caso temos 3 características para cada uma das 4 observações.
@@ -60,13 +60,13 @@ A forma como tabulamos nossos dados pode vir a ser um facilitar ou empecilho em 
 Outro problema é quando trabalhamos com dados que possas vir a ter mais de uma resposta. Por exemplo: Quais sintomas estava sentindo? O melhor a se fazer nesse caso é criar uma coluna para cada um dos possíveis sintomas.
 
 ```{r excel2, echo=FALSE, fig.cap="Mais de uma opção de escolha na variável", out.width = '100%'}
-knitr::include_graphics("figures/excel2.png")
+knitr::include_graphics("figuras_tabulacao/excel2.png")
 ```
 
 Uma outra forma seria:
 
 ```{r excel3, echo=FALSE, fig.cap="Mais de uma opção de escolha na variável, outra forma", out.width = '100%'}
-knitr::include_graphics("figures/excel3.png")
+knitr::include_graphics("figuras_tabulacao/excel3.png")
 ```
 
 Devemos lembrar sempre de anexar um `ID` ou forma de identificação única para cada uma das observações. É possível criar uma ou trabalhar com alguma já existente, um exemplo de uma já existente é o próprio CPF ou RG quando trabalhamos com pessoas.
