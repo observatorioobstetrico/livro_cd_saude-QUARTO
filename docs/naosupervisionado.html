@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Ciência de Dados Aplicada à Saúde Materno-Infantil - 6&nbsp; Aprendizado não supervisionado</title>
+<title>Ciência de Dados Aplicada à Saúde Materno-Infantil - 7&nbsp; Aprendizado não supervisionado</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -153,7 +153,7 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Aprendizado não supervisionado</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Aprendizado não supervisionado</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -208,12 +208,17 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./supervisionada.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></a>
+  <a href="./estimacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estimação</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./naosupervisionado.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Aprendizado não supervisionado</span></a>
+  <a href="./supervisionada.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./naosupervisionado.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Aprendizado não supervisionado</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -245,18 +250,18 @@ div.csl-indent {
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#alguns-conceitos-básicos-de-algebra" id="toc-alguns-conceitos-básicos-de-algebra" class="nav-link active" data-scroll-target="#alguns-conceitos-básicos-de-algebra"><span class="toc-section-number">6.1</span>  Alguns conceitos básicos de algebra</a>
+  <li><a href="#alguns-conceitos-básicos-de-algebra" id="toc-alguns-conceitos-básicos-de-algebra" class="nav-link active" data-scroll-target="#alguns-conceitos-básicos-de-algebra"><span class="toc-section-number">7.1</span>  Alguns conceitos básicos de algebra</a>
   <ul class="collapse">
-  <li><a href="#definições-importantes" id="toc-definições-importantes" class="nav-link" data-scroll-target="#definições-importantes"><span class="toc-section-number">6.1.1</span>  Definições importantes</a></li>
-  <li><a href="#decomposição-espectral-de-matrizes-de-correlação-e-covariância-em-seus-autovetores-e-autovalores-normalizados." id="toc-decomposição-espectral-de-matrizes-de-correlação-e-covariância-em-seus-autovetores-e-autovalores-normalizados." class="nav-link" data-scroll-target="#decomposição-espectral-de-matrizes-de-correlação-e-covariância-em-seus-autovetores-e-autovalores-normalizados."><span class="toc-section-number">6.1.2</span>  Decomposição Espectral de Matrizes de correlação e Covariância em seus Autovetores e Autovalores normalizados.</a></li>
+  <li><a href="#definições-importantes" id="toc-definições-importantes" class="nav-link" data-scroll-target="#definições-importantes"><span class="toc-section-number">7.1.1</span>  Definições importantes</a></li>
+  <li><a href="#decomposição-espectral-de-matrizes-de-correlação-e-covariância-em-seus-autovetores-e-autovalores-normalizados." id="toc-decomposição-espectral-de-matrizes-de-correlação-e-covariância-em-seus-autovetores-e-autovalores-normalizados." class="nav-link" data-scroll-target="#decomposição-espectral-de-matrizes-de-correlação-e-covariância-em-seus-autovetores-e-autovalores-normalizados."><span class="toc-section-number">7.1.2</span>  Decomposição Espectral de Matrizes de correlação e Covariância em seus Autovetores e Autovalores normalizados.</a></li>
   </ul></li>
-  <li><a href="#análise-de-componentes-principais-pca" id="toc-análise-de-componentes-principais-pca" class="nav-link" data-scroll-target="#análise-de-componentes-principais-pca"><span class="toc-section-number">6.2</span>  Análise de Componentes Principais (PCA)</a>
+  <li><a href="#análise-de-componentes-principais-pca" id="toc-análise-de-componentes-principais-pca" class="nav-link" data-scroll-target="#análise-de-componentes-principais-pca"><span class="toc-section-number">7.2</span>  Análise de Componentes Principais (PCA)</a>
   <ul class="collapse">
-  <li><a href="#exemplo." id="toc-exemplo." class="nav-link" data-scroll-target="#exemplo."><span class="toc-section-number">6.2.1</span>  Exemplo.</a></li>
-  <li><a href="#número-de-componentes-principais" id="toc-número-de-componentes-principais" class="nav-link" data-scroll-target="#número-de-componentes-principais"><span class="toc-section-number">6.2.2</span>  Número de Componentes Principais</a></li>
-  <li><a href="#medidas-de-dissimilaridade" id="toc-medidas-de-dissimilaridade" class="nav-link" data-scroll-target="#medidas-de-dissimilaridade"><span class="toc-section-number">6.2.3</span>  Medidas de dissimilaridade</a></li>
-  <li><a href="#técnicas-hierárquicas" id="toc-técnicas-hierárquicas" class="nav-link" data-scroll-target="#técnicas-hierárquicas"><span class="toc-section-number">6.2.4</span>  Técnicas Hierárquicas</a></li>
-  <li><a href="#métodos-de-agrupamentos-não-hierárquicos" id="toc-métodos-de-agrupamentos-não-hierárquicos" class="nav-link" data-scroll-target="#métodos-de-agrupamentos-não-hierárquicos"><span class="toc-section-number">6.2.5</span>  Métodos de Agrupamentos Não Hierárquicos</a></li>
+  <li><a href="#exemplo." id="toc-exemplo." class="nav-link" data-scroll-target="#exemplo."><span class="toc-section-number">7.2.1</span>  Exemplo.</a></li>
+  <li><a href="#número-de-componentes-principais" id="toc-número-de-componentes-principais" class="nav-link" data-scroll-target="#número-de-componentes-principais"><span class="toc-section-number">7.2.2</span>  Número de Componentes Principais</a></li>
+  <li><a href="#medidas-de-dissimilaridade" id="toc-medidas-de-dissimilaridade" class="nav-link" data-scroll-target="#medidas-de-dissimilaridade"><span class="toc-section-number">7.2.3</span>  Medidas de dissimilaridade</a></li>
+  <li><a href="#técnicas-hierárquicas" id="toc-técnicas-hierárquicas" class="nav-link" data-scroll-target="#técnicas-hierárquicas"><span class="toc-section-number">7.2.4</span>  Técnicas Hierárquicas</a></li>
+  <li><a href="#métodos-de-agrupamentos-não-hierárquicos" id="toc-métodos-de-agrupamentos-não-hierárquicos" class="nav-link" data-scroll-target="#métodos-de-agrupamentos-não-hierárquicos"><span class="toc-section-number">7.2.5</span>  Métodos de Agrupamentos Não Hierárquicos</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -266,7 +271,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Aprendizado não supervisionado</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Aprendizado não supervisionado</span></h1>
 </div>
 
 
@@ -282,11 +287,11 @@ div.csl-indent {
 </header>
 
 <p>Aprendizado não supervisionado é o ramo da aprendizagem de maquina, ou aprendizado estatístico, que trabalho majoritariamente com o agrupamento de variáveis com ou sem o conhecimento prévio de como essas variáveis estão subdivididas na natureza, ou ainda criar um subdivisão para essas com base nas características em estudo, como por exemplo fatores fatores socioeconômicos. Nesse texto falaremos de forma explicativa e aplicável sobre análise de componentes principais e métodos de agrupamentos, hierárquicos e não hierárquicos, com suas devidas funções na linguagem de programação proposta.</p>
-<section id="alguns-conceitos-básicos-de-algebra" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="alguns-conceitos-básicos-de-algebra"><span class="header-section-number">6.1</span> Alguns conceitos básicos de algebra</h2>
-<p>Para melhor introduzir o campo do aprendizado não supervisionado, alguns conceitos de álgebra são necessários para compreender o que se passa por trás de cada algoritmo da análise de dados multivariada. Vamos introduzir com vetores e matriz, seguindo com decomposição espectral para então darmos inicio a área da estatística multivariada ou aprendizado não supervisionado. Não é objetivo desse livro demonstrar conceitos algébricos e nem se aprofundar demais no assunto <span class="citation" data-cites="anton2001algebra">Johnson, Wichern, et al. (<a href="references.html#ref-johnson2002applied" role="doc-biblioref">2002</a>)</span>.</p>
-<section id="definições-importantes" class="level3" data-number="6.1.1">
-<h3 data-number="6.1.1" class="anchored" data-anchor-id="definições-importantes"><span class="header-section-number">6.1.1</span> Definições importantes</h3>
+<section id="alguns-conceitos-básicos-de-algebra" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="alguns-conceitos-básicos-de-algebra"><span class="header-section-number">7.1</span> Alguns conceitos básicos de algebra</h2>
+<p>Para melhor introduzir o campo do aprendizado não supervisionado, alguns conceitos de álgebra são necessários para compreender o que se passa por trás de cada algoritmo da análise de dados multivariada. Vamos introduzir com vetores e matriz, seguindo com decomposição espectral para então darmos inicio a área da estatística multivariada ou aprendizado não supervisionado. Não é objetivo desse livro demonstrar conceitos algébricos e nem se aprofundar demais no assunto <span class="citation" data-cites="anton2001algebra">Johnson, Wichern, et al. (<a href="#ref-johnson2002applied" role="doc-biblioref">2002</a>)</span>.</p>
+<section id="definições-importantes" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="definições-importantes"><span class="header-section-number">7.1.1</span> Definições importantes</h3>
 <p><strong>Vetor Aleatório</strong> : Seja X um vetor contendo <em>p</em> componentes, onde cada componente é uma variável aleatória, isto é, <span class="math inline">\(X_i\)</span> é uma variável aleatória, <span class="math inline">\(\forall\quad i =1,2,...,p\)</span>. Então <em>X</em> é chamado de vetor aleatório e é denotado por:</p>
 <p><span class="math display">\[
 \begin{align}
@@ -344,8 +349,8 @@ P_{p\times p} = \begin{bmatrix}
 \Sigma e = \lambda e
 \]</span></p>
 <p>com algum escalar <span class="math inline">\(\lambda\)</span>. O escalar <span class="math inline">\(\lambda\)</span> é denominado de <em>autovalor</em> de <span class="math inline">\(\Sigma\)</span>, e dizemos que <span class="math inline">\(e\)</span> é um <em>autovetor associado a</em> <span class="math inline">\(\lambda\)</span>. Por <span class="math inline">\(\Sigma\)</span> ser uma matriz não negativa definida seus autovalores <span class="math inline">\(\lambda_i\)</span> associados tambem serão não negativos. Os autovetores e autovalores serão necessários para a análise de componentes principais mais a frente abordada.</p>
-<section id="equação-característica" class="level4" data-number="6.1.1.1">
-<h4 data-number="6.1.1.1" class="anchored" data-anchor-id="equação-característica"><span class="header-section-number">6.1.1.1</span> Equação característica</h4>
+<section id="equação-característica" class="level4" data-number="7.1.1.1">
+<h4 data-number="7.1.1.1" class="anchored" data-anchor-id="equação-característica"><span class="header-section-number">7.1.1.1</span> Equação característica</h4>
 <p>Ainda é necessário uma forma de encontrar os autovetores e autovalores associados a uma matriz <span class="math inline">\(\Sigma\)</span>. Se <span class="math inline">\(\Sigma\)</span> for uma matriz quadrada, então <span class="math inline">\(\lambda\)</span> se, e somente se, <span class="math inline">\(\lambda\)</span> satisfaz a equação</p>
 <p><span class="math display">\[
 det(\lambda I - \Sigma) = 0
@@ -408,8 +413,8 @@ e_{ip}
 \]</span></p>
 </section>
 </section>
-<section id="decomposição-espectral-de-matrizes-de-correlação-e-covariância-em-seus-autovetores-e-autovalores-normalizados." class="level3" data-number="6.1.2">
-<h3 data-number="6.1.2" class="anchored" data-anchor-id="decomposição-espectral-de-matrizes-de-correlação-e-covariância-em-seus-autovetores-e-autovalores-normalizados."><span class="header-section-number">6.1.2</span> Decomposição Espectral de Matrizes de correlação e Covariância em seus Autovetores e Autovalores normalizados.</h3>
+<section id="decomposição-espectral-de-matrizes-de-correlação-e-covariância-em-seus-autovetores-e-autovalores-normalizados." class="level3" data-number="7.1.2">
+<h3 data-number="7.1.2" class="anchored" data-anchor-id="decomposição-espectral-de-matrizes-de-correlação-e-covariância-em-seus-autovetores-e-autovalores-normalizados."><span class="header-section-number">7.1.2</span> Decomposição Espectral de Matrizes de correlação e Covariância em seus Autovetores e Autovalores normalizados.</h3>
 <p>O teorema da decomposição espectral é de extrema importância em álgebra matricial e estatística multivariada, ele relaciona a matriz com seus autovalores e autovetores normalizados.</p>
 <p>Suponha <span class="math inline">\(\Sigma\)</span> a matriz de covariâncias. Então existe uma matriz ortogonal <span class="math inline">\(O\)</span>(matriz no qual sua transposta é igual a sua inversa) tal que,</p>
 <p><span class="math display">\[
@@ -453,8 +458,8 @@ $vectors
 </div>
 </section>
 </section>
-<section id="análise-de-componentes-principais-pca" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="análise-de-componentes-principais-pca"><span class="header-section-number">6.2</span> Análise de Componentes Principais (PCA)</h2>
+<section id="análise-de-componentes-principais-pca" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="análise-de-componentes-principais-pca"><span class="header-section-number">7.2</span> Análise de Componentes Principais (PCA)</h2>
 <p>A análise de componentes principais se preocupa em conseguir explicar a variância e covariância de uma estrutura de variáveis através de algumas poucas combinações lineares. Tendo como principal objetivo dessa análise a redução de dimensionalidade e interpretação das relações. Essas combinações lineares são os componentes principais e são não correlacionadas entre sí. Quando assumimos que as variáveis originiais possuem distribuição normal, as componentes, além de não correlacionadas são normalmente distribuidas e idependentes. Os componentes principais são extraidos através da decomposição da matriz de covariância do vetor aleatório. Caso alguma trasnformação seja realizada nesse vetor, a decomposição será realizada na matriz de covariância do vetor transformado. Um caso muito utilizado, suponha que nossas variáveis estão em escalas muito diferentes, o PCA pode acabar por dar mais variabilidade a essa variável com escala superior, para isso então padronizamos o vetor. Utilizar a matriz de covariância do vetor transformado e a matriz de correlação do vetor originais são ações equivalentes nessa situação.</p>
 <p><strong>Definição</strong>: Seja <em>X</em> um vetor aleatório com <span class="math inline">\(\mu = E(X)\)</span> e <span class="math inline">\(\Sigma = Var(X)\)</span> e <span class="math inline">\((\lambda_i,e_i), i = 1,\dots,p\)</span> os pares de autovalores e autovetores normalizados associados de <span class="math inline">\(\Sigma\)</span>. Então,</p>
 <p><span class="math display">\[
@@ -480,7 +485,7 @@ Y_d
 <p><span class="math display">\[
 cov(Y_i,Y_j) = 0, \forall i \neq j \textrm{ e } Var(Y_i) = \lambda_i
 \]</span></p>
-<p>A prova desse resultado pode ser vista em <span class="citation" data-cites="johnson2002applied">(<a href="references.html#ref-johnson2002applied" role="doc-biblioref">Johnson, Wichern, et al. 2002, 5:432</a>)</span>.</p>
+<p>A prova desse resultado pode ser vista em <span class="citation" data-cites="johnson2002applied">(<a href="#ref-johnson2002applied" role="doc-biblioref">Johnson, Wichern, et al. 2002, 5:432</a>)</span>.</p>
 <p>Descrevemos a variância total da população como sendo o somatório de todos os autovalores <span class="math inline">\(\lambda\)</span>. A partir disso, podemos descrever a proporção da variância total explicada pela j-ésima componente como sendo:</p>
 <p><span class="math display">\[
 \frac{\lambda_j}{\sum_{i=1}^p \lambda_i} \qquad \forall j =1,\dots,p
@@ -491,8 +496,8 @@ cov(Y_i,Y_j) = 0, \forall i \neq j \textrm{ e } Var(Y_i) = \lambda_i
 \rho_{Y_i,X_j} = \frac{e_{ij}\sqrt{\lambda_i}}{\sigma_{jj}}, \quad \forall i,j=1,\dots p
 \]</span></p>
 <p>São os coeficientes de correlação entre a componente <span class="math inline">\(Y_i\)</span> e a variável <span class="math inline">\(X_j\)</span></p>
-<section id="exemplo." class="level3" data-number="6.2.1">
-<h3 data-number="6.2.1" class="anchored" data-anchor-id="exemplo."><span class="header-section-number">6.2.1</span> Exemplo.</h3>
+<section id="exemplo." class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="exemplo."><span class="header-section-number">7.2.1</span> Exemplo.</h3>
 <p>Para realmente entender a aplicabilidade da análise de componentes, vamos pegar um subconjunto do banco de dados mtcars, conjunto de dados no R base, consiste nas características de modelos de carros. Selecionaremos um subconjunto de colunas numéricas para conseguirmos trabalhar, considerando que PCA funciona melhor com variáveis numéricas. Há possibilidade de transformação de variáveis categoricas em variáveis <em>dummy</em>, porem o algoritmo não será tão preciso, também não sendo possível trabalhar com variáveis categóricas ordinais nesse caso.</p>
 <p>(deixei um exemplo com mtcars pois o banco de dados trabalhado no livro tem poucas variaveis numericas)</p>
 <div class="cell">
@@ -674,8 +679,8 @@ carb -0.20604210 -0.10832772 -0.32045892</code></pre>
 </div>
 <p>Da informação obtida por <code>print(dados.pca.padr)</code>, podemos identificar os <em>loadings</em> da análise. Os <em>loadings</em> podem ser definidos como os coeficientes da combinação linear das variáveis originais de onde as componentes principais são construidas. De um ponto de vista matemático os <em>loadings</em> são iguais às coordenadas das variáveis divididas pela raiz quadrada do autovalor associado ao componente. são úteis quando você deseja entender os resultados. Lembre-se de que cada nova variável Y é uma combinação linear de todas as variáveis. A matriz de <em>loadings</em> representa verticalmente quanto da variância de cada componente é explicada por cada variável original. Vemos por exemplo que, conforme <code>mpg</code> aumenta, a <code>PC1</code> tem um descrécimo. Os <em>loadings</em> são muito úteis na hora de nomear nossas componentes por essa relação que faz com cada uma das variáveis.</p>
 </section>
-<section id="número-de-componentes-principais" class="level3" data-number="6.2.2">
-<h3 data-number="6.2.2" class="anchored" data-anchor-id="número-de-componentes-principais"><span class="header-section-number">6.2.2</span> Número de Componentes Principais</h3>
+<section id="número-de-componentes-principais" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="número-de-componentes-principais"><span class="header-section-number">7.2.2</span> Número de Componentes Principais</h3>
 <p>Até agora foi descrito que podemos utilizar um número <span class="math inline">\(d &lt; p\)</span> de componentes principais que contenha uma explicabilidade aproximada dos dados originais, mas qual seria esse valor <span class="math inline">\(d\)</span>? Há um conjunto de técnicas para essa tomada de decisão, sendo uma delas por exemplo a proporção de variância acumulada total explicada pelas componentes <span class="math inline">\(Y_1,\dots,Y_p\)</span>:</p>
 <p><span class="math display">\[
 \frac{\sum^d_{j=1}\lambda_j}{\sum_{i=1}^p \lambda_i}
@@ -701,8 +706,8 @@ carb -0.20604210 -0.10832772 -0.32045892</code></pre>
 <p>##Métodos de Agrupamentos</p>
 <p>A análise de agrupamentos ou <em>clusterização</em>, tem como objetivo, agrupar indivíduos da população usando como base medidas de similaridade entre eles, formando grupos heterogêneos entre sí com homogenuidade entre indivíduos de mesmo <em>cluster</em>. Muito utilizado na classificação de tipos de clientes de mercado, usuários de aplicativos, ou até mesmo em áres como psicologia, para agrupamentos de perfis de personalidade. Outro exemplo pode ser visto no trabalho (colocar link mariana).</p>
 </section>
-<section id="medidas-de-dissimilaridade" class="level3" data-number="6.2.3">
-<h3 data-number="6.2.3" class="anchored" data-anchor-id="medidas-de-dissimilaridade"><span class="header-section-number">6.2.3</span> Medidas de dissimilaridade</h3>
+<section id="medidas-de-dissimilaridade" class="level3" data-number="7.2.3">
+<h3 data-number="7.2.3" class="anchored" data-anchor-id="medidas-de-dissimilaridade"><span class="header-section-number">7.2.3</span> Medidas de dissimilaridade</h3>
 <p>De forma mais intutitiva, essas medidas de dissimilaridade seriam formas de numerar o quão próximo ou distânte a característica de um indivíduo (Idade por exemplo), se aproxima da mesma característica de outro indivíduo da mesma população. Não possuimos uma única forma de medida. Aqui apresentaremos as mais conhecidas e mais trabalhadas. Não existe uma métrica melhor, a eficácia de uma medida dependerá do caso em que a mesma será aplicada. Suponha que para cada elemento amostral será obtido o vetor <span class="math inline">\(X = [X_{1},X_{2},\dots,X_{p}]'\)</span> de medidas, onde <span class="math inline">\(X_{i}\)</span> representa a medida da i-ésima característica para a unidade amostral.</p>
 <p><strong>Distância Euclidiana</strong>: Essa é provavelmente a mais conhecida e usada medida de distância. Ela simplesmente é a distância geométrica no espaço multidimensional. Considere o i-ésimo e o j-ésimo indivíduo:</p>
 <p><span class="math display">\[
@@ -755,11 +760,11 @@ d(X,Y) = \left(\sum^p_{i=1}|X_i - Y_i|^k\right)^\frac{1}{k}
 </div>
 <p>Consguindo a distância euclidiana entre cada uma das 10 primeiras observações para as características selecionadas.</p>
 </section>
-<section id="técnicas-hierárquicas" class="level3" data-number="6.2.4">
-<h3 data-number="6.2.4" class="anchored" data-anchor-id="técnicas-hierárquicas"><span class="header-section-number">6.2.4</span> Técnicas Hierárquicas</h3>
+<section id="técnicas-hierárquicas" class="level3" data-number="7.2.4">
+<h3 data-number="7.2.4" class="anchored" data-anchor-id="técnicas-hierárquicas"><span class="header-section-number">7.2.4</span> Técnicas Hierárquicas</h3>
 <p>Dentro da estatística multivariada dividimos frequêntemente as técnicas aglomerativas em dois tipos: hierárquicos e não hierárquicos, sendo as hierárquicas classificadas em aglomerativa e divisivas. Métodos hierárquicos são geralmente utilizados na análise exploratória afim de encontrar um número ótimo de <em>clusters</em> para o conjunto de variáveis, para as técnicas não hierárquicas é necessário um valor prévio de grupos.</p>
-<section id="técnicas-hierárquicas-aglomerativas" class="level4" data-number="6.2.4.1">
-<h4 data-number="6.2.4.1" class="anchored" data-anchor-id="técnicas-hierárquicas-aglomerativas"><span class="header-section-number">6.2.4.1</span> Técnicas Hierárquicas Aglomerativas</h4>
+<section id="técnicas-hierárquicas-aglomerativas" class="level4" data-number="7.2.4.1">
+<h4 data-number="7.2.4.1" class="anchored" data-anchor-id="técnicas-hierárquicas-aglomerativas"><span class="header-section-number">7.2.4.1</span> Técnicas Hierárquicas Aglomerativas</h4>
 <p>Considere cada observação como um grupo único, nos métodos aglomerativos vamos anexando cada grupo um ao outro em cada passo, usando suas medidas de similaridade para esse agrupamentos. Em cada instância do processo o par de grupos com a menor medida de dissimilaridade. Suponha a distância euclidiana por exemplo, em cada passo, verificaremos os <span class="math inline">\(p\)</span> grupos e anexamos o par com a menor distância euclidiana, seguindo para o próximo passo realizamos o mesmo com os <span class="math inline">\(p-1\)</span> grupos, até q sobre apenas 1 grupo com todas as observações. Seguindo o processo por <span class="math inline">\(p-1\)</span> passos.</p>
 <p><strong>Ligamento Simples</strong>: Assumindo que cada observação é um <em>cluster</em> incialmente, suponha as observações <em>X</em> e <em>Y</em> sendo as com menor distância, ou os vizinhos mais próximos, formando o novo cluster {XY}. A distância entre o grupo {XY} e os demais grupos, suponha <em>W</em>, é definida como:</p>
 <p><span class="math display">\[
@@ -909,16 +914,16 @@ SQE = \sum^N_{j=1}(X_j - \bar{X})'(X_j - \bar{X})
 </div>
 <p><img src="figuras_naosupervisionado/unnamed-chunk-10-1.png" class="img-fluid"></p>
 </section>
-<section id="algumas-conclusões" class="level4" data-number="6.2.4.2">
-<h4 data-number="6.2.4.2" class="anchored" data-anchor-id="algumas-conclusões"><span class="header-section-number">6.2.4.2</span> Algumas conclusões</h4>
+<section id="algumas-conclusões" class="level4" data-number="7.2.4.2">
+<h4 data-number="7.2.4.2" class="anchored" data-anchor-id="algumas-conclusões"><span class="header-section-number">7.2.4.2</span> Algumas conclusões</h4>
 <p>Os métodos hierárquicos são muito utilizados na exploração dos dados, bem como para pré definição do número de <em>clusters</em>, pois como veremos a seguir nos métodos não hierarquicos temos a necessidade de informar um número prévio de grupos. O dendograma é tido como principal forma de definição desses <span class="math inline">\(k\)</span> grupos. Para definir o número ideal de <em>clusters</em> vamos utilizar o exemplo do método Ward. Observe que a distância para união do grupo {5,6} e {2,3,4,8,10} é relativamente grande se comparada as outras junções, uma forma de definir então seria <span class="math inline">\(k = 3\)</span> grupos onde os grupos seriam, {1,7,9},{5,6} e {2,3,4,8,10} olhando o nível de fusão (distância) em que cada grupo precisou para se unir. Podemos então já utilizar <span class="math inline">\(k\)</span> aproximado de 3 para iniciarmos nossos métodos não hieráquicos como veremos a seguir.</p>
 </section>
 </section>
-<section id="métodos-de-agrupamentos-não-hierárquicos" class="level3" data-number="6.2.5">
-<h3 data-number="6.2.5" class="anchored" data-anchor-id="métodos-de-agrupamentos-não-hierárquicos"><span class="header-section-number">6.2.5</span> Métodos de Agrupamentos Não Hierárquicos</h3>
+<section id="métodos-de-agrupamentos-não-hierárquicos" class="level3" data-number="7.2.5">
+<h3 data-number="7.2.5" class="anchored" data-anchor-id="métodos-de-agrupamentos-não-hierárquicos"><span class="header-section-number">7.2.5</span> Métodos de Agrupamentos Não Hierárquicos</h3>
 <p>Dentro desse conjunto de métodos iremos trabalhar com o mais usual e conhecido, <em>k-médias</em>. Bem como dito, os métodos não hierárquicos precisam de um número pré definido de grupos <span class="math inline">\(k\)</span>, anexando cada observação a um grupo com base em <span class="math inline">\(k\)</span> centróides que serão definidos pelo algoritmo.</p>
-<section id="k-médias." class="level4" data-number="6.2.5.1">
-<h4 data-number="6.2.5.1" class="anchored" data-anchor-id="k-médias."><span class="header-section-number">6.2.5.1</span> K-Médias.</h4>
+<section id="k-médias." class="level4" data-number="7.2.5.1">
+<h4 data-number="7.2.5.1" class="anchored" data-anchor-id="k-médias."><span class="header-section-number">7.2.5.1</span> K-Médias.</h4>
 <p>K-médias é um método simples de particionamento, onde é necessário estabelecer um número <span class="math inline">\(k\)</span> de grupos previamente a separação das variáveis. Definindo um número inicial de centróides, podendo esses ser observações do próprio conjunto de dados ou coordenadas aleatórias, é realizada a divisão do conjunto de dados, sendo cada observação anexada ao centro de menor distância, ou mais próximo. Com base nesse novo grupo criado, é determinado o nomo ponto central, que passa a ser a média do grupo. Baseado nesses novos pontos realizamos os passos anteriores por um número <span class="math inline">\(N\)</span> de vezes até que não se tenha mais alteração na posição dos centróides. O resultado do processo são grupos heterogêneos entre sí com variáveis homogêneas entre sí, tendo a menor variância interna possível e a maior variação externa possível. O núemero de iterações do processo pode também ser pré estabelecido, considerando o custo computacional para bancos de dados grandes, é inviável a realização do processo até a falta de alteração dos clusters.</p>
 <p>Exemplo:</p>
 <p>Suponha os seguintes dados para 20 variáveis, e suponha que vamos fazer inicialmente para <span class="math inline">\(k=3\)</span> grupos.</p>
@@ -1151,18 +1156,18 @@ SQE = \sum^N_{j=1}(X_j - \bar{X})'(X_j - \bar{X})
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">1</td>
-<td style="text-align: right;">23</td>
-<td style="text-align: right;">27</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">28</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">2</td>
-<td style="text-align: right;">31</td>
-<td style="text-align: right;">43</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">23</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">3</td>
-<td style="text-align: right;">36</td>
-<td style="text-align: right;">25</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">44</td>
 </tr>
 </tbody>
 </table>
@@ -1191,13 +1196,13 @@ SQE = \sum^N_{j=1}(X_j - \bar{X})'(X_j - \bar{X})
 <td style="text-align: left;">2</td>
 <td style="text-align: right;">31</td>
 <td style="text-align: right;">26</td>
-<td style="text-align: left;">3</td>
+<td style="text-align: left;">1</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">3</td>
 <td style="text-align: right;">27</td>
 <td style="text-align: right;">28</td>
-<td style="text-align: left;">3</td>
+<td style="text-align: left;">1</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">4</td>
@@ -1209,19 +1214,19 @@ SQE = \sum^N_{j=1}(X_j - \bar{X})'(X_j - \bar{X})
 <td style="text-align: left;">5</td>
 <td style="text-align: right;">39</td>
 <td style="text-align: right;">39</td>
-<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">6</td>
 <td style="text-align: right;">34</td>
 <td style="text-align: right;">51</td>
-<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">7</td>
 <td style="text-align: right;">34</td>
 <td style="text-align: right;">21</td>
-<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">8</td>
@@ -1233,43 +1238,43 @@ SQE = \sum^N_{j=1}(X_j - \bar{X})'(X_j - \bar{X})
 <td style="text-align: left;">9</td>
 <td style="text-align: right;">44</td>
 <td style="text-align: right;">18</td>
-<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">10</td>
 <td style="text-align: right;">27</td>
 <td style="text-align: right;">40</td>
-<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">11</td>
 <td style="text-align: right;">28</td>
 <td style="text-align: right;">47</td>
-<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">12</td>
 <td style="text-align: right;">35</td>
 <td style="text-align: right;">50</td>
-<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">13</td>
 <td style="text-align: right;">37</td>
 <td style="text-align: right;">29</td>
-<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">14</td>
 <td style="text-align: right;">30</td>
 <td style="text-align: right;">29</td>
-<td style="text-align: left;">3</td>
+<td style="text-align: left;">1</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">15</td>
 <td style="text-align: right;">32</td>
 <td style="text-align: right;">45</td>
-<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">16</td>
@@ -1281,13 +1286,13 @@ SQE = \sum^N_{j=1}(X_j - \bar{X})'(X_j - \bar{X})
 <td style="text-align: left;">17</td>
 <td style="text-align: right;">44</td>
 <td style="text-align: right;">32</td>
-<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">18</td>
 <td style="text-align: right;">30</td>
 <td style="text-align: right;">42</td>
-<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">19</td>
@@ -1305,7 +1310,7 @@ SQE = \sum^N_{j=1}(X_j - \bar{X})'(X_j - \bar{X})
 <td style="text-align: left;">21</td>
 <td style="text-align: right;">31</td>
 <td style="text-align: right;">32</td>
-<td style="text-align: left;">3</td>
+<td style="text-align: left;">1</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">22</td>
@@ -1317,25 +1322,25 @@ SQE = \sum^N_{j=1}(X_j - \bar{X})'(X_j - \bar{X})
 <td style="text-align: left;">23</td>
 <td style="text-align: right;">31</td>
 <td style="text-align: right;">34</td>
-<td style="text-align: left;">2</td>
+<td style="text-align: left;">1</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">24</td>
 <td style="text-align: right;">33</td>
 <td style="text-align: right;">47</td>
-<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">25</td>
 <td style="text-align: right;">25</td>
 <td style="text-align: right;">50</td>
-<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">26</td>
 <td style="text-align: right;">31</td>
 <td style="text-align: right;">21</td>
-<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">27</td>
@@ -1347,7 +1352,7 @@ SQE = \sum^N_{j=1}(X_j - \bar{X})'(X_j - \bar{X})
 <td style="text-align: left;">28</td>
 <td style="text-align: right;">49</td>
 <td style="text-align: right;">19</td>
-<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">29</td>
@@ -1371,55 +1376,55 @@ SQE = \sum^N_{j=1}(X_j - \bar{X})'(X_j - \bar{X})
 <td style="text-align: left;">32</td>
 <td style="text-align: right;">34</td>
 <td style="text-align: right;">42</td>
-<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">33</td>
 <td style="text-align: right;">28</td>
 <td style="text-align: right;">38</td>
-<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">34</td>
 <td style="text-align: right;">33</td>
 <td style="text-align: right;">16</td>
-<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">35</td>
 <td style="text-align: right;">34</td>
 <td style="text-align: right;">21</td>
-<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">36</td>
 <td style="text-align: right;">32</td>
 <td style="text-align: right;">20</td>
-<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">37</td>
 <td style="text-align: right;">38</td>
 <td style="text-align: right;">32</td>
-<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">38</td>
 <td style="text-align: right;">31</td>
 <td style="text-align: right;">40</td>
-<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">39</td>
 <td style="text-align: right;">38</td>
 <td style="text-align: right;">24</td>
-<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">40</td>
 <td style="text-align: right;">41</td>
 <td style="text-align: right;">27</td>
-<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
 </tr>
 </tbody>
 </table>
@@ -1439,18 +1444,18 @@ SQE = \sum^N_{j=1}(X_j - \bar{X})'(X_j - \bar{X})
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">1</td>
-<td style="text-align: right;">22.81818</td>
-<td style="text-align: right;">27.45455</td>
+<td style="text-align: right;">25.06250</td>
+<td style="text-align: right;">28.18750</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">2</td>
-<td style="text-align: right;">31.30769</td>
-<td style="text-align: right;">43.46154</td>
+<td style="text-align: right;">37.91667</td>
+<td style="text-align: right;">23.33333</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">3</td>
-<td style="text-align: right;">35.87500</td>
-<td style="text-align: right;">24.68750</td>
+<td style="text-align: right;">31.33333</td>
+<td style="text-align: right;">44.25000</td>
 </tr>
 </tbody>
 </table>
@@ -1529,8 +1534,8 @@ Available components:
 </div>
 </div>
 </section>
-<section id="número-ideal-de-grupos" class="level4" data-number="6.2.5.2">
-<h4 data-number="6.2.5.2" class="anchored" data-anchor-id="número-ideal-de-grupos"><span class="header-section-number">6.2.5.2</span> Número Ideal de Grupos</h4>
+<section id="número-ideal-de-grupos" class="level4" data-number="7.2.5.2">
+<h4 data-number="7.2.5.2" class="anchored" data-anchor-id="número-ideal-de-grupos"><span class="header-section-number">7.2.5.2</span> Número Ideal de Grupos</h4>
 <p>Uma das formas já discutidas aqui sobre seleção do número ideal de <span class="math inline">\(k\)</span> grupos é a pré utilização de um método hierárquico e análise de seu dendrograma. Porém, retomando os assuntos apresentados quando foi discutido <em>PCA</em>, podemos utilizar o <em>scree plot</em> da variação total como metodologia de definição do número ideal de clusters para o algorítmo. A utilização é realizada da mesma maneira, é feita a identificação do número <span class="math inline">\(k\)</span> que sofra grande decréscimo da soma da variação dentro dos <em>clusters</em> para um número <span class="math inline">\(k-1\)</span> e um pequeno em comparação com <span class="math inline">\(k+1\)</span>. A variação total é dada como:</p>
 <p><span class="math display">\[
 \sum^k_{i=1}\sum_{j\in C_i}d^2(x_j,c_i)
@@ -1554,8 +1559,8 @@ Available components:
 <p><img src="figuras_naosupervisionado/unnamed-chunk-17-2.png" class="img-fluid"></p>
 <p>Podemos definir a partir disso possíveis números ideais como 3, 4 ou até mesmo 6.</p>
 </section>
-<section id="algumas-conclusões-1" class="level4" data-number="6.2.5.3">
-<h4 data-number="6.2.5.3" class="anchored" data-anchor-id="algumas-conclusões-1"><span class="header-section-number">6.2.5.3</span> Algumas conclusões</h4>
+<section id="algumas-conclusões-1" class="level4" data-number="7.2.5.3">
+<h4 data-number="7.2.5.3" class="anchored" data-anchor-id="algumas-conclusões-1"><span class="header-section-number">7.2.5.3</span> Algumas conclusões</h4>
 <p>Para definirmos um modelo como sendo ótimo para aplicação, é necessário defir alguns parâmetros para determinar a qualidade de um modelo ou método. O <em>k-médias</em> por exemplo é um algoritmo muito sucetível a <em>outliers</em>, dados fora do padrão encontrado no banco de dados, que podem acabar por deixar de agrupar uma determinada variável ou simplesmente formar um grupo amais, sem que haja necessidade. Outro fator que é necessário manter a atenção é a determinação do formato do cluster. Muitos dos algoritmos consideram um formato esférico ou circular para as variáveis, veja o exemplo:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>dados_circulo <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
@@ -1623,7 +1628,7 @@ Available components:
 <p>Os métodos hierárquicos apresentados no entanto, por utilizarem da distância de uma variável a outra são limitados a utilização de banco de dados numéricos, o que nem sempre é o encontrado nos problemas reais, é necessário optar nesse caso por métodos e algoritmos que consigam fazer a distinção mesmo na presença de variáveis categóricas. Fator relevante para a escolha do melhor algoritmo é a capacidade de lidar com um grande volume de dados. No <em>k-médias</em> temos a opção por exemplo de pré definirmos o número de iterações. Considere um grupo com milhões de variáveis, ao utilizar um método de ligação simples hierárquico faremos aproximadamente um milhão de ligações para depois identificar o número ideal de grupos, caso esse não seja conhecido (Caso mais comum). O ideal então é a análise exploratória de seus dados para com base nos conhecimentos sobre os diferentes tipos de métodos, saber qual será o de melhor aplicação para o determinado problema. Nada o impede de aplicar mais de um método e após sua aplicação identificar qual foi o modelo ótimo para o problema.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
 <div id="ref-anton2001algebra" class="csl-entry" role="doc-biblioentry">
 Anton, Howard, e Chris Rorres. 2001. <em><span>Á</span>lgebra linear com aplica<span>ç</span><span>õ</span>es</em>. Vol. 8. Bookman Porto Alegre.
 </div>
@@ -1772,7 +1777,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./supervisionada.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

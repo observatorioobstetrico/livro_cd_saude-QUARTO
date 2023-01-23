@@ -93,7 +93,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./supervisionada.html" rel="next">
+<link href="./estimacao.html" rel="next">
 <link href="./tabulacao.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -192,12 +192,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./supervisionada.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></a>
+  <a href="./estimacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estimação</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./naosupervisionado.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Aprendizado não supervisionado</span></a>
+  <a href="./supervisionada.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./naosupervisionado.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Aprendizado não supervisionado</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -358,7 +363,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p></p><figcaption class="figure-caption">Figura&nbsp;4.2: Exemplos de conjuntos de dados com mesma média, moda e mediana.</figcaption><p></p>
 </figure>
 </div>
-<p>Os dois conjuntos de dados apresentam os mesmos valores de média, mediana e moda. O que diferencia os dois conjuntos? O quão diferentes ou parecidos são as observações entre si em cada conjunto da variável. Na Figura <a href="#fig-var2">Figura&nbsp;<span>4.2 (b)</span></a>, notamos que os quatro valores observados são iguais entre si e que, portanto, as observações nesse conjunto não variam, diferente do que ocorre para os dados que geraram o gráfico da Figura <a href="#fig-var1">Figura&nbsp;<span>4.2 (a)</span></a>. Medidas de dispersão ou variabilidade são as medidas responsáveis por quantificar o quão diferente são os dados entre si. De forma bastante intuitiva temos que se os dados observados da variável não variam, então a medida de dispersão dela é zero e, caso haja diferenças entre os valores observados, então essa medida vai ser um valor positivo. Quanto maior a medida de variabilidade, mais diferente são os dados observados da variável entre si.</p>
+<p>Os dois conjuntos de dados apresentam os mesmos valores de média, mediana e moda. O que diferencia os dois conjuntos? O quão diferentes ou parecidos são as observações entre si em cada conjunto da variável. Na Figura <a href="#fig-var2">Figura&nbsp;<span class="quarto-unresolved-ref">fig-var2</span></a>, notamos que os quatro valores observados são iguais entre si e que, portanto, as observações nesse conjunto não variam, diferente do que ocorre para os dados que geraram o gráfico da Figura <a href="#fig-var1">Figura&nbsp;<span class="quarto-unresolved-ref">fig-var1</span></a>. Medidas de dispersão ou variabilidade são as medidas responsáveis por quantificar o quão diferente são os dados entre si. De forma bastante intuitiva temos que se os dados observados da variável não variam, então a medida de dispersão dela é zero e, caso haja diferenças entre os valores observados, então essa medida vai ser um valor positivo. Quanto maior a medida de variabilidade, mais diferente são os dados observados da variável entre si.</p>
 <p>Não existe uma única medida de dispersão na literatura, aqui vamos considerar as seguintes medidas: amplitude, intervalo interquartil, variância, desvio padrão e coeficiente de variação.</p>
 <p>De fácil obtenção e interpretabilidade, a amplitude é a diferença entre o valor máximo e o valor mínimo da variável analisada no conjunto de dados e nos dá uma ideia do intervalo de variação dos dados. Uma desvantagem é que essa medida é absolutamente influenciada pela presença de valores discrepantes ou <span class="math inline">\(outliers\)</span>. O intervalo interquartil é uma medida mais robusta do que a amplitude intervalar e é calculada como a diferença entre o terceiro e o primeiro quartil, ou seja, é a amplitude entre os 50% dos dados centrais.</p>
 <p>Por mais informativas que sejam as medidas de amplitude e intervalo interquartil, queremos uma medida de dispersão que não considere apenas dois valores da amostra (mínimo e máximo ou primeiro e terceiro quartis) e sim todos os dados. Uma medida bastante intuitiva seria considerar a soma dos desvios de cada uma das observações em torno da média. Mas aí temos um problema: a soma dos desvios da média é sempre zero! Isso acontece porque sempre há desvios positivos e negativos que quando somados se anulam. Uma solução para essa questão é considerar alguma função que considere apenas o valor do desvio e não o seu sinal. Uma função candidata é a função quadrática (lembre que, por exemplo, <span class="math inline">\((−2)^2=4\)</span>). Nessa construção surge a variância: soma dos desvios quadrados dividida pelo total de observações (<span class="math inline">\(n\)</span>), ou seja, a média dos desvios quadrados. Assim, a variância quantifica o quanto os dados estão dispersos da média, em média.</p>
@@ -366,7 +371,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span id="eq-var1"><span class="math display">\[
 \mbox{Var(X)} = \frac{\sum_{i = 1}^n (x_i - \bar{x})^2}{n}.
 \tag{4.1}\]</span></span></p>
-<p>Por mais intuitiva que seja essa construção, programas como o R e similares utilizam em sua análise uma versão modificada do cálculo da variância acima apresentado, em que a soma dos desvios quadrados é dividida por <span class="math inline">\(n-1\)</span>, não por <span class="math inline">\(n\)</span>. Justificativas para isso se devem a propriedades inferenciais. A maioria dos conjuntos de dados considerados nos estudos referem-se a análise de amostras de uma população e não a análise de todos os elementos de uma população. Ao mesmo tempo, um dos principais objetivos da análise estatística é fazer análises para a população e não apenas para a amostra considerada no estudo. Basicamente, se temos interesse de conhecer o valor médio de uma variável na população (<span class="math inline">\(\mu\)</span>), na impossibilidade de analisar todos os elementos dela e obter a medida, o fazemos de forma aproximada investigando o valor médio dessa variável na amostra (<span class="math inline">\(\bar{x}\)</span>). Esse mesmo raciocínio ocorre para a variância, na impossibilidade de obter a variância da variável para todos os elementos da população (<span class="math inline">\(\sigma^2\)</span>), analisamos essa medida via amostra, o caso é que é possível mostrar que para amostras de tamanho pequeno, a variância apresentada em (<a href="#eq-var1">Equação&nbsp;<span>4.1</span></a>) não aproxima-se bem do valor de <span class="math inline">\(\sigma^2\)</span>. Matematicamente, é possível mostrar que tal dificuldade é contornada fazendo uso do divisor igual a <span class="math inline">\(n-1\)</span> em (<a href="#eq-var1">Equação&nbsp;<span>4.1</span></a>). Na literatura esse cálculo muitas vezes é denominado como variância amostral e representado pelo símbolo <span class="math inline">\(S^2\)</span> de tal forma que</p>
+<p>Por mais intuitiva que seja essa construção, programas como o R e similares utilizam em sua análise uma versão modificada do cálculo da variância acima apresentado, em que a soma dos desvios quadrados é dividida por <span class="math inline">\(n-1\)</span>, não por <span class="math inline">\(n\)</span>. Justificativas para isso se devem a propriedades inferenciais. A maioria dos conjuntos de dados considerados nos estudos referem-se a análise de amostras de uma população e não a análise de todos os elementos de uma população. Ao mesmo tempo, um dos principais objetivos da análise estatística é fazer análises para a população e não apenas para a amostra considerada no estudo. Basicamente, se temos interesse de conhecer o valor médio de uma variável na população (<span class="math inline">\(\mu\)</span>), na impossibilidade de analisar todos os elementos dela e obter a medida, o fazemos de forma aproximada investigando o valor médio dessa variável na amostra (<span class="math inline">\(\bar{x}\)</span>). Esse mesmo raciocínio ocorre para a variância, na impossibilidade de obter a variância da variável para todos os elementos da população (<span class="math inline">\(\sigma^2\)</span>), analisamos essa medida via amostra, o caso é que é possível mostrar que para amostras de tamanho pequeno, a variância apresentada em (<a href="#eq-var1">Equação&nbsp;<span class="quarto-unresolved-ref">eq-var1</span></a>) não aproxima-se bem do valor de <span class="math inline">\(\sigma^2\)</span>. Matematicamente, é possível mostrar que tal dificuldade é contornada fazendo uso do divisor igual a <span class="math inline">\(n-1\)</span> em (<a href="#eq-var1">Equação&nbsp;<span class="quarto-unresolved-ref">eq-var1</span></a>). Na literatura esse cálculo muitas vezes é denominado como variância amostral e representado pelo símbolo <span class="math inline">\(S^2\)</span> de tal forma que</p>
 <p><span id="eq-var2"><span class="math display">\[
 S^2 = \frac{\sum_{i = 1}^n (x_i - \bar{x})^2}{n-1}.
 \tag{4.2}\]</span></span></p>
@@ -514,7 +519,7 @@ N: 11523
 [numeric]</td>
       <td align="left" style="padding:8;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tbody><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Mean (sd) : 30.2 (7)</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">min ≤ med ≤ max:</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">10 ≤ 30 ≤ 55</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">IQR (CV) : 10 (0.2)</td></tr></tbody></table></td>
       <td align="left" style="vertical-align:middle">46 distinct values</td>
-      <td align="left" style="vertical-align:middle;padding:0;background-color:transparent;"><img style="border:none;background-color:transparent;padding:0;max-width:max-content;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJgAAABuBAMAAAApJ8cWAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5wEVDQQHb+LMcwAAAIpJREFUaN7t2U0KgCAQQGGvUDfIbtDc/25BjAsH/EnHhfDeJpD8cCMphUAjHfWi1nitjiXklq9nClNEwMDAwMDAwMrYmX98J7Ec2QBrHGD+YVJfIRgYGBgYGBgYGBjYjli6NbhgZhYYGNhyTHfw5YLpEwwMDMwFs39F+7BoUqwwq4HZ4RVYdCnQSC8shXAViQ7V0QAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMy0wMS0yMVQxMzowNDowNyswMDowMHTbWfAAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjMtMDEtMjFUMTM6MDQ6MDcrMDA6MDAFhuFMAAAAAElFTkSuQmCC"></td>
+      <td align="left" style="vertical-align:middle;padding:0;background-color:transparent;"><img style="border:none;background-color:transparent;padding:0;max-width:max-content;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJgAAABuBAMAAAApJ8cWAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5wEXCRQsJJxHNQAAAIpJREFUaN7t2U0KgCAQQGGvUDfIbtDc/25BjAsH/EnHhfDeJpD8cCMphUAjHfWi1nitjiXklq9nClNEwMDAwMDAwMrYmX98J7Ec2QBrHGD+YVJfIRgYGBgYGBgYGBjYjli6NbhgZhYYGNhyTHfw5YLpEwwMDMwFs39F+7BoUqwwq4HZ4RVYdCnQSC8shXAViQ7V0QAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMy0wMS0yM1QwOToyMDo0NCswMDowMLAO9h8AAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjMtMDEtMjNUMDk6MjA6NDQrMDA6MDDBU06jAAAAAElFTkSuQmCC"></td>
       <td align="center">11514
 (99.9%)</td>
       <td align="center">9
@@ -522,7 +527,7 @@ N: 11523
     </tr>
   </tbody>
 </table>
-<p>Generated by <a href="https://github.com/dcomtois/summarytools">summarytools</a> 1.0.1 (<a href="https://www.r-project.org/">R</a> version 4.2.1)<br>2023-01-21</p>
+<p>Generated by <a href="https://github.com/dcomtois/summarytools">summarytools</a> 1.0.1 (<a href="https://www.r-project.org/">R</a> version 4.2.1)<br>2023-01-23</p>
 </div>
 </div>
 <p>Além do gráfico, uma informação adicional apresentada é que as 11514 observações válidas da variável idade estão distribuídas em 46 distintos valores.</p>
@@ -1915,7 +1920,7 @@ A seguir apresentamos um exemplo de gráfico de barras para a variável qualitat
 <h3 data-number="4.3.2" class="anchored" data-anchor-id="pacote-esquisse"><span class="header-section-number">4.3.2</span> Pacote esquisse</h3>
 <p>O pacote <code>esquisse</code> disponibiliza um <span class="math inline">\(dashboard\)</span> interativo para criação de gráficos por meio do pacote <code>ggplot2</code>.</p>
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(esquisse)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Ao rodar a função <code>esquisser()</code>, um janela é aberta (veja <a href="#fig-Eq1">Figura&nbsp;<span>4.5</span></a>), em que usuário deve escolher a base de dados a trabalhar. Feito isso, uma outra janela será aberta apresentando todas as variáveis presentes no banco de dados escolhido (veja <a href="#fig-Eq2">Figura&nbsp;<span>4.6</span></a>), permitindo assim fazer os gráficos. Preparamos um tutorial para a utilização do pacote <code>esquisse</code> que pode ser acessado aqui <span style="color: red;">(https://www.youtube.com/watch?XXXXXXXXXXXXX)</span> .</p>
+<p>Ao rodar a função <code>esquisser()</code>, um janela é aberta (veja <a href="#fig-Eq1">Figura&nbsp;<span class="quarto-unresolved-ref">fig-Eq1</span></a>), em que usuário deve escolher a base de dados a trabalhar. Feito isso, uma outra janela será aberta apresentando todas as variáveis presentes no banco de dados escolhido (veja <a href="#fig-Eq2">Figura&nbsp;<span class="quarto-unresolved-ref">fig-Eq2</span></a>), permitindo assim fazer os gráficos. Preparamos um tutorial para a utilização do pacote <code>esquisse</code> que pode ser acessado aqui <span style="color: red;">(https://www.youtube.com/watch?XXXXXXXXXXXXX)</span> .</p>
 <div id="fig-Eq1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="figuras_descritiva/Esquisser_1.png" class="img-fluid figure-img"></p>
@@ -2092,8 +2097,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./supervisionada.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./estimacao.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estimação</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
