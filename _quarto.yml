@@ -15,6 +15,7 @@ book:
     - manipulacao_dados.qmd
     - tabulacao.qmd
     - descritiva.qmd
+    - estimacao.qmd
     - supervisionada.qmd
     - naosupervisionado.qmd
   appendices: 
