@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.237">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Ciência de Dados Aplicada à Saúde Materno-Infantil - 5&nbsp; Estimação</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./supervisionada.html" rel="next">
+<link href="./descritiva.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estimação</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Ciência de Dados Aplicada à Saúde Materno-Infantil</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Prefácio</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">Sumário</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./manipulacao_dados.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Manipulação de dados</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tabulacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tabulação de dados</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./descritiva.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análise exploratória dos dados</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./estimacao.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estimação</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./supervisionada.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./naosupervisionado.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Aprendizado não supervisionado</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Apêndices</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorialr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Tutorial de R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">Referências</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#conceitos-básicos-de-probabilidade" id="toc-conceitos-básicos-de-probabilidade" class="nav-link active" data-scroll-target="#conceitos-básicos-de-probabilidade"><span class="toc-section-number">5.1</span>  Conceitos básicos de probabilidade</a></li>
+  <li><a href="#estimadores-e-estimativas" id="toc-estimadores-e-estimativas" class="nav-link" data-scroll-target="#estimadores-e-estimativas"><span class="toc-section-number">5.2</span>  Estimadores e estimativas</a></li>
+  <li><a href="#estimação-pontual" id="toc-estimação-pontual" class="nav-link" data-scroll-target="#estimação-pontual"><span class="toc-section-number">5.3</span>  Estimação pontual</a>
+  <ul class="collapse">
+  <li><a href="#estimação-pontual-da-média-de-uma-população" id="toc-estimação-pontual-da-média-de-uma-população" class="nav-link" data-scroll-target="#estimação-pontual-da-média-de-uma-população"><span class="toc-section-number">5.3.1</span>  Estimação pontual da média de uma população</a></li>
+  <li><a href="#estimação-pontual-da-proporção-populacional" id="toc-estimação-pontual-da-proporção-populacional" class="nav-link" data-scroll-target="#estimação-pontual-da-proporção-populacional"><span class="toc-section-number">5.3.2</span>  Estimação pontual da proporção populacional</a></li>
+  <li><a href="#a-distribuição-amostral-de-estimadores" id="toc-a-distribuição-amostral-de-estimadores" class="nav-link" data-scroll-target="#a-distribuição-amostral-de-estimadores"><span class="toc-section-number">5.3.3</span>  A distribuição amostral de estimadores</a></li>
+  </ul></li>
+  <li><a href="#estimação-intervalar" id="toc-estimação-intervalar" class="nav-link" data-scroll-target="#estimação-intervalar"><span class="toc-section-number">5.4</span>  Estimação intervalar</a>
+  <ul class="collapse">
+  <li><a href="#intervalos-de-confiança-para-a-média-amostral-quando-a-variância-populacional-é-conhecida" id="toc-intervalos-de-confiança-para-a-média-amostral-quando-a-variância-populacional-é-conhecida" class="nav-link" data-scroll-target="#intervalos-de-confiança-para-a-média-amostral-quando-a-variância-populacional-é-conhecida"><span class="toc-section-number">5.4.1</span>  Intervalos de confiança para a média amostral quando a variância populacional é conhecida</a></li>
+  <li><a href="#intervalos-de-confiança-para-a-média-amostral-quando-a-variância-populacional-é-desconhecida" id="toc-intervalos-de-confiança-para-a-média-amostral-quando-a-variância-populacional-é-desconhecida" class="nav-link" data-scroll-target="#intervalos-de-confiança-para-a-média-amostral-quando-a-variância-populacional-é-desconhecida"><span class="toc-section-number">5.4.2</span>  Intervalos de confiança para a média amostral quando a variância populacional é desconhecida</a></li>
+  <li><a href="#intervalos-de-confiança-para-a-proporção-populacional" id="toc-intervalos-de-confiança-para-a-proporção-populacional" class="nav-link" data-scroll-target="#intervalos-de-confiança-para-a-proporção-populacional"><span class="toc-section-number">5.4.3</span>  Intervalos de confiança para a proporção populacional</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estimação</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Neste capítulo, iniciando no mundo da Inferência Estatística, trataremos sobre o problema da <strong>estimação</strong>. É muito comum, no dia a dia, nos depararmos com situações em que temos interesse no valor de uma quantidade desconhecida a respeito de alguma população que estamos estudando. Utilizando os dados sobre a COVID-19 apresentados anteriormente, suponha, por exemplo, que tivéssemos interesse na idade média das gestantes e puérperas hospitalizadas por COVID-19 e que vieram a óbito por conta dessa doença no período de março de 2020 a dezembro de 2021, ou que nossa intenção fosse investigar a proporção de doentes que apresentaram diarreia como um de seus sintomas nesse mesmo período. A essas quantidades da população, que em geral são desconhecidas, damos, na Estatística, o nome de <strong>parâmetro</strong>.</p>
+<p>Apesar de, no presente caso, termos acesso aos dados de toda a população de gestantes e puérperas hospitalizadas pela COVID-19 no período especificado, conhecer o verdadeiro valor de um parâmetro é, na maior parte das vezes, uma tarefa impraticável, seja pela extensão da população, pelo tempo que seria gasto para se realizar tal estudo ou mesmo pela falta de recursos disponíveis. Com isso, acabamos tendo de recorrer à coleta de uma <strong>amostra</strong>, uma pequena porção do todo que nos permita estudar as quantidades que temos interesse. Uma amostra representativa da população nos permite obter boas <em>estimativas</em> para os valores dos parâmetros que estamos investigando, e a aplicação de métodos inferenciais nos possibilita estender, à população, as conclusões que fizemos para a amostra obtida. Quando as estimativas se dão apenas por um único valor, as chamamos de <strong>estimativas pontuais</strong>. Por outro lado, quando as estimativas são formadas por um intervalo de valores plausíveis para o parâmetro, as chamamos de <strong>estimativas intervalares</strong>. Discutiremos sobre ambos os tipos de estimativas ao longo deste capítulo. Antes, entretanto, precisamos entender alguns conceitos básicos de probabilidade e inferência para que a viagem ao longo desse novo universo não seja tão turbulenta.</p>
+<section id="conceitos-básicos-de-probabilidade" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="conceitos-básicos-de-probabilidade"><span class="header-section-number">5.1</span> Conceitos básicos de probabilidade</h2>
+<p>A fazer</p>
+</section>
+<section id="estimadores-e-estimativas" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="estimadores-e-estimativas"><span class="header-section-number">5.2</span> Estimadores e estimativas</h2>
+<p>Agora que estamos a parte de algumas definições que serão importantes para o entendimento do capítulo, podemos iniciar com o seu conteúdo propriamente dito. Em primeiro lugar, chamamos de <strong>estimador</strong> qualquer estatística cujos valores são utilizados para se estimar um parâmetro ou uma função de um parâmetro. Dessa forma, temos, portanto, que todo estimador será, também, uma variável aleatória, uma vez que eles são funções das variáveis aleatórias que compõem nossa amostra. Quando coletamos a amostra, observamos os valores das variáveis aleatórias que a compõem e os substituímos na expressão do estimador, obtemos o que chamamos de <strong>estimativa</strong>. Estimativas não são valores aleatórios, mas sim realizações de variáveis aleatórias (dos estimadores).</p>
+<p>Diversos métodos foram desenvolvidos ao longo dos anos para se encontrar estatísticas que possam ser utilizadas como estimadores. Entre os mais conhecidos, podemos citar: o <strong>método dos momentos</strong>, que encontra estimadores relacionando os <strong>momentos</strong> amostrais e populacionais; o <strong>método dos mínimos quadrados</strong>, a partir do qual encontramos o estimador que minimiza a chamada <strong>soma de quadrado dos erros</strong>; e o <strong>método da máxima verossimilhança</strong>, provavelmente o mais conhecido e utilizado, por meio do qual encontramos o estimador que maximiza a probabilidade de a amostra coletada ter sido observada, através da maximização da <strong>função de verossimilhança</strong>. Não entraremos em maiores detalhes sobre nenhum desses métodos, uma vez que nosso objetivo aqui é introduzir o conceito de estimação de forma mais intuitiva. Entretanto, caso seja de seu interesse, já publicamos, no site do Observatório, um texto que pode te ajudar a entender o método da máxima verossimilhança e tudo aquilo que está por trás dele. O post está disponível <a href="https://observatorioobstetricobr.org/livro-e-tutoriais/funcao-de-verossimilhanca/" target="_blank"> neste link </a>.</p>
+<p>O problema da estimação não se resume somente a encontrar estimadores. De fato, existem infinitos estimadores para qualquer que seja o parâmetro que tenhamos interesse. A questão agora é, então, estabelecer critérios que nos permitam determinar o melhor estimador em um certo conjunto. Nesse contexto, podemos definir uma série de propriedades que os estimadores possuem ou podem possuir. São elas:</p>
+<ul>
+<li><p><strong>Vício:</strong> dizemos que um estimador é <strong>não viciado</strong> (ou não viesado) se o seu valor esperado coincide com o verdadeiro valor do parâmetro em questão. Em outras palavras, estimadores não viciados acertam, em média, o valor do parâmetro que estão estimando. Caso essa afirmação não seja verdadeira, dizemos que o estimador apresenta <strong>vício</strong>. O vício é a diferença entre o verdadeiro valor do parâmetro e o valor esperado de seu estimador.</p></li>
+<li><p><strong>Consistência:</strong> dizemos que um estimador é <strong>consistente</strong> se, à medida que o tamanho da amostra aumenta, o seu valor esperado converge para o verdadeiro valor do parâmetro em questão e sua variância converge para zero. Dessa forma, estimadores consistentes não necessariamente são não viciados para tamanhos pequenos de amostra: eles só precisam ser não viciados quando esse tamanho é muito grande.</p></li>
+<li><p><strong>Erro quadrático médio:</strong> definimos o erro quadrático médio como sendo o valor esperado da diferença quadrática entre o estimador e o verdadeiro valor do parâmetro estimado. Tal como a variância de uma variável aleatória é uma medida da dispersão de seus valores em torno de sua média, o erro quadrático médio é uma medida da dispersão dos valores do estimador em torno do verdadeiro valor do parâmetro. Dessa forma, estimadores com erros quadráticos médios pequenos são preferíveis. Algo a se notar é que o erro quadrático médio pode ser reescrito como sendo a soma entre o quadrado do vício do estimador e sua variância. Com isso, para estimadores não viciados, o erro quadrático médio se reduz à variância do estimador.</p></li>
+</ul>
+<p>Em um mundo ideal, parece ser intuitivo que nossa busca pelo melhor estimador se dê através do erro quadrático médio, tentando encontrar aquele para o qual essa medida seja a menor possível. Essa tarefa é, entretanto, raramente possível. Em geral, o erro quadrático médio de um estimador é uma função do valor desconhecido do parâmetro a ser estimado, e é muito comum que, para dois estimadores de um parâmetro, seus erros quadráticos médios se entrelassem: para certos valores do parâmetro, o primeiro estimador pode ter o menor erro quadrático médio, enquanto para outros valores o segundo estimador é o que o tem. Com isso, em nossa busca pelo melhor estimador, é comum restringirmos o conjunto de todos os estimadores possíveis à classe dos estimadores não viciados, fazendo com que o erro quadrático médio seja apenas uma função da variância do estimador. Essa restrição é feita porque existem técnicas que nos permitem encontrar, entre os estimadores não viciados, aqueles que possuem a menor variância possível. Não trataremos dessas técnicas ao longo deste livro, mas essa é uma importante consideração para se entender o motivo de, em geral, trabalharmos com estimadores não viciados. De toda forma, passemos, então, para a próxima seção, na qual veremos alguns exemplos de estimadores pontuais utilizando os dados apresentados e tratados em capítulos anteriores.</p>
+</section>
+<section id="estimação-pontual" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="estimação-pontual"><span class="header-section-number">5.3</span> Estimação pontual</h2>
+<p>Para iniciar esta seção, comecemos com uma definição. Chamamos de <strong>estimação pontual</strong> a técnica de estimação na qual utilizamos um único valor de uma estatística para representarmos, ou estimarmos, o valor desconhecido de um parâmetro de interesse. Chamamos essa estatística de <strong>estimador pontual</strong>, enquanto ao seu valor observado damos o nome de <strong>estimativa pontual</strong>. [completar]</p>
+<section id="estimação-pontual-da-média-de-uma-população" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="estimação-pontual-da-média-de-uma-população"><span class="header-section-number">5.3.1</span> Estimação pontual da média de uma população</h3>
+<p>Voltando aos exemplos apresentados na introdução do capítulo, suponha, primeiramente, que nosso parâmetro de interesse seja a idade média das gestantes e puérperas hospitalizadas por COVID-19 que vieram a óbito por conta dessa doença no período de março de 2020 a dezembro de 2021, a qual denotaremos por <span class="math inline">\(\mu\)</span>. Como temos acesso a todos os registros dessa população, o valor desse parâmetro não é desconhecido, mas isso servirá de auxílio para exemplificar os métodos que aqui serão empregados. Criando um vetor contendo todos os elementos da população, temos:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_rds</span>(<span class="st">"dados/dados_covid[LIMPO].rds"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>populacao1 <span class="ot">&lt;-</span> dados<span class="sc">$</span>idade_anos[<span class="fu">which</span>(dados<span class="sc">$</span>evolucao <span class="sc">==</span> <span class="st">"óbito"</span>)]</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(populacao1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1266</code></pre>
+</div>
+</div>
+<p>O processo envolvido na criação do vetor <code>populacao1</code> é o seguinte: dentro do data frame <code>dados</code>, que contém todos os registros de nossa população, estamos selecionando o valor da variável <code>idade_anos</code> de todas as pacientes para as quais o valor da variável <code>evolucao</code> é “óbito”. O tamanho desse vetor, obtido por meio da função <code>length()</code>, do pacote básico <code>{base}</code>, é de 1266. Ou seja, a população de gestantes e puérperas hospitalizadas por COVID-19 que vieram a óbito por conta dessa doença no período considerado é composta por 1266 elementos. Para calcular o valor da idade média dessas mulheres, podemos utilizar a função <code>mean()</code>, também do pacote básico <code>{base}</code>, que calcula a média aritmética de um dado vetor.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(populacao1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 31.80806</code></pre>
+</div>
+</div>
+<p>A saída do código nos revela o valor de <span class="math inline">\(31.81\)</span> anos. Note que esse valor não representa uma estimativa; ele é, de fato, o verdadeiro valor do parâmetro <span class="math inline">\(\mu\)</span>. O que aconteceria, entretanto, se tivéssemos acesso apenas a uma amostra da população em questão? Poderíamos garantir que os resultados obtidos seriam válidos para todas as gestantes e puérperas desse grupo? É o que começaremos a ver na subseção seguinte.</p>
+<section id="trabalhando-com-amostras-da-população" class="level4" data-number="5.3.1.1">
+<h4 data-number="5.3.1.1" class="anchored" data-anchor-id="trabalhando-com-amostras-da-população"><span class="header-section-number">5.3.1.1</span> Trabalhando com amostras da população</h4>
+<p>Para exemplificar os conceitos de estimação definidos anteriormente, simularemos a retirada de amostras da população de gestantes e puérperas com a qual estamos trabalhando. Dentre as várias maneiras de se obter amostras de uma população, utilizaremos, aqui, a <strong>amostragem aleatória simples (AAS) com reposição</strong>, uma técnica de amostragem probabilística (ou seja, que atribui a cada elemento da população uma probabilidade, conhecida <em>a priori</em>, de pertencer à amostra), na qual todos os elementos da população possuem a mesma probabilidade de serem sorteados. Utilizaremos a AAS com reposição, que admite a possibilidade de um elemento ser selecionado mais de uma vez, por sua maior simplicidade teórica e por algumas implicações matemáticas e estatísticas que ela carrega, como a independência entre as unidades sorteadas.</p>
+<p>Antes da realização da amostragem, denotamos as variáveis a serem selecionadas por <span class="math inline">\(X_1, X_2, ..., X_{n}\)</span>, sendo <span class="math inline">\(X_i\)</span> a variável aleatória que representa a idade da <span class="math inline">\(i\)</span>-ésima gestante ou puérpera hospitalizada pela COVID-19 e que faleceu em decorrência dessa doença, com <span class="math inline">\(i = 1, 2, ..., n\)</span>. Dizemos que essa sequência de variáveis aleatórias forma uma amostra aleatória de tamanho <span class="math inline">\(n\)</span>. Sendo, novamente, <span class="math inline">\(\mu\)</span> o parâmetro que representa a idade média da população em questão, e denotando por <span class="math inline">\(\sigma^2\)</span> o parâmetro que representa a variância populacional das idades dessas gestantes e puérperas, temos, ainda, que <span class="math inline">\(E(X_i) = \mu\)</span> e que <span class="math inline">\(Var(X_i) = \sigma^2\)</span>.</p>
+<p>Dentro do R, podemos obter uma amostra aleatória de tamanho, digamos, <span class="math inline">\(n = 30\)</span>, a partir da função <code>sample()</code>, do pacote básico <code>{base}</code>. Utilizaremos três argumentos dessa função: o primeiro, <code>x</code>, recebe o vetor de elementos do qual a amostra será retirada; o segundo, <code>size</code>, recebe o número de itens a serem sorteados; por fim, o terceiro argumento, <code>replace</code>, receberá o valor <code>TRUE</code>, indicando que a amostragem deve ser realizada com reposição. O código utilizado para a realização desse processo, bem como a amostra obtida, podem ser vistos abaixo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">43</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>amostra1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="at">x =</span> populacao1, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>amostra1</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 32 27 37 38 39 32 30 24 29 30 34 40 33 17 34 35 32 38 23 24 33 38 18 25 26
+[26] 32 25 36 29 32</code></pre>
+</div>
+</div>
+<p>É importante ressaltar que, enquanto <span class="math inline">\(X_1, X_2, ..., X_{30}\)</span> são variáveis aleatórias, os valores guardados no vetor <code>amostra1</code> representam realizações das mesmas. Dessa forma, temos, para a amostra sorteada, que <span class="math inline">\(x_1 = 32\)</span>, <span class="math inline">\(x_2 = 27\)</span>, <span class="math inline">\(x_3 = 37\)</span> e assim por diante. Essas realizações seriam, muito provavalmente, diferentes caso desempenhássemos o procedimento de retirada da amostra novamente. No presente caso, o código acima sempre resultará nos mesmos elementos, uma vez que estamos fixando a semente inicial do gerador de números pseudo-aleatórios do R por meio da função <code>set.seed()</code>, do pacote básico <code>{base}</code>. Desfixando a semente inicial do sorteio, entretanto, o resultado obtido através da função <code>sample()</code> seria diferente a cada vez que rodássemos o bloco de código. Observe.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="at">x =</span> populacao1, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 33 33 27 17 27 24 28 29 30 32 32 31 41 25 30 26 41 26 27 33 27 33 24 39 36
+[26] 30 40 32 28 23</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="at">x =</span> populacao1, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 33 42 32 29 32 30 30 39 35 48 32 26 27 42 23 29 31 37 27 32 25 41 43 22 21
+[26] 30 34 22 30 37</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="at">x =</span> populacao1, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 22 33 32 30 30 31 36 37 37 23 28 33 38 40 21 23 38 33 23 37 27 31 43 39 41
+[26] 36 35 39 39 45</code></pre>
+</div>
+</div>
+<p>Com a distinção entre variáveis aleatórias e suas realizações em mente, precisamos, nesse próximo caso, definir qual estimador utilizaremos para estimarmos o parâmetro em questão. Como temos interesse na idade média da população, uma escolha muito intuitiva seria utilizar a média aritmética dos valores amostrados como uma estimativa do valor desse parâmetro. Assim, considerando que <span class="math inline">\(X_1, X_2, ..., X_n\)</span> formam uma amostra aleatória de tamanho <span class="math inline">\(n\)</span> dessa população, definimos o <strong>estimador da média amostral</strong> como sendo a estatística dada por</p>
+<p><span class="math display">\[
+\bar{X} = \frac{X_1 + X_2 + ... + X_{n}}{n} = \frac{\sum_{i = 1}^{n} X_i}{n}.
+\]</span></p>
+<p>Além de muito intuitivo, esse estimador é, também, não viciado e consistente. Podemos facilmente demonstrar essas propriedades de forma matemática, utilizando para isso propriedades de valores esperados. Quanto a ser não viciado, temos:</p>
+<p><span class="math display">\[
+E(\bar{X}) = E\left(\frac{\sum_{i = 1}^{n} X_i}{n}\right).
+\]</span></p>
+<p>Como <span class="math inline">\(\frac{1}{n}\)</span> é um valor constante que está multiplicando a variável aleatória <span class="math inline">\(\sum_{i = 1}^{n} X_i\)</span>, podemos retirá-lo da esperança o multiplicando:</p>
+<p><span class="math display">\[
+E(\bar{X}) = E\left(\frac{\sum_{i = 1}^{n} X_i}{n}\right) = \frac{1}{n}E\left(\sum_{i = 1}^{n} X_i\right).
+\]</span></p>
+<p>Sendo a esperança da soma de variáveis aleatórias equivalente à soma das esperanças marginais de cada variável, temos:</p>
+<p><span class="math display">\[
+E(\bar{X}) = E\left(\frac{\sum_{i = 1}^{n} X_i}{n}\right) = \frac{1}{n}E\left(\sum_{i = 1}^{n} X_i\right) = \frac{1}{n} \sum_{i = 1}^{n}  E\left(X_i\right)
+\]</span></p>
+<p>Por fim, como <span class="math inline">\(E(X_i) = \mu\)</span>,</p>
+<p><span class="math display">\[
+E(\bar{X}) = E\left(\frac{\sum_{i = 1}^{n} X_i}{n}\right) = \frac{1}{n}E\left(\sum_{i = 1}^{n} X_i\right) = \frac{1}{n} \sum_{i = 1}^{n}  E\left(X_i\right) = \frac{1}{n} \sum_{i = 1}^{n} \mu = \frac{1}{n} (n\mu) = \mu.
+\]</span></p>
+<p>Logo, como o valor esperado do estimador é igual ao parâmetro que ele estima, concluímos que <span class="math inline">\(\bar{X}\)</span> é um estimador não viciado. Para demonstrarmos que ele é, também, consistente, precisamos calcular sua variância. Assim,</p>
+<p><span class="math display">\[
+Var(\bar{X}) = Var\left(\frac{\sum_{i = 1}^{n} X_i}{n}\right).
+\]</span></p>
+<p>Como <span class="math inline">\(\frac{1}{n}\)</span> é um valor constante que está multiplicando a variável aleatória <span class="math inline">\(\sum_{i = 1}^{n} X_i\)</span>, podemos retirá-lo da variância elevando-o ao quadrado:</p>
+<p><span class="math display">\[
+Var(\bar{X}) = Var\left(\frac{\sum_{i = 1}^{n} X_i}{n}\right) = \frac{1}{n^2} Var\left(\sum_{i = 1}^{n} X_i\right).
+\]</span></p>
+<p>Como utilizamos a AAS com reposição para a retirada da amostra, garantimos que as variáveis aleatórias que a compõem são independentes. Assim, sendo a variância da soma de variáveis aleatórias independentes dada pela soma das variâncias marginais de cada variável, e como <span class="math inline">\(Var(X_i) = \sigma^2\)</span>, temos:</p>
+<p><span class="math display">\[
+\begin{align}
+Var(\bar{X}) = Var\left(\frac{\sum_{i = 1}^{n} X_i}{n}\right) = \frac{1}{n^2} Var\left(\sum_{i = 1}^{n} X_i\right) &amp; = \frac{1}{n^2} \sum_{i = 1}^{n} Var(X_i) \\ &amp; = \frac{1}{n^2} \sum_{i = 1}^{n} \sigma^2 \\ &amp; = \frac{1}{n^2} (n \sigma^2) \\ &amp; = \frac{\sigma^2}{n}.
+\end{align}
+\]</span></p>
+<p>Observe que, quanto maior o valor do tamanho de amostra <span class="math inline">\(n\)</span>, menor é o valor da variânica de <span class="math inline">\(\bar{X}\)</span>. Essa informação, aliada ao fato de <span class="math inline">\(\bar{X}\)</span> ser não viciado, nos permite concluir que o estimador em questão é consistente. Voltando ao exemplo em que estávamos, como definimos que <span class="math inline">\(n = 30\)</span>, a expressão do estimador da média amostral se torna</p>
+<p><span class="math display">\[
+\bar{X} = \frac{X_1 + X_2 + ... + X_{30}}{30} = \frac{\sum_{i = 1}^{30} X_i}{30}.
+\]</span></p>
+<p>Substituindo os valores da amostra coletada e calculando sua média aritmética, obtemos:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(amostra1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 30.73333</code></pre>
+</div>
+</div>
+<p>Com isso, concluímos que uma estimativa pontual para a idade média das gestantes e puérperas que faleceram em decorrência da COVID-19 é de <span class="math inline">\(30.73\)</span>. Esse valor é relativamente próximo do verdadeiro valor do parâmetro, o qual sabemos ser 31.81. Lembre-se, entretanto, que a estimativa obtida depende diretamente da amostra que foi coletada, uma vez que nosso estimador é uma função da amostra e, portanto, é uma variável aleatória. A cada vez que realizássemos um novo sorteio, o valor de nossa estimativa seria, muito provavelmente, diferente do anterior. Como nosso objetivo é fazer uma afirmação sobre o parâmetro <span class="math inline">\(\mu\)</span> a partir da amostra coletada, é interessante considerar que a validade dessa afirmação seria melhor compreendida se soubéssemos o que acontece com nosso estimador quando retiramos todas as amostras de mesmo tamanho possíveis de nossa população. Retomaremos essa discussão posteriormente. Buscaremos, agora, estimar um outro tipo de parâmetro: a <strong>proporção populacional</strong>.</p>
+</section>
+</section>
+<section id="estimação-pontual-da-proporção-populacional" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="estimação-pontual-da-proporção-populacional"><span class="header-section-number">5.3.2</span> Estimação pontual da proporção populacional</h3>
+<p>Para o segundo exemplo, suponha que o parâmetro no qual temos interesse seja a proporção válida de gestantes e puérperas hospitalizadas por COVID-19 no período de março de 2020 a dezembro de 2021 que apresentaram diarreia como um de seus sintomas. Representaremos esse parâmetro por <span class="math inline">\(p\)</span>. Assim como no exemplo anterior, podemos calcular seu valor, uma vez que temos acesso a todos os registros dessa população. Note que, como estamos tratando da proporção válida, precisamos que nossa população seja composta apenas pelas mulheres para as quais o valor da variável <code>diarreia</code> foi preenchido de forma válida (ou seja, com <code>sim</code> ou <code>não</code>). Assim, temos:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>populacao2 <span class="ot">&lt;-</span> dados<span class="sc">$</span>diarreia[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">is.na</span>(dados<span class="sc">$</span>diarreia) <span class="sc">&amp;</span> dados<span class="sc">$</span>diarreia <span class="sc">!=</span> <span class="st">"ignorado"</span>)]</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(populacao2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8472</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(populacao2, <span class="dv">20</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "não" "não" "não" "não" "não" "não" "não" "não" "não" "não" "não" "não"
+[13] "não" "sim" "não" "não" "não" "não" "não" "não"</code></pre>
+</div>
+</div>
+<p>Observando as saídas acima, podemos notar que nossa população é formada por 8.472 elementos, que assumem valor <code>sim</code>, quando a gestante ou puérpera apresentou diarreia como um dos sintomas da COVID-19, e <code>não</code>, quando esse sintoma não foi apresentado. Para facilitar nosso trabalho a partir daqui, transformaremos os valores <code>sim</code> em 1 e os valores <code>não</code> em 0, utilizando para isso a função <code>ifelse()</code>, do pacote básico <code>{base}</code>. Essa função recebe três argumentos: o primeiro, <code>test</code>, recebe um vetor lógico; o segundo, <code>yes</code>, recebe o valor que a função deve retornar quando o dado elemento desse vetor lógico for verdadeiro; por fim, o terceiro argumento, <code>no</code>, recebe o valor que a função deve retornar quando o dado elemento do vetor lógico for falso. Observe o código e a saída abaixo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>populacao2_transformada <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(populacao2 <span class="sc">==</span> <span class="st">"sim"</span>, <span class="at">yes =</span> <span class="dv">1</span>, <span class="at">no =</span> <span class="dv">0</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(populacao2_transformada, <span class="dv">20</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0</code></pre>
+</div>
+</div>
+<p>Calculando, por fim, a proporção desejada, que nada mais será do que a média aritmética do vetor <code>populacao2_transformada</code>, uma vez que ele é formado por zeros e uns, temos:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(populacao2_transformada)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.128305</code></pre>
+</div>
+</div>
+<p>Logo, o valor do parâmetro <span class="math inline">\(p\)</span> - a proporção válida de gestantes e puérperas hospitalizadas por COVID-19 no período de março de 2020 a dezembro de 2021 que apresentaram diarreia como um de seus sintomas - é de 0,128, ou 12,8%. Vamos, agora, fingir que não tínhamos acesso a métodos de se calcular o valor desse parâmetro, tentando novamente estimá-lo por meio da coleta de amostras da população.</p>
+<section id="trabalhando-com-amostras-de-uma-população-com-distribuição-bernoulli" class="level4" data-number="5.3.2.1">
+<h4 data-number="5.3.2.1" class="anchored" data-anchor-id="trabalhando-com-amostras-de-uma-população-com-distribuição-bernoulli"><span class="header-section-number">5.3.2.1</span> Trabalhando com amostras de uma população com distribuição Bernoulli</h4>
+<p>Diferentemente do que ocorria com o exemplo anterior, a amostra aleatória que agora coletaremos será composta por variáveis aleatórias para as quais sabemos a “forma” de sua distribuição de probabilidade. Podemos definir <span class="math inline">\(Y_1, Y_2, ..., Y_{n}\)</span> como sendo uma amostra aleatória da distribuição Bernoulli com parâmetro <span class="math inline">\(p\)</span>, na qual <span class="math inline">\(Y_i\)</span> recebe o valor 1, caso a <span class="math inline">\(i\)</span>-ésima gestante ou puérpera sorteada tenha apresentado diarreia como um dos sintomas da COVID-19 (sucesso), e 0, caso contrário (fracasso), com <span class="math inline">\(i = 1, 2, ..., n\)</span>. O parâmetro <span class="math inline">\(p\)</span> representa a probabilidade de sucesso (que sabemos ser de 0,128, apesar de estarmos fingindo que não temos essa informação). Como queremos estimar uma proporção, é intuitivo considerarmos como estimador a proporção das gestantes ou puérperas da amostra que apresentaram diarreia como sintoma. Assim, definimos o <strong>estimador da proporção amostral</strong>, denotado por <span class="math inline">\(\hat{p}\)</span>, como sendo</p>
+<p><span class="math display">\[
+\hat{p} = \frac{Y_1 + Y_2 + ... + Y_n}{n} = \frac{\sum_{i = 1}^{n} Y_i}{n}.
+\]</span></p>
+<p>De maneira similar ao que fizemos com o estimador da média amostral, <span class="math inline">\(\bar{X}\)</span>, podemos demonstrar que o estimador da proporção amostral é, também, não viciado e consistente. Quanto à primeira propriedade, sabendo que <span class="math inline">\(E(Y_i) = p\)</span>, para <span class="math inline">\(i = 1, 2, ..., n\)</span>, temos:</p>
+<p><span class="math display">\[
+E\left(\hat{p}\right) = E \left( \frac{\sum_{i = 1}^{n} Y_i}{n} \right) = \frac{1}{n} \sum_{i = 1}^{n} E\left(Y_i \right) =  \frac{1}{n}  \sum_{i = 1}^{n} p = \frac{1}{n} (np) = p.
+\]</span></p>
+<p>Assim, como <span class="math inline">\(E(\hat{p}) = p\)</span>, podemos concluir que o estimador da proporção amostral é não viesado. Em outras palavras, esse estimador “acerta”, em média, o verdadeiro valor do parâmetro <span class="math inline">\(p\)</span>. Para a segunda propriedade, precisamos, primeiramente, calcular a variância de <span class="math inline">\(\hat{p}\)</span>. Como <span class="math inline">\(Y_i\)</span> segue distribuição <span class="math inline">\(Bernoulli(p)\)</span>, sabemos que <span class="math inline">\(Var(Y_i) = p(1 - p)\)</span>. Dessa forma, temos que</p>
+<p><span class="math display">\[
+\begin{align}
+Var(\hat{p}) = Var \left( \frac{\sum_{i = 1}^{n} Y_i}{n} \right) = \frac{1}{n^2} \sum_{i = 1}^{n} Var(Y_i) &amp; = \frac{1}{n^2} \sum_{i = 1}^{n} p(1 - p) \\ &amp;  = \frac{1}{n^2} \left[np(1 - p)\right] \\ &amp;  = \frac{p(1 - p)}{n}.
+\end{align}
+\]</span></p>
+<p>Observe que, quanto maior o valor do tamanho de amostra <span class="math inline">\(n\)</span>, menor é o valor da variânica de <span class="math inline">\(\hat{p}\)</span>. Essa informação, aliada ao fato de <span class="math inline">\(\hat{p}\)</span> ser não viciado, nos permite concluir que o estimador em questão é consistente. Investigadas as propriedades do estimador, podemos partir para a retirada da amostra, utilizando novamente a função <code>sample()</code> para simular uma amostra de tamanho <span class="math inline">\(n = 30\)</span> obtida por meio da AAS com reposição. A amostra coletada pode ser vista abaixo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">43</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>amostra2 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="at">x =</span> populacao2_transformada, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>amostra2</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0</code></pre>
+</div>
+</div>
+<p>Aplicando os valores obtidos no estimador da proporção amostral, que nada mais é do que a média aritmética da amostra, temos:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(amostra2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1333333</code></pre>
+</div>
+</div>
+<p>Com isso, concluímos que uma estimativa pontual para a proporção válida de gestantes e puérperas hospitalizadas pela COVID-19 no período em estudo e que apresentaram diarreia como um dos sintomas da doença é de 0,133, ou de 13,3%. Novamente, essa estimativa depende diretamente da amostra obtida; novas amostragens quase certamente resultariam em estimativas diferentes para o parâmetro. Com isso, volta à tona a reflexão levantada no final do exemplo anterior, de que a validade de nossa afirmação sobre o verdadeiro valor de <span class="math inline">\(p\)</span> seria melhor compreendida caso levássemos em consideração a distribuição de nosso estimador, <span class="math inline">\(\hat{p}\)</span>. Conseguiríamos estudar o comportamento probabilístico de <span class="math inline">\(\hat{p}\)</span> caso aumentássemos o tamanho da amostra? A resposta, já adiantando, é sim. O que utilizamos para realizar esse estudo, entretanto, será visto na próxima seção.</p>
+</section>
+</section>
+<section id="a-distribuição-amostral-de-estimadores" class="level3" data-number="5.3.3">
+<h3 data-number="5.3.3" class="anchored" data-anchor-id="a-distribuição-amostral-de-estimadores"><span class="header-section-number">5.3.3</span> A distribuição amostral de estimadores</h3>
+<p>Como vimos ao longo das seções anteriores, o problema da Inferência Estatística que queremos resolver consiste em fazer uma afirmação sobre um certo parâmetro de uma determinada população por meio de uma amostra. Para encará-lo, decidimos que nossa afirmação será baseada em uma certa estatística <span class="math inline">\(T\)</span>, para a qual demos o nome de estimador, que será uma função da amostra (<span class="math inline">\(X_1, X_2, ..., X_n\)</span>). Quando coletamos a amostra, podemos obter um valor particular de <span class="math inline">\(T\)</span>, digamos <span class="math inline">\(t_0\)</span>, para o qual demos o nome de estimativa. E é com base nesse valor <span class="math inline">\(t_0\)</span> que faremos a afirmação sobre o parâmetro de interesse. Para entendermos melhor a incerteza por trás de nossa afirmação, entretanto, seria de nosso interesse determinar qual é a <em>distribuição</em> de <span class="math inline">\(T\)</span> quando a amostra, <span class="math inline">\(X_1, X_2, ..., X_n\)</span>, assume todos os valores possíveis. Chamamos essa distribuição de <strong>distribuição amostral da estatística T</strong>. Bussab e Moretin (referência) esquematizam o procedimento para a obtenção da distribuição amostral da seguinte maneira:</p>
+<ol type="1">
+<li><p>A partir de uma determinada população <span class="math inline">\(X\)</span>, com certo parâmetro de interesse <span class="math inline">\(\theta\)</span>, obtemos todas as amostras possíveis com um mesmo tamanho amostral <span class="math inline">\(n\)</span>, de acordo com uma certa técnica de amostragem;</p></li>
+<li><p>Para cada amostra obtida, calculamos o valor <span class="math inline">\(t\)</span> da estatística <span class="math inline">\(T\)</span>;</p></li>
+<li><p>Os valores <span class="math inline">\(t\)</span> formam uma nova população, cuja distribuição recebe o nome de distribuição amostral de <span class="math inline">\(T\)</span>.</p></li>
+</ol>
+<p>É muito comum, no entanto, que não sejamos capazes de coletar todas as amostras possíveis de uma população. Com isso, acabamos tendo que nos contentar em simular um número grande de amostras, para assim termos uma ideia do que acontece com a estatística de interesse. Para melhor entendermos as ideias apresentadas, consideremos os estimadores <span class="math inline">\(\bar{X}\)</span>, a média amostral, e <span class="math inline">\(\hat{p}\)</span>, a proporção amostral. Nos exemplos antecedentes, acabamos determinando, talvez sem perceber, a média e a variância das distribuições amostrais de ambos os estimadores quando estávamos demonstrando duas de suas propriedades - a falta de vício e a consistência. Retomando os resultados obtidos, encontramos que</p>
+<ul>
+<li><span class="math inline">\(E(\bar{X} = \mu)\)</span> e <span class="math inline">\(Var(\bar{X}) = \displaystyle \frac{\sigma^2}{n}\)</span>;</li>
+<li><span class="math inline">\(E(\hat{p} = p)\)</span> e <span class="math inline">\(Var(\hat{p}) = \displaystyle \frac{p(1 - p)}{n}\)</span>.</li>
+</ul>
+<p>Médias e variâncias não são, todavia, tudo aquilo que precisamos para determinar a distribuição amostral de estimadores. Precisamos, também, determinar sua “forma”. Para isso, coletaremos várias amostras e construiremos histogramas das distribuições de <span class="math inline">\(\bar{X}\)</span> e <span class="math inline">\(\hat{p}\)</span> para diferentes tamanhos de amostra. Comecemos simulando <span class="math inline">\(M\)</span> = 100 amostras, cada uma com tamanho <span class="math inline">\(n\)</span> = 15, da população de idades de gestantes e puérperas hospitalizadas e falecidas em decorrência da COVID-19 no período em estudo, a qual chamamos de <code>populacao1</code>. Utilizaremos para isso a função <code>replicate()</code>, do pacote básico <code>{base}</code>. Essa função recebe dois argumentos: o primeiro, <code>n</code>, recebe o número de replicações a serem feitas, enquanto o segundo, <code>expr</code>, recebe a expressão que será replicada. O resultado, guardado no objeto <code>amostras_pop1</code>, é uma matriz na qual o elemento <span class="math inline">\([a_{ij}]\)</span> representa o <span class="math inline">\(i\)</span>-ésimo elemento da <span class="math inline">\(j\)</span>-ésima amostra, com <span class="math inline">\(i = 1, 2, ..., 15\)</span> e <span class="math inline">\(j = 1, 2, ..., 100\)</span>. As cinco primeiras colunas dessa matriz podem ser vistas abaixo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">43</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>amostras_pop1 <span class="ot">&lt;-</span> <span class="fu">replicate</span>(M, <span class="at">expr =</span> <span class="fu">sample</span>(<span class="at">x =</span> populacao1, <span class="at">size =</span> n, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>amostras_pop1[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      [,1] [,2] [,3] [,4] [,5]
+ [1,]   32   35   33   26   33
+ [2,]   27   32   33   41   42
+ [3,]   37   38   27   26   32
+ [4,]   38   23   17   27   29
+ [5,]   39   24   27   33   32
+ [6,]   32   33   24   27   30
+ [7,]   30   38   28   33   30
+ [8,]   24   18   29   24   39
+ [9,]   29   25   30   39   35
+[10,]   30   26   32   36   48
+[11,]   34   32   32   30   32
+[12,]   40   25   31   40   26
+[13,]   33   36   41   32   27
+[14,]   17   29   25   28   42
+[15,]   34   32   30   23   23</code></pre>
+</div>
+</div>
+<p>Repetimos o mesmo processo para a população de gestantes e puérperas com preenchimento válido da variável <code>diarreia</code>, que chamamos de <code>populacao2_transformada</code>. Novamente, as cinco primeiras colunas da matriz de amostras, que agora denominamos <code>amostras_pop2</code>, podem ser vistas abaixo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">43</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>amostras_pop2 <span class="ot">&lt;-</span> <span class="fu">replicate</span>(M, <span class="at">expr =</span> <span class="fu">sample</span>(<span class="at">x =</span> populacao2_transformada, <span class="at">size =</span> n, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>amostras_pop2[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      [,1] [,2] [,3] [,4] [,5]
+ [1,]    0    0    0    0    0
+ [2,]    0    0    0    0    0
+ [3,]    0    1    0    0    0
+ [4,]    0    0    0    0    0
+ [5,]    0    0    0    1    1
+ [6,]    0    0    0    0    0
+ [7,]    0    0    0    0    0
+ [8,]    1    0    0    0    0
+ [9,]    1    0    0    0    0
+[10,]    0    0    0    1    0
+[11,]    0    0    0    0    0
+[12,]    0    0    0    1    1
+[13,]    0    0    0    0    0
+[14,]    0    1    0    0    0
+[15,]    0    0    0    1    0</code></pre>
+</div>
+</div>
+<p>Com as amostras em mãos, o próximo passo é calcular o valor do respectivo estimador em cada uma delas. Realizaremos esse processo com a função <code>apply()</code>, também do pacote básico <code>{base}</code>, a qual permite que apliquemos qualquer função em todas as linhas ou colunas de uma matriz. Utilizaremos três de seus argumentos: o primeiro, <code>X</code>, recebe a matriz na qual queremos aplicar a função; o segundo, <code>MARGIN</code>, recebe a direção em que a função será aplicada (1 caso queiramos que a função seja aplicada nas linhas da matriz, ou 2 caso queiramos a aplicar em suas colunas); por fim, o terceiro, <code>FUN</code>, recebe a função que queremos aplicar. O código utilizado nesse processo, bem como parte dos vetores obtidos, podem ser vistos abaixo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>x_barras <span class="ot">&lt;-</span> <span class="fu">apply</span>(<span class="at">X =</span> amostras_pop1, <span class="at">MARGIN =</span> <span class="dv">2</span>, <span class="at">FUN =</span> mean)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(x_barras)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 31.73333 29.73333 29.26667 31.00000 33.33333 30.73333</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>p_chapeus <span class="ot">&lt;-</span> <span class="fu">apply</span>(<span class="at">X =</span> amostras_pop2, <span class="at">MARGIN =</span> <span class="dv">2</span>, <span class="at">FUN =</span> mean)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(p_chapeus)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1333333 0.1333333 0.0000000 0.2666667 0.1333333 0.2000000</code></pre>
+</div>
+</div>
+<p>Por fim, criemos os histogramas da distribuição de cada estimador. Como já discutimos sobre a criação de histogramas no capítulo de Estatística Descritiva, o código abaixo deve ser familiar.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'ggplot2' was built under R version 4.2.2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x_barra =</span> x_barras), <span class="fu">aes</span>(<span class="at">x =</span> x_barra))  <span class="sc">+</span> </span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(density)),</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"lightblue"</span>,</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">bins =</span> <span class="dv">15</span>,</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"black"</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">26</span>, <span class="dv">36</span>)) <span class="sc">+</span></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Idade média das gestantes e puérperas"</span>, </span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Densidade"</span>,</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribuição amostral da médias amostrais para n = 15"</span></span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(x_barras), <span class="at">linetype =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(</span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">geom =</span> <span class="st">"text"</span>,</span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="dv">34</span>, </span>
+<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fl">0.3</span>,</span>
+<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">paste</span>(<span class="st">"Valor médio das estimativas:"</span>, <span class="fu">round</span>(<span class="fu">mean</span>(x_barras), <span class="dv">3</span>))</span>
+<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="estimacao_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">p_chapeu =</span> p_chapeus), <span class="fu">aes</span>(<span class="at">x =</span> p_chapeu))  <span class="sc">+</span> </span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(density)),</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"steelblue"</span>, </span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">bins =</span> <span class="dv">15</span>, </span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"black"</span></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Proporção de gestantes ou puérperas com diarreia como sintoma"</span>, </span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Densidade"</span>,</span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribuição amostral das proporções amostrais para n = 15"</span></span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span> </span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(p_chapeus), <span class="at">linetype =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(</span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">geom =</span> <span class="st">"text"</span>,</span>
+<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fl">0.23</span>, </span>
+<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="dv">9</span>,</span>
+<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">paste</span>(<span class="st">"Valor médio das estimativas:"</span>, <span class="fu">round</span>(<span class="fu">mean</span>(p_chapeus), <span class="dv">3</span>))</span>
+<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="estimacao_files/figure-html/unnamed-chunk-16-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Observando os histogramas, podemos notar que, mesmo para um tamanho de amostra pequeno como <span class="math inline">\(n\)</span> = 15, a distribuição de <span class="math inline">\(\bar{X}\)</span> se assemelha à distribuição normal, visto que apresenta o característico formato aproximado de sino e uma quase simetria em torno de sua média. Essa combinação de fatores nos sugere que <span class="math inline">\(X_1, X_2, ..., X_{15}\)</span>, as variáveis aleatórias que compõem as amostras da população de idades, seguem, também, uma distribuição simétrica em torno da média. Além disso, o valor médio das estimativas <span class="math inline">\(\bar{x}\)</span>, de 31,843, está muito próximo do verdadeiro valor do parâmetro populacional <span class="math inline">\(\mu\)</span>, que sabemos ser de 31,81 anos. Esse resultado já era esperado, uma vez que a distribuição de <span class="math inline">\(\bar{X}\)</span> está centrada em <span class="math inline">\(\mu\)</span>. Pouco podemos dizer, entretanto, do histograma da distribuição amostral de <span class="math inline">\(\hat{p}\)</span> até o momento; apenas que sua média está muito próxima do verdadeiro valor de <span class="math inline">\(p\)</span>, que sabemos ser de 0,128, como já era esperado pelo mesmo motivo. Aumentemos, então, o tamanho das amostras, e observemos os resultados obtidos. Como a única modificação será o valor da variável <code>n</code>, ocultaremos os códigos utilizados para evitar uma maior poluição visual. Dessa forma, para <span class="math inline">\(n\)</span> = 30, temos:</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="estimacao_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="estimacao_files/figure-html/unnamed-chunk-17-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Para <span class="math inline">\(n = 50\)</span>,</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="estimacao_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="estimacao_files/figure-html/unnamed-chunk-18-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Para <span class="math inline">\(n = 100\)</span>,</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="estimacao_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="estimacao_files/figure-html/unnamed-chunk-19-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Por fim, para <span class="math inline">\(n = 200\)</span>,</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="estimacao_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="estimacao_files/figure-html/unnamed-chunk-20-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Observe que, conforme aumentamos o tamanho das amostras, os histogramas de ambos os estimadores tendem a se concentrar cada vez mais em torno de suas respectivas médias, uma vez que as variância das estimativas se torna cada vez menor. Dessa forma, podemos concluir que estimativas obtidas a partir de tamanhos de amostra maiores têm uma maior probabilidade de “acertarem” o verdadeiro valor do parâmetro que estão estimando. É também notável que mesmo os histogramas das proporções amostrais aparentam convergir para o formato da distribuição normal conforme o valor de <span class="math inline">\(n\)</span> aumenta. Esse fato, por incrível que pareça, não é coincidência: ele é decorrência direta do <strong>Teorema Central do Limite</strong> (TCL), o qual afirma que, independente da distribuição da população, quanto maior o tamanho amostral, mais próxima será a distribuição amostral da média de uma distribuição normal. Vale lembrar que a proporção amostral nada mais é do que um caso particular da média amostral em que os valores observados na amostra contém apenas zeros e uns, o que explica a aplicação do TCL nesse caso. Para sermos mais precisos, podemos dizer de forma aproximada que, para tamanhos suficientemente grandes de amostra,</p>
+<p><span class="math display">\[
+\bar{X} \sim N\left(\mu, \frac{\sigma^2}{n} \right) \text{ e } \hat{p}\sim N\left(p, \frac{p(1-p)}{n} \right).
+\]</span></p>
+<p>Com isso, aqui terminamos o conteúdo referente à estimação pontual.</p>
+</section>
+</section>
+<section id="estimação-intervalar" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="estimação-intervalar"><span class="header-section-number">5.4</span> Estimação intervalar</h2>
+<p>Até este ponto, todos os estimadores que apresentamos e discutimos são pontuais, uma vez que fornecem um único valor como estimativa para o parâmetro de interesse. Estimativas pontuais, por mais úteis que sejam, acabam fornecendo uma informação incompleta sobre o valor estimado do parâmetro em questão. Como estimadores são variáveis aleatórias e, portanto, possuem uma distribuição de probabilidade, seria de nosso interesse que a estimativa a ser apresentada levasse em consideração uma medida de seu possível erro. Essa essa medida pode ser, por exemplo, um intervalo relacionado à dimensão da <em>confiança</em> que temos de que o verdadeiro valor do parâmetro está sendo captado. Dessa forma, a partir daqui, entramos no campo da <strong>estimação intervalar</strong>. Dentro da Inferência Clássica, que estamos estudando neste capítulo, estimativas intervalares se dão a partir dos chamados <strong>intervalos de confiança</strong>. Intervalos de confiança incorporam, à estimativa pontual do parâmetro, informações a respeito da variabilidade do estimador. Além disso, eles são obtidos através da distribuição amostral de seus estimadores, o que justifica ainda mais o conteúdo que vimos na última subseção de estimação pontual.</p>
+<p>Como o intuito deste livro não é conter uma porção pesada de teoria, introduziremos o conceito de intervalos de confiança a partir de exemplos, realizando explicações sobre os elementos envolvidos em sua construção conforme seja necessário. Caso seja de seu interesse, já publicamos, no site do Observatório, um texto que pode te ajudar a entender o melhor a teoria por trás dos intervalos de confiança, que conta também com o detalhamento de um dos principais métodos utilizados para a construção desses intervalos: o <strong>método da quantidade pivotal</strong>. O post está disponível <a href="https://observatorioobstetricobr.org/livro-e-tutoriais/intervalos-de-confianca/" target="_blank"> neste link </a>. Com isso em mente, prossigamos para nosso primeiro exemplo: a criação de intervalos de confiança para a média amostral.</p>
+<section id="intervalos-de-confiança-para-a-média-amostral-quando-a-variância-populacional-é-conhecida" class="level3" data-number="5.4.1">
+<h3 data-number="5.4.1" class="anchored" data-anchor-id="intervalos-de-confiança-para-a-média-amostral-quando-a-variância-populacional-é-conhecida"><span class="header-section-number">5.4.1</span> Intervalos de confiança para a média amostral quando a variância populacional é conhecida</h3>
+<p>Utilizando o exemplo já apresentado na seção anterior, considere que <span class="math inline">\(X_1, X_2, ..., X_n\)</span> formam uma amostra aleatória da população de idades de gestantes e puérperas hospitalizadas e falecidas em decorrência da COVID-19 no período de março de 2020 a dezembro de 2021, sendo <span class="math inline">\(X_i\)</span> a variável aleatória que representa a idade da <span class="math inline">\(i\)</span>-ésima gestante ou puérpera sorteada, com <span class="math inline">\(i = 1, 2, ..., n\)</span>. Denotando, novamente, por <span class="math inline">\(\mu\)</span> a média populacional das idades dessas mulheres, e por <span class="math inline">\(\sigma^2\)</span> a variância populacional dessas idades, temos, ainda que <span class="math inline">\(E(X_i) = \mu\)</span> e <span class="math inline">\(Var(X_i) = \sigma^2\)</span>. Suponha que queiramos estimar o valor de <span class="math inline">\(\mu\)</span>, utilizando para isso o estimador <span class="math inline">\(\bar{X}\)</span>. Suponha também, neste primeiro exemplo, que o valor de <span class="math inline">\(\sigma^2\)</span> é conhecido. Note que não estamos fazendo nenhuma suposição sobre a distribuição de probabilidade dessas variáveis. Dessa forma, precisaremos, a partir deste ponto, impor uma restrição: o tamanho da amostra deve ser grande o suficiente para que possamos aplicar o Teorema Central do Limite. Caso essa restrição seja cumprida, sabemos, por meio do TCL e de forma aproximada, que</p>
+<p><span class="math display">\[
+\bar{X} \sim N \left(\mu, \frac{\sigma^2}{n} \right).
+\]</span></p>
+<p>Subtraindo de uma variável aleatória a sua média e dividindo o resultado por seu desvio padrão, obtemos o que chamamos de <strong>variável aleatória padronizadas</strong>. Uma variável aleatória padronizada tem média igual a zero e variância igual a um. Aplicando esse resultado em nosso estimador, <span class="math inline">\(\bar{X}\)</span>, obtemos uma nova variável, a qual chamaremos de <span class="math inline">\(Z\)</span>, cuja distribuição estará totalmente definida, o que será de grande utilidade na construção de nosso intervalo. Observe.</p>
+<p><span class="math display">\[
+Z = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} = \frac{\sqrt{n}\left(\bar{X} - \mu\right)}{\sigma} \sim N(0, 1).
+\]</span> Como conhecemos a distribuição de probabilidade de <span class="math inline">\(Z\)</span>, podemos, para um certo valor <span class="math inline">\(\alpha\)</span>, com <span class="math inline">\(0 &lt; \alpha &lt; 1\)</span>, encontrar valores <span class="math inline">\(z_1\)</span> e <span class="math inline">\(z_2\)</span>, com <span class="math inline">\(z_1 &lt; z_2\)</span>, tais que</p>
+<p><span class="math display">\[
+P(z_1 &lt; Z &lt; z_2) = 1 - \alpha.  \qquad \qquad \text{(I)}
+\]</span></p>
+<p>Chamamos o valor <span class="math inline">\(1 - \alpha\)</span> de <strong>coeficiente de confiança</strong>. Sua interpretação será feita posteriormente. Quanto à probabilidade acima, note que existem infinitos valores de <span class="math inline">\(z_1\)</span> e <span class="math inline">\(z_2\)</span> que a satisfazem. Como queremos encontrar um intervalo que contenha os valores mais plausíveis do parâmetro em estudo, é de nosso interesse que a <strong>amplitude</strong> desse intervalo seja a menor possível, sendo a amplitude de um intervalo definida como a diferença entre seus extremos superior e inferior. E, para que esse interesse seja cumprido, é necessário que os valores de <span class="math inline">\(z_1\)</span> e <span class="math inline">\(z_2\)</span> sejam os mais próximos possíveis. Para distribuições simétricas em torno do zero, como é o caso da distribuição normal padrão, podemos mostrar que a amplitude do intervalo será mínima se os valores de <span class="math inline">\(z_1\)</span> e <span class="math inline">\(z_2\)</span> forem opostos, ou seja, se <span class="math inline">\(z_1 = -z_2\)</span>. Com isso, precisamos apenas encontrar um valor <span class="math inline">\(z\)</span> tal que</p>
+<p><span class="math display">\[
+P(Z \leqslant z) = 1 - \frac{\alpha}{2}
+\]</span></p>
+<p>A este valor, o qual denotamos por <span class="math inline">\(z_{1 - \alpha/2}\)</span>, damos o nome de <strong>quantil de ordem</strong> <span class="math inline">\(1 - \alpha/2\)</span>. Um quantil de ordem <span class="math inline">\(k\)</span> de uma variável aleatória, com <span class="math inline">\(0 &lt; k &lt; 1\)</span>, nada mais é que o ponto tal que, quando nele aplicada a função de distribuição acumulada da variável, a probabilidade obtida é igual a <span class="math inline">\(k\)</span> (a ordem que o quantil representa). Em uma situação prática, na qual teríamos um valor definido de <span class="math inline">\(\alpha\)</span>, poderíamos utilizar uma tabela da distribuição normal padrão para encontrar o valor de <span class="math inline">\(z_{1 - \alpha/2}\)</span>, ou mesmo utilizar a função <code>qnorm()</code>, do pacote básico <code>{stats}</code>, para realizar esse processo. A função <code>qnorm()</code>, bem como a família de funções do R que seguem a estrutura “qnome_da_distribuição()”, representa a função quantílica: para uma dada probabilidade e para dados valores dos parâmetros da distribuição, a função retorna o quantil cuja ordem é a probabilidade estipulada em seus arguementos. Com isso em mente, podemos reescrever <span class="math inline">\(z_1\)</span> e <span class="math inline">\(z_2\)</span> como sendo</p>
+<p><span class="math display">\[
+z_1 = -z_{1 - \alpha/2} \text{ e } z_2 = z_{1 - \alpha/2}.
+\]</span></p>
+<p>Para que a explicação acima seja melhor absorvida, observe o gráfico a seguir, que representa a curva da densidade de probabilidade da distribuição normal padrão.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figuras_estimacao/normal_padrao.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption"><strong>Figura 1:</strong> Para uma confiança de (100 - <span class="math inline">\(\alpha\)</span>)%, a área em cada cauda da distribuição deverá ser de <span class="math inline">\(\alpha\)</span>/2 para que o intervalo seja o menor possível.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Voltando à probabilidade definida em <span class="math inline">\(\text{(I)}\)</span>, a atualizando com os resultados obtidos e reescrevendo <span class="math inline">\(Z\)</span>, temos:</p>
+<p><span class="math display">\[
+P(z_1 &lt; Z &lt; z_2) = P \left(-z_{1 - \alpha/2} &lt; \frac{\sqrt{n}\left(\bar{X} - \mu\right)}{\sigma}  &lt; z_{1 - \alpha/2} \right)  = 1 - \alpha.
+\]</span></p>
+<p>Como queremos obter um intervalo de confiança para <span class="math inline">\(\mu\)</span>, precisamos isolá-lo na expressão acima, a saber:</p>
+<p><span class="math display">\[
+\begin{align}
+&amp; P\left(-z_{1 - \alpha/2} &lt; \frac{\sqrt{n}\left(\bar{X} - \mu\right)}{\sigma} &lt; z_{1 - \alpha/2} \right) \\ &amp;
+= P\left(-z_{1 - \alpha/2}\sigma &lt; \sqrt{n}\left(\bar{X} - \mu\right) &lt; z_{1 - \alpha/2}\sigma \right)  \\ &amp;
+= P\left(-z_{1 - \alpha/2}\frac{\sigma}{\sqrt{n}} &lt; \bar{X} - \mu &lt; z_{1 - \alpha/2}\frac{\sigma}{\sqrt{n}} \right) \\  &amp;
+= P\left(-\bar{X} + -z_{1 - \alpha/2}\frac{\sigma}{\sqrt{n}} &lt; - \mu &lt; -\bar{X} + z_{1 - \alpha/2}\frac{\sigma}{\sqrt{n}} \right) \\ &amp; = P\left(\bar{X} - z_{1 - \alpha/2}\frac{\sigma}{\sqrt{n}} &lt; \mu &lt; \bar{X} - -z_{1 - \alpha/2}\frac{\sigma}{\sqrt{n}} \right) = 1 - \alpha
+\end{align}
+\]</span> Portanto, quando a variância populacional é conhecida, um intervalo de confiança para <span class="math inline">\(\mu\)</span>, com coeficiente de confiança <span class="math inline">\(1 - \alpha\)</span>, é dado por</p>
+<p><span class="math display">\[
+IC(\mu,\ 1 - \alpha) = \left(\bar{X} - z_{1 - \alpha/2}\frac{\sigma}{\sqrt{n}};\; \bar{X} + z_{1 - \alpha/2}\frac{\sigma}{\sqrt{n}}\right).
+\]</span></p>
+<p>A interpretação do resultado acima deve ser feita com cuidado. É preciso entender que a expressão <span class="math inline">\(IC(\mu,\ 1 - \alpha)\)</span> envolve uma variável aleatória, <span class="math inline">\(\bar{X}\)</span>, fazendo com que o intervalo obtido também seja aleatório. Para o <strong>intervalo aleatório</strong> encontrado acima, podemos dizer que a probabilidade aproximada de ele conter o verdadeiro valor do parâmetro <span class="math inline">\(\mu\)</span> é de <span class="math inline">\(1 - \alpha\)</span>. Aproximada, nesse caso, porque estamos utilizando o TCL para fazer uma aproximação da distribuição de probabilidade de <span class="math inline">\(\bar{X}\)</span>; caso a população seguisse distribuição normal, essa probabilidade seria exata. De qualquer forma, quando coletamos a amostra e observamos uma estimativa <span class="math inline">\(\bar{x}\)</span>, obtemos um intervalo numérico, que chamamos de <strong>intervalo de confiança observado</strong>. A partir desse ponto, não existem mais quantidades aleatórias na expressão do intervalo, uma vez que, na Inferência Clássica, os parâmetros, por mais que possam ser desconhecidos, são quantidades <strong>fixas</strong>. Dessa forma, não podemos mais afirmar que um intervalo de confiança observado possui probabilidade <span class="math inline">\(1 - \alpha\)</span> de conter o verdadeiro valor do parâmetro. Podemos apenas dizer que temos uma <em>confiança</em> considerável de que esse intervalo contém o verdadeiro valor do parâmetro. A medida da nossa confiança é de <span class="math inline">\(1 - \alpha\)</span> porque, antes de colhermos a amostra, <span class="math inline">\(1 - \alpha\)</span> era a probabilidade aproximada de que o intervalo aleatório contivesse o verdadeiro valor de <span class="math inline">\(\mu\)</span>.</p>
+<p>Como a distinção entre confiança e probabilidade pode ser difícil de se entender, uma interpretação conveniente para intervalos de confiança é a seguinte: se obtivéssemos várias amostras de mesmo tamanho e, para cada uma delas, calculássemos os correspondentes intervalos de confiança com coeficiente de confiança <span class="math inline">\(1 - \alpha\)</span>, esperaríamos que a proporção de intervalos que contivessem o verdadeiro valor do parâmetro fosse igual a <span class="math inline">\(1 - \alpha\)</span>.</p>
+<p>Por fim, antes de realizarmos um exemplo numérico, podemos fazer algumas considerações a respeito da escolha do valor de <span class="math inline">\(\alpha\)</span>. É possível mostrar que, conforme aumentamos o coeficiente de confiança, a amplitude do intervalo aumenta. Isso, claro, é algo que deveríamos esperar, visto que intervalos maiores possuem naturalmente uma maior chance de conterem um valor desconhecido. Com isso, para que os intervalos sejam o mais <em>informativo</em> possível, mantendo uma confiança elevada, é necessário que selecionemos <span class="math inline">\(\alpha\)</span> de forma balanceada, sendo uma escolha muito comum o valor 0,05 (nesse caso, temos que o coeficiente de confiança é de 0,95). É muito mais interessante, por exemplo, um intervalo de confiança que diz que o verdadeiro valor do salário médio de um estatístico está entre 3,5 a 6 salários mínimos do que um intervalo que diz que esse valor está entre 2 a 7,5 salários mínimos. Apesar de, com o segundo intervalo, termos uma maior confiança de que o verdeiro valor do salário médio está sendo captado, a qualidade da informação que extraímos dele é consideravelmente pior do que aquela obtida com o primeiro intervalo.</p>
+<section id="um-exemplo-numérico" class="level4" data-number="5.4.1.1">
+<h4 data-number="5.4.1.1" class="anchored" data-anchor-id="um-exemplo-numérico"><span class="header-section-number">5.4.1.1</span> Um exemplo numérico</h4>
+<p>Substituindo as letras por números, e continuando o exemplo em que estávamos, vamos, agora, obter, através do R, um intervalo de 95% confiança para <span class="math inline">\(\mu\)</span>. Lembre-se que aqui <span class="math inline">\(\mu\)</span> é a média populacional das idades das gestantes e puérperas hospitalizadas e falecidas em decorrência da COVID-19 no período de março de 2020 a dezembro de 2021. Como precisamos que nossa amostra seja suficientemente grande para que possamos aplicar o TCL, utilizaremos <span class="math inline">\(n = 50\)</span>, uma vez que, observando os histogramas criados na seção de Distribuição Amostral, a distribuição de <span class="math inline">\(bar{X}\)</span> já se aproxima satisfatóriamente bem da distribuição normal a partir desse ponto. Além disso, como a expressão do intervalo de confiança obtido acima leva em consideração que a variância populacional é conhecida, precisaremos, também, dessa informação. Para calculá-la, teremos de multiplicar o resultado da função <code>var()</code> por <span class="math inline">\(\frac{N - 1}{N}\)</span>, sendo <span class="math inline">\(N\)</span> o tamanho da população, uma vez que essa função utiliza <span class="math inline">\(N - 1\)</span> como denominador para o cálculo da variância. Observe o código abaixo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>sigma2 <span class="ot">&lt;-</span> <span class="fu">var</span>(populacao1) <span class="sc">*</span> (<span class="fu">length</span>(populacao1) <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">/</span><span class="fu">length</span>(populacao1)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>sigma2</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 45.97659</code></pre>
+</div>
+</div>
+<p>Obtendo uma amostra de tamanho <span class="math inline">\(n = 50\)</span> por meio da função <code>sample()</code>, e a armazenando no vetor <code>amostra_ic_media</code>, temos:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">34</span>)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>amostra_ic_media <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="at">x =</span> populacao1, <span class="at">size =</span> <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(amostra_ic_media, <span class="dv">20</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 26 39 32 35 35 35 31 21 25 40 33 32 19 22 19 30 40 31 38 36</code></pre>
+</div>
+</div>
+<p>Nesse próximo passo, criaremos uma função, a qual chamaremos de <code>ic_media_caso1()</code>, que calculará intervalos de confiança para o parâmetro <span class="math inline">\(\mu\)</span> quando a variância populacional é conhecida e <span class="math inline">\(\bar{X}\)</span> segue distribuição normal (ou aproximadamente normal). A função possuirá três argumentos: <code>dados</code>, que receberá o vetor de valores observados na amostra; <code>sigma</code>, que receberá o valor do desvio padrão populacional; e <code>alpha</code>, que receberá o valor necessário para se obter o coeficiente de confiança associado ao intervalo, que nesse caso será de 0,05. Utilizaremos a já explicada função <code>qnorm()</code> para encontrar o valor do quantil de ordem <span class="math inline">\(1 - \alpha\)</span> da normal padrão (não utilizaremos os argumentos <code>mean</code> e <code>sigma</code> dessa função, uma vez que seus valores padrões são, respectivamente, 1 e 0). O limite inferior do intervalo será guardado no vetor <code>limite_inferior</code>, enquanto o superior será guardado em <code>limite_superior</code>. A função retornará um data frame contendo algumas medidas referentes à amostra e o intervalo de confiança propriamente dito. O resultado do processo pode ser visto abaixo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>ic_media_caso1 <span class="ot">&lt;-</span> <span class="cf">function</span>(amostra, sigma, alfa) {</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  media <span class="ot">&lt;-</span> <span class="fu">mean</span>(amostra)</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(amostra)</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  z <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">qnorm</span>(<span class="at">p =</span> <span class="dv">1</span> <span class="sc">-</span> alfa<span class="sc">/</span><span class="dv">2</span>), <span class="dv">3</span>)</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>  limite_inferior <span class="ot">&lt;-</span> <span class="fu">round</span>(media <span class="sc">-</span> z <span class="sc">*</span> sigma<span class="sc">/</span><span class="fu">sqrt</span>(n), <span class="dv">3</span>)</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>  limite_superior <span class="ot">&lt;-</span> <span class="fu">round</span>(media <span class="sc">+</span> z <span class="sc">*</span> sigma<span class="sc">/</span><span class="fu">sqrt</span>(n), <span class="dv">3</span>)</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>  amplitude <span class="ot">&lt;-</span> limite_superior <span class="sc">-</span> limite_inferior</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.frame</span>(</span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>      n, </span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">estimativa_pontual =</span> media,</span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>      limite_inferior, </span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>      limite_superior,</span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>      amplitude)</span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ic_media_caso1</span>(<span class="at">amostra =</span> amostra_ic_media, <span class="at">sigma =</span> <span class="fu">sqrt</span>(sigma2), <span class="at">alfa =</span> <span class="fl">0.05</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   n estimativa_pontual limite_inferior limite_superior amplitude
+1 50              32.16          30.281          34.039     3.758</code></pre>
+</div>
+</div>
+<p>Portanto, um intervalo de 95% de confiança para a média populacional das idades das gestantes e puérperas hospitalizadas e falecidas em decorrência da COVID-19 no período em estudo é de (28,401; 32,159). Intervalos de confiança podem, inclusive, ser utilizados como substitutos para <strong>testes de hipóteses</strong>, dos quais falaremos no próximo capítulo. Caso quiséssemos, por exemplo, testar a hipótese de que o valor de <span class="math inline">\(\mu\)</span> é igual a 27, rejeitaríamos a hipótese nula sob um nível de significância de 0,05, uma vez que 27 não está contido no intervalo de 95% de confiança para <span class="math inline">\(\mu\)</span> obtido acima.</p>
+</section>
+</section>
+<section id="intervalos-de-confiança-para-a-média-amostral-quando-a-variância-populacional-é-desconhecida" class="level3" data-number="5.4.2">
+<h3 data-number="5.4.2" class="anchored" data-anchor-id="intervalos-de-confiança-para-a-média-amostral-quando-a-variância-populacional-é-desconhecida"><span class="header-section-number">5.4.2</span> Intervalos de confiança para a média amostral quando a variância populacional é desconhecida</h3>
+<p>Considere, assim como no exemplo anterior, que <span class="math inline">\(X_1, X_2, ..., X_n\)</span> formam uma amostra aleatória da população de idades de gestantes e puérperas hospitalizadas e falecidas em decorrência da COVID-19 no período de março de 2020 a dezembro de 2021, sendo <span class="math inline">\(X_i\)</span> a variável aleatória que representa a idade da <span class="math inline">\(i\)</span>-ésima gestante ou puérpera sorteada, com <span class="math inline">\(i = 1, 2, ..., n\)</span>. Suponha que queiramos, novamente, estimar o valor de <span class="math inline">\(\mu\)</span>, mas que agora o valor da variância populacional <span class="math inline">\(\sigma^2\)</span> é desconhecido. Ainda com a restrição de que o tamanho da amostra deve ser suficientemente grande para que possamos aplicar o Teorema Central do Limite, sabemos, como visto anteriormente, que</p>
+<p><span class="math display">\[
+Z  = \frac{\sqrt{n}\left(\bar{X} - \mu\right)}{\sigma} \sim N(0, 1).
+\]</span></p>
+<p>Lembre-se, entretanto, que estamos no caso em que <span class="math inline">\(\sigma^2\)</span> é desconhecido, e por isso não podemos utilizar a variável acima para construirmos o intervalo de confiança, uma vez que o intervalo encontrado seria função de <span class="math inline">\(\sigma\)</span>. Dessa forma, é intuitivo que em algum momento utilizemos um estimador da variância populacional na expressão do intervalo. Por sorte, existe um conhecido resultado dentro da Estatística que fornecerá uma função que nos seja conveniente. Definindo, primeiramente, o <strong>estimador da variância amostral</strong>, denotado por <span class="math inline">\(S^2\)</span>, como sendo</p>
+<p><span class="math display">\[
+S^2 = \frac{\sum_{i = 1}^n (X_i - \bar{X})}{n - 1},
+\]</span> sabemos ser válido que</p>
+<p><span class="math display">\[
+T = \frac{\sqrt{n} \left(\bar{X} - \mu \right)}{S} \sim t_{n - 1},
+\]</span> onde <span class="math inline">\(S\)</span> é a raiz quadrada de <span class="math inline">\(S^2\)</span> e <span class="math inline">\(t_{n - 1}\)</span> representa a distribuição de probabilidade T de Student com <span class="math inline">\(n - 1\)</span> graus de liberdade. A demonstração desse resultado pode ser consultada no post do Observatório que referenciamos no início da seção. A partir daqui, o processo para obtermos a expressão do intervalo de confiança será muito semelhante ao que realizamos no exemplo anterior. Como a distribuição da variável aleatória <span class="math inline">\(T\)</span> é totalmente conhecida, uma vez que, em uma situação prática, o valor do tamanho da amostra <span class="math inline">\(n\)</span> estaria definido, podemos encontrar valores <span class="math inline">\(t_{1_{(n-1)}}\)</span> e <span class="math inline">\(t_{2_{(n-1)}}\)</span>, com <span class="math inline">\(t_{1_{(n-1)}} &lt; t_{2_{(n-1)}}\)</span>, tais que</p>
+<p><span class="math display">\[
+P\left(t_{1_{(n-1)}} &lt; T &lt; t_{2_{(n-1)}} \right) = 1 - \alpha. \qquad \qquad \text{(II)}
+\]</span></p>
+<p>Como a distribuição T de Student, assim como a distribuição normal padrão, é simétrica em torno de zero, os valores de <span class="math inline">\(t_1\)</span> e <span class="math inline">\(t_2\)</span> que geram a menor amplitude possível para o intervalo de confiança serão dados por</p>
+<p><span class="math display">\[
+t_{1_{(n-1)}} = -t_{(n - 1;\;1 -\alpha/2)} \text{ e } t_{2_{(n-1)}} = t_{(n - 1;\;1 -\alpha/2)}.
+\]</span></p>
+<p>Em outras palavras, para encontrarmos os valores desses pontos, basta que calculemos o quantil de ordem <span class="math inline">\(1 - \alpha/2\)</span> da distribuição T de Student com <span class="math inline">\(n - 1\)</span> graus de liberdade. Voltando à probabilidade definida em <span class="math inline">\(\text{(II)}\)</span>, a atualizando com os resultados obtidos e reescrevendo <span class="math inline">\(T\)</span>, temos:</p>
+<p><span class="math display">\[
+P\left(t_{1_{(n-1)}} &lt; T &lt; t_{2_{(n-1)}} \right) = P\left(-t_{(n - 1;\;1 -\alpha/2)} &lt; \frac{\sqrt{n}\left(\bar{X} - \mu\right)}{S} &lt; -t_{(n - 1;\;1 -\alpha/2)} \right) = 1 - \alpha.
+\]</span></p>
+<p>Como queremos obter um intervalo de confiança para <span class="math inline">\(\mu\)</span>, precisamos isolá-lo na expressão acima, a saber:</p>
+<p><span class="math display">\[
+\begin{align}
+&amp; P\left(-t_{(n - 1;\;1 -\alpha/2)} &lt; \frac{\sqrt{n}\left(\bar{X} - \mu\right)}{S} &lt; t_{(n - 1;\;1 -\alpha/2)} \right) \\ &amp;
+= P\left(-t_{(n - 1;\;1 -\alpha/2)} S &lt; \sqrt{n}\left(\bar{X} - \mu\right) &lt; t_{(n - 1;\;1 -\alpha/2)} S\right) \\ &amp; =
+P\left(-t_{(n - 1;\;1 -\alpha/2)} \frac{S}{\sqrt{n}} &lt; \bar{X} - \mu &lt; t_{(n - 1;\;1 -\alpha/2)} \frac{S}{\sqrt{n}} \right) \\ &amp; =
+P\left(-\bar{X} + -t_{(n - 1;\;1 -\alpha/2)} \frac{S}{\sqrt{n}} &lt; - \mu &lt; -\bar{X} + t_{(n - 1;\;1 -\alpha/2)} \frac{S}{\sqrt{n}} \right) \\ &amp;
+= P\left(\bar{X} - t_{(n - 1;\;1 -\alpha/2)} \frac{S}{\sqrt{n}} &lt; \mu &lt; \bar{X} - -t_{(n - 1;\;1 -\alpha/2)} \frac{S}{\sqrt{n}} \right) = 1 - \alpha
+\end{align}
+\]</span></p>
+<p>Portanto, quando a variância populacional é desconhecida, um intervalo de confiança para <span class="math inline">\(\mu\)</span>, com coeficiente de confiança de <span class="math inline">\(1 - \alpha\)</span>, é dado por</p>
+<p><span class="math display">\[
+IC(\mu,\ 1 - \alpha) = \left(\bar{X} - t_{(n-1;\;1 - \alpha/2)} \frac{S}{\sqrt{n}}; \bar{X} + t_{(n-1;\;1 - \alpha/2)} \frac{S}{\sqrt{n}} \right).
+\]</span></p>
+<p>Algo interessante a se observar é que, tanto o intervalo aleatório acima, quanto o intervalo aleatório encontrado no exemplo anterior, possuem probabilidade 1 - <span class="math inline">\(\alpha\)</span> de conterem o verdadeiro valor do parâmetro <span class="math inline">\(\mu\)</span>, mesmo que suas estruturas sejam diferentes. Entretanto, como na construção do intervalo apresentado no presente exemplo foi utilizado um estimador de <span class="math inline">\(\sigma\)</span>, a amplitude média dos intervalos de confiança obtidos por esse método será maior do que a amplitude média dos intervalos obtidos quando utilizamos o método apresentado no exemplo anterior. Com isso, dizemos que o intervalo de confiança acima é menos informativo, uma vez que o intervalo de valores plausíveis para <span class="math inline">\(\mu\)</span>, nesse caso, será maior que o do intervalo de confiança construído anteriormente. Esse problema é mais evidente para tamanhos pequenos de amostra, e torna-se menos relevante conforme o valor de <span class="math inline">\(n\)</span> aumenta.</p>
+<section id="um-exemplo-numérico-1" class="level4" data-number="5.4.2.1">
+<h4 data-number="5.4.2.1" class="anchored" data-anchor-id="um-exemplo-numérico-1"><span class="header-section-number">5.4.2.1</span> Um exemplo numérico</h4>
+<p>Para demonstrar a diferença entre o intervalo de confiança derivado acima e aquele derivado no exemplo anterior, podemos aproveitar o mesmo exemplo sobre a média das idades das gestantes e puérperas previamente discutido. Novamente, criaremos uma função, a qual chamaremos de <code>ic_media_caso2()</code>, que retornará o intervalo de confiança para a média populacional quando a variância populacional é desconhecida e <span class="math inline">\(\bar{X}\)</span> segue distribuição normal (ou aproximadamente normal). A função se dará de forma similar àquela criada anteriormente, sendo as únicas diferenças o cálculo do desvio padrão amostral, feito com a função <code>sd()</code>, do pacote básico <code>{stats}</code> e a obtenção do quantil da distribuição T de Student através da função <code>qt()</code>, do mesmo pacote. O resultado do processo pode ser visto abaixo. Lembre-se que o vetor <code>amostra_ic_media</code> foi criado no exemplo anterior.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>ic_media_caso2 <span class="ot">&lt;-</span> <span class="cf">function</span>(dados, alfa) {</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  media <span class="ot">&lt;-</span> <span class="fu">mean</span>(dados)</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(dados)</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  S <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">sd</span>(dados), <span class="dv">3</span>)</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  t <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="dv">1</span> <span class="sc">-</span> alfa<span class="sc">/</span><span class="dv">2</span>, n <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>  limite_inferior <span class="ot">&lt;-</span> <span class="fu">round</span>(media <span class="sc">-</span> t <span class="sc">*</span> S<span class="sc">/</span><span class="fu">sqrt</span>(n), <span class="dv">3</span>)</span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>  limite_superior <span class="ot">&lt;-</span> <span class="fu">round</span>(media <span class="sc">+</span> t <span class="sc">*</span> S<span class="sc">/</span><span class="fu">sqrt</span>(n), <span class="dv">3</span>)</span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>  amplitude <span class="ot">&lt;-</span> limite_superior <span class="sc">-</span> limite_inferior</span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(</span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.frame</span>(</span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>      n,</span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a>      S, </span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">estimativa_pontual =</span> media,</span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>      limite_inferior,</span>
+<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a>      limite_superior,</span>
+<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a>      amplitude)</span>
+<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb45-18"><a href="#cb45-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb45-19"><a href="#cb45-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-20"><a href="#cb45-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ic_media_caso2</span>(<span class="at">dados =</span> amostra_ic_media, <span class="at">alfa =</span> <span class="fl">0.05</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   n     S estimativa_pontual limite_inferior limite_superior amplitude
+1 50 6.634              32.16          30.275          34.045      3.77</code></pre>
+</div>
+</div>
+<p>Como podemos perceber, o intervalo de confiança obtido acima apresenta uma amplitude levemente maior do que o intervalo obtido anteriormente (3,77 contra 3,758). Dessa forma, apesar de a diferença não ser gritante, podemos perceber que a utilização de uma estimativa para o valor da variância populacional acarretou, como já explicado anteriormente, em um intervalo levemente menos informativo a respeito do verdadeiro valor da média populacional. Essa diferença na amplitude, entretanto, não é regra: poderíamos ter coletado uma amostra em que a amplitude do intervalo de confiança construído pelo presente método fosse menor. Além disso, como o tamanho da amostra é grande o suficiente, a diferença nas amplitudes dos dois intervalos passa a ser praticamente desconsiderável. Com isso, aqui encerramos a construção de intervalos de confiança para a média de uma população. Partamos, agora, para a última seção desse capítulo, na qual trataremos da obtenção de intervalos de confiança para a proporção populacional.</p>
+</section>
+</section>
+<section id="intervalos-de-confiança-para-a-proporção-populacional" class="level3" data-number="5.4.3">
+<h3 data-number="5.4.3" class="anchored" data-anchor-id="intervalos-de-confiança-para-a-proporção-populacional"><span class="header-section-number">5.4.3</span> Intervalos de confiança para a proporção populacional</h3>
+<p>A fazer</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiada");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiada");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./descritiva.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análise exploratória dos dados</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./supervisionada.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
