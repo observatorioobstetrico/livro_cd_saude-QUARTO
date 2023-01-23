@@ -291,9 +291,7 @@ Podemos utilizar como apoio gráfico e auxílio na tomada de decisão para o nú
 #variancia explicada por cada componente
 var_explicada = dados.pca.padr$sdev^2 / sum(dados.pca.padr$sdev^2)
 library(ggplot2)
-```
 
-```{r,warning=FALSE, eval=FALSE}
 qplot(c(1:9), var_explicada) + 
   geom_line() + 
   xlab("Principal Componente") + 
@@ -302,8 +300,6 @@ qplot(c(1:9), var_explicada) +
   ylim(0, 1) + 
   scale_x_discrete(limits=c(1:9))
 ```
-
-![](figuras_naosupervisionado/unnamed-chunk-4-1.png)
 
 Podemos por meio, tanto do *scree plot*, quanto pelo valor da variância explicada acumulada, selecionar $d= 3$ componentes para reter, pela queda de 2 para 3 ser significante, enquanto a de 3 para 4 nem tanto. Reduzindo número de variáveis a 3.
 
@@ -413,15 +409,11 @@ Os resultados do agrupamento de ligação simples podem ser exibidos graficament
 hc <-  db.dist |> 
   hclust( method = "single") 
 library(factoextra)
-```
 
-```{r,warning=FALSE, eval=FALSE}
 fviz_dend(hc, cex = 0.5,
           main = "Dendrogram - Simples",
           xlab = "observacoes", ylab = "distancia", sub = "")
 ```
-
-![](figuras_naosupervisionado/unnamed-chunk-7-1.png)
 
 **Ligação Completa** : Funciona de maneira parecida com a ligação simples, uniremos os grupos com menor distância entre sí até que reste apenas um único grupo. Porém, as distâncias entre as variáveis unidas, digamos *X* e *Y*, das demais variáveis *W* será definida como:
 
@@ -467,15 +459,11 @@ Observe agora o dendrograma para ligação completa com 10 observações.
 hc <-  db.dist |> 
   hclust( method = "complete") 
 library(factoextra)
-```
 
-```{r,warning=FALSE, eval=FALSE}
 fviz_dend(hc, cex = 0.5,
           main = "Dendrogram - Completa",
           xlab = "observacoes", ylab = "distancia", sub = "")
 ```
-
-![](figuras_naosupervisionado/unnamed-chunk-8-1.png)
 
 **Ligação Média**: A ligação média trata a distância entre dois clusters como a distância média entre todos os pares de itens onde um membro de um par pertence a cada cluster. Considere o grupo {XY} e o grupo {W}, e $N_w$ como sendo número de elementos em {W}, e $N_{XY}$ número de elementos em {XY}, então:
 
@@ -515,15 +503,11 @@ $$
 hc <-  db.dist |> 
   hclust( method = "average") 
 library(factoextra)
-```
 
-```{r,warning=FALSE, eval=FALSE}
 fviz_dend(hc, cex = 0.5,
           main = "Dendrogram - Média",
           xlab = "observacoes", ylab = "distancia", sub = "")
 ```
-
-![](figuras_naosupervisionado/unnamed-chunk-9-1.png)
 
 **Método Ward de clusterização** : O método de ward se baseia na minimização da "perda de informação" ao juntar dois grupos. É tido como perda de informação o crescimento da soma dos quadrados dos erros, $SQE$. Suponha o grupo {W}, a $SQE_W$ pode ser descrita como a soma dos quadrados das distâncias de cada item do grupo para a média do grupo. Definindo $SQE$ como a soma dos $SQE_i$, onde $i$ representa cada um dos $N$ grupos. Em cada instância do processo é realizado a junção de todos os possiveis pares de grupos, optamos pela união que obtiver o menor incremento da $SQE$. Note que no passo 0 essa soma é equivalente a 0, considerando que para cada $SQE_i$, com apenas uma observação por cluster, a média será a própria observação. Enquanto que ao considerar o grupo final com todas as observações é possível obter a $SQE$ por:
 
@@ -537,16 +521,12 @@ Onde $X_j$ representa a j-ésima observação do grupo.
 hc <-  db.dist |> 
   hclust( method = "ward.D2") 
 library(factoextra)
-```
 
-```{r,warning=FALSE, eval=FALSE}
 fviz_dend(hc, cex = 0.5,
           main = "Dendrogram - Ward",
           xlab = "observacoes", ylab = "distancia", sub = "")
 
 ```
-
-![](figuras_naosupervisionado/unnamed-chunk-10-1.png)
 
 #### Algumas conclusões
 
@@ -609,9 +589,7 @@ De forma simples podemos identificar os centros e em qual cada uma das variávei
 ```{r}
 dados_grupos <- kmeans.df |> broom::augment(df)
 cent <- kmeans.df$centers
-```
 
-```{r, eval=FALSE}
 dados_grupos |> 
   ggplot(aes(x = idade_anos, y = sem_pri,col = .cluster)) +
   geom_point() +
@@ -619,8 +597,6 @@ dados_grupos |>
   geom_point(aes(x = cent[2,1], y = cent[2,2]), color = "black", size = 3)+
   geom_point(aes(x = cent[3,1], y = cent[3,2]), color = "black", size = 3)
 ```
-
-![](figuras_naosupervisionado/unnamed-chunk-16-1.png)
 
 ```{r}
 kmeans.df
@@ -639,9 +615,7 @@ var_totais <- vector()
 for(i in 1:10){
   var_totais[i] <- (df |> kmeans(centers = i, iter.max = 400))$tot.withinss
 }
-```
 
-```{r, eval=FALSE}
 qplot(1:10, var_totais, geom = "line")
 qplot(c(1:10), var_totais) + 
   geom_line() + 
@@ -650,10 +624,6 @@ qplot(c(1:10), var_totais) +
   ggtitle("Scree Plot") +
   scale_x_discrete(limits=c(1:10))
 ```
-
-![](figuras_naosupervisionado/unnamed-chunk-17-1.png)
-
-![](figuras_naosupervisionado/unnamed-chunk-17-2.png)
 
 Podemos definir a partir disso possíveis números ideais como 3, 4 ou até mesmo 6.
 
@@ -667,13 +637,9 @@ dados_circulo <- data.frame(
   Y = runif(5000, -1, 1)
 ) |>
   dplyr::filter(X^2 + Y^2 <= 0.2 | (X^2 + Y^2 <= 0.8 & X^2 + Y^2 >= 0.6))
-```
 
-```{r, eval=FALSE}
 qplot(dados_circulo$X, dados_circulo$Y)
 ```
-
-![](figuras_naosupervisionado/unnamed-chunk-18-1.png)
 
 É notável como o agrupamento deve ser realizando simplesmente olhando para o gráfico proposto, porém, algoritmos como *k-médias* não pensam da mesma forma,
 
@@ -681,17 +647,13 @@ qplot(dados_circulo$X, dados_circulo$Y)
 dados_circulo.km <- dados_circulo |> kmeans(centers = 2)
 dados_circulo <- dados_circulo.km |> broom::augment(dados_circulo)
 cent <- dados_circulo.km$centers
-```
 
-```{r, eval=FALSE}
 dados_circulo |> 
   ggplot(aes(x = X, y = Y,col = .cluster)) +
   geom_point() +
   geom_point(aes(x = cent[1,1], y = cent[1,2]), color = "black", size = 3)+
   geom_point(aes(x = cent[2,1], y = cent[2,2]), color = "black", size = 3)
 ```
-
-![](figuras_naosupervisionado/unnamed-chunk-19-1.png)
 
 ```{r}
 kmeans.df
@@ -702,14 +664,10 @@ kmeans.df
 ```{r}
 dados_circulo.h <- hcut(dados_circulo[,1:2], k = 2, hc_method = "single")
 d_circulo.h <- cbind(dados_circulo[,1:2],cluster=dados_circulo.h$cluster)
-```
 
-```{r, eval=FALSE}
 d_circulo.h |> 
   ggplot(aes(x = X, y = Y,col = cluster)) +
   geom_point()
 ```
-
-![](figuras_naosupervisionado/unnamed-chunk-20-1.png)
 
 Os métodos hierárquicos apresentados no entanto, por utilizarem da distância de uma variável a outra são limitados a utilização de banco de dados numéricos, o que nem sempre é o encontrado nos problemas reais, é necessário optar nesse caso por métodos e algoritmos que consigam fazer a distinção mesmo na presença de variáveis categóricas. Fator relevante para a escolha do melhor algoritmo é a capacidade de lidar com um grande volume de dados. No *k-médias* temos a opção por exemplo de pré definirmos o número de iterações. Considere um grupo com milhões de variáveis, ao utilizar um método de ligação simples hierárquico faremos aproximadamente um milhão de ligações para depois identificar o número ideal de grupos, caso esse não seja conhecido (Caso mais comum). O ideal então é a análise exploratória de seus dados para com base nos conhecimentos sobre os diferentes tipos de métodos, saber qual será o de melhor aplicação para o determinado problema. Nada o impede de aplicar mais de um método e após sua aplicação identificar qual foi o modelo ótimo para o problema.
