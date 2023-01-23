@@ -247,7 +247,7 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, breakable, interior hidden, frame hidden, enhanced, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, interior hidden, boxrule=0pt, enhanced, breakable, sharp corners, frame hidden]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Índice}
 {
@@ -7159,8 +7159,8 @@ Suponha que os clusters são tidos inicialmente nas cordenadas:
 \midrule()
 \endhead
 1 & 25 & 28 \\
-2 & 38 & 23 \\
-3 & 31 & 44 \\
+2 & 31 & 44 \\
+3 & 38 & 23 \\
 \bottomrule()
 \end{longtable}
 
@@ -7175,42 +7175,42 @@ Agregando cada variável a um cluster obtemos então.
 2 & 31 & 26 & 1 \\
 3 & 27 & 28 & 1 \\
 4 & 20 & 33 & 1 \\
-5 & 39 & 39 & 3 \\
-6 & 34 & 51 & 3 \\
-7 & 34 & 21 & 2 \\
+5 & 39 & 39 & 2 \\
+6 & 34 & 51 & 2 \\
+7 & 34 & 21 & 3 \\
 8 & 29 & 33 & 1 \\
-9 & 44 & 18 & 2 \\
-10 & 27 & 40 & 3 \\
-11 & 28 & 47 & 3 \\
-12 & 35 & 50 & 3 \\
-13 & 37 & 29 & 2 \\
+9 & 44 & 18 & 3 \\
+10 & 27 & 40 & 2 \\
+11 & 28 & 47 & 2 \\
+12 & 35 & 50 & 2 \\
+13 & 37 & 29 & 3 \\
 14 & 30 & 29 & 1 \\
-15 & 32 & 45 & 3 \\
+15 & 32 & 45 & 2 \\
 16 & 27 & 32 & 1 \\
-17 & 44 & 32 & 2 \\
-18 & 30 & 42 & 3 \\
+17 & 44 & 32 & 3 \\
+18 & 30 & 42 & 2 \\
 19 & 16 & 21 & 1 \\
 20 & 24 & 21 & 1 \\
 21 & 31 & 32 & 1 \\
 22 & 24 & 36 & 1 \\
 23 & 31 & 34 & 1 \\
-24 & 33 & 47 & 3 \\
-25 & 25 & 50 & 3 \\
-26 & 31 & 21 & 2 \\
+24 & 33 & 47 & 2 \\
+25 & 25 & 50 & 2 \\
+26 & 31 & 21 & 3 \\
 27 & 26 & 21 & 1 \\
-28 & 49 & 19 & 2 \\
+28 & 49 & 19 & 3 \\
 29 & 25 & 25 & 1 \\
 30 & 16 & 31 & 1 \\
 31 & 20 & 32 & 1 \\
-32 & 34 & 42 & 3 \\
-33 & 28 & 38 & 3 \\
-34 & 33 & 16 & 2 \\
-35 & 34 & 21 & 2 \\
-36 & 32 & 20 & 2 \\
-37 & 38 & 32 & 2 \\
-38 & 31 & 40 & 3 \\
-39 & 38 & 24 & 2 \\
-40 & 41 & 27 & 2 \\
+32 & 34 & 42 & 2 \\
+33 & 28 & 38 & 2 \\
+34 & 33 & 16 & 3 \\
+35 & 34 & 21 & 3 \\
+36 & 32 & 20 & 3 \\
+37 & 38 & 32 & 3 \\
+38 & 31 & 40 & 2 \\
+39 & 38 & 24 & 3 \\
+40 & 41 & 27 & 3 \\
 \bottomrule()
 \end{longtable}
 
@@ -7223,8 +7223,8 @@ centroide & idade\_anos & sem\_pri \\
 \midrule()
 \endhead
 1 & 25.06250 & 28.18750 \\
-2 & 37.91667 & 23.33333 \\
-3 & 31.33333 & 44.25000 \\
+2 & 31.33333 & 44.25000 \\
+3 & 37.91667 & 23.33333 \\
 \bottomrule()
 \end{longtable}
 
@@ -7245,22 +7245,22 @@ simples. considere o banco já discutido
 \end{Shaded}
 
 \begin{verbatim}
-K-means clustering with 3 clusters of sizes 12, 12, 16
+K-means clustering with 3 clusters of sizes 16, 12, 12
 
 Cluster means:
   idade_anos  sem_pri
-1   37.91667 23.33333
-2   31.33333 44.25000
-3   25.06250 28.18750
+1   25.06250 28.18750
+2   37.91667 23.33333
+3   31.33333 44.25000
 
 Clustering vector:
  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 
- 3  3  3  3  2  2  1  3  1  2  2  2  1  3  2  3  1  2  3  3  3  3  3  2  2  1 
+ 1  1  1  1  3  3  2  1  2  3  3  3  2  1  3  1  2  3  1  1  1  1  1  3  3  2 
 27 28 29 30 31 32 33 34 35 36 37 38 39 40 
- 3  1  3  3  3  2  2  1  1  1  1  2  1  1 
+ 1  2  1  1  1  3  3  2  2  2  2  3  2  2 
 
 Within cluster sum of squares by cluster:
-[1] 669.5833 412.9167 861.3750
+[1] 861.3750 669.5833 412.9167
  (between_SS / total_SS =  67.6 %)
 
 Available components:
@@ -7304,22 +7304,22 @@ identificação do valor \(k\) estabelecido.
 \end{Shaded}
 
 \begin{verbatim}
-K-means clustering with 3 clusters of sizes 12, 12, 16
+K-means clustering with 3 clusters of sizes 16, 12, 12
 
 Cluster means:
   idade_anos  sem_pri
-1   37.91667 23.33333
-2   31.33333 44.25000
-3   25.06250 28.18750
+1   25.06250 28.18750
+2   37.91667 23.33333
+3   31.33333 44.25000
 
 Clustering vector:
  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 
- 3  3  3  3  2  2  1  3  1  2  2  2  1  3  2  3  1  2  3  3  3  3  3  2  2  1 
+ 1  1  1  1  3  3  2  1  2  3  3  3  2  1  3  1  2  3  1  1  1  1  1  3  3  2 
 27 28 29 30 31 32 33 34 35 36 37 38 39 40 
- 3  1  3  3  3  2  2  1  1  1  1  2  1  1 
+ 1  2  1  1  1  3  3  2  2  2  2  3  2  2 
 
 Within cluster sum of squares by cluster:
-[1] 669.5833 412.9167 861.3750
+[1] 861.3750 669.5833 412.9167
  (between_SS / total_SS =  67.6 %)
 
 Available components:
@@ -7459,22 +7459,22 @@ pensam da mesma forma,
 \end{Shaded}
 
 \begin{verbatim}
-K-means clustering with 3 clusters of sizes 12, 12, 16
+K-means clustering with 3 clusters of sizes 16, 12, 12
 
 Cluster means:
   idade_anos  sem_pri
-1   37.91667 23.33333
-2   31.33333 44.25000
-3   25.06250 28.18750
+1   25.06250 28.18750
+2   37.91667 23.33333
+3   31.33333 44.25000
 
 Clustering vector:
  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 
- 3  3  3  3  2  2  1  3  1  2  2  2  1  3  2  3  1  2  3  3  3  3  3  2  2  1 
+ 1  1  1  1  3  3  2  1  2  3  3  3  2  1  3  1  2  3  1  1  1  1  1  3  3  2 
 27 28 29 30 31 32 33 34 35 36 37 38 39 40 
- 3  1  3  3  3  2  2  1  1  1  1  2  1  1 
+ 1  2  1  1  1  3  3  2  2  2  2  3  2  2 
 
 Within cluster sum of squares by cluster:
-[1] 669.5833 412.9167 861.3750
+[1] 861.3750 669.5833 412.9167
  (between_SS / total_SS =  67.6 %)
 
 Available components:
@@ -10209,7 +10209,7 @@ reposição, não precisaríamos colocar esse argumento por seu default ser
 \texttt{FALSE}.
 
 \begin{verbatim}
-[1] 2 1
+[1]  1 10
 \end{verbatim}
 
 Também poderíamos usar a mesma função sem colocar o nome dos argumentos,
@@ -10222,7 +10222,7 @@ desde que o usuário entenda o que ela está fazendo.
 \end{Shaded}
 
 \begin{verbatim}
-[1] 10 20
+[1]  2 10
 \end{verbatim}
 
 Nesse caso, é importante que se respeite a ordem dos argumentos: o vetor

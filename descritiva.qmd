@@ -166,7 +166,7 @@ Ressalva similar feita ao coeficiente de assimetria deve ser considerado para o 
 No R, para obter essas medidas resumo vamos utilizar a função `descr` também do pacote `summarytools`. No comando abaixo pedimos ao R as medidas descritivas da variável quantitativa "idade".
 
 ```{r,echo=FALSE, eval=TRUE, message=FALSE,warning =FALSE,error=FALSE,results='hide'}
-dados <- readRDS("dados_limpo.rds")
+dados <- readRDS("dados/dados_limpo.rds")
 library(summarytools)
 ```
 
