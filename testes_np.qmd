@@ -1,0 +1,513 @@
+# Testes não-paramétricos
+
+Testes não paramétricos são testes estatísticos usados quando as suposições de um teste paramétrico não são atendidas, principalmente quando os dados não são normalmente distribuídos. Por estes testes não exigirem suposições muito fortes em relação à distribuição dos dados, eles tendem a ser menos poderosos que os testes paramétricos.
+
+Geralmente, a suposição de normalidade dos dados é violada quando o tamanho do grupo ou amostra é pequeno, ou quando os dados são assimétricos. Nesses casos, os resultados de um teste paramétrico podem não ser confiáveis, dado que suposições importantes relacionadas ao tamanho do grupo e simetria dos dados estarão sendo violadas, o que irá comprometer o teste.
+
+Os testes não-paramétricos são geralmente divididos conforme a quantidade de grupos sendo estudados. Os testes para um único grupo costumam ser utilizados para verificar se os dados são originados de uma população com alguma distribuição ou característica populacional específica, como a média ou mediana, por exemplo. Por outro lado, em testes para dois ou mais grupos podemos compará-los de acordo com algum critério específico do teste em questão. Tais testes de dois ou mais grupos são os quais iremos nos concentrar ao longo deste capítulo.
+
+Serão apresentados alguns dos testes não-paramétricos mais utilizados na área da saúde, sendo testes para grupos pareados e não-pareados. Além disso, devemos lembrar que os testes que serão apresentados não são os únicos, sendo importante avaliar com cuidado o problema que está sendo estudado para escolher o teste adequado.
+
+## Grupos não-pareados
+
+Para grupos não-pareados ou independentes, dentre os testes mais conhecidos e utilizados temos os testes de Mann-Whitney e Kolmogorov-Smirnov para dois grupos, e o de Kruskal-Wallis para três ou mais grupos.
+
+### Teste de Mann-Whitney
+
+O teste de Mann-Whitney é um teste estatístico não paramétrico usado para comparar dois grupos independentes, sendo o grau de medida pelo menos ordinal para variável de interesse e nominal para variável independente. Além disso, o teste é geralmente usado quando a variável resposta ou de interesse não é normalmente distribuída, sendo assim, uma alternativa não-paramétrica ao teste t para amostras independentes.
+
+Quando o resultado do teste for significativo, significa que ambos os grupos representam populações com distribuições diferentes. Caso a suposição de que ambas as distribuições são iguais seja feita, então podemos interpretar o teste como uma comparação de medianas, que ao ser significativo dizemos que as medianas são significativamente diferentes. Assim, considerando dois grupos independentes, as hipóteses podem ser definidas como:
+
+$H_0:$ distribuição$_1=$ distribuição$_2$
+
+$H_{\mathrm{a}}:$ distribuição$_1 \neq$ distribuição${ }_2$
+
+Suponha que queremos comparar as idades (anos) de gestantes hospitalizadas com Covid-19 de dois hospitais diferentes. Considere as idades coletadas nos seguintes grupos:
+
+Hospital A: <span style="color:red">$\quad 46,48,34,36,22,44,50$</span>
+
+Hospital B: $\quad 25,21,39,14,37$
+
+Confirmado que o teste de Mann-Whitney é apropriado, o primeiro passo que devemos tomar, é ordenar os valores de ambos os grupos de forma crescente em um único grupo, e então, identificar o posto de cada valor desse grupo. Para o exemplo abordado, teremos o seguinte:
+
+\begin{array}{llllllllllll}
+\hline \text { Idades } & 14 & 21 & \color{red}{22} & 25 & \color{red}{34} & \color{red}{36} & 37 & 39 & \color{red}{44} & \color{red}{46} & \color{red}{48} & \color{red}{50}\\
+\hline \text { Posto } & 1 & 2 & \color{red}{3} & 4 & \color{red}{5} & \color{red}{6} & 7 & 8 & \color{red}{9} & \color{red}{10} & \color{red}{11} & \color{red}{12}\\
+\hline
+\end{array}
+
+Onde está destacado em vermelho as idades das gestantes hospitalizadas no Hospital A e seus respectivos postos. Além disso, destacado em preto essa mesma informação para as gestantes hospitalizadas no Hospital B.
+
+#### Estatística $U$
+
+O teste de Mann-Whitney também é chamado de teste $U$ de Mann-Whitney, pois calculamos o que chamamos de estatística $U$, a qual é uma quantidade baseada na soma dos postos identificados de cada grupo calculada para fazer a avaliação das hipóteses.
+
+Agora, considere $n_1$ e $n_2$ como o número de observações do grupo 1 e grupo 2 respectivamente, em que, o grupo 1 será aquele com o menor número de observações (caso ambos os grupos tenham a mesma quantidade de observações, então $n_1 = n_2$). Além disso, considere $R_1$ e $R_2$ como a soma dos postos identificados nos grupos 1 e 2 respectivamente, e $N = n_1 + n_2$ como o total de observações considerando ambos os grupos.
+
+Definido os termos necessários e considerando o exemplo apresentado, calculamos as seguintes quantidades:
+
+$U_1=n_1n_2+\displaystyle \frac{n_1\left(n_1+1\right)}{2}-R_1=5\cdot7+\displaystyle \frac{5 \cdot\left(5+1\right)}{2}-22 = 28$, 
+
+$U_2=n_1 n_2+\displaystyle \frac{n_2\left(n_2+1\right)}{2}-R_2=5 \cdot 7+\displaystyle \frac{7 \cdot\left(7+1\right)}{2}-56 = 7$.
+
+Tendo calculado $U_1$ e $U_2$ a estatística $U$ será o menor valor entre ambas, neste caso, $U = U_2$. Podemos confirmar se todo procedimento foi feito corretamente ao verificar a relação $n_1n_2 = U_1 + U_2$, a qual será $5\cdot 7 = 28 + 7 = 35$ no exemplo considerado.   
+
+#### Avaliação das hipóteses
+
+Para avaliar as hipóteses precisamos calcular a quantidade $U_c$, o qual é o valor crítico de $U$ necessário para decidir em relação às hipóteses. Este valor pode ser encontrado em tabelas de valores críticos da estatística U bilateral (ou unilateral a depender das hipóteses), ou podemos utilizar a função `qwilcox()` do R e subtrair o resultado por 1, para obtê-lo no caso bilateral. Para o exemplo dos hospitais temos $n_1 = 5$ e $n_2 = 7$, considerando nível de 5\% de significância, podemos utilizar a função `qwilcox()` para encontrar $U_c$ da seguinte forma:
+
+```{r,echo=TRUE, eval=TRUE, message=FALSE,warning =FALSE,error=FALSE}
+qwilcox(0.05/2,5,7) - 1
+```
+
+Onde $0.05/2$ é o nível de significância dividido por dois devido ao teste ser bilateral, e subtraímos por $1$ como uma correção matemática por $U$ ser discreto e `qwilcox()` calcular quantis, e não valores críticos de $U$. Assim, $U_c = 5$ no exemplo considerado.
+
+Assim, rejeitamos a hipótese nula quando o valor da estatística $U$ calculada for menor ou igual ao valor crítico de $U$, ou seja, quando $U \leq U_c$. Com os valores calculados de $U = 7$ e $U_c = 5$, podemos concluir ao nível de 5\% de significância que não há diferença significativa entre as distribuições das idades das gestantes hospitalizadas em ambos hospitais.
+
+#### Empates
+
+Dependendo do problema, pode existir valores repetidos observados, e ao ordená-los para identificar os postos, esses valores são considerados empates. 
+
+\begin{array}{llllllllllll}
+\hline \text { Idades } & 14 & 21 & \color{red}{25} & \color{red}{25} & \color{red}{34} & \color{red}{36} & 37 & 39 & \color{red}{44} & \color{red}{46} & \color{red}{48} & \color{red}{50}\\
+\hline \text { Posto } & 1 & 2 & \color{red}{3,5} & \color{red}{3,5} & \color{red}{5} & \color{red}{6} & 7 & 8 & \color{red}{9} & \color{red}{10} & \color{red}{11} & \color{red}{12}\\
+\hline
+\end{array}
+
+Observe nesse exemplo que há um empate para idade de 25 anos. Nesse caso, ao ordenar os valores teríamos os postos 3 e 4 para esses valores repetidos, mas devemos atribuir a média desses postos para dar continuidade ao teste. Assim, temos $\displaystyle \frac{3 + 4}{2}= 3,5$.
+
+#### Estatística $U$ normalizada
+
+É tido como um consenso a utilização dos procedimentos apresentados até então sobre o teste Mann-Whitney no cenário em que $n_1$ e $n_2$ são menores ou iguais que 20. Por outro lado, no cenário em que $n_1$ e $n_2$ são grandes ($>20$), podemos aproximar a distribuição de $U$ para uma normal. Assim, calculamos a estatística $Z_u$ para avaliar as hipóteses da seguinte forma:  
+
+$$Z_u = \displaystyle \frac{U-\displaystyle\frac{n_1  n_2}{2}}{\sqrt{\displaystyle\frac{n_1 n_2\left(n_1+n_2+1\right)}{12}}}.$$
+
+Esse procedimento nada mais é do que subtrair a média de $U$ e dividir pelo seu desvio padrão.
+
+Assim, para avaliar as hipóteses, é necessário obter o valor crítico de $Z_u$, o qual pode ser obtido a partir de tabelas de valores críticos da distribuição normal padrão, ou podemos recorrer à função `qnorm()` no R com os seguintes argumentos: `qnorm(0.05/2, lower.tail = FALSE)` para teste bilateral e nível de 5\% de significância; `qnorm(0.05, lower.tail = FALSE)` para teste unilateral e nível de 5\% de significância. Os valores críticos de $Z_u$ para o teste bilateral e unilateral ao nível de 5\% de significância são 1,96 e 1,65 respectivamente. Assim, rejeitamos a hipótese nula quando $|Z_u|\geq1,96$ e $|Z_u|\geq1,65$ no teste bilateral e unilateral respectivamente.
+
+Caso haver empates, a aproximação deve ser feita da seguinte forma:
+
+$$Z_u = \displaystyle \frac{U-\displaystyle\frac{n_1  n_2}{2}}{\sqrt{\displaystyle\frac{n_1n_2\left(n_1+n_2+1\right)}{12}- \displaystyle\frac{n_1n_2\left[\sum_{i=1}^s\left(t_i^3-t_i\right)\right]}{12  \left(n_1+n_2\right) \left(n_1+n_2-1\right)}}},$$
+
+Onde, na quantidade $\sum_{i=1}^s\left(t_i^3-t_i\right)$ o $s$ indica quantos grupos de empates ocorreram, ex: idade 25 se repete duas vezes e idade 45 se repete cinco vezes, totalizando 2 grupos de empates ou de repetições. Além disso, o termo $t$ é o número total de empates no grupo de repetições $i$. Assim, para as repetições hipotéticas da idade 25 e 45 teremos: 
+
+$$\sum_{i=1}^2\left(t_i^3-t_i\right) = (2^3 - 2) + (5^3 - 5) = 126.$$
+
+Dessa forma, podemos calcular $Z_u$ e então avaliar as hipóteses da mesma forma que avaliamos no cenário sem empates.
+
+#### Como aplicar o teste no R
+
+Na prática, tendo os dados em um formato de planilha, podemos carregá-los no software R e então aplicar o teste recorrendo a uma função específica, a qual irá efetuar os procedimentos formalmente explicados ao longo do texto e retornar um *valor-p*, o qual podemos utilizar para avaliar as hipóteses, onde, rejeitamos a hipótese nula caso *valor-p* $\leq 0,05$, sendo 5\% de nível de significância escolhido. Podemos usar a seguinte estrutura:
+
+```{r,echo=TRUE, eval=FALSE, message=FALSE,warning =FALSE,error=FALSE}
+stats::wilcox.test(x, y, correct = FALSE,  alternative = "two.sided")
+```
+
+Os argumentos `x` e `y` são os vetores dos valores dos grupos a serem comparados. O argumento `correct` indica se o usuário quer que seja feito uma correção de continuidade do *valor-p* no caso de aproximação normal da estatística $U$, o que geralmente não é feito, a menos que a estatística $Z_u$ esteja muito próxima do valor crítico utilizado. E por fim, o argumento `alternative` permite escolher o formato do teste de hipóteses desejado.
+
+### Teste de Kolmogorov-Smirnov
+
+Assim como o teste de Mann-Whitney, o teste de Kolmogorov-Smirnov é uma alternativa não paramétrica ao teste t para grupos independentes quando há a suspeita de não normalidade da variável de interesse. O teste possui grau de medida pelo menos ordinal, e é sensível a qualquer diferença de tendência central, dispersão, simetria ou curtose das distribuições.
+
+Visa verificar se ambos os grupos originaram-se de populações com a mesma distribuição. Para isso, é calculado a estatística de teste $D$ a partir das distribuições de frequências acumuladas dos grupos, e então, utiliza-se essa estatística $D$ para avaliar as hipóteses. Quanto maior a estatística, maior será a evidência para rejeitar a hipótese nula. 
+
+Retornando ao exemplo das idades de gestantes hospitalizadas com Covid-19 em dois diferentes hospitais, as hipóteses para o teste bilateral terão a seguinte forma:
+
+$H_0:$ distribuição$_1=$ distribuição$_2$
+
+$H_{\mathrm{a}}:$ distribuição$_1 \neq$ distribuição${ }_2$
+
+São hipóteses com formas idênticas as do teste de Mann-Whitney. Porém, embora tenham o mesmo objetivo de comparar as distribuições para ambos os grupos, o método difere consideravelmente. Além disso, o teste de Mann-Whitney é sensível em relação à mediana, enquanto o teste de Kolmogorov-Smirnov é sensível em relação aos aspectos gerais das distribuições sendo testadas como foi discutido anteriormente.
+
+Embora seja o mesmo exemplo, serão considerados valores diferentes por motivos didáticos:
+
+Hospital A: $\quad 22,22,25,27,29$
+
+Hospital B: $\quad 27,31,34,37,44$
+
+Considerando as notações introduzidas no desenvolvimento do teste de Mann-Whitney, os tamanhos dos grupos são $n_1 = 5$ e $n_2 = 5$. Vale lembrar que, usualmente, denotamos $n_1$ como sendo o tamanho do menor grupo, chamado de grupo 1. Como neste exemplo ambos possuem o mesmo tamanho, o grupo 1 sera composto dos valores das idades referentes as gestantes hospitalizadas no Hospital A.
+
+#### Estatística $D$
+
+Precisamos calcular a estatística $D$ para avaliar as hipóteses. Essa estatística nada mais é do que o maior valor que encontrarmos ao realizar a diferença entre as proporções de frequências relativas acumuladas dos dois grupos. Para isso, construímos a seguinte tabela:
+
+\begin{array}{ccccc}
+\hline 
+\text{Idades}_1 & S_1 & \text{Idades}_2 & S_2 & S_1-S_2 \\
+\hline 22;22 & 2 / 5=0,40 & - & 0 & 0,40-0=0,40 \\
+25 & 3 / 5=0,60 & - & 0 & 0,60-0=0,60 \\
+27 & 4 / 5=0,80 & 27 & 1 / 5=0,20 & 0,80-0,20=0,60 \\
+29 & 5 / 5=1,00 & - & 1 / 5=0,20 & 1,00-0,20=\color{red}{0,80} \\
+- & 5 / 5=1,00 & 31 & 2 / 5=0,40 & 1,00-0,40=0,60 \\
+- & 5 / 5=1,00 & 34 & 3 / 5=0,60 & 1,00-0,60=0,40 \\
+- & 5 / 5=1,00 & 37 & 4 / 5=0,80 & 1,00-0,80=0,20 \\
+- & 5 / 5=1,00 & 44 & 5 / 5=1.00 & 1,00-1,00=0,00 \\
+\hline
+\end{array}
+
+As colunas Idades~1~ e Idades~2~ são referentes aos valores do grupo 1 (usualmente o menor grupo, o que não é o caso, pois $n_1 = n_2$) e grupo 2 respectivamente. Porém, note que existe um valor repetido (Idades~1~ $= 22$) na primeira coluna, quando isso ocorre todas as repetições desse mesmo valor permanecem na mesma linha. Além disso, observe que na primeira linha e coluna Idades~2~ foi atribuído um símbolo de $-$, isso ocorre, pois não há um valor de Idades~2~ $= 22$ assim como na coluna Idades~1~. O mesmo ocorre na quinta linha e coluna Idades~1~, pois nessa coluna não há um valor de Idades~1~ $= 31$ assim como ocorre na coluna Idades~2~, por exemplo. Para mais, a tabela é construída com os valores de ambos os grupos ordenados de forma crescente no decorrer das linhas.
+
+As colunas $S_1$ e $S_2$ são referentes as proporções das frequências relativas acumuladas das colunas Idades~1~ e Idades~2~ respectivamente. Note que, na primeira linha e coluna Idades~1~ da tabela, temos uma frequência relativa de $\displaystyle \frac{2}{5}$ para Idades~1~ $= 22$ devido a esse valor repetir uma vez. Na segunda linha temos uma frequência relativa de $\displaystyle \frac{1}{5}$ para Idades~1~ $= 25$, pois esse valor aparece uma única vez, que ao acumular com a frequência da linha anterior obtemos $\displaystyle \frac{2}{5} + \displaystyle \frac{1}{5} = \displaystyle \frac{3}{5}$. Na terceira e quarta linha da tabela os valores da coluna Idades~1~ também não se repetem, o que faz com que tenham uma frequência relativa de $\displaystyle \frac{1}{5}$ que ao acumular com as frequências anteriores resultam em $\displaystyle \frac{4}{5}$ e $\displaystyle \frac{5}{5}$. Após a quarta linha não há mais valores para a coluna Idades~1~, portanto, a proporção das frequências relativas se mantêm em $\displaystyle \frac{5}{5} = 1$. Além disso, na primeira e segunda linha as frequências relativas referentes a coluna Idades~2~ são zeradas, pois não há valores para essa coluna nessas linhas, e por serem as primeiras linhas não há nenhuma frequência a ser acumulada. Isso muda a partir da terceira linha, onde a mesma lógica utilizada para construir as frequências relativas $S_1$ pode ser usada na construção de $S_2$.
+
+Por fim, basta calcular os valores de $S_1 - S_2$ para todas as linhas da tabela. A estatística $D$ será o maior dentre esses valores, sendo $D = 0,80$ no exemplo abordado.
+
+#### Avaliação das hipóteses
+
+Para avaliar as hipóteses precisamos obter o valor crítico $D_c$, o qual é um valor tabelado que pode ser verificado em Sheskin (2003) fazendo uso apenas das quantidades $n_1$, $n_2$ e o nível de significância escolhido. Para $n_1 = 5$, $n_2 = 5$ e o nível de significância de 5\%, temos que $D_c = 0,80$. Assim, em um teste de hipóteses bilateral rejeitamos a hipótese nula quando o valor absoluto da estatística $D$ for maior ou igual que o valor crítico, ou seja, quando $|D| \geq D_c$. No exemplo, como $D = 0,80$ e $D_c = 0,80$, poderíamos concluir que há evidências de que ambos os grupos se originaram de populações com distribuições diferentes.  
+
+Embora não seja muito comum, testes de hipóteses unilaterais podem ser empregados:
+
+1) Caso a hipótese alternativa seja $H_{\mathrm{a}}:$ distribuição$_1 >$ distribuição${ }_2$, então rejeita-se a hipótese nula quando $|D| \geq D_c$, onde $D_c$ é o valor crítico tabelado para o teste de Kolmogorov-Smirnov unilateral, que para o exemplo temos $D_c = 0,60$ ao nível de 5\% de significância. Além disso, para os dados serem consistentes com o teste, a proporção da frequência acumulada referente ao grupo 1 deve ser maior que a do grupo 2 no ponto em que a estatística de teste $D$ foi identificada, ou seja, precisamos ter $S_1 > S_2$ na quarta linha da tabela do exemplo considerado para este teste unilateral ser utilizado. Assim, esse formato de hipótese é aplicável ao problema dado que as condições são satisfeitas, e poderíamos chegar nas mesmas conclusões que no teste bilateral. 
+
+2) Caso a hipótese alternativa seja $H_{\mathrm{a}}:$ distribuição$_1 <$ distribuição${ }_2$, o procedimento de avaliação da hipótese é o mesmo dos casos anteriores. Porém, para ser utilizado temos que respeitar a condição $S_1 < S_2$ na linha da tabela referente a estatística $D$, o que não ocorre no exemplo considerado, o que faz com que esse formato de hipótese seja inapropriado.
+
+
+#### Como aplicar o teste no R
+
+É fácil notar que com valores grandes de $n_1$ e $n_2$ a construção da tabela para encontrar a estatística $D$ se torna trabalhosa sem o auxílio computacional. Agora que a ideia de como o teste é construído foi formalmente explicada, podemos verificar como utilizá-lo no software R através de uma função específica. Segue abaixo a estrutura para efetuar o teste de Kolmogorov-Smirnov no R:
+
+```{r,echo=TRUE, eval=FALSE, message=FALSE,warning =FALSE,error=FALSE}
+stats::ks.test(x, y, alternative = "two.sided")
+```
+
+Os argumentos `x` e `y` são os vetores dos valores dos grupos a serem comparados, enquanto o argumento `alternative` permite escolher o formato do teste de hipóteses desejado. Ao executar a função, ela irá retornar a estatística de teste e o *valor-p*, os quais podemos utilizar para avaliar as hipóteses, onde, rejeitamos a hipótese nula caso *valor-p* $\leq 0,05$, sendo 5\% de nível de significância escolhido.
+
+Além disso, podemos utilizar a mesma função para efetuar o teste de Kolmogorov-Smirnov para um grupo. A lógica de construção do teste para um grupo é similar a construção do teste para dois, a principal diferença é de que em vez de comparar as distribuições para dois grupos, estaremos comparando a distribuição de um único grupo com uma distribuição hipotética ou teórica. A estrutura de aplicação no R será a seguinte: 
+
+```{r,echo=TRUE, eval=FALSE, message=FALSE,warning =FALSE,error=FALSE}
+stats::ks.test(x, "pnorm", alternative = "two.sided")
+```
+
+Os argumentos `x` e `alternative` são os mesmos, a diferença é que em vez de utilizar o argumento `y` utilizamos o argumento `"pnorm"`, o qual estamos especificando que queremos comparar a distribuição da população que deu origem ao grupo com a distribuição empírica normal.
+
+### Teste de Kruskal-Wallis
+
+O teste de Kruskal-Wallis é uma extensão do teste de Mann-Whitney em que é possível contruí-lo utilizando a lógica de postos dos valores ordenados dos grupos do estudo, e comparar a distribuição desses grupos, os quais, nesse caso, podem ser mais do que dois. Além disso, é um teste sensível à mediana como o teste de Mann-Whitney, e requer que a variável de interesse seja no mínimo ordinal. Como os grupos precisam ser independentes e não é necessário assumir normalidade, o teste de Kruskal-Wallis é uma alternativa não-paramétrica a análise de variância de um fator (One-way ANOVA).
+
+Considere $k$ como sendo o número de grupos no estudo. Quando $k = 2$, o teste de Kruskal-Wallis terá resultados equivalentes aos do teste de Mann-Whitney. Além disso, o teste verifica se as distribuições das populações das quais os grupos foram amostrados são iguais, mas caso a suposição de que a forma dessas distribuições é a mesma for feita, então, o teste pode ser interpretado com base na mediana. Assim, considerando $k$ grupos independentes, as hipóteses podem ser definidas como:
+
+$H_0:$ Todos os $k$ grupos originam-se de populações com distribuições idênticas.
+
+$H_{\mathrm{a}}:$ Pelo menos 2 grupos originam-se de populações com distribuições diferentes.
+
+Retornaremos ao exemplo que considera a idade(anos) das gestantes hospitalizadas com Covid-19. Considere $n_1 = 5$, $n_2 = 5$ e $n_3 = 5$ como a quantidade de gestantes de três hospitais diferentes dos quais foram registradas as idades para o estudo. Os grupos podem ser vistos abaixo:
+
+Hospital A: <span style="color:red">$\quad 27,24,18,18,25$</span>
+
+Hospital B: <span style="color:blue">$\quad 43,39,31,36,41$</span>
+
+Hospital C: $\quad 25,27,29,24,24$
+
+Assim como feito na construção do teste de Mann-Whitney, deve-se considerar todas as idades registradas como se fossem de um único grupo e então ordená-las para que os postos de cada registro seja identificado. No caso de empates, o posto atribuído a cada valor repetido será a média dos postos desses valores inicialmente identificados, assim como feito para o teste de Mann-Whitney. 
+
+\begin{array}{llllllllllll}
+\hline \text { Idades } & \color{red}{18} & \color{red}{18} & \color{red}{24} & 24 & 24 & \color{red}{25} & 25 & \color{red}{27} & 27 & 29 & \color{blue}{31} & \color{blue}{36} & \color{blue}{39} & \color{blue}{41} & \color{blue}{43}\\
+\hline \text { Posição} & \color{red}{1} & \color{red}{2} & \color{red}{3} & 4 & 5 & \color{red}{6} & 7 & \color{red}{8} & 9 & 10 & \color{blue}{11} & \color{blue}{12} & \color{blue}{13} & \color{blue}{14} & \color{blue}{15}\\
+\hline \text { Posto } & \color{red}{1,5} & \color{red}{1,5} & \color{red}{4} & 4 & 4 & \color{red}{6,5} & 6,5 & \color{red}{8,5} & 8,5 & 10 & \color{blue}{11} & \color{blue}{12} & \color{blue}{13} & \color{blue}{14} & \color{blue}{15}\\
+\hline
+\end{array}
+
+Identificado os postos de cada observação, é possível obter algumas quantidades de interesse para a construção do teste. Considere $R_1 = 22$, $R_2 = 65$ e $R_3 = 33$ como sendo a soma dos postos do grupo 1 (verde), grupo 2 (vermelho) e grupo 3 (preto) respectivamente. Além disso, considere $N = n_1 + n_2 + n_3$ como o total de observações registradas, que para o exemplo abordado é de $N = 15$. 
+
+#### Estatística $H$
+
+Para avaliar as hipóteses é necessário calcular a estatística de teste $H$, a qual é obtida a partir de uma aproximação pela distribuição qui-quadrado e possui a seguinte forma:
+
+$$H=\displaystyle \frac{12}{N(N+1)} \sum_{j=1}^k\left[\displaystyle \frac{\left(R_j\right)^2}{n_j}\right]-3(N+1).$$
+
+Note que a quantidade $\sum_{j=1}^k\left[\displaystyle \frac{\left(R_j\right)^2}{n_j}\right]$ indica, para cada grupo, a soma da razão entre o quadrado da soma dos postos e o número de observações, ou seja:
+
+$$\sum_{j=1}^k\left[\displaystyle \frac{\left(R_j\right)^2}{n_j}\right] = \displaystyle \frac{\left(R_1\right)^2}{n_1} + \displaystyle \frac{\left(R_2\right)^2}{n_2} + \displaystyle \frac{\left(R_3\right)^2}{n_3} = \displaystyle \frac{\left(22\right)^2}{5} + \displaystyle \frac{\left(65\right)^2}{5} + \displaystyle \frac{\left(33\right)^2}{5} = 1159,6.$$
+
+Assim, sabendo que $N = 15$ e $\sum_{j=1}^k\left[\displaystyle \frac{\left(R_j\right)^2}{n_j}\right] = 1159,6$ obtemos a estatística $H = 9,98$.
+
+#### Avaliação das hipóteses
+
+Tendo calculado a estatística $H$, basta obtermos o valor crítico $H_c$ para avaliar as hipóteses. O valor crítico $H_c$ pode ser obtido a partir da distribuição qui-quadrado com $df = K-1$ graus de liberdade quando há pelo menos cinco observações em cada grupo. Os valores críticos de uma qui-quadrado são quantidades tabeladas, assim, podemos acessá-los diretamente de uma tabela de pontos críticos dessa distribuição, ou, a partir da função `qchisq()` no r, sendo necessário especificar o grau de liberdade `df` e o nível de significância `p` com a estrutura `qchisq(p = 0.05, df = 2, lower.tail = FALSE)`, considerando o exemplo abordado. Quando existem menos que cinco observações nos grupos, o valor de $H_c$ pode ser obtido a partir de tabelas de valores exatos. Esses valores tabelados podem ser verificados em Sheskin (2003) ou pelo endereço [www.dataanalytics.org.uk/critical-values](https://www.dataanalytics.org.uk/critical-values-for-the-kruskal-wallis-test/).
+
+Considerando o nível de 5\% de significância e grau de liberdade $df = 2$, o valor crítico para o exemplo é de $H_c = 5,99$. Além disso, rejeitamos a hipótese nula quando $H \geq H_c$, como o valor da estatística de teste $H$ é de fato maior que o valor crítico $H_c$, podemos concluir que há evidências de que pelo menos dois dos três grupos originam-se de populações com distribuições diferentes.
+
+Caso haja um número excessivo de empates, é recomendado utilizar uma correção para a estatística $H$ que considere essas repetições. A seguinte quantidade deve ser calculada:
+
+$$C=1-\displaystyle \frac{\sum_{i=1}^s\left(t_i^3-t_i\right)}{N^3-N}.$$
+
+Note que $\sum_{i=1}^s\left(t_i^3-t_i\right)$ é a mesma quantidade utilizada para incluir a informação de empates ao calcular a estatística $U$ normalizada no teste de Mann-Whitney, em que $s$ indica quantos grupos de empates ocorreram e $t$ o número total de empates no grupo. No exemplo sendo considerado temos $s = 4$ grupos de empates, sendo duas repetições do valor 18, três do valor 24, duas do valor 25 e duas do valor 27, ou seja, $t_1 = 2$, $t_2 = 3$, $t_3 = 2$ e $t_4 = 2$ respectivamente. Assim, para calcular $C$ teremos:
+
+$$\sum_{i=1}^s\left(t_i^3-t_i\right) = (2^3-2) + (3^3-3) + (2^3-2) + (2^3-2) = 42.$$
+
+Sabendo que $N = 15$, o valor do fator de correção será $C = 0.987$. Para obter a estatística $H$ corrigida, basta dividir pelo valor de $C$, onde teremos $\displaystyle \frac{H}{C} = 10,11$. Assim, para o exemplo abordado, as conclusões serão as mesmas feitas anteriormente ao avaliar as hipóteses com a estatística sem correção.
+
+#### Como aplicar o teste no R
+
+O teste pode ser facilmente aplicado no R ao utilizar a função `kruskal.test()`, a qual irá retornar o valor da estatística $H$ aproximada pela qui-quadrado, os graus de liberdade considerados e o *valor-p*. Assim, rejeita-se a hipótese nula quando *valor-p* $\leq 0,05$ considerando 5\% de nível de significância. A função possui a seguinte estrutura:
+
+```{r,echo=TRUE, eval=FALSE, message=FALSE,warning =FALSE,error=FALSE}
+stats::kruskal.test(resposta ~ grupos, data = dados)
+```
+
+O argumento `resposta ~ grupos` é a fórmula de entrada da função para aplicação do teste, em que `resposta` é a variável de interesse e `grupos` é a variável independente onde os grupos são especificados, sendo `grupos` uma variável que precisa ser tratada como *factor* dentro do R (ver apêndice). No exemplo abordado, teríamos `idade ~ hospitais`, por exemplo. O argumento `data` é onde precisamos especificar o nome da base de dados utilizada que possui as variáveis sendo incluídas na fórmula.
+
+Caso o teste de Kruskal-Wallis seja realizado, e como resultado, a hipótese nula seja rejeitada, podemos identificar quais pares de grupos apresentam diferentes distribuições de suas populações. O teste de Dunn, uma alternativa não-paramétrica ao teste de Tukey, pode ser usado para realizar comparações múltiplas entre os grupos. Para aplicá-lo no R, podemos instalar o pacote `FSA` e recorrer à função `dunnTest()`, a qual possui a seguinte estrutura:
+
+```{r,echo=TRUE, eval=FALSE, message=FALSE,warning =FALSE,error=FALSE}
+FSA::dunnTest(resposta ~ grupos, data = dados, method = "bonferroni")
+```
+
+Os argumentos `resposta ~ grupos` e `data` são os mesmos utilizados na função `kruskal.test()`. O argumento `method` é utilizado para especificar o método de controle da taxa de erro experimental, sendo o *bonferroni* o mais usual. A função retorna uma matriz com *valores-p* ajustados pelo método *bonferroni* organizados em uma coluna chamada *P.adj* para o usuário avaliar cada par de grupos, sendo cada linha equivalente a cada par sendo comparado. Caso o *valor-p* ajustado for menor ou igual ao nível de significância (geralmente 5\%), então, as distribuições das populações dos grupos sendo comparados são significativamente diferentes.
+
+## Grupos pareados
+
+Grupos ou amostras são considerados pareados quando as observações em um grupo estão relacionadas ou emparelhadas com as observações de outro grupo. Isso significa que cada observação em um grupo é emparelhada ou relacionada com uma observação correspondente no outro grupo.
+
+Um exemplo comum de grupos pareados é quando o mesmo grupo de indivíduos é medido duas ou mais vezes em diferentes momentos, o que chamamos de amostras antes e depois. Outro cenário, é quando temos grupos não necessariamente com os mesmos indivíduos avaliados em diferentes momentos, mas com indivíduos diferentes em que conseguimos pareá-los de acordo com características em comum. Um exemplo de pareamento entre indivíduos de dois grupos é quando há o interesse em estudar a eficácia de um novo tratamento médico, onde cada paciente no grupo de tratamento é emparelhado com um paciente no grupo de controle com características semelhantes, formando assim, pares de observações pareadas.
+
+Dentre os testes não-paramétricos mais conhecidos e utilizados nestes cenários, temos os testes de Wilcoxon e McNemar para dois grupos, e o de Friedman para três ou mais grupos.
+
+### Teste de Wilcoxon
+
+O teste de Wilcoxon é utilizado em problemas onde a variável de interesse pode ser ordenada (medida pelo menos ordinal) e há dois grupos dependentes a serem comparados.  A hipótese a ser testada é se a mediana das diferenças dos valores pareados das populações que deram origem aos grupos é zero. O teste é usualmente aplicado quando as suposições sobre o teste t para dois grupos dependentes são violadas, principalmente em relação à normalidade dos dados, pois, pelo teste de Wilcoxon ser uma alternativa não-paramétrica ao teste t para duas amostras dependentes, as suposições requeridas são mais leves.
+
+O teste consiste em identificar as diferenças entre os valores pareados dos grupos, identificar os postos das diferenças absolutas, e então, atribuir os sinais originais das diferenças em cada posto (sinalização dos postos). Além disso, diferenças que resultaram em zero, não são consideradas na construção do teste.
+
+Sejam as seguintes hipóteses:
+
+$H_0:$ A mediana das diferenças dos valores pareados é igual a zero.
+
+$H_{\mathrm{a}}:$ A mediana das diferenças dos valores pareados difere de zero.
+
+Considere que em um determinado hospital estava sendo reportado altos níveis de ansiedade em gestantes no terceiro trimestre de gravidez. Foi medido o nível de ansiedade de 10 gestantes antes e após participarem de um programa de atividades em grupo que durou duas semanas, onde, 0 indica sem ansiedade e 10 ansiedade severa. Suponha que as 10 gestantes foram selecionadas de forma aleatória, e que as diferenças dos pares de níveis de ansiedade (antes e depois) seguem uma distribuição simétrica em torno da mediana. Considere os seguintes dados:   
+
+\begin{array}{llllllllllll}
+\hline \text { Indivíduo } & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+\hline \text { Antes} & 8 & 9 & 8 & 7 & 6 & 4 & 6 & 6 & 7 & 3 \\
+\hline \text { Depois } & 2 & 6 & 7 & 5 & 4 & 5 & 6 & 3 & 2 & 5 \\
+\hline
+\end{array}
+
+Cada indivíduo possui um nível de ansiedade registrado antes e depois do programa de atividades em grupos. O grupo 1 é composto pelos níveis de ansiedade registrados antes das atividades, e o grupo 2 composto pelos níveis de ansiedade registrados depois das atividades.
+
+Considere $D$ como uma representação das diferenças. Assim, calculamos $D$, o valor absoluto das diferenças $|D|$, os postos de $|D|$, e então, os postos de $|D|$ sinalizados:
+
+\begin{array}{cccccc}
+\hline \text { Indivíduo } & \text{Grupo} 1 & \text{Grupo} 2 & D & |D| & \text { Postos de }|D| & \text { Postos sinalizados de }|D|\\
+\hline 
+\mathbf{7} & 6 & 6 & 0 & - & - & -\\
+\mathbf{6} & 4 & 5 & -1\phantom{-} & 1 & 1,5 & -1,5\phantom{-}\\
+\mathbf{3} & 8 & 7 & 1 & 1 & 1,5 & 1,5\\
+\mathbf{10} & 3 & 5 & -2\phantom{-} & 2 & 4,0 & -4,0\phantom{-}\\
+\mathbf{4} & 7 & 5 & 2 & 2 & 4,0 & 4,0\\
+\mathbf{5} & 6 & 4 & 2 & 2 & 4,0 & 4,0\\
+\mathbf{2} & 9 & 6 & 3 & 3 & 6,5 & 6,5\\
+\mathbf{8} & 6 & 3 & 3 & 3 & 6,5 & 6,5\\
+\mathbf{9} & 7 & 2 & 5 & 5 & 8,0 & 8,0\\
+\mathbf{1} & 8 & 2 & 6 & 6 & 9,0 & 9,0\\
+\hline
+\end{array}
+
+Note que a tabela é construída ordenando a coluna $D$ de forma crescente desconsiderando o sinal dos valores. Além disso, a primeira linha gerou um valor de $D = 0$, o qual deve ser desconsiderado no teste, e então, os postos são identificados a partir da segunda linha. Para mais, note que houve empates nos valores de $|D|$, para os quais os postos são identificados como a média dos postos caso não fossem empates, assim como é feito para os testes de Mann-Whitney e Kruskal-Wallis.
+
+O próximo passo é calcular a soma dos postos em que a sinalização de $|D|$ foi negativa, o qual denotaremos de $R_{neg}$. Além disso, devemos calcular a soma dos postos em que a sinalização de $|D|$ foi positiva, denotada por $R_{pos}$. 
+
+Para o exemplo, temos $R_{neg} = 5,5$ e $R_{pos} = 39,5$. Além disso, podemos verificar a seguinte relação:
+
+$$R_{neg} + R_{pos} =\displaystyle \frac{n(n+1)}{2}.$$
+
+Caso essa relação não for verdadeira, é um indicativo de que houve erro nos cálculos. Como houve um par de valores entre os grupos cuja diferença foi zero, o número de pares considerados no teste para o exemplo abordado será de $n = 9$. Dessa forma, teremos $\displaystyle \frac{n(n+1)}{2} = \displaystyle \frac{9(9+1)}{2} = 45$ que corresponde ao valor de $R_{neg} + R_{pos} = 5,5 + 39,5 = 45.$
+
+#### Avaliação das hipóteses
+
+Caso os valores das diferenças originaram-se de uma população cuja mediana é zero, espera-se que os valores de $R_{neg}$ e $R_{pos}$ sejam equivalentes ao valor esperado da estatística de teste de Wilcoxon, a qual denotaremos de estatística $V$. O valor esperado possui a seguinte forma:
+
+$$\displaystyle \frac{n(n+1)}{4}.$$
+
+Assim, para o exemplo, o valor esperado da estatística de teste $V$ é de $\displaystyle \frac{9(9+1)}{4} = 22,5$. Note que o valor esperado da estatística de teste $V$ parece ser razoavelmente diferente de $R_{neg}$ e $R_{pos}.$
+
+Caso $R_{pos}$ for significativamente maior que $R_{neg}$, significa haver uma alta probabilidade de que o grupo 1 originou-se de uma população com valores maiores do que os da população da qual o grupo 2 originou-se, o contrário também é verdadeiro caso $R_{neg}$ for significativamente maior. Como $R_{pos} > R_{neg}$ no exemplo considerado, podemos interpretar a hipótese alternativa como sendo:
+
+$H_{\mathrm{a}}:$ A mediana das diferenças dos valores pareados é maior que zero.
+
+Assim, resta identificar se $R_{pos}$ é de fato significativamente maior que $R_{neg}$.
+
+#### Estatística $V$
+
+A estatística $V$ de Wilcoxon nada mais é do que o menor dos valores entre $R_{neg}$ e $R_{pos}$. Assim, para o exemplo em questão, a estatística de teste será $V = R_{neg} = 5,5$.
+
+Para avaliar as hipóteses precisamos obter o valor crítico de $V$, denotado por $V_c$. Valores críticos de $V$ são quantidades tabeladas identificadas de acordo com a quantidade de postos utilizados no teste ou pares válidos, esses valores podem ser encontrados em Sheskin (2003). Assim, para $n = 9$ e nível de 5\% de significância, o valor crítico de $V$ é de $V_c = 8$ para o teste unilateral.
+
+Rejeitamos a hipótese nula quando $V \leq V_c$. Como $R_{pos} > R_{neg}$, $V = 5,5$ e $V_c = 8$, podemos concluir, ao nível de 5\% de significância, que os níveis de ansiedade registrados das gestantes antes do programa de atividades em grupo foram maiores do que após as atividades, ou seja, houve uma redução significativa nos níveis de ansiedade das gestantes em decorrência das atividades em grupo.
+
+#### Estatística $V$ normalizada
+
+Na prática, quando $n > 30$ podemos normalizar a estatística de teste $V$, e então, avaliar as hipóteses baseado na distribuição normal padrão. A estatística de teste $V$ normalizada será denotada por $Z_V$, e possui a seguinte forma:
+
+$$Z_T=\displaystyle \frac{T-\displaystyle\frac{n(n+1)}{4}}{\sqrt{\displaystyle\frac{n(n+1)(2 n+1)}{24}}}.$$
+
+Como $n = 9$, temos que o valor da estatística $V$ normalizada é de $Z_V = -2,01$. O valor crítico da estatística de teste normalizada é um valor tabelado o qual pode ser verificado em tabelas de valores críticos da distribuição normal padrão. Pode ser encontrada em Sheskin (2003), ou, obtido computacionalmente no R através da função `qnorm()`. Para o nível de 5\% de significância, os valores críticos para normal padrão são muito conhecidos, sendo 1,96 e 1,65 para os testes bilaterais e unilaterais respectivamente.  
+
+Rejeita-se a hipótese nula quando $|Z_V|\geq Z_{crítico}$. Como $R_{pos} > R_{neg}$, $Z_V = -2,01$ e $Z_{crítico} = 1,65$, então, podemos concluir que há evidências para a rejeição da hipótese nula, e a mesma interpretação feita anteriormente para o teste sem normalização permanece. 
+
+#### Como aplicar o teste no R
+
+Para aplicar o teste de Wilcoxon no R podemos utilizar a mesma função e estrutura utilizada para o teste de Mann-Whitney. Utilizamos a seguinte estrutura:
+
+```{r,echo=TRUE, eval=FALSE, message=FALSE,warning =FALSE,error=FALSE}
+stats::wilcox.test(x, y, correct = FALSE,  alternative = "two.sided", paired = TRUE)
+```
+
+Os argumentos `x` e `y` são referentes aos grupos 1 e 2 respectivamente. O argumento `correct` indica se o usuário quer que seja feito uma correção de continuidade do *valor-p* no caso de aproximação normal da estatística $V$. O argumento `alternative` especifica a forma do teste a ser aplicado (unilateral ou bilateral). E por fim, o mais importante no caso do teste de Wilcoxon, o argumento `paired` que indica que o teste considere grupos pareados.
+
+A função `wilcox.test()` neste caso irá retornar o valor da estatística de teste $V$ e o *valor-p*. A hipótese nula pode ser rejeitada quando *valor-p* $\leq 0,05$, quando o nível de significância desejado for de 5\%.
+
+### Teste de McNemar
+
+O teste de McNemar é usualmente utilizado em cenários onde a variável de interesse é categórica, dicotômica (duas categorias) e os grupos são dependentes (geralmente experimentos do tipo "antes-depois" de um evento de intervenção).  O objetivo do teste é verificar a existência de diferenças significativas entre os grupos em relação à variável de interesse, e sua construção é feita tendo como base tabelas de contingência 2x2.
+
+Considere o exemplo abordado na construção do teste de Wilcoxon, onde, foi coletado os dados do nível de ansiedade de gestantes no terceiro trimestre gestacional, antes e depois, de um programa de atividades em grupo, sendo 0 indicando sem ansiedade e 10 indicando ansiedade severa. Porém, considere que o número de gestantes que participaram do programa foi de 100, e que o nível de ansiedade foi classificado como baixo ou alto (baixo: 0 a 5; alto: 6 a 10). Além disso, considere que as gestantes foram selecionadas de forma aleatória e que as categorias baixa e alta são mutualmente exclusivas. Os dados são apresentados na seguinte forma:
+
+\begin{array}{c|cc|c}
+\hline \text { Antes/Depois } & \text { Baixo } & \text { Alto } & {\text { Soma das linhas }} \\
+\hline \text { Baixo } & \mathrm{a = 17} & \mathrm{b = 10} & \mathrm{n}_1=\mathrm{27} \\
+\text { Alto } & \mathrm{c = 59} & \mathrm{d = 14} & \mathrm{n}_2=\mathrm{73} \\
+\hline \text { Soma das colunas } & \mathrm{76} & \mathrm{24} & \mathrm{n} =\mathrm{100} \\
+\hline
+\end{array}
+
+Para a construção do teste, as caselas de interesse são aquelas onde houve mudança na avaliação, ou seja, a casela $c$, em que indica que a gestante apresentava alto nível de ansiedade, e então, passou a apresentar baixo nível de ansiedade após as atividades em grupo, e a casela $b$, em que indica que a gestante apresentava baixo nível de ansiedade, e passou a apresentar alto nível após as atividades em grupo. As caselas $a$ e $d$ não são consideradas na construção do teste, pois não houve alterações em decorrência da intervenção (programa de atividades em grupo). Assim, considerando as populações as quais os grupos (antes; depois) representam, as hipóteses terão a seguinte forma bilateral:
+
+$H_0:$ A proporção das observações da casela $b$ é igual a proporção das observações da casela $c$, ou seja, $\pi_b = \pi_c$.
+
+$H_{\mathrm{a}}:$ A proporção das observações da casela $b$ difere da proporção das observações da casela $c$, ou seja, $\pi_b \neq \pi_c$.
+
+Os valores $\pi_b$ e $\pi_c$ podem ser estimados por $p_b = \displaystyle \frac{b}{b + c}$ e $p_c = \displaystyle \frac{c}{b + c}$ respectivamente. Para o exemplo considerado, temos $p_b = 0,14$ e $p_c = 0,85$. Assim, como $p_c > p_b$, a hipótese unilateral $H_{\mathrm{a}}: \pi_b < \pi_c$ é consistente com os dados e pode ser considerada.
+
+#### Estatística $M$
+
+A estatística de teste utilizada no teste de McNemar é baseada na distribuição qui-quadrado e será denotada por $M$. O cálculo da estatística $M$ pode ser feito da seguinte maneira:
+
+$$M = \displaystyle \frac{(b-c)^2}{b+c}.$$
+
+Note que essa estatística sempre será não-negativa, e caso o número de observações na casela $b$ e $c$ seja o mesmo, então, a estatística $M$ será zero. Para o exemplo considerado, teremos que o valor da estatística de teste será $M = 34,79$.
+
+#### Avaliação das hipóteses
+
+Para avaliar as hipóteses precisamos obter o valor crítico da estatística $M$, que será denotado por $M_c$. Valores críticos de $M$ são os mesmos da distribuição qui-quadrado, os quais são valores tabelados podendo ser encontrados em Sheskin (2003), ou, podemos utilizar a função `qchisq()` no R para encontrá-los. A função `qchisq()` terá a seguinte forma:
+
+```{r,echo=TRUE, eval=TRUE, message=FALSE,warning =FALSE,error=FALSE}
+stats::qchisq(p = 0.10, df = 1, lower.tail = FALSE)
+```
+
+O argumento `p` indica o nível de significância considerado a depender do formato das hipóteses, como estamos considerando um teste unilateral, para o teste ter o nível de significância de 5\% devemos especificar $p = 0,10$. Caso o teste fosse bilateral, então, teríamos $p = 0,05$. O argumento `df` indica o grau de liberdade considerado, que será o número de caselas avaliadas menos 1, como por construção o teste avalia apenas duas caselas, especificamos $df = 1$. O argumento `lower.tail` deve ser especificado como *FALSE* para o formato de `p` apresentado, caso esse argumento for especificado como *TRUE*, o valor utilizado no argumento `p` precisa ser indicado como seu complementar. No exemplo, caso `lower.tail = TRUE`, então, teríamos `p = 1 - 0,10 = 0,90`.
+
+Assim, rejeitamos a hipótese nula quando $M \geq M_c$. Como $M = 34,79$ e $M_c = 2,71$, então, ao nível de 5\% de significância, há evidências de uma mudança significativa nos níveis de ansiedade das gestantes, onde a direção dessa mudança é de níveis altos de ansiedade para níveis baixos. É importante notar, que essa hipótese apenas é aceita, pois a relação $p_c > p_b$ é consistente com os dados.
+
+Embora o exemplo utilizado seja de um experimento em que os grupos são formados a partir de dados obtidos das mesmas pessoas duas vezes (antes e depois da intervenção), em experimentos em que os grupos são formados de indivíduos diferentes, mas pareados por características em comum, o teste de McNemar pode ser aplicado normalmente.
+
+#### Como aplicar o teste no R
+
+Podemos aplicar o teste de McNemar facilmente no R ao utilizar a função `mcnemar.test()`, a qual irá retornar a estatística de teste, os graus de liberdades considerados e o *valor-p* calculado. Essa função possui a seguinte estrutura:
+
+```{r,echo=TRUE, eval=FALSE, message=FALSE,warning =FALSE,error=FALSE}
+stats::mcnemar.test(x, correct = TRUE)
+```
+
+O argumento `x` é a tabela de contingência 2x2 considerada, e deve ser passada como um objeto do tipo matriz (ver apêndice). O argumento `correct` indica se o usuário quer que seja aplicado uma correção de continuidade na estatística de teste, o que é sempre recomendado na prática dado que o teste de McNemar utiliza uma distribuição contínua para aproximar uma distribuição de probabilidade discreta. Assim, aplicando o teste com a função `mcnemar.test()`, podemos rejeitar a hipótese nula quando *valor-p* $\leq 0,05$ considerando nível de 5\% de significância, ou podemos obter o valor crítico da estatística de teste e avaliar $M \geq M_c$.
+
+### Teste de Friedman
+
+O teste de Friedman é utilizado para comparar mais de dois grupos dependentes, onde, sua construção de baseia em postos. Assim, a variável de interesse precisar ser pelo menos ordinal para ser possível identificar os postos. Além disso, é usado quando os pressupostos de normalidade não são atendidos, sendo uma alternativa não-paramétrica a análise de variância de um fator (One-way ANOVA) de medidas repetidas. O teste tem por objetivo verificar se as distribuições das populações as quais os grupos representam são iguais em relação à mediana, logo, teremos a seguinte estrutura de hipóteses:
+
+$H_0:$ Todos os $k$ grupos originam-se de populações com medianas idênticas.
+
+$H_{\mathrm{a}}:$ Pelo menos 2 grupos originam-se de populações com medianas diferentes.
+
+Considere o exemplo abordado na construção dos testes de Wilcoxon e de McNemar, onde, foi coletado os dados do nível de ansiedade de gestantes no terceiro trimestre gestacional, antes e depois, de um programa de atividades em grupo, sendo 0 indicando sem ansiedade e 10 indicando ansiedade severa. Porém, agora considere que os níveis de ansiedade foram medidos antes do início do programa e, posteriormente, após duas atividades em grupo diferentes (atividades A e B), onde, foram escolhidas baseado em estudos anteriores que indicaram que eram atividades capazes de reduzir a ansiedade. Além disso, considere que foram selecionadas de forma aleatória 5 gestantes no terceiro trimestre gestacional para participarem do experimento, e que os tempos entre as atividades foram determinados apropriadamente. Os dados e os postos foram identificados da seguinte forma:
+
+\begin{array}{ccccccc}
+\hline \text { Indivíduos } & \text{Grupo}_1 & \text{Postos}_1 & \text{Grupo}_2 & \text{Postos}_2 & \text{Grupo}_3 & \text{Postos}_3 \\
+\hline 1 & 5 & 3 & 3 & 1 & 4 & 2 \\
+2 & 7 & 3 & 3 & 1 & 5 & 2 \\
+3 & 6 & 3 & 5 & 2 & 4 & 1 \\
+4 & 9 & 3 & 2 & 1 & 5 & 2 \\
+5 & 6 & 2,5 & 6 & 2,5 & 3 & 1 \\
+\hline
+\end{array}
+
+A coluna Grupo~1~ indica os níveis de ansiedade das gestantes (identificadas na coluna *Indivíduos*) registrados antes das atividades, sendo os valores na coluna Postos~1~ seus respectivos postos. Além disso, a coluna Grupo~2~ indica os níveis de ansiedade registrados após a atividade A, cujos postos são identificados na coluna Postos~2~. Para mais, a coluna Grupo~3~ indica os níveis de ansiedade registrados das gestantes após a atividade B, sendo seus postos identificados na coluna Postos~3~. Por fim, detonamos a soma dos postos dos grupos por $R_1$, $R_2$ e $R_3$, onde aplicamos a soma de todos os valores para cada coluna Postos~1~, Postos~2~ e Postos~3~. Assim, teremos $R_1 = 14,5$, $R_2 = 7,5$ e $R_3 = 8,0$.
+
+Note que o procedimento de identificação dos postos é feito para cada indivíduo em específico, ou seja, é identificado os postos dos valores (níveis de ansiedade) dos grupos por linha separadamente, de forma que os postos de cada linha não interferem os postos das outras. Caso houver empates dos valores, então, a média dos postos identificados caso não fossem empates será aplicado, da mesma forma em que é feito nos demais testes não-paramétricos abordados nesta seção. 
+
+Embora o exemplo utilizado seja de um experimento onde os mesmos indivíduos passam por condições diferentes, e então, para cada condição é formado um novo grupo, cenários onde os grupos são formados por indivíduos diferentes, porém, pareados por características em comum, também são válidos para aplicação do teste de Friedman.
+
+#### Estatística $Q$
+
+Para avaliar as hipóteses devemos calcular a estatística de teste, a qual denotaremos de estatística $Q$. A estatística $Q$ é aproximada a partir da distribuição qui-quadrado da seguinte forma:
+
+
+$$Q=\displaystyle \frac{12}{n k(k+1)}\left[\sum_{i = 1}^k\left(R_i\right)^2\right]-3 n(k+1).$$
+
+Experimentos do tipo "antes-depois" possuem a característica de serem geralmente avaliados os mesmos indivíduos mais de uma vez, assim, os grupos formados serão do mesmo tamanho, onde, teremos $n_1 = n_2 = n_3 = n$, sendo $n = 5$ no exemplo considerado. O número de grupos é denotado por $k$, assim, podemos calcular a seguinte quantidade:
+
+$$\displaystyle \sum_{i = 1}^k(R_i)^2 = (R_1)^2 + (R_2)^2 + (R_3)^2 = (14,5)^2 + (7,5)^2 + (8,0)^2 = 330,5.$$
+
+Com todos os termos identificados, a estatística para o teste de Friedman será $Q = 6,1$.
+
+#### Avaliação das hipóteses
+
+Tendo calculado a estatística de teste, precisamos obter o valor crítico de $Q$ para avaliar as hipóteses, o qual será denotado por $Q_c$. Como a estatística $Q$ é aproximada pela qui-quadrado, então, os valores críticos da distribuição qui-quadrado podem ser utilizados. Tais valores podem ser obtidos de forma tabelada, onde, tais tabelas podem ser encontradas em Sheskin (2003). Outra forma de obtê-los é através da função `qchisq()`, da mesma forma em que foi explicado na construção do teste de McNemar. Considerando que os graus de liberdade são $k - 1$, então, ao nível de 5\% de significância, teremos o seguinte valor crítico para o exemplo abordado: 
+
+```{r,echo=TRUE, eval=TRUE, message=FALSE,warning =FALSE,error=FALSE}
+stats::qchisq(p = 0.05, df = 2, lower.tail = FALSE)
+```
+
+Rejeitamos a hipótese nula quando $Q \geq Q_c$, logo, dado que $Q = 6,1$ e $Q_c = 5,99$, há evidências de que pelo menos dois grupos (condições as quais o nível de ansiedade foi registrado) diferem significativamente.
+
+#### Correção de empates
+
+Caso houver um número excessivo de indivíduos onde ocorreu empates (muitas linhas da tabela em que tenham empates ou muitos empates em uma mesma linha), é recomendado utilizar um fator de correção para aplicar na estatística de teste, o qual, terá a seguinte forma:
+
+$$C=1- \displaystyle\frac{\sum_{i=1}^s\left(t_i^3-t_i\right)}{n\left(k^3-k\right)}.$$
+
+Note que a quantidade $\displaystyle \sum_{i=1}^s\left(t_i^3-t_i\right)$ é a mesma utilizada no fator de correção de empates para o teste de Kruskal-Wallis, onde, $s$ indica quantos conjuntos de empates ocorreram e $t$ o número total de empates no conjunto. Logo, para o exemplo considerado teremos:
+
+$$\displaystyle \sum_{i=1}^s\left(t_i^3-t_i\right) = \left(2^3-2\right) = 6.$$
+
+Assim, sabendo que $n = 5$ e $k = 3$, o valor do fator de correção será $C = 0,95$. Então, a estatística de teste $Q$ corrigida será $Q_{corrigida} = \displaystyle \frac{Q}{C} = 6,42$.
+
+A avaliação das hipóteses é feita da mesma forma, onde, rejeitamos a hipótese nula quando $Q_{corrigida} \geq Q_c$.
+
+#### Como aplicar o teste no R
+
+Podemos aplicar o teste de Friedman no R utilizando a função `friedman.test()`, a qual, possui a seguinte estrutura:
+
+```{r,echo=TRUE, eval=FALSE, message=FALSE,warning =FALSE,error=FALSE}
+stats::friedman.test(y, groups, blocks)
+```
+
+É recomendável criar um objeto do tipo `data.frame` (ver apêndice) com cada coluna necessária para realização do teste, sendo: uma coluna com as observações da variável de interesse para o argumento *y* da função; uma coluna com os grupos (variável independente) para o argumento *groups*; uma coluna com a identificação numérica dos indivíduos para o argumento *blocks*. Tendo criado o objeto, digamos, objeto `dados`, basta passar as colunas para os argumentos, sendo `y = dados$variavel`, `groups = dados$grupos` e `blocks = dados$individuos`. O teste irá retornar a estatística de teste, os graus de liberdade utilizados e o *valor-p*, em que rejeitamos a hipótese nula quando $Q \geq Q_c$ ou quando *valor-p* $\leq 0,05$ ao nível de 5\% de significância.   
+
+Podemos realizar comparações múltiplas após a confirmação da rejeição da hipótese nula, para isso, devemos utilizar métodos específicos para o teste de Friedman. Um dos métodos mais utilizados é o teste de Conover, que pode ser utilizado para comparações múltiplas tanto para o teste de Friedman quanto para o teste de Kruskal-Wallis, como também, em outros cenários. Podemos aplicar o teste de Conover no R com a função `frdAllPairsConoverTest()`, a qual, pertence ao pacote `PMCMRplus` e possui a seguinte estrutura:
+
+```{r,echo=TRUE, eval=FALSE, message=FALSE,warning =FALSE,error=FALSE}
+PMCMRplus::frdAllPairsConoverTest(y, groups, blocks, p.adjust.method = "bonf")
+```
+
+Note que a estrutura é a mesma da função `friedman.test()`, a única diferença é o argumento `p.adjust.method`, o qual, indica o método de ajuste do *valor-p* a ser utilizado, onde, usualmente especificamos o método de Bonferroni por *"bonf"*. A função irá retornar uma pequena matriz de *valores-p* para cada comparação feita, onde, identificamos os pares de grupos que diferem de forma significativa ao nível de 5\% quando *valor-p* $\leq 0,05$.
+
+## Materiais complementares
+
+Livros e Artigos:
+
+-   Corder, Gregory W., and Dale I. Foreman. "Nonparametric statistics for non‐statisticians." (2011).
+
+-   Pett, Marjorie A. Nonparametric statistics for health care research: Statistics for small samples and unusual distributions. Sage Publications, 2015.
+
+-   Sheskin, David J. Handbook of parametric and nonparametric statistical procedures. Chapman and hall/CRC, 2003.
+
+-   Tomkins, C. C., and C. Hall. "An introduction to non-parametric statistics for health scientists." University of Alberta Health Sciences Journal 3.1 (2006): 20-26.
+
+$Sites$:
+
+-   https://www.graphpad.com/guides/prism/latest/statistics/index.htm
+
+-   https://www.dataanalytics.org.uk/critical-values-for-the-kruskal-wallis-test/

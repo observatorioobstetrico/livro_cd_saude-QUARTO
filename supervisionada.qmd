@@ -458,4 +458,3 @@ O modelo possui alguns hiperparâmetros importantes como, o número de estimador
 
 Resumimos bastante os passos e o funcionamento do modelo, mas deve-se ter em mente que existe uma matemática carregada por trás desses modelos. Cada passo, cada função perdida é utilizada por um motivo comprovado.
 
-##### 

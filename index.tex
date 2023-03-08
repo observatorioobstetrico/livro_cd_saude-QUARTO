@@ -247,7 +247,7 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, interior hidden, boxrule=0pt, enhanced, breakable, sharp corners, frame hidden]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, frame hidden, enhanced, boxrule=0pt, interior hidden, sharp corners, breakable]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Índice}
 {
@@ -5597,8 +5597,1275 @@ A fazer
 
 \bookmarksetup{startatroot}
 
+\hypertarget{testes-nuxe3o-paramuxe9tricos}{%
+\chapter{Testes não-paramétricos}\label{testes-nuxe3o-paramuxe9tricos}}
+
+Testes não paramétricos são testes estatísticos usados quando as
+suposições de um teste paramétrico não são atendidas, principalmente
+quando os dados não são normalmente distribuídos. Por estes testes não
+exigirem suposições muito fortes em relação à distribuição dos dados,
+eles tendem a ser menos poderosos que os testes paramétricos.
+
+Geralmente, a suposição de normalidade dos dados é violada quando o
+tamanho do grupo ou amostra é pequeno, ou quando os dados são
+assimétricos. Nesses casos, os resultados de um teste paramétrico podem
+não ser confiáveis, dado que suposições importantes relacionadas ao
+tamanho do grupo e simetria dos dados estarão sendo violadas, o que irá
+comprometer o teste.
+
+Os testes não-paramétricos são geralmente divididos conforme a
+quantidade de grupos sendo estudados. Os testes para um único grupo
+costumam ser utilizados para verificar se os dados são originados de uma
+população com alguma distribuição ou característica populacional
+específica, como a média ou mediana, por exemplo. Por outro lado, em
+testes para dois ou mais grupos podemos compará-los de acordo com algum
+critério específico do teste em questão. Tais testes de dois ou mais
+grupos são os quais iremos nos concentrar ao longo deste capítulo.
+
+Serão apresentados alguns dos testes não-paramétricos mais utilizados na
+área da saúde, sendo testes para grupos pareados e não-pareados. Além
+disso, devemos lembrar que os testes que serão apresentados não são os
+únicos, sendo importante avaliar com cuidado o problema que está sendo
+estudado para escolher o teste adequado.
+
+\hypertarget{grupos-nuxe3o-pareados}{%
+\section{Grupos não-pareados}\label{grupos-nuxe3o-pareados}}
+
+Para grupos não-pareados ou independentes, dentre os testes mais
+conhecidos e utilizados temos os testes de Mann-Whitney e
+Kolmogorov-Smirnov para dois grupos, e o de Kruskal-Wallis para três ou
+mais grupos.
+
+\hypertarget{teste-de-mann-whitney}{%
+\subsection{Teste de Mann-Whitney}\label{teste-de-mann-whitney}}
+
+O teste de Mann-Whitney é um teste estatístico não paramétrico usado
+para comparar dois grupos independentes, sendo o grau de medida pelo
+menos ordinal para variável de interesse e nominal para variável
+independente. Além disso, o teste é geralmente usado quando a variável
+resposta ou de interesse não é normalmente distribuída, sendo assim, uma
+alternativa não-paramétrica ao teste t para amostras independentes.
+
+Quando o resultado do teste for significativo, significa que ambos os
+grupos representam populações com distribuições diferentes. Caso a
+suposição de que ambas as distribuições são iguais seja feita, então
+podemos interpretar o teste como uma comparação de medianas, que ao ser
+significativo dizemos que as medianas são significativamente diferentes.
+Assim, considerando dois grupos independentes, as hipóteses podem ser
+definidas como:
+
+\(H_0:\) distribuição\(_1=\) distribuição\(_2\)
+
+\(H_{\mathrm{a}}:\) distribuição\(_1 \neq\) distribuição\({ }_2\)
+
+Suponha que queremos comparar as idades (anos) de gestantes
+hospitalizadas com Covid-19 de dois hospitais diferentes. Considere as
+idades coletadas nos seguintes grupos:
+
+Hospital A: {\(\quad 46,48,34,36,22,44,50\)}
+
+Hospital B: \(\quad 25,21,39,14,37\)
+
+Confirmado que o teste de Mann-Whitney é apropriado, o primeiro passo
+que devemos tomar, é ordenar os valores de ambos os grupos de forma
+crescente em um único grupo, e então, identificar o posto de cada valor
+desse grupo. Para o exemplo abordado, teremos o seguinte:
+
+\begin{array}{llllllllllll}
+\hline \text { Idades } & 14 & 21 & \color{red}{22} & 25 & \color{red}{34} & \color{red}{36} & 37 & 39 & \color{red}{44} & \color{red}{46} & \color{red}{48} & \color{red}{50}\\
+\hline \text { Posto } & 1 & 2 & \color{red}{3} & 4 & \color{red}{5} & \color{red}{6} & 7 & 8 & \color{red}{9} & \color{red}{10} & \color{red}{11} & \color{red}{12}\\
+\hline
+\end{array}
+
+Onde está destacado em vermelho as idades das gestantes hospitalizadas
+no Hospital A e seus respectivos postos. Além disso, destacado em preto
+essa mesma informação para as gestantes hospitalizadas no Hospital B.
+
+\hypertarget{estatuxedstica-u}{%
+\subsubsection{\texorpdfstring{Estatística
+\(U\)}{Estatística U}}\label{estatuxedstica-u}}
+
+O teste de Mann-Whitney também é chamado de teste \(U\) de Mann-Whitney,
+pois calculamos o que chamamos de estatística \(U\), a qual é uma
+quantidade baseada na soma dos postos identificados de cada grupo
+calculada para fazer a avaliação das hipóteses.
+
+Agora, considere \(n_1\) e \(n_2\) como o número de observações do grupo
+1 e grupo 2 respectivamente, em que, o grupo 1 será aquele com o menor
+número de observações (caso ambos os grupos tenham a mesma quantidade de
+observações, então \(n_1 = n_2\)). Além disso, considere \(R_1\) e
+\(R_2\) como a soma dos postos identificados nos grupos 1 e 2
+respectivamente, e \(N = n_1 + n_2\) como o total de observações
+considerando ambos os grupos.
+
+Definido os termos necessários e considerando o exemplo apresentado,
+calculamos as seguintes quantidades:
+
+\(U_1=n_1n_2+\displaystyle \frac{n_1\left(n_1+1\right)}{2}-R_1=5\cdot7+\displaystyle \frac{5 \cdot\left(5+1\right)}{2}-22 = 28\),
+
+\(U_2=n_1 n_2+\displaystyle \frac{n_2\left(n_2+1\right)}{2}-R_2=5 \cdot 7+\displaystyle \frac{7 \cdot\left(7+1\right)}{2}-56 = 7\).
+
+Tendo calculado \(U_1\) e \(U_2\) a estatística \(U\) será o menor valor
+entre ambas, neste caso, \(U = U_2\). Podemos confirmar se todo
+procedimento foi feito corretamente ao verificar a relação
+\(n_1n_2 = U_1 + U_2\), a qual será \(5\cdot 7 = 28 + 7 = 35\) no
+exemplo considerado.
+
+\hypertarget{avaliauxe7uxe3o-das-hipuxf3teses}{%
+\subsubsection{Avaliação das
+hipóteses}\label{avaliauxe7uxe3o-das-hipuxf3teses}}
+
+Para avaliar as hipóteses precisamos calcular a quantidade \(U_c\), o
+qual é o valor crítico de \(U\) necessário para decidir em relação às
+hipóteses. Este valor pode ser encontrado em tabelas de valores críticos
+da estatística U bilateral (ou unilateral a depender das hipóteses), ou
+podemos utilizar a função \texttt{qwilcox()} do R e subtrair o resultado
+por 1, para obtê-lo no caso bilateral. Para o exemplo dos hospitais
+temos \(n_1 = 5\) e \(n_2 = 7\), considerando nível de 5\% de
+significância, podemos utilizar a função \texttt{qwilcox()} para
+encontrar \(U_c\) da seguinte forma:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{qwilcox}\NormalTok{(}\FloatTok{0.05}\SpecialCharTok{/}\DecValTok{2}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{7}\NormalTok{) }\SpecialCharTok{{-}} \DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 5
+\end{verbatim}
+
+Onde \(0.05/2\) é o nível de significância dividido por dois devido ao
+teste ser bilateral, e subtraímos por \(1\) como uma correção matemática
+por \(U\) ser discreto e \texttt{qwilcox()} calcular quantis, e não
+valores críticos de \(U\). Assim, \(U_c = 5\) no exemplo considerado.
+
+Assim, rejeitamos a hipótese nula quando o valor da estatística \(U\)
+calculada for menor ou igual ao valor crítico de \(U\), ou seja, quando
+\(U \leq U_c\). Com os valores calculados de \(U = 7\) e \(U_c = 5\),
+podemos concluir ao nível de 5\% de significância que não há diferença
+significativa entre as distribuições das idades das gestantes
+hospitalizadas em ambos hospitais.
+
+\hypertarget{empates}{%
+\subsubsection{Empates}\label{empates}}
+
+Dependendo do problema, pode existir valores repetidos observados, e ao
+ordená-los para identificar os postos, esses valores são considerados
+empates.
+
+\begin{array}{llllllllllll}
+\hline \text { Idades } & 14 & 21 & \color{red}{25} & \color{red}{25} & \color{red}{34} & \color{red}{36} & 37 & 39 & \color{red}{44} & \color{red}{46} & \color{red}{48} & \color{red}{50}\\
+\hline \text { Posto } & 1 & 2 & \color{red}{3,5} & \color{red}{3,5} & \color{red}{5} & \color{red}{6} & 7 & 8 & \color{red}{9} & \color{red}{10} & \color{red}{11} & \color{red}{12}\\
+\hline
+\end{array}
+
+Observe nesse exemplo que há um empate para idade de 25 anos. Nesse
+caso, ao ordenar os valores teríamos os postos 3 e 4 para esses valores
+repetidos, mas devemos atribuir a média desses postos para dar
+continuidade ao teste. Assim, temos
+\(\displaystyle \frac{3 + 4}{2}= 3,5\).
+
+\hypertarget{estatuxedstica-u-normalizada}{%
+\subsubsection{\texorpdfstring{Estatística \(U\)
+normalizada}{Estatística U normalizada}}\label{estatuxedstica-u-normalizada}}
+
+É tido como um consenso a utilização dos procedimentos apresentados até
+então sobre o teste Mann-Whitney no cenário em que \(n_1\) e \(n_2\) são
+menores ou iguais que 20. Por outro lado, no cenário em que \(n_1\) e
+\(n_2\) são grandes (\(>20\)), podemos aproximar a distribuição de \(U\)
+para uma normal. Assim, calculamos a estatística \(Z_u\) para avaliar as
+hipóteses da seguinte forma:
+
+\[Z_u = \displaystyle \frac{U-\displaystyle\frac{n_1  n_2}{2}}{\sqrt{\displaystyle\frac{n_1 n_2\left(n_1+n_2+1\right)}{12}}}.\]
+
+Esse procedimento nada mais é do que subtrair a média de \(U\) e dividir
+pelo seu desvio padrão.
+
+Assim, para avaliar as hipóteses, é necessário obter o valor crítico de
+\(Z_u\), o qual pode ser obtido a partir de tabelas de valores críticos
+da distribuição normal padrão, ou podemos recorrer à função
+\texttt{qnorm()} no R com os seguintes argumentos:
+\texttt{qnorm(0.05/2,\ lower.tail\ =\ FALSE)} para teste bilateral e
+nível de 5\% de significância;
+\texttt{qnorm(0.05,\ lower.tail\ =\ FALSE)} para teste unilateral e
+nível de 5\% de significância. Os valores críticos de \(Z_u\) para o
+teste bilateral e unilateral ao nível de 5\% de significância são 1,96 e
+1,65 respectivamente. Assim, rejeitamos a hipótese nula quando
+\(|Z_u|\geq1,96\) e \(|Z_u|\geq1,65\) no teste bilateral e unilateral
+respectivamente.
+
+Caso haver empates, a aproximação deve ser feita da seguinte forma:
+
+\[Z_u = \displaystyle \frac{U-\displaystyle\frac{n_1  n_2}{2}}{\sqrt{\displaystyle\frac{n_1n_2\left(n_1+n_2+1\right)}{12}- \displaystyle\frac{n_1n_2\left[\sum_{i=1}^s\left(t_i^3-t_i\right)\right]}{12  \left(n_1+n_2\right) \left(n_1+n_2-1\right)}}},\]
+
+Onde, na quantidade \(\sum_{i=1}^s\left(t_i^3-t_i\right)\) o \(s\)
+indica quantos grupos de empates ocorreram, ex: idade 25 se repete duas
+vezes e idade 45 se repete cinco vezes, totalizando 2 grupos de empates
+ou de repetições. Além disso, o termo \(t\) é o número total de empates
+no grupo de repetições \(i\). Assim, para as repetições hipotéticas da
+idade 25 e 45 teremos:
+
+\[\sum_{i=1}^2\left(t_i^3-t_i\right) = (2^3 - 2) + (5^3 - 5) = 126.\]
+
+Dessa forma, podemos calcular \(Z_u\) e então avaliar as hipóteses da
+mesma forma que avaliamos no cenário sem empates.
+
+\hypertarget{como-aplicar-o-teste-no-r}{%
+\subsubsection{Como aplicar o teste no
+R}\label{como-aplicar-o-teste-no-r}}
+
+Na prática, tendo os dados em um formato de planilha, podemos
+carregá-los no software R e então aplicar o teste recorrendo a uma
+função específica, a qual irá efetuar os procedimentos formalmente
+explicados ao longo do texto e retornar um \emph{valor-p}, o qual
+podemos utilizar para avaliar as hipóteses, onde, rejeitamos a hipótese
+nula caso \emph{valor-p} \(\leq 0,05\), sendo 5\% de nível de
+significância escolhido. Podemos usar a seguinte estrutura:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{stats}\SpecialCharTok{::}\FunctionTok{wilcox.test}\NormalTok{(x, y, }\AttributeTok{correct =} \ConstantTok{FALSE}\NormalTok{,  }\AttributeTok{alternative =} \StringTok{"two.sided"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Os argumentos \texttt{x} e \texttt{y} são os vetores dos valores dos
+grupos a serem comparados. O argumento \texttt{correct} indica se o
+usuário quer que seja feito uma correção de continuidade do
+\emph{valor-p} no caso de aproximação normal da estatística \(U\), o que
+geralmente não é feito, a menos que a estatística \(Z_u\) esteja muito
+próxima do valor crítico utilizado. E por fim, o argumento
+\texttt{alternative} permite escolher o formato do teste de hipóteses
+desejado.
+
+\hypertarget{teste-de-kolmogorov-smirnov}{%
+\subsection{Teste de
+Kolmogorov-Smirnov}\label{teste-de-kolmogorov-smirnov}}
+
+Assim como o teste de Mann-Whitney, o teste de Kolmogorov-Smirnov é uma
+alternativa não paramétrica ao teste t para grupos independentes quando
+há a suspeita de não normalidade da variável de interesse. O teste
+possui grau de medida pelo menos ordinal, e é sensível a qualquer
+diferença de tendência central, dispersão, simetria ou curtose das
+distribuições.
+
+Visa verificar se ambos os grupos originaram-se de populações com a
+mesma distribuição. Para isso, é calculado a estatística de teste \(D\)
+a partir das distribuições de frequências acumuladas dos grupos, e
+então, utiliza-se essa estatística \(D\) para avaliar as hipóteses.
+Quanto maior a estatística, maior será a evidência para rejeitar a
+hipótese nula.
+
+Retornando ao exemplo das idades de gestantes hospitalizadas com
+Covid-19 em dois diferentes hospitais, as hipóteses para o teste
+bilateral terão a seguinte forma:
+
+\(H_0:\) distribuição\(_1=\) distribuição\(_2\)
+
+\(H_{\mathrm{a}}:\) distribuição\(_1 \neq\) distribuição\({ }_2\)
+
+São hipóteses com formas idênticas as do teste de Mann-Whitney. Porém,
+embora tenham o mesmo objetivo de comparar as distribuições para ambos
+os grupos, o método difere consideravelmente. Além disso, o teste de
+Mann-Whitney é sensível em relação à mediana, enquanto o teste de
+Kolmogorov-Smirnov é sensível em relação aos aspectos gerais das
+distribuições sendo testadas como foi discutido anteriormente.
+
+Embora seja o mesmo exemplo, serão considerados valores diferentes por
+motivos didáticos:
+
+Hospital A: \(\quad 22,22,25,27,29\)
+
+Hospital B: \(\quad 27,31,34,37,44\)
+
+Considerando as notações introduzidas no desenvolvimento do teste de
+Mann-Whitney, os tamanhos dos grupos são \(n_1 = 5\) e \(n_2 = 5\). Vale
+lembrar que, usualmente, denotamos \(n_1\) como sendo o tamanho do menor
+grupo, chamado de grupo 1. Como neste exemplo ambos possuem o mesmo
+tamanho, o grupo 1 sera composto dos valores das idades referentes as
+gestantes hospitalizadas no Hospital A.
+
+\hypertarget{estatuxedstica-d}{%
+\subsubsection{\texorpdfstring{Estatística
+\(D\)}{Estatística D}}\label{estatuxedstica-d}}
+
+Precisamos calcular a estatística \(D\) para avaliar as hipóteses. Essa
+estatística nada mais é do que o maior valor que encontrarmos ao
+realizar a diferença entre as proporções de frequências relativas
+acumuladas dos dois grupos. Para isso, construímos a seguinte tabela:
+
+\begin{array}{ccccc}
+\hline 
+\text{Idades}_1 & S_1 & \text{Idades}_2 & S_2 & S_1-S_2 \\
+\hline 22;22 & 2 / 5=0,40 & - & 0 & 0,40-0=0,40 \\
+25 & 3 / 5=0,60 & - & 0 & 0,60-0=0,60 \\
+27 & 4 / 5=0,80 & 27 & 1 / 5=0,20 & 0,80-0,20=0,60 \\
+29 & 5 / 5=1,00 & - & 1 / 5=0,20 & 1,00-0,20=\color{red}{0,80} \\
+- & 5 / 5=1,00 & 31 & 2 / 5=0,40 & 1,00-0,40=0,60 \\
+- & 5 / 5=1,00 & 34 & 3 / 5=0,60 & 1,00-0,60=0,40 \\
+- & 5 / 5=1,00 & 37 & 4 / 5=0,80 & 1,00-0,80=0,20 \\
+- & 5 / 5=1,00 & 44 & 5 / 5=1.00 & 1,00-1,00=0,00 \\
+\hline
+\end{array}
+
+As colunas Idades\textsubscript{1} e Idades\textsubscript{2} são
+referentes aos valores do grupo 1 (usualmente o menor grupo, o que não é
+o caso, pois \(n_1 = n_2\)) e grupo 2 respectivamente. Porém, note que
+existe um valor repetido (Idades\textsubscript{1} \(= 22\)) na primeira
+coluna, quando isso ocorre todas as repetições desse mesmo valor
+permanecem na mesma linha. Além disso, observe que na primeira linha e
+coluna Idades\textsubscript{2} foi atribuído um símbolo de \(-\), isso
+ocorre, pois não há um valor de Idades\textsubscript{2} \(= 22\) assim
+como na coluna Idades\textsubscript{1}. O mesmo ocorre na quinta linha e
+coluna Idades\textsubscript{1}, pois nessa coluna não há um valor de
+Idades\textsubscript{1} \(= 31\) assim como ocorre na coluna
+Idades\textsubscript{2}, por exemplo. Para mais, a tabela é construída
+com os valores de ambos os grupos ordenados de forma crescente no
+decorrer das linhas.
+
+As colunas \(S_1\) e \(S_2\) são referentes as proporções das
+frequências relativas acumuladas das colunas Idades\textsubscript{1} e
+Idades\textsubscript{2} respectivamente. Note que, na primeira linha e
+coluna Idades\textsubscript{1} da tabela, temos uma frequência relativa
+de \(\displaystyle \frac{2}{5}\) para Idades\textsubscript{1} \(= 22\)
+devido a esse valor repetir uma vez. Na segunda linha temos uma
+frequência relativa de \(\displaystyle \frac{1}{5}\) para
+Idades\textsubscript{1} \(= 25\), pois esse valor aparece uma única vez,
+que ao acumular com a frequência da linha anterior obtemos
+\(\displaystyle \frac{2}{5} + \displaystyle \frac{1}{5} = \displaystyle \frac{3}{5}\).
+Na terceira e quarta linha da tabela os valores da coluna
+Idades\textsubscript{1} também não se repetem, o que faz com que tenham
+uma frequência relativa de \(\displaystyle \frac{1}{5}\) que ao acumular
+com as frequências anteriores resultam em \(\displaystyle \frac{4}{5}\)
+e \(\displaystyle \frac{5}{5}\). Após a quarta linha não há mais valores
+para a coluna Idades\textsubscript{1}, portanto, a proporção das
+frequências relativas se mantêm em \(\displaystyle \frac{5}{5} = 1\).
+Além disso, na primeira e segunda linha as frequências relativas
+referentes a coluna Idades\textsubscript{2} são zeradas, pois não há
+valores para essa coluna nessas linhas, e por serem as primeiras linhas
+não há nenhuma frequência a ser acumulada. Isso muda a partir da
+terceira linha, onde a mesma lógica utilizada para construir as
+frequências relativas \(S_1\) pode ser usada na construção de \(S_2\).
+
+Por fim, basta calcular os valores de \(S_1 - S_2\) para todas as linhas
+da tabela. A estatística \(D\) será o maior dentre esses valores, sendo
+\(D = 0,80\) no exemplo abordado.
+
+\hypertarget{avaliauxe7uxe3o-das-hipuxf3teses-1}{%
+\subsubsection{Avaliação das
+hipóteses}\label{avaliauxe7uxe3o-das-hipuxf3teses-1}}
+
+Para avaliar as hipóteses precisamos obter o valor crítico \(D_c\), o
+qual é um valor tabelado que pode ser verificado em Sheskin (2003)
+fazendo uso apenas das quantidades \(n_1\), \(n_2\) e o nível de
+significância escolhido. Para \(n_1 = 5\), \(n_2 = 5\) e o nível de
+significância de 5\%, temos que \(D_c = 0,80\). Assim, em um teste de
+hipóteses bilateral rejeitamos a hipótese nula quando o valor absoluto
+da estatística \(D\) for maior ou igual que o valor crítico, ou seja,
+quando \(|D| \geq D_c\). No exemplo, como \(D = 0,80\) e \(D_c = 0,80\),
+poderíamos concluir que há evidências de que ambos os grupos se
+originaram de populações com distribuições diferentes.
+
+Embora não seja muito comum, testes de hipóteses unilaterais podem ser
+empregados:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\item
+  Caso a hipótese alternativa seja \(H_{\mathrm{a}}:\)
+  distribuição\(_1 >\) distribuição\({ }_2\), então rejeita-se a
+  hipótese nula quando \(|D| \geq D_c\), onde \(D_c\) é o valor crítico
+  tabelado para o teste de Kolmogorov-Smirnov unilateral, que para o
+  exemplo temos \(D_c = 0,60\) ao nível de 5\% de significância. Além
+  disso, para os dados serem consistentes com o teste, a proporção da
+  frequência acumulada referente ao grupo 1 deve ser maior que a do
+  grupo 2 no ponto em que a estatística de teste \(D\) foi identificada,
+  ou seja, precisamos ter \(S_1 > S_2\) na quarta linha da tabela do
+  exemplo considerado para este teste unilateral ser utilizado. Assim,
+  esse formato de hipótese é aplicável ao problema dado que as condições
+  são satisfeitas, e poderíamos chegar nas mesmas conclusões que no
+  teste bilateral.
+\item
+  Caso a hipótese alternativa seja \(H_{\mathrm{a}}:\)
+  distribuição\(_1 <\) distribuição\({ }_2\), o procedimento de
+  avaliação da hipótese é o mesmo dos casos anteriores. Porém, para ser
+  utilizado temos que respeitar a condição \(S_1 < S_2\) na linha da
+  tabela referente a estatística \(D\), o que não ocorre no exemplo
+  considerado, o que faz com que esse formato de hipótese seja
+  inapropriado.
+\end{enumerate}
+
+\hypertarget{como-aplicar-o-teste-no-r-1}{%
+\subsubsection{Como aplicar o teste no
+R}\label{como-aplicar-o-teste-no-r-1}}
+
+É fácil notar que com valores grandes de \(n_1\) e \(n_2\) a construção
+da tabela para encontrar a estatística \(D\) se torna trabalhosa sem o
+auxílio computacional. Agora que a ideia de como o teste é construído
+foi formalmente explicada, podemos verificar como utilizá-lo no software
+R através de uma função específica. Segue abaixo a estrutura para
+efetuar o teste de Kolmogorov-Smirnov no R:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{stats}\SpecialCharTok{::}\FunctionTok{ks.test}\NormalTok{(x, y, }\AttributeTok{alternative =} \StringTok{"two.sided"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Os argumentos \texttt{x} e \texttt{y} são os vetores dos valores dos
+grupos a serem comparados, enquanto o argumento \texttt{alternative}
+permite escolher o formato do teste de hipóteses desejado. Ao executar a
+função, ela irá retornar a estatística de teste e o \emph{valor-p}, os
+quais podemos utilizar para avaliar as hipóteses, onde, rejeitamos a
+hipótese nula caso \emph{valor-p} \(\leq 0,05\), sendo 5\% de nível de
+significância escolhido.
+
+Além disso, podemos utilizar a mesma função para efetuar o teste de
+Kolmogorov-Smirnov para um grupo. A lógica de construção do teste para
+um grupo é similar a construção do teste para dois, a principal
+diferença é de que em vez de comparar as distribuições para dois grupos,
+estaremos comparando a distribuição de um único grupo com uma
+distribuição hipotética ou teórica. A estrutura de aplicação no R será a
+seguinte:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{stats}\SpecialCharTok{::}\FunctionTok{ks.test}\NormalTok{(x, }\StringTok{"pnorm"}\NormalTok{, }\AttributeTok{alternative =} \StringTok{"two.sided"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Os argumentos \texttt{x} e \texttt{alternative} são os mesmos, a
+diferença é que em vez de utilizar o argumento \texttt{y} utilizamos o
+argumento \texttt{"pnorm"}, o qual estamos especificando que queremos
+comparar a distribuição da população que deu origem ao grupo com a
+distribuição empírica normal.
+
+\hypertarget{teste-de-kruskal-wallis}{%
+\subsection{Teste de Kruskal-Wallis}\label{teste-de-kruskal-wallis}}
+
+O teste de Kruskal-Wallis é uma extensão do teste de Mann-Whitney em que
+é possível contruí-lo utilizando a lógica de postos dos valores
+ordenados dos grupos do estudo, e comparar a distribuição desses grupos,
+os quais, nesse caso, podem ser mais do que dois. Além disso, é um teste
+sensível à mediana como o teste de Mann-Whitney, e requer que a variável
+de interesse seja no mínimo ordinal. Como os grupos precisam ser
+independentes e não é necessário assumir normalidade, o teste de
+Kruskal-Wallis é uma alternativa não-paramétrica a análise de variância
+de um fator (One-way ANOVA).
+
+Considere \(k\) como sendo o número de grupos no estudo. Quando
+\(k = 2\), o teste de Kruskal-Wallis terá resultados equivalentes aos do
+teste de Mann-Whitney. Além disso, o teste verifica se as distribuições
+das populações das quais os grupos foram amostrados são iguais, mas caso
+a suposição de que a forma dessas distribuições é a mesma for feita,
+então, o teste pode ser interpretado com base na mediana. Assim,
+considerando \(k\) grupos independentes, as hipóteses podem ser
+definidas como:
+
+\(H_0:\) Todos os \(k\) grupos originam-se de populações com
+distribuições idênticas.
+
+\(H_{\mathrm{a}}:\) Pelo menos 2 grupos originam-se de populações com
+distribuições diferentes.
+
+Retornaremos ao exemplo que considera a idade(anos) das gestantes
+hospitalizadas com Covid-19. Considere \(n_1 = 5\), \(n_2 = 5\) e
+\(n_3 = 5\) como a quantidade de gestantes de três hospitais diferentes
+dos quais foram registradas as idades para o estudo. Os grupos podem ser
+vistos abaixo:
+
+Hospital A: {\(\quad 27,24,18,18,25\)}
+
+Hospital B: {\(\quad 43,39,31,36,41\)}
+
+Hospital C: \(\quad 25,27,29,24,24\)
+
+Assim como feito na construção do teste de Mann-Whitney, deve-se
+considerar todas as idades registradas como se fossem de um único grupo
+e então ordená-las para que os postos de cada registro seja
+identificado. No caso de empates, o posto atribuído a cada valor
+repetido será a média dos postos desses valores inicialmente
+identificados, assim como feito para o teste de Mann-Whitney.
+
+\begin{array}{llllllllllll}
+\hline \text { Idades } & \color{red}{18} & \color{red}{18} & \color{red}{24} & 24 & 24 & \color{red}{25} & 25 & \color{red}{27} & 27 & 29 & \color{blue}{31} & \color{blue}{36} & \color{blue}{39} & \color{blue}{41} & \color{blue}{43}\\
+\hline \text { Posição} & \color{red}{1} & \color{red}{2} & \color{red}{3} & 4 & 5 & \color{red}{6} & 7 & \color{red}{8} & 9 & 10 & \color{blue}{11} & \color{blue}{12} & \color{blue}{13} & \color{blue}{14} & \color{blue}{15}\\
+\hline \text { Posto } & \color{red}{1,5} & \color{red}{1,5} & \color{red}{4} & 4 & 4 & \color{red}{6,5} & 6,5 & \color{red}{8,5} & 8,5 & 10 & \color{blue}{11} & \color{blue}{12} & \color{blue}{13} & \color{blue}{14} & \color{blue}{15}\\
+\hline
+\end{array}
+
+Identificado os postos de cada observação, é possível obter algumas
+quantidades de interesse para a construção do teste. Considere
+\(R_1 = 22\), \(R_2 = 65\) e \(R_3 = 33\) como sendo a soma dos postos
+do grupo 1 (verde), grupo 2 (vermelho) e grupo 3 (preto)
+respectivamente. Além disso, considere \(N = n_1 + n_2 + n_3\) como o
+total de observações registradas, que para o exemplo abordado é de
+\(N = 15\).
+
+\hypertarget{estatuxedstica-h}{%
+\subsubsection{\texorpdfstring{Estatística
+\(H\)}{Estatística H}}\label{estatuxedstica-h}}
+
+Para avaliar as hipóteses é necessário calcular a estatística de teste
+\(H\), a qual é obtida a partir de uma aproximação pela distribuição
+qui-quadrado e possui a seguinte forma:
+
+\[H=\displaystyle \frac{12}{N(N+1)} \sum_{j=1}^k\left[\displaystyle \frac{\left(R_j\right)^2}{n_j}\right]-3(N+1).\]
+
+Note que a quantidade
+\(\sum_{j=1}^k\left[\displaystyle \frac{\left(R_j\right)^2}{n_j}\right]\)
+indica, para cada grupo, a soma da razão entre o quadrado da soma dos
+postos e o número de observações, ou seja:
+
+\[\sum_{j=1}^k\left[\displaystyle \frac{\left(R_j\right)^2}{n_j}\right] = \displaystyle \frac{\left(R_1\right)^2}{n_1} + \displaystyle \frac{\left(R_2\right)^2}{n_2} + \displaystyle \frac{\left(R_3\right)^2}{n_3} = \displaystyle \frac{\left(22\right)^2}{5} + \displaystyle \frac{\left(65\right)^2}{5} + \displaystyle \frac{\left(33\right)^2}{5} = 1159,6.\]
+
+Assim, sabendo que \(N = 15\) e
+\(\sum_{j=1}^k\left[\displaystyle \frac{\left(R_j\right)^2}{n_j}\right] = 1159,6\)
+obtemos a estatística \(H = 9,98\).
+
+\hypertarget{avaliauxe7uxe3o-das-hipuxf3teses-2}{%
+\subsubsection{Avaliação das
+hipóteses}\label{avaliauxe7uxe3o-das-hipuxf3teses-2}}
+
+Tendo calculado a estatística \(H\), basta obtermos o valor crítico
+\(H_c\) para avaliar as hipóteses. O valor crítico \(H_c\) pode ser
+obtido a partir da distribuição qui-quadrado com \(df = K-1\) graus de
+liberdade quando há pelo menos cinco observações em cada grupo. Os
+valores críticos de uma qui-quadrado são quantidades tabeladas, assim,
+podemos acessá-los diretamente de uma tabela de pontos críticos dessa
+distribuição, ou, a partir da função \texttt{qchisq()} no r, sendo
+necessário especificar o grau de liberdade \texttt{df} e o nível de
+significância \texttt{p} com a estrutura
+\texttt{qchisq(p\ =\ 0.05,\ df\ =\ 2,\ lower.tail\ =\ FALSE)},
+considerando o exemplo abordado. Quando existem menos que cinco
+observações nos grupos, o valor de \(H_c\) pode ser obtido a partir de
+tabelas de valores exatos. Esses valores tabelados podem ser verificados
+em Sheskin (2003) ou pelo endereço
+\href{https://www.dataanalytics.org.uk/critical-values-for-the-kruskal-wallis-test/}{www.dataanalytics.org.uk/critical-values}.
+
+Considerando o nível de 5\% de significância e grau de liberdade
+\(df = 2\), o valor crítico para o exemplo é de \(H_c = 5,99\). Além
+disso, rejeitamos a hipótese nula quando \(H \geq H_c\), como o valor da
+estatística de teste \(H\) é de fato maior que o valor crítico \(H_c\),
+podemos concluir que há evidências de que pelo menos dois dos três
+grupos originam-se de populações com distribuições diferentes.
+
+Caso haja um número excessivo de empates, é recomendado utilizar uma
+correção para a estatística \(H\) que considere essas repetições. A
+seguinte quantidade deve ser calculada:
+
+\[C=1-\displaystyle \frac{\sum_{i=1}^s\left(t_i^3-t_i\right)}{N^3-N}.\]
+
+Note que \(\sum_{i=1}^s\left(t_i^3-t_i\right)\) é a mesma quantidade
+utilizada para incluir a informação de empates ao calcular a estatística
+\(U\) normalizada no teste de Mann-Whitney, em que \(s\) indica quantos
+grupos de empates ocorreram e \(t\) o número total de empates no grupo.
+No exemplo sendo considerado temos \(s = 4\) grupos de empates, sendo
+duas repetições do valor 18, três do valor 24, duas do valor 25 e duas
+do valor 27, ou seja, \(t_1 = 2\), \(t_2 = 3\), \(t_3 = 2\) e
+\(t_4 = 2\) respectivamente. Assim, para calcular \(C\) teremos:
+
+\[\sum_{i=1}^s\left(t_i^3-t_i\right) = (2^3-2) + (3^3-3) + (2^3-2) + (2^3-2) = 42.\]
+
+Sabendo que \(N = 15\), o valor do fator de correção será \(C = 0.987\).
+Para obter a estatística \(H\) corrigida, basta dividir pelo valor de
+\(C\), onde teremos \(\displaystyle \frac{H}{C} = 10,11\). Assim, para o
+exemplo abordado, as conclusões serão as mesmas feitas anteriormente ao
+avaliar as hipóteses com a estatística sem correção.
+
+\hypertarget{como-aplicar-o-teste-no-r-2}{%
+\subsubsection{Como aplicar o teste no
+R}\label{como-aplicar-o-teste-no-r-2}}
+
+O teste pode ser facilmente aplicado no R ao utilizar a função
+\texttt{kruskal.test()}, a qual irá retornar o valor da estatística
+\(H\) aproximada pela qui-quadrado, os graus de liberdade considerados e
+o \emph{valor-p}. Assim, rejeita-se a hipótese nula quando
+\emph{valor-p} \(\leq 0,05\) considerando 5\% de nível de significância.
+A função possui a seguinte estrutura:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{stats}\SpecialCharTok{::}\FunctionTok{kruskal.test}\NormalTok{(resposta }\SpecialCharTok{\textasciitilde{}}\NormalTok{ grupos, }\AttributeTok{data =}\NormalTok{ dados)}
+\end{Highlighting}
+\end{Shaded}
+
+O argumento \texttt{resposta\ \textasciitilde{}\ grupos} é a fórmula de
+entrada da função para aplicação do teste, em que \texttt{resposta} é a
+variável de interesse e \texttt{grupos} é a variável independente onde
+os grupos são especificados, sendo \texttt{grupos} uma variável que
+precisa ser tratada como \emph{factor} dentro do R (ver apêndice). No
+exemplo abordado, teríamos \texttt{idade\ \textasciitilde{}\ hospitais},
+por exemplo. O argumento \texttt{data} é onde precisamos especificar o
+nome da base de dados utilizada que possui as variáveis sendo incluídas
+na fórmula.
+
+Caso o teste de Kruskal-Wallis seja realizado, e como resultado, a
+hipótese nula seja rejeitada, podemos identificar quais pares de grupos
+apresentam diferentes distribuições de suas populações. O teste de Dunn,
+uma alternativa não-paramétrica ao teste de Tukey, pode ser usado para
+realizar comparações múltiplas entre os grupos. Para aplicá-lo no R,
+podemos instalar o pacote \texttt{FSA} e recorrer à função
+\texttt{dunnTest()}, a qual possui a seguinte estrutura:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{FSA}\SpecialCharTok{::}\FunctionTok{dunnTest}\NormalTok{(resposta }\SpecialCharTok{\textasciitilde{}}\NormalTok{ grupos, }\AttributeTok{data =}\NormalTok{ dados, }\AttributeTok{method =} \StringTok{"bonferroni"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Os argumentos \texttt{resposta\ \textasciitilde{}\ grupos} e
+\texttt{data} são os mesmos utilizados na função
+\texttt{kruskal.test()}. O argumento \texttt{method} é utilizado para
+especificar o método de controle da taxa de erro experimental, sendo o
+\emph{bonferroni} o mais usual. A função retorna uma matriz com
+\emph{valores-p} ajustados pelo método \emph{bonferroni} organizados em
+uma coluna chamada \emph{P.adj} para o usuário avaliar cada par de
+grupos, sendo cada linha equivalente a cada par sendo comparado. Caso o
+\emph{valor-p} ajustado for menor ou igual ao nível de significância
+(geralmente 5\%), então, as distribuições das populações dos grupos
+sendo comparados são significativamente diferentes.
+
+\hypertarget{grupos-pareados}{%
+\section{Grupos pareados}\label{grupos-pareados}}
+
+Grupos ou amostras são considerados pareados quando as observações em um
+grupo estão relacionadas ou emparelhadas com as observações de outro
+grupo. Isso significa que cada observação em um grupo é emparelhada ou
+relacionada com uma observação correspondente no outro grupo.
+
+Um exemplo comum de grupos pareados é quando o mesmo grupo de indivíduos
+é medido duas ou mais vezes em diferentes momentos, o que chamamos de
+amostras antes e depois. Outro cenário, é quando temos grupos não
+necessariamente com os mesmos indivíduos avaliados em diferentes
+momentos, mas com indivíduos diferentes em que conseguimos pareá-los de
+acordo com características em comum. Um exemplo de pareamento entre
+indivíduos de dois grupos é quando há o interesse em estudar a eficácia
+de um novo tratamento médico, onde cada paciente no grupo de tratamento
+é emparelhado com um paciente no grupo de controle com características
+semelhantes, formando assim, pares de observações pareadas.
+
+Dentre os testes não-paramétricos mais conhecidos e utilizados nestes
+cenários, temos os testes de Wilcoxon e McNemar para dois grupos, e o de
+Friedman para três ou mais grupos.
+
+\hypertarget{teste-de-wilcoxon}{%
+\subsection{Teste de Wilcoxon}\label{teste-de-wilcoxon}}
+
+O teste de Wilcoxon é utilizado em problemas onde a variável de
+interesse pode ser ordenada (medida pelo menos ordinal) e há dois grupos
+dependentes a serem comparados. A hipótese a ser testada é se a mediana
+das diferenças dos valores pareados das populações que deram origem aos
+grupos é zero. O teste é usualmente aplicado quando as suposições sobre
+o teste t para dois grupos dependentes são violadas, principalmente em
+relação à normalidade dos dados, pois, pelo teste de Wilcoxon ser uma
+alternativa não-paramétrica ao teste t para duas amostras dependentes,
+as suposições requeridas são mais leves.
+
+O teste consiste em identificar as diferenças entre os valores pareados
+dos grupos, identificar os postos das diferenças absolutas, e então,
+atribuir os sinais originais das diferenças em cada posto (sinalização
+dos postos). Além disso, diferenças que resultaram em zero, não são
+consideradas na construção do teste.
+
+Sejam as seguintes hipóteses:
+
+\(H_0:\) A mediana das diferenças dos valores pareados é igual a zero.
+
+\(H_{\mathrm{a}}:\) A mediana das diferenças dos valores pareados difere
+de zero.
+
+Considere que em um determinado hospital estava sendo reportado altos
+níveis de ansiedade em gestantes no terceiro trimestre de gravidez. Foi
+medido o nível de ansiedade de 10 gestantes antes e após participarem de
+um programa de atividades em grupo que durou duas semanas, onde, 0
+indica sem ansiedade e 10 ansiedade severa. Suponha que as 10 gestantes
+foram selecionadas de forma aleatória, e que as diferenças dos pares de
+níveis de ansiedade (antes e depois) seguem uma distribuição simétrica
+em torno da mediana. Considere os seguintes dados:
+
+\begin{array}{llllllllllll}
+\hline \text { Indivíduo } & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+\hline \text { Antes} & 8 & 9 & 8 & 7 & 6 & 4 & 6 & 6 & 7 & 3 \\
+\hline \text { Depois } & 2 & 6 & 7 & 5 & 4 & 5 & 6 & 3 & 2 & 5 \\
+\hline
+\end{array}
+
+Cada indivíduo possui um nível de ansiedade registrado antes e depois do
+programa de atividades em grupos. O grupo 1 é composto pelos níveis de
+ansiedade registrados antes das atividades, e o grupo 2 composto pelos
+níveis de ansiedade registrados depois das atividades.
+
+Considere \(D\) como uma representação das diferenças. Assim, calculamos
+\(D\), o valor absoluto das diferenças \(|D|\), os postos de \(|D|\), e
+então, os postos de \(|D|\) sinalizados:
+
+\begin{array}{cccccc}
+\hline \text { Indivíduo } & \text{Grupo} 1 & \text{Grupo} 2 & D & |D| & \text { Postos de }|D| & \text { Postos sinalizados de }|D|\\
+\hline 
+\mathbf{7} & 6 & 6 & 0 & - & - & -\\
+\mathbf{6} & 4 & 5 & -1\phantom{-} & 1 & 1,5 & -1,5\phantom{-}\\
+\mathbf{3} & 8 & 7 & 1 & 1 & 1,5 & 1,5\\
+\mathbf{10} & 3 & 5 & -2\phantom{-} & 2 & 4,0 & -4,0\phantom{-}\\
+\mathbf{4} & 7 & 5 & 2 & 2 & 4,0 & 4,0\\
+\mathbf{5} & 6 & 4 & 2 & 2 & 4,0 & 4,0\\
+\mathbf{2} & 9 & 6 & 3 & 3 & 6,5 & 6,5\\
+\mathbf{8} & 6 & 3 & 3 & 3 & 6,5 & 6,5\\
+\mathbf{9} & 7 & 2 & 5 & 5 & 8,0 & 8,0\\
+\mathbf{1} & 8 & 2 & 6 & 6 & 9,0 & 9,0\\
+\hline
+\end{array}
+
+Note que a tabela é construída ordenando a coluna \(D\) de forma
+crescente desconsiderando o sinal dos valores. Além disso, a primeira
+linha gerou um valor de \(D = 0\), o qual deve ser desconsiderado no
+teste, e então, os postos são identificados a partir da segunda linha.
+Para mais, note que houve empates nos valores de \(|D|\), para os quais
+os postos são identificados como a média dos postos caso não fossem
+empates, assim como é feito para os testes de Mann-Whitney e
+Kruskal-Wallis.
+
+O próximo passo é calcular a soma dos postos em que a sinalização de
+\(|D|\) foi negativa, o qual denotaremos de \(R_{neg}\). Além disso,
+devemos calcular a soma dos postos em que a sinalização de \(|D|\) foi
+positiva, denotada por \(R_{pos}\).
+
+Para o exemplo, temos \(R_{neg} = 5,5\) e \(R_{pos} = 39,5\). Além
+disso, podemos verificar a seguinte relação:
+
+\[R_{neg} + R_{pos} =\displaystyle \frac{n(n+1)}{2}.\]
+
+Caso essa relação não for verdadeira, é um indicativo de que houve erro
+nos cálculos. Como houve um par de valores entre os grupos cuja
+diferença foi zero, o número de pares considerados no teste para o
+exemplo abordado será de \(n = 9\). Dessa forma, teremos
+\(\displaystyle \frac{n(n+1)}{2} = \displaystyle \frac{9(9+1)}{2} = 45\)
+que corresponde ao valor de \(R_{neg} + R_{pos} = 5,5 + 39,5 = 45.\)
+
+\hypertarget{avaliauxe7uxe3o-das-hipuxf3teses-3}{%
+\subsubsection{Avaliação das
+hipóteses}\label{avaliauxe7uxe3o-das-hipuxf3teses-3}}
+
+Caso os valores das diferenças originaram-se de uma população cuja
+mediana é zero, espera-se que os valores de \(R_{neg}\) e \(R_{pos}\)
+sejam equivalentes ao valor esperado da estatística de teste de
+Wilcoxon, a qual denotaremos de estatística \(V\). O valor esperado
+possui a seguinte forma:
+
+\[\displaystyle \frac{n(n+1)}{4}.\]
+
+Assim, para o exemplo, o valor esperado da estatística de teste \(V\) é
+de \(\displaystyle \frac{9(9+1)}{4} = 22,5\). Note que o valor esperado
+da estatística de teste \(V\) parece ser razoavelmente diferente de
+\(R_{neg}\) e \(R_{pos}.\)
+
+Caso \(R_{pos}\) for significativamente maior que \(R_{neg}\), significa
+haver uma alta probabilidade de que o grupo 1 originou-se de uma
+população com valores maiores do que os da população da qual o grupo 2
+originou-se, o contrário também é verdadeiro caso \(R_{neg}\) for
+significativamente maior. Como \(R_{pos} > R_{neg}\) no exemplo
+considerado, podemos interpretar a hipótese alternativa como sendo:
+
+\(H_{\mathrm{a}}:\) A mediana das diferenças dos valores pareados é
+maior que zero.
+
+Assim, resta identificar se \(R_{pos}\) é de fato significativamente
+maior que \(R_{neg}\).
+
+\hypertarget{estatuxedstica-v}{%
+\subsubsection{\texorpdfstring{Estatística
+\(V\)}{Estatística V}}\label{estatuxedstica-v}}
+
+A estatística \(V\) de Wilcoxon nada mais é do que o menor dos valores
+entre \(R_{neg}\) e \(R_{pos}\). Assim, para o exemplo em questão, a
+estatística de teste será \(V = R_{neg} = 5,5\).
+
+Para avaliar as hipóteses precisamos obter o valor crítico de \(V\),
+denotado por \(V_c\). Valores críticos de \(V\) são quantidades
+tabeladas identificadas de acordo com a quantidade de postos utilizados
+no teste ou pares válidos, esses valores podem ser encontrados em
+Sheskin (2003). Assim, para \(n = 9\) e nível de 5\% de significância, o
+valor crítico de \(V\) é de \(V_c = 8\) para o teste unilateral.
+
+Rejeitamos a hipótese nula quando \(V \leq V_c\). Como
+\(R_{pos} > R_{neg}\), \(V = 5,5\) e \(V_c = 8\), podemos concluir, ao
+nível de 5\% de significância, que os níveis de ansiedade registrados
+das gestantes antes do programa de atividades em grupo foram maiores do
+que após as atividades, ou seja, houve uma redução significativa nos
+níveis de ansiedade das gestantes em decorrência das atividades em
+grupo.
+
+\hypertarget{estatuxedstica-v-normalizada}{%
+\subsubsection{\texorpdfstring{Estatística \(V\)
+normalizada}{Estatística V normalizada}}\label{estatuxedstica-v-normalizada}}
+
+Na prática, quando \(n > 30\) podemos normalizar a estatística de teste
+\(V\), e então, avaliar as hipóteses baseado na distribuição normal
+padrão. A estatística de teste \(V\) normalizada será denotada por
+\(Z_V\), e possui a seguinte forma:
+
+\[Z_T=\displaystyle \frac{T-\displaystyle\frac{n(n+1)}{4}}{\sqrt{\displaystyle\frac{n(n+1)(2 n+1)}{24}}}.\]
+
+Como \(n = 9\), temos que o valor da estatística \(V\) normalizada é de
+\(Z_V = -2,01\). O valor crítico da estatística de teste normalizada é
+um valor tabelado o qual pode ser verificado em tabelas de valores
+críticos da distribuição normal padrão. Pode ser encontrada em Sheskin
+(2003), ou, obtido computacionalmente no R através da função
+\texttt{qnorm()}. Para o nível de 5\% de significância, os valores
+críticos para normal padrão são muito conhecidos, sendo 1,96 e 1,65 para
+os testes bilaterais e unilaterais respectivamente.
+
+Rejeita-se a hipótese nula quando \(|Z_V|\geq Z_{crítico}\). Como
+\(R_{pos} > R_{neg}\), \(Z_V = -2,01\) e \(Z_{crítico} = 1,65\), então,
+podemos concluir que há evidências para a rejeição da hipótese nula, e a
+mesma interpretação feita anteriormente para o teste sem normalização
+permanece.
+
+\hypertarget{como-aplicar-o-teste-no-r-3}{%
+\subsubsection{Como aplicar o teste no
+R}\label{como-aplicar-o-teste-no-r-3}}
+
+Para aplicar o teste de Wilcoxon no R podemos utilizar a mesma função e
+estrutura utilizada para o teste de Mann-Whitney. Utilizamos a seguinte
+estrutura:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{stats}\SpecialCharTok{::}\FunctionTok{wilcox.test}\NormalTok{(x, y, }\AttributeTok{correct =} \ConstantTok{FALSE}\NormalTok{,  }\AttributeTok{alternative =} \StringTok{"two.sided"}\NormalTok{, }\AttributeTok{paired =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Os argumentos \texttt{x} e \texttt{y} são referentes aos grupos 1 e 2
+respectivamente. O argumento \texttt{correct} indica se o usuário quer
+que seja feito uma correção de continuidade do \emph{valor-p} no caso de
+aproximação normal da estatística \(V\). O argumento
+\texttt{alternative} especifica a forma do teste a ser aplicado
+(unilateral ou bilateral). E por fim, o mais importante no caso do teste
+de Wilcoxon, o argumento \texttt{paired} que indica que o teste
+considere grupos pareados.
+
+A função \texttt{wilcox.test()} neste caso irá retornar o valor da
+estatística de teste \(V\) e o \emph{valor-p}. A hipótese nula pode ser
+rejeitada quando \emph{valor-p} \(\leq 0,05\), quando o nível de
+significância desejado for de 5\%.
+
+\hypertarget{teste-de-mcnemar}{%
+\subsection{Teste de McNemar}\label{teste-de-mcnemar}}
+
+O teste de McNemar é usualmente utilizado em cenários onde a variável de
+interesse é categórica, dicotômica (duas categorias) e os grupos são
+dependentes (geralmente experimentos do tipo ``antes-depois'' de um
+evento de intervenção). O objetivo do teste é verificar a existência de
+diferenças significativas entre os grupos em relação à variável de
+interesse, e sua construção é feita tendo como base tabelas de
+contingência 2x2.
+
+Considere o exemplo abordado na construção do teste de Wilcoxon, onde,
+foi coletado os dados do nível de ansiedade de gestantes no terceiro
+trimestre gestacional, antes e depois, de um programa de atividades em
+grupo, sendo 0 indicando sem ansiedade e 10 indicando ansiedade severa.
+Porém, considere que o número de gestantes que participaram do programa
+foi de 100, e que o nível de ansiedade foi classificado como baixo ou
+alto (baixo: 0 a 5; alto: 6 a 10). Além disso, considere que as
+gestantes foram selecionadas de forma aleatória e que as categorias
+baixa e alta são mutualmente exclusivas. Os dados são apresentados na
+seguinte forma:
+
+\begin{array}{c|cc|c}
+\hline \text { Antes/Depois } & \text { Baixo } & \text { Alto } & {\text { Soma das linhas }} \\
+\hline \text { Baixo } & \mathrm{a = 17} & \mathrm{b = 10} & \mathrm{n}_1=\mathrm{27} \\
+\text { Alto } & \mathrm{c = 59} & \mathrm{d = 14} & \mathrm{n}_2=\mathrm{73} \\
+\hline \text { Soma das colunas } & \mathrm{76} & \mathrm{24} & \mathrm{n} =\mathrm{100} \\
+\hline
+\end{array}
+
+Para a construção do teste, as caselas de interesse são aquelas onde
+houve mudança na avaliação, ou seja, a casela \(c\), em que indica que a
+gestante apresentava alto nível de ansiedade, e então, passou a
+apresentar baixo nível de ansiedade após as atividades em grupo, e a
+casela \(b\), em que indica que a gestante apresentava baixo nível de
+ansiedade, e passou a apresentar alto nível após as atividades em grupo.
+As caselas \(a\) e \(d\) não são consideradas na construção do teste,
+pois não houve alterações em decorrência da intervenção (programa de
+atividades em grupo). Assim, considerando as populações as quais os
+grupos (antes; depois) representam, as hipóteses terão a seguinte forma
+bilateral:
+
+\(H_0:\) A proporção das observações da casela \(b\) é igual a proporção
+das observações da casela \(c\), ou seja, \(\pi_b = \pi_c\).
+
+\(H_{\mathrm{a}}:\) A proporção das observações da casela \(b\) difere
+da proporção das observações da casela \(c\), ou seja,
+\(\pi_b \neq \pi_c\).
+
+Os valores \(\pi_b\) e \(\pi_c\) podem ser estimados por
+\(p_b = \displaystyle \frac{b}{b + c}\) e
+\(p_c = \displaystyle \frac{c}{b + c}\) respectivamente. Para o exemplo
+considerado, temos \(p_b = 0,14\) e \(p_c = 0,85\). Assim, como
+\(p_c > p_b\), a hipótese unilateral \(H_{\mathrm{a}}: \pi_b < \pi_c\) é
+consistente com os dados e pode ser considerada.
+
+\hypertarget{estatuxedstica-m}{%
+\subsubsection{\texorpdfstring{Estatística
+\(M\)}{Estatística M}}\label{estatuxedstica-m}}
+
+A estatística de teste utilizada no teste de McNemar é baseada na
+distribuição qui-quadrado e será denotada por \(M\). O cálculo da
+estatística \(M\) pode ser feito da seguinte maneira:
+
+\[M = \displaystyle \frac{(b-c)^2}{b+c}.\]
+
+Note que essa estatística sempre será não-negativa, e caso o número de
+observações na casela \(b\) e \(c\) seja o mesmo, então, a estatística
+\(M\) será zero. Para o exemplo considerado, teremos que o valor da
+estatística de teste será \(M = 34,79\).
+
+\hypertarget{avaliauxe7uxe3o-das-hipuxf3teses-4}{%
+\subsubsection{Avaliação das
+hipóteses}\label{avaliauxe7uxe3o-das-hipuxf3teses-4}}
+
+Para avaliar as hipóteses precisamos obter o valor crítico da
+estatística \(M\), que será denotado por \(M_c\). Valores críticos de
+\(M\) são os mesmos da distribuição qui-quadrado, os quais são valores
+tabelados podendo ser encontrados em Sheskin (2003), ou, podemos
+utilizar a função \texttt{qchisq()} no R para encontrá-los. A função
+\texttt{qchisq()} terá a seguinte forma:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{stats}\SpecialCharTok{::}\FunctionTok{qchisq}\NormalTok{(}\AttributeTok{p =} \FloatTok{0.10}\NormalTok{, }\AttributeTok{df =} \DecValTok{1}\NormalTok{, }\AttributeTok{lower.tail =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 2.705543
+\end{verbatim}
+
+O argumento \texttt{p} indica o nível de significância considerado a
+depender do formato das hipóteses, como estamos considerando um teste
+unilateral, para o teste ter o nível de significância de 5\% devemos
+especificar \(p = 0,10\). Caso o teste fosse bilateral, então, teríamos
+\(p = 0,05\). O argumento \texttt{df} indica o grau de liberdade
+considerado, que será o número de caselas avaliadas menos 1, como por
+construção o teste avalia apenas duas caselas, especificamos \(df = 1\).
+O argumento \texttt{lower.tail} deve ser especificado como \emph{FALSE}
+para o formato de \texttt{p} apresentado, caso esse argumento for
+especificado como \emph{TRUE}, o valor utilizado no argumento \texttt{p}
+precisa ser indicado como seu complementar. No exemplo, caso
+\texttt{lower.tail\ =\ TRUE}, então, teríamos
+\texttt{p\ =\ 1\ -\ 0,10\ =\ 0,90}.
+
+Assim, rejeitamos a hipótese nula quando \(M \geq M_c\). Como
+\(M = 34,79\) e \(M_c = 2,71\), então, ao nível de 5\% de significância,
+há evidências de uma mudança significativa nos níveis de ansiedade das
+gestantes, onde a direção dessa mudança é de níveis altos de ansiedade
+para níveis baixos. É importante notar, que essa hipótese apenas é
+aceita, pois a relação \(p_c > p_b\) é consistente com os dados.
+
+Embora o exemplo utilizado seja de um experimento em que os grupos são
+formados a partir de dados obtidos das mesmas pessoas duas vezes (antes
+e depois da intervenção), em experimentos em que os grupos são formados
+de indivíduos diferentes, mas pareados por características em comum, o
+teste de McNemar pode ser aplicado normalmente.
+
+\hypertarget{como-aplicar-o-teste-no-r-4}{%
+\subsubsection{Como aplicar o teste no
+R}\label{como-aplicar-o-teste-no-r-4}}
+
+Podemos aplicar o teste de McNemar facilmente no R ao utilizar a função
+\texttt{mcnemar.test()}, a qual irá retornar a estatística de teste, os
+graus de liberdades considerados e o \emph{valor-p} calculado. Essa
+função possui a seguinte estrutura:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{stats}\SpecialCharTok{::}\FunctionTok{mcnemar.test}\NormalTok{(x, }\AttributeTok{correct =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+O argumento \texttt{x} é a tabela de contingência 2x2 considerada, e
+deve ser passada como um objeto do tipo matriz (ver apêndice). O
+argumento \texttt{correct} indica se o usuário quer que seja aplicado
+uma correção de continuidade na estatística de teste, o que é sempre
+recomendado na prática dado que o teste de McNemar utiliza uma
+distribuição contínua para aproximar uma distribuição de probabilidade
+discreta. Assim, aplicando o teste com a função \texttt{mcnemar.test()},
+podemos rejeitar a hipótese nula quando \emph{valor-p} \(\leq 0,05\)
+considerando nível de 5\% de significância, ou podemos obter o valor
+crítico da estatística de teste e avaliar \(M \geq M_c\).
+
+\hypertarget{teste-de-friedman}{%
+\subsection{Teste de Friedman}\label{teste-de-friedman}}
+
+O teste de Friedman é utilizado para comparar mais de dois grupos
+dependentes, onde, sua construção de baseia em postos. Assim, a variável
+de interesse precisar ser pelo menos ordinal para ser possível
+identificar os postos. Além disso, é usado quando os pressupostos de
+normalidade não são atendidos, sendo uma alternativa não-paramétrica a
+análise de variância de um fator (One-way ANOVA) de medidas repetidas. O
+teste tem por objetivo verificar se as distribuições das populações as
+quais os grupos representam são iguais em relação à mediana, logo,
+teremos a seguinte estrutura de hipóteses:
+
+\(H_0:\) Todos os \(k\) grupos originam-se de populações com medianas
+idênticas.
+
+\(H_{\mathrm{a}}:\) Pelo menos 2 grupos originam-se de populações com
+medianas diferentes.
+
+Considere o exemplo abordado na construção dos testes de Wilcoxon e de
+McNemar, onde, foi coletado os dados do nível de ansiedade de gestantes
+no terceiro trimestre gestacional, antes e depois, de um programa de
+atividades em grupo, sendo 0 indicando sem ansiedade e 10 indicando
+ansiedade severa. Porém, agora considere que os níveis de ansiedade
+foram medidos antes do início do programa e, posteriormente, após duas
+atividades em grupo diferentes (atividades A e B), onde, foram
+escolhidas baseado em estudos anteriores que indicaram que eram
+atividades capazes de reduzir a ansiedade. Além disso, considere que
+foram selecionadas de forma aleatória 5 gestantes no terceiro trimestre
+gestacional para participarem do experimento, e que os tempos entre as
+atividades foram determinados apropriadamente. Os dados e os postos
+foram identificados da seguinte forma:
+
+\begin{array}{ccccccc}
+\hline \text { Indivíduos } & \text{Grupo}_1 & \text{Postos}_1 & \text{Grupo}_2 & \text{Postos}_2 & \text{Grupo}_3 & \text{Postos}_3 \\
+\hline 1 & 5 & 3 & 3 & 1 & 4 & 2 \\
+2 & 7 & 3 & 3 & 1 & 5 & 2 \\
+3 & 6 & 3 & 5 & 2 & 4 & 1 \\
+4 & 9 & 3 & 2 & 1 & 5 & 2 \\
+5 & 6 & 2,5 & 6 & 2,5 & 3 & 1 \\
+\hline
+\end{array}
+
+A coluna Grupo\textsubscript{1} indica os níveis de ansiedade das
+gestantes (identificadas na coluna \emph{Indivíduos}) registrados antes
+das atividades, sendo os valores na coluna Postos\textsubscript{1} seus
+respectivos postos. Além disso, a coluna Grupo\textsubscript{2} indica
+os níveis de ansiedade registrados após a atividade A, cujos postos são
+identificados na coluna Postos\textsubscript{2}. Para mais, a coluna
+Grupo\textsubscript{3} indica os níveis de ansiedade registrados das
+gestantes após a atividade B, sendo seus postos identificados na coluna
+Postos\textsubscript{3}. Por fim, detonamos a soma dos postos dos grupos
+por \(R_1\), \(R_2\) e \(R_3\), onde aplicamos a soma de todos os
+valores para cada coluna Postos\textsubscript{1},
+Postos\textsubscript{2} e Postos\textsubscript{3}. Assim, teremos
+\(R_1 = 14,5\), \(R_2 = 7,5\) e \(R_3 = 8,0\).
+
+Note que o procedimento de identificação dos postos é feito para cada
+indivíduo em específico, ou seja, é identificado os postos dos valores
+(níveis de ansiedade) dos grupos por linha separadamente, de forma que
+os postos de cada linha não interferem os postos das outras. Caso houver
+empates dos valores, então, a média dos postos identificados caso não
+fossem empates será aplicado, da mesma forma em que é feito nos demais
+testes não-paramétricos abordados nesta seção.
+
+Embora o exemplo utilizado seja de um experimento onde os mesmos
+indivíduos passam por condições diferentes, e então, para cada condição
+é formado um novo grupo, cenários onde os grupos são formados por
+indivíduos diferentes, porém, pareados por características em comum,
+também são válidos para aplicação do teste de Friedman.
+
+\hypertarget{estatuxedstica-q}{%
+\subsubsection{\texorpdfstring{Estatística
+\(Q\)}{Estatística Q}}\label{estatuxedstica-q}}
+
+Para avaliar as hipóteses devemos calcular a estatística de teste, a
+qual denotaremos de estatística \(Q\). A estatística \(Q\) é aproximada
+a partir da distribuição qui-quadrado da seguinte forma:
+
+\[Q=\displaystyle \frac{12}{n k(k+1)}\left[\sum_{i = 1}^k\left(R_i\right)^2\right]-3 n(k+1).\]
+
+Experimentos do tipo ``antes-depois'' possuem a característica de serem
+geralmente avaliados os mesmos indivíduos mais de uma vez, assim, os
+grupos formados serão do mesmo tamanho, onde, teremos
+\(n_1 = n_2 = n_3 = n\), sendo \(n = 5\) no exemplo considerado. O
+número de grupos é denotado por \(k\), assim, podemos calcular a
+seguinte quantidade:
+
+\[\displaystyle \sum_{i = 1}^k(R_i)^2 = (R_1)^2 + (R_2)^2 + (R_3)^2 = (14,5)^2 + (7,5)^2 + (8,0)^2 = 330,5.\]
+
+Com todos os termos identificados, a estatística para o teste de
+Friedman será \(Q = 6,1\).
+
+\hypertarget{avaliauxe7uxe3o-das-hipuxf3teses-5}{%
+\subsubsection{Avaliação das
+hipóteses}\label{avaliauxe7uxe3o-das-hipuxf3teses-5}}
+
+Tendo calculado a estatística de teste, precisamos obter o valor crítico
+de \(Q\) para avaliar as hipóteses, o qual será denotado por \(Q_c\).
+Como a estatística \(Q\) é aproximada pela qui-quadrado, então, os
+valores críticos da distribuição qui-quadrado podem ser utilizados. Tais
+valores podem ser obtidos de forma tabelada, onde, tais tabelas podem
+ser encontradas em Sheskin (2003). Outra forma de obtê-los é através da
+função \texttt{qchisq()}, da mesma forma em que foi explicado na
+construção do teste de McNemar. Considerando que os graus de liberdade
+são \(k - 1\), então, ao nível de 5\% de significância, teremos o
+seguinte valor crítico para o exemplo abordado:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{stats}\SpecialCharTok{::}\FunctionTok{qchisq}\NormalTok{(}\AttributeTok{p =} \FloatTok{0.05}\NormalTok{, }\AttributeTok{df =} \DecValTok{2}\NormalTok{, }\AttributeTok{lower.tail =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 5.991465
+\end{verbatim}
+
+Rejeitamos a hipótese nula quando \(Q \geq Q_c\), logo, dado que
+\(Q = 6,1\) e \(Q_c = 5,99\), há evidências de que pelo menos dois
+grupos (condições as quais o nível de ansiedade foi registrado) diferem
+significativamente.
+
+\hypertarget{correuxe7uxe3o-de-empates}{%
+\subsubsection{Correção de empates}\label{correuxe7uxe3o-de-empates}}
+
+Caso houver um número excessivo de indivíduos onde ocorreu empates
+(muitas linhas da tabela em que tenham empates ou muitos empates em uma
+mesma linha), é recomendado utilizar um fator de correção para aplicar
+na estatística de teste, o qual, terá a seguinte forma:
+
+\[C=1- \displaystyle\frac{\sum_{i=1}^s\left(t_i^3-t_i\right)}{n\left(k^3-k\right)}.\]
+
+Note que a quantidade
+\(\displaystyle \sum_{i=1}^s\left(t_i^3-t_i\right)\) é a mesma utilizada
+no fator de correção de empates para o teste de Kruskal-Wallis, onde,
+\(s\) indica quantos conjuntos de empates ocorreram e \(t\) o número
+total de empates no conjunto. Logo, para o exemplo considerado teremos:
+
+\[\displaystyle \sum_{i=1}^s\left(t_i^3-t_i\right) = \left(2^3-2\right) = 6.\]
+
+Assim, sabendo que \(n = 5\) e \(k = 3\), o valor do fator de correção
+será \(C = 0,95\). Então, a estatística de teste \(Q\) corrigida será
+\(Q_{corrigida} = \displaystyle \frac{Q}{C} = 6,42\).
+
+A avaliação das hipóteses é feita da mesma forma, onde, rejeitamos a
+hipótese nula quando \(Q_{corrigida} \geq Q_c\).
+
+\hypertarget{como-aplicar-o-teste-no-r-5}{%
+\subsubsection{Como aplicar o teste no
+R}\label{como-aplicar-o-teste-no-r-5}}
+
+Podemos aplicar o teste de Friedman no R utilizando a função
+\texttt{friedman.test()}, a qual, possui a seguinte estrutura:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{stats}\SpecialCharTok{::}\FunctionTok{friedman.test}\NormalTok{(y, groups, blocks)}
+\end{Highlighting}
+\end{Shaded}
+
+É recomendável criar um objeto do tipo \texttt{data.frame} (ver
+apêndice) com cada coluna necessária para realização do teste, sendo:
+uma coluna com as observações da variável de interesse para o argumento
+\emph{y} da função; uma coluna com os grupos (variável independente)
+para o argumento \emph{groups}; uma coluna com a identificação numérica
+dos indivíduos para o argumento \emph{blocks}. Tendo criado o objeto,
+digamos, objeto \texttt{dados}, basta passar as colunas para os
+argumentos, sendo \texttt{y\ =\ dados\$variavel},
+\texttt{groups\ =\ dados\$grupos} e
+\texttt{blocks\ =\ dados\$individuos}. O teste irá retornar a
+estatística de teste, os graus de liberdade utilizados e o
+\emph{valor-p}, em que rejeitamos a hipótese nula quando \(Q \geq Q_c\)
+ou quando \emph{valor-p} \(\leq 0,05\) ao nível de 5\% de significância.
+
+Podemos realizar comparações múltiplas após a confirmação da rejeição da
+hipótese nula, para isso, devemos utilizar métodos específicos para o
+teste de Friedman. Um dos métodos mais utilizados é o teste de Conover,
+que pode ser utilizado para comparações múltiplas tanto para o teste de
+Friedman quanto para o teste de Kruskal-Wallis, como também, em outros
+cenários. Podemos aplicar o teste de Conover no R com a função
+\texttt{frdAllPairsConoverTest()}, a qual, pertence ao pacote
+\texttt{PMCMRplus} e possui a seguinte estrutura:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{PMCMRplus}\SpecialCharTok{::}\FunctionTok{frdAllPairsConoverTest}\NormalTok{(y, groups, blocks, }\AttributeTok{p.adjust.method =} \StringTok{"bonf"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Note que a estrutura é a mesma da função \texttt{friedman.test()}, a
+única diferença é o argumento \texttt{p.adjust.method}, o qual, indica o
+método de ajuste do \emph{valor-p} a ser utilizado, onde, usualmente
+especificamos o método de Bonferroni por \emph{``bonf''}. A função irá
+retornar uma pequena matriz de \emph{valores-p} para cada comparação
+feita, onde, identificamos os pares de grupos que diferem de forma
+significativa ao nível de 5\% quando \emph{valor-p} \(\leq 0,05\).
+
+\hypertarget{materiais-complementares-1}{%
+\section{Materiais complementares}\label{materiais-complementares-1}}
+
+Livros e Artigos:
+
+\begin{itemize}
+\item
+  Corder, Gregory W., and Dale I. Foreman. ``Nonparametric statistics
+  for non‐statisticians.'' (2011).
+\item
+  Pett, Marjorie A. Nonparametric statistics for health care research:
+  Statistics for small samples and unusual distributions. Sage
+  Publications, 2015.
+\item
+  Sheskin, David J. Handbook of parametric and nonparametric statistical
+  procedures. Chapman and hall/CRC, 2003.
+\item
+  Tomkins, C. C., and C. Hall. ``An introduction to non-parametric
+  statistics for health scientists.'' University of Alberta Health
+  Sciences Journal 3.1 (2006): 20-26.
+\end{itemize}
+
+\(Sites\):
+
+\begin{itemize}
+\item
+  https://www.graphpad.com/guides/prism/latest/statistics/index.htm
+\item
+  https://www.dataanalytics.org.uk/critical-values-for-the-kruskal-wallis-test/
+\end{itemize}
+
+\bookmarksetup{startatroot}
+
 \hypertarget{aprendizado-supervisionado}{%
 \chapter{Aprendizado supervisionado}\label{aprendizado-supervisionado}}
+
+\hypertarget{precisuxe3o-vs-intrerpretabilidade-elias-sugeriu-nuxe3o-incluir-esta-discussuxe3o-no-post-deixei-aqui-como-rascunho}{%
+\subsubsection{Precisão vs intrerpretabilidade **** Elias sugeriu não
+incluir esta discussão no post, deixei aqui como
+``rascunho''}\label{precisuxe3o-vs-intrerpretabilidade-elias-sugeriu-nuxe3o-incluir-esta-discussuxe3o-no-post-deixei-aqui-como-rascunho}}
+
+Até aqui, discutimos muito sobre métodos para obter modelos precisos,
+com desempenhos ótimos. Obter um modelo que irá prever com excelência um
+evento em dados não é visto como um modelo valioso, mas, onde entra a
+interpretabilidade?
+
+A interpretabilidade fornece informações sobre o relacionamento entre as
+entradas e a saída de um modelo. Um modelo que pode ser interpretado
+permite responder perguntas sobre por que os recursos independentes
+predizem aquele atributo dependente. Por exemplo: Um modelo extremamente
+preciso pode permitir que eu saiba quais os meus clientes ``podem''
+receber créditos ou não, mas se ele não for interpretável, eu nunca
+saberei o porquê. Pense no cenário da saúde, onde eu tenho diversas
+informações sobre pacientes e meu modelo pode predizer precisamente
+quais têm mais probabilidade de ser diagnosticado com uma doença. Mas já
+pensou em quão importante é saber quais fatores influenciam isso? porque
+aquele paciente é mais provável de ser diagnosticado com tal doença em
+relação a outro. Em diversos cenários a interpretabilidade torna-se
+indispensável dentro dos modelos. A depender do cenário, a
+interpretabilidade é mais importante que a precisão e vice-versa.
+
+Saber qual priorizar vai depender muito do cenário em que se encontra.
+Normalmente a escolha de um determinado algoritmo em detrimento de outro
+e como a seleção do algoritmo está relacionada ao caso de uso que
+estamos tentando resolver e ao objetivo de negócios que queremos
+alcançar. Um modelo com menos parâmetros é mais fácil de interpretar.
+Isso é intuitivo. Um modelo de regressão linear tem um coeficiente por
+recurso de entrada e um termo de interceptação. Por exemplo, você pode
+examinar cada termo e entender como eles contribuem para a saída. Uma
+árvore de decisões (falaremos mais sobre elas) também costuma ser de
+fácil interpretação, mas mesmo modelos considerados ``interpretáveis''
+podem se tornar rapidamente não interpretáveis.
+
+\hfill\break
 
 Tópicos:
 
@@ -5633,40 +6900,38 @@ uma função que mapeia uma entrada em uma saída e isso é feito com base
 em exemplos e treinos. Em outras palavras, uma máquina é treinada para
 encontrar soluções chamadas rótulos, onde esses rótulos identificam
 alguma característica. Apesar de também poder ser usada para regressão,
-o aprendizado supervisionado tem como tafera típica a classificação. Um
+o aprendizado supervisionado tem como tarefa típica a classificação. Um
 exemplo bem simples de classificação é: suponha que eu queira
 classificar imagens de animais, nesse caso possuo um banco de dados com
 imagens de cachorros e gatos. Quero que meu algoritmo classifique as
 imagens identificando o tipo do animal na imagem. Para isso o algoritmo
 é treinado utilizando vários exemplos para que ele consiga classificar
-novas imagens posteriormente. Outra tafera é predizer um valor com base
+novas imagens posteriormente. Outra tarefa é predizer um valor com base
 em características, por exemplo, prever o valor de um carro dado um
 conjunto de características (quilometragem, idade, marca, etc.) chamadas
 preditores. Este tipo de tarefa é chamada regressão. Para treinar o
-sistema é preciso incluir diversos exemplos, assim o banco de dado é
+sistema é preciso incluir diversos exemplos, assim o banco de dados é
 separado em treino e teste, onde o é feito o treinamento na base treino
 para posteriormente serem feitos os testes de predição e avaliação da
 qualidade do ajuste na base teste.
 
 \hypertarget{dificuldades-gerais-do-machine-learnig}{%
-\subsubsection{Dificuldades gerais do machine
+\paragraph{Dificuldades gerais do machine
 learnig}\label{dificuldades-gerais-do-machine-learnig}}
 
-Como dito ateriormente, a idéia geral do aprendizado de máquina é
-contruir um algorito para solucionar os meus problemas, onde esse
-algoritmo será treinado com dados. Mas, o que acontece se o meu algorito
-for ruim ou os dados serem ruins.
+Como dito anteriormente, a idéia geral do aprendizado de máquina é
+construir um algoritmo para solucionar os meus problemas, onde esse
+algoritmo será treinado com dados. Mas, o que acontece se o meu
+algoritmo for ruim ou os dados estiverem ruins.
 
-\hypertarget{quantidade-insuficiente-de-dados}{%
-\paragraph{Quantidade insuficiente de
-dados}\label{quantidade-insuficiente-de-dados}}
+Quantidade insuficiente de dados
 
 Falando sobre dados ruins, o primeiro problema é a quantidade de dados.
-Já parou pra pensar em quão difícil é treinar uma máquina? voltando no
+Já parou pra pensar em quão difícil é treinar uma máquina? Voltando ao
 exemplo anterior, para você aprender a diferenciar um cachorro de um
 gato quando era criança, bastou alguém lhe apontar qual era qual algumas
-vezes e você se tornou capaz de diferenciar cães de gatos independente
-das caracteristicas. Uma máquina não consegue fazer isso fácilmente, é
+vezes você se tornou capaz de diferenciar cães de gatos independente das
+características. Uma máquina não consegue fazer isso facilmente, é
 necessário uma quantidade grande de dados para a maioria dos algoritmos,
 até mesmo para problemas simples como o do exemplo citado e para
 problemas complexos, como reconhecimento de imagem ou fala você pode
@@ -5679,45 +6944,44 @@ representativos}\label{dados-de-treino-nuxe3o-representativos}}
 Como mencionado anteriormente, o treinamento de um algoritmo é feito por
 meio de uma base de dados, onde está é separada em dados de treinamento
 e de teste, para que eu possa usá-lo e generalizá-lo em dados futuros.
-Dados de treinamento que não representem bem os dados que serão uzados
-no futuro podem um modelo que não funcionará bem. Utilizando o exemplo
-do algoritmo de regressão onde o objetivo era prever os valores dos
-carros com base em suas características. Digamos que meu algoritmo foi
-treinado com uma da base de dados de carros apenas do estado de São
+Dados de treinamento que não representem bem os dados que serão usados
+no futuro podem ser um modelo que não funcionará bem. Utilizando o
+exemplo do algoritmo de regressão onde o objetivo era prever os valores
+dos carros com base em suas características. Digamos que meu algoritmo
+foi treinado com uma base de dados de carros apenas do estado de São
 Paulo, mas meu algoritmo será utilizado para prever carros de todo o
-país, pode ser que não funcione tão bem. O estados podem alterar
-significamente os preços dos carros por meio de impostos por exemplo. É
-de extrema importância utilizar um conjunto de dados de treino que
-represente bem os dados que você deseja generalizar. Isso pode não ser
-uma tarefa fácil, pode encontrar problemas com amostras, principalmente
-se ela for muito pequena e até mesmo uma amostra grande pode não ser
-representativa.
+país, pode ser que não funcione tão bem. Os estados podem alterar
+significativamente os preços dos carros por meio de impostos, por
+exemplo. É de extrema importância utilizar um conjunto de dados de
+treino que represente bem os dados que você deseja generalizar. Isso
+pode não ser uma tarefa fácil, pode encontrar problemas com amostras,
+principalmente se ela for muito pequena e até mesmo uma amostra grande
+pode não ser representativa.
 
 \hypertarget{qualidade-dos-dados}{%
 \paragraph{Qualidade dos dados}\label{qualidade-dos-dados}}
 
 Como pode ter imaginado, a qualidade dos dados também é de extrema
-importância. Dados com discrenpâncias, vários erros, e gerados a partir
+importância. Dados com discrepâncias, vários erros, e gerados a partir
 de medições de baixa qualidade fará com que fique mais difícil o seu
 algoritmo identificar padrões e tomar decisões. Se você convive com
-pessoas do ramo da ciência de dados em geral, é bem provável que ja
-tenha ouvido alguém dizer algo o tipo: ``gastamos a maior parte do nosso
-tempo para limpar os dados''. Isso não é em vão. Na maioria dos casos,
-principalmente no ramo de aprendizagem de máquinas é gasto um enorme
-tempo para limpar os dados pois pode influênciar muito na qualidade do
-modelo. Por exemplo, se algumas informações forem muito discrepantes, é
-preciso decidir entre tentar corrigir ou excluí-las. Se uma variável
-tiver uma quantidade significativa de valores faltantes, deverá ser
-decidido se essas observações serão excluídas ou se será possível
-utilizar métodos de imputação de dados. Treinar mais de um modelo com
-diferentes decisões tomadas sobre os dados também pode ser efetivo.
+pessoas do ramo da ciência de dados em geral, é bem provável que já
+tenha ouvido alguém dizer algo do tipo: ``gastamos a maior parte do
+nosso tempo para limpar os dados''. Isso não é em vão. Na maioria dos
+casos, principalmente no ramo de aprendizagem de máquinas é gasto um
+enorme tempo para limpar os dados pois pode influenciar muito na
+qualidade do modelo. Por exemplo, se algumas informações forem muito
+discrepantes, é preciso decidir entre tentar corrigir ou excluí-las. Se
+uma variável tiver uma quantidade significativa de valores faltantes,
+deverá ser decidido se essas observações serão excluídas ou se será
+possível utilizar métodos de imputação de dados. Treinar mais de um
+modelo com diferentes decisões tomadas sobre os dados também pode ser
+efetivo.
 
-\hypertarget{sobreajustamento-dos-dados-overfitting}{%
-\paragraph{\texorpdfstring{Sobreajustamento dos dados
-(\textbf{Overfitting})}{Sobreajustamento dos dados (Overfitting)}}\label{sobreajustamento-dos-dados-overfitting}}
+Sobreajustamento dos dados (\textbf{Overfitting})
 
 O sobreajustamento é um conceito que ocorre quando nosso modelo (não só
-um modelo de aprendizado de máquinas), se ajusta exatamento aos nossos
+um modelo de aprendizado de máquinas), se ajusta exatamente aos nossos
 dados de treinamento. Ouvir isso uma primeira vez pode parecer
 excelente, ou até mesmo o cenário ideal, afinal, queremos que o nosso
 modelo se ajuste o máximo possível, certo? bom.. não exatamente. O que
@@ -5733,25 +6997,25 @@ treinamento excessivo em um único conjunto de amostra; modelo muito
 complexo, fazendo com que ele aprenda os ruídos nos dados de
 treinamento. Agora que sabemos o problema que é um sobreajustamento e as
 razões que podem levar a isso, precisamos falar sobre como evitar que
-isso aconteça. Existem algumas tecnicas comumente utilizadas.
+isso aconteça. Existem algumas técnicas comumente utilizadas.
 
 \begin{itemize}
 \item
   \textbf{Regularização:} Foi dito anteriormente que uma razão para o
   sobreajustamento é a complexidade do modelo, então, faz sentido
-  diminuírmos sua complexidade. Isso pode ser feito removendo ou
-  dimuindo o número de parâmetros.
+  diminuirmos sua complexidade. Isso pode ser feito removendo ou
+  diminuindo o número de parâmetros.
 \item
   \textbf{Parada antecipada:} Quando um modelo está sendo treinado por
-  radadas de repetição, é possível avaliar cara uma dessa repetição.
-  Nomermalmente o desempenho de um modelo melhora a cada repetição, mas
+  rodadas de repetição, é possível avaliar cara uma dessa repetição.
+  Normalmente o desempenho de um modelo melhora a cada repetição, mas
   chega um momento em que começa a acontecer o sobreajustamento. A ideia
-  da parada antecipada é pausar o treinamento anter que chegue a esse
+  da parada antecipada é pausar o treinamento antes que chegue a esse
   ponto.
 \item
   \textbf{Aumento de dados:} Essa técnica consiste em aumentar
   ligeiramente os dados da amostra toda vez que o modelo os processa, ou
-  seja, injevar dados limpos e relevantes nos dados de treino. Isso faz
+  seja, injetar dados limpos e relevantes nos dados de treino. Isso faz
   com que os conjuntos de treino pareçam ``exclusivos'' do modelo,
   impedindo que ele aprenda suas características. Mas isso deve ser
   feito com moderação, pode injetar dados que não estão limpos pode
@@ -5763,27 +7027,27 @@ isso aconteça. Existem algumas tecnicas comumente utilizadas.
 o sobreajustamento. Mas precisamos falar também sobre como
 detectá-los.}\label{existem-outras-tuxe9cnicas-que-podem-ser-utilizadas-para-evitar-o-sobreajustamento.-mas-precisamos-falar-tambuxe9m-sobre-como-detectuxe1-los.}}
 
-Uma forma não técnica e que não deve ser a sua única forma de tentar
+Uma forma ``não técnica'' e que não deve ser a sua única forma de tentar
 identificar o sobreajustamento é por meio da visualização gráfica. A
-visualização gráfica pode ser usada apenas para levantar hipotéses,
+visualização gráfica pode ser usada apenas para levantar hipóteses,
 nunca para tomar uma decisão final. Até mesmo porque nem sempre é
-possível verificar esse problema visualmente. Tavelz a técnica mais
+possível verificar esse problema visualmente. Talvez a técnica mais
 eficiente para isso é a Validação Cruzada k-fold (k-fold Cross
-Validation). Valos falar sobre posteriormente.
+Validation). Vamos falar sobre posteriormente.
 
 \hypertarget{subajustamento-dos-dados-underfitting}{%
 \paragraph{\texorpdfstring{Subajustamento dos dados
 (\textbf{Underfitting})}{Subajustamento dos dados (Underfitting)}}\label{subajustamento-dos-dados-underfitting}}
 
-Como pode ter imaginado, subajustamento é o oposto do sobreajustamto.
+Como pode ter imaginado, subajustamento é o oposto do sobreajustamento.
 Ocorre quando seu modelo é muito simples para aprender a estrutura dos
-dados. O subjastumento leva à um erro elevado tanto nos dados detreino
+dados. O subajustamento leva a um erro elevado tanto nos dados de treino
 quanto nos dados de teste. Pode ocorrer quando o modelo não foi treinado
 por tempo suficiente ou as variáveis \hspace{0pt}\hspace{0pt}de entrada
 não são significativas o suficiente para determinar uma relação
 significativa entre as variáveis \hspace{0pt}\hspace{0pt}de entrada e
 saída. Aqui também estamos em um cenário a ser evitado e apesar de ser
-contrário ao sobreajustamento, as téncias tanto para identificar quanto
+contrário ao sobreajustamento, as técnicas tanto para identificar quanto
 para evitar o problema são semelhantes. Um adendo, geralmente,
 identificar um subajustamento é mais fácil que identificar um
 sobreajustamento.
@@ -5793,16 +7057,16 @@ sobreajustamento.
 Linear}\label{modelo-de-regressuxe3o-linear}}
 
 Já temos uma breve noção sobre o que é aprendizado supervisionado, agora
-vamos aprofundar um pouco dentro dos modelos. Como foi mencionado
-aprendizado supervisionado é usado principalmente para métodos de
-classificação e regressão. Modelo de regressão linear, como o próprio
-nome já diz, se enquadra nos métodos de regressão. A regressão consiste
-em modelar um valor de previsão com base em variáveis independentes. De
-forma mais geral, o modelo conquiste em fazer uma previsão ``simples''
-calculando uma ponderação entre as somas dos recusrso de entrada e uma
-constante chamada intercepto. Assim, obtemos uma relação linear entre a
-variável de saída e as variáveis de entrada. A linha de regressão é a
-linha de melhor ajuste para o modelo
+vamos introduzir o funcionamento básico de um modelo. Como foi
+mencionado, aprendizado supervisionado é usado principalmente para
+métodos de classificação e regressão. Um modelo de regressão linear,
+como o próprio nome já diz, se enquadra nos métodos de regressão. A
+regressão consiste em modelar um valor de previsão com base em variáveis
+independentes. De forma mais geral, o modelo consiste em fazer uma
+previsão ``simples'' calculando uma ponderação entre as somas dos
+recursos de entrada e uma constante chamada intercepto. Assim, obtemos
+uma relação linear entre a variável de saída e as variáveis de entrada.
+A linha de regressão é a linha de melhor ajuste para o modelo
 
 \[
 \hat y = \beta_0 + \beta_1x_1 + \beta_2x_2 + ...+ \beta_nx_n
@@ -5824,22 +7088,14 @@ onde:
 Certo, temos uma definição matemática do nosso modelo, mas como posso
 treiná-lo? Treinar um modelo significa também definir os parâmetros para
 que o modelo se ajuste melhor aos meus dados. Em outras palavras, um
-modelo treinado irá se ajustar a melhor linha para prever o valor de
+modelo treinado irá se ajustar à melhor linha para prever o valor de
 \(y\) para um dado valor de \(x\). Assim, ao encontrar os melhores
 valores de \(\beta 's\) obtemos a melhor linha de ajuste. Para isso,
 primeiro precisamos de uma medida de quão bem (ou mal) o modelo se
-ajusta aos meus dados. A medida mais comum usada em um modelo de
-regressão é a Raiz do Erro Quadrático Médio (REQM). Em resumo, o REQM é
-uma medida de quão espalhados estão esses resíduos. Ele avalia a
-diferença média quadrática entre os valores observados e previstos.
-Portanto, treinar um modelo consiste em encontrar os valores de
-\(\beta's\) que irá minimizar o REQM.
+ajusta aos meus dados. Posteriormente será discutido quais as medidas
+mais comuns para avaliação de modelos de regressão.
 
-\[
-REQM = \sqrt{\frac{1}{n}\sum_{i = 1}^{n}  (\hat y_i - y_i)^2}
-\]
-
-Existem algumas suposições importantes quue devem ser feitas para
+Existem algumas suposições importantes que devem ser feitas para
 utilizar um modelo de regressão linear. Estas são algumas verificações
 formais durante a construção de um modelo de regressão linear, o que
 garante a obtenção do melhor resultado possível do conjunto de dados
@@ -5850,7 +7106,7 @@ fornecido.
   \textbf{Suposição de linearidade:} A regressão linear assume que a
   relação entre a entrada e saída é linear. Pode parecer um pouco óbvio,
   mas em alguns casos onde, em um primeiro olhar, faça sentido usar uma
-  regressão linar, nossos dados não permitam isso. Pode ser necessário
+  regressão linear, nossos dados não permitam isso. Pode ser necessário
   transformar os dados.
 \item
   \textbf{Homocedasticidade:} Homocedasticidade é uma situação em que o
@@ -5880,18 +7136,18 @@ fornecido.
 logística}\label{modelo-de-regressuxe3o-loguxedstica}}
 
 Alguns algoritmos de regressão podem ser usados para classificação (o
-contrário também é valido). A regressão logística é um dos algoritmos
-mais populares do machine leranrning e geralmente é usada para estimar a
+contrário também é válido). A regressão logística é um dos algoritmos
+mais populares do machine learning e geralmente é usada para estimar a
 probabilidade de que uma instância pertença a uma classe. Por exemplo,
-qual a probalidade de que o objeto de uma imgagem seja um cachorro? ou
-um gato? neste caso, se a probabilidade estimada for maior que 50\%,
+qual a probabilidade de que o objeto de uma imagem seja um cachorro? ou
+um gato? Neste caso, se a probabilidade estimada for maior que 50\%,
 então o modelo pode prever que naquela imagem tem um cachorro (classe
 rotulada como ``1''), se for menor, prevê que é um gato (classe rotulada
 como ``0''). Este tipo de regressão pode retornar valores categóricos ou
 discretos, como: Sim ou Não, 0 ou 1, verdadeiro ou falso, entre outros.
 Mas aqui, ela fornece os valores probabilísticos que estão entre 0 e 1.
-Apresar de ser semelhante a regressão linear, aqui não ajustamos uma
-linha de regressão, mas sim uma função logistica em forma de ``S'' que
+Apesar de ser semelhante a regressão linear, aqui não ajustamos uma
+linha de regressão, mas sim uma função logística em forma de ``S'' que
 prevê os dois valores máximos (0 ou 1).
 
 \begin{itemize}
@@ -5907,13 +7163,13 @@ Regressão Linear.
 \hat y = \beta_0 + \beta_1x_1 + \beta_2x_2 + ...+ \beta_nx_n
 \]
 
-O problema de usar essa abordagem é que podemos prever probalidades
+O problema de usar essa abordagem é que podemos prever probabilidades
 negativas em alguns casos e valores maiores que 1 em outros. Essas
 previsões não são sensatas, pois sabemos que a verdadeira probabilidade
 deve ser um número entre 0 e 1. Para resolver esse problema, devemos
-modelar \(\hat y\) usando uma função que fornceça saídas entre 0 e 1
-para todos os valores de \(\hat y\). Na regressão logística usamos a
-função logística como sendo:
+modelar \(\hat y\) usando uma função que forneça saídas entre 0 e 1 para
+todos os valores de \(\hat y\). Na regressão logística usamos a função
+logística como sendo:
 
 \[
 \hat y = \frac{e^{\beta_0+\beta_1X}}{1 + e^{\beta_0+\beta_1X}}
@@ -5936,16 +7192,326 @@ Existem alguns tipos de regressão logística:
 
 \begin{itemize}
 \item
-  Binomial: Aqui deve haver apenas dois tipos de possível variáveis,
+  Binomial: Aqui deve haver apenas dois tipos de possíveis variáveis,
   como 0 ou 1, Falso ou Verdadeiro, etc.
 \item
   Multinomial: Pode também haver 3 ou mais tipos não ordenados possíveis
-  da variável dependende, como, cachorro, gato ou tigre.
+  da variável dependente, como, cachorro, gato ou tigre.
 \item
   Ordinal: Na regressão logística ordinal, pode haver 3 ou mais tipos
   ordenados possíveis de variáveis \hspace{0pt}\hspace{0pt}dependentes,
   como ``baixo'', ``médio'' ou ``alto''.
 \end{itemize}
+
+\hypertarget{medidas-de-desempenho}{%
+\subsubsection{Medidas de desempenho}\label{medidas-de-desempenho}}
+
+Ao desenvolver projetos de Aprendizado de Máquinas no geral, é preciso
+sempre verificar a qualidade do modelo. Assim como não existe um modelo
+padrão para resolver todos os problemas, não existe uma única métrica
+para avaliar a qualidade do modelo. Saber qual métrica é mais apropriada
+para determinado cenário é crucial, pois escolhas erradas podem gerar
+modelos problemáticos.
+
+\hypertarget{modelos-de-regressuxe3o}{%
+\paragraph{Modelos de regressão}\label{modelos-de-regressuxe3o}}
+
+Existem algumas métricas importantes para medirmos a qualidade de um
+modelo de regressão.
+
+\begin{itemize}
+\item
+  \textbf{Root Mean Squared Error (RMSE):} Uma medida muito comum usada
+  em um modelo de regressão é a Root Mean Squared Error (REQM). Em
+  resumo, o REQM é uma medida que mostra o quão espalhados estão esses
+  resíduos. A métrica possui valor mínimo 0 e sem valor máximo. Quanto
+  maior esse número, pior o modelo.
+
+  \[
+  RMSE = \sqrt{\frac{1}{n}\sum_{i = 1}^{n}  (\hat y_i - y_i)^2}
+  \]
+
+  Uma vantagem dessa métrica é que predições muito distantes do real
+  aumentam o valor da medida com facilidade, o que torna a métrica bem
+  vinda em problemas onde erros grandes não são tolerados.
+\item
+  \textbf{Mean Absolute Error (MAE):} Esta medida é bem simples de
+  entender. Nada mais é que a média do erro que cada ponto tem em
+  relação a linha de regressão. É um pouco parecido com o que
+  \textbf{RMSE} faz, a diferença é que aqui, erros grandes não afetam
+  tanto a medida. A sua interpretação é: quanto maior o MAE, maior é o
+  erro do modelo. Apesar de ser simples, não deve ser usado em todos os
+  modelos. Esta medida é bastante sensível a valores discrepantes
+  (outliers). Portanto, deve-se avaliar os dados antes de utilizar esta
+  métrica.
+
+  \[
+  MAE = \frac{1}{N}\sum|y_i - \hat{y_i}|
+  \]
+\item
+  \(R^2\): R-quadrado é uma medida que visa explicar qual a porcentagem
+  de variância que pôde ser prevista pelo modelo, ou seja, o qua
+  ``próximo'' as medidas reais estão dos nossos dados. Segue a fórmula:
+
+  \[
+  R^2 = 1 - \frac{\sum(y_i - {\hat{y_i}})^2} {\sum(y_i - {\bar{y}})^2}
+  \]
+
+  onde, \(\hat{y_i}\) é o valor predito, \(\bar{y}\) é o valor médio das
+  amostras e \(y_i\) é o valor observado. O valor resultante varia de 0
+  a 1. Quanto maior o valor, melhor o modelo. Por exemplo, caso
+  tivéssemos avaliando um modelo e tivéssemos \(R^2 = 0.87\), entende-se
+  então que 87\% da variância de nossos dados podem ser explicadas pelo
+  modelo. Esta medida possui algumas limitações importantes: só pode ser
+  aplicada perfeitamente para modelos univariados; é uma medida
+  enviesada, pode definição e em casos de \emph{overfitting}, o valor da
+  métrica ainda continua alto.
+\end{itemize}
+
+\hypertarget{modelos-de-classificauxe7uxe3o}{%
+\paragraph{Modelos de
+classificação}\label{modelos-de-classificauxe7uxe3o}}
+
+\begin{itemize}
+\item
+  \textbf{Acurácia:} A acurácia nos diz quantos de nossos exemplos foram
+  classificados corretamente e é dada pela seguinte fórmula:
+
+  \[
+  \mbox{acurácia}   =  \frac{TP + TN}{TP + TN + FP + FN}
+  \]
+
+  Onde \textbf{TP} = True Positive (Verdadeiro Positivo), \textbf{TN} =
+  True Negative (Verdadeiro Negativo), \textbf{FP} = False Negative
+  (Falso Negativo) e \textbf{FN} = False Negative (Falso Negativo).
+
+  A métrica então é definida pela razão entre os acertos e o total
+  (erros + acertos). É uma métrica extremamente fácil de ser usada e
+  interpretada. Por exemplo, se tenho 100 observações e meu modelo
+  classificou 80 corretamente, então a acurácia do meu modelo é 80\%.
+  Apesar de simples, essa métrica pode não ser adequada em alguns casos.
+
+  Uma desvantagem é que podemos obter uma acurácia alta, mas o nosso
+  modelo pode ter uma performance inadequada. Por exemplo, pense que
+  temos um conjunto de dados de animais com 100 observações, sendo 90
+  cachorros e 10 gatos. Se tivermos um modelo que sempre classificará
+  todas as observações como cachorro, ainda teríamos um modelo com
+  acurácia de 90\%. É uma métrica boa, mas não estamos avaliando o nosso
+  modelo de uma boa forma. Se introduzirmos novos dados que venham de
+  uma forma mais equilibrada, ou seja, com quantidade de cachorros e
+  gatos parecidas, o modelo se comportaria de forma ruim. Portanto, para
+  conjuntos de dados desbalanceados, outras métricas são mais
+  eficientes.
+
+  Outra desvantagem é que esta medida atribui o mesmo peso para ambos os
+  erros. Por exemplo, em um modelo que classifica exames de câncer entre
+  positivo e negativo para a doença. Um modelo com acurácia 90\%
+  aparentemente é um bom modelo onde os 10\% de erro podem ter sido
+  falsos negativos ou falsos positivos. Porém, o erro por falso negativo
+  aqui é bem mais grave.
+\item
+  \textbf{Precisão:} Essa métrica é definida pela razão entre a
+  quantidade de observações classificadas corretamente como positivos e
+  o total de classificados como positivos, segue a fórmula:
+\end{itemize}
+
+\[
+\mbox{precisão}  =  \frac{TP}{TP + FP}
+\]
+
+Esta medida atribui um peso maior para os erros por falso positivo. Pode
+ser entendida como a resposta para a pergunta: das observações
+classificadas como positivos, quantos são verdadeiramente positivos?
+então, neste caso, se a precisão fosse de 90\%, é esperado que a cada
+100 observações classificadas como positivos, apenas 90 são de fato
+positivos.
+
+\begin{itemize}
+\item
+  \textbf{Sensibilidade:} Essa métrica avalia então a capacidade do
+  modelo detectar com sucesso resultados classificados como positivos em
+  relação a todos os pontos de dados positivos.
+
+  \[
+  \mbox{sensibilidade} = \frac{TP}{TP + FN}
+  \]
+\item
+  \textbf{Especificidade:} Ao contrário da sensibilidade, a
+  especificidade avalia a capacidade do modelo detectar resultados
+  negativos. Segue a fórmula:
+\end{itemize}
+
+\[
+\mbox{especificidade} = \frac{TN}{TN + FP}
+\]
+
+\hypertarget{matriz-de-confusuxe3o}{%
+\paragraph{Matriz de confusão}\label{matriz-de-confusuxe3o}}
+
+Matriz de confusão é uma matriz usada para avaliar o desempenho de um
+modelo de classificação. A matriz compara os valores de destino reais
+com os previstos pelo modelo. A matriz é N x N onde é N é o número de
+classes. Para um problema de classificação binária teríamos uma matriz 2
+x 2. As matrizes de confusão revelam quando um modelo confunde
+consistentemente duas classes, simplificando a determinação da
+probabilidade de os resultados de um modelo serem confiáveis.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(kableExtra)}
+\NormalTok{tibble}\SpecialCharTok{::}\FunctionTok{tribble}\NormalTok{(}
+  \SpecialCharTok{\textasciitilde{}}\NormalTok{Predito, }\SpecialCharTok{\textasciitilde{}}\StringTok{\textasciigrave{}}\AttributeTok{Negativo     }\StringTok{\textasciigrave{}}\NormalTok{, }\SpecialCharTok{\textasciitilde{}}\StringTok{\textasciigrave{}}\AttributeTok{Positivo }\StringTok{\textasciigrave{}}\NormalTok{,}
+  \StringTok{"Negativo"}\NormalTok{,    }\StringTok{"Verdadeiro Negativo (TN)"}\NormalTok{, }\StringTok{"Falso Negativo (FN)"}\NormalTok{,}
+  \StringTok{"Positivo"}\NormalTok{,    }\StringTok{"Falso Positivo (FP)"}\NormalTok{, }\StringTok{"Verdadeiro Positivo (TP)"}
+\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable\_styling}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"bordered"}\NormalTok{, }\StringTok{"basic"}\NormalTok{), }\AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{font\_size =} \DecValTok{20}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{add\_header\_above}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{" "} \OtherTok{=} \DecValTok{1}\NormalTok{, }\StringTok{"Observado"} \OtherTok{=} \DecValTok{2}\NormalTok{), }\AttributeTok{background =} \StringTok{"white"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{collapse\_rows}\NormalTok{(}\AttributeTok{columns =} \DecValTok{1}\NormalTok{, }\AttributeTok{valign =} \StringTok{"top"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  kableExtra}\SpecialCharTok{::}\FunctionTok{row\_spec}\NormalTok{(}\DecValTok{0}\SpecialCharTok{:}\DecValTok{2}\NormalTok{, }\AttributeTok{background =} \StringTok{"white"}\NormalTok{, }\AttributeTok{align =} \StringTok{"center"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  kableExtra}\SpecialCharTok{::}\FunctionTok{column\_spec}\NormalTok{(}\DecValTok{1}\NormalTok{, }\StringTok{"3in"}\NormalTok{, }\AttributeTok{bold =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  kableExtra}\SpecialCharTok{::}\FunctionTok{column\_spec}\NormalTok{(}\DecValTok{2}\NormalTok{, }\StringTok{"3in"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  kableExtra}\SpecialCharTok{::}\FunctionTok{column\_spec}\NormalTok{(}\DecValTok{3}\NormalTok{, }\StringTok{"2in"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Usually it is recommended to use column_spec before collapse_rows, especially in LaTeX, to get a desired result. 
+Usually it is recommended to use column_spec before collapse_rows, especially in LaTeX, to get a desired result. 
+Usually it is recommended to use column_spec before collapse_rows, especially in LaTeX, to get a desired result. 
+\end{verbatim}
+
+\begin{table}
+\centering\begingroup\fontsize{20}{22}\selectfont
+
+\begin{tabular}{>{\raggedright\arraybackslash}p{3in}|>{\raggedright\arraybackslash}p{3in}|>{\raggedright\arraybackslash}p{2in}}
+\hline
+\multicolumn{1}{c|}{\cellcolor{white}{ }} & \multicolumn{2}{c}{\cellcolor{white}{Observado}} \\
+\cline{2-3}
+\multicolumn{1}{center}{\cellcolor{white}{Predito}} & \multicolumn{1}{center}{\cellcolor{white}{Negativo     }} & \multicolumn{1}{center}{\cellcolor{white}{Positivo }}\\
+\hline
+\textbf{\multicolumn{1}{center}{\cellcolor{white}{Negativo}}} & \multicolumn{1}{center}{\cellcolor{white}{Verdadeiro Negativo (TN)}} & \multicolumn{1}{center}{\cellcolor{white}{Falso Negativo (FN)}}\\
+\cline{1-3}
+\textbf{\multicolumn{1}{center}{\cellcolor{white}{Positivo}}} & \multicolumn{1}{center}{\cellcolor{white}{Falso Positivo (FP)}} & \multicolumn{1}{center}{\cellcolor{white}{Verdadeiro Positivo (TP)}}\\
+\hline
+\end{tabular}
+\endgroup{}
+\end{table}
+
+Na matriz de confusão colocamos os valores reais nas colunas e os
+valores preditos nas linhas. Assim o cruzamento das linhas e das colunas
+passam a ser nossas métricas. (não é incomum vermos versões invertidas)
+
+\hypertarget{curva-auc-roc}{%
+\paragraph{Curva AUC-ROC}\label{curva-auc-roc}}
+
+Quando queremos verificar ou visualizar o desempenho de um modelo de
+classificação binária (0, 1), podemos utilzar a AUC (Area Under The
+Curve) ROC (Receiver Operating Characteristics). Está é uma das métricas
+de avaliação de desempenho de modelos de classificação mais importantes.
+
+\hypertarget{o-que-uxe9-a-curva-auc-roc}{%
+\paragraph{O que é a curva AUC-ROC}\label{o-que-uxe9-a-curva-auc-roc}}
+
+Na matriz de confusão colocamos os valores reais nas colunas e os
+valores preditos nas linhas. Assim o cruzamento das linhas e das colunas
+passam a ser nossas métricas. (não é incomum vermos versões invertidas)
+
+\hfill\break
+
+Curva AUC-ROC
+
+\hfill\break
+
+Quando queremos verificar ou visualizar o desempenho de um modelo de
+classificação binária (0, 1), podemos utilizar a AUC (Area Under The
+Curve) ROC (Receiver Operating Characteristics). Esta é uma das métricas
+de avaliação de desempenho de modelos de classificação mais importantes.
+
+\hfill\break
+
+O que é a curva AUC-ROC
+
+A curva ROC é uma métrica de avaliação para problemas de classificação
+binária. É uma curva de probabilidade que plota o TPR (sensibilidade)
+contra o FPR (1 - especificidade). A AUC (Area Under the Curve) é a
+medida da capacidade de um classificador para distinguir entre classes e
+é usada com um resumo da curva ROC. Quanto maior a AUC, melhor o modelo
+está em distinguir entre classes positivas e negativas. Por analogia,
+quanto maior a AUC, melhor o modelo está em distinguir entre pacientes
+com a doença e sem a doença.
+
+Quando AUC = 1, o modelo é capaz de distinguir perfeitamente os pontos
+positivos e negativos corretamente. Porém, se AUC = 0, o modelo estaria
+predizendo todos valores negativos como positivos e vice e versa. Quando
+AUC= 0,5, o modelo não é capaz de distinguir os valores. Neste caso o
+modelo está prevendo cada classe de forma aleatória ou de forma
+constante para todos os dados. Já quando 0,5 \textless{} AUC \textless{}
+1, há uma grande chance de que o modelo consiga distinguir os valores
+negativos das classes positivas. Aqui o modelo é capaz de detectar mais
+números de verdadeiros positivos e verdadeiros negativos do que falsos
+negativos e falsos positivos.
+
+A curva ROC é produzida calculando e plotando a taxa de verdadeiros
+positivos em relação à taxa de falsos positivos para um único
+classificador em vários limites . Por exemplo, na regressão logística, o
+limiar seria a probabilidade prevista de uma observação pertencente à
+classe positiva. Normalmente, na regressão logística, se uma observação
+é prevista como positiva com probabilidade \textgreater{} 0,5, ela é
+rotulada como positiva. No entanto, poderíamos realmente escolher
+qualquer limite entre 0 e 1 (0,1, 0,3, 0,6, 0,99, etc.) --- e as curvas
+ROC nos ajudam a visualizar como essas escolhas afetam o desempenho do
+classificador.
+
+A figura abaixo demonstra como alguns modelos teóricos podem plotar a
+curva ROC. A linha cinza pontilhada representa um classificador que não
+é melhor do que a adivinhação aleatória, seria a linha diagonal. Um
+modelo com uma taxa de verdadeiros positivos de 100\% e falsos negativos
+de 0\% seria plotado sobre a linha da esquerda e a de cima. Quase todos
+os exemplos do mundo real cairão em algum lugar sobre essas duas linhas
+tendo o cenário 0,5 \textless{} AUC \textless{} 1, como exemplo, a linha
+azul da figura. Normalmente procuramos um classificador que mantenha uma
+alta taxa de verdadeiros positivos e, ao mesmo tempo, uma baixa taxa de
+falsos positivos. Embora seja útil visualizar a curva ROC, em muitos
+casos podemos reduzir essas informações a uma única métrica, a AUC.
+
+\hfill\break
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{./figures/curvaROC.png}
+
+}
+
+\caption{\label{fig:curvaROC}Curva ROC-AUC}
+
+\end{figure}
+
+Um grande ponto positivo da curva ROC é que ela permita que encontremos
+um limite de classificação adequado ao nosso problema específico
+
+Por exemplo, se estivéssemos avaliando um classificador de spam de
+e-mail, gostaríamos que a taxa de falsos positivos fosse muito, muito
+baixa. Não queremos que alguém perca um e-mail importante para o filtro
+de spam só porque nosso algoritmo foi muito agressivo. Provavelmente até
+permitiríamos uma boa quantidade de e-mails de spam reais (verdadeiros
+positivos) através do filtro apenas para garantir que nenhum e-mail
+importante fosse perdido.
+
+Por outro lado, se nosso classificador está prevendo se alguém tem uma
+doença terminal, podemos aceitar um número maior de falsos positivos
+(diagnosticado incorretamente a doença), apenas para garantir que não
+perderemos nenhum verdadeiro positivo (pessoas que realmente têm a
+doença).
+
+Além disso, também podemos comparar o desempenho de diferentes
+classificadores para o mesmo problema.
+
+Existem outras métricas de desempenho que não foram apresentadas aqui,
+mas devemos ressaltar alguns pontos. Não existe uma métrica certa ou
+errada, devemos apenas nos atentar e buscar a que melhor atende o nosso
+problema. É possível também utilizar mais de uma métrica para o mesmo
+modelo.
 
 \hypertarget{validauxe7uxe3o-cruzada-cross-validation}{%
 \subsubsection{Validação Cruzada
@@ -5955,53 +7521,51 @@ Até aqui falamos um pouco sobre alguns problemas que podem ser
 encontrados no aprendizado de máquinas e superficialmente sobre dois
 modelos de regressão. Vamos falar agora sobre um método que é bem
 utilizado para validar a estabilidade do seu modelo. Como mencionamos
-anteriormente, não podemos simplismente ajustar um modelo aos meus dados
+anteriormente, não podemos simplesmente ajustar um modelo aos meus dados
 de treino e esperar que ele funcione perfeitamente, ou até mesmo esperar
-que aquele seja o melhor modelo possível ser fazer nenhuma validação.
+que aquele seja o melhor modelo possível para fazer alguma validação.
 Falamos um pouco sobre isso quando discutimos sobre sobreajustamento e
 subajustamento. Então, vamos nos aprofundar sobre um método que nos
 garanta que o nosso modelo obteve a maioria dos padrões dos dados
 corretos sem captar muitos ruídos.
 
-\hypertarget{o-que-uxe9-validauxe7uxe3o-cruzada}{%
-\paragraph{O que é validação
-cruzada?}\label{o-que-uxe9-validauxe7uxe3o-cruzada}}
+O que é validação cruzada?
 
 Validação cruzada é uma técnica para avaliar um modelo de aprendizado de
-máquina e tester o seu desempenho. Pode ajudar a comparar e selecionar
+máquina e testar o seu desempenho. Pode ajudar a comparar e selecionar
 um modelo mais apropriado para o nosso problema. É bem fácil de
 entender, de implementar e tende a ter um viés menor do que outros
 métodos usados para o mesmo objetivo. Por isso é uma ferramenta tão
-utilizada. Tanto a vaildação cruzada quanto outros algoritmos funcionam
-de maneira semelhantes, consistem em: divider o conjunto de dados em
+utilizada. Tanto a validação cruzada quanto outros algoritmos funcionam
+de maneira semelhante, consiste em: dividir o conjunto de dados em
 treino e teste; treinar o modelo no conjunto treino; validar o modelo no
 conjunto teste e repetir as etapas anteriores algumas vezes. Dentro da
 validação cruzada existem diversas técnicas onde umas são mais
-utilizadas. Já mencionamos anteriormente o método \textbf{k-fold,} mas
-exite também os métodos, \textbf{hold-out}, \textbf{leave-p-out},
-\textbf{k-fold stratified}, entre outros. Vamos falar sobre alguns
-deles.
+utilizadas. Já mencionamos anteriormente o método
+
+\textbf{k-fold,} mas exite também os métodos, \textbf{hold-out},
+\textbf{leave-p-out}, \textbf{k-fold stratified}, entre outros. Vamos
+falar sobre alguns deles.
 
 \begin{itemize}
 \item
-  \textbf{Hold-Out Cross Validation:} Está é a tecnica mais simples e
+  \textbf{Hold-Out Cross Validation:} Esta é a técnica mais simples e
   comum. Ele consiste em remover uma parte dos dados de treinamento e
   usá-la para obter previsões do modelo treinado no restante dos dados.
   A estimativa de erro informa como nosso modelo está se saindo em dados
-  não vistos ou no conjunto de vailidação. A implementação é
-  extremamente fácil e existem pacotes que podem ajudar nisso. Mas
-  apesar disto, esse método tem um grande desvantagem. Se estivermos
-  trabalhando com um conjunto de dados que não é completamente uniforme,
-  podemos acabar em uma situação difícil após a separação. O conjunto de
-  treino pode não representar muito bem o conjunto de teste, ou seja, os
-  conjuntos podem ser bem diferentes, onde um é mais fácil do que o
-  outro.
+  não vistos ou no conjunto de validação. A implementação é extremamente
+  fácil e existem pacotes que podem ajudar nisso. Mas apesar disto, esse
+  método tem um grande desvantagem. Se estivermos trabalhando com um
+  conjunto de dados que não é completamente uniforme, podemos acabar em
+  uma situação difícil após a separação. O conjunto de treino pode não
+  representar muito bem o conjunto de teste, ou seja, os conjuntos podem
+  ser bem diferentes, onde um é mais fácil do que o outro.
 \item
   \textbf{K-Fold Cross Validation:} O K-Fold pode se apresentar como um
-  técnica que minimiza a desvantagens do método Hold-Out apresentando
-  uma nova maneira de difidir o banco de dados. Neste método os dados
+  técnica que minimiza as desvantagens do método Hold-Out apresentando
+  uma nova maneira de dividir o banco de dados. Neste método os dados
   são divididos em k subconjuntos (daí o nome). O método de validação é
-  repetido k vezes, onde, a cade vez, um dos k subconjuntos é usado como
+  repetido k vezes, onde, a cada vez, um dos k subconjuntos é usado como
   conjunto de teste e os outros k-1 conjuntos são unidos para formar o
   conjunto de treinamento. A estimativa de erro é a média de todas as k
   tentativas. Como cada ponto de dados chega a um conjunto de validação
@@ -6009,60 +7573,520 @@ deles.
   reduz significativamente o viés. Como ``regra geral'', k=5 ou k=10 é
   escolhido, mas não existe nada fixo. Comparando diretamente ao método
   Hold-Out, o método K-Fold tende a ser melhor, mas também possui uma
-  desvantagem. Aumentar o k resulta no treinamento de mais modelos e o
+  desvantagem. Aumentar o k resultado no treinamento de mais modelos e o
   processo de treinamento pode ser custoso e demorado.
 \item
   \textbf{Leave-P-Out Cross Validation:} Este método consiste em criar
-  todos os conjuntos de treinamento e testes possíveis usando \textbf{p}
-  amostras como conjunto de teste. Em outras palavras, deixa \textbf{p}
-  pontos de dados fora dos dados de treino, ou seja, se houver n pontos
-  de dados na amostra original, np amostras são usadas para treinar o
-  modelo p pontos são usadas como conjunto teste. Como pode imaginar,
-  este método e extremamente exaustivo, tento em vista que é preciso
-  validar o modelo para todas as comibanções possíveis e para um
-  \textbf{p} demasiadamente grande, pode ser computacionalmente
-  inviável.
+  todos os conjuntos de treinamento e testes possíveis usando p amostras
+  como conjunto de teste. Em outras palavras, deixa p pontos de dados
+  fora dos dados de treino, ou seja, se houver n pontos de dados na
+  amostra original, np amostras são usadas para treinar o modelo p
+  pontos são usadas como conjunto teste. Como se pode imaginar, este
+  método é extremamente exaustivo, tendo em vista que é preciso validar
+  o modelo para todas as combinações possíveis e para um p
+  demasiadamente grande, pode ser computacionalmente inviável.
 \end{itemize}
 
 O método de validação cruzada também pode nos ajudar a ajustar
 \textbf{hiperparâmetros,} falaremos sobre isso posteriormente.
 
-\hypertarget{precisuxe3o-vs-intrerpretabilidade}{%
-\subsubsection{Precisão vs
-intrerpretabilidade}\label{precisuxe3o-vs-intrerpretabilidade}}
+\hypertarget{hiperparuxe2metros}{%
+\subsubsection{Hiperparâmetros}\label{hiperparuxe2metros}}
 
-Até aqui, discutimos muito sobre métodos para obter modelos precisos,
-com desempenhos ótimos. Obter um modelo que irá prever com excelência um
-evento em dados não é visto como um modelo valioso, mas, onde entra a
-interpretabilidade?
+Já discutimos anteriormente sobre treinamento de um modelo e mencionamos
+os Hiperparâmetros, vamos agora discutir de um modo geral o que eles são
+e qual a sua importância. Hiperparâmetros são atributos que controlam o
+treinamento de um modelo. Eles ajudam a direcionar um modelo, melhorando
+seu desempenho e evitando que ele aprenda somente com os dados de
+treino, ou seja, evitar o overfitting e underfitting. Por exemplo, no
+processo de configuração de uma rede neural, precisamos decidir quantas
+camadas ocultas de nós precisam ser usadas entre a camada de entrada e a
+camada de saída, assim como quantos nós cada camada vai usar. Esses
+parâmetros não estão diretamente ligados aos dados de treino e não são
+aprendidos diretamente pelos modelos. Parâmetros são as variáveis
+\hspace{0pt}\hspace{0pt}que o algoritmo de Machine Learning usa para
+prever resultados com base na entrada de dados históricos. Já os
+hiperparâmetros são variáveis \hspace{0pt}\hspace{0pt}que são
+especificadas ao longo do processo de construção do modelo. Com isso os
+hiperparâmetros são fornecidos antes dos parâmetros, ou podemos dizer
+que os hiperparâmetros são utilizados para avaliar os parâmetros ideais
+do modelo. Encontrar a melhor combinação de hiperparâmetros pode fazer a
+diferença no seu modelo.
 
-a interpretabilidade fornece informações sobre o relacionamento entre as
-entradas e a saída de um modelo. Um modelo que pode ser interpretado
-permite responder perguntas sobre por que os recursos independentes
-predizer aquele atributo dependente. Por exemplo: Um modelo extremamente
-preciso preciso pode permitir que eu saiba quais os meus clientes
-``podem'' receber créditos ou não, mas se ele não for interpretável, eu
-nunca saberei o porque. Pense no cenário da saúde, onde eu tenho
-diversas informações sobre paciêntes e meu modelo pode predizer
-precisamente quais tem mais probalidade de ser diagnosticado com um
-doença. Mas já pensou em qual importante é saber quais fatores
-influênciam isso? porque aquele paciente é mais provável de ser
-diagnostico com tal doença em relação a outro. Em diversos cenários a
-interpretabilidade torna-se indispensável dentro dos modelos. A depender
-do cenário, a interpretabilidade é mais importante que a precisão e
-vice-versa.
+Exemplos comuns de hiperparâmetros
 
-Saber qual priorizar vai depender muito do cenário em que se encontra.
-Normalmente a escolha de um determinado algoritmo em detrimento de outro
-e como a seleção do algoritmo está relacionada ao caso de uso que
-estamos tentando resolver e ao objetivo de negócios que queremos
-alcançar. Um modelo com menos parâmetros é mais fácil de interpretar.
-Isso é intuitivo. Um modelo de regressão linear tem um coeficiente por
-recurso de entrada e um termo de interceptação. Por exemplo, você pode
-examinar cada termo e entender como eles contribuem para a saída. Uma
-árvore de decisões (falaremos mais sobre elas) também costuma ser de
-fácil interpretação, mas mesmo modelos considerados ``interpretáveis''
-podem se tornar rapidamente não interpretáveis.
+\begin{itemize}
+\item
+  Número de árvores em um algoritmo de \emph{Random Forest.}
+\item
+  A escolha da função custo ou perda que o modelo usará.
+\item
+  Número de cadamadas ocultas em redes neurais.
+\item
+  Quantidade mínima de observações dentro de um nó.
+\item
+  Taxa de divisão de treino e teste.
+\item
+  Proporção de linhas para sortear por árvore.
+\end{itemize}
+
+\hypertarget{ajuste-de-hiperparuxe2metro}{%
+\subsubsection{Ajuste de
+hiperparâmetro}\label{ajuste-de-hiperparuxe2metro}}
+
+O ajuste de hiperparâmetro consiste em encontrar a configuração de
+hiperparâmetro que irá resultar no melhor desempenho do modelo. A busca
+manual pode ser utilizada para localizar os hiperparâmetros ótimos,
+utilizando uma abordagem de acerto e erro, mas obviamente isso levaria
+muito tempo. As técnicas mais utilizadas para isso são o \emph{Grid
+Search} ou \emph{Random Search.}
+
+\begin{itemize}
+\item
+  \textbf{Grid Search:} Essa é uma técnica de ajuste que tenta calcular
+  os valores ótimos dos hiperparâmetros. É calculado exaustivamente o
+  desempenho do modelo para cada combinação de todos os hiperparâmetros
+  fornecidos previamente e escolhe, a partir dai, o valor ideal para os
+  hiperparâmetros. Apesar de ser uma técnica que foge da abordagem
+  manual, é um processo demorado e computacionalmente caro.
+\item
+  \textbf{Random Search:} Random Search é um método que usa combinações
+  aleatórias de hiperparâmetros para treinar o modelo. As melhores
+  combinações são usadas. A diferença para o Grid Search é que aqui não
+  é especificado um conjunto de valores para os hiperparâmetros. Em vez
+  disso, os valores de cada hiperparâmetro são amostrados a partir de
+  uma distribuição. Essa técnica permite controlar o número de
+  tentativas de combinações de hiperparâmetros, diferente da Grid
+  Search, onde todas as combinações possíveis são tentadas.
+\end{itemize}
+
+\hypertarget{agoritmos-de-aprendizado-de-muxe1quina}{%
+\subsection{Agoritmos de Aprendizado de
+máquina}\label{agoritmos-de-aprendizado-de-muxe1quina}}
+
+\hypertarget{uxe1rvores-de-decisuxe3o}{%
+\subsubsection{Árvores de Decisão}\label{uxe1rvores-de-decisuxe3o}}
+
+As Árvores de Decisão são algoritmos de aprendizado supervisionado que
+podem ser utilizados tanto para classificação quanto para regressão.
+Possui uma estrutura hierárquica em árvore, tendo um nó raiz,
+ramificações, nós internos e nós folhas. Na análise de decisão, uma
+árvore de decisão pode ser usada para representar visualmente e
+explicitamente decisões e tomadas de decisão.
+
+*imagem*
+
+Na imagem acima podemos ver uma representação de uma árvore de decisão,
+que começa com um nó raiz, que não possui ramificações de entrada, a
+partir da qual a árvore se divide em ramos. Os ramos alimentam os nós
+internos ou nós decisão. Cada ramificação contém um conjunto de
+atributos ou regras de classificação, associado a um determinado rótulo
+de classe, que pode ser encontrado na extremidade da ramificação. O
+final dos ramos que não se dividem mais são os nós folha. Os nós folha
+representam todos os resultados possíveis dentro do conjunto de dados.
+
+O tipo de estrutura de fluxograma é fácil de ser interpretado e cria uma
+representação que permite que diferentes grupos entendam melhor porque
+uma determinada decisão foi tomada.
+
+O algoritmo de Árvore de Decisão possui uma estratégia que busca
+identificar os pontos de divisão ideias dentro de uma árvore. O processo
+de divisão é repetido até que todos ou a maioria dos registros tenham
+sido classificados em um rótulo de classe específico. Classificar ou não
+todos os pontos de dados como conjuntos depende principalmente da
+complexidade do algoritmo. Árvores menores ou mais simples, são mais
+fáceis de atingir nós de folhas puros, onde pontos de dados caem em uma
+única classe, além de serem mais fáceis de visualizar e interpretar as
+decisões. Em contrapartida, aumentar o tamanho de uma árvore dificulta
+manter essa pureza, podendo resultar em poucos dados caindo em uma
+determinada subárvore, como consequência, isso pode levar ao
+overfitting. Portanto, esses algoritmos têm preferência por árvores
+pequenas e simples, adicionando complexidade apenas quando realmente
+necessário. Árvores de decisão geralmente crescem de forma arbitrária,
+portanto é preciso decidir quais recursos escolher e quais condições
+usar para dividir uma árvore, além de saber quando parar essa divisão.
+
+\hypertarget{medidas-de-seleuxe7uxe3o-de-atributo}{%
+\paragraph{Medidas de seleção de
+atributo}\label{medidas-de-seleuxe7uxe3o-de-atributo}}
+
+Como mencionado anteriormente, uma Árvore de decisão é feita a partir de
+atributos e decidir qual atributo colocar na raiz ou em diferentes
+níveis da Árvore pode ser complicado. Aqui a aleatoriedade na escolha
+não é uma boa opção, podendo gerar resultados com baixa precisão. Para o
+problema de seleção de atributos, temos alguns critérios como: Entropia
+e ganho de informação, índice de Gini , taxa de ganho, entre outros.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Entropia:} Entropia é uma medida de aleatoriedade (impureza)
+  dos valores de uma amostra. Quanto maior a entropia, mais difícil é
+  tirar conclusões dessa informação. É definida pela seguinte fórmula:
+\end{itemize}
+
+\[
+Entropia(S) = - \sum_{i=1}^{c} p_{i}\,log_2\,pi
+\]
+
+Onde, \textbf{S} representa o Estado atual e \(p_i\) é a probabilidade
+de um evento \(i\) do estado \textbf{S.}
+
+Os valores variam entre 0 e 1. Para selecionar o melhor recurso para
+dividir e encontrar a Árvore ideal, deve-se buscar o atributo com menor
+entropia.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Ganho de Informação:} Ganho é usado para medir o quão bem um
+  atributo separa os exemplos de treino de acordo com sua classificação
+  alvo. Quanto maior o ganho de informação, melhor. Ou seja, na
+  construção de uma Árvore de Decisão buscamos um atributo que retorne o
+  maior ganho de informação e a menor entropia. Ganho de informação é
+  calculado a diferença entre a entropia antes da divisão e a entropia
+  média após a divisão do conjunto de dados. Segue a fórmula:
+\end{itemize}
+
+\[
+IG(Y,X) = Entropia(Y) - Entropia (Y|X)
+\]
+
+Podemos visualizar a fórmula como: subtraímos a entropia de \(Y|X\) da
+entropia apenas de \(Y\) para calcular a redução da incerteza sobre
+\(Y\) dada uma informação adicional \(X\) sobre \(Y\).
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Índice de Gini:} Também conhecido como impureza de Gini, o
+  Índice de Gini calcula a quantidade de probabilidade de um recurso
+  específico que é classificado incorretamente quando selecionado
+  aleatoriamente. Se todos os elementos estiverem vinculados a uma única
+  classe, ela pode ser chamada de pura. É calculado subtraindo a soma
+  das probabilidades ao quadrado de cada classe de um. Segue a fórmula:
+\end{itemize}
+
+\[
+GN = 1- \sum_{i=1}^{n} (p_i)^2
+\]
+
+Onde \(pi\) denota a probabilidade de um elemento ser classificado para
+uma classe distinta. O Índice de Gini é semelhante a entropia. Varia
+entre 0 e 1, onde 0 expressa a pureza da classificação e 1 indica a
+distribuição aleatória dos elementos em várias classes.
+
+\begin{itemize}
+\item
+  \textbf{Taxa de Ganho:} Taxa de ganho tenta diminuir o viés do ganho
+  de informação. Leva em consideração o número de ramificações que
+  resultariam antes de fazer a divisão. Ele corrige o ganho de
+  informação levando em consideração as informações intrínsecas de uma
+  divisão. A Informação Intrínseca (II) é definida como a entropia das
+  proporções do subconjunto de dados. Segue a fórmula: \[
+  II = -\sum_{i=1}^n \frac{N(t_i)}{N(t)} *log{_2}  \frac{N(t_i)}{N(t)}
+  \]
+
+  Onde \(N(t_i)\) é o número de vezes que \(t_i\) ocorre dividido pela
+  contagem total de eventos \(N(t)\) onde \(t\) é o conjunto de eventos.
+
+  A Taxa de Ganho então é dada por:
+
+  \[
+  GR = \frac{Ganho\ de\ Informação}{Informação\ intrínseca}
+  \]
+\end{itemize}
+
+Para todas as variáveis \hspace{0pt}\hspace{0pt}preditoras, aquela que
+fornece a maior taxa de ganho é escolhida para a divisão.
+
+\hypertarget{tipos-de-uxe1rvores-de-decisuxe3o}{%
+\paragraph{Tipos de Árvores de
+Decisão}\label{tipos-de-uxe1rvores-de-decisuxe3o}}
+
+Mencionamos anteriormente que o algoritmo de Árvores de Decisão pode ser
+usado tanto para classificação quanto para regressão, e é claro, existem
+vários tipos de algoritmos. Vamos falar um pouco sobre os mais famosos.
+
+\begin{itemize}
+\item
+  \textbf{ID3 (Iterative Dichotomiser 3):} Esse algoritmo usa uma
+  abordagem \textbf{gananciosa} de cima para baixo para construir a
+  Árvore. Em outras palavras, ele começa a construir a Árvore de cima e
+  de para cada iteração seleciona o melhor recurso no momento para criar
+  um nó. Geralmente é usado apenas para problemas de classificação com
+  recursos nominais. O algoritmo utiliza o \textbf{Ganho de Informação}
+  para encontrar o melhor recurso.
+\item
+  \textbf{C4.5:} Este algoritmo é uma melhoria em relação ao ID3. Ele
+  pode usar a \textbf{Taxa de Ganho} como função para encontrar o melhor
+  recurso.
+\item
+  \textbf{CART:} CART é uma abreviação de ``classification and
+  regression trees'' (Árvores de classificação e Regressão). Como o
+  próprio nome já diz, pode ser usado tanto para classificação quanto
+  para regressão. O algoritmo busca o melhor critério através do
+  \textbf{Índice de Gini.}
+\end{itemize}
+
+\hypertarget{podando-uxe1rvores-de-decisuxe3o}{%
+\paragraph{Podando Árvores de
+Decisão}\label{podando-uxe1rvores-de-decisuxe3o}}
+
+Como mencionamos anteriormente, Árvores complexas podem causar
+overfitting, cabe dizer que as Árvores são os algoritmos mais
+suscetíveis ao overfitting. Em alguns casos, a Árvore poderá se
+ramificar inúmeras vezes, gerando uma folha para cada observação, ou
+seja, fornecendo 100\% de precisão no conjunto de treino, logo, é
+preciso ter um limite.
+
+Podar uma Árvore de Decisão consiste em remover partes da Árvore que não
+fornecem poder para classificar instâncias. A poda pode ser distinguida
+em:
+
+\begin{itemize}
+\item
+  \textbf{Pré-poda:} A Árvore é interrompida antes de concluir a
+  classificação do conjunto de treinamento. É um método alternativo que
+  tenta interromper o processo de construção da árvore antes que ele
+  produza folhas com amostras muito pequenas. Essa heurística é
+  conhecida como parada antecipada. Em cada estágio de divisão da
+  árvore, é verificado o erro de validação cruzada. Se o erro não
+  diminuir significativamente, então paramos. A parada antecipada pode
+  prejudicar o ajuste, parando muito cedo.
+
+  \textbf{Pós-poda:} Normalmente a técnica mais utilizada, permite que a
+  Árvore classifique o conjunto de treinamento antes de podá-la. Este
+  método consiste em, a partir da Árvore não podada, pega uma sequência
+  de subárvores (podadas) e escolher a melhor por meio da
+  \textbf{validação cruzada}. É escolhida a que tem maior precisão no
+  conjunto de treinamento validado cruzadamente.
+\end{itemize}
+
+\hypertarget{floresta-aleatuxf3ria-random-forest}{%
+\paragraph{Floresta Aleatória (Random
+Forest)}\label{floresta-aleatuxf3ria-random-forest}}
+
+A Floresta Aleatória é um algoritmo que funciona a partir de Árvores de
+Decisão. Ele constrói diferentes Árvores em diferentes amostras e leva
+combina as saídas para alcançar um único resultado, levando em
+consideração a maioria de votos para classificação e média em caso de
+regressão. O algoritmo serve tanto para regressão quanto para regressão,
+mas aqui temos uma novidade, ele pode lidar com os dois, apesar de
+apresentar melhores resultados para problemas de classificação.
+
+\hypertarget{funcionamento-do-algoritmo}{%
+\paragraph{Funcionamento do
+algoritmo}\label{funcionamento-do-algoritmo}}
+
+Antes de falarmos de fato sobre o funcionamento do algoritmo, vamos
+entender de forma básica o método dos conjuntos. O método dos conjuntos,
+também conhecido como ensemble methods, pode ser definido resumidamente
+como, combinar vários modelos. No caso da Floresta Aleatória, uma
+combinação de Árvores de decisão. Os modelos são combinados e suas
+previsões são agregadas para identificar o resultado mais popular. Os
+métodos de conjunto mais populares são \textbf{bagging} e
+\textbf{boosting.} Em resumo o método bagging, que é usado em Floresta
+Aleatória, cria um subconjunto de treinamento diferente a partir dos
+dados de treinamento de amostra com substituição, o que significa que os
+pontos de dados individuais podem ser escolhidos mais de uma vez. Depos,
+dependendo do tipo da tarefa, classificação ou regressão, a saída final
+é baseada na votação da maioria ou a média. O método boosting é
+utilizado para outros algoritmos como, por exemplo, \textbf{XGBOOST},
+portanto, falaremos sobre ele mais pra frente.
+
+Certo, entendido o método dos conjuntos podemos entrar no algoritmo em
+si. É basicamente uma extensão do método bagging, já que utiliza o
+método bagging e a aleatoriedade para criar uma floresta não
+correlacionada de Árvores de Decisão. A aleatoriedade se dá ao fato que
+o modelo utiliza uma amostragem aleatória do conjunto de dados de
+treinamento ao construir árvores e subconjuntos aleatórios de recursos
+considerados ao dividir os nós, o que garante baixa correlação entre as
+Árvores.
+
+Os algoritmos possuem alguns \textbf{hiperparâmetros}, que como
+explicado anteriormente, precisam ser definidos antes do treinamento do
+modelo. Os três principais são: o tamanho do nó, o número de Árvores e o
+número de recursos amostrados. A partir daí o algoritmo pode ser usado
+para resolver problemas de regressão ou classificação.
+
+\hypertarget{algoritmos-de-boosting}{%
+\subsubsection{Algoritmos de boosting}\label{algoritmos-de-boosting}}
+
+Como falamos anteriormente, boosting é uma técnica de método dos
+conjuntos. Diferente de bagging que trabalha de forma paralela,
+considerando os modelos independentes uns dos outros, boosting trabalha
+de forma diferente. Boosting se refere a algoritmos que convertem alunos
+fracos em alunos fortes. Trabalha de maneira sequencial, ajustando
+iterativamente o peso da observação de acordo com a última
+classificação, assim, diminui o erro do viés e constrói preditivos
+fortes. Em outras palavras, a técnica consiste em, primeiramente,
+construir um modelo inicial com os dados de treinamento. Depois, um
+outro modelo é construído visando corrigir os erros do modelo anterior,
+atribuindo pesos caso uma entrada seja fornecida erroneamente. O
+processo continua e adiciona modelos até que todo o conjunto de dados de
+treino seja previsto corretamente ou o número máximo de modelos seja
+adicionado. Boosting é um algoritmo genérico e não um modelo, vamos
+então apresentar os principais modelos baseados no método boosting:
+Adaptative Bossting (AdaBoost), Gradient Boosting e XGBoost.
+
+\hypertarget{adaboost}{%
+\paragraph{AdaBoost}\label{adaboost}}
+
+Antes de entrarmos no algoritmo AdaBoost de fato, vamos relembrar o
+Algoritmo de Floresta Aleatória. Em Floresta Aleatória, o algoritmo cria
+diversas Árvores que consistem em um nó inicial com várias nós folhas.
+Não existem regras quanto ao tamanho de cada Árvore, assim, pode haver
+umas maiores que outras. No modelo AdaBoost, as Árvores possuem um
+nível, ou seja, apenas 1 divisão conhecido como Stump (toco).
+
+\begin{itemize}
+\tightlist
+\item
+  inserir imagem
+\end{itemize}
+
+Na imagem podemos ver a representação de um toco. Note que ele tem
+apenas um nó com duas folhas. Tocos são aprendizes fracos, pois as
+técnicas de reforço preferem isso. Como em AdaBoost o erro do primeiro
+toco influência nos outros, a ordem dos tocos é muito importante.
+Reforçando, o algoritmo irá atribuir pesos mais altos aos pontos
+classificados erroneamente. Todos os pontos que têm pesos maiores
+recebem mais importância no próximo modelo.
+
+\hypertarget{funcionamento-do-algoritmo-1}{%
+\paragraph{Funcionamento do
+algoritmo}\label{funcionamento-do-algoritmo-1}}
+
+Para entendermos de uma forma um pouco mais clara, vamos fazer um passo
+a passo. Antes do primeiro passo de fato, todos os pontos de dados irão
+receber algum peso. Inicialmente, os pesos serão iguais para todos. O
+peso é calculado na forma \(W = \frac{1}{N}\), onde \(N\) é o número de
+observações.
+
+\begin{itemize}
+\item
+  \textbf{Passo 1:} Em primeiro lugar, o algoritmo pega o primeiro
+  recurso e cria o primeiro tronco. Ele irá criar o mesmo número de
+  tocos que o número de recursos, a partir daí, temos as primeiras
+  Árvores de Decisão. O modelo então calcula o \emph{índice de Gini}
+  para cada Árovre e seleciona aquela com o índice mais baixo para ser o
+  primeiro aprendiz base.
+\item
+  \textbf{Passo 2:} O segundo passo é calcular o desempenho do toco com
+  um método conhecido como ``\textbf{Importance}'' ou
+  ``\textbf{Influence}''. É calculado usando a seguinte fórmula:
+
+  \[
+  \mbox{Performance} (\alpha) = \frac{1}{2} log(\frac{1- Erro\ total }{Erro\ total})
+  \]O valor sempre será um valor entre 0 e 1, onde 0 indica um toco
+  perfeito e 1 um toco horrível. Calcular o desempenho de um toco é
+  importante pois é preciso atualizar o peso da amostra antes de
+  prosseguir para o próximo modelo. Se o mesmo peso for apicado, a saída
+  recebida será a do primeiro modelo. Previsões erradas receberão mais
+  peso, enquanto os pesos das previsões erradas serão diminuídos. Assim,
+  no próximo modelo com os pesos atualizados, sera dada mais preferência
+  aos pontos com pesos maiores.
+\item
+  \textbf{Passo 3:} O próximo passo é atualizar os pesos. A atualização
+  é feita utilizando a seguinte fórmula:
+
+  \[
+  \mbox{Novo peso} = \mbox{peso antigo} * e^{\pm Performance (\alpha)}
+  \] A quantidade \(\alpha\) será \textbf{negativa} quando a amostra for
+  classificada corretamente e \textbf{positiva} quando classificada
+  incorretamente. Vale ressaltar que a soma total de todos os pesos deve
+  ser igual a 1. Em muitos casos os pesos atualizados não irão somar 1,
+  então será necessário normalizar os pesos. A normalização é feita
+  dividindo cada peso pela soma total dos pesos atualizados. Após a
+  normalização dso pesos da amostra, a soma será 1.\\
+
+  \textbf{Passo 4:} Agora, para verificar se os erros diminuíram ou não,
+  a próxima etapa é criar um novo conjunto de dados. Para isso, com base
+  nos novos pesos amostrais, nossas observações serão divididas em
+  baldes, basicamente são intervalos de valores de \(\alpha\). A partir
+  daí, o algoritmo seleciona números aleatórios entre 0 e 1. Ele
+  verifica em qual balde o valor selecionado pertence e seleciona esse
+  registro no novo conjunto de dados. Como registros classificados
+  incorretamente têm pesos amostrais maiores, existe mais probabilidade
+  de serem selecionados várias vezes.\\
+  \strut \\
+  \textbf{Passo 5:} Por fim, com o novo conjunto de dados, o algoritmo
+  cria uma nova Árvore de decisão (toco) e repete o processo desde o
+  primeiro passo até passar por todos os tocos. O processo é repetido
+  até que um erro de treinamento baixo seja alcançado. Suponha um
+  algoritmo simples que tenha construído 3 Árvores de Decisão de maneira
+  sequencial. Assim, o conjunto de dados teste passará por todas as
+  Árvores e, da mesma forma que em Florestas Aleatórias, a classe será
+  selecionada com base na maioria. A partir daí é possível fazer
+  previsões para o conjunto de teste.
+\end{itemize}
+
+\hypertarget{gradient-boosting-aumento-de-gradiente}{%
+\paragraph{Gradient Boosting (Aumento de
+Gradiente)}\label{gradient-boosting-aumento-de-gradiente}}
+
+O modelo Gradient Boosting, também é um modelo de reforço, ou seja,
+utiliza técnicas de conjunto que pode ser usado tanto para regressão
+quanto para classificação. Este modelo possui algumas semelhanças com o
+Ada Boost e como já vimos sobre ele, aqui vamos focar um pouco mais em
+suas diferenças.
+
+A principal diferença deste modelo para o Ada Boost está no que ele faz
+com os valores subajustados do seu antecessor. Enquanto Ada Boost ajusta
+os pesos a cada interação, Gradient Boosting tenta ajustar o novo
+preditor aos \emph{erros residuais} cometidos pelo preditor anterior.
+
+Outra diferença é que, enquanto Ada Boost começa construindo um toco,
+Gradient Boost começa fazendo uma única folha. Esta folha representa uma
+estimativa inicial para os pesos das amostras. Em caso de um problema de
+regressão, ao tentar prever um valor contínuo, o primeiro palpite é o
+valor médio. A partir daí, o modelo constrói uma Árvore. Aqui, a Árvore
+é maior que um toco, mas o modelo ainda restringe o tamanho dessa
+Árvore.
+
+\hypertarget{funcionamento-do-modelo}{%
+\paragraph{Funcionamento do modelo}\label{funcionamento-do-modelo}}
+
+Vamos entender um pouco melhor o funcionamento do modelo fazendo um
+passo a passo resumido, assim como foi feito em Ada Boost. Vamos
+exemplificar também focando no modelo de Gradient Boosting para
+regressão.
+
+\begin{itemize}
+\item
+  \textbf{Passo 1:} Como falamos anteriormente, o modelo começa criando
+  uma única folha. Como estamos em um cenário de dados contínuos, essa
+  folha então é a média das observações. Essa seria nossa previsão para
+  o modelo base.
+\item
+  \textbf{Passo 2:} O próximo passo é calcular os pseudo-resíduos, que
+  basicamente é o \emph{valor observado - valor previsto}. O termo
+  pseudo-resíduo é baseado na regressão linear, onde a diferença entre
+  os valores observados e os valores previstos resulta em resíduos.
+  Utilizando os resíduos como alvo é possível gerar novas previsões.
+  Neste caso, as previsões serão os valores de erros.
+\item
+  \textbf{Passo 3:} Agora é combinado a folha original com a nova Árvore
+  para fazer uma nova predição a partir dos dados de treinamento.
+\end{itemize}
+
+Em resumo, o algoritmo começa com uma única folha. Em seguida é
+adicionada uma Árvore com base nos resíduos e dimensiona a contribuição
+das árvores para a previsão final com a taxa de aprendizado. A partir
+daí continua adicionando Árvores com base nos erros cometidos pela
+Árvore anterior.
+
+O modelo possui alguns hiperparâmetros importantes como, o número de
+estimadores, a profundidade máxima da Árvore, a divisão mínima das
+amostras, entre outros. Para obter valores precisos desses
+hiperparâmetros é possível utilizar as técnicas mencionadas
+anteriormente.
+
+Resumimos bastante os passos e o funcionamento do modelo, mas deve-se
+ter em mente que existe uma matemática carregada por trás desses
+modelos. Cada passo, cada função perdida é utilizada por um motivo
+comprovado.
 
 \bookmarksetup{startatroot}
 
@@ -7245,22 +9269,22 @@ simples. considere o banco já discutido
 \end{Shaded}
 
 \begin{verbatim}
-K-means clustering with 3 clusters of sizes 16, 12, 12
+K-means clustering with 3 clusters of sizes 12, 12, 16
 
 Cluster means:
   idade_anos  sem_pri
-1   25.06250 28.18750
-2   37.91667 23.33333
-3   31.33333 44.25000
+1   37.91667 23.33333
+2   31.33333 44.25000
+3   25.06250 28.18750
 
 Clustering vector:
  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 
- 1  1  1  1  3  3  2  1  2  3  3  3  2  1  3  1  2  3  1  1  1  1  1  3  3  2 
+ 3  3  3  3  2  2  1  3  1  2  2  2  1  3  2  3  1  2  3  3  3  3  3  2  2  1 
 27 28 29 30 31 32 33 34 35 36 37 38 39 40 
- 1  2  1  1  1  3  3  2  2  2  2  3  2  2 
+ 3  1  3  3  3  2  2  1  1  1  1  2  1  1 
 
 Within cluster sum of squares by cluster:
-[1] 861.3750 669.5833 412.9167
+[1] 669.5833 412.9167 861.3750
  (between_SS / total_SS =  67.6 %)
 
 Available components:
@@ -7304,22 +9328,22 @@ identificação do valor \(k\) estabelecido.
 \end{Shaded}
 
 \begin{verbatim}
-K-means clustering with 3 clusters of sizes 16, 12, 12
+K-means clustering with 3 clusters of sizes 12, 12, 16
 
 Cluster means:
   idade_anos  sem_pri
-1   25.06250 28.18750
-2   37.91667 23.33333
-3   31.33333 44.25000
+1   37.91667 23.33333
+2   31.33333 44.25000
+3   25.06250 28.18750
 
 Clustering vector:
  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 
- 1  1  1  1  3  3  2  1  2  3  3  3  2  1  3  1  2  3  1  1  1  1  1  3  3  2 
+ 3  3  3  3  2  2  1  3  1  2  2  2  1  3  2  3  1  2  3  3  3  3  3  2  2  1 
 27 28 29 30 31 32 33 34 35 36 37 38 39 40 
- 1  2  1  1  1  3  3  2  2  2  2  3  2  2 
+ 3  1  3  3  3  2  2  1  1  1  1  2  1  1 
 
 Within cluster sum of squares by cluster:
-[1] 861.3750 669.5833 412.9167
+[1] 669.5833 412.9167 861.3750
  (between_SS / total_SS =  67.6 %)
 
 Available components:
@@ -7459,22 +9483,22 @@ pensam da mesma forma,
 \end{Shaded}
 
 \begin{verbatim}
-K-means clustering with 3 clusters of sizes 16, 12, 12
+K-means clustering with 3 clusters of sizes 12, 12, 16
 
 Cluster means:
   idade_anos  sem_pri
-1   25.06250 28.18750
-2   37.91667 23.33333
-3   31.33333 44.25000
+1   37.91667 23.33333
+2   31.33333 44.25000
+3   25.06250 28.18750
 
 Clustering vector:
  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 
- 1  1  1  1  3  3  2  1  2  3  3  3  2  1  3  1  2  3  1  1  1  1  1  3  3  2 
+ 3  3  3  3  2  2  1  3  1  2  2  2  1  3  2  3  1  2  3  3  3  3  3  2  2  1 
 27 28 29 30 31 32 33 34 35 36 37 38 39 40 
- 1  2  1  1  1  3  3  2  2  2  2  3  2  2 
+ 3  1  3  3  3  2  2  1  1  1  1  2  1  1 
 
 Within cluster sum of squares by cluster:
-[1] 861.3750 669.5833 412.9167
+[1] 669.5833 412.9167 861.3750
  (between_SS / total_SS =  67.6 %)
 
 Available components:
@@ -10209,7 +12233,7 @@ reposição, não precisaríamos colocar esse argumento por seu default ser
 \texttt{FALSE}.
 
 \begin{verbatim}
-[1]  1 10
+[1] 0.5 2.0
 \end{verbatim}
 
 Também poderíamos usar a mesma função sem colocar o nome dos argumentos,
@@ -10222,7 +12246,7 @@ desde que o usuário entenda o que ela está fazendo.
 \end{Shaded}
 
 \begin{verbatim}
-[1]  2 10
+[1] 0.5 1.0
 \end{verbatim}
 
 Nesse caso, é importante que se respeite a ordem dos argumentos: o vetor
@@ -10457,8 +12481,8 @@ Tendo carregado o pacote \texttt{dplyr} anteriormente (pela função
 \texttt{library()}), não seria necessário colocar \texttt{dplyr::} antes
 da função \texttt{distinct} do pacote.
 
-\hypertarget{materiais-complementares-1}{%
-\subsection{Materiais complementares}\label{materiais-complementares-1}}
+\hypertarget{materiais-complementares-2}{%
+\subsection{Materiais complementares}\label{materiais-complementares-2}}
 
 Livros e Artigos:
 

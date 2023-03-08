@@ -16,6 +16,7 @@ book:
     - tabulacao.qmd
     - descritiva.qmd
     - estimacao.qmd
+    - testes_np.qmd
     - supervisionada.qmd
     - naosupervisionado.qmd
   appendices: 
@@ -25,7 +26,7 @@ book:
       text: Referências 
   
 bibliography: references.bib
-
+   
 format:
   html:
     theme: cosmo
