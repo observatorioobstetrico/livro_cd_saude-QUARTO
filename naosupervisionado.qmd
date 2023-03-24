@@ -1,60 +1,68 @@
 # Aprendizado não supervisionado
 
-Aprendizado não supervisionado é o ramo da aprendizagem de maquina, ou aprendizado estatístico, que trabalho majoritariamente com o agrupamento de variáveis com ou sem o conhecimento prévio de como essas variáveis estão subdivididas na natureza, ou ainda criar um subdivisão para essas com base nas características em estudo, como por exemplo fatores fatores socioeconômicos. Nesse texto falaremos de forma explicativa e aplicável sobre análise de componentes principais e métodos de agrupamentos, hierárquicos e não hierárquicos, com suas devidas funções na linguagem de programação proposta.
+Aprendizado não supervisionado é um ramo da aprendizagem de máquina ou aprendizado estatístico que trabalha principalmente com o agrupamento de variáveis, com ou sem o conhecimento prévio de como essas variáveis são subdivididas na natureza. Também é possível criar uma subdivisão com base nas características em estudo, como fatores socioeconômicos. Neste texto, explicaremos de forma clara e aplicável a análise de componentes principais e os métodos de agrupamento, tanto hierárquicos quanto não hierárquicos, com suas respectivas funções na linguagem de programação proposta.
+
+A principal aplicação dos métodos não supervisionados está na necessidade de tentar explicar um possível comportamento da população no que se refere à segregação dos indivíduos. Por exemplo, suponha que seja possível obter uma amostra que identifica características como a quantidade de exercício físico por semana, tipo de alimentação e nutrientes no corpo. Podemos usar técnicas que agrupem esses indivíduos nos grupos "Muito saudável", "Saudável" e "Pouco saudável", com base em medidas de diferenciação entre cada observação. Isso permite agrupar aqueles que forem mais "parecidos" entre si.
+
+Não apenas na identificação de clusters, outra área de importante aplicação é a análise de componentes principais ou PCA. O principal objetivo da Análise de Componentes Principais (PCA) é reduzir a dimensão dos dados e identificar relações ocultas entre variáveis altamente correlacionadas. Isso é feito transformando um conjunto de variáveis em um conjunto menor de variáveis chamadas componentes principais, que representam a maior variação nos dados originais.
+
+Por exemplo, suponha que estamos trabalhando com dados das características de saúde citadas. Essas variáveis podem estar altamente correlacionadas, o que significa que elas medem coisas semelhantes. Ao aplicar a análise de componentes principais, podemos identificar as principais relações ocultas entre essas variáveis e reduzir o número de variáveis necessárias para explicar a variação nos dados. Isso nos permite simplificar o modelo e, potencialmente, obter uma melhor compreensão das relações entre a alimentação, exercícios e saúde do corpo. Essa abordagem é muito utilizado quando há necessidade de trabalhar com uma grande quantidade de variáveis. Além disso, no caso de regressão, por exemplo, pode ser uma forma de lidar com o problema de multicolinearidade.
+
+De qualquer forma, o termo não supervisionado é usado pois não possuímos um conhecimento prévio do comportamento ou rotulagem dos dados, deixamos a cargo do algoritmo a identificação de algum possível padrão, sem a "supervisão" do pesquisador.
 
 ## Alguns conceitos básicos de algebra
 
-Para melhor introduzir o campo do aprendizado não supervisionado, alguns conceitos de álgebra são necessários para compreender o que se passa por trás de cada algoritmo da análise de dados multivariada. Vamos introduzir com vetores e matriz, seguindo com decomposição espectral para então darmos inicio a área da estatística multivariada ou aprendizado não supervisionado. Não é objetivo desse livro demonstrar conceitos algébricos e nem se aprofundar demais no assunto [veja @anton2001algebra, e @johnson2002applied para mais demonstrações e conceitos].
+Para introduzir o campo do aprendizado não supervisionado, é importante entender alguns conceitos básicos de álgebra que são fundamentais para a compreensão dos algoritmos de análise de dados multivariada. Começaremos com vetores e matrizes e, em seguida, abordaremos a decomposição espectral. A partir daí, estaremos prontos para explorar a área da estatística multivariada ou aprendizado não supervisionado. Vale ressaltar que este livro não tem como objetivo demonstrar todos os conceitos algébricos necessários e nem se aprofundar demais no assunto. Para mais demonstrações e conceitos, consulte as obras de referência como [@anton2001algebra, e @johnson2002applied]
 
 ### Definições importantes
 
-**Vetor Aleatório** : Seja X um vetor contendo *p* componentes, onde cada componente é uma variável aleatória, isto é, $X_i$ é uma variável aleatória, $\forall\quad i =1,2,...,p$. Então *X* é chamado de vetor aleatório e é denotado por:
+**Vetor Aleatório** : Um vetor aleatório $\underline{X}$ é um vetor contendo $p$ componentes, onde cada componente é uma variável aleatória $X_i$, para $i = 1, 2, ..., p$.
 
 $$
  \begin{align}
-  X &= \begin{bmatrix}
+  \underline{X} &= \begin{bmatrix}
            X_{1} \\
            X_{2} \\
            \vdots \\
            X_{p}
          \end{bmatrix}
-  \end{align}
+  \end{align}.
 $$
 
-O vetor transposto do vetor aleatório *X* é denotadopor $X' = [X_1 X_2 X_3 ...X_p]$
+O vetor transposto do vetor aleatório $\underline{X}$ é denotadopor $\underline{X}' = [X_1 X_2 X_3 ...X_p]$.
 
-**Vetor de Médias** : O vetor $\mu$ é chamado vetor de médias quando $E(X) = \mu$ onde *X* é um vetor aleatório. Dessa forma
+**Vetor de Médias** : O vetor $\underline{\mu}$ é chamado vetor de médias quando $E(\underline{X}) = \underline{\mu}$ onde $\underline{X}$ é um vetor aleatório. Dessa forma
 
 $$
 \begin{align}
-  E(X) &= \begin{bmatrix}
+  E(\underline{X}) &= \begin{bmatrix}
            E(X_{1}) \\
            E(X_{2}) \\
            \vdots \\
            E(X_{p})
          \end{bmatrix}
-  \end{align} = \mu = \begin{bmatrix}
+  \end{align} = \underline{\mu} = \begin{bmatrix}
            \mu_1 \\
            \mu_2 \\
            \vdots \\
            \mu_p
-         \end{bmatrix}
+         \end{bmatrix}.
 $$
 
-**Matriz de covariâncias** : A matriz de variâncias e covariâncias do vetor *X* é denotada por,
+**Matriz de covariâncias** : A matriz de variâncias e covariâncias do vetor $\underline{X}$ é denotada por,
 
 $$
-Cov(X) = V(X) = Var(X) = \Sigma_{p\times p} = \begin{bmatrix}
+Cov(\underline{X}) = V(\underline{X}) = Var(\underline{X}) = \Sigma_{p\times p} = \begin{bmatrix}
            \sigma_{11} & \sigma_{12} & ... & \sigma_{1p}  \\
           \sigma_{21} & \sigma_{22} & ... & \sigma_{2p}  \\
             \vdots &\vdots & \ddots &\vdots \\
            \sigma_{p1} & \sigma_{p2} & ... & \sigma_{pp}
-         \end{bmatrix}
+         \end{bmatrix}.
 $$
 
-Onde $\sigma_{ii}$ representa a variância do elemento $X_i$ do vetor aleatório e $\sigma_{ij} = E[(X_i- \mu_i)(X_j - \mu_j)]$ $\forall\quad i,j = 1,\dots,p$. A matriz de covariância é uma matriz simétrica, sua transposta é igual a ela mesma, ou seja $\Sigma = '\Sigma$. Sendo tambem não negativa definida, $a'\Sigma a \geq 0$ para todo vetor de constantes pertencentes aos reais.
+Onde $\sigma_{ii}$ representa a variância do elemento $X_i$ do vetor aleatório e $\sigma_{ij} = E[(X_i- \mu_i)(X_j - \mu_j)]$ $\forall\quad i,j = 1,\dots,p$. A matriz de covariância é uma matriz simétrica, sua transposta é igual a ela mesma, ou seja $\Sigma = \Sigma'$. Sendo tambem não negativa definida, $a'\Sigma a \geq 0$ para todo vetor de constantes pertencentes aos reais.
 
-**Matriz de correlação** : A matriz de correlação do vetor *X* é denotada por,
+**Matriz de correlação** : A matriz de correlação do vetor $\underline{X}$ é denotada por,
 
 $$
 P_{p\times p} = \begin{bmatrix}
@@ -63,32 +71,33 @@ P_{p\times p} = \begin{bmatrix}
           \rho_{31} & \rho_{32} & 1 &... & \rho_{3p}  \\
             \vdots &\vdots & \ddots &\vdots \\
            \rho_{p1} & \rho_{p2} &\rho_{p3}& ... & 1
-         \end{bmatrix}
+         \end{bmatrix}.
 $$
 
 Em que
 
 $$
-\rho_{ij} = \frac{\sigma_{ij}}{\sqrt{\sigma_{ii}\sigma_{jj}}} = \frac{\sigma_{ij}}{\sigma_i\sigma_j}
+\rho_{ij} = \frac{\sigma_{ij}}{\sqrt{\sigma_{ii}\sigma_{jj}}} = \frac{\sigma_{ij}}{\sigma_i\sigma_j}.
 $$
 
 **Auto Valores e Auto Vetores** : Se $\Sigma$ for uma matriz quadrada, ou seja $\Sigma_{p\times p}$, então um vetore não nulo $e$ em $R^n$ é denominado *autovetor* de $\Sigma$ se $\Sigma e$ for um múltiplo escalar de $e$, isto é,
 
 $$
-\Sigma e = \lambda e
+\Sigma \underline{e} = \lambda \underline{e},
 $$
 
-com algum escalar $\lambda$. O escalar $\lambda$ é denominado de *autovalor* de $\Sigma$, e dizemos que $e$ é um *autovetor associado a* $\lambda$. Por $\Sigma$ ser uma matriz não negativa definida seus autovalores $\lambda_i$ associados tambem serão não negativos. Os autovetores e autovalores serão necessários para a análise de componentes principais mais a frente abordada.
+com algum escalar $\lambda$. O escalar $\lambda$ é denominado de *autovalor* de $\Sigma$, e dizemos que $\underline{e}$ é um *autovetor associado a* $\lambda$. Por $\Sigma$ ser uma matriz não negativa definida seus autovalores $\lambda_i$ associados tambem serão não negativos. Os autovetores e autovalores serão necessários para a análise de componentes principais mais a frente abordada.
 
 #### Equação característica
-
-Ainda é necessário uma forma de encontrar os autovetores e autovalores associados a uma matriz $\Sigma$. Se $\Sigma$ for uma matriz quadrada, então $\lambda$ se, e somente se, $\lambda$ satisfaz a equação
+A equação característica é uma equação polinomial associada a uma matriz quadrada, obtida através do cálculo de seu determinante menos o escalar $\lambda$ multiplicado pela matriz identidade. De maneira geral, a equação característica é dada por: 
 
 $$
-det(\lambda I - \Sigma) = 0
+det(\lambda I - \Sigma) = 0.
 $$
 
-Onde *det* é o determinante e $I$ a matriz identidade. Para esclarecimento, suponha como exemplo que,
+onde $\Sigma$ é a matriz quadrada, I é a matriz identidade do mesmo tamanho que $\Sigma$, $\lambda$ é o escalar a ser encontrado e _det_ representa o determinante.
+
+Ao resolver essa equação, obtemos os autovalores da matriz $\Sigma$, que são importantes para a decomposição espectral e para outras aplicações da álgebra linear. Para esclarecimento, suponha como exemplo que,
 
 $$
 \Sigma = \begin{bmatrix}
@@ -137,28 +146,28 @@ v_{12}
 \end{bmatrix} \rightarrow v_{11} =- 2v_{12}
 $$
 
-Note que para cada autovalor temos infinitos possíveis autovetores dentro dos reais. Nos restringiremos aos autovetores normalizados.Dizemos que um vetor $e_i$ é normalizado quando:
+Note que para cada autovalor temos infinitos possíveis autovetores dentro dos reais. Nos restringiremos aos autovetores normalizados. Dizemos que um vetor $\underline{e}_i$ é normalizado quando:
 
 $$
-e_i = \begin{bmatrix}
+\underline{e}_i = \begin{bmatrix}
 e_{i1}\\
 e_{i2}\\
 \vdots\\
 e_{ip}
-\end{bmatrix}
+\end{bmatrix}.
 $$
 
 Em que
 
 $$
-||e_i|| = \sqrt{e^2_{i1} + e^2_{i2} + \dots + e^2_{ip}} = 1
+||\underline{e}_i|| = \sqrt{e^2_{i1} + e^2_{i2} + \dots + e^2_{ip}} = 1.
 $$
 
 ### Decomposição Espectral de Matrizes de correlação e Covariância em seus Autovetores e Autovalores normalizados.
 
 O teorema da decomposição espectral é de extrema importância em álgebra matricial e estatística multivariada, ele relaciona a matriz com seus autovalores e autovetores normalizados.
 
-Suponha $\Sigma$ a matriz de covariâncias. Então existe uma matriz ortogonal $O$(matriz no qual sua transposta é igual a sua inversa) tal que,
+Suponha $\Sigma$ a matriz de covariâncias. Então existe uma matriz ortogonal $O$ (matriz no qual sua transposta é igual a sua inversa) tal que,
 
 $$
 O'\Sigma O = \begin{bmatrix}
@@ -170,16 +179,16 @@ O'\Sigma O = \begin{bmatrix}
 \end{bmatrix} = \Lambda
 $$
 
-Onde $\lambda\_1 \geq \lambda\_2 \geq \dots \lambda\_p\geq0$ são os autovalores ordenados em ordem decrescente da matriz $\Sigma$. Nesse caso, dizemos que a matriz $\Sigma$ é similar à matriz $\Lambda$, que implica em:
+Onde $\lambda_1 \geq \lambda_2 \geq \dots \lambda_p\geq0$ são os autovalores ordenados em ordem decrescente da matriz $\Sigma$. Nesse caso, dizemos que a matriz $\Sigma$ é similar à matriz $\Lambda$, que implica em:
 
 -   $det(\Sigma) = det(\Lambda) = \prod^p_{i=1} \lambda_i$
 
 -   traço$(\Sigma) =$ traço$(\Lambda) = \lambda_1 +\dots+\lambda_p$
 
-Tem-se que a i-ésima coluna da matriz $O$ é o autovetor normalizado $e_i$ relacionado ao autovalor $\lambda_i$. Então a matriz $O$ é dada por $O = [e_1,e_2,\dots,e_p]$ e pelo teorema da decomposição espectral, podemos ver que:
+Tem-se que a i-ésima coluna da matriz $O$ é o autovetor normalizado $\underline{e}_i$ relacionado ao autovalor $\lambda_i$. Então a matriz $O$ é dada por $O = [\underline{e}_1,\underline{e}_2,\dots,\underline{e}_p]$ e pelo teorema da decomposição espectral, podemos ver que:
 
 $$
-\Sigma = O \Lambda O' = \sum_{i=1}^p \lambda_i e_i e_i'
+\Sigma = O \Lambda O' = \sum_{i=1}^p \lambda_i \underline{e}_i \underline{e}_i'
 $$
 
 Dentro do **R** é possível realizar a decomposição espectral usando a função `eigen()`,
@@ -189,10 +198,19 @@ sigma <- matrix(c(8,-2,-2,5),nrow = 2)
 sigma
 eigen(sigma)
 ```
+Nos devolvendo os autovalores e autovetores normalizados para a matriz inserida na função. No caso do exemplo, 9 e 4 são os autovalores e $[-0.89,0.45]$ e $[-0.45,-0.89]$ os respectivos autovetores normalizados associados.
 
 ## Análise de Componentes Principais (PCA)
 
-A análise de componentes principais se preocupa em conseguir explicar a variância e covariância de uma estrutura de variáveis através de algumas poucas combinações lineares. Tendo como principal objetivo dessa análise a redução de dimensionalidade e interpretação das relações. Essas combinações lineares são os componentes principais e são não correlacionadas entre sí. Quando assumimos que as variáveis originiais possuem distribuição normal, as componentes, além de não correlacionadas são normalmente distribuidas e idependentes. Os componentes principais são extraidos através da decomposição da matriz de covariância do vetor aleatório. Caso alguma trasnformação seja realizada nesse vetor, a decomposição será realizada na matriz de covariância do vetor transformado. Um caso muito utilizado, suponha que nossas variáveis estão em escalas muito diferentes, o PCA pode acabar por dar mais variabilidade a essa variável com escala superior, para isso então padronizamos o vetor. Utilizar a matriz de covariância do vetor transformado e a matriz de correlação do vetor originais são ações equivalentes nessa situação.
+PCA, ou Análise de Componentes Principais, é uma técnica de análise de dados multivariados que busca resumir a variação presente em um conjunto de dados através de combinações lineares de suas variáveis originais, sendo essas variáveis correlacionadas. O objetivo principal do PCA é reduzir a dimensionalidade dos dados, ou seja, representar um grande número de variáveis originais em um número menor de variáveis, chamadas de componentes principais. Essas novas variáveis são ordenadas em ordem decrescente de importância, de modo que a primeira componente principal capture a maior quantidade possível da variabilidade total dos dados, e as subsequentes capturem cada vez menos.
+
+A componente principal é a primeira combinação linear das variáveis originais encontrada pelo PCA. Ela é calculada de forma a maximizar a variância explicada pelos dados, ou seja, ela é a direção ao longo da qual os dados apresentam a maior variação possível. A segunda componente principal é então encontrada de forma a ser ortogonal à primeira, e assim por diante para as demais componentes. Cada componente é uma combinação linear das variáveis originais, e suas cargas fatoriais, ou seja, os pesos das variáveis na combinação linear, indicam a importância relativa de cada variável naquele componente.
+
+O PCA tem diversas aplicações em áreas como estatística, engenharia, ciência de dados, entre outras. Ele é utilizado para resumir grandes conjuntos de dados, detectar padrões e estruturas latentes nos dados, identificar outliers e reduzir o ruído presente nos dados. Além disso, ele é comumente utilizado como uma técnica de pré-processamento de dados para outras técnicas de análise, como regressão e clustering.
+
+Uma outra aplicação comunm do PCA é na identificação de variáveis latentes em um conjunto de dados. As variáveis latentes são aquelas que não são diretamente observáveis, mas podem ser inferidas a partir de outras variáveis observáveis que estão correlacionadas entre elas. O objetivo é identificar essas variáveis latentes para que possam ser incluídas em análises posteriores e ajudar na compreensão dos dados.
+
+Um exemplo clássico de variáveis latentes é o fator g em testes de inteligência. Embora não possamos medir diretamente a inteligência, podemos medir várias habilidades cognitivas, como memória, raciocínio lógico e habilidades verbais. Essas habilidades estão correlacionadas entre si e são usadas para inferir a inteligência geral. Nesse caso, o fator g é uma variável latente.
 
 **Definição**: Seja *X* um vetor aleatório com $\mu = E(X)$ e $\Sigma = Var(X)$ e $(\lambda_i,e_i), i = 1,\dots,p$ os pares de autovalores e autovetores normalizados associados de $\Sigma$. Então,
 
@@ -303,7 +321,7 @@ qplot(c(1:9), var_explicada) +
 
 Podemos por meio, tanto do *scree plot*, quanto pelo valor da variância explicada acumulada, selecionar $d= 3$ componentes para reter, pela queda de 2 para 3 ser significante, enquanto a de 3 para 4 nem tanto. Reduzindo número de variáveis a 3.
 
-##Métodos de Agrupamentos
+## Métodos de Agrupamentos
 
 A análise de agrupamentos ou *clusterização*, tem como objetivo, agrupar indivíduos da população usando como base medidas de similaridade entre eles, formando grupos heterogêneos entre sí com homogenuidade entre indivíduos de mesmo *cluster*. Muito utilizado na classificação de tipos de clientes de mercado, usuários de aplicativos, ou até mesmo em áres como psicologia, para agrupamentos de perfis de personalidade. Outro exemplo pode ser visto no trabalho (colocar link mariana).
 
