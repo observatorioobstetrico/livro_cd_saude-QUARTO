@@ -29,7 +29,7 @@ $$
   \end{align}.
 $$
 
-O vetor transposto do vetor aleatório $\underline{X}$ é denotadopor $\underline{X}' = [X_1 X_2 X_3 ...X_p]$.
+Suponha que o objeto em estudo é saúde sanguínea, o vetor de variáveis em estudo, poderia vir a ser número de vitaminas do tipo A, B e D no sangue, ou seja, um vetor com três componentes. O vetor transposto do vetor aleatório $\underline{X}$ é denotadopor $\underline{X}' = [X_1 X_2 X_3 ...X_p]$. Um vetor $\underline{X}$, pode ser interpretado geométricamente como uma linha no plano $p$ dimensional, onde cada abscissa é representada por uma das componentes do vetor, supondo então um vetor $\underline{X}' = [X_1,X_2,X_3]$ seria uma reta no plano tridimensional de coordenadas $X_1, X_2$ e $X_3$.
 
 **Vetor de Médias** : O vetor $\underline{\mu}$ é chamado vetor de médias quando $E(\underline{X}) = \underline{\mu}$ onde $\underline{X}$ é um vetor aleatório. Dessa forma
 
