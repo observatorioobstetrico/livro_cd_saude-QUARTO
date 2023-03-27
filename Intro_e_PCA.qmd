@@ -4,7 +4,7 @@ Aprendizado não supervisionado é um ramo da aprendizagem de máquina ou aprend
 
 A principal aplicação dos métodos não supervisionados está na necessidade de tentar explicar um possível comportamento da população no que se refere à segregação dos indivíduos. Por exemplo, suponha que seja possível obter uma amostra que identifica características como a quantidade de exercício físico por semana, tipo de alimentação e nutrientes no corpo. Podemos usar técnicas que agrupem esses indivíduos nos grupos "Muito saudável", "Saudável" e "Pouco saudável", com base em medidas de diferenciação entre cada observação. Isso permite agrupar aqueles que forem mais "parecidos" entre si.
 
-Não apenas na identificação de clusters, outra área de importante aplicação é a análise de componentes principais ou PCA. O principal objetivo da Análise de Componentes Principais (PCA) é reduzir a dimensão dos dados e identificar relações ocultas entre variáveis altamente correlacionadas. Isso é feito transformando um conjunto de variáveis em um conjunto menor de variáveis chamadas componentes principais, que representam a maior variação nos dados originais.
+Não apenas na identificação de clusters, outra área de importante aplicação é a análise de componentes principais ou PCA. O principal objetivo da Análise de Componentes Principais (PCA) é reduzir a dimensão dos dados e identificar relações ocultas entre variáveis altamente correlacionadas. Isso é feito transformando um conjunto de variáveis em um conjunto menor denominado componentes principais, que representam a maior variação nos dados originais.
 
 Por exemplo, suponha que estamos trabalhando com dados das características de saúde citadas. Essas variáveis podem estar altamente correlacionadas, o que significa que elas medem coisas semelhantes. Ao aplicar a análise de componentes principais, podemos identificar as principais relações ocultas entre essas variáveis e reduzir o número de variáveis necessárias para explicar a variação nos dados. Isso nos permite simplificar o modelo e, potencialmente, obter uma melhor compreensão das relações entre a alimentação, exercícios e saúde do corpo. Essa abordagem é muito utilizado quando há necessidade de trabalhar com uma grande quantidade de variáveis. Além disso, no caso de regressão, por exemplo, pode ser uma forma de lidar com o problema de multicolinearidade.
 
@@ -82,37 +82,41 @@ Em que,
 
 $$
 \rho_{ij} = \frac{\sigma_{ij}}{\sqrt{\sigma_{ii}\sigma_{jj}}} = \frac{\sigma_{ij}}{\sigma_i\sigma_j}.
-$$
+$$ 
+
 Sendo assim, $\rho_{ij}$ a correlação entre a i-ésima e a j-ésima componente do vetor aleatório $\underline{X}$, $\forall i,j = 1,\dots, p$, em que, se $j = i$ a correlação assume o valor máximo de 1. De forma análoga à matriz de covariância, pode-se utilizar a função `cor()`, para obter a matriz de correlação $\boldsymbol{P}$ do vetor aleatório $\underline{X}$.
 
-**Auto Valores e Auto Vetores** : Se $\boldsymbol\Sigma$ for uma matriz quadrada, ou seja $\boldsymbol\Sigma_{p\times p}$(número de colunas e linhas equivalentes), então um vetor não nulo $\underline{e} \in R^n$ é denominado *autovetor* de $\boldsymbol\Sigma$ se $\boldsymbol\Sigma \underline{e}$ for um múltiplo escalar de $\underline{e}$, isto é,
+ Um dos conceitos fundamentais da álgebra linear, bem como da estatística multivariada é o de autovalores e autovetores de uma matriz. A decomposição espectral de uma matriz é a representação de uma matriz simétrica em termos de seus autovetores e autovalores. Os autovetores são vetores especiais que não mudam de direção quando multiplicados pela matriz original, mas apenas são escalados por um fator conhecido, como autovalor correspondente.
+
+**Auto Valores e Auto Vetores** : Em estatística multivariada, trabalhamos habitualmente com matrizes quadradas de covariância e correlação, ou seja, matrizes em que o número de colunas e linhas é o mesmo. Nesse contexto, um vetor não nulo $\underline{e}$ é denominado autovetor de uma matriz quadrada $\boldsymbol\Sigma_{p\times p}$ se $\boldsymbol\Sigma \underline{e}$ for um múltiplo escalar de $\underline{e}$, isto é,
 
 $$
 \boldsymbol\Sigma \underline{e} = \lambda \underline{e},
 $$
 
-com algum escalar $\lambda$. O escalar $\lambda$ é denominado de *autovalor* de $\boldsymbol\Sigma$, e dizemos que $\underline{e}$ é um *autovetor associado a* $\lambda$. Note que é possível descrever a equação acima da seguinte forma:
+com algum escalar $\lambda$. O escalar $\lambda$ é denominado de autovalor de $\boldsymbol\Sigma$, e dizemos que $\underline{e}$ é um autovetor associado a $\lambda$. Os autovetores são usados para reduzir a dimensionalidade de um conjunto de dados e extrair informações importantes sobre as relações entre as variáveis.
+
+Note que é possível descrever a equação acima da seguinte forma:
 
 $$
 \begin{split}
 \boldsymbol\Sigma \underline{e} = \lambda \underline{e}\\
-\boldsymbol\Sigma\underline{e} - \lambda\underline{e} = 0 \\
+\lambda\underline{e}-\boldsymbol\Sigma\underline{e}  = 0 \\
 (\lambda \boldsymbol I - \boldsymbol\Sigma)\underline{e} = 0.
 \end{split}
 $$
 
+em que $\boldsymbol I$ é a matriz identidade de mesma dimensão que $\boldsymbol\Sigma$.
 
-Por $\boldsymbol\Sigma$ ser uma matriz não negativa definida, seus autovalores $\lambda_i$ associados tambem serão não negativos. Os autovetores e autovalores serão necessários para a análise de componentes principais mais a frente abordada.
+Uma importante relação entre autovalores e autovetores é dada pela equação característica de $\boldsymbol\Sigma$, que é obtida resolvendo a equação $(\lambda \boldsymbol I - \boldsymbol\Sigma)\underline{e} = 0$ para $\lambda$. Para que a equação tenha solução não trivial, ou seja, que o vetor $\underline{e}$ não seja o vetor nulo, é necessário que o determinante da matriz $(\lambda \boldsymbol I - \boldsymbol\Sigma)$ seja igual a zero. Essa equação polinomial é definida como equação característica de $\boldsymbol\Sigma$. Os autovalores podem ser encontrados resolvendo a equação para $\lambda$. Uma definição mais formal seria:
 
-### Equação característica
-
-Uma matriz quadrada $\boldsymbol\Sigma$ é invertivel se seu determinante é um valor não nulo. A partir disso, a equação, $(\lambda \boldsymbol I - \boldsymbol\Sigma)\underline{e} = 0$, possúi solução não trivial se somente se:
-
+**Equação característica**: A equação característica de uma matriz quadrada $\boldsymbol{\Sigma}$ de ordem $p$ é definida como a equação polinomial de grau $p$ dada por:
 $$
 det(\lambda \boldsymbol I - \boldsymbol\Sigma) = 0.
 $$
 
-onde $\boldsymbol\Sigma$ é a matriz quadrada, $\boldsymbol I$ é a matriz identidade de mesma dimensão que $\boldsymbol\Sigma$, $\lambda$ é o escalar a ser encontrado e *det* representa o determinante. Essa equação polinomial é definida como equação característica de $\boldsymbol\Sigma$. Os autovalores podem ser encontrados resolvendo a equação para $\lambda$. Para esclarecimento, suponha como exemplo que,
+
+onde os valores de $\lambda$ que satisfazem a equação são determinados como os autovalores de $\boldsymbol\Sigma$ e *det* representa o determinante da matriz resultante da equação. Para esclarecimento, suponha como exemplo que,
 
 $$
 \boldsymbol\Sigma = \begin{bmatrix}
@@ -140,11 +144,12 @@ det\left(\begin{bmatrix}
 2 & \lambda-5
 \end{bmatrix}
 \right) = 0 \\
-(\lambda - 8)\times(\lambda-5) - (2)\times(2) = 0
+(\lambda - 8)\times(\lambda-5) - (2)\times(2) = 0\\
+\lambda^2 - 13\lambda + 36 = 0
 \end{split}
 $$
 
-Resolvendo a equação obtemos os valores de $\lambda_1 = 9$ e $lambda_2 = 4$, podemos encontrar os autovetores $\underline{v}_i$ associados, seguindo a definição, para $\lambda_1$ temos:
+Resolvendo a equação obtemos os valores de $\lambda_1 = 9$ e $lambda_2 = 4$, podemos encontrar os autovetores $\underline{e}_i$ associados seguindo a definição. Para $\lambda_1$ temos:
 
 $$
 \begin{bmatrix}
@@ -152,8 +157,8 @@ $$
 2 & \lambda_1-5
 \end{bmatrix}
 \begin{bmatrix}
-v_{11}\\
-v_{12}
+e_{11}\\
+e_{12}
 \end{bmatrix} = 
 \begin{bmatrix}
 0\\
@@ -164,24 +169,26 @@ v_{12}
 2 & 4
 \end{bmatrix}
 \begin{bmatrix}
-v_{11}\\
-v_{12}
+e_{11}\\
+e_{12}
 \end{bmatrix} = 
 \begin{bmatrix}
 0\\
 0
 \end{bmatrix}
-\rightarrow v_{11} = - 2v_{12}.
-$$
-Da mesma forma para $\lamda_2$:
+\rightarrow e_{11} = - 2e_{12}.
+$$ 
+
+Da mesma forma para $\lambda_2$: 
+
 $$
 \begin{bmatrix}
 \lambda_2-8&2\\
 2 & \lambda_2-5
 \end{bmatrix}
 \begin{bmatrix}
-v_{21}\\
-v_{22}
+e_{21}\\
+e_{22}
 \end{bmatrix} = 
 \begin{bmatrix}
 0\\
@@ -192,43 +199,36 @@ v_{22}
 2 & -1
 \end{bmatrix}
 \begin{bmatrix}
-v_{21}\\
-v_{22}
+e_{21}\\
+e_{22}
 \end{bmatrix} = 
 \begin{bmatrix}
 0\\
 0
 \end{bmatrix}
-\rightarrow 2v_{21} = v_{22}.
-$$
-Note que, para cada autovalor, temos infinitos possíveis autovetores dentro do conjunto dos reais, dessa forma então, nos restringiremos ao conjunto dos autovetores normalizados. Dizemos que um vetor $\underline{e}_i$ é normalizado quando:
+\rightarrow 2e_{21} = e_{22}.
+$$ 
 
-$$
-\underline{e}_i = \begin{bmatrix}
-e_{i1}\\
-e_{i2}\\
-\vdots\\
-e_{ip}
-\end{bmatrix}.
-$$
-
-Em que,
+Após encontrar os autovalores de uma matriz $\boldsymbol{\Sigma}$, é importante observar que para cada autovalor há infinitos autovetores possíveis. Para evitar essa ambiguidade, é comum restringir os autovetores a um conjunto de vetores normalizados. Um vetor $\underline{e}_i$ é normalizado quando a sua norma euclidiana é igual a 1, isto é, quando:
 
 $$
 ||\underline{e}_i|| = \sqrt{e^2_{i1} + e^2_{i2} + \dots + e^2_{ip}} = 1.
 $$
-Para o exemplo então, temos:
+Dessa forma, garantimos que os autovetores estão no mesmo espaço de dimensão $p$ que as variáveis originais. Para o exemplo então, temos: 
+
 $$
 \begin{split}
-v_{11} =- 2v_{12}\\
-\sqrt{v_{11}^2 + v_{12}^2 } = 1\\
-\sqrt{(-2v_{12})^2 + v_{12}^2 } = 1\\
-\sqrt{5v_{12}^2 } = 1\\
-v_{12} = \frac{1}{\sqrt{5}}  \approx 0.45\\
-v_{11} \approx - 0.90
+e_{11} =- 2e_{12}\\
+\sqrt{e_{11}^2 + e_{12}^2 } = 1\\
+\sqrt{(-2e_{12})^2 + e_{12}^2 } = 1\\
+\sqrt{5e_{12}^2 } = 1\\
+e_{12} = \frac{1}{\sqrt{5}}  \approx 0.45\\
+e_{11} \approx - 0.90
 \end{split}
-$$
-O mesmo se segue para $\lambda_2$, onde obtemos o vetor $\underline{v}_2' = [-0.45,-0.90]$, assim então os vetores normalizados:
+$$ 
+
+O mesmo se segue para $\lambda_2$, onde obtemos o vetor $\underline{e}_2' = [-0.45,-0.90]$, assim então os vetores normalizados: 
+
 $$
 \underline{e}_1 = \begin{bmatrix}
  -0.90\\
@@ -237,12 +237,15 @@ $$
 -0.45\\
 -0.90
 \end{bmatrix}.
-$$
+$$ 
+
+Para entender melhor a relação entre matriz de covariância/correlação e seus autovetores e autovalores normalizados, utilizamos o conceito de decomposição espectral. Através desse teorema, podemos decompor a matriz em questão em seus autovetores e autovalores normalizados, o que nos permite obter informações valiosas sobre as relações entre as variáveis originais.
+
 ### Decomposição Espectral de Matrizes de correlação e Covariância em seus Autovetores e Autovalores normalizados.
 
-O teorema da decomposição espectral é de extrema importância em álgebra matricial e estatística multivariada, ele relaciona a matriz quadrada com seus autovalores e autovetores normalizados.
 
-Suponha $\boldsymbol\Sigma$ a matriz de covariâncias. Então existe uma matriz ortogonal (matriz no qual sua transposta é igual a sua inversa)  $\boldsymbol O$. A matriz de correlação ou covariância pode ser decomposta em seus autovetores e autovalores normalizados usando a seguinte equação:
+Para uma matriz quadrada simétrica $\boldsymbol\Sigma$ de ordem $p$, é possível encontrar uma matriz $\boldsymbol{O}$ cujas colunas consistem nos autovetores normalizados de $\boldsymbol\Sigma$, e uma matriz diagonal $\boldsymbol \Lambda$ cujos elementos diagonais são os autovalores correspondentes, de tal forma que $\boldsymbol\Sigma$ pode ser escrito como $\boldsymbol\Sigma = \boldsymbol O \boldsymbol \Lambda \boldsymbol O'$. Da mesma forma, podemos dizer que:
+
 
 $$
 \boldsymbol O'\boldsymbol\Sigma \boldsymbol O = \begin{bmatrix}
@@ -254,19 +257,96 @@ $$
 \end{bmatrix} = \boldsymbol\Lambda
 $$
 
+
 Onde $\lambda_1 \geq \lambda_2 \geq \dots \lambda_p\geq0$ são os autovalores da matriz $\boldsymbol\Sigma$. Nesse caso, dizemos que a matriz $\boldsymbol \Sigma$ é similar à matriz $\boldsymbol\Lambda$, que implica em:
 
--   $det(\boldsymbol\Sigma) = det(\boldsymbol\Lambda) = \prod^p_{i=1} \lambda_i$
+-   $det(\boldsymbol\Sigma) = det(\boldsymbol\Lambda) = \prod^p_{i=1} \lambda_i$;
 
--   traço$(\boldsymbol\Sigma) =$ traço$(\boldsymbol\Lambda) = \lambda_1 +\dots+\lambda_p$
+-   traço$(\boldsymbol\Sigma) =$ traço$(\boldsymbol\Lambda) = \lambda_1 +\dots+\lambda_p$.
 
-Tem-se que a i-ésima coluna da matriz $\boldsymbol O$ é o autovetor normalizado $\underline{e}_i$ relacionado ao autovalor $\lambda_i$. Então a matriz $\boldsymbol O$ é dada por $O = [\underline{e}_1,\underline{e}_2,\dots,\underline{e}_p]$ e pelo teorema da decomposição espectral, podemos ver que:
+Tem-se que a i-ésima coluna da matriz $\boldsymbol O$ é o autovetor normalizado $\underline{e}_i$ relacionado ao autovalor $\lambda_i$. Então a matriz $\boldsymbol O$ é dada por $O = [\underline{e}_1,\underline{e}_2,\dots,\underline{e}_p]$. De forma simples, podemos ver que:
 
 $$
 \Sigma = \boldsymbol{O \Lambda O'}= \sum_{i=1}^p \lambda_i \underline{e}_i \underline{e}_i'
-$$
-Os autovetores normalizados em $\mathbf{O}$ são ortogonais entre si e formam uma base para o espaço de dimensão $p$ em que a matriz $\mathbf{\Sigma}$ atua. Cada autovetor representa uma direção no espaço em que a variabilidade dos dados é máxima. Os autovalores em $\mathbf{\Lambda}$ representam a variância explicada por cada direção (ou autovetor) correspondente. Os autovalores são ordenados em ordem decrescente, de forma que o primeiro autovalor corresponde à direção de maior variabilidade e assim por diante. A decomposição espectral é uma ferramenta poderosa para análise de dados multivariados, uma vez que permite a identificação das principais direções ou componentes principais que explicam a variabilidade nos dados.
-Dentro do **R** é possível realizar a decomposição espectral usando a função `eigen()`,
+$$ 
+
+Os autovetores normalizados em $\mathbf{O}$ são ortogonais entre si e formam uma base para o espaço de dimensão $p$ em que a matriz $\mathbf{\Sigma}$ atua. Cada autovetor representa uma direção no espaço em que a variabilidade dos dados é máxima. Os autovalores em $\mathbf{\Lambda}$ representam a variância explicada por cada direção (ou autovetor) correspondente. Os autovalores são ordenados em ordem decrescente, de forma que o primeiro autovalor corresponde à direção de maior variabilidade e assim por diante. Observe na figura abaixo, onde é representado um conjunto de dados gerados aleatoriamente de 3 componentes ($X_1,X_2,X_3$), e o comportamento de cada um dos autovetores para cada uma das dimensões.
+
+
+
+```{r echo=FALSE, message=FALSE}
+library(plotly)
+library(tidyverse)
+
+visualize_eigen <- function(dados) {
+  
+  # Covariance matrix
+  cov_matrix <- cov(dados)
+  
+  # Eigenvectors and eigenvalues
+  decomp <- eigen(cov_matrix)
+  autovetor <- decomp$vectors
+  autovalor <- decomp$values
+  
+  # Scatter plot of original data
+  x1 <- dados[,1]
+  x2 <- dados[,2]
+  x3 <- dados[,3]
+  
+  df <- data.frame(x1, x2, x3)
+  
+  fig <- plot_ly(df, x = x1, y = x2, z = x3, type = "scatter3d", mode = "markers", 
+                 marker = list(color = "lightblue", size = 2),
+                 name = "Observações")
+  
+  # Plot eigenvectors as arrows
+  for (i in 1:length(autovalor)) {
+    arrow_start <- df %>% summarise_all(mean) %>% as.numeric()
+    arrow_end <- autovetor[,i] * sqrt(autovalor[i]) + arrow_start
+    
+    fig <- fig %>% 
+      add_trace(x = c(arrow_start[1], arrow_end[1]), 
+                y = c(arrow_start[2], arrow_end[2]), 
+                z = c(arrow_start[3], arrow_end[3]), 
+                type = "scatter3d", 
+                mode = "lines",
+                line = list(width = 4),
+                name = paste0("autovetor ", i))
+  }
+  
+  # Create text explaining eigenvalues and eigenvectors
+  text <- paste0("A primeira componente explica ", round((autovalor[1] / sum(autovalor)) * 100, 2), 
+                 "% da variância.\nA segunda componente explica ", round((autovalor[2] / sum(autovalor)) * 100, 2),
+                 "% da variância.")
+  
+  # Add text to plot
+  fig <- fig %>% 
+    layout(
+           scene = list(xaxis = list(title = "X1"),
+                        yaxis = list(title = "X2"),
+                        zaxis = list(title = "X3")),
+           annotations = list(x = 0, y = -0.01, text = text,
+                              showarrow = FALSE, 
+                              font = list(size = 10)))
+  
+  return(fig)
+}
+
+# Gerando dados de exemplo com média zero e matriz de covariância específica
+set.seed(123)
+data <- mvtnorm::rmvnorm(n = 1000, mean = c(0,0,0), sigma = matrix(c(1, 0.5, 0.2,
+                                                            0.5, 1, 0.3,
+                                                            0.2, 0.3, 1), nrow = 3))
+
+# Visualizando dados e autovetores/autovalores
+visualize_eigen(data)
+```
+
+
+
+Os autovetores são representados por setas que partem do centro de massa dos dados e indicam a direção e a magnitude da variação dos dados nessa direção. A magnitude da variação é dada pelo valor do autovalor correspondente a cada autovetor, que indica a importância daquele eixo.
+
+Dentro do **R** é possível realizar a decomposição espectral usando a função `eigen()`, da seguinte forma:
 
 ```{r echo=TRUE, warning=FALSE}
 sigma <-matrix(c(8,-2,-2,5),nrow = 2)
@@ -274,8 +354,7 @@ sigma
 eigen(sigma)
 ```
 
-Nos devolvendo os autovalores e autovetores normalizados para a matriz inserida na função, os mesmo calculados de forma manual anteriormente.
-
+Nos devolvendo os autovalores e autovetores normalizados para a matriz inserida na função, os mesmos calculados de forma manual anteriormente.
 
 # Análise de Componentes Principais (PCA).
 
