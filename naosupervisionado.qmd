@@ -1,368 +1,83 @@
+## Análise de Agrupamentos
+
+No início do capítulo sobre aprendizado não supervisionado, foi introduzida a análise de agrupamento como uma técnica que visa dividir um conjunto de dados em grupos, também conhecidos como clusters. O objetivo é que os indivíduos dentro do mesmo grupo tenham características semelhantes entre si e distintas dos indivíduos pertencentes a outros grupos. Consideremos um conjunto de 𝑁 observações de um vetor aleatório com 𝑝 variáveis. Cada observação é representada por um vetor $\boldsymbol{x}_i$ com $p$ coordenadas, onde $i$ varia de 1 a $N$. A matriz de dados $\boldsymbol{X}$ pode ser descrita como:
+
+$$
+ \begin{align}
+  \boldsymbol{X} &= \begin{bmatrix}
+           \boldsymbol x_{1} \\
+           \boldsymbol x_{2} \\
+           \vdots \\
+           \boldsymbol x_{p}
+         \end{bmatrix} = \begin{bmatrix}
+           x_{11} & x_{12} & \cdots & x_{1p}  \\
+          x_{21} & x_{22} & \cdots & x_{2p}  \\
+            \vdots &\vdots & \ddots &\vdots \\
+           x_{N1} & x_{N2} & \cdots & x_{Np}
+         \end{bmatrix}.
+  \end{align}
+$$
+
+Na análise de agrupamento, buscamos identificar regiões no espaço dos dados que possuam um grande número de observações próximas umas das outras. Essas regiões são chamadas de clusters. A ideia é agrupar indivíduos que sejam semelhantes entre si e diferentes dos indivíduos em outros clusters. Essa técnica é chamada de aprendizado não supervisionado, pois não utilizamos uma variável específica como referência para avaliar o resultado do agrupamento.
+
+Formalmente, os clusters são definidos da seguinte forma:
+
+-   Cada cluster é um grupo de observações;
+-   Todos os indivíduos pertencem a pelo menos um cluster;
+-   Dois clusters diferentes não possuem observações em comum.
+Ao realizar o agrupamento de dados, é importante utilizar um método que maximize as diferenças entre os clusters, ao mesmo tempo que minimiza as diferenças dentro de cada cluster. Para isso, são utilizadas medidas de similaridade ou dissimilaridade, que quantificam as diferenças entre as observações.
+
+As medidas de dissimilaridade mais comumente usadas são a distância euclidiana e a distância euclidiana quadrática, como apresentado abaixo respectivamente:
+
+$$
+\begin{split}
+d(\mathbf{x}_i, \mathbf{x}_i') = \sqrt{\sum_{j=1}^{p} (x_{ij} - x_{i'j})^2}\\
+d^2(\mathbf{x}_i, \mathbf{x}_i') = \sum_{j=1}^{p} (x_{ij} - x_{i'j})^2
+\end{split}
+$$
+Outras medidas menos utilizadas incluem a distância absoluta e a distância de Mahalanobis, que leva em consideração a matriz de covariância, respectivamente representadas como:
+
+$$
+\begin{split}
+d_a(\mathbf{x}_i, \mathbf{x}_i') = \sum_{j=1}^{p} |x_{ij} - x_{i'j}|\\
+d_M(\mathbf{x}_i, \mathbf{x}_i') = \sqrt{(\mathbf{x}_i - \mathbf{x}_i')' \mathbf{S}^{-1} (\mathbf{x}_i - \mathbf{x}_i')}
+\end{split}
+$$
+
+Uma maneira comum de representar as dissimilaridades entre os objetos em um conjunto de dados é por meio de uma matriz de dissimilaridade. Essa matriz mostra os valores de dissimilaridade $a(x_i,x_j)$ entre cada par de objetos $x_i$ e $x_j$ com $i,j = 1,2,\dots,N.$
+
+$$
+\begin{align}
+A = 
+\begin{bmatrix}
+          a(x_1,x_1) & a(x_1,x_2) & \cdots &a(x_1,x_N) \\
+         a(x_2,x_1) & a(x_2,x_2) & \cdots & a(x_2,x_N)  \\
+            \vdots &\vdots & \ddots &\vdots \\
+           a(x_N,x_1) & a(x_N,x_2) & \cdots & a(x_N,x_N)
+         \end{bmatrix}.
+  \end{align}
+$$
+
+A análise de agrupamento é uma ferramenta valiosa que oferece uma variedade de utilidades. Uma delas é a capacidade de identificar estratos dentro de uma população em estudo, permitindo que seja realizada uma amostragem que leve em consideração essas subpopulações e, assim, reduzindo o tamanho do conjunto de dados. Além disso, o agrupamento também pode ser usado para detectar dados atípicos, ou outliers, que se comportam de maneira significativamente diferente dos grupos formados.
+
+Existem alguns conceitos importantes que caracterizam os métodos de agrupamento e ajudam a determinar a adequação de cada método. Essas características incluem a escalabilidade, ou seja, a capacidade de lidar eficientemente com grandes conjuntos de dados que podem conter milhões ou até bilhões de observações. Também é relevante considerar a capacidade do método de lidar com diferentes tipos de variáveis, não apenas dados numéricos, mas também dados nominais ou ordinais.
+
+Outro aspecto crucial é a capacidade do método de agrupamento de lidar com clusters de diferentes formatos. Muitos algoritmos de agrupamento são baseados em medidas de distância e, portanto, tendem a encontrar clusters esféricos com tamanho e densidade semelhantes. No entanto, é fundamental avaliar se o método pode identificar grupos com formas mais complexas e não esféricas.
+
+A robustez do método em relação a outliers também é uma consideração importante. Conjuntos de dados reais frequentemente contêm valores discrepantes que podem afetar negativamente a qualidade dos agrupamentos. Portanto, é necessário verificar se o método é capaz de lidar com outliers e não ser excessivamente influenciado por eles.
+
+Além disso, a capacidade de agrupar dados de alta dimensionalidade é um desafio significativo. Com conjuntos de dados contendo muitas variáveis, encontrar clusters relevantes pode se tornar mais difícil. Portanto, é essencial avaliar se o método de agrupamento é eficaz nesse contexto.
+
+Existem diversos métodos de agrupamento descritos na literatura, e pesquisadores continuam a desenvolver técnicas avançadas para superar as limitações dos métodos existentes. É importante ter em mente que diferentes algoritmos podem fornecer resultados diferentes para o mesmo conjunto de dados. Nos próximos capítulos, serão apresentados os métodos de agrupamento considerados neste trabalho, explorando suas vantagens, desvantagens e aplicações adequadas.
+
 ## Métodos de Agrupamentos
 
-A análise de agrupamentos ou *clusterização*, tem como objetivo, agrupar indivíduos da população usando como base medidas de similaridade entre eles, formando grupos heterogêneos entre sí com homogenuidade entre indivíduos de mesmo *cluster*. Muito utilizado na classificação de tipos de clientes de mercado, usuários de aplicativos, ou até mesmo em áres como psicologia, para agrupamentos de perfis de personalidade. Outro exemplo pode ser visto no trabalho (colocar link mariana).
+### Métodos por Particionamento
 
-### Medidas de dissimilaridade
+#### K-médias
 
-De forma mais intutitiva, essas medidas de dissimilaridade seriam formas de numerar o quão próximo ou distânte a característica de um indivíduo (Idade por exemplo), se aproxima da mesma característica de outro indivíduo da mesma população. Não possuimos uma única forma de medida. Aqui apresentaremos as mais conhecidas e mais trabalhadas. Não existe uma métrica melhor, a eficácia de uma medida dependerá do caso em que a mesma será aplicada. Suponha que para cada elemento amostral será obtido o vetor $X = [X_{1},X_{2},\dots,X_{p}]'$ de medidas, onde $X_{i}$ representa a medida da i-ésima característica para a unidade amostral.
+#### K-medóides
 
-**Distância Euclidiana**: Essa é provavelmente a mais conhecida e usada medida de distância. Ela simplesmente é a distância geométrica no espaço multidimensional. Considere o i-ésimo e o j-ésimo indivíduo:
+### Métodos Hierárquicos
 
-$$
-d(X,Y) = \sqrt{\sum^p_{i=1}(X_i - Y_i)^2}
-$$
-
-**Distância de Canberra**: A distância de Camberra examina a soma das séries de diferenças fracionárias entre as coordenadas do par de observações.
-
-$$
-d(X,Y) = \sum^p_{i=1}\frac{|X_i - Y_i|}{|X_i| + |Y_i|}
-$$
-
-**Distância de Manhattan**: A distância de Manhattan ("City Block" ou "Geometria do Táxi") é uma forma de geometria em que a distância entre dois pontos é a soma das diferenças absolutas de suas coordenadas.
-
-$$
-d(X,Y) = \sum^p_{i=1}|X_i- Y_i|
-$$
-
-**Distância de Chebyshev**: Em matemática, distância de Chebyshev (ou distância de Tchebychev), métrica máxima ou $L_{\infty}$ métrica, é uma métrica definida em um espaço vetorial onde a distância entre dois vetores é a maior de suas diferenças ao longo de qualquer característica.
-
-$$
-d(X,Y) = \max_i(|X_i - Y_i|)
-$$
-
-**Distância de Minkowski**: A distância de Minkowski de ordem $k$, sendo $k$ inteiro, pode ser considerada uma generalização tanto da distância euclidiana quanto da distância de manhattan.
-
-$$
-d(X,Y) = \left(\sum^p_{i=1}|X_i - Y_i|^k\right)^\frac{1}{k}
-$$
-
-Todas essas distâncias aqui citadas podem ser acessadas pela função `dist()` do *R*, alterando o parãmetro `method` para a distância desejada, da seguinte forma :
-
-```{r include=FALSE,warning=FALSE}
-dados <- readRDS("dados/dados_covid[LIMPO].rds")
-```
-
-```{r,warning=FALSE}
-db<- dados[1:10,c('sem_pri','idade_anos','dt_evoluca_2','ano','dt_sint')]
-db$ano <- db
-db.dist <- db |> na.omit() |> dist(method = 'euclidean')
-db.dist
-```
-
-Consguindo a distância euclidiana entre cada uma das 10 primeiras observações para as características selecionadas.
-
-### Técnicas Hierárquicas
-
-Dentro da estatística multivariada dividimos frequêntemente as técnicas aglomerativas em dois tipos: hierárquicos e não hierárquicos, sendo as hierárquicas classificadas em aglomerativa e divisivas. Métodos hierárquicos são geralmente utilizados na análise exploratória afim de encontrar um número ótimo de *clusters* para o conjunto de variáveis, para as técnicas não hierárquicas é necessário um valor prévio de grupos.
-
-#### Técnicas Hierárquicas Aglomerativas
-
-Considere cada observação como um grupo único, nos métodos aglomerativos vamos anexando cada grupo um ao outro em cada passo, usando suas medidas de similaridade para esse agrupamentos. Em cada instância do processo o par de grupos com a menor medida de dissimilaridade. Suponha a distância euclidiana por exemplo, em cada passo, verificaremos os $p$ grupos e anexamos o par com a menor distância euclidiana, seguindo para o próximo passo realizamos o mesmo com os $p-1$ grupos, até q sobre apenas 1 grupo com todas as observações. Seguindo o processo por $p-1$ passos.
-
-**Ligamento Simples**: Assumindo que cada observação é um *cluster* incialmente, suponha as observações *X* e *Y* sendo as com menor distância, ou os vizinhos mais próximos, formando o novo cluster {XY}. A distância entre o grupo {XY} e os demais grupos, suponha *W*, é definida como:
-
-$$
-d(\{XY\},W) = \min\{d_{XW},d_{YW}\}
-$$
-
-Considere a matriz de distâncias do exemplo anterior das 5 primeiras observações:
-
-$$
-\begin{bmatrix}
-d_{1,2}=21.63 &  & & \\
-d_{1,3}= 21.63 & d_{2,3}=8.48 & & \\
-d_{1,4}=31.29 & d_{2,4}=24.73 & d_{3,4}=16.32 \\
-d_{1,5}=50.52 & d_{2,5}=28.96 & d_{3,5}=30.88 & d_{4,5}=37.80
-\end{bmatrix}
-$$
-
-Sendo a distância entre a observação 3 e 2 a menor distância dentre todas as observações. Anexaremos as duas observações em um único grupo, assumindo a nova distância desse grupo com as demais observações como sendo o minimo da distância das variaveis do grupo os demais grupos:
-
-$$
-\begin{bmatrix}
-d_{23,1}=21.63 &  & & \\
-d_{23,4}= 16.32 & d_{1,4}=31.29 & & \\
-d_{23,5}=28.96 & d_{1,5}=50.52 & d_{4,5}=37.80 
-\end{bmatrix}
-$$
-
-Dando prosseguimento com o processo, note que agora a menor distância se da entre os grupos {23} e o grupo {4}, logo os dois serão reagrupados em um único *cluster*, seguindo com esse mesmo processo até que reste apenas um grupo.
-
-$$
-\begin{bmatrix}
-d_{234,1}=21.63 \\
-d_{234,5}= 28.96 & d_{4,5} = 37.80
-\end{bmatrix} \rightarrow
-\begin{bmatrix}
-d_{1234,5}=28.96
-\end{bmatrix}
-$$
-
-Os resultados do agrupamento de ligação simples podem ser exibidos graficamente na forma de um dendrograma, ou diagrama de árvore. Os ramos na árvore representam clusters. As ramificações se unem em nós cujas posições ao longo de uma distância (ou similaridade) indicam o nível em que as junções ocorrem. Veja para o exemplo acima considerando agora as 10 observações, passando na função `hclust()` para ligação dos grupos, o parâmetro `method` para tipo de ligação, no caso atual `method = "single"`.
-
-```{r,warning=FALSE}
-hc <-  db.dist |> 
-  hclust( method = "single") 
-library(factoextra)
-
-fviz_dend(hc, cex = 0.5,
-          main = "Dendrogram - Simples",
-          xlab = "observacoes", ylab = "distancia", sub = "")
-```
-
-**Ligação Completa** : Funciona de maneira parecida com a ligação simples, uniremos os grupos com menor distância entre sí até que reste apenas um único grupo. Porém, as distâncias entre as variáveis unidas, digamos *X* e *Y*, das demais variáveis *W* será definida como:
-
-$$
-d(\{XY\},W) = \max\{d_{XW},d_{YW}\}
-$$
-
-Mas o procedimento das demais iterações será da mesma forma, fazendo o *link* entre os grupos de menor distância. Suponha o exemplo anterior:
-
-$$
-\begin{bmatrix}
-d_{1,2}=21.63 &  & & \\
-d_{1,3}= 21.63 & d_{2,3}=8.48 & & \\
-d_{1,4}=31.29 & d_{2,4}=24.73 & d_{3,4}=16.32 \\
-d_{1,5}=50.52 & d_{2,5}=28.96 & d_{3,5}=30.88 & d_{4,5}=37.80
-\end{bmatrix}
-$$
-
-Uniremos as observações 2 e 3 assim como anteriormente, e a cada passo, a nova distância será a distância máxima entre as variáveis do grupo e os demais grupos:
-
-$$
-\begin{split}
-\begin{bmatrix}
-d_{23,1}=21.63 &  & & \\
-d_{23,4}= 24.73 & d_{1,4}=31.29 & & \\
-d_{23,5}=30.88 & d_{1,5}=50.52 & d_{4,5}=37.80 
-\end{bmatrix}\\
-\\
-\rightarrow
-\begin{bmatrix}
-d_{123,4}=31.29 \\
-d_{123,5}= 50.52 & d_{4,5} = 37.80
-\end{bmatrix} \rightarrow
-\begin{bmatrix}
-d_{1234,5}=50.52
-\end{bmatrix}
-\end{split}
-$$
-
-Observe agora o dendrograma para ligação completa com 10 observações.
-
-```{r,warning=FALSE}
-hc <-  db.dist |> 
-  hclust( method = "complete") 
-library(factoextra)
-
-fviz_dend(hc, cex = 0.5,
-          main = "Dendrogram - Completa",
-          xlab = "observacoes", ylab = "distancia", sub = "")
-```
-
-**Ligação Média**: A ligação média trata a distância entre dois clusters como a distância média entre todos os pares de itens onde um membro de um par pertence a cada cluster. Considere o grupo {XY} e o grupo {W}, e $N_w$ como sendo número de elementos em {W}, e $N_{XY}$ número de elementos em {XY}, então:
-
-$$
-d(\{XY\},W) = \frac{\sum^{N_{xy}}_{i=1}\sum_{j=1}^{N_w}d_{ij}}{N_{xy}N_w}
-$$
-
-Onde $d_{ij}$ representa a distância entre a i-ésima observação do grupo {XY} e j-ésima observação do grupo {w}. Seguindo com o exemplo anterior e seu dendrograma obtemos:
-
-$$
-\begin{split}
-\begin{bmatrix}
-d_{1,2}=21.63 &  & & \\
-d_{1,3}= 21.63 & d_{2,3}=8.48 & & \\
-d_{1,4}=31.29 & d_{2,4}=24.73 & d_{3,4}=16.32 \\
-d_{1,5}=50.52 & d_{2,5}=28.96 & d_{3,5}=30.88 & d_{4,5}=37.80
-\end{bmatrix}\\
-\\\rightarrow
-\begin{bmatrix}
-d_{23,1}=21.63 &  & & \\
-d_{23,4}= 20.525 & d_{1,4}=31.29 & & \\
-d_{23,5}=29.92 & d_{1,5}=50.52 & d_{4,5}=37.80 
-\end{bmatrix}
-\\
-\\ \rightarrow
-\begin{bmatrix}
-d_{234,1}=24.85 \\
-d_{234,5}= 32.54 & d_{1,5} = 50.52
-\end{bmatrix} \rightarrow
-\begin{bmatrix}
-d_{1234,5}=37.04
-\end{bmatrix}
-\end{split}
-$$
-
-```{r,warning=FALSE}
-hc <-  db.dist |> 
-  hclust( method = "average") 
-library(factoextra)
-
-fviz_dend(hc, cex = 0.5,
-          main = "Dendrogram - Média",
-          xlab = "observacoes", ylab = "distancia", sub = "")
-```
-
-**Método Ward de clusterização** : O método de ward se baseia na minimização da "perda de informação" ao juntar dois grupos. É tido como perda de informação o crescimento da soma dos quadrados dos erros, $SQE$. Suponha o grupo {W}, a $SQE_W$ pode ser descrita como a soma dos quadrados das distâncias de cada item do grupo para a média do grupo. Definindo $SQE$ como a soma dos $SQE_i$, onde $i$ representa cada um dos $N$ grupos. Em cada instância do processo é realizado a junção de todos os possiveis pares de grupos, optamos pela união que obtiver o menor incremento da $SQE$. Note que no passo 0 essa soma é equivalente a 0, considerando que para cada $SQE_i$, com apenas uma observação por cluster, a média será a própria observação. Enquanto que ao considerar o grupo final com todas as observações é possível obter a $SQE$ por:
-
-$$
-SQE = \sum^N_{j=1}(X_j - \bar{X})'(X_j - \bar{X})
-$$
-
-Onde $X_j$ representa a j-ésima observação do grupo.
-
-```{r,warning=FALSE}
-hc <-  db.dist |> 
-  hclust( method = "ward.D2") 
-library(factoextra)
-
-fviz_dend(hc, cex = 0.5,
-          main = "Dendrogram - Ward",
-          xlab = "observacoes", ylab = "distancia", sub = "")
-
-```
-
-#### Algumas conclusões
-
-Os métodos hierárquicos são muito utilizados na exploração dos dados, bem como para pré definição do número de *clusters*, pois como veremos a seguir nos métodos não hierarquicos temos a necessidade de informar um número prévio de grupos. O dendograma é tido como principal forma de definição desses $k$ grupos. Para definir o número ideal de *clusters* vamos utilizar o exemplo do método Ward. Observe que a distância para união do grupo {5,6} e {2,3,4,8,10} é relativamente grande se comparada as outras junções, uma forma de definir então seria $k = 3$ grupos onde os grupos seriam, {1,7,9},{5,6} e {2,3,4,8,10} olhando o nível de fusão (distância) em que cada grupo precisou para se unir. Podemos então já utilizar $k$ aproximado de 3 para iniciarmos nossos métodos não hieráquicos como veremos a seguir.
-
-### Métodos de Agrupamentos Não Hierárquicos
-
-Dentro desse conjunto de métodos iremos trabalhar com o mais usual e conhecido, *k-médias*. Bem como dito, os métodos não hierárquicos precisam de um número pré definido de grupos $k$, anexando cada observação a um grupo com base em $k$ centróides que serão definidos pelo algoritmo.
-
-#### K-Médias.
-
-K-médias é um método simples de particionamento, onde é necessário estabelecer um número $k$ de grupos previamente a separação das variáveis. Definindo um número inicial de centróides, podendo esses ser observações do próprio conjunto de dados ou coordenadas aleatórias, é realizada a divisão do conjunto de dados, sendo cada observação anexada ao centro de menor distância, ou mais próximo. Com base nesse novo grupo criado, é determinado o nomo ponto central, que passa a ser a média do grupo. Baseado nesses novos pontos realizamos os passos anteriores por um número $N$ de vezes até que não se tenha mais alteração na posição dos centróides. O resultado do processo são grupos heterogêneos entre sí com variáveis homogêneas entre sí, tendo a menor variância interna possível e a maior variação externa possível. O núemero de iterações do processo pode também ser pré estabelecido, considerando o custo computacional para bancos de dados grandes, é inviável a realização do processo até a falta de alteração dos clusters.
-
-Exemplo:
-
-Suponha os seguintes dados para 20 variáveis, e suponha que vamos fazer inicialmente para $k=3$ grupos.
-
-```{r,echo=FALSE,warning=FALSE}
-df <- dados[1:40, c('idade_anos','sem_pri')]
-df.kmeans <- df |> kmeans(centers = 3,iter.max = 1)
-df |> knitr::kable(row.names = T)
-```
-
-Suponha que os clusters são tidos inicialmente nas cordenadas:
-
-```{r,echo =FALSE}
-df.kmeans$centers |> round() |> knitr::kable(row.names = T)
-```
-
-Agregando cada variável a um cluster obtemos então.
-
-```{r echo=FALSE}
-df_aux <- df.kmeans |> broom::augment(df) |> as.data.frame()
-colnames(df_aux)[3] <- "Centróide"
-df_aux |> knitr::kable(row.names = T)
-```
-
-Com base nesses novos grupos definimos então o novo centróide como sendo a média das variáveis de cada grupo, ou seja:
-
-```{r,echo=FALSE}
-idade_anos <-aggregate(df_aux$idade_anos, list(df_aux$Centróide), FUN=mean)
-sem_pri<-aggregate(df_aux$sem_pri, list(df_aux$Centróide), FUN=mean)
-idade_anos$sem_pri <- sem_pri$x
-colnames(idade_anos) <- c('centroide','idade_anos','sem_pri')
-idade_anos |> knitr::kable()
-```
-
-Agregando cada variável a seu novo grupo e seguindo o processo até o número de iterações pré definidas ou até que não tenha mais alterações nas coordenadas dos centros de cada *cluster*.
-
-No `R` base já está incluso uma função para o método *k-médias*, `kmeans()`, que pode ser implementado de maneira simples. considere o banco já discutido
-
-```{r}
-kmeans.df <- df |>
-  kmeans(centers = 3, iter.max = 300)
-kmeans.df
-```
-
-De forma simples podemos identificar os centros e em qual cada uma das variáveis foi atribuida após as $N$ iterações. Identificamos também a variância entre *clusters*, bem como a variância total e entre as variáveis de cada grupo. Essa variância se torna importânte na identificação do valor $k$ estabelecido.
-
-```{r}
-dados_grupos <- kmeans.df |> broom::augment(df)
-cent <- kmeans.df$centers
-
-dados_grupos |> 
-  ggplot(aes(x = idade_anos, y = sem_pri,col = .cluster)) +
-  geom_point() +
-  geom_point(aes(x = cent[1,1], y = cent[1,2]), color = "black", size = 3)+
-  geom_point(aes(x = cent[2,1], y = cent[2,2]), color = "black", size = 3)+
-  geom_point(aes(x = cent[3,1], y = cent[3,2]), color = "black", size = 3)
-```
-
-```{r}
-kmeans.df
-```
-
-#### Número Ideal de Grupos
-
-Uma das formas já discutidas aqui sobre seleção do número ideal de $k$ grupos é a pré utilização de um método hierárquico e análise de seu dendrograma. Porém, retomando os assuntos apresentados quando foi discutido *PCA*, podemos utilizar o *scree plot* da variação total como metodologia de definição do número ideal de clusters para o algorítmo. A utilização é realizada da mesma maneira, é feita a identificação do número $k$ que sofra grande decréscimo da soma da variação dentro dos *clusters* para um número $k-1$ e um pequeno em comparação com $k+1$. A variação total é dada como:
-
-$$
-\sum^k_{i=1}\sum_{j\in C_i}d^2(x_j,c_i)
-$$ Sendo $C_i$ centro do i-ésimo grupo e $x_j$ a j-ésima variável do i-ésimo grupo. A função de distância mais usual é a euclidiana discutida anteriormente.
-
-```{r}
-var_totais <- vector()
-for(i in 1:10){
-  var_totais[i] <- (df |> kmeans(centers = i, iter.max = 400))$tot.withinss
-}
-
-qplot(1:10, var_totais, geom = "line")
-qplot(c(1:10), var_totais) + 
-  geom_line() + 
-  xlab("Número de clusters") + 
-  ylab("Soma das variâncias dentro dos grupos") +
-  ggtitle("Scree Plot") +
-  scale_x_discrete(limits=c(1:10))
-```
-
-Podemos definir a partir disso possíveis números ideais como 3, 4 ou até mesmo 6.
-
-#### Algumas conclusões
-
-Para definirmos um modelo como sendo ótimo para aplicação, é necessário defir alguns parâmetros para determinar a qualidade de um modelo ou método. O *k-médias* por exemplo é um algoritmo muito sucetível a *outliers*, dados fora do padrão encontrado no banco de dados, que podem acabar por deixar de agrupar uma determinada variável ou simplesmente formar um grupo amais, sem que haja necessidade. Outro fator que é necessário manter a atenção é a determinação do formato do cluster. Muitos dos algoritmos consideram um formato esférico ou circular para as variáveis, veja o exemplo:
-
-```{r}
-dados_circulo <- data.frame(
- X = runif(5000, -1, 1),
-  Y = runif(5000, -1, 1)
-) |>
-  dplyr::filter(X^2 + Y^2 <= 0.2 | (X^2 + Y^2 <= 0.8 & X^2 + Y^2 >= 0.6))
-
-qplot(dados_circulo$X, dados_circulo$Y)
-```
-
-É notável como o agrupamento deve ser realizando simplesmente olhando para o gráfico proposto, porém, algoritmos como *k-médias* não pensam da mesma forma,
-
-```{r}
-dados_circulo.km <- dados_circulo |> kmeans(centers = 2)
-dados_circulo <- dados_circulo.km |> broom::augment(dados_circulo)
-cent <- dados_circulo.km$centers
-
-dados_circulo |> 
-  ggplot(aes(x = X, y = Y,col = .cluster)) +
-  geom_point() +
-  geom_point(aes(x = cent[1,1], y = cent[1,2]), color = "black", size = 3)+
-  geom_point(aes(x = cent[2,1], y = cent[2,2]), color = "black", size = 3)
-```
-
-```{r}
-kmeans.df
-```
-
-É perceptível que o método por particionamento em médias não foi eficaz para o banco de dados em questão. Ao utilizar a função `hcut()` para particionamento utilizando um método hierárquico obtemos uma melhor resposta para o agrupamento das variáveis
-
-```{r}
-dados_circulo.h <- hcut(dados_circulo[,1:2], k = 2, hc_method = "single")
-d_circulo.h <- cbind(dados_circulo[,1:2],cluster=dados_circulo.h$cluster)
-
-d_circulo.h |> 
-  ggplot(aes(x = X, y = Y,col = cluster)) +
-  geom_point()
-```
-
-Os métodos hierárquicos apresentados no entanto, por utilizarem da distância de uma variável a outra são limitados a utilização de banco de dados numéricos, o que nem sempre é o encontrado nos problemas reais, é necessário optar nesse caso por métodos e algoritmos que consigam fazer a distinção mesmo na presença de variáveis categóricas. Fator relevante para a escolha do melhor algoritmo é a capacidade de lidar com um grande volume de dados. No *k-médias* temos a opção por exemplo de pré definirmos o número de iterações. Considere um grupo com milhões de variáveis, ao utilizar um método de ligação simples hierárquico faremos aproximadamente um milhão de ligações para depois identificar o número ideal de grupos, caso esse não seja conhecido (Caso mais comum). O ideal então é a análise exploratória de seus dados para com base nos conhecimentos sobre os diferentes tipos de métodos, saber qual será o de melhor aplicação para o determinado problema. Nada o impede de aplicar mais de um método e após sua aplicação identificar qual foi o modelo ótimo para o problema.
+## Métodos de Validação

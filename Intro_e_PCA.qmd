@@ -1,14 +1,20 @@
-# Aprendizado não supervisionado
+# Aprendizado Não Supervisionado
 
-Aprendizado não supervisionado é um ramo da aprendizagem de máquina ou aprendizado estatístico que trabalha principalmente com o agrupamento de variáveis, com ou sem o conhecimento prévio de como essas variáveis são subdivididas na natureza. Também é possível criar uma subdivisão com base nas características em estudo, como fatores socioeconômicos. Neste texto, explicaremos de forma clara e aplicável a análise de componentes principais e os métodos de agrupamento, tanto hierárquicos quanto não hierárquicos, com suas respectivas funções na linguagem de programação proposta.
+O aprendizado de máquina pode ser dividido em duas categorias principais: aprendizado supervisionado e aprendizado não supervisionado. O aprendizado supervisionado é uma abordagem que utiliza um conjunto de dados rotulados para treinar um modelo de aprendizado de máquina. Por outro lado, o aprendizado não supervisionado não utiliza rótulos, mas em vez disso, tenta encontrar padrões e estruturas no conjunto de dados sem qualquer orientação externa.
 
-A principal aplicação dos métodos não supervisionados está na necessidade de tentar explicar um possível comportamento da população no que se refere à segregação dos indivíduos. Por exemplo, suponha que seja possível obter uma amostra que identifica características como a quantidade de exercício físico por semana, tipo de alimentação e nutrientes no corpo. Podemos usar técnicas que agrupem esses indivíduos nos grupos "Muito saudável", "Saudável" e "Pouco saudável", com base em medidas de diferenciação entre cada observação. Isso permite agrupar aqueles que forem mais "parecidos" entre si.
+Em geral, o aprendizado não supervisionado é usado quando não há classificação sobre os dados disponível ou quando os dados rotulados são muito escassos. Ele pode ser usado para várias tarefas, incluindo clustering (agrupamento) e redução de dimensionalidade.
 
-Não apenas na identificação de clusters, outra área de importante aplicação é a análise de componentes principais ou PCA. O principal objetivo da Análise de Componentes Principais (PCA) é reduzir a dimensão dos dados e identificar relações ocultas entre variáveis altamente correlacionadas. Isso é feito transformando um conjunto de variáveis em um conjunto menor denominado componentes principais, que representam a maior variação nos dados originais.
+### Clustering
 
-Por exemplo, suponha que estamos trabalhando com dados das características de saúde citadas. Essas variáveis podem estar altamente correlacionadas, o que significa que elas medem coisas semelhantes. Ao aplicar a análise de componentes principais, podemos identificar as principais relações ocultas entre essas variáveis e reduzir o número de variáveis necessárias para explicar a variação nos dados. Isso nos permite simplificar o modelo e, potencialmente, obter uma melhor compreensão das relações entre a alimentação, exercícios e saúde do corpo. Essa abordagem é muito utilizado quando há necessidade de trabalhar com uma grande quantidade de variáveis. Além disso, no caso de regressão, por exemplo, pode ser uma forma de lidar com o problema de multicolinearidade.
+O clustering é uma técnica de aprendizado não supervisionado em que os dados são agrupados com base em sua similaridade. Em outras palavras, os dados que são mais semelhantes são postos em uma mesma classificação, enquanto os dados que são diferentes são agrupados em classificações diferentes.
 
-De qualquer forma, o termo não supervisionado é usado pois não possuímos um conhecimento prévio do comportamento ou rotulagem dos dados, deixamos a cargo do algoritmo a identificação de algum possível padrão, sem a "supervisão" do pesquisador.
+Existem vários algoritmos de clustering disponíveis, incluindo o algoritmo k-means, o clustering hierárquico e o DBSCAN. O algoritmo k-means é um dos algoritmos de clustering mais populares por conta da sua fácil compreensão e aplicação, além de sua eficiência.
+
+### Redução de dimensionalidade
+
+A redução de dimensionalidade é uma técnica de aprendizado não supervisionado usada para reduzir o número de variáveis em um conjunto de dados. Ou seja, reduz a dimensionalidade do espaço de características dos dados, enquanto tenta preservar a maior parte da informação original. A redução de dimensionalidade pode ser usada para simplificar o modelo e, portanto, torná-lo mais fácil de interpretar ou para acelerar o treinamento do modelo.
+
+Existem vários algoritmos de redução de dimensionalidade disponíveis, incluindo a Análise de Componentes Principais (PCA), a Análise Fatorial e a T-SNE. O PCA é um dos algoritmos de redução de dimensionalidade mais populares e será o aqui trabalhado.
 
 ## Alguns conceitos básicos de algebra
 
@@ -16,32 +22,36 @@ Para introduzir o campo do aprendizado não supervisionado, é importante entend
 
 ### Definições importantes
 
-**Vetor Aleatório** : Um vetor aleatório $\underline{X}$ é um vetor contendo $p$ componentes, onde cada componente é uma variável aleatória $X_i$, para $i = 1, 2, ..., p$.
+#### Vetor Aleatório
+
+Um vetor aleatório $\boldsymbol{X}$ é um vetor contendo $p$ componentes, onde cada componente é uma variável aleatória $X_i$, para $i = 1, 2, ..., p$.
 
 $$
  \begin{align}
-  \underline{X} &= \begin{bmatrix}
+  \boldsymbol{X} &= \begin{bmatrix}
            X_{1} \\
            X_{2} \\
            \vdots \\
            X_{p}
          \end{bmatrix}
-  \end{align}.
+  \end{align}
 $$
 
-Suponha que o objeto em estudo é saúde sanguínea, o vetor de variáveis em estudo, poderia vir a ser número de vitaminas do tipo A, B e D no sangue, ou seja, um vetor com três componentes. O vetor transposto do vetor aleatório $\underline{X}$ é denotadopor $\underline{X}' = [X_1 X_2 X_3 ...X_p]$. Um vetor $\underline{X}$, pode ser interpretado geométricamente como uma linha no plano $p$ dimensional, onde cada abscissa é representada por uma das componentes do vetor, supondo então um vetor $\underline{X}' = [X_1,X_2,X_3]$ seria uma reta no plano tridimensional de coordenadas $X_1, X_2$ e $X_3$.
+Suponha que o objeto em estudo é saúde sanguínea, o vetor de variáveis em estudo poderia vir a ser o número de vitaminas do tipo A, B e D no sangue, ou seja, um vetor com três componentes. O vetor transposto do vetor aleatório $\boldsymbol{X}$ é denotado por $\boldsymbol{X}' = [X_1 X_2 X_3 ...X_p]$.
 
-**Vetor de Médias** : O vetor $\underline{\mu}$ é chamado vetor de médias quando $E(\underline{X}) = \underline{\mu}$ onde $\underline{X}$ é um vetor aleatório. Dessa forma
+#### Vetor de Médias
+
+O vetor $\boldsymbol{\mu}$ é chamado vetor de médias quando $E(\boldsymbol{X}) = \boldsymbol{\mu}$, onde $\boldsymbol{X}$ é um vetor aleatório. Dessa forma,
 
 $$
 \begin{align}
-  E(\underline{X}) &= \begin{bmatrix}
+  E(\boldsymbol{X}) &= \begin{bmatrix}
            E(X_{1}) \\
            E(X_{2}) \\
            \vdots \\
            E(X_{p})
          \end{bmatrix}
-  \end{align} = \underline{\mu} = \begin{bmatrix}
+  \end{align} = \boldsymbol{\mu} = \begin{bmatrix}
            \mu_1 \\
            \mu_2 \\
            \vdots \\
@@ -49,23 +59,27 @@ $$
          \end{bmatrix}.
 $$
 
-Ou seja, sendo cada componente $X_i$ do vetor, uma variável aleatória, $\mu_i$ representa a respectiva esperança dessa variável.
+Ou seja, sendo cada componente $X_i$ do vetor uma variável aleatória, $\mu_i$ representa a respectiva esperança dessa variável.
 
-**Matriz de covariâncias** : A matriz de variâncias e covariâncias do vetor $\underline{X}$ é denotada por,
+#### Matriz de Covariâncias
+
+A matriz de variâncias e covariâncias do vetor $\boldsymbol{X}$ é denotada por
 
 $$
-Cov(\underline{X}) = V(\underline{X}) = Var(\underline{X}) = 
-\boldsymbol\Sigma_{p\times p} = \begin{bmatrix}
-           \sigma_{11} & \sigma_{12} & ... & \sigma_{1p}  \\
-          \sigma_{21} & \sigma_{22} & ... & \sigma_{2p}  \\
+Cov(\boldsymbol{X}) = V(\boldsymbol{X}) = Var(\boldsymbol{X}) = 
+\boldsymbol{\Sigma}_{p\times p} = \begin{bmatrix}
+           \sigma_{11} & \sigma_{12} & \cdots & \sigma_{1p}  \\
+          \sigma_{21} & \sigma_{22} & \cdots & \sigma_{2p}  \\
             \vdots &\vdots & \ddots &\vdots \\
-           \sigma_{p1} & \sigma_{p2} & ... & \sigma_{pp}
+           \sigma_{p1} & \sigma_{p2} & \cdots & \sigma_{pp}
          \end{bmatrix}.
 $$
 
 Onde $\sigma_{ii}$ representa a variância do elemento $X_i$ do vetor aleatório e $\sigma_{ij} = E[(X_i- \mu_i)(X_j - \mu_j)]$ a covariância entre as componentes $X_i$ e $X_j$, $\forall\quad i,j = 1,\dots,p$. A matriz de covariância é uma matriz simétrica, sua transposta é igual a ela mesma, ou seja $\boldsymbol\Sigma = \boldsymbol\Sigma'$. Sendo tambem não negativa definida, $a'\boldsymbol\Sigma a \geq 0$ para todo vetor de constantes pertencentes aos reais. A matriz de covariância pode ser facilmente calcula utilizando a função `cov()` da linguagem **R**.
 
-**Matriz de correlação** : A matriz de correlação do vetor $\underline{X}$ é denotada por,
+#### Matriz de correlação 
+
+A matriz de correlação do vetor $\boldsymbol{X}$ é denotada por,
 
 $$
 \boldsymbol{P}_{p\times p} = \begin{bmatrix}
@@ -82,39 +96,43 @@ Em que,
 
 $$
 \rho_{ij} = \frac{\sigma_{ij}}{\sqrt{\sigma_{ii}\sigma_{jj}}} = \frac{\sigma_{ij}}{\sigma_i\sigma_j}.
-$$ 
-
-Sendo assim, $\rho_{ij}$ a correlação entre a i-ésima e a j-ésima componente do vetor aleatório $\underline{X}$, $\forall i,j = 1,\dots, p$, em que, se $j = i$ a correlação assume o valor máximo de 1. De forma análoga à matriz de covariância, pode-se utilizar a função `cor()`, para obter a matriz de correlação $\boldsymbol{P}$ do vetor aleatório $\underline{X}$.
-
- Um dos conceitos fundamentais da álgebra linear, bem como da estatística multivariada é o de autovalores e autovetores de uma matriz. A decomposição espectral de uma matriz é a representação de uma matriz simétrica em termos de seus autovetores e autovalores. Os autovetores são vetores especiais que não mudam de direção quando multiplicados pela matriz original, mas apenas são escalados por um fator conhecido, como autovalor correspondente.
-
-**Auto Valores e Auto Vetores** : Em estatística multivariada, trabalhamos habitualmente com matrizes quadradas de covariância e correlação, ou seja, matrizes em que o número de colunas e linhas é o mesmo. Nesse contexto, um vetor não nulo $\underline{e}$ é denominado autovetor de uma matriz quadrada $\boldsymbol\Sigma_{p\times p}$ se $\boldsymbol\Sigma \underline{e}$ for um múltiplo escalar de $\underline{e}$, isto é,
-
-$$
-\boldsymbol\Sigma \underline{e} = \lambda \underline{e},
 $$
 
-com algum escalar $\lambda$. O escalar $\lambda$ é denominado de autovalor de $\boldsymbol\Sigma$, e dizemos que $\underline{e}$ é um autovetor associado a $\lambda$. Os autovetores são usados para reduzir a dimensionalidade de um conjunto de dados e extrair informações importantes sobre as relações entre as variáveis.
+Sendo assim, $\rho_{ij}$ a correlação entre a i-ésima e a j-ésima componente do vetor aleatório $\boldsymbol{X}$, $\forall i,j = 1,\dots, p$, em que, se $j = i$ a correlação assume o valor máximo de 1. De forma análoga à matriz de covariância, pode-se utilizar a função `cor()`, para obter a matriz de correlação $\boldsymbol{P}$ do vetor aleatório $\boldsymbol{X}$.
+
+Um dos conceitos fundamentais da álgebra linear, bem como da estatística multivariada é o de autovalores e autovetores de uma matriz. A decomposição espectral de uma matriz é a representação de uma matriz simétrica em termos de seus autovetores e autovalores. Os autovetores são vetores especiais que não mudam de direção quando multiplicados pela matriz original, mas apenas são escalados por um fator conhecido, como autovalor correspondente.
+
+#### Auto Valores e Auto Vetores
+
+Em estatística multivariada, trabalhamos habitualmente com matrizes quadradas de covariância e correlação, ou seja, matrizes em que o número de colunas e linhas é o mesmo. Nesse contexto, um vetor não nulo $\boldsymbol{e}$ é denominado autovetor de uma matriz quadrada $\boldsymbol\Sigma_{p\times p}$ se $\boldsymbol\Sigma \boldsymbol{e}$ for um múltiplo escalar de $\boldsymbol{e}$, isto é,
+
+$$
+\boldsymbol\Sigma \boldsymbol{e} = \lambda \boldsymbol{e},
+$$
+
+com algum escalar $\lambda$. O escalar $\lambda$ é denominado de autovalor de $\boldsymbol\Sigma$, e dizemos que $\boldsymbol{e}$ é um autovetor associado a $\lambda$. Os autovetores são usados para reduzir a dimensionalidade de um conjunto de dados e extrair informações importantes sobre as relações entre as variáveis.
 
 Note que é possível descrever a equação acima da seguinte forma:
 
 $$
 \begin{split}
-\boldsymbol\Sigma \underline{e} = \lambda \underline{e}\\
-\lambda\underline{e}-\boldsymbol\Sigma\underline{e}  = 0 \\
-(\lambda \boldsymbol I - \boldsymbol\Sigma)\underline{e} = 0.
+\boldsymbol\Sigma \boldsymbol{e} = \lambda \boldsymbol{e}\\
+\lambda\boldsymbol{e}-\boldsymbol\Sigma\boldsymbol{e}  = 0 \\
+(\lambda \boldsymbol I - \boldsymbol\Sigma)\boldsymbol{e} = 0.
 \end{split}
 $$
 
 em que $\boldsymbol I$ é a matriz identidade de mesma dimensão que $\boldsymbol\Sigma$.
 
-Uma importante relação entre autovalores e autovetores é dada pela equação característica de $\boldsymbol\Sigma$, que é obtida resolvendo a equação $(\lambda \boldsymbol I - \boldsymbol\Sigma)\underline{e} = 0$ para $\lambda$. Para que a equação tenha solução não trivial, ou seja, que o vetor $\underline{e}$ não seja o vetor nulo, é necessário que o determinante da matriz $(\lambda \boldsymbol I - \boldsymbol\Sigma)$ seja igual a zero. Essa equação polinomial é definida como equação característica de $\boldsymbol\Sigma$. Os autovalores podem ser encontrados resolvendo a equação para $\lambda$. Uma definição mais formal seria:
+Uma importante relação entre autovalores e autovetores é dada pela equação característica de $\boldsymbol\Sigma$, que é obtida resolvendo a equação $(\lambda \boldsymbol I - \boldsymbol\Sigma)\boldsymbol{e} = 0$ para $\lambda$. Para que a equação tenha solução não trivial, ou seja, que o vetor $\boldsymbol{e}$ não seja o vetor nulo, é necessário que o determinante da matriz $(\lambda \boldsymbol I - \boldsymbol\Sigma)$ seja igual a zero. Essa equação polinomial é definida como equação característica de $\boldsymbol\Sigma$. Os autovalores podem ser encontrados resolvendo a equação para $\lambda$. Uma definição mais formal seria:
 
-**Equação característica**: A equação característica de uma matriz quadrada $\boldsymbol{\Sigma}$ de ordem $p$ é definida como a equação polinomial de grau $p$ dada por:
+#### Equação característica
+
+A equação característica de uma matriz quadrada $\boldsymbol{\Sigma}$ de ordem $p$ é definida como a equação polinomial de grau $p$ dada por: 
+
 $$
 det(\lambda \boldsymbol I - \boldsymbol\Sigma) = 0.
 $$
-
 
 onde os valores de $\lambda$ que satisfazem a equação são determinados como os autovalores de $\boldsymbol\Sigma$ e *det* representa o determinante da matriz resultante da equação. Para esclarecimento, suponha como exemplo que,
 
@@ -149,7 +167,7 @@ det\left(\begin{bmatrix}
 \end{split}
 $$
 
-Resolvendo a equação obtemos os valores de $\lambda_1 = 9$ e $lambda_2 = 4$, podemos encontrar os autovetores $\underline{e}_i$ associados seguindo a definição. Para $\lambda_1$ temos:
+Resolvendo a equação obtemos os valores de $\lambda_1 = 9$ e $lambda_2 = 4$, podemos encontrar os autovetores $\boldsymbol{e}_i$ associados seguindo a definição. Para $\lambda_1$ temos:
 
 $$
 \begin{bmatrix}
@@ -177,9 +195,9 @@ e_{12}
 0
 \end{bmatrix}
 \rightarrow e_{11} = - 2e_{12}.
-$$ 
+$$
 
-Da mesma forma para $\lambda_2$: 
+Da mesma forma para $\lambda_2$:
 
 $$
 \begin{bmatrix}
@@ -207,14 +225,15 @@ e_{22}
 0
 \end{bmatrix}
 \rightarrow 2e_{21} = e_{22}.
+$$
+
+Após encontrar os autovalores de uma matriz $\boldsymbol{\Sigma}$, é importante observar que para cada autovalor há infinitos autovetores possíveis. Para evitar essa ambiguidade, é comum restringir os autovetores a um conjunto de vetores normalizados. Um vetor $\boldsymbol{e}_i$ é normalizado quando a sua norma euclidiana é igual a 1, isto é, quando:
+
+$$
+||\boldsymbol{e}_i|| = \sqrt{e^2_{i1} + e^2_{i2} + \dots + e^2_{ip}} = 1.
 $$ 
 
-Após encontrar os autovalores de uma matriz $\boldsymbol{\Sigma}$, é importante observar que para cada autovalor há infinitos autovetores possíveis. Para evitar essa ambiguidade, é comum restringir os autovetores a um conjunto de vetores normalizados. Um vetor $\underline{e}_i$ é normalizado quando a sua norma euclidiana é igual a 1, isto é, quando:
-
-$$
-||\underline{e}_i|| = \sqrt{e^2_{i1} + e^2_{i2} + \dots + e^2_{ip}} = 1.
-$$
-Dessa forma, garantimos que os autovetores estão no mesmo espaço de dimensão $p$ que as variáveis originais. Para o exemplo então, temos: 
+Dessa forma, garantimos que os autovetores estão no mesmo espaço de dimensão $p$ que as variáveis originais. Para o exemplo então, temos:
 
 $$
 \begin{split}
@@ -225,27 +244,25 @@ e_{11} =- 2e_{12}\\
 e_{12} = \frac{1}{\sqrt{5}}  \approx 0.45\\
 e_{11} \approx - 0.90
 \end{split}
-$$ 
+$$
 
-O mesmo se segue para $\lambda_2$, onde obtemos o vetor $\underline{e}_2' = [-0.45,-0.90]$, assim então os vetores normalizados: 
+O mesmo se segue para $\lambda_2$, onde obtemos o vetor $\boldsymbol{e}_2' = [-0.45,-0.90]$, assim então os vetores normalizados:
 
 $$
-\underline{e}_1 = \begin{bmatrix}
+\boldsymbol{e}_1 = \begin{bmatrix}
  -0.90\\
  0.45
-\end{bmatrix};\qquad\underline{e}_2 = \begin{bmatrix}
+\end{bmatrix};\qquad\boldsymbol{e}_2 = \begin{bmatrix}
 -0.45\\
 -0.90
 \end{bmatrix}.
-$$ 
+$$
 
 Para entender melhor a relação entre matriz de covariância/correlação e seus autovetores e autovalores normalizados, utilizamos o conceito de decomposição espectral. Através desse teorema, podemos decompor a matriz em questão em seus autovetores e autovalores normalizados, o que nos permite obter informações valiosas sobre as relações entre as variáveis originais.
 
 ### Decomposição Espectral de Matrizes de correlação e Covariância em seus Autovetores e Autovalores normalizados.
 
-
 Para uma matriz quadrada simétrica $\boldsymbol\Sigma$ de ordem $p$, é possível encontrar uma matriz $\boldsymbol{O}$ cujas colunas consistem nos autovetores normalizados de $\boldsymbol\Sigma$, e uma matriz diagonal $\boldsymbol \Lambda$ cujos elementos diagonais são os autovalores correspondentes, de tal forma que $\boldsymbol\Sigma$ pode ser escrito como $\boldsymbol\Sigma = \boldsymbol O \boldsymbol \Lambda \boldsymbol O'$. Da mesma forma, podemos dizer que:
-
 
 $$
 \boldsymbol O'\boldsymbol\Sigma \boldsymbol O = \begin{bmatrix}
@@ -257,22 +274,19 @@ $$
 \end{bmatrix} = \boldsymbol\Lambda
 $$
 
-
 Onde $\lambda_1 \geq \lambda_2 \geq \dots \lambda_p\geq0$ são os autovalores da matriz $\boldsymbol\Sigma$. Nesse caso, dizemos que a matriz $\boldsymbol \Sigma$ é similar à matriz $\boldsymbol\Lambda$, que implica em:
 
 -   $det(\boldsymbol\Sigma) = det(\boldsymbol\Lambda) = \prod^p_{i=1} \lambda_i$;
 
 -   traço$(\boldsymbol\Sigma) =$ traço$(\boldsymbol\Lambda) = \lambda_1 +\dots+\lambda_p$.
 
-Tem-se que a i-ésima coluna da matriz $\boldsymbol O$ é o autovetor normalizado $\underline{e}_i$ relacionado ao autovalor $\lambda_i$. Então a matriz $\boldsymbol O$ é dada por $O = [\underline{e}_1,\underline{e}_2,\dots,\underline{e}_p]$. De forma simples, podemos ver que:
+Tem-se que a i-ésima coluna da matriz $\boldsymbol O$ é o autovetor normalizado $\boldsymbol{e}_i$ relacionado ao autovalor $\lambda_i$. Então a matriz $\boldsymbol O$ é dada por $O = [\boldsymbol{e}_1,\boldsymbol{e}_2,\dots,\boldsymbol{e}_p]$. De forma simples, podemos ver que:
 
 $$
-\Sigma = \boldsymbol{O \Lambda O'}= \sum_{i=1}^p \lambda_i \underline{e}_i \underline{e}_i'
-$$ 
+\Sigma = \boldsymbol{O \Lambda O'}= \sum_{i=1}^p \lambda_i \boldsymbol{e}_i \boldsymbol{e}_i'
+$$
 
 Os autovetores normalizados em $\mathbf{O}$ são ortogonais entre si e formam uma base para o espaço de dimensão $p$ em que a matriz $\mathbf{\Sigma}$ atua. Cada autovetor representa uma direção no espaço em que a variabilidade dos dados é máxima. Os autovalores em $\mathbf{\Lambda}$ representam a variância explicada por cada direção (ou autovetor) correspondente. Os autovalores são ordenados em ordem decrescente, de forma que o primeiro autovalor corresponde à direção de maior variabilidade e assim por diante. Observe na figura abaixo, onde é representado um conjunto de dados gerados aleatoriamente de 3 componentes ($X_1,X_2,X_3$), e o comportamento de cada um dos autovetores para cada uma das dimensões.
-
-
 
 ```{r echo=FALSE, message=FALSE}
 library(plotly)
@@ -342,8 +356,6 @@ data <- mvtnorm::rmvnorm(n = 1000, mean = c(0,0,0), sigma = matrix(c(1, 0.5, 0.2
 visualize_eigen(data)
 ```
 
-
-
 Os autovetores são representados por setas que partem do centro de massa dos dados e indicam a direção e a magnitude da variação dos dados nessa direção. A magnitude da variação é dada pelo valor do autovalor correspondente a cada autovetor, que indica a importância daquele eixo.
 
 Dentro do **R** é possível realizar a decomposição espectral usando a função `eigen()`, da seguinte forma:
@@ -359,40 +371,37 @@ Nos devolvendo os autovalores e autovetores normalizados para a matriz inserida 
 # Análise de Componentes Principais (PCA).
 
 ## Introdução a PCA e seus objetivos.
+A Análise de Componentes Principais (PCA) é uma técnica que busca resumir a variação presente em um conjunto de dados multivariados através de combinações lineares de suas variáveis originais, que são correlacionadas. O objetivo principal é reduzir a dimensionalidade dos dados, representando um grande número de variáveis originais em um número menor de componentes principais. Essas novas variáveis são ordenadas em ordem decrescente de importância, de modo que a primeira componente principal capture a maior quantidade possível da variabilidade total dos dados, e as subsequentes capturem cada vez menos.
 
-PCA, ou Análise de Componentes Principais, é uma técnica de análise de dados multivariados que busca resumir a variação presente em um conjunto de dados através de combinações lineares de suas variáveis originais, sendo essas variáveis correlacionadas. O objetivo principal do PCA é reduzir a dimensionalidade dos dados, ou seja, representar um grande número de variáveis originais em um número menor de variáveis, chamadas de componentes principais. Essas novas variáveis são ordenadas em ordem decrescente de importância, de modo que a primeira componente principal capture a maior quantidade possível da variabilidade total dos dados, e as subsequentes capturem cada vez menos.
+A primeira componente principal é calculada de forma a maximizar a variância explicada pelos dados, ou seja, ela é a direção ao longo da qual os dados apresentam a maior variação possível. As demais componentes são ortogonais à primeira e são combinações lineares das variáveis originais, indicando a importância relativa de cada variável naquele componente. Note então, que por essa definição já podemos perceber a relação com os autovetores e autovetores associados.
 
-A componente principal é a primeira combinação linear das variáveis originais encontrada pelo PCA. Ela é calculada de forma a maximizar a variância explicada pelos dados, ou seja, ela é a direção ao longo da qual os dados apresentam a maior variação possível. A segunda componente principal é então encontrada de forma a ser ortogonal à primeira, e assim por diante para as demais componentes. Cada componente é uma combinação linear das variáveis originais, e suas cargas fatoriais, ou seja, os pesos das variáveis na combinação linear, indicam a importância relativa de cada variável naquele componente.
+O PCA tem diversas aplicações em áreas como estatística, engenharia e ciência de dados, sendo usado para resumir grandes conjuntos de dados, detectar padrões e estruturas latentes, identificar outliers e reduzir o ruído presente nos dados. Além disso, ele é comumente utilizado como uma técnica de pré-processamento de dados para outras técnicas de análise, como regressão e clustering.
 
-O PCA tem diversas aplicações em áreas como estatística, engenharia, ciência de dados, entre outras. Ele é utilizado para resumir grandes conjuntos de dados, detectar padrões e estruturas latentes nos dados, identificar outliers e reduzir o ruído presente nos dados. Além disso, ele é comumente utilizado como uma técnica de pré-processamento de dados para outras técnicas de análise, como regressão e clustering.
-
-Uma outra aplicação comunm do PCA é na identificação de variáveis latentes em um conjunto de dados. As variáveis latentes são aquelas que não são diretamente observáveis, mas podem ser inferidas a partir de outras variáveis observáveis que estão correlacionadas entre elas. O objetivo é identificar essas variáveis latentes para que possam ser incluídas em análises posteriores e ajudar na compreensão dos dados.
-
-Um exemplo clássico de variáveis latentes é o fator g em testes de inteligência. Embora não possamos medir diretamente a inteligência, podemos medir várias habilidades cognitivas, como memória, raciocínio lógico e habilidades verbais. Essas habilidades estão correlacionadas entre si e são usadas para inferir a inteligência geral. Nesse caso, o fator g é uma variável latente.
+Uma aplicação comum do PCA é na identificação de variáveis latentes em um conjunto de dados, que não são diretamente observáveis, mas podem ser inferidas a partir de outras variáveis observáveis correlacionadas entre si.Um exemplo de variável latente na obstetrícia pode ser a "saúde fetal" ou até mesmo a "saúde materna". Não pode ser diretamente medida ou observada, mas pode ser inferida a partir de múltiplas variáveis observáveis, como a frequência cardíaca fetal, a pressão arterial materna entre outras.
 
 ## Como realizar a análise de componentes principais.
 
-O primeiro passo é entender a definição matemática real das componentes principais. Seja $\underline{X}$ um vetor aleatório com $\underline{\mu} = E(\underline{X})$ e $\boldsymbol \Sigma = Var(\underline{X})$ e $(\lambda_i,e_i), i = 1,\dots,p$ os pares de autovalores e autovetores normalizados associados de $\Sigma$. Então,
+O primeiro passo é entender a definição matemática real das componentes principais. Seja $\boldsymbol{X}$ um vetor aleatório com $\boldsymbol{\mu} = E(\boldsymbol{X})$ e $\boldsymbol \Sigma = Var(\boldsymbol{X})$ e $(\lambda_i,e_i), i = 1,\dots,p$ os pares de autovalores e autovetores normalizados associados de $\Sigma$. Então,
 
 $$
 \begin{split}
-\underline{Y} = \boldsymbol{ O'}\underline{X},\quad \textrm{com}\quad \boldsymbol{O} = [\underline{e}_1,\underline{e}_2,\dots,\underline{e}_p],\textrm{ os componentes principais de }\underline X\\
+\boldsymbol{Y} = \boldsymbol{ O'}\boldsymbol{X},\quad \textrm{com}\quad \boldsymbol{O} = [\boldsymbol{e}_1,\boldsymbol{e}_2,\dots,\boldsymbol{e}_p],\textrm{ os componentes principais de }\boldsymbol X\\
 \textrm{ou seja}\\
-\underline Y = 
+\boldsymbol Y = 
 \begin{bmatrix}
 Y_1\\
 \vdots\\
 Y_p
-\end{bmatrix} \textrm{ com  } \quad Y_1 = \underline e_1'\underline X = e_{11}X_1 + e_{12}X_2 +  \dots + e_{1p}X_p.
+\end{bmatrix} \textrm{ com  } \quad Y_1 = \boldsymbol e_1'\boldsymbol X = e_{11}X_1 + e_{12}X_2 +  \dots + e_{1p}X_p.
 \end{split}
 $$
 
-O primeiro componente principal, como citado, as componentes então seguem sendo combinações lineares das variáveis originais e os autovetores correspondentes. Os componentes principais de $\underline X$, $\underline Y$, são tais que,
+A primeira componente principal. Como citado, as componentes então seguem sendo combinações lineares das variáveis originais e os autovetores correspondentes. Os componentes principais de $\boldsymbol{X}$, $\boldsymbol{Y}$, são tais que,
 
 $$
 \begin{split}
-\underline\mu_y = E(\underline Y) = E(\boldsymbol O'\underline X) = \boldsymbol O'E(\underline X) = \boldsymbol O'\underline\mu_x\\
-\boldsymbol\Sigma_y = Var(\underline Y) = Var(\boldsymbol O'\underline X) = \boldsymbol O'Var(\underline X)\boldsymbol O = \boldsymbol{O'\Sigma_xO= \Lambda}.
+\boldsymbol\mu_y = E(\boldsymbol Y) = E(\boldsymbol O'\boldsymbol X) = \boldsymbol O'E(\boldsymbol X) = \boldsymbol O'\boldsymbol\mu_x\\
+\boldsymbol\Sigma_y = Var(\boldsymbol Y) = Var(\boldsymbol O'\boldsymbol X) = \boldsymbol O'Var(\boldsymbol X)\boldsymbol O = \boldsymbol{O'\Sigma_xO= \Lambda}.
 \end{split}
 $$
 
@@ -404,7 +413,7 @@ $$
 
 A prova desse resultado pode ser vista em [@johnson2002applied, pp.432].
 
-É de conhecimento geral, como um dos objetivos da análise de dados sendo a compreensão da distribuição bem como variabilidade dos dados. Podemos então descrever a variância total da população como sendo o somatório de todos os autovalores $\lambda_i$. A partir disso, podemos escrever a proporção da variância total explicada pela j-ésima componente, como sendo:
+É de conhecimento geral, como um dos objetivos da análise de dados sendo a compreensão da distribuição bem como variabilidade dos dados. Podemos então descrever a variância total da população como sendo o somatório de todos os autovalores $\lambda_i$. A partir disso, podemos escrever a proporção da variância total explicada pela $j$-ésima componente, como sendo:
 
 $$
 \frac{\lambda_j}{\sum_{i=1}^p \lambda_i}; \qquad \forall j =1,\dots,p.
@@ -412,71 +421,29 @@ $$
 
 Dessa forma, para algum $p$ significativamente grande, podemos utilizar $d < p$ componentes ao invés das $p$ variáveis originais, considerando que, podemos descrever uma proporção relativamente alta da variância com essas $d$ componentes.
 
-Se $Y_i = \underline e'_iX, i =1\dots,p$ são as componentes principais obtidas da matriz de covariância, então
+Se $Y_i = \boldsymbol{e'_iX}, i =1\dots,p$ são as componentes principais obtidas da matriz de covariância, então
 
 $$
-\rho_{Y_i,X_j} = \frac{e_{ij}\sqrt{\lambda_i}}{\sigma_{jj}}, \quad \forall i,j=1,\dots p 
+\rho_{Y_i,X_j} = \frac{e_{ij}\sqrt{\lambda_i}}{\sigma_{jj}}, \quad \forall i,j=1,\dots p, 
 $$
 
-São os coeficientes de correlação entre a componente $Y_i$ e a variável $X_j$
+São os coeficientes de correlação entre a componente $Y_i$ e a variável $X_j$. Esse valor auxiliará na compreensão entre a relação indivídual de $X_j$ a uma componente principal $Y_i$, porém não explica a relação desta variável em presença das outras. Por isso, alguns altores recomendam o uso único do valor de $e_{ij}$ para compreender a relação variável-componente. Ambos os resultados serão importântes para compreensão da componente.
 
-### Exemplo.
+#### Exemplo
 
-Para realmente entender a aplicabilidade da análise de componentes, vamos pegar um subconjunto do banco de dados mtcars, conjunto de dados no R base. O banco consiste nas características de modelos de carros. Selecionaremos um subconjunto de colunas numéricas para conseguirmos trabalhar, considerando que PCA funciona melhor com variáveis numéricas. Há possibilidade de transformação de variáveis categoricas em variáveis *dummy*, porem o algoritmo não será tão preciso, também não sendo possível trabalhar com variáveis categóricas ordinais nesse caso.
+### Componentes principais por variáveis padronizadas.
 
-(deixei um exemplo com mtcars pois o banco de dados trabalhado no livro tem poucas variaveis numericas)
+#### Exemplo
 
-```{r echo=FALSE,warning=FALSE}
-dados <- mtcars[,c(1:7,10,11)]
-dados |> head() |> knitr::kable()
-```
+### Número de componentes principais.
 
-Podemos obter de forma simples no *R* as componentes, bem como a proporção da variância explicada, com a função `prcomp()`. Bem como citado tambem é comum padronização das variáveis devido a escala de cada característica, para isso basta informar o parâmetro `scale.` como *TRUE* dentro da função.
+#### Exemplo
 
-```{r echo=TRUE}
-dados.pca <- dados |> 
-  prcomp()
-paste('dados não padronizados: ',sep = "\n")
-dados.pca |> summary()
+### Redução de dimensionalidade com o PCA.
 
-#padronizando as variaveis devido a diferenca de escalas
+#### Exemplo
 
-dados.pca.padr <- dados |>
-  prcomp(scale. = T)
-paste('dados padronizados:',sep = "\n")
-dados.pca.padr |> summary()
+### Interpretação do componentes principais de uma amostra.
 
-#outras informacoes
+### Exemplo
 
-dados.pca.padr |> print()
-```
-
-Da informação obtida por `print(dados.pca.padr)`, podemos identificar os *loadings* da análise. Os *loadings* podem ser definidos como os coeficientes da combinação linear das variáveis originais de onde as componentes principais são construidas. De um ponto de vista matemático os *loadings* são iguais às coordenadas das variáveis divididas pela raiz quadrada do autovalor associado ao componente. são úteis quando você deseja entender os resultados. Lembre-se de que cada nova variável Y é uma combinação linear de todas as variáveis. A matriz de *loadings* representa verticalmente quanto da variância de cada componente é explicada por cada variável original. Vemos por exemplo que, conforme `mpg` aumenta, a `PC1` tem um descrécimo. Os *loadings* são muito úteis na hora de nomear nossas componentes por essa relação que faz com cada uma das variáveis.
-
-### Redução de dimensionalidade com o PCA
-
-Até agora foi descrito que podemos utilizar um número $d < p$ de componentes principais que contenha uma explicabilidade aproximada dos dados originais, mas qual seria esse valor $d$? Há um conjunto de técnicas para essa tomada de decisão, sendo uma delas por exemplo a proporção de variância acumulada total explicada pelas componentes $Y_1,\dots,Y_p$:
-
-$$
-\frac{\sum^d_{j=1}\lambda_j}{\sum_{i=1}^p \lambda_i}
-$$
-
-Esse valor é observado na função `prcomp()` já citada, como *cumulative Proportion* no resultado do `summary()` da função.
-
-Podemos utilizar como apoio gráfico e auxílio na tomada de decisão para o número de componentes é o *scree plot*, conhecido também como gráfico do cotovelo. Consiste na ordenação dos autovalores do maior para o menor, procurando por uma espécie de cotovelo dentro do gráfico. Selecionamos o número \$i \$ de componentes em que há um grande valor para observação $\lambda_{i-1}$ em comparação a observação $\lambda_i$ e uma pequena alteração da observação $\lambda_i$ para a observação $\lambda_{i+1}$. Observe a seguir
-
-```{r,warning=FALSE}
-#variancia explicada por cada componente
-var_explicada = dados.pca.padr$sdev^2 / sum(dados.pca.padr$sdev^2)
-library(ggplot2)
-
-qplot(c(1:9), var_explicada) + 
-  geom_line() + 
-  xlab("Principal Componente") + 
-  ylab("variancia explicada") +
-  ggtitle("Scree Plot") +
-  ylim(0, 1) + 
-  scale_x_discrete(limits=c(1:9))
-```
-
-Podemos por meio, tanto do *scree plot*, quanto pelo valor da variância explicada acumulada, selecionar $d= 3$ componentes para reter, pela queda de 2 para 3 ser significante, enquanto a de 3 para 4 nem tanto. Reduzindo número de variáveis a 3.
