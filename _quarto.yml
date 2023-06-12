@@ -18,7 +18,7 @@ book:
     - estimacao.qmd
     - testes_np.qmd
     - supervisionada.qmd
-    - intro_e_PCA.qmd
+    - Intro_e_PCA.qmd
   appendices: 
     - href: tutorialr.qmd
       text: Tutorial de R
