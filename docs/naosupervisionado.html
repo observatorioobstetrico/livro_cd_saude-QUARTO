@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.2.335">
@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>naosupervisionado</title>
+<title>Ciência de Dados Aplicada à Saúde Materno-Infantil - 9&nbsp; Análise de Agrupamentos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -83,36 +83,214 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 
-<script src="naosupervisionado_files/libs/clipboard/clipboard.min.js"></script>
-<script src="naosupervisionado_files/libs/quarto-html/quarto.js"></script>
-<script src="naosupervisionado_files/libs/quarto-html/popper.min.js"></script>
-<script src="naosupervisionado_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="naosupervisionado_files/libs/quarto-html/anchor.min.js"></script>
-<link href="naosupervisionado_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="naosupervisionado_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="naosupervisionado_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="naosupervisionado_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="naosupervisionado_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./tutorialr.html" rel="next">
+<link href="./Intro_e_PCA.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar"
+  }
+}</script>
 
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
-<body class="fullcontent">
+<body class="nav-sidebar floating">
 
-<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Análise de Agrupamentos</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Ciência de Dados Aplicada à Saúde Materno-Infantil</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Prefácio</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">Sumário</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./manipulacao_dados.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Manipulação de dados</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tabulacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tabulação de dados</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./descritiva.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análise exploratória dos dados</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./estimacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estimação</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testes_np.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Testes não-paramétricos</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./supervisionada.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Intro_e_PCA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Aprendizado Não Supervisionado</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./naosupervisionado.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Análise de Agrupamentos</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Apêndices</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorialr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Tutorial de R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">Referências</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#métodos-de-agrupamentos" id="toc-métodos-de-agrupamentos" class="nav-link active" data-scroll-target="#métodos-de-agrupamentos"><span class="toc-section-number">9.1</span>  Métodos de Agrupamentos</a>
+  <ul class="collapse">
+  <li><a href="#métodos-por-particionamento" id="toc-métodos-por-particionamento" class="nav-link" data-scroll-target="#métodos-por-particionamento"><span class="toc-section-number">9.1.1</span>  Métodos por Particionamento</a></li>
+  <li><a href="#métodos-hierárquicos" id="toc-métodos-hierárquicos" class="nav-link" data-scroll-target="#métodos-hierárquicos"><span class="toc-section-number">9.1.2</span>  Métodos Hierárquicos</a></li>
+  </ul></li>
+  <li><a href="#métodos-de-validação" id="toc-métodos-de-validação" class="nav-link" data-scroll-target="#métodos-de-validação"><span class="toc-section-number">9.2</span>  Métodos de Validação</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Análise de Agrupamentos</span></h1>
+</div>
 
 
-<section id="análise-de-agrupamentos" class="level2">
-<h2 class="anchored" data-anchor-id="análise-de-agrupamentos">Análise de Agrupamentos</h2>
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dados_indicadores <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">'dados/dados_indicadores.rds'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dados_indicadores <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">'dados/dados_indicadores.rds'</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Como descrito anteriormente e reforçado aqui, na análise de agrupamento, buscamos identificar regiões no espaço dos dados que possuam um grande número de observações próximas umas das outras. Essas regiões são chamadas de clusters. A ideia é agrupar indivíduos que sejam semelhantes entre si e diferentes dos indivíduos em outros clusters. Essa técnica é chamada de aprendizado não supervisionado, pois não utilizamos uma variável específica como referência para avaliar o resultado do agrupamento.</p>
 <p>Formalmente, os clusters são definidos da seguinte forma:</p>
@@ -150,19 +328,18 @@ A =
 \]</span></p>
 <p>As matrizes de dissimilaridade podem ser obtidas com apoio da função <code>dist()</code>, onde o tipo de distância (Euclidiana por exemplo), é passada no parâmetro da função, <code>method</code> , veja a seguir, um exemplo aplicado ao conjunto de indicadores obstétricos, esse <em>DataSet</em> séra o referncial para a sessão atual, será considerado apenas as colunas dos indicadores.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dist_euclidian <span class="ot">&lt;-</span> <span class="fu">dist</span>(<span class="fu">scale</span>(dados_indicadores[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)]), <span class="at">method =</span> <span class="st">"euclidean"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dist_euclidian <span class="ot">&lt;-</span> <span class="fu">dist</span>(<span class="fu">scale</span>(dados_indicadores[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)]), <span class="at">method =</span> <span class="st">"euclidean"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>O códio acima cria e armazena um objeto do tipo <code>dist</code> que será utilizado em exemplos futuros.</p>
 <p>A análise de agrupamento é uma ferramenta valiosa que permite identificar estratos em uma população e detectar outliers. É importante considerar a escalabilidade do método, sua capacidade de lidar com diferentes tipos de variáveis e clusters de formatos variados. Além disso, a robustez em relação a outliers e a capacidade de agrupar dados de alta dimensionalidade são considerações essenciais. Existem diversos métodos de agrupamento na literatura, cada um com vantagens e desvantagens. Nas próximas sessões, exploraremos os métodos considerados e suas aplicações adequadas, bem como métodos de avaliação de qualidade para os agrupamentos.</p>
-</section>
-<section id="métodos-de-agrupamentos" class="level2">
-<h2 class="anchored" data-anchor-id="métodos-de-agrupamentos">Métodos de Agrupamentos</h2>
+<section id="métodos-de-agrupamentos" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="métodos-de-agrupamentos"><span class="header-section-number">9.1</span> Métodos de Agrupamentos</h2>
 <p>Neste capítulo, vamos explorar diferentes maneiras de resolver o desafio do agrupamento de dados. Existem abordagens tradicionais, como o particionamento, que envolve dividir o conjunto de dados em grupos distintos. Além disso, temos os métodos hierárquicos, nos quais os grupos são organizados em uma estrutura de árvore.</p>
 <p>Outra abordagem interessante é considerar a densidade dos pontos no espaço. Nesse caso, procuramos identificar regiões mais densas separadas por áreas menos povoadas. Esses métodos, conhecidos como baseados em densidade, oferecem uma perspectiva diferente na análise dos dados.</p>
 <p>Também existe uma classe de métodos que utiliza técnicas de decomposição espectral. Esses métodos reduzem a dimensionalidade dos dados, preservando as informações relevantes dos grupos presentes. São os chamados agrupamentos espectrais, que exploram as propriedades dos autovalores e autovetores da matriz de similaridade dos dados.</p>
 <p>Cada uma dessas abordagens possui suas próprias características, vantagens e limitações.</p>
-<section id="métodos-por-particionamento" class="level3">
-<h3 class="anchored" data-anchor-id="métodos-por-particionamento">Métodos por Particionamento</h3>
+<section id="métodos-por-particionamento" class="level3" data-number="9.1.1">
+<h3 data-number="9.1.1" class="anchored" data-anchor-id="métodos-por-particionamento"><span class="header-section-number">9.1.1</span> Métodos por Particionamento</h3>
 <p>Os métodos por particionamento são comumente utilizados para agrupar dados, onde cada partição representa um cluster. Esses métodos são baseados em distância e envolvem a realocação iterativa das observações entre os clusters para obter um particionamento otimizado.</p>
 <p>A escolha do número de clusters é um aspecto importante, pois influencia diretamente a qualidade do agrupamento. Uma abordagem comum é o método do cotovelo, que considera a relação entre a variância total intraclusters e o número de grupos criados. O método do cotovelo considera que aumentar o número de clusters reduz a variância, mas em algum ponto, não há melhora significativa na granularidade do agrupamento. Esse ponto ótimo, que indica o número adequado de clusters, é identificado no gráfico por uma curva tracejada.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -175,16 +352,16 @@ A =
 <p>A variância total intraclusters é calculada como a soma das distâncias euclidianas quadráticas entre as observações e os respectivos centróides, utilizando a fórmula:</p>
 <p><span class="math display">\[\sum_{l=1}^{K} \sum_{i \in \mathcal{C}_l} |\mathbf{x}_i - \mathbf{c}_l|^2\]</span></p>
 <p>Essas são algumas das abordagens dos métodos por particionamento, aqui será considerado o k-médias e o k-medóides com os algorítmos PAM e CLARA, que serão apresentados a seguir com exemplos de aplicações.</p>
-<section id="k-médias" class="level4">
-<h4 class="anchored" data-anchor-id="k-médias">K-médias</h4>
-<p>O K-médias é um método amplamente utilizado para agrupamento de dados. Ele busca encontrar K partições dos dados, minimizando a variância. O algoritmo de <span class="citation" data-cites="lloyd1982least">[@lloyd1982least]</span> é comumente usado para realizar o K-médias. Ele envolve os seguintes passos:</p>
+<section id="k-médias" class="level4" data-number="9.1.1.1">
+<h4 data-number="9.1.1.1" class="anchored" data-anchor-id="k-médias"><span class="header-section-number">9.1.1.1</span> K-médias</h4>
+<p>O K-médias é um método amplamente utilizado para agrupamento de dados. Ele busca encontrar K partições dos dados, minimizando a variância. O algoritmo de <span class="citation" data-cites="lloyd1982least">(<a href="references.html#ref-lloyd1982least" role="doc-biblioref">Lloyd 1982</a>)</span> é comumente usado para realizar o K-médias. Ele envolve os seguintes passos:</p>
 <ol type="1">
 <li><p>escolha dos K centróides iniciais;</p></li>
 <li><p>particionamento dos dados com base na menor distância para cada centróide;</p></li>
 <li><p>atualização dos centróides com as novas observações atribuídas a eles;</p></li>
 <li><p>repetição dos passos 2 e 3 até que não haja mais mudança de agrupamento. É possível definir um número máximo de iterações para otimizar o método computacionalmente.</p></li>
 </ol>
-<p>Uma alternativa é o algoritmo de <span class="citation" data-cites="hartigan1979algorithm">[@hartigan1979algorithm]</span>, que adiciona uma etapa de validação para alterar os agrupamentos. A cada iteração, verifica-se se houve atualização nos centróides dos grupos. Nesse caso, um novo objeto só é atribuído a um cluster se a soma das distâncias quadráticas diminuir.</p>
+<p>Uma alternativa é o algoritmo de <span class="citation" data-cites="hartigan1979algorithm">(<a href="references.html#ref-hartigan1979algorithm" role="doc-biblioref">Hartigan e Wong 1979</a>)</span>, que adiciona uma etapa de validação para alterar os agrupamentos. A cada iteração, verifica-se se houve atualização nos centróides dos grupos. Nesse caso, um novo objeto só é atribuído a um cluster se a soma das distâncias quadráticas diminuir.</p>
 <p>No entanto, o método K-médias apresenta limitações ao lidar com clusters de formas não convencionais ou grupos com tamanhos muito discrepantes. Além disso, ele é sensível a outliers, pois a inclusão de um dado extremo pode influenciar significativamente o valor do centróide. A aplicação para o software <em>R</em>, tanto do método de agrupamento quanto a escolha do número de clusters <em>K</em> pelo método do cotovelo, segue abaixo, será considerado os dados padronizados para retirar qualquer tendência em função da diferença de escala ou amplitude dos dados:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span> (<span class="dv">1122</span>)</span>
@@ -205,7 +382,7 @@ A =
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="do">## ajustando k-medias com o numero de grupos escolhido</span></span>
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>k_medias <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(dados_norm,</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>                        <span class="at">centers =</span> <span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>                        <span class="at">centers =</span> <span class="dv">7</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>A função <code>kmeans</code> é uma ferramenta poderosa disponível no R para realizar o agrupamento de dados utilizando o método K-médias. A função kmeans retorna três principais objetos:</p>
 <ul>
@@ -214,9 +391,9 @@ A =
 <li><p><code>Within_cluster_sum_of_squares</code>: É um valor que representa a soma dos quadrados das distâncias de cada observação em relação ao seu respectivo centróide. Essa medida indica a variabilidade dos dados dentro de cada cluster. Quanto menor o valor, mais compacto e homogêneo é o cluster.</p></li>
 </ul>
 </section>
-<section id="k-medóides" class="level4">
-<h4 class="anchored" data-anchor-id="k-medóides">K-medóides</h4>
-<p>Em situações com valores extremos, os algoritmos K-medóides surgem como uma alternativa ao cálculo do centróide, evitando a influência excessiva desses valores na representação central de cada grupo. O algoritmo PAM (Partitioning Around Medoids) proposto por <span class="citation" data-cites="kaufman2009finding">[@kaufman2009finding]</span> considera um custo para as trocas de medóides a cada iteração. O custo é calculado como a diferença da variância total intragrupo considerando um novo medóide (observação não medóide) em comparação com o medóide atual. A variância total intragrupo é uma medida da dispersão dos pontos dentro de um grupo.</p>
+<section id="k-medóides" class="level4" data-number="9.1.1.2">
+<h4 data-number="9.1.1.2" class="anchored" data-anchor-id="k-medóides"><span class="header-section-number">9.1.1.2</span> K-medóides</h4>
+<p>Em situações com valores extremos, os algoritmos K-medóides surgem como uma alternativa ao cálculo do centróide, evitando a influência excessiva desses valores na representação central de cada grupo. O algoritmo PAM (Partitioning Around Medoids) proposto por <span class="citation" data-cites="kaufman2009finding">(<a href="references.html#ref-kaufman2009finding" role="doc-biblioref">Kaufman e Rousseeuw 2009</a>)</span> considera um custo para as trocas de medóides a cada iteração. O custo é calculado como a diferença da variância total intragrupo considerando um novo medóide (observação não medóide) em comparação com o medóide atual. A variância total intragrupo é uma medida da dispersão dos pontos dentro de um grupo.</p>
 <p>Para realizar o agrupamento, o algoritmo PAM segue os seguintes passos:</p>
 <ol type="1">
 <li><p>Escolha inicial dos <span class="math inline">\(K\)</span> medóides a partir do conjunto de dados;</p></li>
@@ -239,7 +416,7 @@ A =
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">title =</span> <span class="st">"PAM"</span>)</span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>pam <span class="ot">&lt;-</span> cluster<span class="sc">::</span><span class="fu">pam</span>(dados_norm ,</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>                      <span class="at">k =</span> <span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>                      <span class="at">k =</span> <span class="dv">7</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>A função <code>cluster::pam</code> no <em>R</em> retorna os seguintes elementos:</p>
 <ol type="1">
@@ -260,7 +437,7 @@ A =
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">y =</span> <span class="st">"Variancia Total Intragrupo"</span>,</span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>                        <span class="at">title =</span> <span class="st">"CLARA"</span>)</span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>clara <span class="ot">&lt;-</span> cluster<span class="sc">::</span><span class="fu">clara</span>(dados_norm ,</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                          <span class="at">k =</span> <span class="dv">7</span>, <span class="at">samples =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                          <span class="at">k =</span> <span class="dv">7</span>, <span class="at">samples =</span> <span class="dv">10</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>A função <code>cluster::clara</code> no <em>R</em> retorna os seguintes resultados:</p>
 <ol type="1">
@@ -275,8 +452,8 @@ A =
 <p>Esses resultados fornecem detalhes sobre os medóides finais escolhidos, a atribuição dos clusters para cada observação, o valor objetivo do agrupamento, as distâncias de isolamento, informações adicionais sobre os clusters, as subamostras utilizadas e a chamada original da função.</p>
 </section>
 </section>
-<section id="métodos-hierárquicos" class="level3">
-<h3 class="anchored" data-anchor-id="métodos-hierárquicos">Métodos Hierárquicos</h3>
+<section id="métodos-hierárquicos" class="level3" data-number="9.1.2">
+<h3 data-number="9.1.2" class="anchored" data-anchor-id="métodos-hierárquicos"><span class="header-section-number">9.1.2</span> Métodos Hierárquicos</h3>
 <p>Os métodos hierárquicos são utilizados para agrupar dados em diferentes níveis de granularidade. Existem duas abordagens principais: aglomerativa e divisiva.</p>
 <p>Na abordagem aglomerativa, os grupos são construídos a partir do nível mais baixo, onde cada observação forma um cluster separado, até atingir o nível mais alto, onde todos os dados estão em um único grupo. A fusão dos clusters ocorre com base na dissimilaridade entre eles. As medidas de dissimilaridade mais utilizadas, entre dois grupos, também conhecidas como linkages, podem ser definidas da seguinte forma:</p>
 <ul>
@@ -388,16 +565,28 @@ d(C_l,C_{l'}) = \frac{n_ln_{l'}}{n_l + n_{l'}} d^2(c_l,c_{l'})
 <span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a>dendrograma_diana <span class="ot">&lt;-</span>  <span class="fu">plot</span>(<span class="fu">cut</span>(<span class="fu">as.dendrogram</span>(diana), <span class="at">h =</span> <span class="dv">7</span>)<span class="sc">$</span>upper ,</span>
 <span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">main =</span> <span class="st">"Diana - cortado em H = 7"</span>)</span>
 <span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a>diana_res <span class="ot">&lt;-</span> <span class="fu">cutree</span>(diana , <span class="at">k =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a>diana_res <span class="ot">&lt;-</span> <span class="fu">cutree</span>(diana , <span class="at">k =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
-<section id="métodos-de-validação" class="level2">
-<h2 class="anchored" data-anchor-id="métodos-de-validação">Métodos de Validação</h2>
+<section id="métodos-de-validação" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="métodos-de-validação"><span class="header-section-number">9.2</span> Métodos de Validação</h2>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-hartigan1979algorithm" class="csl-entry" role="doc-biblioentry">
+Hartigan, John A, e Manchek A Wong. 1979. <span>"Algorithm AS 136: A k-means clustering algorithm"</span>. <em>Journal of the royal statistical society. series c (applied statistics)</em> 28 (1): 100–108.
+</div>
+<div id="ref-kaufman2009finding" class="csl-entry" role="doc-biblioentry">
+Kaufman, Leonard, e Peter J Rousseeuw. 2009. <em>Finding groups in data: an introduction to cluster analysis</em>. John Wiley &amp; Sons.
+</div>
+<div id="ref-lloyd1982least" class="csl-entry" role="doc-biblioentry">
+Lloyd, Stuart. 1982. <span>"Least squares quantization in PCM"</span>. <em>IEEE transactions on information theory</em> 28 (2): 129–37.
+</div>
+</div>
 </section>
 
-</main>
-<!-- /main column -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -438,12 +627,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "Copiada");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "Copiada");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
@@ -531,6 +720,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./Intro_e_PCA.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Aprendizado Não Supervisionado</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./tutorialr.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Tutorial de R</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 
