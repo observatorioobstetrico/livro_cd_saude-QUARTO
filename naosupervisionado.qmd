@@ -1,6 +1,6 @@
 ## Análise de Agrupamentos
 
-```{r, echo ='FALSE'}
+```{r echo='FALSE'}
 dados_indicadores <- readRDS('dados/dados_indicadores.rds')
 set.seed (1122)
 ```
@@ -48,6 +48,7 @@ A =
          \end{bmatrix}.
   \end{align}
 $$
+
 As matrizes de dissimilaridade podem ser obtidas com apoio da função `dist()`, onde o tipo de distância (Euclidiana por exemplo), é passada no parâmetro da função, `method` , veja a seguir, um exemplo aplicado ao conjunto de indicadores obstétricos, esse _DataSet_ séra o referncial para a sessão atual, será considerado apenas as colunas dos indicadores. 
 
 ```{r}
@@ -59,11 +60,11 @@ dist_euclidian <- dist(scale(dados_indicadores[,-c(1:4)]), method = "euclidean")
 O códio acima cria e armazena um objeto do tipo `dist` que será utilizado em exemplos futuros.
 
 
-A análise de agrupamento é uma ferramenta valiosa que permite identificar estratos em uma população e detectar outliers. É importante considerar a escalabilidade do método, sua capacidade de lidar com diferentes tipos de variáveis e clusters de formatos variados. Além disso, a robustez em relação a outliers e a capacidade de agrupar dados de alta dimensionalidade são considerações essenciais. Existem diversos métodos de agrupamento na literatura, cada um com vantagens e desvantagens. Nas próximas sessões, exploraremos os métodos considerados e suas aplicações adequadas.
+A análise de agrupamento é uma ferramenta valiosa que permite identificar estratos em uma população e detectar outliers. É importante considerar a escalabilidade do método, sua capacidade de lidar com diferentes tipos de variáveis e clusters de formatos variados. Além disso, a robustez em relação a outliers e a capacidade de agrupar dados de alta dimensionalidade são considerações essenciais. Existem diversos métodos de agrupamento na literatura, cada um com vantagens e desvantagens. Nas próximas sessões, exploraremos os métodos considerados e suas aplicações adequadas, bem como métodos de avaliação de qualidade para os agrupamentos.
 
 ## Métodos de Agrupamentos
 
-Nesta seção, vamos explorar diferentes maneiras de resolver o desafio do agrupamento de dados. Existem abordagens tradicionais, como o particionamento, que envolve dividir o conjunto de dados em grupos distintos. Além disso, temos os métodos hierárquicos, nos quais os grupos são organizados em uma estrutura de árvore.
+Neste capítulo, vamos explorar diferentes maneiras de resolver o desafio do agrupamento de dados. Existem abordagens tradicionais, como o particionamento, que envolve dividir o conjunto de dados em grupos distintos. Além disso, temos os métodos hierárquicos, nos quais os grupos são organizados em uma estrutura de árvore. 
 
 Outra abordagem interessante é considerar a densidade dos pontos no espaço. Nesse caso, procuramos identificar regiões mais densas separadas por áreas menos povoadas. Esses métodos, conhecidos como baseados em densidade, oferecem uma perspectiva diferente na análise dos dados.
 
@@ -76,8 +77,6 @@ Cada uma dessas abordagens possui suas próprias características, vantagens e l
 Os métodos por particionamento são comumente utilizados para agrupar dados, onde cada partição representa um cluster. Esses métodos são baseados em distância e envolvem a realocação iterativa das observações entre os clusters para obter um particionamento otimizado.
 
 A escolha do número de clusters é um aspecto importante, pois influencia diretamente a qualidade do agrupamento. Uma abordagem comum é o método do cotovelo, que considera a relação entre a variância total intraclusters e o número de grupos criados. O método do cotovelo considera que aumentar o número de clusters reduz a variância, mas em algum ponto, não há melhora significativa na granularidade do agrupamento. Esse ponto ótimo, que indica o número adequado de clusters, é identificado no gráfico  por uma curva tracejada.
-
-
 
 ![](figuras_naosupervisionado/cotovelo.png){fig-align="centering" fig-alt="Screeplot para seleção de número de clusters"}
 
@@ -93,7 +92,7 @@ Essas são algumas das abordagens dos métodos por particionamento, aqui será c
 
 #### K-médias
 
-O K-médias é um método amplamente utilizado para agrupamento de dados. Ele busca encontrar K partições dos dados, minimizando a variância. O algoritmo de Lloyd (1982) é comumente usado para realizar o K-médias. Ele envolve os seguintes passos: 
+O K-médias é um método amplamente utilizado para agrupamento de dados. Ele busca encontrar K partições dos dados, minimizando a variância. O algoritmo de [@lloyd1982least] é comumente usado para realizar o K-médias. Ele envolve os seguintes passos: 
 
 1. escolha dos K centróides iniciais; 
 
@@ -103,7 +102,7 @@ O K-médias é um método amplamente utilizado para agrupamento de dados. Ele bu
 
 4. repetição dos passos 2 e 3 até que não haja mais mudança de agrupamento. É possível definir um número máximo de iterações para otimizar o método computacionalmente.
 
-Uma alternativa é o algoritmo de Hartigan-Wong (Hartigan e Wong, 1979), que adiciona uma etapa de validação para alterar os agrupamentos. A cada iteração, verifica-se se houve atualização nos centróides dos grupos. Nesse caso, um novo objeto só é atribuído a um cluster se a soma das distâncias quadráticas diminuir.
+Uma alternativa é o algoritmo de [@hartigan1979algorithm], que adiciona uma etapa de validação para alterar os agrupamentos. A cada iteração, verifica-se se houve atualização nos centróides dos grupos. Nesse caso, um novo objeto só é atribuído a um cluster se a soma das distâncias quadráticas diminuir.
 
 No entanto, o método K-médias apresenta limitações ao lidar com clusters de formas não convencionais ou grupos com tamanhos muito discrepantes. Além disso, ele é sensível a outliers, pois a inclusão de um dado extremo pode influenciar significativamente o valor do centróide. A aplicação para o software *R*, tanto do método de agrupamento quanto a escolha do número de clusters _K_ pelo método do cotovelo, segue abaixo, será considerado os dados padronizados para retirar qualquer tendência em função da diferença de escala ou amplitude dos dados:
 
@@ -129,18 +128,18 @@ k_medias <- kmeans(dados_norm,
 
 ```
  
- A função kmeans é uma ferramenta poderosa disponível no R para realizar o agrupamento de dados utilizando o método K-médias. A função kmeans retorna três principais objetos:
+ A função `kmeans` é uma ferramenta poderosa disponível no R para realizar o agrupamento de dados utilizando o método K-médias. A função kmeans retorna três principais objetos:
 
-- Cluster_centers: É uma matriz que representa os centróides finais de cada cluster. Cada linha dessa matriz representa um centróide, com as coordenadas correspondentes às variáveis do conjunto de dados. Esses centróides representam os pontos centrais de cada cluster, que foram calculados pelo algoritmo K-médias.
+- `Cluster_centers`: É uma matriz que representa os centróides finais de cada cluster. Cada linha dessa matriz representa um centróide, com as coordenadas correspondentes às variáveis do conjunto de dados.
 
-- Cluster_assignment: É um vetor que contém as atribuições de cada observação a um determinado cluster. Cada elemento desse vetor representa o número do cluster ao qual a observação foi atribuída. O valor 1 representa o primeiro cluster, o valor 2 representa o segundo cluster e assim por diante.
+- `Cluster_assignment`: É um vetor que contém as atribuições de cada observação a um determinado cluster. Cada elemento desse vetor representa o número do cluster ao qual a observação foi atribuída. O valor 1 representa o primeiro cluster, o valor 2 representa o segundo cluster e assim por diante.
 
-- Within_cluster_sum_of_squares: É um valor que representa a soma dos quadrados das distâncias de cada observação em relação ao seu respectivo centróide. Essa medida indica a variabilidade dos dados dentro de cada cluster. Quanto menor o valor, mais compacto e homogêneo é o cluster.
+- `Within_cluster_sum_of_squares`: É um valor que representa a soma dos quadrados das distâncias de cada observação em relação ao seu respectivo centróide. Essa medida indica a variabilidade dos dados dentro de cada cluster. Quanto menor o valor, mais compacto e homogêneo é o cluster.
 
   
 #### K-medóides
 
-Em situações com valores extremos, os algoritmos K-medóides surgem como uma alternativa ao cálculo do centróide, evitando a influência excessiva desses valores na representação central de cada grupo. O algoritmo PAM (Partitioning Around Medoids) proposto por Kaufman e Rousseeuw (1990) considera um custo para as trocas de medóides a cada iteração. O custo é calculado como a diferença da variância total intragrupo considerando um novo medóide (observação não medóide) em comparação com o medóide atual. A variância total intragrupo é uma medida da dispersão dos pontos dentro de um grupo.
+Em situações com valores extremos, os algoritmos K-medóides surgem como uma alternativa ao cálculo do centróide, evitando a influência excessiva desses valores na representação central de cada grupo. O algoritmo PAM (Partitioning Around Medoids) proposto por [@kaufman2009finding] considera um custo para as trocas de medóides a cada iteração. O custo é calculado como a diferença da variância total intragrupo considerando um novo medóide (observação não medóide) em comparação com o medóide atual. A variância total intragrupo é uma medida da dispersão dos pontos dentro de um grupo.
 
 Para realizar o agrupamento, o algoritmo PAM segue os seguintes passos:
 
@@ -225,21 +224,39 @@ Esses resultados fornecem detalhes sobre os medóides finais escolhidos, a atrib
 
 Os métodos hierárquicos são utilizados para agrupar dados em diferentes níveis de granularidade. Existem duas abordagens principais: aglomerativa e divisiva.
 
-Na abordagem aglomerativa, os grupos são construídos a partir do nível mais baixo, onde cada observação forma um cluster separado, até atingir o nível mais alto, onde todos os dados estão em um único grupo. A fusão dos clusters ocorre com base na dissimilaridade entre eles.
-
-As medidas de dissimilaridade entre dois grupos, também conhecidas como linkages, podem ser definidas da seguinte forma:
+Na abordagem aglomerativa, os grupos são construídos a partir do nível mais baixo, onde cada observação forma um cluster separado, até atingir o nível mais alto, onde todos os dados estão em um único grupo. A fusão dos clusters ocorre com base na dissimilaridade entre eles. As medidas de dissimilaridade mais utilizadas, entre dois grupos, também conhecidas como linkages, podem ser definidas da seguinte forma:
 
 - Método do vizinho mais próximo (Single linkages): Considera a menor distância entre todas as possíveis combinações de observações de dois grupos.
 
+$$
+d(C_l,C_{l'}) = \min_{x_i \in C_l ;x_k \in C_{l'}} d(x_i,x_j)
+$$
+
 - Método do vizinho mais distante (Complete linkages): Utiliza a maior distância entre todas as possíveis combinações de observações de dois grupos.
+
+$$
+d(C_l,C_{l'}) = \max_{x_i \in C_l ;x_k \in C_{l'}} d(x_i,x_j)
+$$
 
 - Método da média das distâncias (Average linkages): Calcula a média das distâncias entre as observações de dois grupos.
 
+$$
+d(C_l,C_{l'}) = \frac{1}{|C_l||C_{l'}|}\sum_{x_i \in C_l ;x_k \in C_{l'}} d(x_i,x_j)
+$$
+
 - Método do centróide (Centróide linkages): Considera a distância entre os centróides de cada grupo como medida de dissimilaridade.
 
-- Método de Ward: Minimiza a variância dentro dos grupos ao fundir os clusters que levam à menor variação possível.`
+$$
+d(C_l,C_{l'}) = d^2(c_l,c_{l'}) 
+$$
 
-Essa abordagem segue os seguintes passos:
+- Método de Ward: Minimiza a variância dentro dos grupos ao fundir os clusters que levam à menor variação possível.
+
+$$
+d(C_l,C_{l'}) = \frac{n_ln_{l'}}{n_l + n_{l'}} d^2(c_l,c_{l'}) 
+$$
+
+No contexto dos métodos hierárquicos de agrupamento, a abordagem aglomerativa é amplamente utilizada e estudada. Isso se deve ao fato de que a abordagem divisiva apresenta um custo computacional mais elevado, uma vez que em cada iteração é necessário identificar a melhor divisão do grupo para maximizar a dissimilaridade. Portanto, o algoritmo para o agrupamento hierárquico aglomerativo consiste em:
 
 1. Cada observação é inicialmente atribuída a um cluster separado.
 
@@ -249,7 +266,8 @@ Essa abordagem segue os seguintes passos:
 
 4. Repetem-se os passos 2 e 3 até que todas as observações estejam em um único grupo.
 
-Já na abordagem divisiva, tomando o algoritmo DIANA (Divisive Analysis), o algoritmo começa com um grupo único que contém todas as observações e, em cada etapa, divide o grupo em dois com base na maior dissimilaridade entre as observações. O algoritmo DIANA segue os seguintes passos:
+
+Já na abordagem divisiva, tomando o algoritmo DIANA (Divisive Analysis), inicia-se com um grupo único que contém todas as observações e, em cada etapa, divide-se o grupo em dois com base na maior dissimilaridade entre as observações. O algoritmo DIANA segue os seguintes passos:
 
 1. Todas as observações são agrupadas em um único grupo.
 
@@ -261,5 +279,74 @@ Já na abordagem divisiva, tomando o algoritmo DIANA (Divisive Analysis), o algo
 o maior diâmetro.
 
 5. Repetem-se os passos 2 a 4 até que cada observação esteja em um grupo separado.
+
+No agrupamento hierárquico, a visualização dos clusters é feita por meio de um dendrograma, um gráfico ramificado que mostra as junções e divisões dos clusters. A altura do ramo no primeiro nó do dendrograma representa a dissimilaridade entre os grupos divididos. Para determinar o número de grupos a partir do dendrograma, busca-se uma grande diferença de altura (dissimilaridade) ao adicionar um cluster aos dados.
+Uma característica dos métodos hierárquicos é que as decisões de agrupamento ou divisão não são desfeitas, ou seja, não há troca de observações entre os clusters. Decisões de união ou divisão mal feitas podem resultar em grupos de baixa qualidade. Além disso, esses métodos não são bem dimensionados, pois cada decisão de mesclagem ou divisão requer a avaliação de muitos objetos ou clusters. Pelo exemplo abaixo, uma possível resposta de número adequado de clusters seria de dois ou três grupos.
+
+![](figuras_naosupervisionado/dendograma.png){fig-align="centering" fig-alt="Exemplo de Dendrograma"}
+Os agrupamentos hierárquicos podem ser obtidos de maneira rapida com o apoio computacional, onde inicialmente, com uso das funções `hclust` e `cluster::diana`, é obtido um objeto da classe "hclust" e da clase  "diana" respectivamente, esses objetos contém informações sobre o agrupamento hierárquico realizado, incluindo a estrutura do dendrograma, as distâncias entre os objetos e outras propriedades relacionadas. Seguido pela seleção, com base no dendrograma, do número _K_ ideal de clusters (Não necessariamente só um _K_), e o "corte" da árvore aglomerativa no valor ideal identificado. É apresentado abaixo para todos os métodos citados a aplicação para o *R*, supondo a distância utilizada como a euclidiana calculada no início do capítulo
+
+```{r}
+library(ggdendro)
+#AGLOMERATIVOS ############
+#METODO WARD -----
+##CRIAR O OBJETO HCLUST
+agl_ward <- hclust(dist_euclidian , method = "ward.D2")
+
+# PLOT DO DENDROGRAMA 
+dendograma_ward <-  plot(cut(as.dendrogram(agl_ward), h = 20)$upper ,
+ main = "Ward - cortado em H = 20")
+
+# "corte" NOS RESPECTIVOS VALORES IDEAIS DE NUMERO DE CLUSTERS
+agl_ward_res <- cutree(agl_ward , k = 3:8)
+
+# segue o mesmo para todos os outros metodos
+
+#METODO SINGLE LINKAGE -----
+agl_single <- hclust(dist_euclidian , method = "single")
+
+dendograma_single <- plot(cut(as.dendrogram(agl_single), h = 4)$upper ,
+                        main = "Vizinho mais Proximo - cortado em H = 4",
+                          xlab = "")
+
+agl_single_res <- cutree(agl_single , k = 3:8)
+
+#METODO COMPLETE LINKAGE -----
+agl_complete <-  hclust(dist_euclidian , method = "complete")
+
+dendograma_complete <- plot(cut(as.dendrogram(agl_complete), h = 10)$upper ,
+                             main = "Vizinho mais Distante - cortado em H = 10")
+
+agl_complete_res <- cutree(agl_complete , k = 3:8)
+
+#METODO AVARAGE LINKAGE -----
+agl_ave <- hclust(dist_euclidian , method = "average")
+
+dendograma_ward <- plot(cut(as.dendrogram(agl_ave), h = 15)$upper ,
+                                main = " Media das Distancias - cortado em H = 15")
+
+agl_ave_res <- cutree(agl_ave, k = 3:8)
+
+#METODO CENTROIDE LINKAGE -----
+agl_cent <- hclust(dist_euclidian , method = "centroid")
+
+dendograma_ward <- plot(cut(as.dendrogram(agl_cent), h = 15)$upper ,
+                            main = " Centroide - cortado em H = 15")
+
+agl_cent_res <- cutree(agl_cent , k = 3:8)
+
+####### DIVISIVO (DIANA) #########
+diana <- cluster::diana(dist_euclidian ,
+                            diss = TRUE ,
+                            metric = "euclidean",
+                            keep.diss = FALSE ,
+                            keep.data = FALSE
+                            )
+
+dendrograma_diana <-  plot(cut(as.dendrogram(diana), h = 7)$upper ,
+                                   main = "Diana - cortado em H = 7")
+
+diana_res <- cutree(diana , k = 3:8)
+```
 
 ## Métodos de Validação
