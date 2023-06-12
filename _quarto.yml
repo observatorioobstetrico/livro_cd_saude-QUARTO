@@ -17,8 +17,8 @@ book:
     - descritiva.qmd
     - estimacao.qmd
     - testes_np.qmd
-    - intro_e_PCA.qmd
     - supervisionada.qmd
+    - intro_e_PCA.qmd
     - naosupervisionado.qmd
   appendices: 
     - href: tutorialr.qmd
