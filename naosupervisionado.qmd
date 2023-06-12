@@ -2,7 +2,6 @@
 
 ```{r echo='FALSE'}
 dados_indicadores <- readRDS('dados/dados_indicadores.rds')
-set.seed (1122)
 ```
 
 Como descrito anteriormente e reforçado aqui, na análise de agrupamento, buscamos identificar regiões no espaço dos dados que possuam um grande número de observações próximas umas das outras. Essas regiões são chamadas de clusters. A ideia é agrupar indivíduos que sejam semelhantes entre si e diferentes dos indivíduos em outros clusters. Essa técnica é chamada de aprendizado não supervisionado, pois não utilizamos uma variável específica como referência para avaliar o resultado do agrupamento.
@@ -106,7 +105,8 @@ Uma alternativa é o algoritmo de [@hartigan1979algorithm], que adiciona uma eta
 
 No entanto, o método K-médias apresenta limitações ao lidar com clusters de formas não convencionais ou grupos com tamanhos muito discrepantes. Além disso, ele é sensível a outliers, pois a inclusão de um dado extremo pode influenciar significativamente o valor do centróide. A aplicação para o software *R*, tanto do método de agrupamento quanto a escolha do número de clusters _K_ pelo método do cotovelo, segue abaixo, será considerado os dados padronizados para retirar qualquer tendência em função da diferença de escala ou amplitude dos dados:
 
-```{r message=FALSE, warning= FALSE}
+```{r message=FALSE, warning= FALSE, eval=FALSE}
+set.seed (1122)
 #BIBLIOTECAS
 library(ggplot2)
 ## padronizacao dos dados 
@@ -159,7 +159,7 @@ O custo de mudança do medóide atual para outra observação é calculado como 
 
 Além disso, é comum utilizar a medida de distância absoluta no lugar da distância euclidiana quadrática para calcular a distância entre os pontos e os medóides. O método pode ser visto abaixo:
 
-```{r}
+```{r eval=FALSE}
 ## escolhendo k pelo metodo do cotovelo
 cotovelo_pam <- factoextra::fviz_nbclust(dados_norm ,
                       cluster::pam,
@@ -190,7 +190,7 @@ Esses elementos fornecem informações sobre os medóides finais selecionados, a
 
 Para lidar com grandes conjuntos de dados, o algoritmo CLARA (Clustering Large Applications) divide o conjunto em amostras menores e aplica o PAM nessas amostras. Em seguida, calcula a variância total intragrupo para cada agrupamento gerado. A partição que apresentar menor variância total intragrupo é selecionada como o resultado final do algoritmo. Observe abaixo a aplicação para o *R*:
 
-```{r}
+```{r eval=FALSE}
 cotovelo_clara <- factoextra::fviz_nbclust(dados_norm ,
                       cluster::clara ,
                       method = "wss") +
@@ -286,7 +286,7 @@ Uma característica dos métodos hierárquicos é que as decisões de agrupament
 ![](figuras_naosupervisionado/dendograma.png){fig-align="centering" fig-alt="Exemplo de Dendrograma"}
 Os agrupamentos hierárquicos podem ser obtidos de maneira rapida com o apoio computacional, onde inicialmente, com uso das funções `hclust` e `cluster::diana`, é obtido um objeto da classe "hclust" e da clase  "diana" respectivamente, esses objetos contém informações sobre o agrupamento hierárquico realizado, incluindo a estrutura do dendrograma, as distâncias entre os objetos e outras propriedades relacionadas. Seguido pela seleção, com base no dendrograma, do número _K_ ideal de clusters (Não necessariamente só um _K_), e o "corte" da árvore aglomerativa no valor ideal identificado. É apresentado abaixo para todos os métodos citados a aplicação para o *R*, supondo a distância utilizada como a euclidiana calculada no início do capítulo
 
-```{r}
+```{r eval=FALSE}
 library(ggdendro)
 #AGLOMERATIVOS ############
 #METODO WARD -----
