@@ -19,7 +19,6 @@ book:
     - testes_np.qmd
     - supervisionada.qmd
     - intro_e_PCA.qmd
-    - naosupervisionado.qmd
   appendices: 
     - href: tutorialr.qmd
       text: Tutorial de R
