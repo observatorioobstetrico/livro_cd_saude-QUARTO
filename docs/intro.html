@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.237">
+<meta name="generator" content="quarto-1.3.353">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,7 +17,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -68,11 +68,16 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -80,85 +85,104 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Ciência de Dados Aplicada à Saúde Materno-Infantil</a> 
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
+        <div id="quarto-search" class="" title="Procurar"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Prefácio</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefácio</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">Sumário</a>
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sumário</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></a>
+  <a href="./intro.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./manipulacao_dados.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Manipulação de dados</span></a>
+  <a href="./manipulacao_dados.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Manipulação de dados</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tabulacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tabulação de dados</span></a>
+  <a href="./tabulacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tabulação de dados</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./descritiva.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análise exploratória dos dados</span></a>
+  <a href="./descritiva.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análise exploratória dos dados</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./estimacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estimação</span></a>
+  <a href="./estimacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Conceitos básicos de probabilidade</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./testes_np.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Testes não-paramétricos</span></a>
+  <a href="./testes_np.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Testes não-paramétricos</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./supervisionada.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></a>
+  <a href="./supervisionada.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./naosupervisionado.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Aprendizado não supervisionado</span></a>
+  <a href="./Intro_e_PCA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Aprendizado Não Supervisionado</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./naosupervisionado.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Análise de Agrupamentos</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Apêndices</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Apêndices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar seção">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorialr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Tutorial de R</span></a>
+  <a href="./tutorialr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Tutorial de R</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">Referências</a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referências</span></a>
   </div>
 </li>
       </ul>
@@ -166,15 +190,17 @@ ul.task-list li input[type="checkbox"] {
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#bases-de-dados" id="toc-bases-de-dados" class="nav-link active" data-scroll-target="#bases-de-dados"><span class="toc-section-number">1.1</span>  Bases de dados</a>
+  <li><a href="#bases-de-dados" id="toc-bases-de-dados" class="nav-link active" data-scroll-target="#bases-de-dados"><span class="header-section-number">1.1</span> Bases de dados</a>
   <ul class="collapse">
-  <li><a href="#dados-de-covid-19-em-gestantes-e-puérperas" id="toc-dados-de-covid-19-em-gestantes-e-puérperas" class="nav-link" data-scroll-target="#dados-de-covid-19-em-gestantes-e-puérperas"><span class="toc-section-number">1.1.1</span>  Dados de COVID-19 em gestantes e puérperas</a></li>
+  <li><a href="#dados-de-covid-19-em-gestantes-e-puérperas" id="toc-dados-de-covid-19-em-gestantes-e-puérperas" class="nav-link" data-scroll-target="#dados-de-covid-19-em-gestantes-e-puérperas"><span class="header-section-number">1.1.1</span> Dados de COVID-19 em gestantes e puérperas</a></li>
+  <li><a href="#indicadores-obstétricos" id="toc-indicadores-obstétricos" class="nav-link" data-scroll-target="#indicadores-obstétricos"><span class="header-section-number">1.1.2</span> INDICADORES OBSTÉTRICOS</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -184,7 +210,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></h1>
 </div>
 
 
@@ -201,18 +227,18 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="bases-de-dados" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="bases-de-dados"><span class="header-section-number">1.1</span> Bases de dados</h2>
-<p>Os dados considerados nas aplicações deste livro são provenientes do Sistema de Informação da Vigilância Epidemiológica da Gripe (SIVEP-Gripe), sistema oficial para o registro dos casos e óbitos por Síndrome Respiratória Aguda Grave (SRAG) disponibilizado pelo Ministério da Saúde. Os dados correspondem a registros de gestantes e puérperas de 10 a 55 anos hospitalizadas com SRAG por COVID-19 confirmada por teste de PCR. O conjunto de dados é utilizado para ilustrar e demonstrar diversos aspectos dos conceitos abordados no texto, e pode ser baixado em <a href="https://github.com/observatorioobstetrico/dados_livro_cd_saude" class="uri">https://github.com/observatorioobstetrico/dados_livro_cd_saude</a>.</p>
+<p>Os dados considerados nas aplicações deste livro são provenientes do Sistema de Informação da Vigilância Epidemiológica da Gripe (SIVEP-Gripe), sistema oficial para o registro dos casos e óbitos por Síndrome Respiratória Aguda Grave (SRAG) disponibilizado pelo Ministério da Saúde. Os dados correspondem a registros de gestantes e puérperas de 10 a 55 anos hospitalizadas com SRAG por COVID-19 confirmada por teste de PCR. Também é utilizados o conjunto de dados do Sistema de Informação sobre Nascidos Vivos (SINASC) obtido por meio da Plataforma de Ciência de Dados aplicada à Saúde (PCDaS) da Fundação Oswaldo Cruz (Fiocruz). Os conjuntos de dados são utilizado para ilustrar e demonstrar diversos aspectos dos conceitos abordados no texto, e podem ser baixados em <a href="https://github.com/observatorioobstetrico/dados_livro_cd_saude" class="uri">https://github.com/observatorioobstetrico/dados_livro_cd_saude</a>.</p>
 <section id="dados-de-covid-19-em-gestantes-e-puérperas" class="level3" data-number="1.1.1">
 <h3 data-number="1.1.1" class="anchored" data-anchor-id="dados-de-covid-19-em-gestantes-e-puérperas"><span class="header-section-number">1.1.1</span> Dados de COVID-19 em gestantes e puérperas</h3>
 <p>Essa base consiste em 11.523 registros de gestantes e puérperas diagnosticadas com COVID-19 no período de março de 2020 a dezembro de 2021. Alguns estudos conduzidos pelo OOBr usaram esses dados, dentre os quais podem ser citados: <a href="https://observatorioobstetricobr.org/publicacoes/caracteristicas-demograficas-e-epidemiologicas-sobre-mulheres-gravidas-e-puerperas-que-morreram-de-sindrome-respiratoria-aguda-grave-no-brasil/">Características demográficas e epidemiológicas sobre mulheres grávidas e puérperas que morreram de Síndrome Respiratória Aguda Grave no Brasil</a>, <a href="https://observatorioobstetricobr.org/publicacoes/desfechos-da-covid-19-em-puerperas-gestantes-e-mulheres-nao-gestantes-e-nem-puerperas-hospitalizadas/">Mortalidade materna associada à COVID-19 no Brasil em 2020 e 2021: comparação com mulheres não grávidas e homens</a> e <a href="https://observatorioobstetricobr.org/publicacoes/desfechos-da-covid-em-puerperas-gestantes-mulheres-nao-gestantes-nao-puerperas/">Desfechos da COVID-19 em puérperas, gestantes e mulheres não gestantes e nem puérperas hospitalizadas</a>.</p>
-<p>O dicionários das variáveis a ser considerado neste livro está na <a href="#tbl-covid19">Tabela&nbsp;<span class="quarto-unresolved-ref">tbl-covid19</span></a>.</p>
+<p>O dicionários das variáveis a ser considerado neste livro está na <a href="#tbl-covid19">Tabela&nbsp;<span>1.1</span></a>.</p>
 <div id="tbl-covid19" class="anchored">
 <table class="table">
 <caption>Tabela&nbsp;1.1: Dicionário das variáveis da base de dados de COVID-19 em gestantes e puérperas.</caption>
 <colgroup>
-<col style="width: 26%">
-<col style="width: 40%">
-<col style="width: 33%">
+<col style="width: 24%">
+<col style="width: 28%">
+<col style="width: 46%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -455,6 +481,96 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </div>
+</section>
+<section id="indicadores-obstétricos" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="indicadores-obstétricos"><span class="header-section-number">1.1.2</span> INDICADORES OBSTÉTRICOS</h3>
+<p>Consiste em um conjunto de dados com ??? observações sobre indicadores obstétricos a nível municipal do ano de 2019, sendo os seguintes indicadores:</p>
+<ul>
+<li><p>Prematuridade: Refere-se ao parto que ocorre em idade gestacional inferior a 37 semanas.</p></li>
+<li><p>Gestação Múltipla: Diz respeito a uma gestação que gera dois ou mais fetos simultaneamente.</p></li>
+<li><p>Parto Cesárea: Trata-se do tipo de parto em que a extração do feto é realizada por meio de intervenção cirúrgica.</p></li>
+<li><p>Consultas de Pré-Natal: Consiste no acompanhamento médico realizado pela gestante durante a gravidez. O ideal é que ocorram pelo menos 7 consultas médicas durante o período de pré-natal.</p></li>
+<li><p>Apgar: É uma escala proposta em 1953 pela médica Virgínia Apgar, que atribui pontuações a 5 sinais do recém-nascido: frequência cardíaca, respiração, tônus muscular, irritabilidade reflexa e cor da pele. A escala varia de 0 a 10, e escores abaixo de 7 requerem atenção dos profissionais obstetras. Essa avaliação é feita no primeiro minuto após o nascimento (Apgar do primeiro minuto) e novamente após 5 minutos (Apgar do quinto minuto).</p></li>
+<li><p>Anomalia congênita: Refere-se a alterações estruturais ou funcionais que podem ser causadas por diversos fatores e têm origem durante a vida intrauterina.</p></li>
+</ul>
+<p>A obtenção dos indicadores utilizados foi realizada considerando as frequências relativas ao município de residência dos nascidos vivos no ano da coleta. Os indicadores obstétricos são calculados como percentuais válidos, ou seja, os dados faltantes da variável em questão são desconsiderados. Por exemplo:</p>
+<ul>
+<li>Percentual válido de prematuridade = (número de prematuros / número de nascidos vivos com informação de prematuridade) x 100.</li>
+</ul>
+<p>O Dicionário para esse conjunto de dados é apresentado em <a href="#tbl-indicadores">Tabela&nbsp;<span>1.2</span></a> .</p>
+<div id="tbl-indicadores" class="anchored">
+<table class="table">
+<caption>Tabela&nbsp;1.2: Dicionário das variáveis da base de dados de Indicadores Obstétricos.</caption>
+<colgroup>
+<col style="width: 27%">
+<col style="width: 72%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variável</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>uf</td>
+<td>Unidade Federativa (Estados + Distrito Federal)</td>
+</tr>
+<tr class="even">
+<td>municipio</td>
+<td>Município</td>
+</tr>
+<tr class="odd">
+<td>codigo</td>
+<td>Código do município do IBGE</td>
+</tr>
+<tr class="even">
+<td>nascidos_vivos</td>
+<td>Número de nascidos vivos</td>
+</tr>
+<tr class="odd">
+<td>porc_premat</td>
+<td>Percentual válido de prematuridade</td>
+</tr>
+<tr class="even">
+<td>porc_gesta_multipla</td>
+<td>Percentual válido de gestações múltiplas</td>
+</tr>
+<tr class="odd">
+<td>porc_cesarea</td>
+<td>Percentual válido de partos cesáreas</td>
+</tr>
+<tr class="even">
+<td>porc_0_consulta</td>
+<td>Percentual válido de nascidos com nenhuma consulta de pré-natal</td>
+</tr>
+<tr class="odd">
+<td>porc_7mais_consulta</td>
+<td>Percentual válido de nascidos com 7 ou mais consultas de pré-natal</td>
+</tr>
+<tr class="even">
+<td>porc_apgar1_menor_7</td>
+<td>Percentual válido de Apgar de 1º minuto menor que 7</td>
+</tr>
+<tr class="odd">
+<td>porc_apgar5_menor_7</td>
+<td>Percentual válido de Apgar de 5º minuto menor que 7</td>
+</tr>
+<tr class="even">
+<td>porc_anomalia</td>
+<td>Percentual válido de nascidos com anomalia congênita</td>
+</tr>
+<tr class="odd">
+<td>porc_peso_menor_2500</td>
+<td>Percentual válido de nascidos com peso menor que 2.500 gramas</td>
+</tr>
+<tr class="even">
+<td>porc_fem</td>
+<td>Percentual válido de nascidos do sexo feminino</td>
+</tr>
+</tbody>
+</table>
+</div>
 
 
 </section>
@@ -488,9 +604,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -555,6 +685,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {

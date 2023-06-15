@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.237">
+<meta name="generator" content="quarto-1.3.353">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,72 +17,9 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -93,7 +30,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./naosupervisionado.html" rel="next">
+<link href="./Intro_e_PCA.html" rel="next">
 <link href="./testes_np.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -127,6 +64,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
@@ -135,11 +73,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./supervisionada.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -147,85 +90,104 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Ciência de Dados Aplicada à Saúde Materno-Infantil</a> 
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
+        <div id="quarto-search" class="" title="Procurar"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Prefácio</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefácio</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">Sumário</a>
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sumário</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></a>
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./manipulacao_dados.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Manipulação de dados</span></a>
+  <a href="./manipulacao_dados.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Manipulação de dados</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tabulacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tabulação de dados</span></a>
+  <a href="./tabulacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tabulação de dados</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./descritiva.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análise exploratória dos dados</span></a>
+  <a href="./descritiva.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análise exploratória dos dados</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./estimacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estimação</span></a>
+  <a href="./estimacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Conceitos básicos de probabilidade</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./testes_np.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Testes não-paramétricos</span></a>
+  <a href="./testes_np.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Testes não-paramétricos</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./supervisionada.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></a>
+  <a href="./supervisionada.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./naosupervisionado.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Aprendizado não supervisionado</span></a>
+  <a href="./Intro_e_PCA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Aprendizado Não Supervisionado</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./naosupervisionado.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Análise de Agrupamentos</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Apêndices</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Apêndices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar seção">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorialr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Tutorial de R</span></a>
+  <a href="./tutorialr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Tutorial de R</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">Referências</a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referências</span></a>
   </div>
 </li>
       </ul>
@@ -233,15 +195,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#machine-learning" id="toc-machine-learning" class="nav-link active" data-scroll-target="#machine-learning"><span class="toc-section-number">7.0.1</span>  Machine learning</a></li>
-  <li><a href="#aprendizado-supervisionado-conceitos-iniciais" id="toc-aprendizado-supervisionado-conceitos-iniciais" class="nav-link" data-scroll-target="#aprendizado-supervisionado-conceitos-iniciais"><span class="toc-section-number">7.0.2</span>  Aprendizado supervisionado (conceitos iniciais)</a></li>
-  <li><a href="#agoritmos-de-aprendizado-de-máquina" id="toc-agoritmos-de-aprendizado-de-máquina" class="nav-link" data-scroll-target="#agoritmos-de-aprendizado-de-máquina"><span class="toc-section-number">7.0.3</span>  Agoritmos de Aprendizado de máquina</a></li>
+  <li><a href="#conceitos-iniciais" id="toc-conceitos-iniciais" class="nav-link active" data-scroll-target="#conceitos-iniciais"><span class="header-section-number">7.1</span> Conceitos iniciais</a>
+  <ul class="collapse">
+  <li><a href="#dificuldades-gerais-do-machine-learnig" id="toc-dificuldades-gerais-do-machine-learnig" class="nav-link" data-scroll-target="#dificuldades-gerais-do-machine-learnig"><span class="header-section-number">7.1.1</span> Dificuldades gerais do machine learnig</a></li>
+  <li><a href="#modelo-de-regressão-linear" id="toc-modelo-de-regressão-linear" class="nav-link" data-scroll-target="#modelo-de-regressão-linear"><span class="header-section-number">7.1.2</span> Modelo de Regressão Linear</a></li>
+  <li><a href="#modelo-de-regressão-logística" id="toc-modelo-de-regressão-logística" class="nav-link" data-scroll-target="#modelo-de-regressão-logística"><span class="header-section-number">7.1.3</span> Modelo de Regressão logística</a></li>
+  <li><a href="#medidas-de-desempenho" id="toc-medidas-de-desempenho" class="nav-link" data-scroll-target="#medidas-de-desempenho"><span class="header-section-number">7.1.4</span> Medidas de desempenho</a></li>
+  <li><a href="#curva-auc-roc" id="toc-curva-auc-roc" class="nav-link" data-scroll-target="#curva-auc-roc"><span class="header-section-number">7.1.5</span> Curva AUC-ROC</a></li>
+  <li><a href="#validação-cruzada-cross-validation" id="toc-validação-cruzada-cross-validation" class="nav-link" data-scroll-target="#validação-cruzada-cross-validation"><span class="header-section-number">7.1.6</span> Validação Cruzada (Cross-Validation)</a></li>
+  <li><a href="#hiperparâmetros" id="toc-hiperparâmetros" class="nav-link" data-scroll-target="#hiperparâmetros"><span class="header-section-number">7.1.7</span> Hiperparâmetros</a></li>
+  </ul></li>
+  <li><a href="#agoritmos-de-aprendizado-de-máquina" id="toc-agoritmos-de-aprendizado-de-máquina" class="nav-link" data-scroll-target="#agoritmos-de-aprendizado-de-máquina"><span class="header-section-number">7.2</span> Agoritmos de Aprendizado de máquina</a>
+  <ul class="collapse">
+  <li><a href="#árvores-de-decisão" id="toc-árvores-de-decisão" class="nav-link" data-scroll-target="#árvores-de-decisão"><span class="header-section-number">7.2.1</span> Árvores de Decisão</a></li>
+  <li><a href="#algoritmos-de-boosting" id="toc-algoritmos-de-boosting" class="nav-link" data-scroll-target="#algoritmos-de-boosting"><span class="header-section-number">7.2.2</span> Algoritmos de boosting</a></li>
+  <li><a href="#support-vector-machine-svm" id="toc-support-vector-machine-svm" class="nav-link" data-scroll-target="#support-vector-machine-svm"><span class="header-section-number">7.2.3</span> Support Vector Machine (SVM)</a></li>
+  </ul></li>
+  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">7.3</span> Considerações finais</a></li>
   </ul>
 </nav>
     </div>
@@ -250,7 +227,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></h1>
 </div>
 
 
@@ -265,63 +242,53 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="precisão-vs-intrerpretabilidade-elias-sugeriu-não-incluir-esta-discussão-no-post-deixei-aqui-como-rascunho" class="level4" data-number="7.0.0.1">
-<h4 data-number="7.0.0.1" class="anchored" data-anchor-id="precisão-vs-intrerpretabilidade-elias-sugeriu-não-incluir-esta-discussão-no-post-deixei-aqui-como-rascunho"><span class="header-section-number">7.0.0.1</span> Precisão vs intrerpretabilidade **** Elias sugeriu não incluir esta discussão no post, deixei aqui como “rascunho”</h4>
-<p>Até aqui, discutimos muito sobre métodos para obter modelos precisos, com desempenhos ótimos. Obter um modelo que irá prever com excelência um evento em dados não é visto como um modelo valioso, mas, onde entra a interpretabilidade?</p>
-<p>A interpretabilidade fornece informações sobre o relacionamento entre as entradas e a saída de um modelo. Um modelo que pode ser interpretado permite responder perguntas sobre por que os recursos independentes predizem aquele atributo dependente. Por exemplo: Um modelo extremamente preciso pode permitir que eu saiba quais os meus clientes “podem” receber créditos ou não, mas se ele não for interpretável, eu nunca saberei o porquê. Pense no cenário da saúde, onde eu tenho diversas informações sobre pacientes e meu modelo pode predizer precisamente quais têm mais probabilidade de ser diagnosticado com uma doença. Mas já pensou em quão importante é saber quais fatores influenciam isso? porque aquele paciente é mais provável de ser diagnosticado com tal doença em relação a outro. Em diversos cenários a interpretabilidade torna-se indispensável dentro dos modelos. A depender do cenário, a interpretabilidade é mais importante que a precisão e vice-versa.</p>
-<p>Saber qual priorizar vai depender muito do cenário em que se encontra. Normalmente a escolha de um determinado algoritmo em detrimento de outro e como a seleção do algoritmo está relacionada ao caso de uso que estamos tentando resolver e ao objetivo de negócios que queremos alcançar. Um modelo com menos parâmetros é mais fácil de interpretar. Isso é intuitivo. Um modelo de regressão linear tem um coeficiente por recurso de entrada e um termo de interceptação. Por exemplo, você pode examinar cada termo e entender como eles contribuem para a saída. Uma árvore de decisões (falaremos mais sobre elas) também costuma ser de fácil interpretação, mas mesmo modelos considerados “interpretáveis” podem se tornar rapidamente não interpretáveis.</p>
-<p><br>
-</p>
-<p>Tópicos:</p>
-<ul>
-<li><p>conceitos iniciais</p></li>
-<li><p>algoritmos supervisionados</p></li>
-<li><p>aplicações e interpretabilidade</p></li>
-</ul>
-</section>
-<section id="machine-learning" class="level3" data-number="7.0.1">
-<h3 data-number="7.0.1" class="anchored" data-anchor-id="machine-learning"><span class="header-section-number">7.0.1</span> Machine learning</h3>
-<ul>
-<li><p>falar sobre ml</p></li>
-<li><p>mecionar um pouco sobre Aprendizado supervisionado VS não supervisionado</p></li>
-<li><p>“neste capítulo vamos falar sobre aprendizado supervisionado</p></li>
-</ul>
-</section>
-<section id="aprendizado-supervisionado-conceitos-iniciais" class="level3" data-number="7.0.2">
-<h3 data-number="7.0.2" class="anchored" data-anchor-id="aprendizado-supervisionado-conceitos-iniciais"><span class="header-section-number">7.0.2</span> Aprendizado supervisionado (conceitos iniciais)</h3>
+<section id="conceitos-iniciais" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="conceitos-iniciais"><span class="header-section-number">7.1</span> Conceitos iniciais</h2>
 <p>Aprendizado supervisionado pode ser definido como a tarefa de aprender uma função que mapeia uma entrada em uma saída e isso é feito com base em exemplos e treinos. Em outras palavras, uma máquina é treinada para encontrar soluções chamadas rótulos, onde esses rótulos identificam alguma característica. Apesar de também poder ser usada para regressão, o aprendizado supervisionado tem como tarefa típica a classificação. Um exemplo bem simples de classificação é: suponha que eu queira classificar imagens de animais, nesse caso possuo um banco de dados com imagens de cachorros e gatos. Quero que meu algoritmo classifique as imagens identificando o tipo do animal na imagem. Para isso o algoritmo é treinado utilizando vários exemplos para que ele consiga classificar novas imagens posteriormente. Outra tarefa é predizer um valor com base em características, por exemplo, prever o valor de um carro dado um conjunto de características (quilometragem, idade, marca, etc.) chamadas preditores. Este tipo de tarefa é chamada regressão. Para treinar o sistema é preciso incluir diversos exemplos, assim o banco de dados é separado em treino e teste, onde o é feito o treinamento na base treino para posteriormente serem feitos os testes de predição e avaliação da qualidade do ajuste na base teste.</p>
-<section id="dificuldades-gerais-do-machine-learnig" class="level5" data-number="7.0.2.0.1">
-<h5 data-number="7.0.2.0.1" class="anchored" data-anchor-id="dificuldades-gerais-do-machine-learnig"><span class="header-section-number">7.0.2.0.1</span> Dificuldades gerais do machine learnig</h5>
-<p>Como dito anteriormente, a idéia geral do aprendizado de máquina é construir um algoritmo para solucionar os meus problemas, onde esse algoritmo será treinado com dados. Mas, o que acontece se o meu algoritmo for ruim ou os dados estiverem ruins.</p>
-<p>Quantidade insuficiente de dados</p>
+<section id="dificuldades-gerais-do-machine-learnig" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="dificuldades-gerais-do-machine-learnig"><span class="header-section-number">7.1.1</span> Dificuldades gerais do machine learnig</h3>
+<p>Como dito anteriormente, a idéia geral do aprendizado de máquina é construir um algoritmo para solucionar os meus problemas, onde esse algoritmo será treinado com dados. Mas, o que acontece se o meu algoritmo for ruim ou os dados estiverem ruins?</p>
+<section id="quantidade-insuficiente-de-dados" class="level4" data-number="7.1.1.1">
+<h4 data-number="7.1.1.1" class="anchored" data-anchor-id="quantidade-insuficiente-de-dados"><span class="header-section-number">7.1.1.1</span> Quantidade insuficiente de dados</h4>
 <p>Falando sobre dados ruins, o primeiro problema é a quantidade de dados. Já parou pra pensar em quão difícil é treinar uma máquina? Voltando ao exemplo anterior, para você aprender a diferenciar um cachorro de um gato quando era criança, bastou alguém lhe apontar qual era qual algumas vezes você se tornou capaz de diferenciar cães de gatos independente das características. Uma máquina não consegue fazer isso facilmente, é necessário uma quantidade grande de dados para a maioria dos algoritmos, até mesmo para problemas simples como o do exemplo citado e para problemas complexos, como reconhecimento de imagem ou fala você pode precisar de milhões de exemplos.</p>
 </section>
-<section id="dados-de-treino-não-representativos" class="level5" data-number="7.0.2.0.2">
-<h5 data-number="7.0.2.0.2" class="anchored" data-anchor-id="dados-de-treino-não-representativos"><span class="header-section-number">7.0.2.0.2</span> Dados de treino não representativos</h5>
+<section id="dados-de-treino-não-representativos" class="level4" data-number="7.1.1.2">
+<h4 data-number="7.1.1.2" class="anchored" data-anchor-id="dados-de-treino-não-representativos"><span class="header-section-number">7.1.1.2</span> Dados de treino não representativos</h4>
 <p>Como mencionado anteriormente, o treinamento de um algoritmo é feito por meio de uma base de dados, onde está é separada em dados de treinamento e de teste, para que eu possa usá-lo e generalizá-lo em dados futuros. Dados de treinamento que não representem bem os dados que serão usados no futuro podem ser um modelo que não funcionará bem. Utilizando o exemplo do algoritmo de regressão onde o objetivo era prever os valores dos carros com base em suas características. Digamos que meu algoritmo foi treinado com uma base de dados de carros apenas do estado de São Paulo, mas meu algoritmo será utilizado para prever carros de todo o país, pode ser que não funcione tão bem. Os estados podem alterar significativamente os preços dos carros por meio de impostos, por exemplo. É de extrema importância utilizar um conjunto de dados de treino que represente bem os dados que você deseja generalizar. Isso pode não ser uma tarefa fácil, pode encontrar problemas com amostras, principalmente se ela for muito pequena e até mesmo uma amostra grande pode não ser representativa.</p>
 </section>
-<section id="qualidade-dos-dados" class="level5" data-number="7.0.2.0.3">
-<h5 data-number="7.0.2.0.3" class="anchored" data-anchor-id="qualidade-dos-dados"><span class="header-section-number">7.0.2.0.3</span> Qualidade dos dados</h5>
+<section id="qualidade-dos-dados" class="level4" data-number="7.1.1.3">
+<h4 data-number="7.1.1.3" class="anchored" data-anchor-id="qualidade-dos-dados"><span class="header-section-number">7.1.1.3</span> Qualidade dos dados</h4>
 <p>Como pode ter imaginado, a qualidade dos dados também é de extrema importância. Dados com discrepâncias, vários erros, e gerados a partir de medições de baixa qualidade fará com que fique mais difícil o seu algoritmo identificar padrões e tomar decisões. Se você convive com pessoas do ramo da ciência de dados em geral, é bem provável que já tenha ouvido alguém dizer algo do tipo: “gastamos a maior parte do nosso tempo para limpar os dados”. Isso não é em vão. Na maioria dos casos, principalmente no ramo de aprendizagem de máquinas é gasto um enorme tempo para limpar os dados pois pode influenciar muito na qualidade do modelo. Por exemplo, se algumas informações forem muito discrepantes, é preciso decidir entre tentar corrigir ou excluí-las. Se uma variável tiver uma quantidade significativa de valores faltantes, deverá ser decidido se essas observações serão excluídas ou se será possível utilizar métodos de imputação de dados. Treinar mais de um modelo com diferentes decisões tomadas sobre os dados também pode ser efetivo.</p>
-<p>Sobreajustamento dos dados (<strong>Overfitting</strong>)</p>
+</section>
+<section id="sobreajustamento-dos-dados-overfitting" class="level4" data-number="7.1.1.4">
+<h4 data-number="7.1.1.4" class="anchored" data-anchor-id="sobreajustamento-dos-dados-overfitting"><span class="header-section-number">7.1.1.4</span> Sobreajustamento dos dados (<strong>Overfitting</strong>)</h4>
 <p>O sobreajustamento é um conceito que ocorre quando nosso modelo (não só um modelo de aprendizado de máquinas), se ajusta exatamente aos nossos dados de treinamento. Ouvir isso uma primeira vez pode parecer excelente, ou até mesmo o cenário ideal, afinal, queremos que o nosso modelo se ajuste o máximo possível, certo? bom.. não exatamente. O que acontece neste caso, é que o modelo mostra-se adequado <strong>apenas para os dados de treino</strong>, como se o modelo tivesse apenas decorado os dados de treino e não fosse capaz de generalizar para outros dados nunca vistos antes. Assim, o desempenho do nosso modelo quando usado em novos dados cai drasticamente. Algumas razões que podem levar a um sobreajustamento: base de treino muito pequena, não contendo dados suficientes para representar bem todos valores de entrada possíveis; grande quantidade de informações irrelevantes (dados ruidosos); treinamento excessivo em um único conjunto de amostra; modelo muito complexo, fazendo com que ele aprenda os ruídos nos dados de treinamento. Agora que sabemos o problema que é um sobreajustamento e as razões que podem levar a isso, precisamos falar sobre como evitar que isso aconteça. Existem algumas técnicas comumente utilizadas.</p>
 <ul>
 <li><p><strong>Regularização:</strong> Foi dito anteriormente que uma razão para o sobreajustamento é a complexidade do modelo, então, faz sentido diminuirmos sua complexidade. Isso pode ser feito removendo ou diminuindo o número de parâmetros.</p></li>
 <li><p><strong>Parada antecipada:</strong> Quando um modelo está sendo treinado por rodadas de repetição, é possível avaliar cara uma dessa repetição. Normalmente o desempenho de um modelo melhora a cada repetição, mas chega um momento em que começa a acontecer o sobreajustamento. A ideia da parada antecipada é pausar o treinamento antes que chegue a esse ponto.</p></li>
 <li><p><strong>Aumento de dados:</strong> Essa técnica consiste em aumentar ligeiramente os dados da amostra toda vez que o modelo os processa, ou seja, injetar dados limpos e relevantes nos dados de treino. Isso faz com que os conjuntos de treino pareçam “exclusivos” do modelo, impedindo que ele aprenda suas características. Mas isso deve ser feito com moderação, pode injetar dados que não estão limpos pode fazer mais mal do que bem. Além disso, não é um método garantido.</p></li>
 </ul>
-</section>
-<section id="existem-outras-técnicas-que-podem-ser-utilizadas-para-evitar-o-sobreajustamento.-mas-precisamos-falar-também-sobre-como-detectá-los." class="level5" data-number="7.0.2.0.4">
-<h5 data-number="7.0.2.0.4" class="anchored" data-anchor-id="existem-outras-técnicas-que-podem-ser-utilizadas-para-evitar-o-sobreajustamento.-mas-precisamos-falar-também-sobre-como-detectá-los."><span class="header-section-number">7.0.2.0.4</span> Existem outras técnicas que podem ser utilizadas para evitar o sobreajustamento. Mas precisamos falar também sobre como detectá-los.</h5>
+<p>Existem outras técnicas que podem ser utilizadas para evitar o sobreajustamento. Mas precisamos falar também sobre como detectá-los.</p>
 <p>Uma forma “não técnica” e que não deve ser a sua única forma de tentar identificar o sobreajustamento é por meio da visualização gráfica. A visualização gráfica pode ser usada apenas para levantar hipóteses, nunca para tomar uma decisão final. Até mesmo porque nem sempre é possível verificar esse problema visualmente. Talvez a técnica mais eficiente para isso é a Validação Cruzada k-fold (k-fold Cross Validation). Vamos falar sobre posteriormente.</p>
 </section>
-<section id="subajustamento-dos-dados-underfitting" class="level5" data-number="7.0.2.0.5">
-<h5 data-number="7.0.2.0.5" class="anchored" data-anchor-id="subajustamento-dos-dados-underfitting"><span class="header-section-number">7.0.2.0.5</span> Subajustamento dos dados (<strong>Underfitting</strong>)</h5>
+<section id="subajustamento-dos-dados-underfitting" class="level4" data-number="7.1.1.5">
+<h4 data-number="7.1.1.5" class="anchored" data-anchor-id="subajustamento-dos-dados-underfitting"><span class="header-section-number">7.1.1.5</span> Subajustamento dos dados (<strong>Underfitting</strong>)</h4>
 <p>Como pode ter imaginado, subajustamento é o oposto do sobreajustamento. Ocorre quando seu modelo é muito simples para aprender a estrutura dos dados. O subajustamento leva a um erro elevado tanto nos dados de treino quanto nos dados de teste. Pode ocorrer quando o modelo não foi treinado por tempo suficiente ou as variáveis ​​de entrada não são significativas o suficiente para determinar uma relação significativa entre as variáveis ​​de entrada e saída. Aqui também estamos em um cenário a ser evitado e apesar de ser contrário ao sobreajustamento, as técnicas tanto para identificar quanto para evitar o problema são semelhantes. Um adendo, geralmente, identificar um subajustamento é mais fácil que identificar um sobreajustamento.</p>
 </section>
-<section id="modelo-de-regressão-linear" class="level4" data-number="7.0.2.1">
-<h4 data-number="7.0.2.1" class="anchored" data-anchor-id="modelo-de-regressão-linear"><span class="header-section-number">7.0.2.1</span> Modelo de Regressão Linear</h4>
-<p>Já temos uma breve noção sobre o que é aprendizado supervisionado, agora vamos introduzir o funcionamento básico de um modelo. Como foi mencionado, aprendizado supervisionado é usado principalmente para métodos de classificação e regressão. Um modelo de regressão linear, como o próprio nome já diz, se enquadra nos métodos de regressão. A regressão consiste em modelar um valor de previsão com base em variáveis independentes. De forma mais geral, o modelo consiste em fazer uma previsão “simples” calculando uma ponderação entre as somas dos recursos de entrada e uma constante chamada intercepto. Assim, obtemos uma relação linear entre a variável de saída e as variáveis de entrada. A linha de regressão é a linha de melhor ajuste para o modelo</p>
+</section>
+<section id="modelo-de-regressão-linear" class="level3" data-number="7.1.2">
+<h3 data-number="7.1.2" class="anchored" data-anchor-id="modelo-de-regressão-linear"><span class="header-section-number">7.1.2</span> Modelo de Regressão Linear</h3>
+<p>Já temos uma breve noção sobre o que é aprendizado supervisionado, agora vamos introduzir o funcionamento básico de um modelo. Como foi mencionado, aprendizado supervisionado é usado principalmente para métodos de classificação e regressão. Um modelo de regressão linear, como o próprio nome já diz, se enquadra nos métodos de regressão. A regressão consiste em modelar um valor de previsão com base em variáveis independentes. De forma mais geral, o modelo consiste em fazer uma previsão “simples” calculando uma ponderação entre as somas dos recursos de entrada e uma constante chamada intercepto. Assim, obtemos uma relação linear entre a variável de saída e as variáveis de entrada. A linha de regressão é a linha de melhor ajuste para o modelo.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/linear.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Fonte: https://is.gd/Z9yiHp</figcaption>
+</figure>
+</div>
+</div>
+</div>
 <p><span class="math display">\[
 \hat y = \beta_0 + \beta_1x_1 + \beta_2x_2 + ...+ \beta_nx_n
 \]</span></p>
@@ -341,12 +308,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><strong>Multicolinearidade:</strong> O modelo de regressão linear não assume nenhuma autocorrelação em termos de erro. Se houver alguma correlação no termo de erro, isso reduzirá drasticamente a precisão do modelo. A autocorrelação geralmente ocorre se houver uma dependência entre os erros residuais. Considere calcular correlações pareadas para seus dados de entrada e remover os mais correlacionados.</p></li>
 </ul>
 </section>
-<section id="modelo-de-regressão-logística" class="level4" data-number="7.0.2.2">
-<h4 data-number="7.0.2.2" class="anchored" data-anchor-id="modelo-de-regressão-logística"><span class="header-section-number">7.0.2.2</span> Modelo de Regressão logística</h4>
+<section id="modelo-de-regressão-logística" class="level3" data-number="7.1.3">
+<h3 data-number="7.1.3" class="anchored" data-anchor-id="modelo-de-regressão-logística"><span class="header-section-number">7.1.3</span> Modelo de Regressão logística</h3>
 <p>Alguns algoritmos de regressão podem ser usados para classificação (o contrário também é válido). A regressão logística é um dos algoritmos mais populares do machine learning e geralmente é usada para estimar a probabilidade de que uma instância pertença a uma classe. Por exemplo, qual a probabilidade de que o objeto de uma imagem seja um cachorro? ou um gato? Neste caso, se a probabilidade estimada for maior que 50%, então o modelo pode prever que naquela imagem tem um cachorro (classe rotulada como “1”), se for menor, prevê que é um gato (classe rotulada como “0”). Este tipo de regressão pode retornar valores categóricos ou discretos, como: Sim ou Não, 0 ou 1, verdadeiro ou falso, entre outros. Mas aqui, ela fornece os valores probabilísticos que estão entre 0 e 1. Apesar de ser semelhante a regressão linear, aqui não ajustamos uma linha de regressão, mas sim uma função logística em forma de “S” que prevê os dois valores máximos (0 ou 1).</p>
-<ul>
-<li>inserir imagem</li>
-</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/logistica.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Fonte: https://is.gd/87NSTU</figcaption>
+</figure>
+</div>
+</div>
+</div>
 <p>A equação de regressão Logística pode ser obtida a partir da equação de Regressão Linear.</p>
 <p><span class="math display">\[
 \hat y = \beta_0 + \beta_1x_1 + \beta_2x_2 + ...+ \beta_nx_n
@@ -370,11 +344,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Ordinal: Na regressão logística ordinal, pode haver 3 ou mais tipos ordenados possíveis de variáveis ​​dependentes, como “baixo”, “médio” ou “alto”.</p></li>
 </ul>
 </section>
-<section id="medidas-de-desempenho" class="level4" data-number="7.0.2.3">
-<h4 data-number="7.0.2.3" class="anchored" data-anchor-id="medidas-de-desempenho"><span class="header-section-number">7.0.2.3</span> Medidas de desempenho</h4>
+<section id="medidas-de-desempenho" class="level3" data-number="7.1.4">
+<h3 data-number="7.1.4" class="anchored" data-anchor-id="medidas-de-desempenho"><span class="header-section-number">7.1.4</span> Medidas de desempenho</h3>
 <p>Ao desenvolver projetos de Aprendizado de Máquinas no geral, é preciso sempre verificar a qualidade do modelo. Assim como não existe um modelo padrão para resolver todos os problemas, não existe uma única métrica para avaliar a qualidade do modelo. Saber qual métrica é mais apropriada para determinado cenário é crucial, pois escolhas erradas podem gerar modelos problemáticos.</p>
-<section id="modelos-de-regressão" class="level5" data-number="7.0.2.3.1">
-<h5 data-number="7.0.2.3.1" class="anchored" data-anchor-id="modelos-de-regressão"><span class="header-section-number">7.0.2.3.1</span> Modelos de regressão</h5>
+<section id="modelos-de-regressão" class="level4" data-number="7.1.4.1">
+<h4 data-number="7.1.4.1" class="anchored" data-anchor-id="modelos-de-regressão"><span class="header-section-number">7.1.4.1</span> Modelos de regressão</h4>
 <p>Existem algumas métricas importantes para medirmos a qualidade de um modelo de regressão.</p>
 <ul>
 <li><p><strong>Root Mean Squared Error (RMSE):</strong> Uma medida muito comum usada em um modelo de regressão é a Root Mean Squared Error (REQM). Em resumo, o REQM é uma medida que mostra o quão espalhados estão esses resíduos. A métrica possui valor mínimo 0 e sem valor máximo. Quanto maior esse número, pior o modelo.</p>
@@ -393,8 +367,8 @@ R^2 = 1 - \frac{\sum(y_i - {\hat{y_i}})^2} {\sum(y_i - {\bar{y}})^2}
 <p>onde, <span class="math inline">\(\hat{y_i}\)</span> é o valor predito, <span class="math inline">\(\bar{y}\)</span> é o valor médio das amostras e <span class="math inline">\(y_i\)</span> é o valor observado. O valor resultante varia de 0 a 1. Quanto maior o valor, melhor o modelo. Por exemplo, caso tivéssemos avaliando um modelo e tivéssemos <span class="math inline">\(R^2 = 0.87\)</span>, entende-se então que 87% da variância de nossos dados podem ser explicadas pelo modelo. Esta medida possui algumas limitações importantes: só pode ser aplicada perfeitamente para modelos univariados; é uma medida enviesada, pode definição e em casos de <em>overfitting</em>, o valor da métrica ainda continua alto.</p></li>
 </ul>
 </section>
-<section id="modelos-de-classificação" class="level5" data-number="7.0.2.3.2">
-<h5 data-number="7.0.2.3.2" class="anchored" data-anchor-id="modelos-de-classificação"><span class="header-section-number">7.0.2.3.2</span> Modelos de classificação</h5>
+<section id="modelos-de-classificação" class="level4" data-number="7.1.4.2">
+<h4 data-number="7.1.4.2" class="anchored" data-anchor-id="modelos-de-classificação"><span class="header-section-number">7.1.4.2</span> Modelos de classificação</h4>
 <ul>
 <li><p><strong>Acurácia:</strong> A acurácia nos diz quantos de nossos exemplos foram classificados corretamente e é dada pela seguinte fórmula:</p>
 <p><span class="math display">\[
@@ -421,72 +395,55 @@ R^2 = 1 - \frac{\sum(y_i - {\hat{y_i}})^2} {\sum(y_i - {\bar{y}})^2}
 \mbox{especificidade} = \frac{TN}{TN + FP}
 \]</span></p>
 </section>
-<section id="matriz-de-confusão" class="level5" data-number="7.0.2.3.3">
-<h5 data-number="7.0.2.3.3" class="anchored" data-anchor-id="matriz-de-confusão"><span class="header-section-number">7.0.2.3.3</span> Matriz de confusão</h5>
+<section id="matriz-de-confusão" class="level4" data-number="7.1.4.3">
+<h4 data-number="7.1.4.3" class="anchored" data-anchor-id="matriz-de-confusão"><span class="header-section-number">7.1.4.3</span> Matriz de confusão</h4>
 <p>Matriz de confusão é uma matriz usada para avaliar o desempenho de um modelo de classificação. A matriz compara os valores de destino reais com os previstos pelo modelo. A matriz é N x N onde é N é o número de classes. Para um problema de classificação binária teríamos uma matriz 2 x 2. As matrizes de confusão revelam quando um modelo confunde consistentemente duas classes, simplificando a determinação da probabilidade de os resultados de um modelo serem confiáveis.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>Predito, <span class="sc">~</span><span class="st">`</span><span class="at">Negativo     </span><span class="st">`</span>, <span class="sc">~</span><span class="st">`</span><span class="at">Positivo </span><span class="st">`</span>,</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Negativo"</span>,    <span class="st">"Verdadeiro Negativo (TN)"</span>, <span class="st">"Falso Negativo (FN)"</span>,</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Positivo"</span>,    <span class="st">"Falso Positivo (FP)"</span>, <span class="st">"Verdadeiro Positivo (TP)"</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="fu">c</span>(<span class="st">"bordered"</span>, <span class="st">"basic"</span>), <span class="at">full_width =</span> <span class="cn">FALSE</span>, <span class="at">font_size =</span> <span class="dv">20</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_header_above</span>(<span class="fu">c</span>(<span class="st">" "</span> <span class="ot">=</span> <span class="dv">1</span>, <span class="st">"Observado"</span> <span class="ot">=</span> <span class="dv">2</span>), <span class="at">background =</span> <span class="st">"white"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collapse_rows</span>(<span class="at">columns =</span> <span class="dv">1</span>, <span class="at">valign =</span> <span class="st">"top"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">row_spec</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">background =</span> <span class="st">"white"</span>, <span class="at">align =</span> <span class="st">"center"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">column_spec</span>(<span class="dv">1</span>, <span class="st">"3in"</span>, <span class="at">bold =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">column_spec</span>(<span class="dv">2</span>, <span class="st">"3in"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">column_spec</span>(<span class="dv">3</span>, <span class="st">"2in"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
-<table class="table table-bordered" style="font-size: 20px; width: auto !important; margin-left: auto; margin-right: auto;">
- <thead>
-<tr>
-<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
-<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; padding-right: 4px; padding-left: 4px; background-color: white !important;" colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Observado</div></th>
+<table class="table table-bordered table-sm table-striped small" data-quarto-postprocess="true">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; empty-cells: hide; border-bottom: hidden;"></th>
+<th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-bottom: hidden; padding-bottom: 0; padding-left: 3px; padding-right: 3px; padding-right: 4px; padding-left: 4px; background-color: white !important;"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Observado
+</div></th>
 </tr>
-  <tr>
-   <th style="text-align:left;background-color: white !important;text-align: center;"> Predito </th>
-   <th style="text-align:left;background-color: white !important;text-align: center;"> Negativo      </th>
-   <th style="text-align:left;background-color: white !important;text-align: center;"> Positivo  </th>
-  </tr>
- </thead>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" style="text-align: left; background-color: white !important;">Predito</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; background-color: white !important;">Negativo</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; background-color: white !important;">Positivo</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;background-color: white !important;text-align: center;width: 3in; font-weight: bold;"> Negativo </td>
-   <td style="text-align:left;background-color: white !important;text-align: center;width: 3in; "> Verdadeiro Negativo (TN) </td>
-   <td style="text-align:left;background-color: white !important;text-align: center;width: 2in; "> Falso Negativo (FN) </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;background-color: white !important;text-align: center;width: 3in; font-weight: bold;"> Positivo </td>
-   <td style="text-align:left;background-color: white !important;text-align: center;width: 3in; "> Falso Positivo (FP) </td>
-   <td style="text-align:left;background-color: white !important;text-align: center;width: 2in; "> Verdadeiro Positivo (TP) </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left; background-color: white !important; width: 3in; font-weight: bold;">Negativo</td>
+<td style="text-align: left; background-color: white !important; width: 3in;">Verdadeiro Negativo (TN)</td>
+<td style="text-align: left; background-color: white !important; width: 2in;">Falso Negativo (FN)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; background-color: white !important; width: 3in; font-weight: bold;">Positivo</td>
+<td style="text-align: left; background-color: white !important; width: 3in;">Falso Positivo (FP)</td>
+<td style="text-align: left; background-color: white !important; width: 2in;">Verdadeiro Positivo (TP)</td>
+</tr>
 </tbody>
 </table>
 
+
 </div>
 </div>
 <p>Na matriz de confusão colocamos os valores reais nas colunas e os valores preditos nas linhas. Assim o cruzamento das linhas e das colunas passam a ser nossas métricas. (não é incomum vermos versões invertidas)</p>
 </section>
-<section id="curva-auc-roc" class="level5" data-number="7.0.2.3.4">
-<h5 data-number="7.0.2.3.4" class="anchored" data-anchor-id="curva-auc-roc"><span class="header-section-number">7.0.2.3.4</span> Curva AUC-ROC</h5>
+</section>
+<section id="curva-auc-roc" class="level3" data-number="7.1.5">
+<h3 data-number="7.1.5" class="anchored" data-anchor-id="curva-auc-roc"><span class="header-section-number">7.1.5</span> Curva AUC-ROC</h3>
 <p>Quando queremos verificar ou visualizar o desempenho de um modelo de classificação binária (0, 1), podemos utilzar a AUC (Area Under The Curve) ROC (Receiver Operating Characteristics). Está é uma das métricas de avaliação de desempenho de modelos de classificação mais importantes.</p>
-</section>
-<section id="o-que-é-a-curva-auc-roc" class="level5" data-number="7.0.2.3.5">
-<h5 data-number="7.0.2.3.5" class="anchored" data-anchor-id="o-que-é-a-curva-auc-roc"><span class="header-section-number">7.0.2.3.5</span> O que é a curva AUC-ROC</h5>
-<p>Na matriz de confusão colocamos os valores reais nas colunas e os valores preditos nas linhas. Assim o cruzamento das linhas e das colunas passam a ser nossas métricas. (não é incomum vermos versões invertidas)</p>
-<p><br>
-</p>
-<p>Curva AUC-ROC</p>
-<p><br>
-</p>
-<p>Quando queremos verificar ou visualizar o desempenho de um modelo de classificação binária (0, 1), podemos utilizar a AUC (Area Under The Curve) ROC (Receiver Operating Characteristics). Esta é uma das métricas de avaliação de desempenho de modelos de classificação mais importantes.</p>
-<p><br>
-</p>
-<p>O que é a curva AUC-ROC</p>
+<section id="o-que-é-a-curva-auc-roc" class="level4" data-number="7.1.5.1">
+<h4 data-number="7.1.5.1" class="anchored" data-anchor-id="o-que-é-a-curva-auc-roc"><span class="header-section-number">7.1.5.1</span> O que é a curva AUC-ROC</h4>
 <p>A curva ROC é uma métrica de avaliação para problemas de classificação binária. É uma curva de probabilidade que plota o TPR (sensibilidade) contra o FPR (1 - especificidade). A AUC (Area Under the Curve) é a medida da capacidade de um classificador para distinguir entre classes e é usada com um resumo da curva ROC. Quanto maior a AUC, melhor o modelo está em distinguir entre classes positivas e negativas. Por analogia, quanto maior a AUC, melhor o modelo está em distinguir entre pacientes com a doença e sem a doença.</p>
 <p>Quando AUC = 1, o modelo é capaz de distinguir perfeitamente os pontos positivos e negativos corretamente. Porém, se AUC = 0, o modelo estaria predizendo todos valores negativos como positivos e vice e versa. Quando AUC= 0,5, o modelo não é capaz de distinguir os valores. Neste caso o modelo está prevendo cada classe de forma aleatória ou de forma constante para todos os dados. Já quando 0,5 &lt; AUC &lt; 1, há uma grande chance de que o modelo consiga distinguir os valores negativos das classes positivas. Aqui o modelo é capaz de detectar mais números de verdadeiros positivos e verdadeiros negativos do que falsos negativos e falsos positivos.</p>
 <p>A curva ROC é produzida calculando e plotando a taxa de verdadeiros positivos em relação à taxa de falsos positivos para um único classificador em vários limites . Por exemplo, na regressão logística, o limiar seria a probabilidade prevista de uma observação pertencente à classe positiva. Normalmente, na regressão logística, se uma observação é prevista como positiva com probabilidade &gt; 0,5, ela é rotulada como positiva. No entanto, poderíamos realmente escolher qualquer limite entre 0 e 1 (0,1, 0,3, 0,6, 0,99, etc.) — e as curvas ROC nos ajudam a visualizar como essas escolhas afetam o desempenho do classificador.</p>
@@ -497,8 +454,8 @@ R^2 = 1 - \frac{\sum(y_i - {\hat{y_i}})^2} {\sum(y_i - {\bar{y}})^2}
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="figures/curvaROC.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Curva ROC-AUC</figcaption><p></p>
+<p><img src="figures/CurvaROC.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Fonte: https://is.gd/iyWHe8</figcaption>
 </figure>
 </div>
 </div>
@@ -510,8 +467,8 @@ R^2 = 1 - \frac{\sum(y_i - {\hat{y_i}})^2} {\sum(y_i - {\bar{y}})^2}
 <p>Existem outras métricas de desempenho que não foram apresentadas aqui, mas devemos ressaltar alguns pontos. Não existe uma métrica certa ou errada, devemos apenas nos atentar e buscar a que melhor atende o nosso problema. É possível também utilizar mais de uma métrica para o mesmo modelo.</p>
 </section>
 </section>
-<section id="validação-cruzada-cross-validation" class="level4" data-number="7.0.2.4">
-<h4 data-number="7.0.2.4" class="anchored" data-anchor-id="validação-cruzada-cross-validation"><span class="header-section-number">7.0.2.4</span> Validação Cruzada (Cross-Validation)</h4>
+<section id="validação-cruzada-cross-validation" class="level3" data-number="7.1.6">
+<h3 data-number="7.1.6" class="anchored" data-anchor-id="validação-cruzada-cross-validation"><span class="header-section-number">7.1.6</span> Validação Cruzada (Cross-Validation)</h3>
 <p>Até aqui falamos um pouco sobre alguns problemas que podem ser encontrados no aprendizado de máquinas e superficialmente sobre dois modelos de regressão. Vamos falar agora sobre um método que é bem utilizado para validar a estabilidade do seu modelo. Como mencionamos anteriormente, não podemos simplesmente ajustar um modelo aos meus dados de treino e esperar que ele funcione perfeitamente, ou até mesmo esperar que aquele seja o melhor modelo possível para fazer alguma validação. Falamos um pouco sobre isso quando discutimos sobre sobreajustamento e subajustamento. Então, vamos nos aprofundar sobre um método que nos garanta que o nosso modelo obteve a maioria dos padrões dos dados corretos sem captar muitos ruídos.</p>
 <p>O que é validação cruzada?</p>
 <p>Validação cruzada é uma técnica para avaliar um modelo de aprendizado de máquina e testar o seu desempenho. Pode ajudar a comparar e selecionar um modelo mais apropriado para o nosso problema. É bem fácil de entender, de implementar e tende a ter um viés menor do que outros métodos usados para o mesmo objetivo. Por isso é uma ferramenta tão utilizada. Tanto a validação cruzada quanto outros algoritmos funcionam de maneira semelhante, consiste em: dividir o conjunto de dados em treino e teste; treinar o modelo no conjunto treino; validar o modelo no conjunto teste e repetir as etapas anteriores algumas vezes. Dentro da validação cruzada existem diversas técnicas onde umas são mais utilizadas. Já mencionamos anteriormente o método</p>
@@ -523,8 +480,8 @@ R^2 = 1 - \frac{\sum(y_i - {\hat{y_i}})^2} {\sum(y_i - {\bar{y}})^2}
 </ul>
 <p>O método de validação cruzada também pode nos ajudar a ajustar <strong>hiperparâmetros,</strong> falaremos sobre isso posteriormente.</p>
 </section>
-<section id="hiperparâmetros" class="level4" data-number="7.0.2.5">
-<h4 data-number="7.0.2.5" class="anchored" data-anchor-id="hiperparâmetros"><span class="header-section-number">7.0.2.5</span> Hiperparâmetros</h4>
+<section id="hiperparâmetros" class="level3" data-number="7.1.7">
+<h3 data-number="7.1.7" class="anchored" data-anchor-id="hiperparâmetros"><span class="header-section-number">7.1.7</span> Hiperparâmetros</h3>
 <p>Já discutimos anteriormente sobre treinamento de um modelo e mencionamos os Hiperparâmetros, vamos agora discutir de um modo geral o que eles são e qual a sua importância. Hiperparâmetros são atributos que controlam o treinamento de um modelo. Eles ajudam a direcionar um modelo, melhorando seu desempenho e evitando que ele aprenda somente com os dados de treino, ou seja, evitar o overfitting e underfitting. Por exemplo, no processo de configuração de uma rede neural, precisamos decidir quantas camadas ocultas de nós precisam ser usadas entre a camada de entrada e a camada de saída, assim como quantos nós cada camada vai usar. Esses parâmetros não estão diretamente ligados aos dados de treino e não são aprendidos diretamente pelos modelos. Parâmetros são as variáveis ​​que o algoritmo de Machine Learning usa para prever resultados com base na entrada de dados históricos. Já os hiperparâmetros são variáveis ​​que são especificadas ao longo do processo de construção do modelo. Com isso os hiperparâmetros são fornecidos antes dos parâmetros, ou podemos dizer que os hiperparâmetros são utilizados para avaliar os parâmetros ideais do modelo. Encontrar a melhor combinação de hiperparâmetros pode fazer a diferença no seu modelo.</p>
 <p>Exemplos comuns de hiperparâmetros</p>
 <ul>
@@ -535,9 +492,8 @@ R^2 = 1 - \frac{\sum(y_i - {\hat{y_i}})^2} {\sum(y_i - {\bar{y}})^2}
 <li><p>Taxa de divisão de treino e teste.</p></li>
 <li><p>Proporção de linhas para sortear por árvore.</p></li>
 </ul>
-</section>
-<section id="ajuste-de-hiperparâmetro" class="level4" data-number="7.0.2.6">
-<h4 data-number="7.0.2.6" class="anchored" data-anchor-id="ajuste-de-hiperparâmetro"><span class="header-section-number">7.0.2.6</span> Ajuste de hiperparâmetro</h4>
+<section id="ajuste-de-hiperparâmetro" class="level4" data-number="7.1.7.1">
+<h4 data-number="7.1.7.1" class="anchored" data-anchor-id="ajuste-de-hiperparâmetro"><span class="header-section-number">7.1.7.1</span> Ajuste de hiperparâmetro</h4>
 <p>O ajuste de hiperparâmetro consiste em encontrar a configuração de hiperparâmetro que irá resultar no melhor desempenho do modelo. A busca manual pode ser utilizada para localizar os hiperparâmetros ótimos, utilizando uma abordagem de acerto e erro, mas obviamente isso levaria muito tempo. As técnicas mais utilizadas para isso são o <em>Grid Search</em> ou <em>Random Search.</em></p>
 <ul>
 <li><p><strong>Grid Search:</strong> Essa é uma técnica de ajuste que tenta calcular os valores ótimos dos hiperparâmetros. É calculado exaustivamente o desempenho do modelo para cada combinação de todos os hiperparâmetros fornecidos previamente e escolhe, a partir dai, o valor ideal para os hiperparâmetros. Apesar de ser uma técnica que foge da abordagem manual, é um processo demorado e computacionalmente caro.</p></li>
@@ -545,17 +501,27 @@ R^2 = 1 - \frac{\sum(y_i - {\hat{y_i}})^2} {\sum(y_i - {\bar{y}})^2}
 </ul>
 </section>
 </section>
-<section id="agoritmos-de-aprendizado-de-máquina" class="level3" data-number="7.0.3">
-<h3 data-number="7.0.3" class="anchored" data-anchor-id="agoritmos-de-aprendizado-de-máquina"><span class="header-section-number">7.0.3</span> Agoritmos de Aprendizado de máquina</h3>
-<section id="árvores-de-decisão" class="level4" data-number="7.0.3.1">
-<h4 data-number="7.0.3.1" class="anchored" data-anchor-id="árvores-de-decisão"><span class="header-section-number">7.0.3.1</span> Árvores de Decisão</h4>
+</section>
+<section id="agoritmos-de-aprendizado-de-máquina" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="agoritmos-de-aprendizado-de-máquina"><span class="header-section-number">7.2</span> Agoritmos de Aprendizado de máquina</h2>
+<section id="árvores-de-decisão" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="árvores-de-decisão"><span class="header-section-number">7.2.1</span> Árvores de Decisão</h3>
 <p>As Árvores de Decisão são algoritmos de aprendizado supervisionado que podem ser utilizados tanto para classificação quanto para regressão. Possui uma estrutura hierárquica em árvore, tendo um nó raiz, ramificações, nós internos e nós folhas. Na análise de decisão, uma árvore de decisão pode ser usada para representar visualmente e explicitamente decisões e tomadas de decisão.</p>
-<p>*imagem*</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/arvore_decisao.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Árvore de Decisçao</figcaption>
+</figure>
+</div>
+</div>
+</div>
 <p>Na imagem acima podemos ver uma representação de uma árvore de decisão, que começa com um nó raiz, que não possui ramificações de entrada, a partir da qual a árvore se divide em ramos. Os ramos alimentam os nós internos ou nós decisão. Cada ramificação contém um conjunto de atributos ou regras de classificação, associado a um determinado rótulo de classe, que pode ser encontrado na extremidade da ramificação. O final dos ramos que não se dividem mais são os nós folha. Os nós folha representam todos os resultados possíveis dentro do conjunto de dados.</p>
 <p>O tipo de estrutura de fluxograma é fácil de ser interpretado e cria uma representação que permite que diferentes grupos entendam melhor porque uma determinada decisão foi tomada.</p>
 <p>O algoritmo de Árvore de Decisão possui uma estratégia que busca identificar os pontos de divisão ideias dentro de uma árvore. O processo de divisão é repetido até que todos ou a maioria dos registros tenham sido classificados em um rótulo de classe específico. Classificar ou não todos os pontos de dados como conjuntos depende principalmente da complexidade do algoritmo. Árvores menores ou mais simples, são mais fáceis de atingir nós de folhas puros, onde pontos de dados caem em uma única classe, além de serem mais fáceis de visualizar e interpretar as decisões. Em contrapartida, aumentar o tamanho de uma árvore dificulta manter essa pureza, podendo resultar em poucos dados caindo em uma determinada subárvore, como consequência, isso pode levar ao overfitting. Portanto, esses algoritmos têm preferência por árvores pequenas e simples, adicionando complexidade apenas quando realmente necessário. Árvores de decisão geralmente crescem de forma arbitrária, portanto é preciso decidir quais recursos escolher e quais condições usar para dividir uma árvore, além de saber quando parar essa divisão.</p>
-<section id="medidas-de-seleção-de-atributo" class="level5" data-number="7.0.3.1.1">
-<h5 data-number="7.0.3.1.1" class="anchored" data-anchor-id="medidas-de-seleção-de-atributo"><span class="header-section-number">7.0.3.1.1</span> Medidas de seleção de atributo</h5>
+<section id="medidas-de-seleção-de-atributo" class="level4" data-number="7.2.1.1">
+<h4 data-number="7.2.1.1" class="anchored" data-anchor-id="medidas-de-seleção-de-atributo"><span class="header-section-number">7.2.1.1</span> Medidas de seleção de atributo</h4>
 <p>Como mencionado anteriormente, uma Árvore de decisão é feita a partir de atributos e decidir qual atributo colocar na raiz ou em diferentes níveis da Árvore pode ser complicado. Aqui a aleatoriedade na escolha não é uma boa opção, podendo gerar resultados com baixa precisão. Para o problema de seleção de atributos, temos alguns critérios como: Entropia e ganho de informação, índice de Gini , taxa de ganho, entre outros.</p>
 <ul>
 <li><strong>Entropia:</strong> Entropia é uma medida de aleatoriedade (impureza) dos valores de uma amostra. Quanto maior a entropia, mais difícil é tirar conclusões dessa informação. É definida pela seguinte fórmula:</li>
@@ -591,8 +557,8 @@ GR = \frac{Ganho\ de\ Informação}{Informação\ intrínseca}
 </ul>
 <p>Para todas as variáveis ​​preditoras, aquela que fornece a maior taxa de ganho é escolhida para a divisão.</p>
 </section>
-<section id="tipos-de-árvores-de-decisão" class="level5" data-number="7.0.3.1.2">
-<h5 data-number="7.0.3.1.2" class="anchored" data-anchor-id="tipos-de-árvores-de-decisão"><span class="header-section-number">7.0.3.1.2</span> Tipos de Árvores de Decisão</h5>
+<section id="tipos-de-árvores-de-decisão" class="level4" data-number="7.2.1.2">
+<h4 data-number="7.2.1.2" class="anchored" data-anchor-id="tipos-de-árvores-de-decisão"><span class="header-section-number">7.2.1.2</span> Tipos de Árvores de Decisão</h4>
 <p>Mencionamos anteriormente que o algoritmo de Árvores de Decisão pode ser usado tanto para classificação quanto para regressão, e é claro, existem vários tipos de algoritmos. Vamos falar um pouco sobre os mais famosos.</p>
 <ul>
 <li><p><strong>ID3 (Iterative Dichotomiser 3):</strong> Esse algoritmo usa uma abordagem <strong>gananciosa</strong> de cima para baixo para construir a Árvore. Em outras palavras, ele começa a construir a Árvore de cima e de para cada iteração seleciona o melhor recurso no momento para criar um nó. Geralmente é usado apenas para problemas de classificação com recursos nominais. O algoritmo utiliza o <strong>Ganho de Informação</strong> para encontrar o melhor recurso.</p></li>
@@ -600,8 +566,8 @@ GR = \frac{Ganho\ de\ Informação}{Informação\ intrínseca}
 <li><p><strong>CART:</strong> CART é uma abreviação de “classification and regression trees” (Árvores de classificação e Regressão). Como o próprio nome já diz, pode ser usado tanto para classificação quanto para regressão. O algoritmo busca o melhor critério através do <strong>Índice de Gini.</strong></p></li>
 </ul>
 </section>
-<section id="podando-árvores-de-decisão" class="level5" data-number="7.0.3.1.3">
-<h5 data-number="7.0.3.1.3" class="anchored" data-anchor-id="podando-árvores-de-decisão"><span class="header-section-number">7.0.3.1.3</span> Podando Árvores de Decisão</h5>
+<section id="podando-árvores-de-decisão" class="level4" data-number="7.2.1.3">
+<h4 data-number="7.2.1.3" class="anchored" data-anchor-id="podando-árvores-de-decisão"><span class="header-section-number">7.2.1.3</span> Podando Árvores de Decisão</h4>
 <p>Como mencionamos anteriormente, Árvores complexas podem causar overfitting, cabe dizer que as Árvores são os algoritmos mais suscetíveis ao overfitting. Em alguns casos, a Árvore poderá se ramificar inúmeras vezes, gerando uma folha para cada observação, ou seja, fornecendo 100% de precisão no conjunto de treino, logo, é preciso ter um limite.</p>
 <p>Podar uma Árvore de Decisão consiste em remover partes da Árvore que não fornecem poder para classificar instâncias. A poda pode ser distinguida em:</p>
 <ul>
@@ -609,30 +575,27 @@ GR = \frac{Ganho\ de\ Informação}{Informação\ intrínseca}
 <p><strong>Pós-poda:</strong> Normalmente a técnica mais utilizada, permite que a Árvore classifique o conjunto de treinamento antes de podá-la. Este método consiste em, a partir da Árvore não podada, pega uma sequência de subárvores (podadas) e escolher a melhor por meio da <strong>validação cruzada</strong>. É escolhida a que tem maior precisão no conjunto de treinamento validado cruzadamente.</p></li>
 </ul>
 </section>
-<section id="floresta-aleatória-random-forest" class="level5" data-number="7.0.3.1.4">
-<h5 data-number="7.0.3.1.4" class="anchored" data-anchor-id="floresta-aleatória-random-forest"><span class="header-section-number">7.0.3.1.4</span> Floresta Aleatória (Random Forest)</h5>
+<section id="floresta-aleatória-random-forest" class="level4" data-number="7.2.1.4">
+<h4 data-number="7.2.1.4" class="anchored" data-anchor-id="floresta-aleatória-random-forest"><span class="header-section-number">7.2.1.4</span> Floresta Aleatória (Random Forest)</h4>
 <p>A Floresta Aleatória é um algoritmo que funciona a partir de Árvores de Decisão. Ele constrói diferentes Árvores em diferentes amostras e leva combina as saídas para alcançar um único resultado, levando em consideração a maioria de votos para classificação e média em caso de regressão. O algoritmo serve tanto para regressão quanto para regressão, mas aqui temos uma novidade, ele pode lidar com os dois, apesar de apresentar melhores resultados para problemas de classificação.</p>
 </section>
-<section id="funcionamento-do-algoritmo" class="level5" data-number="7.0.3.1.5">
-<h5 data-number="7.0.3.1.5" class="anchored" data-anchor-id="funcionamento-do-algoritmo"><span class="header-section-number">7.0.3.1.5</span> Funcionamento do algoritmo</h5>
+<section id="funcionamento-do-algoritmo" class="level4" data-number="7.2.1.5">
+<h4 data-number="7.2.1.5" class="anchored" data-anchor-id="funcionamento-do-algoritmo"><span class="header-section-number">7.2.1.5</span> Funcionamento do algoritmo</h4>
 <p>Antes de falarmos de fato sobre o funcionamento do algoritmo, vamos entender de forma básica o método dos conjuntos. O método dos conjuntos, também conhecido como ensemble methods, pode ser definido resumidamente como, combinar vários modelos. No caso da Floresta Aleatória, uma combinação de Árvores de decisão. Os modelos são combinados e suas previsões são agregadas para identificar o resultado mais popular. Os métodos de conjunto mais populares são <strong>bagging</strong> e <strong>boosting.</strong> Em resumo o método bagging, que é usado em Floresta Aleatória, cria um subconjunto de treinamento diferente a partir dos dados de treinamento de amostra com substituição, o que significa que os pontos de dados individuais podem ser escolhidos mais de uma vez. Depos, dependendo do tipo da tarefa, classificação ou regressão, a saída final é baseada na votação da maioria ou a média. O método boosting é utilizado para outros algoritmos como, por exemplo, <strong>XGBOOST</strong>, portanto, falaremos sobre ele mais pra frente.</p>
 <p>Certo, entendido o método dos conjuntos podemos entrar no algoritmo em si. É basicamente uma extensão do método bagging, já que utiliza o método bagging e a aleatoriedade para criar uma floresta não correlacionada de Árvores de Decisão. A aleatoriedade se dá ao fato que o modelo utiliza uma amostragem aleatória do conjunto de dados de treinamento ao construir árvores e subconjuntos aleatórios de recursos considerados ao dividir os nós, o que garante baixa correlação entre as Árvores.</p>
 <p>Os algoritmos possuem alguns <strong>hiperparâmetros</strong>, que como explicado anteriormente, precisam ser definidos antes do treinamento do modelo. Os três principais são: o tamanho do nó, o número de Árvores e o número de recursos amostrados. A partir daí o algoritmo pode ser usado para resolver problemas de regressão ou classificação.</p>
 </section>
 </section>
-<section id="algoritmos-de-boosting" class="level4" data-number="7.0.3.2">
-<h4 data-number="7.0.3.2" class="anchored" data-anchor-id="algoritmos-de-boosting"><span class="header-section-number">7.0.3.2</span> Algoritmos de boosting</h4>
+<section id="algoritmos-de-boosting" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="algoritmos-de-boosting"><span class="header-section-number">7.2.2</span> Algoritmos de boosting</h3>
 <p>Como falamos anteriormente, boosting é uma técnica de método dos conjuntos. Diferente de bagging que trabalha de forma paralela, considerando os modelos independentes uns dos outros, boosting trabalha de forma diferente. Boosting se refere a algoritmos que convertem alunos fracos em alunos fortes. Trabalha de maneira sequencial, ajustando iterativamente o peso da observação de acordo com a última classificação, assim, diminui o erro do viés e constrói preditivos fortes. Em outras palavras, a técnica consiste em, primeiramente, construir um modelo inicial com os dados de treinamento. Depois, um outro modelo é construído visando corrigir os erros do modelo anterior, atribuindo pesos caso uma entrada seja fornecida erroneamente. O processo continua e adiciona modelos até que todo o conjunto de dados de treino seja previsto corretamente ou o número máximo de modelos seja adicionado. Boosting é um algoritmo genérico e não um modelo, vamos então apresentar os principais modelos baseados no método boosting: Adaptative Bossting (AdaBoost), Gradient Boosting e XGBoost.</p>
-<section id="adaboost" class="level5" data-number="7.0.3.2.1">
-<h5 data-number="7.0.3.2.1" class="anchored" data-anchor-id="adaboost"><span class="header-section-number">7.0.3.2.1</span> AdaBoost</h5>
+<section id="adaboost" class="level4" data-number="7.2.2.1">
+<h4 data-number="7.2.2.1" class="anchored" data-anchor-id="adaboost"><span class="header-section-number">7.2.2.1</span> AdaBoost</h4>
 <p>Antes de entrarmos no algoritmo AdaBoost de fato, vamos relembrar o Algoritmo de Floresta Aleatória. Em Floresta Aleatória, o algoritmo cria diversas Árvores que consistem em um nó inicial com várias nós folhas. Não existem regras quanto ao tamanho de cada Árvore, assim, pode haver umas maiores que outras. No modelo AdaBoost, as Árvores possuem um nível, ou seja, apenas 1 divisão conhecido como Stump (toco).</p>
-<ul>
-<li>inserir imagem</li>
-</ul>
-<p>Na imagem podemos ver a representação de um toco. Note que ele tem apenas um nó com duas folhas. Tocos são aprendizes fracos, pois as técnicas de reforço preferem isso. Como em AdaBoost o erro do primeiro toco influência nos outros, a ordem dos tocos é muito importante. Reforçando, o algoritmo irá atribuir pesos mais altos aos pontos classificados erroneamente. Todos os pontos que têm pesos maiores recebem mais importância no próximo modelo.</p>
+<p>Reforçando, o algoritmo tem apenas um nó com duas folhas. Tocos são aprendizes fracos, pois as técnicas de reforço preferem isso. Como em AdaBoost o erro do primeiro toco influência nos outros, a ordem dos tocos é muito importante. Reforçando, o algoritmo irá atribuir pesos mais altos aos pontos classificados erroneamente. Todos os pontos que têm pesos maiores recebem mais importância no próximo modelo.</p>
 </section>
-<section id="funcionamento-do-algoritmo-1" class="level5" data-number="7.0.3.2.2">
-<h5 data-number="7.0.3.2.2" class="anchored" data-anchor-id="funcionamento-do-algoritmo-1"><span class="header-section-number">7.0.3.2.2</span> Funcionamento do algoritmo</h5>
+<section id="funcionamento-do-algoritmo-1" class="level4" data-number="7.2.2.2">
+<h4 data-number="7.2.2.2" class="anchored" data-anchor-id="funcionamento-do-algoritmo-1"><span class="header-section-number">7.2.2.2</span> Funcionamento do algoritmo</h4>
 <p>Para entendermos de uma forma um pouco mais clara, vamos fazer um passo a passo. Antes do primeiro passo de fato, todos os pontos de dados irão receber algum peso. Inicialmente, os pesos serão iguais para todos. O peso é calculado na forma <span class="math inline">\(W = \frac{1}{N}\)</span>, onde <span class="math inline">\(N\)</span> é o número de observações.</p>
 <ul>
 <li><p><strong>Passo 1:</strong> Em primeiro lugar, o algoritmo pega o primeiro recurso e cria o primeiro tronco. Ele irá criar o mesmo número de tocos que o número de recursos, a partir daí, temos as primeiras Árvores de Decisão. O modelo então calcula o <em>índice de Gini</em> para cada Árovre e seleciona aquela com o índice mais baixo para ser o primeiro aprendiz base.</p></li>
@@ -650,14 +613,14 @@ GR = \frac{Ganho\ de\ Informação}{Informação\ intrínseca}
 <strong>Passo 5:</strong> Por fim, com o novo conjunto de dados, o algoritmo cria uma nova Árvore de decisão (toco) e repete o processo desde o primeiro passo até passar por todos os tocos. O processo é repetido até que um erro de treinamento baixo seja alcançado. Suponha um algoritmo simples que tenha construído 3 Árvores de Decisão de maneira sequencial. Assim, o conjunto de dados teste passará por todas as Árvores e, da mesma forma que em Florestas Aleatórias, a classe será selecionada com base na maioria. A partir daí é possível fazer previsões para o conjunto de teste.</p></li>
 </ul>
 </section>
-<section id="gradient-boosting-aumento-de-gradiente" class="level5" data-number="7.0.3.2.3">
-<h5 data-number="7.0.3.2.3" class="anchored" data-anchor-id="gradient-boosting-aumento-de-gradiente"><span class="header-section-number">7.0.3.2.3</span> Gradient Boosting (Aumento de Gradiente)</h5>
+<section id="gradient-boosting-aumento-de-gradiente" class="level4" data-number="7.2.2.3">
+<h4 data-number="7.2.2.3" class="anchored" data-anchor-id="gradient-boosting-aumento-de-gradiente"><span class="header-section-number">7.2.2.3</span> Gradient Boosting (Aumento de Gradiente)</h4>
 <p>O modelo Gradient Boosting, também é um modelo de reforço, ou seja, utiliza técnicas de conjunto que pode ser usado tanto para regressão quanto para classificação. Este modelo possui algumas semelhanças com o Ada Boost e como já vimos sobre ele, aqui vamos focar um pouco mais em suas diferenças.</p>
 <p>A principal diferença deste modelo para o Ada Boost está no que ele faz com os valores subajustados do seu antecessor. Enquanto Ada Boost ajusta os pesos a cada interação, Gradient Boosting tenta ajustar o novo preditor aos <em>erros residuais</em> cometidos pelo preditor anterior.</p>
 <p>Outra diferença é que, enquanto Ada Boost começa construindo um toco, Gradient Boost começa fazendo uma única folha. Esta folha representa uma estimativa inicial para os pesos das amostras. Em caso de um problema de regressão, ao tentar prever um valor contínuo, o primeiro palpite é o valor médio. A partir daí, o modelo constrói uma Árvore. Aqui, a Árvore é maior que um toco, mas o modelo ainda restringe o tamanho dessa Árvore.</p>
 </section>
-<section id="funcionamento-do-modelo" class="level5" data-number="7.0.3.2.4">
-<h5 data-number="7.0.3.2.4" class="anchored" data-anchor-id="funcionamento-do-modelo"><span class="header-section-number">7.0.3.2.4</span> Funcionamento do modelo</h5>
+<section id="funcionamento-do-modelo" class="level4" data-number="7.2.2.4">
+<h4 data-number="7.2.2.4" class="anchored" data-anchor-id="funcionamento-do-modelo"><span class="header-section-number">7.2.2.4</span> Funcionamento do modelo</h4>
 <p>Vamos entender um pouco melhor o funcionamento do modelo fazendo um passo a passo resumido, assim como foi feito em Ada Boost. Vamos exemplificar também focando no modelo de Gradient Boosting para regressão.</p>
 <ul>
 <li><p><strong>Passo 1:</strong> Como falamos anteriormente, o modelo começa criando uma única folha. Como estamos em um cenário de dados contínuos, essa folha então é a média das observações. Essa seria nossa previsão para o modelo base.</p></li>
@@ -667,10 +630,31 @@ GR = \frac{Ganho\ de\ Informação}{Informação\ intrínseca}
 <p>Em resumo, o algoritmo começa com uma única folha. Em seguida é adicionada uma Árvore com base nos resíduos e dimensiona a contribuição das árvores para a previsão final com a taxa de aprendizado. A partir daí continua adicionando Árvores com base nos erros cometidos pela Árvore anterior.</p>
 <p>O modelo possui alguns hiperparâmetros importantes como, o número de estimadores, a profundidade máxima da Árvore, a divisão mínima das amostras, entre outros. Para obter valores precisos desses hiperparâmetros é possível utilizar as técnicas mencionadas anteriormente.</p>
 <p>Resumimos bastante os passos e o funcionamento do modelo, mas deve-se ter em mente que existe uma matemática carregada por trás desses modelos. Cada passo, cada função perdida é utilizada por um motivo comprovado.</p>
-
-
 </section>
 </section>
+<section id="support-vector-machine-svm" class="level3" data-number="7.2.3">
+<h3 data-number="7.2.3" class="anchored" data-anchor-id="support-vector-machine-svm"><span class="header-section-number">7.2.3</span> Support Vector Machine (SVM)</h3>
+<p>Para finalizar, vamos introduzir um último algoritmo muito conhecido no ramo de aprendizado de máquinas. Support Vector Machine, ou SVM, é um algoritmo de aprendizagem supervisionada muito popular que pode ser usado tanto para classificação quanto para regressão. Entretando, esse algoritmo é usado principalmente para classificação, então, focaremos mais nessa parte.</p>
+<p>A ideia basica do algoritmo é relativamente simples: criar uma linha ou um hiperplano que separa os dados em classe para que possamos colcoar facilmente o novo ponto de dados na categoria correta futuramente.</p>
+<section id="como-o-modelo-funciona" class="level4" data-number="7.2.3.1">
+<h4 data-number="7.2.3.1" class="anchored" data-anchor-id="como-o-modelo-funciona"><span class="header-section-number">7.2.3.1</span> Como o modelo funciona</h4>
+<p>A ideia inicial do SVM é encontrar uma linha ou hiperplano entre os dados de duas classes. O algoritmo então escolhe pontos ou vetores extremos que ajudam a criar o hiperplano. Esses casos extremos são os vetores de suporte (daí o nome). O SVM recebe os dados de entrada e gera uma linha que separa essas classes da melhor forma possível.</p>
+<p>Um exemplo bem simples para entender o modelo é: suponha que tenhamos um conjunto de dados com duas classes, bolas vermelhas e quadrados azuis. precisamos então encontrar uma linha que separe esse conjunto de dados em duas classes (vermelho e azul).</p>
+<p>Como estamos em um espaço 2-d, uma única linha <strong>reta</strong> pode separar essa margem. Mas existe uma infinidade de linhas que podem separar essas classes, o SVM então busca encontrar a ideal. Mas como?</p>
+<p>O SVM encontra o ponto mais próximo das linhas de ambas as classes. Esses pontos são chamados de vetores de suporte. Esses pontos são chamados de vetores de suporte e a distância entre os vetores e o hiperplano é chamada de margem. O SVM então busca maximizar essa margem, onde, o hiperplano com margem máxima é chamado de hiperplano ótimo.</p>
+<p>Certo, mas nem sempre estamos um cenário onde nossos dados estão linearmente organizados. Neste caso, não podemos apenas desenhar uma única linha reta. Neste cenário, precisamos adicionar mais uma dimensão. Se para dados lineares trabalhos com duas dimensões (x e y), para dados lineares teremos uma terceira dimensão (z). Deixamos as coordenadas no eixo z serem governadas pela restrição,</p>
+<p><span class="math display">\[z =x^2 + y^2\]</span><br>
+</p>
+<p>Assim, a coordenada z é basicamente o quadrado da distância do ponto à origem.</p>
+<p>Fazendo isso, os dados se tornam linearmente separáveis. Seja z = k, onde k é uma constante. Como <span class="math inline">\(z =x^2 + y^2\)</span>, temos <span class="math inline">\(k =x^2 + y^2\)</span>; que é uma equação de um círculo. Com isso, é possível projetar o separador linar em dimensão superior de volta as dimensões originais usando esta transformação. Concluindo, podemos então classificar os dados adicionando uma dimensão extra a eles, fazendo com que se tornem linearmente separáveis. Encontrar a transformação correta para qualquer conjunto de dados não é tão fácil, mas existem recursos que podem ser usados na implementação do algoritmo para ajudar neste trabalho.</p>
+</section>
+</section>
+</section>
+<section id="considerações-finais" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="considerações-finais"><span class="header-section-number">7.3</span> Considerações finais</h2>
+<p>Neste capítulo buscamos abordar os principais tópicos do aprendizado supervisionado. O objetivo aqui foi dar uma breve noção sobre o funcionamento dos algoritmos, diferenças nos métodos de funciomanetos, possíveis problemas e dificuldades. Aqui foi apenas o pontapé inicial para que você consiga entender e implementar algoritmos supervisionados.</p>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -701,9 +685,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -768,6 +766,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -814,8 +898,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./naosupervisionado.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Aprendizado não supervisionado</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Intro_e_PCA.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Aprendizado Não Supervisionado</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
