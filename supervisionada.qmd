@@ -219,7 +219,7 @@ A figura abaixo demonstra como alguns modelos teóricos podem plotar a curva ROC
 \
 
 ```{r curvaROC, echo=FALSE, fig.cap="\\label{fig:curvaROC}Fonte: https://is.gd/iyWHe8", out.width = '100%'}
-knitr::include_graphics("figures/CurvaROC.png")
+knitr::include_graphics("figures/curvaROC.png")
 ```
 
 Um grande ponto positivo da curva ROC é que ela permita que encontremos um limite de classificação adequado ao nosso problema específico
@@ -448,6 +448,6 @@ Assim, a coordenada z é basicamente o quadrado da distância do ponto à origem
 
 Fazendo isso, os dados se tornam linearmente separáveis. Seja z = k, onde k é uma constante. Como $z =x^2 + y^2$, temos $k =x^2 + y^2$; que é uma equação de um círculo. Com isso, é possível projetar o separador linar em dimensão superior de volta as dimensões originais usando esta transformação. Concluindo, podemos então classificar os dados adicionando uma dimensão extra a eles, fazendo com que se tornem linearmente separáveis. Encontrar a transformação correta para qualquer conjunto de dados não é tão fácil, mas existem recursos que podem ser usados na implementação do algoritmo para ajudar neste trabalho.
 
-## Considerações finais 
+## Considerações finais
 
 Neste capítulo buscamos abordar os principais tópicos do aprendizado supervisionado. O objetivo aqui foi dar uma breve noção sobre o funcionamento dos algoritmos, diferenças nos métodos de funciomanetos, possíveis problemas e dificuldades. Aqui foi apenas o pontapé inicial para que você consiga entender e implementar algoritmos supervisionados.
