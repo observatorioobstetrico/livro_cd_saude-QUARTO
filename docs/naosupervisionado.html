@@ -264,7 +264,9 @@ div.csl-indent {
   <ul class="collapse">
   <li><a href="#métodos-por-particionamento" id="toc-métodos-por-particionamento" class="nav-link" data-scroll-target="#métodos-por-particionamento"><span class="header-section-number">9.1.1</span> Métodos por Particionamento</a></li>
   <li><a href="#métodos-hierárquicos" id="toc-métodos-hierárquicos" class="nav-link" data-scroll-target="#métodos-hierárquicos"><span class="header-section-number">9.1.2</span> Métodos Hierárquicos</a></li>
-  <li><a href="#validação-do-modelo" id="toc-validação-do-modelo" class="nav-link" data-scroll-target="#validação-do-modelo"><span class="header-section-number">9.1.3</span> Validação do Modelo</a></li>
+  <li><a href="#dbscan" id="toc-dbscan" class="nav-link" data-scroll-target="#dbscan"><span class="header-section-number">9.1.3</span> DBSCAN</a></li>
+  <li><a href="#agrupamento-espectral" id="toc-agrupamento-espectral" class="nav-link" data-scroll-target="#agrupamento-espectral"><span class="header-section-number">9.1.4</span> Agrupamento Espectral</a></li>
+  <li><a href="#validação-do-modelo" id="toc-validação-do-modelo" class="nav-link" data-scroll-target="#validação-do-modelo"><span class="header-section-number">9.1.5</span> Validação do Modelo</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -344,7 +346,7 @@ A =
 <p>O códio acima cria e armazena um objeto do tipo <code>dist</code> que será utilizado em exemplos futuros.</p>
 <p>A análise de agrupamento é uma ferramenta valiosa que permite identificar estratos em uma população e detectar outliers. É importante considerar a escalabilidade do método, sua capacidade de lidar com diferentes tipos de variáveis e clusters de formatos variados. Além disso, a robustez em relação a outliers e a capacidade de agrupar dados de alta dimensionalidade são considerações essenciais. Existem diversos métodos de agrupamento na literatura, cada um com vantagens e desvantagens. Nas próximas sessões, exploraremos os métodos considerados e suas aplicações adequadas, bem como métodos de avaliação de qualidade para os agrupamentos.</p>
 <p>Neste capítulo, vamos explorar diferentes maneiras de resolver o desafio do agrupamento de dados. Existem abordagens tradicionais, como o particionamento, que envolve dividir o conjunto de dados em grupos distintos. Além disso, temos os métodos hierárquicos, nos quais os grupos são organizados em uma estrutura de árvore.</p>
-<p>Outra abordagem interessante é considerar a densidade dos pontos no espaço. Nesse caso, procuramos identificar regiões mais densas separadas por áreas menos povoadas. Esses métodos, conhecidos como baseados em densidade, oferecem uma perspectiva diferente na análise dos dados.</p>
+<p>Outra abordagem interessante é considerar a densidade dos pontos no espaço. Nesse caso, procuramos identificar regiões mais densas separadas por áreas menos povoadas. Esses métodos, conhecidos como baseados em densidade, oferecem uma perspectiva diferente na análise dos dados, aqui será considerado o DBSCAN.</p>
 <p>Também existe uma classe de métodos que utiliza técnicas de decomposição espectral. Esses métodos reduzem a dimensionalidade dos dados, preservando as informações relevantes dos grupos presentes. São os chamados agrupamentos espectrais, que exploram as propriedades dos autovalores e autovetores da matriz de similaridade dos dados.</p>
 <p>Cada uma dessas abordagens possui suas próprias características, vantagens e limitações.</p>
 <section id="métodos-por-particionamento" class="level3" data-number="9.1.1">
@@ -469,31 +471,31 @@ A =
 <li>Método do vizinho mais próximo (Single linkages): Considera a menor distância entre todas as possíveis combinações de observações de dois grupos.</li>
 </ul>
 <p><span class="math display">\[
-d(C_l,C_{l'}) = \min_{x_i \in C_l ;x_k \in C_{l'}} d(x_i,x_j)
+d(C_l,C_{l'}) = \min_{x_i \in C_l ;x_k \in C_{l'}} d(x_i,x_j).
 \]</span></p>
 <ul>
 <li>Método do vizinho mais distante (Complete linkages): Utiliza a maior distância entre todas as possíveis combinações de observações de dois grupos.</li>
 </ul>
 <p><span class="math display">\[
-d(C_l,C_{l'}) = \max_{x_i \in C_l ;x_k \in C_{l'}} d(x_i,x_j)
+d(C_l,C_{l'}) = \max_{x_i \in C_l ;x_k \in C_{l'}} d(x_i,x_j).
 \]</span></p>
 <ul>
 <li>Método da média das distâncias (Average linkages): Calcula a média das distâncias entre as observações de dois grupos.</li>
 </ul>
 <p><span class="math display">\[
-d(C_l,C_{l'}) = \frac{1}{|C_l||C_{l'}|}\sum_{x_i \in C_l ;x_k \in C_{l'}} d(x_i,x_j)
+d(C_l,C_{l'}) = \frac{1}{|C_l||C_{l'}|}\sum_{x_i \in C_l ;x_k \in C_{l'}} d(x_i,x_j).
 \]</span></p>
 <ul>
 <li>Método do centróide (Centróide linkages): Considera a distância entre os centróides de cada grupo como medida de dissimilaridade.</li>
 </ul>
 <p><span class="math display">\[
-d(C_l,C_{l'}) = d^2(c_l,c_{l'})
+d(C_l,C_{l'}) = d^2(c_l,c_{l'}) .
 \]</span></p>
 <ul>
 <li>Método de Ward: Minimiza a variância dentro dos grupos ao fundir os clusters que levam à menor variação possível.</li>
 </ul>
 <p><span class="math display">\[
-d(C_l,C_{l'}) = \frac{n_ln_{l'}}{n_l + n_{l'}} d^2(c_l,c_{l'})
+d(C_l,C_{l'}) = \frac{n_ln_{l'}}{n_l + n_{l'}} d^2(c_l,c_{l'}) .
 \]</span></p>
 <p>No contexto dos métodos hierárquicos de agrupamento, a abordagem aglomerativa é amplamente utilizada e estudada. Isso se deve ao fato de que a abordagem divisiva apresenta um custo computacional mais elevado, uma vez que em cada iteração é necessário identificar a melhor divisão do grupo para maximizar a dissimilaridade. Portanto, o algoritmo para o agrupamento hierárquico aglomerativo consiste em:</p>
 <ol type="1">
@@ -513,7 +515,12 @@ d(C_l,C_{l'}) = \frac{n_ln_{l'}}{n_l + n_{l'}} d^2(c_l,c_{l'})
 <li>Repetem-se os passos 2 a 4 até que cada observação esteja em um grupo separado.</li>
 </ol>
 <p>No agrupamento hierárquico, a visualização dos clusters é feita por meio de um dendrograma, um gráfico ramificado que mostra as junções e divisões dos clusters. A altura do ramo no primeiro nó do dendrograma representa a dissimilaridade entre os grupos divididos. Para determinar o número de grupos a partir do dendrograma, busca-se uma grande diferença de altura (dissimilaridade) ao adicionar um cluster aos dados. Uma característica dos métodos hierárquicos é que as decisões de agrupamento ou divisão não são desfeitas, ou seja, não há troca de observações entre os clusters. Decisões de união ou divisão mal feitas podem resultar em grupos de baixa qualidade. Além disso, esses métodos não são bem dimensionados, pois cada decisão de mesclagem ou divisão requer a avaliação de muitos objetos ou clusters. Pelo exemplo abaixo, uma possível resposta de número adequado de clusters seria de dois ou três grupos.</p>
-<p><img src="figuras_naosupervisionado/dendograma.png" class="img-fluid" data-fig-align="centering" alt="Exemplo de Dendrograma"> Os agrupamentos hierárquicos podem ser obtidos de maneira rapida com o apoio computacional, onde inicialmente, com uso das funções <code>hclust</code> e <code>cluster::diana</code>, é obtido um objeto da classe “hclust” e da clase “diana” respectivamente, esses objetos contém informações sobre o agrupamento hierárquico realizado, incluindo a estrutura do dendrograma, as distâncias entre os objetos e outras propriedades relacionadas. Seguido pela seleção, com base no dendrograma, do número <em>K</em> ideal de clusters (Não necessariamente só um <em>K</em>), e o “corte” da árvore aglomerativa no valor ideal identificado. É apresentado abaixo para todos os métodos citados a aplicação para o <em>R</em>, supondo a distância utilizada como a euclidiana calculada no início do capítulo</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figuras_naosupervisionado/dendograma.png" class="img-fluid figure-img" alt="Exemplo de Dendrograma"></p>
+</figure>
+</div>
+<p>Os agrupamentos hierárquicos podem ser obtidos de maneira rapida com o apoio computacional, onde inicialmente, com uso das funções <code>hclust</code> e <code>cluster::diana</code>, é obtido um objeto da classe “hclust” e da clase “diana” respectivamente, esses objetos contém informações sobre o agrupamento hierárquico realizado, incluindo a estrutura do dendrograma, as distâncias entre os objetos e outras propriedades relacionadas. Seguido pela seleção, com base no dendrograma, do número <em>K</em> ideal de clusters (Não necessariamente só um <em>K</em>), e o “corte” da árvore aglomerativa no valor ideal identificado. É apresentado abaixo para todos os métodos citados a aplicação para o <em>R</em>, supondo a distância utilizada como a euclidiana calculada no início do capítulo.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggdendro)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#AGLOMERATIVOS ############</span></span>
@@ -577,11 +584,197 @@ d(C_l,C_{l'}) = \frac{n_ln_{l'}}{n_l + n_{l'}} d^2(c_l,c_{l'})
 <span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>diana_res <span class="ot">&lt;-</span> <span class="fu">cutree</span>(diana , <span class="at">k =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="validação-do-modelo" class="level3" data-number="9.1.3">
-<h3 data-number="9.1.3" class="anchored" data-anchor-id="validação-do-modelo"><span class="header-section-number">9.1.3</span> Validação do Modelo</h3>
+<section id="dbscan" class="level3" data-number="9.1.3">
+<h3 data-number="9.1.3" class="anchored" data-anchor-id="dbscan"><span class="header-section-number">9.1.3</span> DBSCAN</h3>
+<p>O método DBSCAN (Density-Based Spatial Clustering of Applications with Noise) é um algoritmo de agrupamento que foi proposto para encontrar clusters com formas arbitrárias, ou seja, clusters que não necessariamente possuem uma forma esférica ou convexa. Ele busca identificar as regiões mais densas do espaço vetorial separadas por regiões com menos objetos, como é possível ver na figura abaixo sua eficiência em relação a outros métodos.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figuras_naosupervisionado/dbscan.png" class="img-fluid figure-img" alt="Aplicação DBSCAN, Fonte: Boyke et al. (2021)"></p>
+</figure>
+</div>
+<p>A ideia geral do algoritmo DBSCAN é identificar os clusters de forma que a densidade de pontos ao redor de cada ponto de um grupo seja maior que um limite estabelecido. Ele utiliza dois parâmetros principais: <span class="math inline">\(\epsilon\)</span> e MinPts, para entendimento do agrupamento DBSCAN observe a definição dos seguintes termos:</p>
+<ul>
+<li><p><span class="math inline">\(\epsilon\)</span>-vizinhos: Os <span class="math inline">\(\epsilon\)</span>-vizinhos de um ponto <span class="math inline">\(x_j\)</span> são os objetos cuja distância para <span class="math inline">\(x_i\)</span> seja menor ou igual a <span class="math inline">\(\epsilon\)</span>, ou seja, a vizinhança de <span class="math inline">\(x_i\)</span> é composta pelos objetos que estão dentro de um raio <span class="math inline">\(\epsilon\)</span> ao redor de <span class="math inline">\(x_i\)</span>.</p></li>
+<li><p>Ponto de Núcleo: Um ponto <span class="math inline">\(x_i\)</span> é considerado um ponto de núcleo se o número de seus <span class="math inline">\(\epsilon\)</span>-vizinhos (ou seja, os pontos dentro da vizinhança de <span class="math inline">\(x_i\)</span>) for maior ou igual a um valor mínimo estabelecido chamado MinPts.</p></li>
+<li><p>Ponto de Borda: Um ponto <span class="math inline">\(x_i\)</span> é considerado um ponto de borda se o número de seus <span class="math inline">\(\epsilon\)</span> -vizinhos for menor do que MinPts, mas ele está dentro da vizinhança de algum ponto de núcleo.</p></li>
+<li><p>Diretamente alcançável por densidade: Um ponto <span class="math inline">\(x_j\)</span> é diretamente alcançável por densidade por um ponto <span class="math inline">\(x_i\)</span> se <span class="math inline">\(x_j\)</span> é um <span class="math inline">\(\epsilon\)</span>-vizinho de <span class="math inline">\(x_i\)</span> e se <span class="math inline">\(x_i\)</span> é um ponto de núcleo.</p></li>
+<li><p>Alcançável por densidade: Um ponto <span class="math inline">\(x_i\)</span> é alcançável por densidade por um ponto <span class="math inline">\(x_j\)</span> se existe uma cadeia de pontos <span class="math inline">\(x_{i'}\)</span> , onde $i’ N \mathbb{N} $, em que <span class="math inline">\(x_1 = x_j, x_N = x_i\)</span> e <span class="math inline">\(x_{i' + 1}\)</span> é diretamente alcançável por densidade por <span class="math inline">\(x_{i'}\)</span>.</p></li>
+<li><p>Conectado por densidade: Um ponto <span class="math inline">\(x_i\)</span> é conectado por densidade a um ponto <span class="math inline">\(x_j\)</span> se existe um terceiro ponto <span class="math inline">\(x_{i'}\)</span> em que ambos são alcançáveis por densidade por <span class="math inline">\(x_{i'}\)</span>.</p></li>
+</ul>
+<p>Com base nesses critérios, o DBSCAN define os grupos da seguinte forma:</p>
+<ul>
+<li><p>Se um ponto <span class="math inline">\(x_i\)</span> é alcançável por densidade por um ponto <span class="math inline">\(x_j\)</span>, então ambos pertencem ao mesmo cluster <span class="math inline">\(C_l\)</span>.</p></li>
+<li><p>Todos os pontos de um cluster são conectados por densidade entre si.</p></li>
+</ul>
+<p>Uma das vantagens do DBSCAN é sua capacidade de identificar outliers no conjunto de dados, uma vez que ele não atribui todos os objetos a grupos. Os outliers são definidos como os pontos que não são atribuídos a nenhum cluster. O algoritmo DBSCAN funciona da seguinte maneira:</p>
+<ol type="1">
+<li><p>Inicialmente, todas as observações da base de dados são classificadas como “não visitadas”.</p></li>
+<li><p>Em seguida, os seguintes passos são executados repetidamente:</p>
+<p>(a). Selecionar aleatoriamente uma observação “não visitada” <span class="math inline">\(x_i\)</span>.</p>
+<p>(b). Verificar o número de <span class="math inline">\(epsilon\)</span>-vizinhos da observação <span class="math inline">\(x_i\)</span> selecionada:</p>
+<ul>
+<li><p>Se o número de <span class="math inline">\(\epsilon\)</span>-vizinhos <span class="math inline">\(|NEps(x_i)|\)</span> for maior ou igual a MinPts, um novo cluster é criado para <span class="math inline">\(x_i\)</span>, e todos os objetos na <span class="math inline">\(\epsilon\)</span>-vizinhança de <span class="math inline">\(x_i\)</span> são adicionados a um conjunto candidato, <span class="math inline">\(M\)</span>. O algoritmo adiciona iterativamente a <span class="math inline">\(C_l\)</span> todos os objetos em 𝑀 que não pertencem a nenhum cluster.</p></li>
+<li><p>Se o número de <span class="math inline">\(\epsilon\)</span>-vizinhos <span class="math inline">\(|NEps(x_i)|\)</span> for menor do que MinPts, <span class="math inline">\(x_i\)</span> é marcado como um ponto de ruído (outlier).</p></li>
+</ul></li>
+<li><p>Repetir os passos 1 e 2 até que não haja mais observações “não visitadas”.</p></li>
+</ol>
+<p>Os parâmetros <span class="math inline">\(\epsilon\)</span> e MinPts afetam diretamente o resultado do agrupamento, determinando o tamanho mínimo de cada grupo e a distância entre os clusters. Uma das limitações do DBSCAN é o fato de que esses parâmetros são globais, ou seja, definidos para todos os grupos formados, o que pode não ser ideal quando diferentes clusters possuem densidades de pontos distintas. Para a seleção do valor de MinPts é comum que seja baseado no problema em si ou conhecimento prévio. Porém, uma proposta para seleção é o MinPts = 2×<span class="math inline">\(p\)</span> pode ser um bom valor para o parâmetro. Já o <span class="math inline">\(\epsilon\)</span> costuma ser baseado no número mínimo de pontos definido, em que é construído o gráfico das distâncias de cada ponto para os MinPts−1 vizinhos mais próximos e escolhido o valor “cotovelo”, ou seja, onde começa a ocorrer um crescimento mais acentuado nas distâncias ordenadas. Abaixo vemos como esse método se dá de forma aplicada para o software de programação tanto da seleção do melhor <span class="math inline">\(\epsilon\)</span> quanto da aplicação do modelo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">## selecao do melhor eps</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a> dbscan<span class="sc">::</span><span class="fu">kNNdist</span>(dados_diss ,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a> <span class="at">k =</span> <span class="dv">3</span>, <span class="at">all =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="do">## ajuste com o eps selecionado</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a> dbscan <span class="ot">&lt;-</span> dbscan<span class="sc">::</span><span class="fu">dbscan</span>(dados_norm , <span class="at">eps =</span> <span class="dv">2</span>, <span class="at">minPts =</span> <span class="dv">4</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Essa função retorna os seguintes elementos:</p>
+<ul>
+<li><p><code>cluster</code>: É um vetor que atribui um número de cluster a cada ponto de dados no conjunto de entrada. Os pontos que não pertencem a nenhum cluster são rotulados como “0” ou como “outlier”.</p></li>
+<li><p><code>eps</code>: É o valor do raio (epsilon) usado no algoritmo.</p></li>
+<li><p><code>minPts</code>: É o número mínimo de pontos necessários para formar um cluster.</p></li>
+<li><p><code>border</code>: É um vetor lógico que indica se cada ponto é um ponto de borda.</p></li>
+<li><p><code>reachability</code>: É um vetor que armazena os valores de <em>reachability distance</em> de cada ponto.</p></li>
+<li><p><code>core_dist</code>: É um vetor que contém as distâncias de densidade mínima( <em>core distance</em> ) para cada ponto.</p></li>
+</ul>
+<p>Uma técnica relacionada ao DBSCAN que lida com a limitação dos parâmetros globais é o algoritmo OPTICS (Ordering Points To Identify the Clustering Structure), proposto por <span class="citation" data-cites="ankerst1999optics">(<a href="references.html#ref-ankerst1999optics" role="doc-biblioref">Ankerst et al. 1999</a>)</span>. O OPTICS ordena os dados de forma que as observações em grupos mais densos estarão mais próximas na ordenação. Esse algoritmo pode ser uma opção para explorar diferentes densidades de pontos em diferentes clusters.</p>
+</section>
+<section id="agrupamento-espectral" class="level3" data-number="9.1.4">
+<h3 data-number="9.1.4" class="anchored" data-anchor-id="agrupamento-espectral"><span class="header-section-number">9.1.4</span> Agrupamento Espectral</h3>
+<p>Agrupar conjuntos de dados com alta dimensionalidade pode ser desafiador para alguns métodos de agrupamento. A grande quantidade de variáveis em alta dimensão pode aumentar significativamente o custo computacional e dificultar a separação adequada dos grupos. Nesse contexto, os métodos de agrupamento espectral surgem como uma abordagem promissora, pois permitem reduzir a dimensionalidade dos dados sem perder a informação contida nas variáveis, além de melhorar a separação entre grupos que podem não estar claramente distintos devido à alta dimensionalidade.</p>
+<p>Os algoritmos de agrupamento espectral usam uma medida de dissimilaridade para representar o conjunto de dados como um grafo. Nessa representação, os vértices do grafo correspondem às observações (<span class="math inline">\(V = v_1, ..., v_N\)</span>), e as arestas (<span class="math inline">\(A\)</span>) são definidas por uma matriz de similaridade, onde <span class="math inline">\(a(x_i, x_{i'})\)</span> representa o peso da aresta que conecta os vértices <span class="math inline">\(x_i\)</span> e <span class="math inline">\(x_{i'}\)</span>. O agrupamento em <span class="math inline">\(K\)</span> clusters é então formulado como um problema de corte de arestas, que pode ser computacionalmente complexo. Para contornar essa complexidade, é aplicada a teoria espectral.</p>
+<p>O algoritmo de Ng, Jordan e Weiss (NJW) é um exemplo de algoritmo de agrupamento espectral. Ele requer a definição prévia de um parâmetro, assim como o algoritmo K-médias. Esse parâmetro é o número de grupos <span class="math inline">\(K\)</span> a serem formados. O algoritmo NJW segue os seguintes passos:</p>
+<ol type="1">
+<li><p>Calcula-se a matriz de similaridade <span class="math inline">\(A\)</span>, usando um parâmetro escalar <span class="math inline">\(\sigma\)</span>. A similaridade entre cada par de pontos <span class="math inline">\(x_i\)</span> e <span class="math inline">\(x_{i'}\)</span> é medida usando uma função de similaridade, como a função Gaussiana. A matriz <span class="math inline">\(A\)</span> é preenchida com os valores calculados.</p></li>
+<li><p>Calcula-se a matriz de graus <span class="math inline">\(D\)</span>, onde cada elemento <span class="math inline">\(d_{ij}\)</span> na diagonal principal representa a soma das similaridades da linha <span class="math inline">\(i\)</span> da matriz <span class="math inline">\(A\)</span>. A matriz <span class="math inline">\(D\)</span> captura a estrutura de conectividade do conjunto de dados.</p></li>
+<li><p>Constrói-se a matriz Laplaciana <span class="math inline">\(L\)</span>, que é uma forma de normalização de <span class="math inline">\(A\)</span>. No algoritmo NJW, a matriz Laplaciana é definida como <span class="math inline">\(L = D^{(-1/2)} 𝐴 𝐷^{(-1/2)}\)</span>. Essa normalização realça as diferenças entre os grupos de dados.</p></li>
+<li><p>Identificam-se os <span class="math inline">\(K\)</span> maiores autovalores de <span class="math inline">\(L\)</span> e seus respectivos autovetores associados, que são armazenados em uma matriz <span class="math inline">\(Z\)</span> de tamanho <span class="math inline">\(N \times K\)</span>.</p></li>
+<li><p>Define-se uma nova matriz <span class="math inline">\(Y\)</span>, normalizada a partir de <span class="math inline">\(Z\)</span>. Cada elemento <span class="math inline">\(y_{ii'}\)</span> de <span class="math inline">\(Y\)</span> é calculado dividindo-se o elemento <span class="math inline">\(z_{ii'}\)</span> de <span class="math inline">\(Z\)</span> pelo produto da raiz quadrada do elemento diagonal correspondente a <span class="math inline">\(z_{ii}\)</span> e a raiz quadrada do elemento diagonal correspondente a <span class="math inline">\(z_{i'}\)</span>. Essa normalização ajusta as magnitudes dos dados.</p></li>
+<li><p>Com a redução da dimensionalidade dos dados na matriz <span class="math inline">\(Y\)</span> (de tamanho <span class="math inline">\(N \times K\)</span>), pode-se aplicar um algoritmo de agrupamento, como o K-médias, para realizar o agrupamento dos dados.</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>spectral_clustering <span class="ot">&lt;-</span> <span class="cf">function</span>(data , <span class="co"># dados</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                                k) <span class="co"># numero de grupos</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                                {</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># matriz de dissimilaridade</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    A <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(KRLS<span class="sc">::</span><span class="fu">gausskernel</span> (data , <span class="dv">2</span>)) <span class="co"># sigma^2 = 1</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">diag</span>(A) <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># matriz Laplaciana</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    L <span class="ot">=</span> <span class="fu">diag</span>(<span class="dv">1</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">rowSums</span>(A))) <span class="sc">%*%</span> A <span class="sc">%*%</span> <span class="fu">diag</span>(<span class="dv">1</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">rowSums</span>(A)))</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># matriz de autovetores associados aos k maiores autovalores</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    auto <span class="ot">&lt;-</span> <span class="fu">eigen</span>(L, <span class="at">symmetric =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    X <span class="ot">&lt;-</span> auto<span class="sc">$</span>vectors[, <span class="dv">1</span><span class="sc">:</span>k]</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># matriz normalizada</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    Y <span class="ot">&lt;-</span> X <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">rowSums</span>(X <span class="sc">^</span> <span class="dv">2</span>))</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># agrupamente k medias na matriz redimensionalizada</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">set.seed</span> (<span class="dv">1122</span>)</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    k_means <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(Y, <span class="at">centers =</span> k)</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">list</span>(</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">clusters =</span> k_means<span class="sc">$</span>cluster , <span class="co">#retornar grupos</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">auto =</span> auto , <span class="co">#retornar autovalores e autovetores</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">autovetores =</span> X, <span class="co">#retornar autovetores dos K maiores autovalores</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">normalizada =</span> Y <span class="co">#retornar matriz normalizada</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>    ))</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>A escolha dos parâmetros <span class="math inline">\(K\)</span> e <span class="math inline">\(\sigma\)</span> pode ser feita de forma arbitrária, dependendo do objetivo do estudo. No entanto, existem abordagens e técnicas disponíveis para auxiliar na seleção desses parâmetros. No exemplo acima , o parâmetro <span class="math inline">\(\sigma\)</span> foi fixado em 1, e o número de grupos <span class="math inline">\(K\)</span> foi escolhido com base na análise dos primeiros autovalores da matriz Laplaciana <span class="math inline">\(L\)</span>. O valor ótimo de <span class="math inline">\(K\)</span> é aquele em que ocorre uma queda significativa dos autovalores, uma vez que os maiores autovalores da matriz Laplaciana tendem a ser próximos de 1.</p>
+</section>
+<section id="validação-do-modelo" class="level3" data-number="9.1.5">
+<h3 data-number="9.1.5" class="anchored" data-anchor-id="validação-do-modelo"><span class="header-section-number">9.1.5</span> Validação do Modelo</h3>
+<p>No problema do agrupamento, não é possível verificar o grau de acerto do resultado obtido, uma vez que os verdadeiros grupos não são conhecidos a priori. Portanto, é necessário aplicar algum tipo de validação à partição final.</p>
+<p>Quatro índices de avaliação interna da qualidade do agrupamento são os principais a serem utilizados atualmente: Davies-Bouldin (DB), Dunn (D), Silhueta (S) e Calinski-Harabasz (CH).</p>
+<section id="davies-bouldin-db" class="level4" data-number="9.1.5.1">
+<h4 data-number="9.1.5.1" class="anchored" data-anchor-id="davies-bouldin-db"><span class="header-section-number">9.1.5.1</span> Davies-Bouldin (DB):</h4>
+<p>O índice DB mede a similaridade média entre cada grupo e seu grupo mais similar dentre os demais clusters. A distância média <span class="math inline">\(\delta_l\)</span> de um grupo <span class="math inline">\(l\)</span> às suas observações é calculada em relação a um valor referencial <span class="math inline">\(m_l\)</span>. A fórmula para <span class="math inline">\(\delta_l\)</span> é:</p>
+<p><span class="math display">\[
+\delta_{l} = \left(\frac{1}{n_{l}} \sum_{i=1}^{n_{l}} \left \| x_{i} - m_{l} \right \|^q\right)^{\frac{1}{q}}.
+\]</span></p>
+<p>onde <span class="math inline">\(n_l\)</span> é o número de observações no grupo <span class="math inline">\(l\)</span>, <span class="math inline">\(x_i\)</span> é uma observação, <span class="math inline">\(m_l\)</span> é o valor referencial (centróide ou medóide) e <span class="math inline">\(q\)</span> é um valor pré-definido, onde os valores mais utilizados são <span class="math inline">\(q = 1\)</span> e <span class="math inline">\(q= 2\)</span>. Para o índice, é utilizada também distância entre os grupos <span class="math inline">\(\Delta_{ll'}\)</span>, que é obtida como a distância entre os valores referenciais de cada grupo. A fórmula para <span class="math inline">\(\Delta_{ll'}\)</span> é:</p>
+<p><span class="math display">\[
+\Delta_{ll'} = \left( \sum_{j=1}^{p} |m_{jl} - m_{jl'}|^{t} \right)^{\frac{1}{t}}.
+\]</span></p>
+<p>onde <span class="math inline">\(t \in \mathbb{N}\)</span> é pré-definido e geralmente adotado como <span class="math inline">\(t = 1\)</span> (distâncias absolutas) ou <span class="math inline">\(t=2\)</span> (distância euclidiana). Assim, o índice de Davies-Bouldin (DB) fica definido por:</p>
+<p><span class="math display">\[
+DB = \frac{1}{K} \sum_{l=1}^{K} \max_{l \neq l'} \left( \frac{\delta_{l} + \delta_{l'}}{\Delta_{ll'}} \right).
+\]</span> Nesse caso, buscamos agrupar observações de forma a minimizar a variância intragrupo e maximizar a diferença entre eles. Portanto, valores menores do índice de Davies-Bouldin são considerados melhores. Observe a métrica aplicada ao conjunto de dados de agrupamento obtido pelo k-médias (As medidas seguintes também serão aplicadas ao mesmo conjunto).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Metrica DB usando Centroide</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>clusterSim<span class="sc">::</span><span class="fu">index.DB</span>(dados_norm ,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                     k_medias<span class="sc">$</span>cluster)<span class="sc">$</span>DB</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Metrica DB usando Medoide</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>clusterSim<span class="sc">::</span><span class="fu">index.DB</span>(dados_norm ,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                      k_medias<span class="sc">$</span>cluster ,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">d =</span> dist_euclidian ,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">centrotypes =</span> <span class="st">"medoids"</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>                      )<span class="sc">$</span>DB </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="dunn-d" class="level4" data-number="9.1.5.2">
+<h4 data-number="9.1.5.2" class="anchored" data-anchor-id="dunn-d"><span class="header-section-number">9.1.5.2</span> Dunn (D):</h4>
+<p>O índice D mede a razão entre a separação dos grupos e a variância dentro deles. A separação entre dois grupos <span class="math inline">\(l\)</span> e <span class="math inline">\(l'\)</span> é calculada pela distância do vizinho mais próximo, dessa forma buscamos valores grandes para essa medida de avaliação. A variância intragrupo é representada pelo diâmetro <span class="math inline">\(diam_l\)</span> do cluster. A fórmula para o índice D é:</p>
+<p><span class="math display">\[
+D = \frac{{\min_{l,l' \in \{1,...,K\}; l \neq l'} d(C_{l}, C_{l'})}}{{\max_{l \in \{1,...,K\}} diam_{l}}}.
+\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Metrica D</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a> clValid<span class="sc">::</span><span class="fu">dunn</span>(<span class="at">distance =</span> dist_euclidian , k_medias<span class="sc">$</span>cluster)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="silhueta-s" class="level4" data-number="9.1.5.3">
+<h4 data-number="9.1.5.3" class="anchored" data-anchor-id="silhueta-s"><span class="header-section-number">9.1.5.3</span> Silhueta (S):</h4>
+<p>O índice de Silhueta(S) mede a qualidade do agrupamento considerando as distâncias de cada ponto em relação às observações do mesmo grupo e aos demais clusters formados. Para cada observação <span class="math inline">\(i\)</span> pertencente ao grupo <span class="math inline">\(C_l\)</span>, definimos as medidas <span class="math inline">\(a_i\)</span> e <span class="math inline">\(b_i\)</span> da seguinte maneira:</p>
+$$
+<span class="math display">\[\begin{split}
+a_i = \frac{1}{n_{l}-1} \sum_{i' \neq i, i' \in C_{l}}^{n_l} d(x_{i}, x_{i'}),\\
+
+b_i = \min_{l \neq l'} \left( \frac{1}{n_{l'}} \sum_{i' \in C_{l'}}^{n_{l'}} d(x_{i}, x_{i'}) \right).
+\end{split}\]</span>
+<p>$$</p>
+<p>onde <span class="math inline">\(d(x_i,x_{i'})\)</span> representa a distância entre as observações <span class="math inline">\(x_i\)</span> e <span class="math inline">\(x_{i'}\)</span>. A partir dessas medidas, calculamos a silhueta <span class="math inline">\(s_i\)</span> da observação <span class="math inline">\(i\)</span>, com <span class="math inline">\(i = 1, ..., N\)</span>, usando a fórmula:</p>
+<p><span class="math display">\[
+s_i = \frac{b_i - a_i}{\max(a_i, b_i)}.
+\]</span></p>
+<p>O coeficiente de Silhueta S global é obtido por:</p>
+<p><span class="math display">\[
+S = \frac{1}{K} \sum_{l=1}^{K} \frac{1}{n_{l}} \sum_{i=1}^{n_{l}} s_i.
+\]</span> Dessa forma, valores maiores de S indicam agrupamentos mais densos e separados, o que é considerado um cenário adequado para um agrupamento bem-sucedido.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Metrica S</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>clusterSim<span class="sc">::</span><span class="fu">index.S</span>(dist_euclidian , k_medias<span class="sc">$</span>cluster)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="calinski-harabasz-ch" class="level4" data-number="9.1.5.4">
+<h4 data-number="9.1.5.4" class="anchored" data-anchor-id="calinski-harabasz-ch"><span class="header-section-number">9.1.5.4</span> Calinski-Harabasz (CH):</h4>
+<p>O índice de Calinski-Harabasz (CH) considera a variância intra-grupo, chamada de <span class="math inline">\(WGGS_l\)</span>, de cada cluster <span class="math inline">\(C_l\)</span> gerado, levando em conta a distância quadrática de cada observação em relação ao seu valor de referência <span class="math inline">\(m_l\)</span>, que pode ser um centróide ou medóide. A variância intra-grupo total,<span class="math inline">\(WGGS\)</span>, é calculada como a soma das variâncias intra-grupo de cada cluster:</p>
+<p><span class="math display">\[
+WGGS = \sum_{l=1}^{K} \sum_{i=1}^{n_{l}} d^2(x_{i}, m_l).
+\]</span></p>
+<p>Além disso, o cálculo do índice CH utiliza uma medida de dispersão <span class="math inline">\(BGSS\)</span> entre os grupos, que é obtida através da soma ponderada das distâncias quadráticas do valor de referência de cada cluster em relação a um valor central global <span class="math inline">\(m\)</span>. Essa medida é calculada da seguinte forma:</p>
+<p><span class="math display">\[
+BGSS = \sum_{l=1}^{K} n_{l} d^2(m_l, m).
+\]</span></p>
+<p>Dessa forma, o índice CH de Calinski-Harabasz é dado por:</p>
+<p><span class="math display">\[
+CH = \frac{(N - K) }{K - 1}\times \frac{BGSS}{WGSS}.
+\]</span></p>
+<p>Onde, valores maiores do índice CH indicam grupos com menor variância e bem separados, o que é considerado uma boa característica de um agrupamento.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Metrica CH usando Medoide</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>clusterSim<span class="sc">::</span><span class="fu">index.G1</span>(dados_norm , k_medias<span class="sc">$</span>cluster , </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">d =</span> dist_euclidian , <span class="at">centrotypes =</span> <span class="st">"medoids"</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Metrica CH usando centroide</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>clusterSim<span class="sc">::</span><span class="fu">index.G1</span>(dados_norm , k_medias<span class="sc">$</span>cluster)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-ankerst1999optics" class="csl-entry" role="listitem">
+Ankerst, Mihael, Markus M Breunig, Hans-Peter Kriegel, e Jörg Sander. 1999. <span>«OPTICS: Ordering points to identify the clustering structure»</span>. <em>ACM Sigmod record</em> 28 (2): 49–60.
+</div>
 <div id="ref-hartigan1979algorithm" class="csl-entry" role="listitem">
 Hartigan, John A, e Manchek A Wong. 1979. <span>«Algorithm AS 136: A k-means clustering algorithm»</span>. <em>Journal of the royal statistical society. series c (applied statistics)</em> 28 (1): 100–108.
 </div>
@@ -592,6 +785,7 @@ Kaufman, Leonard, e Peter J Rousseeuw. 2009. <em>Finding groups in data: an intr
 Lloyd, Stuart. 1982. <span>«Least squares quantization in PCM»</span>. <em>IEEE transactions on information theory</em> 28 (2): 129–37.
 </div>
 </div>
+</section>
 </section>
 </section>
 
