@@ -188,14 +188,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Intro_e_PCA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Aprendizado Não Supervisionado</span></span></a>
+  <a href="./introducao_algebra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Alguns conceitos básicos de algebra</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./naosupervisionado.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Análise de Agrupamentos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Aprendizado Não Supervisionado</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./PCA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Análise de Componentes Principais (PCA).</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -799,9 +805,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'dplyr' was built under R version 4.2.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'dplyr'</code></pre>
 </div>
@@ -815,7 +818,7 @@ Attaching package: 'dplyr'</code></pre>
 
     intersect, setdiff, setequal, union</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 11,523
 Columns: 46
@@ -870,16 +873,16 @@ $ evolucao   &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, NA, 1, 1, 1, 1, 
 <p>No R, as variáveis qualititativas são nomeadas “factor”, as variáveis quantitativas são nomeadas “numeric” e as variáveis de data são “date”. Note que na importação dos dados o R não entendeu corretamente os tipos de variáveis. Mas vamos corrigir isso no que segue.</p>
 <p>Começando pela data, vamos rodar o seguinte código:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>dt_notific  <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(dados<span class="sc">$</span>dt_notific, <span class="at">format =</span> <span class="st">"%d/%m/%Y"</span>)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>dt_sin_pri  <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(dados<span class="sc">$</span>dt_sin_pri, <span class="at">format =</span> <span class="st">"%d/%m/%Y"</span>)</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>dt_nasc  <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(dados<span class="sc">$</span>dt_nasc, <span class="at">format =</span> <span class="st">"%d/%m/%Y"</span>)</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>dt_interna  <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(dados<span class="sc">$</span>dt_interna, <span class="at">format =</span> <span class="st">"%d/%m/%Y"</span>)</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>dt_entuti  <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(dados<span class="sc">$</span>dt_entuti, <span class="at">format =</span> <span class="st">"%d/%m/%Y"</span>)</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>dt_saiduti  <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(dados<span class="sc">$</span>dt_saiduti, <span class="at">format =</span> <span class="st">"%d/%m/%Y"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>dt_notific  <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(dados<span class="sc">$</span>dt_notific, <span class="at">format =</span> <span class="st">"%d/%m/%Y"</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>dt_sin_pri  <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(dados<span class="sc">$</span>dt_sin_pri, <span class="at">format =</span> <span class="st">"%d/%m/%Y"</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>dt_nasc  <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(dados<span class="sc">$</span>dt_nasc, <span class="at">format =</span> <span class="st">"%d/%m/%Y"</span>)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>dt_interna  <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(dados<span class="sc">$</span>dt_interna, <span class="at">format =</span> <span class="st">"%d/%m/%Y"</span>)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>dt_entuti  <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(dados<span class="sc">$</span>dt_entuti, <span class="at">format =</span> <span class="st">"%d/%m/%Y"</span>)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>dt_saiduti  <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(dados<span class="sc">$</span>dt_saiduti, <span class="at">format =</span> <span class="st">"%d/%m/%Y"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>A função <code>as.Date</code> informa para o R que a variável indicada é de data. O argumento <code>format</code> indica o formato que está a data, nesse caso, “dia/mês/ano”. <a href="https://www.statmethods.net/input/dates.html#:~:text=You%20can%20use%20the%20as,format%20gives%20the%20appropriate%20format.">Aqui</a> é possível verificar todos os formatos de datas da função. Vamos ver como ficou:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 11,523
 Columns: 46
@@ -933,22 +936,22 @@ $ evolucao   &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, NA, 1, 1, 1, 1, 
 </div>
 <p>Agora vamos lidar com as variáveis qualitativas. Veja que “cs_zona” foi identificada como <em>int</em>. Isso acontece porque ela foi tabulada como número, como posteriormente variáveis deste tipo serão recodificadas de acordo com o dicionário, precisamos tratá-la como fator. Já as demais variáveis qualitativas estão identificadas como <em>numeric</em>, <em>dbl</em> ou <em>chacacter</em> pois na tabulação suas categorias estão codificadas com números ou textos. Para então dizer ao R o verdadeiro tipo dessas variáveis, vamos utilizar os seguintes comandos:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>cs_raca <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dados<span class="sc">$</span>cs_raca)</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>cs_escol_n <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dados<span class="sc">$</span>cs_escol_n)</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>cs_gestant <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dados<span class="sc">$</span>cs_gestant)</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>puerpera <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dados<span class="sc">$</span>puerpera)</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>cs_zona <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dados<span class="sc">$</span>cs_zona)</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>febre <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dados<span class="sc">$</span>febre)</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>tosse <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dados<span class="sc">$</span>tosse)</span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>suport_ven <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dados<span class="sc">$</span>suport_ven)</span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>uti <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dados<span class="sc">$</span>uti)</span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>evolucao <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dados<span class="sc">$</span>evolucao)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>cs_raca <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dados<span class="sc">$</span>cs_raca)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>cs_escol_n <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dados<span class="sc">$</span>cs_escol_n)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>cs_gestant <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dados<span class="sc">$</span>cs_gestant)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>puerpera <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dados<span class="sc">$</span>puerpera)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>cs_zona <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dados<span class="sc">$</span>cs_zona)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>febre <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dados<span class="sc">$</span>febre)</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>tosse <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dados<span class="sc">$</span>tosse)</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>suport_ven <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dados<span class="sc">$</span>suport_ven)</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>uti <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dados<span class="sc">$</span>uti)</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>evolucao <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dados<span class="sc">$</span>evolucao)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Uma forma um pouco mais eficiente de fazer isso é selecionar as variáveis por meio de um vetor, por exemplo, quero que as variáveis da coluna 10 até a coluna 20 sejam fatores. Podemos fazer isso com a ajuda a função <a href="https://www.geeksforgeeks.org/apply-lapply-sapply-and-tapply-in-r/"><code>lapply</code></a>. Essa função, em resumo, nos possibilita aplicar uma função em uma lista de elementos e retorna uma lista de mesmo tamanho em que o resultado é a aplicação desta função a cada elemento da lista. Neste caso, aplicamos a função <code>as.factor</code> nas colunas selecionadas (lista de elementos). Veja como é feito.<br>
 </p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>dados[,<span class="fu">c</span>(<span class="dv">17</span><span class="sc">:</span><span class="dv">37</span>)] <span class="ot">&lt;-</span> <span class="fu">lapply</span>(dados[,<span class="fu">c</span>(<span class="dv">17</span><span class="sc">:</span><span class="dv">37</span>)], as.factor)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>dados[,<span class="fu">c</span>(<span class="dv">17</span><span class="sc">:</span><span class="dv">37</span>)] <span class="ot">&lt;-</span> <span class="fu">lapply</span>(dados[,<span class="fu">c</span>(<span class="dv">17</span><span class="sc">:</span><span class="dv">37</span>)], as.factor)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 11,523
 Columns: 46
@@ -1002,67 +1005,67 @@ $ evolucao   &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, NA, 1, 1, 1, 1, 
 </div>
 <p>Ótimo! Corrigimos as inconsistências das variáveis qualitativas. Mas outra questão surge: como faço para usar um rótulo nos números codificados nas categorias das variáveis qualitativas? Para o grupo, por exemplo, ao invés de aparecer 1 quero que apareça “sim”. Para isso, vamos utilizar o pacote <code>forcats</code> que lida com variáveis qualitativas (categóricas). Para renomear as categorias das variáveis, vamos usar a função <code>fct_recode</code> desse pacote:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>cs_raca <span class="ot">&lt;-</span> forcats<span class="sc">::</span><span class="fu">fct_recode</span>(dados<span class="sc">$</span>cs_raca,</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">branca =</span> <span class="st">"1"</span>,</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">preta =</span> <span class="st">"2"</span>,</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">amarela =</span> <span class="st">"3"</span>,</span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">parda =</span> <span class="st">"4"</span>,</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">indigena =</span> <span class="st">"5"</span>,</span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">ignorado =</span> <span class="st">"9"</span>)</span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>cs_escol_n <span class="ot">&lt;-</span> forcats<span class="sc">::</span><span class="fu">fct_recode</span>(dados<span class="sc">$</span>cs_escol_n,</span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">"sem escola"</span>  <span class="ot">=</span> <span class="st">"0"</span>,</span>
-<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">fund1 =</span> <span class="st">"1"</span>,</span>
-<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">fund2 =</span> <span class="st">"2"</span>,</span>
-<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">medio =</span> <span class="st">"3"</span>,</span>
-<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">superior =</span> <span class="st">"4"</span>,</span>
-<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">ignorado =</span> <span class="st">"9"</span>)</span>
-<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>cs_gestant <span class="ot">&lt;-</span> forcats<span class="sc">::</span><span class="fu">fct_recode</span>(dados<span class="sc">$</span>cs_gestant,</span>
-<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">"1tri"</span> <span class="ot">=</span> <span class="st">"1"</span>,</span>
-<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">"2tri"</span> <span class="ot">=</span> <span class="st">"2"</span>,</span>
-<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">"3tri"</span> <span class="ot">=</span> <span class="st">"3"</span>,</span>
-<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">IG_ig =</span> <span class="st">"4"</span>,</span>
-<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">nao =</span> <span class="st">"5"</span>,</span>
-<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">ignorado =</span> <span class="st">"9"</span>)</span>
-<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>puerpera <span class="ot">&lt;-</span> forcats<span class="sc">::</span><span class="fu">fct_recode</span>(dados<span class="sc">$</span>puerpera,</span>
-<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">sim =</span> <span class="st">"1"</span>,</span>
-<span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">nao =</span> <span class="st">"2"</span>,</span>
-<span id="cb29-28"><a href="#cb29-28" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">ignorado =</span> <span class="st">"9"</span>)</span>
-<span id="cb29-29"><a href="#cb29-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-30"><a href="#cb29-30" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>cs_zona <span class="ot">&lt;-</span> forcats<span class="sc">::</span><span class="fu">fct_recode</span>(dados<span class="sc">$</span>cs_zona,</span>
-<span id="cb29-31"><a href="#cb29-31" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">urbana =</span> <span class="st">"1"</span>,</span>
-<span id="cb29-32"><a href="#cb29-32" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">rural =</span> <span class="st">"2"</span>,</span>
-<span id="cb29-33"><a href="#cb29-33" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">periurbana =</span> <span class="st">"3"</span>,</span>
-<span id="cb29-34"><a href="#cb29-34" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">ignorado =</span> <span class="st">"9"</span>)</span>
-<span id="cb29-35"><a href="#cb29-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-36"><a href="#cb29-36" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>febre <span class="ot">&lt;-</span> forcats<span class="sc">::</span><span class="fu">fct_recode</span>(dados<span class="sc">$</span>febre,</span>
-<span id="cb29-37"><a href="#cb29-37" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">sim =</span> <span class="st">"1"</span>,</span>
-<span id="cb29-38"><a href="#cb29-38" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">nao =</span> <span class="st">"2"</span>,</span>
-<span id="cb29-39"><a href="#cb29-39" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">ignorado =</span> <span class="st">"9"</span>)</span>
-<span id="cb29-40"><a href="#cb29-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-41"><a href="#cb29-41" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>suport_ven <span class="ot">&lt;-</span>forcats<span class="sc">::</span><span class="fu">fct_recode</span>(dados<span class="sc">$</span>suport_ven,</span>
-<span id="cb29-42"><a href="#cb29-42" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"sim, invasivo"</span> <span class="ot">=</span> <span class="st">"1"</span>,</span>
-<span id="cb29-43"><a href="#cb29-43" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"sim, nao invasivo"</span> <span class="ot">=</span> <span class="st">"2"</span>,</span>
-<span id="cb29-44"><a href="#cb29-44" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">nao =</span> <span class="st">"3"</span>,</span>
-<span id="cb29-45"><a href="#cb29-45" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">ignorado =</span> <span class="st">"9"</span>)</span>
-<span id="cb29-46"><a href="#cb29-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-47"><a href="#cb29-47" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>uti <span class="ot">&lt;-</span>forcats<span class="sc">::</span><span class="fu">fct_recode</span>(dados<span class="sc">$</span>uti,</span>
-<span id="cb29-48"><a href="#cb29-48" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">sim =</span> <span class="st">"1"</span>,</span>
-<span id="cb29-49"><a href="#cb29-49" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">nao =</span> <span class="st">"2"</span>,</span>
-<span id="cb29-50"><a href="#cb29-50" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">ignorado =</span> <span class="st">"9"</span>)</span>
-<span id="cb29-51"><a href="#cb29-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-52"><a href="#cb29-52" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>evolucao <span class="ot">&lt;-</span>forcats<span class="sc">::</span><span class="fu">fct_recode</span>(dados<span class="sc">$</span>evolucao,</span>
-<span id="cb29-53"><a href="#cb29-53" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">cura =</span> <span class="st">"1"</span>,</span>
-<span id="cb29-54"><a href="#cb29-54" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">obito =</span> <span class="st">"2"</span>,</span>
-<span id="cb29-55"><a href="#cb29-55" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"obito por outras causas"</span> <span class="ot">=</span> <span class="st">"3"</span>,</span>
-<span id="cb29-56"><a href="#cb29-56" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">ignorado =</span> <span class="st">"9"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>cs_raca <span class="ot">&lt;-</span> forcats<span class="sc">::</span><span class="fu">fct_recode</span>(dados<span class="sc">$</span>cs_raca,</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">branca =</span> <span class="st">"1"</span>,</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">preta =</span> <span class="st">"2"</span>,</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">amarela =</span> <span class="st">"3"</span>,</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">parda =</span> <span class="st">"4"</span>,</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">indigena =</span> <span class="st">"5"</span>,</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">ignorado =</span> <span class="st">"9"</span>)</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>cs_escol_n <span class="ot">&lt;-</span> forcats<span class="sc">::</span><span class="fu">fct_recode</span>(dados<span class="sc">$</span>cs_escol_n,</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">"sem escola"</span>  <span class="ot">=</span> <span class="st">"0"</span>,</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">fund1 =</span> <span class="st">"1"</span>,</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">fund2 =</span> <span class="st">"2"</span>,</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">medio =</span> <span class="st">"3"</span>,</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">superior =</span> <span class="st">"4"</span>,</span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">ignorado =</span> <span class="st">"9"</span>)</span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>cs_gestant <span class="ot">&lt;-</span> forcats<span class="sc">::</span><span class="fu">fct_recode</span>(dados<span class="sc">$</span>cs_gestant,</span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">"1tri"</span> <span class="ot">=</span> <span class="st">"1"</span>,</span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">"2tri"</span> <span class="ot">=</span> <span class="st">"2"</span>,</span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">"3tri"</span> <span class="ot">=</span> <span class="st">"3"</span>,</span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">IG_ig =</span> <span class="st">"4"</span>,</span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">nao =</span> <span class="st">"5"</span>,</span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">ignorado =</span> <span class="st">"9"</span>)</span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>puerpera <span class="ot">&lt;-</span> forcats<span class="sc">::</span><span class="fu">fct_recode</span>(dados<span class="sc">$</span>puerpera,</span>
+<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">sim =</span> <span class="st">"1"</span>,</span>
+<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">nao =</span> <span class="st">"2"</span>,</span>
+<span id="cb28-28"><a href="#cb28-28" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">ignorado =</span> <span class="st">"9"</span>)</span>
+<span id="cb28-29"><a href="#cb28-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-30"><a href="#cb28-30" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>cs_zona <span class="ot">&lt;-</span> forcats<span class="sc">::</span><span class="fu">fct_recode</span>(dados<span class="sc">$</span>cs_zona,</span>
+<span id="cb28-31"><a href="#cb28-31" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">urbana =</span> <span class="st">"1"</span>,</span>
+<span id="cb28-32"><a href="#cb28-32" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">rural =</span> <span class="st">"2"</span>,</span>
+<span id="cb28-33"><a href="#cb28-33" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">periurbana =</span> <span class="st">"3"</span>,</span>
+<span id="cb28-34"><a href="#cb28-34" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">ignorado =</span> <span class="st">"9"</span>)</span>
+<span id="cb28-35"><a href="#cb28-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-36"><a href="#cb28-36" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>febre <span class="ot">&lt;-</span> forcats<span class="sc">::</span><span class="fu">fct_recode</span>(dados<span class="sc">$</span>febre,</span>
+<span id="cb28-37"><a href="#cb28-37" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">sim =</span> <span class="st">"1"</span>,</span>
+<span id="cb28-38"><a href="#cb28-38" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">nao =</span> <span class="st">"2"</span>,</span>
+<span id="cb28-39"><a href="#cb28-39" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">ignorado =</span> <span class="st">"9"</span>)</span>
+<span id="cb28-40"><a href="#cb28-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-41"><a href="#cb28-41" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>suport_ven <span class="ot">&lt;-</span>forcats<span class="sc">::</span><span class="fu">fct_recode</span>(dados<span class="sc">$</span>suport_ven,</span>
+<span id="cb28-42"><a href="#cb28-42" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"sim, invasivo"</span> <span class="ot">=</span> <span class="st">"1"</span>,</span>
+<span id="cb28-43"><a href="#cb28-43" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"sim, nao invasivo"</span> <span class="ot">=</span> <span class="st">"2"</span>,</span>
+<span id="cb28-44"><a href="#cb28-44" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">nao =</span> <span class="st">"3"</span>,</span>
+<span id="cb28-45"><a href="#cb28-45" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">ignorado =</span> <span class="st">"9"</span>)</span>
+<span id="cb28-46"><a href="#cb28-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-47"><a href="#cb28-47" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>uti <span class="ot">&lt;-</span>forcats<span class="sc">::</span><span class="fu">fct_recode</span>(dados<span class="sc">$</span>uti,</span>
+<span id="cb28-48"><a href="#cb28-48" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">sim =</span> <span class="st">"1"</span>,</span>
+<span id="cb28-49"><a href="#cb28-49" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">nao =</span> <span class="st">"2"</span>,</span>
+<span id="cb28-50"><a href="#cb28-50" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">ignorado =</span> <span class="st">"9"</span>)</span>
+<span id="cb28-51"><a href="#cb28-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-52"><a href="#cb28-52" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>evolucao <span class="ot">&lt;-</span>forcats<span class="sc">::</span><span class="fu">fct_recode</span>(dados<span class="sc">$</span>evolucao,</span>
+<span id="cb28-53"><a href="#cb28-53" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">cura =</span> <span class="st">"1"</span>,</span>
+<span id="cb28-54"><a href="#cb28-54" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">obito =</span> <span class="st">"2"</span>,</span>
+<span id="cb28-55"><a href="#cb28-55" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"obito por outras causas"</span> <span class="ot">=</span> <span class="st">"3"</span>,</span>
+<span id="cb28-56"><a href="#cb28-56" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">ignorado =</span> <span class="st">"9"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Este tramanto foi feito para todas as variáveis qualitativas da base, mas por conta do tamanho do código, omitimos algumas da saída.</p>
 <p>Finalmente chegamos nas variáveis quantitativas. Uma forma de identificar problemas em variáveis quantitativas é avaliar os valores mínimo e máximo de cada variável e ver se tem algum valor impossível para a mesma. Em nosso caso podemos verificar a variável idade. Seria meio estranho encontrar alguém com valores extremamente altos ou negativos, concorda?! A função <code>summary</code> pode ser uma opção boa aqui, ela nos formece algumas medidas descritivas como, media, mínimo, máximo, entre outros.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dados<span class="sc">$</span>idade)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dados<span class="sc">$</span>idade)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
   10.00   25.00   30.00   30.25   35.00   55.00       9 </code></pre>
@@ -1073,14 +1076,14 @@ $ evolucao   &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, NA, 1, 1, 1, 1, 
 <h4 data-number="2.0.3.1" class="anchored" data-anchor-id="transformação-de-dados"><span class="header-section-number">2.0.3.1</span> Transformação de dados</h4>
 <p>É possível modificar ou criar novas variáveis na base de dados por meio da função <code>mutate</code> do pacote <code>dplyr</code>, você pode veificar melhor essa função clicando <a href="https://dplyr.tidyverse.org/reference/mutate.html">aqui</a>. Também podemos criar categorias com base em alguma condição por meio da função <code>case_when</code> também do pacote <code>dplyr</code>, veja melhor <a href="https://dplyr.tidyverse.org/reference/case_when.html?q=case_when#ref-usage">aqui</a>. Para ficar mais claro, vamos a um exemplo combinando as duas funções. Vamos criar a variável “faixa_et”, onde as observações serão as faixas etárias. São essas: “&lt;20”, “20-34” e “&gt;=”. Veja como faz:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> dados <span class="sc">|&gt;</span> </span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">faixa_et =</span> <span class="fu">case_when</span>(</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    idade <span class="sc">&lt;</span> <span class="dv">20</span> <span class="sc">~</span> <span class="st">"&lt;20"</span>,</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    idade <span class="sc">&gt;=</span> <span class="dv">20</span> <span class="sc">&amp;</span> idade <span class="sc">&lt;</span> <span class="dv">34</span> <span class="sc">~</span> <span class="st">"20-34"</span>,</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>    idade <span class="sc">&gt;=</span> <span class="dv">34</span> <span class="sc">~</span> <span class="st">"&gt;=34"</span></span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  ))</span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(dados<span class="sc">$</span>faixa_et)<span class="co">#table nos mostra as observações da quela variável e a sua frequência. </span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> dados <span class="sc">|&gt;</span> </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">faixa_et =</span> <span class="fu">case_when</span>(</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    idade <span class="sc">&lt;</span> <span class="dv">20</span> <span class="sc">~</span> <span class="st">"&lt;20"</span>,</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    idade <span class="sc">&gt;=</span> <span class="dv">20</span> <span class="sc">&amp;</span> idade <span class="sc">&lt;</span> <span class="dv">34</span> <span class="sc">~</span> <span class="st">"20-34"</span>,</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    idade <span class="sc">&gt;=</span> <span class="dv">34</span> <span class="sc">~</span> <span class="st">"&gt;=34"</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(dados<span class="sc">$</span>faixa_et)<span class="co">#table nos mostra as observações da quela variável e a sua frequência. </span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
   &lt;20  &gt;=34 20-34 
@@ -1093,8 +1096,8 @@ $ evolucao   &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, NA, 1, 1, 1, 1, 
 <h4 data-number="2.0.3.2" class="anchored" data-anchor-id="manipulação-de-datas"><span class="header-section-number">2.0.3.2</span> Manipulação de datas</h4>
 <p>Algo interessante também é trabalhar com a varíavel de datas. Podemos calulcar a diferença entre duas datas no R de forma bem simples por meio da função <a href="https://statisticsglobe.com/difftime-r-function/"><code>difftime</code></a> do pacote base do R. Para exemplificar vamos criar a variável “dias_uti” que vai ser ser quantos dias a pessoa ficou internada na uti. Vamos fazer isso calculando a diferença entre a data de saída e a data de entrada na uti e queremos o resultado em dias.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>dias_uti <span class="ot">&lt;-</span> <span class="fu">difftime</span>(dados<span class="sc">$</span>dt_saiduti, dados<span class="sc">$</span>dt_entuti, <span class="at">units =</span> <span class="st">"days"</span>)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>dias_uti <span class="ot">&lt;-</span> <span class="fu">difftime</span>(dados<span class="sc">$</span>dt_saiduti, dados<span class="sc">$</span>dt_entuti, <span class="at">units =</span> <span class="st">"days"</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 11,523
 Columns: 48
@@ -1167,11 +1170,11 @@ $ dias_uti   &lt;drtn&gt; NA days, NA days, NA days, NA days, NA days, NA days, 
 </ul>
 <p>Já utilizamos algumas funções do pacote, vamos falar sobre outras. Como já avançamos um pouco sobre a utilização de funções, vamos combinar algumas funções, o que geralmente é feito no dia a dia.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#criando um novo banco de dados selecionando 3 variáveis</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>dados_tratamento <span class="ot">&lt;-</span> dados <span class="sc">|&gt;</span> </span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sg_uf, cs_zona, idade)</span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados_tratamento)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">#criando um novo banco de dados selecionando 3 variáveis</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>dados_tratamento <span class="ot">&lt;-</span> dados <span class="sc">|&gt;</span> </span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sg_uf, cs_zona, idade)</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados_tratamento)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 11,523
 Columns: 3
@@ -1182,13 +1185,13 @@ $ idade   &lt;dbl&gt; 16, 23, 24, 33, 23, 35, 31, 17, 22, 29, 28, 22, 27, 25, 26
 </div>
 <p>Aqui criamos a base “dados_tratamento” onde apenas selecionamos algumas colunas da base de dados inicial com a função <code>select</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>dados_tratamento2 <span class="ot">&lt;-</span> dados_tratamento <span class="sc">|&gt;</span> </span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(cs_zona <span class="sc">==</span> <span class="st">"urbana"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sg_uf) <span class="sc">|&gt;</span> </span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">media =</span> <span class="fu">mean</span>(idade, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(media))</span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(dados_tratamento2))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>dados_tratamento2 <span class="ot">&lt;-</span> dados_tratamento <span class="sc">|&gt;</span> </span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(cs_zona <span class="sc">==</span> <span class="st">"urbana"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sg_uf) <span class="sc">|&gt;</span> </span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">media =</span> <span class="fu">mean</span>(idade, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(media))</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(dados_tratamento2))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
 <thead>
@@ -1237,15 +1240,13 @@ $ idade   &lt;dbl&gt; 16, 23, 24, 33, 23, 35, 31, 17, 22, 29, 28, 22, 27, 25, 26
 <h4 data-number="2.0.3.4" class="anchored" data-anchor-id="manipulando-o-formato-da-base-de-dados"><span class="header-section-number">2.0.3.4</span> Manipulando o formato da base de dados</h4>
 <p>Em certos casos é necessário mudar o formato das bases de dados, fazer com que colunas se tornem linhas vice-versa. Vamos utilizar a base “dados_tratamento”. Veja que ela está no formato <em>long</em>, em que as avaliações do mesmo indivíduo (variável de identificação de indivíduo é “registro”) estão nas linhas. Queremos que as zonas fiquem nas colunas, com as três colunas (vamos tirar valores ignorados): urbana, rural e periurbana, ou seja, queremos o formato <em>wide</em>. Um pacote do R que pode nos auxiliar a transformar formato <em>long</em> em <em>wide</em> e vice-versa é o <code>tidyr</code>. A função que usaremos é <code>spread</code>, como segue:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'tidyr' was built under R version 4.2.2</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>dados_formato <span class="ot">&lt;-</span> dados_tratamento <span class="sc">|&gt;</span> </span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(cs_zona) <span class="sc">&amp;</span> cs_zona <span class="sc">!=</span> <span class="st">"ignorado"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="fu">row_number</span>())</span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(dados_formato))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>dados_formato <span class="ot">&lt;-</span> dados_tratamento <span class="sc">|&gt;</span> </span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(cs_zona) <span class="sc">&amp;</span> cs_zona <span class="sc">!=</span> <span class="st">"ignorado"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="fu">row_number</span>())</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(dados_formato))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
 <thead>
@@ -1299,10 +1300,10 @@ $ idade   &lt;dbl&gt; 16, 23, 24, 33, 23, 35, 31, 17, 22, 29, 28, 22, 27, 25, 26
 </div>
 <p>Fizemos pequenas alterações na base de dados. Primeiro realizamos um filtro para retirarmos valores faltantes da variável “cs_zona”, pois essa passará a</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>dados_formato2 <span class="ot">&lt;-</span> dados_formato <span class="sc">|&gt;</span> </span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> cs_zona, <span class="at">values_from =</span> idade)  </span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(dados_formato2))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>dados_formato2 <span class="ot">&lt;-</span> dados_formato <span class="sc">|&gt;</span> </span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> cs_zona, <span class="at">values_from =</span> idade)  </span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(dados_formato2))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
 <thead>
@@ -1362,10 +1363,10 @@ $ idade   &lt;dbl&gt; 16, 23, 24, 33, 23, 35, 31, 17, 22, 29, 28, 22, 27, 25, 26
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>dados_formato3 <span class="ot">&lt;-</span> dados_formato2 <span class="sc">|&gt;</span> </span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"urbana"</span>,   <span class="st">"rural"</span>,    <span class="st">"periurbana"</span>), <span class="at">names_to =</span> <span class="st">"cs_zona"</span>, <span class="at">values_to =</span> <span class="st">"idade"</span>)</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(dados_formato3))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>dados_formato3 <span class="ot">&lt;-</span> dados_formato2 <span class="sc">|&gt;</span> </span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"urbana"</span>,   <span class="st">"rural"</span>,    <span class="st">"periurbana"</span>), <span class="at">names_to =</span> <span class="st">"cs_zona"</span>, <span class="at">values_to =</span> <span class="st">"idade"</span>)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(dados_formato3))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
 <thead>
@@ -1422,13 +1423,13 @@ $ idade   &lt;dbl&gt; 16, 23, 24, 33, 23, 35, 31, 17, 22, 29, 28, 22, 27, 25, 26
 <h4 data-number="2.0.3.5" class="anchored" data-anchor-id="combinando-bases-de-dados"><span class="header-section-number">2.0.3.5</span> Combinando bases de dados</h4>
 <p>Quando estamos trabalhando com dados, nem sempre uma única base irá conter todas as informações que precisamos, na verdade, isso é mais comum do que se possa imaginar. Assim, saber juntar duas bases de dados é indispensável. Vamos começar então falando sobre chave primária. Em resumo, chave primária se refere a um ou mais campos, onde combinados (no caso de mais de uma chave primária), não se repete na mesma tabela. Em outras palavras, uma chave primária no meu banco dados seria uma variável onde as observações não se repetem ou a combinação de variáveis que tornam as observações únicas. Para exemplicar vamos pegar nossa base de dados e separar em duas, para que posteriormente possamos juntalas. Como em nossa base de dados não temos naturalmente nenhuma chave primária, vamos utilizar a função <code>mutate(id = row_number())</code> para criarmos um identificar único para este exemplo. Após isso, vamos dividir a nossa base de dados em duas, mantendo em comum entre elas apenas a nossa chave primária, neste caso, a variável “id”</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> dados <span class="sc">|&gt;</span> </span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="fu">row_number</span>()) <span class="sc">|&gt;</span> </span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, <span class="fu">everything</span>())<span class="co">#selecionar variavel id e todas as outras </span></span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>dados1 <span class="ot">&lt;-</span> dados[, <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">24</span>)]</span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> dados <span class="sc">|&gt;</span> </span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="fu">row_number</span>()) <span class="sc">|&gt;</span> </span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, <span class="fu">everything</span>())<span class="co">#selecionar variavel id e todas as outras </span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>dados1 <span class="ot">&lt;-</span> dados[, <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">24</span>)]</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 11,523
 Columns: 24
@@ -1457,9 +1458,9 @@ $ diarreia   &lt;fct&gt; NA, sim, nao, nao, sim, nao, nao, sim, NA, NA, nao, NA,
 $ vomito     &lt;fct&gt; NA, nao, nao, nao, nao, nao, nao, nao, NA, NA, nao, NA, nao…
 $ fadiga     &lt;fct&gt; NA, NA, NA, NA, NA, nao, NA, NA, NA, NA, nao, NA, NA, nao, …</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>dados2 <span class="ot">&lt;-</span> dados[, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">25</span><span class="sc">:</span><span class="dv">49</span>)]</span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>dados2 <span class="ot">&lt;-</span> dados[, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">25</span><span class="sc">:</span><span class="dv">49</span>)]</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 11,523
 Columns: 26
@@ -1503,9 +1504,9 @@ $ dias_uti   &lt;drtn&gt; NA days, NA days, NA days, NA days, NA days, NA days, 
 </ul>
 <p>Assim sendo, no nosso exemplo, tanto as funções <code>left_join()</code>, <code>right_join()</code>, <code>full_join()</code> e <code>inner_join()</code> retornarão a mesma combinação, pois “dados1” e “dados2” possuem exatamente os mesmos indivíduos, ou seja, não há nenhuma linha que esteja em uma das bases de dados e que não está na outra. Este cenário foi um pouco mais simples, mas pense que no dia a dia você irá encontrar bases onde você precisará encontrar chaves primarias entre elas. Além disso, varios problemas podem vir acompanhados, por exemplo, imagine que para juntar duas bases você utilizará uma chave formada pela combinação de duas variáveis: UF e Município. Em uma base a sua UF está no formato de sigla e na outra está sendo representada pelo código da UF atribuido pelo IBGE. Já na variável de Município, Em uma base os dados estão todos padronizados, maiúsculos e sem acentuação, já na outra base está no formato “padrão” com a primeira letra maiúscula e acentuação. Veja que será necessário um bom tratamento de dados para pode juntar essas bases. Voltando para o nosso exemplo, vamos a prática.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>dados_todos <span class="ot">&lt;-</span> <span class="fu">full_join</span>(dados1, dados2, <span class="at">by=</span><span class="fu">c</span>(<span class="st">"id"</span>)) </span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados_todos)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>dados_todos <span class="ot">&lt;-</span> <span class="fu">full_join</span>(dados1, dados2, <span class="at">by=</span><span class="fu">c</span>(<span class="st">"id"</span>)) </span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados_todos)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 11,523
 Columns: 49

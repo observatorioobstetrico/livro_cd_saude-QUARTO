@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./references.html" rel="next">
-<link href="./naosupervisionado.html" rel="prev">
+<link href="./PCA.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -188,14 +188,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Intro_e_PCA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Aprendizado Não Supervisionado</span></span></a>
+  <a href="./introducao_algebra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Alguns conceitos básicos de algebra</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./naosupervisionado.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Análise de Agrupamentos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Aprendizado Não Supervisionado</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./PCA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Análise de Componentes Principais (PCA).</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -1677,14 +1683,14 @@ Levels: Homem Mulher</code></pre>
 <p>Podemos usar essa função para amostrar de um objeto dois elementos (<code>size = 2</code>) em uma seleção com reposição (<code>replace = TRUE</code>) e que a probabilidade de seleção seja a mesma para todos os elementos do vetor. No caso da probabilidade, como podemos ver na documentação da função <code>sample</code>, o default (padrão se o usuário não mudar o argumento) é ser a mesma probabilidade de seleção para todos os elementos. Assim, se o usuário nada especificar para esse argumento, o R entenderá o seu default. O mesmo vale para o argumento <code>replace</code>: caso fosse o interesse fazer a seleção sem reposição, não precisaríamos colocar esse argumento por seu default ser <code>FALSE</code>.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 10 20</code></pre>
+<pre><code>[1] 1 1</code></pre>
 </div>
 </div>
 <p>Também poderíamos usar a mesma função sem colocar o nome dos argumentos, desde que o usuário entenda o que ela está fazendo.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb297"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb297-1"><a href="#cb297-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(vetor_am, <span class="dv">2</span> , <span class="cn">TRUE</span>) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 10.0  0.5</code></pre>
+<pre><code>[1] 10  2</code></pre>
 </div>
 </div>
 <p>Nesse caso, é importante que se respeite a ordem dos argumentos: o vetor tem que ser o primeiro, o segundo argumento é <code>size</code> e assim por diante.</p>
@@ -2064,8 +2070,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./naosupervisionado.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Análise de Agrupamentos</span></span>
+      <a href="./PCA.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Análise de Componentes Principais (PCA).</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

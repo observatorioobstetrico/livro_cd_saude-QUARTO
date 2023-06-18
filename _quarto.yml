@@ -18,8 +18,9 @@ book:
     - estimacao.qmd
     - testes_np.qmd
     - supervisionada.qmd
-    - Intro_e_PCA.qmd
+    - introducao_algebra.qmd
     - naosupervisionado.qmd
+    - PCA.qmd
   appendices: 
     - href: tutorialr.qmd
       text: Tutorial de R

@@ -63,7 +63,7 @@ O dicionários das variáveis a ser considerado neste livro está na @tbl-covid1
 
 ### INDICADORES OBSTÉTRICOS
 
-Consiste em um conjunto de dados com ??? observações sobre indicadores obstétricos a nível municipal do ano de 2019, sendo os seguintes indicadores:
+Consiste em um conjunto de dados com 5570 observações sobre indicadores obstétricos a nível municipal do ano de 2019, sendo os seguintes indicadores:
 
 -   Prematuridade: Refere-se ao parto que ocorre em idade gestacional inferior a 37 semanas.
 

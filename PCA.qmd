@@ -1,0 +1,80 @@
+
+# Análise de Componentes Principais (PCA).
+
+## Introdução.
+A Análise de Componentes Principais (PCA) é uma técnica que busca resumir a variação presente em um conjunto de dados multivariados através de combinações lineares de suas variáveis originais, que são correlacionadas. O objetivo principal é reduzir a dimensionalidade dos dados, representando um grande número de variáveis originais em um número menor de componentes principais. Essas novas variáveis são ordenadas em ordem decrescente de importância, de modo que a primeira componente principal capture a maior quantidade possível da variabilidade total dos dados, e as subsequentes capturem cada vez menos.
+
+A primeira componente principal é calculada de forma a maximizar a variância explicada pelos dados, ou seja, ela é a direção ao longo da qual os dados apresentam a maior variação possível. As demais componentes são ortogonais à primeira e são combinações lineares das variáveis originais, indicando a importância relativa de cada variável naquele componente. Note então, que por essa definição já podemos perceber a relação com os autovetores e autovetores associados.
+
+O PCA tem diversas aplicações em áreas como estatística, engenharia e ciência de dados, sendo usado para resumir grandes conjuntos de dados, detectar padrões e estruturas latentes, identificar outliers e reduzir o ruído presente nos dados. Além disso, ele é comumente utilizado como uma técnica de pré-processamento de dados para outras técnicas de análise, como regressão e clustering.
+
+Uma aplicação comum do PCA é na identificação de variáveis latentes em um conjunto de dados, que não são diretamente observáveis, mas podem ser inferidas a partir de outras variáveis observáveis correlacionadas entre si.Um exemplo de variável latente na obstetrícia pode ser a "saúde fetal" ou até mesmo a "saúde materna". Não pode ser diretamente medida ou observada, mas pode ser inferida a partir de múltiplas variáveis observáveis, como a frequência cardíaca fetal, a pressão arterial materna entre outras.
+
+## Como realizar a análise de componentes principais.
+
+O primeiro passo é entender a definição matemática real das componentes principais. Seja $\boldsymbol{X}$ um vetor aleatório com $\boldsymbol{\mu} = E(\boldsymbol{X})$ e $\boldsymbol \Sigma = Var(\boldsymbol{X})$ e $(\lambda_i,e_i), i = 1,\dots,p$ os pares de autovalores e autovetores normalizados associados de $\Sigma$. Então,
+
+$$
+\begin{split}
+\boldsymbol{Y} = \boldsymbol{ O'}\boldsymbol{X},\quad \textrm{com}\quad \boldsymbol{O} = [\boldsymbol{e}_1,\boldsymbol{e}_2,\dots,\boldsymbol{e}_p],\textrm{ os componentes principais de }\boldsymbol X\\
+\textrm{ou seja}\\
+\boldsymbol Y = 
+\begin{bmatrix}
+Y_1\\
+\vdots\\
+Y_p
+\end{bmatrix} \textrm{ com  } \quad Y_1 = \boldsymbol e_1'\boldsymbol X = e_{11}X_1 + e_{12}X_2 +  \dots + e_{1p}X_p.
+\end{split}
+$$
+
+A primeira componente principal. Como citado, as componentes então seguem sendo combinações lineares das variáveis originais e os autovetores correspondentes. Os componentes principais de $\boldsymbol{X}$, $\boldsymbol{Y}$, são tais que,
+
+$$
+\begin{split}
+\boldsymbol\mu_y = E(\boldsymbol Y) = E(\boldsymbol O'\boldsymbol X) = \boldsymbol O'E(\boldsymbol X) = \boldsymbol O'\boldsymbol\mu_x\\
+\boldsymbol\Sigma_y = Var(\boldsymbol Y) = Var(\boldsymbol O'\boldsymbol X) = \boldsymbol O'Var(\boldsymbol X)\boldsymbol O = \boldsymbol{O'\Sigma_xO= \Lambda}.
+\end{split}
+$$
+
+Ou seja
+
+$$
+cov(Y_i,Y_j) = 0, \forall i \neq j \textrm{ e } Var(Y_i) = \lambda_i
+$$
+
+A prova desse resultado pode ser vista em [@johnson2002applied, pp.432].
+
+É de conhecimento geral, como um dos objetivos da análise de dados sendo a compreensão da distribuição bem como variabilidade dos dados. Podemos então descrever a variância total da população como sendo o somatório de todos os autovalores $\lambda_i$. A partir disso, podemos escrever a proporção da variância total explicada pela $j$-ésima componente, como sendo:
+
+$$
+\frac{\lambda_j}{\sum_{i=1}^p \lambda_i}; \qquad \forall j =1,\dots,p.
+$$
+
+Dessa forma, para algum $p$ significativamente grande, podemos utilizar $d < p$ componentes ao invés das $p$ variáveis originais, considerando que, podemos descrever uma proporção relativamente alta da variância com essas $d$ componentes.
+
+Se $Y_i = \boldsymbol{e'_iX}, i =1\dots,p$ são as componentes principais obtidas da matriz de covariância, então
+
+$$
+\rho_{Y_i,X_j} = \frac{e_{ij}\sqrt{\lambda_i}}{\sigma_{jj}}, \quad \forall i,j=1,\dots p, 
+$$
+
+São os coeficientes de correlação entre a componente $Y_i$ e a variável $X_j$. Esse valor auxiliará na compreensão entre a relação indivídual de $X_j$ a uma componente principal $Y_i$, porém não explica a relação desta variável em presença das outras. Por isso, alguns altores recomendam o uso único do valor de $e_{ij}$ para compreender a relação variável-componente. Ambos os resultados serão importântes para compreensão da componente.
+
+ Exemplo
+
+## Componentes principais por variáveis padronizadas.
+
+ Exemplo
+
+## Número de componentes principais.
+
+Exemplo
+
+## Redução de dimensionalidade com o PCA.
+
+ Exemplo
+
+## Interpretação do componentes principais de uma amostra.
+
+ Exemplo
+

@@ -1,7 +1,28 @@
+
+# Aprendizado Não Supervisionado
+
+O aprendizado de máquina pode ser dividido em duas categorias principais: aprendizado supervisionado e aprendizado não supervisionado. O aprendizado supervisionado é uma abordagem que utiliza um conjunto de dados rotulados para treinar um modelo de aprendizado de máquina. Por outro lado, o aprendizado não supervisionado não utiliza rótulos, mas em vez disso, tenta encontrar padrões e estruturas no conjunto de dados sem qualquer orientação externa.
+
+Em geral, o aprendizado não supervisionado é usado quando não há classificação sobre os dados disponível ou quando os dados rotulados são muito escassos. Ele pode ser usado para várias tarefas, incluindo clustering (agrupamento) e redução de dimensionalidade.
+
+### Clustering ou Agrupamentos
+
+O clustering é uma técnica de aprendizado não supervisionado em que os dados são agrupados com base em sua similaridade. Em outras palavras, os dados que são mais semelhantes são postos em uma mesma classificação, enquanto os dados que são diferentes são agrupados em classificações diferentes.
+
+Existem vários algoritmos de clustering disponíveis, incluindo o algoritmo k-means, o clustering hierárquico e o DBSCAN. O algoritmo k-means é um dos algoritmos de clustering mais populares por conta da sua fácil compreensão e aplicação, além de sua eficiência.
+
+### Redução de dimensionalidade
+
+A redução de dimensionalidade é uma técnica de aprendizado não supervisionado usada para reduzir o número de variáveis em um conjunto de dados. Ou seja, reduz a dimensionalidade do espaço de características dos dados, enquanto tenta preservar a maior parte da informação original. A redução de dimensionalidade pode ser usada para simplificar o modelo e, portanto, torná-lo mais fácil de interpretar ou para acelerar o treinamento do modelo.
+
+Existem vários algoritmos de redução de dimensionalidade disponíveis, incluindo a Análise de Componentes Principais (PCA), a Análise Fatorial e a T-SNE. O PCA é um dos algoritmos de redução de dimensionalidade mais populares e será o aqui trabalhado.
+
+
 ## Análise de Agrupamentos
 
-```{r echo='FALSE'}
-dados_indicadores <- readRDS('dados/dados_indicadores.rds')
+```{r include=FALSE}
+dados_indicadores <- readRDS('dados/dados_indicadores.rds')                                       
+
 ```
 
 Como descrito anteriormente e reforçado aqui, na análise de agrupamento, buscamos identificar regiões no espaço dos dados que possuam um grande número de observações próximas umas das outras. Essas regiões são chamadas de clusters. A ideia é agrupar indivíduos que sejam semelhantes entre si e diferentes dos indivíduos em outros clusters. Essa técnica é chamada de aprendizado não supervisionado, pois não utilizamos uma variável específica como referência para avaliar o resultado do agrupamento.
@@ -48,7 +69,7 @@ A =
   \end{align}
 $$
 
-As matrizes de dissimilaridade podem ser obtidas com apoio da função `dist()`, onde o tipo de distância (Euclidiana por exemplo), é passada no parâmetro da função, `method` , veja a seguir, um exemplo aplicado ao conjunto de indicadores obstétricos, esse _DataSet_ séra o referncial para a sessão atual, será considerado apenas as colunas dos indicadores. 
+As matrizes de dissimilaridade podem ser obtidas com apoio da função `dist()`, onde o tipo de distância (Euclidiana por exemplo), é passada no parâmetro da função, `method` , veja a seguir, um exemplo aplicado ao conjunto de indicadores obstétricos, esse *DataSet* séra o referncial para a sessão atual, será considerado apenas as colunas dos indicadores.
 
 ```{r}
 
@@ -58,24 +79,21 @@ dist_euclidian <- dist(scale(dados_indicadores[,-c(1:4)]), method = "euclidean")
 
 O códio acima cria e armazena um objeto do tipo `dist` que será utilizado em exemplos futuros.
 
-
 A análise de agrupamento é uma ferramenta valiosa que permite identificar estratos em uma população e detectar outliers. É importante considerar a escalabilidade do método, sua capacidade de lidar com diferentes tipos de variáveis e clusters de formatos variados. Além disso, a robustez em relação a outliers e a capacidade de agrupar dados de alta dimensionalidade são considerações essenciais. Existem diversos métodos de agrupamento na literatura, cada um com vantagens e desvantagens. Nas próximas sessões, exploraremos os métodos considerados e suas aplicações adequadas, bem como métodos de avaliação de qualidade para os agrupamentos.
 
-## Métodos de Agrupamentos
-
-Neste capítulo, vamos explorar diferentes maneiras de resolver o desafio do agrupamento de dados. Existem abordagens tradicionais, como o particionamento, que envolve dividir o conjunto de dados em grupos distintos. Além disso, temos os métodos hierárquicos, nos quais os grupos são organizados em uma estrutura de árvore. 
+Neste capítulo, vamos explorar diferentes maneiras de resolver o desafio do agrupamento de dados. Existem abordagens tradicionais, como o particionamento, que envolve dividir o conjunto de dados em grupos distintos. Além disso, temos os métodos hierárquicos, nos quais os grupos são organizados em uma estrutura de árvore.
 
 Outra abordagem interessante é considerar a densidade dos pontos no espaço. Nesse caso, procuramos identificar regiões mais densas separadas por áreas menos povoadas. Esses métodos, conhecidos como baseados em densidade, oferecem uma perspectiva diferente na análise dos dados.
 
 Também existe uma classe de métodos que utiliza técnicas de decomposição espectral. Esses métodos reduzem a dimensionalidade dos dados, preservando as informações relevantes dos grupos presentes. São os chamados agrupamentos espectrais, que exploram as propriedades dos autovalores e autovetores da matriz de similaridade dos dados.
 
-Cada uma dessas abordagens possui suas próprias características, vantagens e limitações. 
+Cada uma dessas abordagens possui suas próprias características, vantagens e limitações.
 
 ### Métodos por Particionamento
 
 Os métodos por particionamento são comumente utilizados para agrupar dados, onde cada partição representa um cluster. Esses métodos são baseados em distância e envolvem a realocação iterativa das observações entre os clusters para obter um particionamento otimizado.
 
-A escolha do número de clusters é um aspecto importante, pois influencia diretamente a qualidade do agrupamento. Uma abordagem comum é o método do cotovelo, que considera a relação entre a variância total intraclusters e o número de grupos criados. O método do cotovelo considera que aumentar o número de clusters reduz a variância, mas em algum ponto, não há melhora significativa na granularidade do agrupamento. Esse ponto ótimo, que indica o número adequado de clusters, é identificado no gráfico  por uma curva tracejada.
+A escolha do número de clusters é um aspecto importante, pois influencia diretamente a qualidade do agrupamento. Uma abordagem comum é o método do cotovelo, que considera a relação entre a variância total intraclusters e o número de grupos criados. O método do cotovelo considera que aumentar o número de clusters reduz a variância, mas em algum ponto, não há melhora significativa na granularidade do agrupamento. Esse ponto ótimo, que indica o número adequado de clusters, é identificado no gráfico por uma curva tracejada.
 
 ![](figuras_naosupervisionado/cotovelo.png){fig-align="centering" fig-alt="Screeplot para seleção de número de clusters"}
 
@@ -91,19 +109,19 @@ Essas são algumas das abordagens dos métodos por particionamento, aqui será c
 
 #### K-médias
 
-O K-médias é um método amplamente utilizado para agrupamento de dados. Ele busca encontrar K partições dos dados, minimizando a variância. O algoritmo de [@lloyd1982least] é comumente usado para realizar o K-médias. Ele envolve os seguintes passos: 
+O K-médias é um método amplamente utilizado para agrupamento de dados. Ele busca encontrar K partições dos dados, minimizando a variância. O algoritmo de [@lloyd1982least] é comumente usado para realizar o K-médias. Ele envolve os seguintes passos:
 
-1. escolha dos K centróides iniciais; 
+1.  escolha dos K centróides iniciais;
 
-2. particionamento dos dados com base na menor distância para cada centróide; 
+2.  particionamento dos dados com base na menor distância para cada centróide;
 
-3. atualização dos centróides com as novas observações atribuídas a eles; 
+3.  atualização dos centróides com as novas observações atribuídas a eles;
 
-4. repetição dos passos 2 e 3 até que não haja mais mudança de agrupamento. É possível definir um número máximo de iterações para otimizar o método computacionalmente.
+4.  repetição dos passos 2 e 3 até que não haja mais mudança de agrupamento. É possível definir um número máximo de iterações para otimizar o método computacionalmente.
 
 Uma alternativa é o algoritmo de [@hartigan1979algorithm], que adiciona uma etapa de validação para alterar os agrupamentos. A cada iteração, verifica-se se houve atualização nos centróides dos grupos. Nesse caso, um novo objeto só é atribuído a um cluster se a soma das distâncias quadráticas diminuir.
 
-No entanto, o método K-médias apresenta limitações ao lidar com clusters de formas não convencionais ou grupos com tamanhos muito discrepantes. Além disso, ele é sensível a outliers, pois a inclusão de um dado extremo pode influenciar significativamente o valor do centróide. A aplicação para o software *R*, tanto do método de agrupamento quanto a escolha do número de clusters _K_ pelo método do cotovelo, segue abaixo, será considerado os dados padronizados para retirar qualquer tendência em função da diferença de escala ou amplitude dos dados:
+No entanto, o método K-médias apresenta limitações ao lidar com clusters de formas não convencionais ou grupos com tamanhos muito discrepantes. Além disso, ele é sensível a outliers, pois a inclusão de um dado extremo pode influenciar significativamente o valor do centróide. A aplicação para o software *R*, tanto do método de agrupamento quanto a escolha do número de clusters *K* pelo método do cotovelo, segue abaixo, será considerado os dados padronizados para retirar qualquer tendência em função da diferença de escala ou amplitude dos dados:
 
 ```{r message=FALSE, warning= FALSE, eval=FALSE}
 set.seed (1122)
@@ -127,35 +145,34 @@ k_medias <- kmeans(dados_norm,
                         centers = 7)
 
 ```
- 
- A função `kmeans` é uma ferramenta poderosa disponível no R para realizar o agrupamento de dados utilizando o método K-médias. A função kmeans retorna três principais objetos:
 
-- `Cluster_centers`: É uma matriz que representa os centróides finais de cada cluster. Cada linha dessa matriz representa um centróide, com as coordenadas correspondentes às variáveis do conjunto de dados.
+A função `kmeans` é uma ferramenta poderosa disponível no R para realizar o agrupamento de dados utilizando o método K-médias. A função kmeans retorna três principais objetos:
 
-- `Cluster_assignment`: É um vetor que contém as atribuições de cada observação a um determinado cluster. Cada elemento desse vetor representa o número do cluster ao qual a observação foi atribuída. O valor 1 representa o primeiro cluster, o valor 2 representa o segundo cluster e assim por diante.
+-   `Cluster_centers`: É uma matriz que representa os centróides finais de cada cluster. Cada linha dessa matriz representa um centróide, com as coordenadas correspondentes às variáveis do conjunto de dados.
 
-- `Within_cluster_sum_of_squares`: É um valor que representa a soma dos quadrados das distâncias de cada observação em relação ao seu respectivo centróide. Essa medida indica a variabilidade dos dados dentro de cada cluster. Quanto menor o valor, mais compacto e homogêneo é o cluster.
+-   `Cluster_assignment`: É um vetor que contém as atribuições de cada observação a um determinado cluster. Cada elemento desse vetor representa o número do cluster ao qual a observação foi atribuída. O valor 1 representa o primeiro cluster, o valor 2 representa o segundo cluster e assim por diante.
 
-  
+-   `Within_cluster_sum_of_squares`: É um valor que representa a soma dos quadrados das distâncias de cada observação em relação ao seu respectivo centróide. Essa medida indica a variabilidade dos dados dentro de cada cluster. Quanto menor o valor, mais compacto e homogêneo é o cluster.
+
 #### K-medóides
 
 Em situações com valores extremos, os algoritmos K-medóides surgem como uma alternativa ao cálculo do centróide, evitando a influência excessiva desses valores na representação central de cada grupo. O algoritmo PAM (Partitioning Around Medoids) proposto por [@kaufman2009finding] considera um custo para as trocas de medóides a cada iteração. O custo é calculado como a diferença da variância total intragrupo considerando um novo medóide (observação não medóide) em comparação com o medóide atual. A variância total intragrupo é uma medida da dispersão dos pontos dentro de um grupo.
 
 Para realizar o agrupamento, o algoritmo PAM segue os seguintes passos:
 
-1. Escolha inicial dos $K$ medóides a partir do conjunto de dados;
+1.  Escolha inicial dos $K$ medóides a partir do conjunto de dados;
 
-2. As observações não selecionadas como medóides são atribuídas ao grupo cujo medóide é o mais próximo;
+2.  As observações não selecionadas como medóides são atribuídas ao grupo cujo medóide é o mais próximo;
 
-3. Selecionar aleatoriamente uma observação não medóide $o_r$;
+3.  Selecionar aleatoriamente uma observação não medóide $o_r$;
 
-4. Calcular o custo de se mudar o medóide atual para $o_r$;
+4.  Calcular o custo de se mudar o medóide atual para $o_r$;
 
-5. Caso o custo seja menor que 0, realizar a troca de medóide;
+5.  Caso o custo seja menor que 0, realizar a troca de medóide;
 
-6. Repetir os passos 2 a 5 até que não haja mais mudanças de agrupamento.
+6.  Repetir os passos 2 a 5 até que não haja mais mudanças de agrupamento.
 
-O custo de mudança do medóide atual para outra observação é calculado como a diferença da variância total intragrupo considerando a nova observação como representante em comparação com o medóide atual. 
+O custo de mudança do medóide atual para outra observação é calculado como a diferença da variância total intragrupo considerando a nova observação como representante em comparação com o medóide atual.
 
 Além disso, é comum utilizar a medida de distância absoluta no lugar da distância euclidiana quadrática para calcular a distância entre os pontos e os medóides. O método pode ser visto abaixo:
 
@@ -176,15 +193,15 @@ pam <- cluster::pam(dados_norm ,
 
 A função `cluster::pam` no *R* retorna os seguintes elementos:
 
-1. `medoids`: Um vetor contendo os índices das observações selecionadas como medóides finais de cada cluster.
+1.  `medoids`: Um vetor contendo os índices das observações selecionadas como medóides finais de cada cluster.
 
-2. `clustering`: Um vetor contendo os rótulos dos clusters aos quais cada observação foi atribuída.
+2.  `clustering`: Um vetor contendo os rótulos dos clusters aos quais cada observação foi atribuída.
 
-3. `objective`: O valor da medida de dissimilaridade total do agrupamento obtido.
+3.  `objective`: O valor da medida de dissimilaridade total do agrupamento obtido.
 
-4. `isolation.distance`: Um vetor com as distâncias de isolamento de cada observação em relação ao seu medóide correspondente.
+4.  `isolation.distance`: Um vetor com as distâncias de isolamento de cada observação em relação ao seu medóide correspondente.
 
-5. `clusinfo`: Uma lista com informações adicionais sobre os clusters, incluindo o número de observações em cada cluster e a soma das distâncias de dissimilaridade intracluster.
+5.  `clusinfo`: Uma lista com informações adicionais sobre os clusters, incluindo o número de observações em cada cluster e a soma das distâncias de dissimilaridade intracluster.
 
 Esses elementos fornecem informações sobre os medóides finais selecionados, a atribuição de clusters para cada observação, o valor objetivo do agrupamento, as distâncias de isolamento e informações adicionais sobre cada cluster.
 
@@ -204,19 +221,19 @@ clara <- cluster::clara(dados_norm ,
 
 A função `cluster::clara` no *R* retorna os seguintes resultados:
 
-1. `medoids`: Um objeto pamobject contendo os medóides finais de cada cluster.
+1.  `medoids`: Um objeto pamobject contendo os medóides finais de cada cluster.
 
-2. `clustering`: Um vetor com os rótulos dos clusters atribuídos a cada observação.
+2.  `clustering`: Um vetor com os rótulos dos clusters atribuídos a cada observação.
 
-3. `objective`: O valor da medida de dissimilaridade total do agrupamento obtido.
+3.  `objective`: O valor da medida de dissimilaridade total do agrupamento obtido.
 
-4. `isolation.distance`: Um vetor com as distâncias de isolamento de cada observação em relação ao seu medóide correspondente.
+4.  `isolation.distance`: Um vetor com as distâncias de isolamento de cada observação em relação ao seu medóide correspondente.
 
-5. `clusinfo`: Uma lista com informações adicionais sobre os clusters, como o número de observações em cada cluster e a soma das distâncias de dissimilaridade intracluster.
+5.  `clusinfo`: Uma lista com informações adicionais sobre os clusters, como o número de observações em cada cluster e a soma das distâncias de dissimilaridade intracluster.
 
-6. `samples`: Uma lista contendo os índices das observações selecionadas em cada subamostra.
+6.  `samples`: Uma lista contendo os índices das observações selecionadas em cada subamostra.
 
-7. `call`: A chamada original da função `cluster::clara` que foi utilizada.
+7.  `call`: A chamada original da função `cluster::clara` que foi utilizada.
 
 Esses resultados fornecem detalhes sobre os medóides finais escolhidos, a atribuição dos clusters para cada observação, o valor objetivo do agrupamento, as distâncias de isolamento, informações adicionais sobre os clusters, as subamostras utilizadas e a chamada original da função.
 
@@ -226,31 +243,31 @@ Os métodos hierárquicos são utilizados para agrupar dados em diferentes níve
 
 Na abordagem aglomerativa, os grupos são construídos a partir do nível mais baixo, onde cada observação forma um cluster separado, até atingir o nível mais alto, onde todos os dados estão em um único grupo. A fusão dos clusters ocorre com base na dissimilaridade entre eles. As medidas de dissimilaridade mais utilizadas, entre dois grupos, também conhecidas como linkages, podem ser definidas da seguinte forma:
 
-- Método do vizinho mais próximo (Single linkages): Considera a menor distância entre todas as possíveis combinações de observações de dois grupos.
+-   Método do vizinho mais próximo (Single linkages): Considera a menor distância entre todas as possíveis combinações de observações de dois grupos.
 
 $$
 d(C_l,C_{l'}) = \min_{x_i \in C_l ;x_k \in C_{l'}} d(x_i,x_j)
 $$
 
-- Método do vizinho mais distante (Complete linkages): Utiliza a maior distância entre todas as possíveis combinações de observações de dois grupos.
+-   Método do vizinho mais distante (Complete linkages): Utiliza a maior distância entre todas as possíveis combinações de observações de dois grupos.
 
 $$
 d(C_l,C_{l'}) = \max_{x_i \in C_l ;x_k \in C_{l'}} d(x_i,x_j)
 $$
 
-- Método da média das distâncias (Average linkages): Calcula a média das distâncias entre as observações de dois grupos.
+-   Método da média das distâncias (Average linkages): Calcula a média das distâncias entre as observações de dois grupos.
 
 $$
 d(C_l,C_{l'}) = \frac{1}{|C_l||C_{l'}|}\sum_{x_i \in C_l ;x_k \in C_{l'}} d(x_i,x_j)
 $$
 
-- Método do centróide (Centróide linkages): Considera a distância entre os centróides de cada grupo como medida de dissimilaridade.
+-   Método do centróide (Centróide linkages): Considera a distância entre os centróides de cada grupo como medida de dissimilaridade.
 
 $$
 d(C_l,C_{l'}) = d^2(c_l,c_{l'}) 
 $$
 
-- Método de Ward: Minimiza a variância dentro dos grupos ao fundir os clusters que levam à menor variação possível.
+-   Método de Ward: Minimiza a variância dentro dos grupos ao fundir os clusters que levam à menor variação possível.
 
 $$
 d(C_l,C_{l'}) = \frac{n_ln_{l'}}{n_l + n_{l'}} d^2(c_l,c_{l'}) 
@@ -258,33 +275,29 @@ $$
 
 No contexto dos métodos hierárquicos de agrupamento, a abordagem aglomerativa é amplamente utilizada e estudada. Isso se deve ao fato de que a abordagem divisiva apresenta um custo computacional mais elevado, uma vez que em cada iteração é necessário identificar a melhor divisão do grupo para maximizar a dissimilaridade. Portanto, o algoritmo para o agrupamento hierárquico aglomerativo consiste em:
 
-1. Cada observação é inicialmente atribuída a um cluster separado.
+1.  Cada observação é inicialmente atribuída a um cluster separado.
 
-2. Com base no método de dissimilaridade escolhido, calcula-se a dissimilaridade entre todos os pares de grupos.
+2.  Com base no método de dissimilaridade escolhido, calcula-se a dissimilaridade entre todos os pares de grupos.
 
-3. Os dois grupos com a menor dissimilaridade são fundidos em um único grupo.
+3.  Os dois grupos com a menor dissimilaridade são fundidos em um único grupo.
 
-4. Repetem-se os passos 2 e 3 até que todas as observações estejam em um único grupo.
-
+4.  Repetem-se os passos 2 e 3 até que todas as observações estejam em um único grupo.
 
 Já na abordagem divisiva, tomando o algoritmo DIANA (Divisive Analysis), inicia-se com um grupo único que contém todas as observações e, em cada etapa, divide-se o grupo em dois com base na maior dissimilaridade entre as observações. O algoritmo DIANA segue os seguintes passos:
 
-1. Todas as observações são agrupadas em um único grupo.
+1.  Todas as observações são agrupadas em um único grupo.
 
-2. A observação com a maior dissimilaridade média em relação aos pontos do mesmo grupo é separada em um novo grupo.
+2.  A observação com a maior dissimilaridade média em relação aos pontos do mesmo grupo é separada em um novo grupo.
 
-3. Cada observação do grupo inicial é atribuída ao novo grupo se a dissimilaridade média em relação aos objetos desse grupo for menor do que a dissimilaridade média em relação aos demais pontos do grupo inicial.
+3.  Cada observação do grupo inicial é atribuída ao novo grupo se a dissimilaridade média em relação aos objetos desse grupo for menor do que a dissimilaridade média em relação aos demais pontos do grupo inicial.
 
-4.Calcula-se o diâmetro de todos os grupos (a maior dissimilaridade entre duas observações) e seleciona-se o grupo com 
-o maior diâmetro.
+4.Calcula-se o diâmetro de todos os grupos (a maior dissimilaridade entre duas observações) e seleciona-se o grupo com o maior diâmetro.
 
-5. Repetem-se os passos 2 a 4 até que cada observação esteja em um grupo separado.
+5.  Repetem-se os passos 2 a 4 até que cada observação esteja em um grupo separado.
 
-No agrupamento hierárquico, a visualização dos clusters é feita por meio de um dendrograma, um gráfico ramificado que mostra as junções e divisões dos clusters. A altura do ramo no primeiro nó do dendrograma representa a dissimilaridade entre os grupos divididos. Para determinar o número de grupos a partir do dendrograma, busca-se uma grande diferença de altura (dissimilaridade) ao adicionar um cluster aos dados.
-Uma característica dos métodos hierárquicos é que as decisões de agrupamento ou divisão não são desfeitas, ou seja, não há troca de observações entre os clusters. Decisões de união ou divisão mal feitas podem resultar em grupos de baixa qualidade. Além disso, esses métodos não são bem dimensionados, pois cada decisão de mesclagem ou divisão requer a avaliação de muitos objetos ou clusters. Pelo exemplo abaixo, uma possível resposta de número adequado de clusters seria de dois ou três grupos.
+No agrupamento hierárquico, a visualização dos clusters é feita por meio de um dendrograma, um gráfico ramificado que mostra as junções e divisões dos clusters. A altura do ramo no primeiro nó do dendrograma representa a dissimilaridade entre os grupos divididos. Para determinar o número de grupos a partir do dendrograma, busca-se uma grande diferença de altura (dissimilaridade) ao adicionar um cluster aos dados. Uma característica dos métodos hierárquicos é que as decisões de agrupamento ou divisão não são desfeitas, ou seja, não há troca de observações entre os clusters. Decisões de união ou divisão mal feitas podem resultar em grupos de baixa qualidade. Além disso, esses métodos não são bem dimensionados, pois cada decisão de mesclagem ou divisão requer a avaliação de muitos objetos ou clusters. Pelo exemplo abaixo, uma possível resposta de número adequado de clusters seria de dois ou três grupos.
 
-![](figuras_naosupervisionado/dendograma.png){fig-align="centering" fig-alt="Exemplo de Dendrograma"}
-Os agrupamentos hierárquicos podem ser obtidos de maneira rapida com o apoio computacional, onde inicialmente, com uso das funções `hclust` e `cluster::diana`, é obtido um objeto da classe "hclust" e da clase  "diana" respectivamente, esses objetos contém informações sobre o agrupamento hierárquico realizado, incluindo a estrutura do dendrograma, as distâncias entre os objetos e outras propriedades relacionadas. Seguido pela seleção, com base no dendrograma, do número _K_ ideal de clusters (Não necessariamente só um _K_), e o "corte" da árvore aglomerativa no valor ideal identificado. É apresentado abaixo para todos os métodos citados a aplicação para o *R*, supondo a distância utilizada como a euclidiana calculada no início do capítulo
+![](figuras_naosupervisionado/dendograma.png){fig-align="centering" fig-alt="Exemplo de Dendrograma"} Os agrupamentos hierárquicos podem ser obtidos de maneira rapida com o apoio computacional, onde inicialmente, com uso das funções `hclust` e `cluster::diana`, é obtido um objeto da classe "hclust" e da clase "diana" respectivamente, esses objetos contém informações sobre o agrupamento hierárquico realizado, incluindo a estrutura do dendrograma, as distâncias entre os objetos e outras propriedades relacionadas. Seguido pela seleção, com base no dendrograma, do número *K* ideal de clusters (Não necessariamente só um *K*), e o "corte" da árvore aglomerativa no valor ideal identificado. É apresentado abaixo para todos os métodos citados a aplicação para o *R*, supondo a distância utilizada como a euclidiana calculada no início do capítulo
 
 ```{r eval=FALSE}
 library(ggdendro)
@@ -349,4 +362,4 @@ dendrograma_diana <-  plot(cut(as.dendrogram(diana), h = 7)$upper ,
 diana_res <- cutree(diana , k = 3:8)
 ```
 
-## Métodos de Validação
+### Validação do Modelo
