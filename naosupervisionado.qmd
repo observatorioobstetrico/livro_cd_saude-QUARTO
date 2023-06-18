@@ -1,4 +1,3 @@
-
 # Aprendizado Não Supervisionado
 
 O aprendizado de máquina pode ser dividido em duas categorias principais: aprendizado supervisionado e aprendizado não supervisionado. O aprendizado supervisionado é uma abordagem que utiliza um conjunto de dados rotulados para treinar um modelo de aprendizado de máquina. Por outro lado, o aprendizado não supervisionado não utiliza rótulos, mas em vez disso, tenta encontrar padrões e estruturas no conjunto de dados sem qualquer orientação externa.
@@ -16,7 +15,6 @@ Existem vários algoritmos de clustering disponíveis, incluindo o algoritmo k-m
 A redução de dimensionalidade é uma técnica de aprendizado não supervisionado usada para reduzir o número de variáveis em um conjunto de dados. Ou seja, reduz a dimensionalidade do espaço de características dos dados, enquanto tenta preservar a maior parte da informação original. A redução de dimensionalidade pode ser usada para simplificar o modelo e, portanto, torná-lo mais fácil de interpretar ou para acelerar o treinamento do modelo.
 
 Existem vários algoritmos de redução de dimensionalidade disponíveis, incluindo a Análise de Componentes Principais (PCA), a Análise Fatorial e a T-SNE. O PCA é um dos algoritmos de redução de dimensionalidade mais populares e será o aqui trabalhado.
-
 
 ## Análise de Agrupamentos
 
@@ -71,7 +69,7 @@ $$
 
 As matrizes de dissimilaridade podem ser obtidas com apoio da função `dist()`, onde o tipo de distância (Euclidiana por exemplo), é passada no parâmetro da função, `method` , veja a seguir, um exemplo aplicado ao conjunto de indicadores obstétricos, esse *DataSet* séra o referncial para a sessão atual, será considerado apenas as colunas dos indicadores.
 
-```{r}
+```{r eval=FALSE}
 
 dist_euclidian <- dist(scale(dados_indicadores[,-c(1:4)]), method = "euclidean")
 
@@ -83,7 +81,7 @@ A análise de agrupamento é uma ferramenta valiosa que permite identificar estr
 
 Neste capítulo, vamos explorar diferentes maneiras de resolver o desafio do agrupamento de dados. Existem abordagens tradicionais, como o particionamento, que envolve dividir o conjunto de dados em grupos distintos. Além disso, temos os métodos hierárquicos, nos quais os grupos são organizados em uma estrutura de árvore.
 
-Outra abordagem interessante é considerar a densidade dos pontos no espaço. Nesse caso, procuramos identificar regiões mais densas separadas por áreas menos povoadas. Esses métodos, conhecidos como baseados em densidade, oferecem uma perspectiva diferente na análise dos dados.
+Outra abordagem interessante é considerar a densidade dos pontos no espaço. Nesse caso, procuramos identificar regiões mais densas separadas por áreas menos povoadas. Esses métodos, conhecidos como baseados em densidade, oferecem uma perspectiva diferente na análise dos dados, aqui será considerado o DBSCAN.
 
 Também existe uma classe de métodos que utiliza técnicas de decomposição espectral. Esses métodos reduzem a dimensionalidade dos dados, preservando as informações relevantes dos grupos presentes. São os chamados agrupamentos espectrais, que exploram as propriedades dos autovalores e autovetores da matriz de similaridade dos dados.
 
@@ -246,31 +244,31 @@ Na abordagem aglomerativa, os grupos são construídos a partir do nível mais b
 -   Método do vizinho mais próximo (Single linkages): Considera a menor distância entre todas as possíveis combinações de observações de dois grupos.
 
 $$
-d(C_l,C_{l'}) = \min_{x_i \in C_l ;x_k \in C_{l'}} d(x_i,x_j)
+d(C_l,C_{l'}) = \min_{x_i \in C_l ;x_k \in C_{l'}} d(x_i,x_j).
 $$
 
 -   Método do vizinho mais distante (Complete linkages): Utiliza a maior distância entre todas as possíveis combinações de observações de dois grupos.
 
 $$
-d(C_l,C_{l'}) = \max_{x_i \in C_l ;x_k \in C_{l'}} d(x_i,x_j)
+d(C_l,C_{l'}) = \max_{x_i \in C_l ;x_k \in C_{l'}} d(x_i,x_j).
 $$
 
 -   Método da média das distâncias (Average linkages): Calcula a média das distâncias entre as observações de dois grupos.
 
 $$
-d(C_l,C_{l'}) = \frac{1}{|C_l||C_{l'}|}\sum_{x_i \in C_l ;x_k \in C_{l'}} d(x_i,x_j)
+d(C_l,C_{l'}) = \frac{1}{|C_l||C_{l'}|}\sum_{x_i \in C_l ;x_k \in C_{l'}} d(x_i,x_j).
 $$
 
 -   Método do centróide (Centróide linkages): Considera a distância entre os centróides de cada grupo como medida de dissimilaridade.
 
 $$
-d(C_l,C_{l'}) = d^2(c_l,c_{l'}) 
+d(C_l,C_{l'}) = d^2(c_l,c_{l'}) .
 $$
 
 -   Método de Ward: Minimiza a variância dentro dos grupos ao fundir os clusters que levam à menor variação possível.
 
 $$
-d(C_l,C_{l'}) = \frac{n_ln_{l'}}{n_l + n_{l'}} d^2(c_l,c_{l'}) 
+d(C_l,C_{l'}) = \frac{n_ln_{l'}}{n_l + n_{l'}} d^2(c_l,c_{l'}) .
 $$
 
 No contexto dos métodos hierárquicos de agrupamento, a abordagem aglomerativa é amplamente utilizada e estudada. Isso se deve ao fato de que a abordagem divisiva apresenta um custo computacional mais elevado, uma vez que em cada iteração é necessário identificar a melhor divisão do grupo para maximizar a dissimilaridade. Portanto, o algoritmo para o agrupamento hierárquico aglomerativo consiste em:
@@ -297,7 +295,9 @@ Já na abordagem divisiva, tomando o algoritmo DIANA (Divisive Analysis), inicia
 
 No agrupamento hierárquico, a visualização dos clusters é feita por meio de um dendrograma, um gráfico ramificado que mostra as junções e divisões dos clusters. A altura do ramo no primeiro nó do dendrograma representa a dissimilaridade entre os grupos divididos. Para determinar o número de grupos a partir do dendrograma, busca-se uma grande diferença de altura (dissimilaridade) ao adicionar um cluster aos dados. Uma característica dos métodos hierárquicos é que as decisões de agrupamento ou divisão não são desfeitas, ou seja, não há troca de observações entre os clusters. Decisões de união ou divisão mal feitas podem resultar em grupos de baixa qualidade. Além disso, esses métodos não são bem dimensionados, pois cada decisão de mesclagem ou divisão requer a avaliação de muitos objetos ou clusters. Pelo exemplo abaixo, uma possível resposta de número adequado de clusters seria de dois ou três grupos.
 
-![](figuras_naosupervisionado/dendograma.png){fig-align="centering" fig-alt="Exemplo de Dendrograma"} Os agrupamentos hierárquicos podem ser obtidos de maneira rapida com o apoio computacional, onde inicialmente, com uso das funções `hclust` e `cluster::diana`, é obtido um objeto da classe "hclust" e da clase "diana" respectivamente, esses objetos contém informações sobre o agrupamento hierárquico realizado, incluindo a estrutura do dendrograma, as distâncias entre os objetos e outras propriedades relacionadas. Seguido pela seleção, com base no dendrograma, do número *K* ideal de clusters (Não necessariamente só um *K*), e o "corte" da árvore aglomerativa no valor ideal identificado. É apresentado abaixo para todos os métodos citados a aplicação para o *R*, supondo a distância utilizada como a euclidiana calculada no início do capítulo
+![](figuras_naosupervisionado/dendograma.png){fig-align="centering" fig-alt="Exemplo de Dendrograma"}
+
+Os agrupamentos hierárquicos podem ser obtidos de maneira rapida com o apoio computacional, onde inicialmente, com uso das funções `hclust` e `cluster::diana`, é obtido um objeto da classe "hclust" e da clase "diana" respectivamente, esses objetos contém informações sobre o agrupamento hierárquico realizado, incluindo a estrutura do dendrograma, as distâncias entre os objetos e outras propriedades relacionadas. Seguido pela seleção, com base no dendrograma, do número *K* ideal de clusters (Não necessariamente só um *K*), e o "corte" da árvore aglomerativa no valor ideal identificado. É apresentado abaixo para todos os métodos citados a aplicação para o *R*, supondo a distância utilizada como a euclidiana calculada no início do capítulo.
 
 ```{r eval=FALSE}
 library(ggdendro)
@@ -362,4 +362,245 @@ dendrograma_diana <-  plot(cut(as.dendrogram(diana), h = 7)$upper ,
 diana_res <- cutree(diana , k = 3:8)
 ```
 
+### DBSCAN
+
+O método DBSCAN (Density-Based Spatial Clustering of Applications with Noise) é um algoritmo de agrupamento que foi proposto para encontrar clusters com formas arbitrárias, ou seja, clusters que não necessariamente possuem uma forma esférica ou convexa. Ele busca identificar as regiões mais densas do espaço vetorial separadas por regiões com menos objetos, como é possível ver na figura abaixo sua eficiência em relação a outros métodos.
+
+![](figuras_naosupervisionado/dbscan.png){fig-align="centering" fig-alt="Aplicação DBSCAN, Fonte: Boyke et al. (2021)"}
+
+A ideia geral do algoritmo DBSCAN é identificar os clusters de forma que a densidade de pontos ao redor de cada ponto de um grupo seja maior que um limite estabelecido. Ele utiliza dois parâmetros principais: $\epsilon$ e MinPts, para entendimento do agrupamento DBSCAN observe a definição dos seguintes termos:
+
+-   $\epsilon$-vizinhos: Os $\epsilon$-vizinhos de um ponto $x_j$ são os objetos cuja distância para $x_i$ seja menor ou igual a $\epsilon$, ou seja, a vizinhança de $x_i$ é composta pelos objetos que estão dentro de um raio $\epsilon$ ao redor de $x_i$.
+
+-   Ponto de Núcleo: Um ponto $x_i$ é considerado um ponto de núcleo se o número de seus $\epsilon$-vizinhos (ou seja, os pontos dentro da vizinhança de $x_i$) for maior ou igual a um valor mínimo estabelecido chamado MinPts.
+
+-   Ponto de Borda: Um ponto $x_i$ é considerado um ponto de borda se o número de seus $\epsilon$ -vizinhos for menor do que MinPts, mas ele está dentro da vizinhança de algum ponto de núcleo.
+
+-   Diretamente alcançável por densidade: Um ponto $x_j$ é diretamente alcançável por densidade por um ponto $x_i$ se $x_j$ é um $\epsilon$-vizinho de $x_i$ e se $x_i$ é um ponto de núcleo.
+
+-   Alcançável por densidade: Um ponto $x_i$ é alcançável por densidade por um ponto $x_j$ se existe uma cadeia de pontos $x_{i'}$ , onde \$i' \leq N \in \\mathbb{N} \$, em que $x_1 = x_j, x_N = x_i$ e $x_{i' + 1}$ é diretamente alcançável por densidade por $x_{i'}$.
+
+-   Conectado por densidade: Um ponto $x_i$ é conectado por densidade a um ponto $x_j$ se existe um terceiro ponto $x_{i'}$ em que ambos são alcançáveis por densidade por $x_{i'}$.
+
+Com base nesses critérios, o DBSCAN define os grupos da seguinte forma:
+
+-   Se um ponto $x_i$ é alcançável por densidade por um ponto $x_j$, então ambos pertencem ao mesmo cluster $C_l$.
+
+-   Todos os pontos de um cluster são conectados por densidade entre si.
+
+Uma das vantagens do DBSCAN é sua capacidade de identificar outliers no conjunto de dados, uma vez que ele não atribui todos os objetos a grupos. Os outliers são definidos como os pontos que não são atribuídos a nenhum cluster. O algoritmo DBSCAN funciona da seguinte maneira:
+
+1.  Inicialmente, todas as observações da base de dados são classificadas como "não visitadas".
+
+2.  Em seguida, os seguintes passos são executados repetidamente:
+
+    (a). Selecionar aleatoriamente uma observação "não visitada" $x_i$.
+
+    (b). Verificar o número de $epsilon$-vizinhos da observação $x_i$ selecionada:
+
+    -   Se o número de $\epsilon$-vizinhos $|NEps(x_i)|$ for maior ou igual a MinPts, um novo cluster é criado para $x_i$, e todos os objetos na $\epsilon$-vizinhança de $x_i$ são adicionados a um conjunto candidato, $M$. O algoritmo adiciona iterativamente a $C_l$ todos os objetos em 𝑀 que não pertencem a nenhum cluster.
+
+    -   Se o número de $\epsilon$-vizinhos $|NEps(x_i)|$ for menor do que MinPts, $x_i$ é marcado como um ponto de ruído (outlier).
+
+3.  Repetir os passos 1 e 2 até que não haja mais observações "não visitadas".
+
+Os parâmetros $\epsilon$ e MinPts afetam diretamente o resultado do agrupamento, determinando o tamanho mínimo de cada grupo e a distância entre os clusters. Uma das limitações do DBSCAN é o fato de que esses parâmetros são globais, ou seja, definidos para todos os grupos formados, o que pode não ser ideal quando diferentes clusters possuem densidades de pontos distintas. Para a seleção do valor de MinPts é comum que seja baseado no problema em si ou
+conhecimento prévio. Porém, uma  proposta para seleção é o MinPts = 2×$p$ pode ser um bom valor para o parâmetro. Já o $\epsilon$ costuma ser baseado no número mínimo de pontos definido, em que é construído o gráfico das distâncias de cada ponto para os MinPts−1 vizinhos mais próximos e escolhido o valor "cotovelo", ou seja, onde começa a ocorrer um crescimento mais acentuado nas distâncias ordenadas. Abaixo vemos como esse método se dá de forma aplicada para o software de programação tanto da seleção do melhor $\epsilon$ quanto da aplicação do modelo.
+
+
+```{r eval=FALSE}
+## selecao do melhor eps
+ dbscan::kNNdist(dados_diss ,
+ k = 3, all = FALSE)
+## ajuste com o eps selecionado
+ dbscan <- dbscan::dbscan(dados_norm , eps = 2, minPts = 4)
+```
+
+Essa função retorna os seguintes elementos:
+
+- `cluster`: É um vetor que atribui um número de cluster a cada ponto de dados no conjunto de entrada. Os pontos que não pertencem a nenhum cluster são rotulados como "0" ou como "outlier".
+
+- `eps`: É o valor do raio (epsilon) usado no algoritmo. 
+
+- `minPts`: É o número mínimo de pontos necessários para formar um cluster.
+
+- `border`: É um vetor lógico que indica se cada ponto é um ponto de borda. 
+
+-  `reachability`: É um vetor que armazena os valores de _reachability distance_ de cada ponto.
+ 
+- `core_dist`: É um vetor que contém as distâncias de densidade mínima( _core distance_ ) para cada ponto. 
+
+Uma técnica relacionada ao DBSCAN que lida com a limitação dos parâmetros globais é o algoritmo OPTICS (Ordering Points To Identify the Clustering Structure), proposto por [@ankerst1999optics]. O OPTICS ordena os dados de forma que as observações em grupos mais densos estarão mais próximas na ordenação. Esse algoritmo pode ser uma opção para explorar diferentes densidades de pontos em diferentes clusters.
+
+### Agrupamento Espectral
+
+Agrupar conjuntos de dados com alta dimensionalidade pode ser desafiador para alguns métodos de agrupamento. A grande quantidade de variáveis em alta dimensão pode aumentar significativamente o custo computacional e dificultar a separação adequada dos grupos. Nesse contexto, os métodos de agrupamento espectral surgem como uma abordagem promissora, pois permitem reduzir a dimensionalidade dos dados sem perder a informação contida nas variáveis, além de melhorar a separação entre grupos que podem não estar claramente distintos devido à alta dimensionalidade.
+
+Os algoritmos de agrupamento espectral usam uma medida de dissimilaridade para representar o conjunto de dados como um grafo. Nessa representação, os vértices do grafo correspondem às observações ($V = v_1, ..., v_N$), e as arestas ($A$) são definidas por uma matriz de similaridade, onde $a(x_i, x_{i'})$ representa o peso da aresta que conecta os vértices $x_i$ e $x_{i'}$. O agrupamento em $K$ clusters é então formulado como um problema de corte de arestas, que pode ser computacionalmente complexo. Para contornar essa complexidade, é aplicada a teoria espectral.
+
+O algoritmo de Ng, Jordan e Weiss (NJW) é um exemplo de algoritmo de agrupamento espectral. Ele requer a definição prévia de um parâmetro, assim como o algoritmo K-médias. Esse parâmetro é o número de grupos $K$ a serem formados. O algoritmo NJW segue os seguintes passos:
+
+1. Calcula-se a matriz de similaridade $A$, usando um parâmetro escalar $\sigma$. A similaridade entre cada par de pontos $x_i$ e $x_{i'}$ é medida usando uma função de similaridade, como a função Gaussiana. A matriz $A$ é preenchida com os valores calculados.
+
+2. Calcula-se a matriz de graus $D$, onde cada elemento $d_{ij}$ na diagonal principal representa a soma das similaridades da linha $i$ da matriz $A$. A matriz $D$ captura a estrutura de conectividade do conjunto de dados.
+
+3. Constrói-se a matriz Laplaciana $L$, que é uma forma de normalização de $A$. No algoritmo NJW, a matriz Laplaciana é definida como $L = D^{(-1/2)}  𝐴  𝐷^{(-1/2)}$. Essa normalização realça as diferenças entre os grupos de dados.
+
+4. Identificam-se os $K$ maiores autovalores de $L$ e seus respectivos autovetores associados, que são armazenados em uma matriz $Z$ de tamanho $N \times K$.
+
+5. Define-se uma nova matriz $Y$, normalizada a partir de $Z$. Cada elemento $y_{ii'}$ de $Y$ é calculado dividindo-se o elemento $z_{ii'}$ de $Z$ pelo produto da raiz quadrada do elemento diagonal correspondente a $z_{ii}$  e a raiz quadrada do elemento diagonal correspondente a $z_{i'}$. Essa normalização ajusta as magnitudes dos dados.
+
+6. Com a redução da dimensionalidade dos dados na matriz $Y$ (de tamanho $N \times K$), pode-se aplicar um algoritmo de agrupamento, como o K-médias, para realizar o agrupamento dos dados.
+
+```{r eval=FALSE}
+spectral_clustering <- function(data , # dados
+                                k) # numero de grupos
+                                {
+    # matriz de dissimilaridade
+    A <- as.matrix(KRLS::gausskernel (data , 2)) # sigma^2 = 1
+    diag(A) <- 0
+    
+    # matriz Laplaciana
+    L = diag(1 / sqrt(rowSums(A))) %*% A %*% diag(1 / sqrt(rowSums(A)))
+    
+    # matriz de autovetores associados aos k maiores autovalores
+    auto <- eigen(L, symmetric = TRUE)
+    X <- auto$vectors[, 1:k]
+    
+    # matriz normalizada
+    Y <- X / sqrt(rowSums(X ^ 2))
+    
+    # agrupamente k medias na matriz redimensionalizada
+    set.seed (1122)
+    k_means <- kmeans(Y, centers = k)
+    
+    return(list(
+    clusters = k_means$cluster , #retornar grupos
+    auto = auto , #retornar autovalores e autovetores
+    autovetores = X, #retornar autovetores dos K maiores autovalores
+    normalizada = Y #retornar matriz normalizada
+    ))
+}
+
+```
+
+A escolha dos parâmetros $K$ e $\sigma$ pode ser feita de forma arbitrária, dependendo do objetivo do estudo. No entanto, existem abordagens e técnicas disponíveis para auxiliar na seleção desses parâmetros. No exemplo acima , o parâmetro $\sigma$ foi fixado em 1, e o número de grupos $K$ foi escolhido com base na análise dos primeiros autovalores da matriz Laplaciana $L$. O valor ótimo de $K$ é aquele em que ocorre uma queda significativa dos autovalores, uma vez que os maiores autovalores da matriz Laplaciana tendem a ser próximos de 1.
+
+
 ### Validação do Modelo
+
+No problema do agrupamento, não é possível verificar o grau de acerto do resultado obtido, uma vez que os verdadeiros grupos não são conhecidos a priori. Portanto, é necessário aplicar algum tipo de validação à partição final.
+
+Quatro índices de avaliação interna da qualidade do agrupamento são os principais a serem utilizados atualmente: Davies-Bouldin (DB), Dunn (D), Silhueta (S) e Calinski-Harabasz (CH).
+
+#### Davies-Bouldin (DB):
+
+O índice DB mede a similaridade média entre cada grupo e seu grupo mais similar dentre os demais clusters. A distância média $\delta_l$ de um grupo $l$ às suas observações é calculada em relação a um valor referencial $m_l$. A fórmula para $\delta_l$ é:
+
+$$
+\delta_{l} = \left(\frac{1}{n_{l}} \sum_{i=1}^{n_{l}} \left \| x_{i} - m_{l} \right \|^q\right)^{\frac{1}{q}}.
+$$
+
+onde $n_l$ é o número de observações no grupo $l$, $x_i$ é uma observação, $m_l$ é o valor referencial (centróide ou medóide) e $q$ é um valor pré-definido, onde os valores mais utilizados são $q = 1$ e $q= 2$. Para o índice, é utilizada também distância entre os grupos $\Delta_{ll'}$, que é obtida como a distância entre os valores referenciais de cada grupo. A fórmula para $\Delta_{ll'}$ é:
+
+$$
+\Delta_{ll'} = \left( \sum_{j=1}^{p} |m_{jl} - m_{jl'}|^{t} \right)^{\frac{1}{t}}.
+$$
+
+onde $t \in 	\mathbb{N}$ é pré-definido e geralmente adotado como $t = 1$ (distâncias absolutas) ou $t=2$ (distância euclidiana). Assim, o índice de Davies-Bouldin (DB) fica definido por:
+
+$$
+DB = \frac{1}{K} \sum_{l=1}^{K} \max_{l \neq l'} \left( \frac{\delta_{l} + \delta_{l'}}{\Delta_{ll'}} \right).
+$$
+Nesse caso, buscamos agrupar observações de forma a minimizar a variância intragrupo e maximizar a diferença entre eles. Portanto, valores menores do índice de Davies-Bouldin são considerados melhores. Observe a métrica aplicada ao conjunto de dados de agrupamento obtido pelo k-médias (As medidas seguintes também serão aplicadas ao mesmo conjunto).
+
+```{r eval=FALSE}
+#Metrica DB usando Centroide
+clusterSim::index.DB(dados_norm ,
+                     k_medias$cluster)$DB
+#Metrica DB usando Medoide
+clusterSim::index.DB(dados_norm ,
+                      k_medias$cluster ,
+                      d = dist_euclidian ,
+                      centrotypes = "medoids"
+                      )$DB 
+
+```
+
+
+#### Dunn (D):
+
+O índice D mede a razão entre a separação dos grupos e a variância dentro deles. A separação entre dois grupos $l$ e $l'$ é calculada pela distância do vizinho mais próximo, dessa forma buscamos valores grandes para essa medida de avaliação. A variância intragrupo é representada pelo diâmetro $diam_l$ do cluster. A fórmula para o índice D é:
+
+$$
+D = \frac{{\min_{l,l' \in \{1,...,K\}; l \neq l'} d(C_{l}, C_{l'})}}{{\max_{l \in \{1,...,K\}} diam_{l}}}.
+$$
+
+```{r eval=FALSE}
+#Metrica D
+ clValid::dunn(distance = dist_euclidian , k_medias$cluster)
+```
+
+#### Silhueta (S):
+
+O índice de Silhueta(S) mede a qualidade do agrupamento considerando as distâncias de cada ponto em relação às observações do mesmo grupo e aos demais clusters formados. Para cada observação $i$ pertencente ao grupo $C_l$, definimos as medidas $a_i$ e $b_i$ da seguinte maneira:
+
+$$
+\begin{split}
+a_i = \frac{1}{n_{l}-1} \sum_{i' \neq i, i' \in C_{l}}^{n_l} d(x_{i}, x_{i'}),\\
+
+b_i = \min_{l \neq l'} \left( \frac{1}{n_{l'}} \sum_{i' \in C_{l'}}^{n_{l'}} d(x_{i}, x_{i'}) \right).
+\end{split}
+$$
+
+onde $d(x_i,x_{i'})$ representa a distância entre as observações $x_i$ e $x_{i'}$. A partir dessas medidas, calculamos a silhueta $s_i$ da observação $i$, com $i = 1, ..., N$, usando a fórmula:
+
+$$
+s_i = \frac{b_i - a_i}{\max(a_i, b_i)}.
+$$
+
+O coeficiente de Silhueta S global é obtido por:
+
+$$
+S = \frac{1}{K} \sum_{l=1}^{K} \frac{1}{n_{l}} \sum_{i=1}^{n_{l}} s_i.
+$$
+Dessa forma, valores maiores de S indicam agrupamentos mais densos e separados, o que é considerado um cenário adequado para um agrupamento bem-sucedido.
+
+```{r eval=FALSE}
+#Metrica S
+clusterSim::index.S(dist_euclidian , k_medias$cluster)
+```
+
+
+#### Calinski-Harabasz (CH):
+
+O índice de Calinski-Harabasz (CH) considera a variância intra-grupo, chamada de $WGGS_l$, de cada cluster $C_l$ gerado, levando em conta a distância quadrática de cada observação em relação ao seu valor de referência $m_l$, que pode ser um centróide ou medóide. A variância intra-grupo total,$WGGS$, é calculada como a soma das variâncias intra-grupo de cada cluster:
+
+$$
+WGGS = \sum_{l=1}^{K} \sum_{i=1}^{n_{l}} d^2(x_{i}, m_l).
+$$
+
+Além disso, o cálculo do índice CH utiliza uma medida de dispersão $BGSS$ entre os grupos, que é obtida através da soma ponderada das distâncias quadráticas do valor de referência de cada cluster em relação a um valor central global $m$. Essa medida é calculada da seguinte forma:
+
+$$
+BGSS = \sum_{l=1}^{K} n_{l} d^2(m_l, m).
+$$
+
+Dessa forma, o índice CH de Calinski-Harabasz é dado por:
+
+$$
+CH = \frac{(N - K) }{K - 1}\times \frac{BGSS}{WGSS}.
+$$
+
+Onde, valores maiores do índice CH indicam grupos com menor variância e bem separados, o que é considerado uma boa característica de um agrupamento.
+
+```{r eval=FALSE}
+
+#Metrica CH usando Medoide
+clusterSim::index.G1(dados_norm , k_medias$cluster , 
+                     d = dist_euclidian , centrotypes = "medoids")
+
+#Metrica CH usando centroide
+clusterSim::index.G1(dados_norm , k_medias$cluster)
+```
+
