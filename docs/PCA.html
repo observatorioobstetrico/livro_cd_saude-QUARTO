@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -226,10 +260,8 @@ div.csl-indent {
   <ul>
   <li><a href="#introdução." id="toc-introdução." class="nav-link active" data-scroll-target="#introdução."><span class="header-section-number">10.1</span> Introdução.</a></li>
   <li><a href="#como-realizar-a-análise-de-componentes-principais." id="toc-como-realizar-a-análise-de-componentes-principais." class="nav-link" data-scroll-target="#como-realizar-a-análise-de-componentes-principais."><span class="header-section-number">10.2</span> Como realizar a análise de componentes principais.</a></li>
-  <li><a href="#componentes-principais-por-variáveis-padronizadas." id="toc-componentes-principais-por-variáveis-padronizadas." class="nav-link" data-scroll-target="#componentes-principais-por-variáveis-padronizadas."><span class="header-section-number">10.3</span> Componentes principais por variáveis padronizadas.</a></li>
-  <li><a href="#número-de-componentes-principais." id="toc-número-de-componentes-principais." class="nav-link" data-scroll-target="#número-de-componentes-principais."><span class="header-section-number">10.4</span> Número de componentes principais.</a></li>
-  <li><a href="#redução-de-dimensionalidade-com-o-pca." id="toc-redução-de-dimensionalidade-com-o-pca." class="nav-link" data-scroll-target="#redução-de-dimensionalidade-com-o-pca."><span class="header-section-number">10.5</span> Redução de dimensionalidade com o PCA.</a></li>
-  <li><a href="#interpretação-do-componentes-principais-de-uma-amostra." id="toc-interpretação-do-componentes-principais-de-uma-amostra." class="nav-link" data-scroll-target="#interpretação-do-componentes-principais-de-uma-amostra."><span class="header-section-number">10.6</span> Interpretação do componentes principais de uma amostra.</a></li>
+  <li><a href="#número-de-componentes-principais-e-redução-da-dimensionalidade." id="toc-número-de-componentes-principais-e-redução-da-dimensionalidade." class="nav-link" data-scroll-target="#número-de-componentes-principais-e-redução-da-dimensionalidade."><span class="header-section-number">10.3</span> Número de componentes principais e ReduçãO da dimensionalidade.</a></li>
+  <li><a href="#interpretação-do-componentes-principais-de-uma-amostra." id="toc-interpretação-do-componentes-principais-de-uma-amostra." class="nav-link" data-scroll-target="#interpretação-do-componentes-principais-de-uma-amostra."><span class="header-section-number">10.4</span> Interpretação do componentes principais de uma amostra.</a></li>
   </ul>
 </nav>
     </div>
@@ -272,48 +304,112 @@ div.csl-indent {
 Y_1\\
 \vdots\\
 Y_p
-\end{bmatrix} \textrm{ com  } \quad Y_1 = \boldsymbol e_1'\boldsymbol X = e_{11}X_1 + e_{12}X_2 +  \dots + e_{1p}X_p.
+\end{bmatrix} \textrm{ com  } \quad Y_1 = \boldsymbol e_1'\boldsymbol X = e_{11}X_1 + e_{12}X_2 +  \dots + e_{1p}X_p,
 \end{split}
 \]</span></p>
-<p>A primeira componente principal. Como citado, as componentes então seguem sendo combinações lineares das variáveis originais e os autovetores correspondentes. Os componentes principais de <span class="math inline">\(\boldsymbol{X}\)</span>, <span class="math inline">\(\boldsymbol{Y}\)</span>, são tais que,</p>
+<p>a primeira componente principal.</p>
+<p>Os elementos na matriz <span class="math inline">\(\boldsymbol{O}\)</span>, denominados loadings, representam as relações entre as variáveis originais e as componentes principais. Cada coluna da matriz <span class="math inline">\(\boldsymbol{O}\)</span> corresponde a uma componente principal, e as linhas correspondem às variáveis originais. Os elementos <span class="math inline">\(e_{ij}\)</span> são os coeficientes de ponderação que indicam a contribuição de cada variável para cada componente principal. Em outras palavras, eles representam a importância relativa das variáveis na construção das componentes principais.</p>
+<p>Como citado, as componentes então seguem sendo combinações lineares das variáveis originais e os autovetores correspondentes. Os componentes principais de <span class="math inline">\(\boldsymbol{X}\)</span>, <span class="math inline">\(\boldsymbol{Y}\)</span>, são tais que,</p>
 <p><span class="math display">\[
 \begin{split}
 \boldsymbol\mu_y = E(\boldsymbol Y) = E(\boldsymbol O'\boldsymbol X) = \boldsymbol O'E(\boldsymbol X) = \boldsymbol O'\boldsymbol\mu_x\\
 \boldsymbol\Sigma_y = Var(\boldsymbol Y) = Var(\boldsymbol O'\boldsymbol X) = \boldsymbol O'Var(\boldsymbol X)\boldsymbol O = \boldsymbol{O'\Sigma_xO= \Lambda}.
 \end{split}
 \]</span></p>
-<p>Ou seja</p>
-<p><span class="math display">\[
-cov(Y_i,Y_j) = 0, \forall i \neq j \textrm{ e } Var(Y_i) = \lambda_i
-\]</span></p>
-<p>A prova desse resultado pode ser vista em <span class="citation" data-cites="johnson2002applied">(<a href="references.html#ref-johnson2002applied" role="doc-biblioref">Johnson, Wichern, et al. 2002, 5:432</a>)</span>.</p>
-<p>É de conhecimento geral, como um dos objetivos da análise de dados sendo a compreensão da distribuição bem como variabilidade dos dados. Podemos então descrever a variância total da população como sendo o somatório de todos os autovalores <span class="math inline">\(\lambda_i\)</span>. A partir disso, podemos escrever a proporção da variância total explicada pela <span class="math inline">\(j\)</span>-ésima componente, como sendo:</p>
+<p>Ou seja, as componentes principais são construídas de forma que elas sejam não correlacionadas entre si (<span class="math inline">\(cov(Y_i,Y_j) = 0\)</span>, para todo <span class="math inline">\(i \neq j\)</span>) e tenham variâncias iguais aos autovalores correspondentes (<span class="math inline">\(Var(Y_i) = \lambda_i\)</span>). A prova desse resultado pode ser vista em <span class="citation" data-cites="johnson2002applied">(<a href="references.html#ref-johnson2002applied" role="doc-biblioref">Johnson, Wichern, et al. 2002, 5:432</a>)</span>.</p>
+<p>É de conhecimento geral, como um dos objetivos da análise de dados, a compreensão da distribuição bem como variabilidade dos dados. Podemos então descrever a variância total da população como sendo o somatório de todos os autovalores <span class="math inline">\(\lambda_i\)</span>. A partir disso, podemos escrever a proporção da variância total explicada pela <span class="math inline">\(j\)</span>-ésima componente, como sendo:</p>
 <p><span class="math display">\[
 \frac{\lambda_j}{\sum_{i=1}^p \lambda_i}; \qquad \forall j =1,\dots,p.
-\]</span></p>
-<p>Dessa forma, para algum <span class="math inline">\(p\)</span> significativamente grande, podemos utilizar <span class="math inline">\(d &lt; p\)</span> componentes ao invés das <span class="math inline">\(p\)</span> variáveis originais, considerando que, podemos descrever uma proporção relativamente alta da variância com essas <span class="math inline">\(d\)</span> componentes.</p>
+\]</span> Essa definição é muito útil para reduzir a dimensionalidade dos dados, pois nos permite capturar uma proporção significativa da variabilidade total com um número menor de componentes. Dessa forma, para algum <span class="math inline">\(p\)</span> significativamente grande, podemos utilizar <span class="math inline">\(d &lt; p\)</span> componentes ao invés das <span class="math inline">\(p\)</span> variáveis originais, considerando que, podemos descrever uma proporção relativamente alta da variância com essas <span class="math inline">\(d\)</span> componentes.</p>
 <p>Se <span class="math inline">\(Y_i = \boldsymbol{e'_iX}, i =1\dots,p\)</span> são as componentes principais obtidas da matriz de covariância, então</p>
 <p><span class="math display">\[
 \rho_{Y_i,X_j} = \frac{e_{ij}\sqrt{\lambda_i}}{\sigma_{jj}}, \quad \forall i,j=1,\dots p,
 \]</span></p>
-<p>São os coeficientes de correlação entre a componente <span class="math inline">\(Y_i\)</span> e a variável <span class="math inline">\(X_j\)</span>. Esse valor auxiliará na compreensão entre a relação indivídual de <span class="math inline">\(X_j\)</span> a uma componente principal <span class="math inline">\(Y_i\)</span>, porém não explica a relação desta variável em presença das outras. Por isso, alguns altores recomendam o uso único do valor de <span class="math inline">\(e_{ij}\)</span> para compreender a relação variável-componente. Ambos os resultados serão importântes para compreensão da componente.</p>
-<p>Exemplo</p>
+<p>São os coeficientes de correlação entre a componente <span class="math inline">\(Y_i\)</span> e a variável <span class="math inline">\(X_j\)</span>. Esse valor auxiliará na compreensão entre a relação indivídual de <span class="math inline">\(X_j\)</span> a uma componente principal <span class="math inline">\(Y_i\)</span>, porém não explica a relação desta variável em presença das outras. Por isso, alguns altores recomendam o uso único do valor de <span class="math inline">\(e_{ij}\)</span> para compreender a relação variável-componente. Ambos os resultados serão importântes para compreensão da componente. Observe abaixo a aplicação de todos os conceitos discutidos no software utilizado ( <em>R</em> ), com os devidos comentários.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Importacao dos dados</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">'dados/dados_indicadores.rds'</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Matriz de Covariancia</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>matriz_cov <span class="ot">&lt;-</span> <span class="fu">cov</span>(dados <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">select_if</span>(is.numeric))</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Calcular os autovalores e autovetores</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>resultado <span class="ot">&lt;-</span> <span class="fu">eigen</span>(matriz_cov)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>autovalores <span class="ot">&lt;-</span> resultado<span class="sc">$</span>values</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>autovetores <span class="ot">&lt;-</span> resultado<span class="sc">$</span>vectors</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">#Calcular as componentes principais</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>componentes_principais <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(dados <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">select_if</span>(is.numeric)) <span class="sc">%*%</span> autovetores</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">#Calcular as proporceos da variancia total explicadas por cada componente</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>prop_variancia <span class="ot">&lt;-</span> autovalores <span class="sc">/</span> <span class="fu">sum</span>(autovalores)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">#Calcular os coeficientes de correlacao entre as variaveis originais e as componentes</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>coef_correlacao <span class="ot">&lt;-</span> autovetores <span class="sc">*</span> <span class="fu">sqrt</span>(autovalores) <span class="sc">/</span> matriz_cov</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="do">##### OU DE FORMA ANALOGA TAMBEM PODEMOS FAZER ###########</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>pca_dados <span class="ot">&lt;-</span> <span class="fu">princomp</span>((dados <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">select_if</span>(is.numeric)))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Onde a função <code>princomp</code> é uma função em <em>R</em> que realiza a análise de componentes principais. Essa função retorna um objeto do tipo “princomp”, que contém várias informações sobre a análise realizada. Alguns dos principais elementos retornados por essa função são:</p>
+<ul>
+<li><p><code>sdev</code>: Vetor contendo os desvios padrão estimados das componentes principais.</p></li>
+<li><p><code>loadings</code>: Matriz de carga, que contém os coeficientes de ponderação das variáveis originais em cada componente principal. Cada coluna representa um componente principal, e as linhas correspondem às variáveis originais.</p></li>
+<li><p><code>center</code>: Vetor contendo as médias das variáveis originais usadas na análise.</p></li>
+<li><p><code>scale</code>: Vetor contendo os desvios padrão das variáveis originais usadas na análise.</p></li>
+<li><p><code>n.obs</code>: Número de observações usadas na análise.</p></li>
+<li><p><code>scores</code>: Matriz de escores, que contém os valores das observações nas componentes principais. Cada coluna representa um componente principal, e as linhas correspondem às observações.</p></li>
+<li><p><code>call</code>: A chamada da função princomp.</p></li>
+</ul>
+<p>As componentes principais podem ser obtidas a partir de variáveis padronizadas. A padronização das variáveis é comumente realizada na análise de componentes principais para garantir que as variáveis tenham a mesma escala e evitar que uma variável com maior variabilidade domine a análise em detrimento das outras. Bem como estudado em variáveis aleatórias, a padronização das variáveis é feita subtraindo-se a média de cada variável e dividindo-se pelo desvio padrão. Dessa forma, todas as variáveis terão média zero e desvio padrão igual a um.</p>
+<p>No código anterior, a padronização das variáveis não foi realizada, porem é recomendado padronizar as variáveis antes de realizar qualquer análise de componentes principais, isso pode ser feito de maneira simples utilizando o comando <code>scale</code>. Ao realizar essa transformação, trabalhar com a matriz de covariâncias das variáveis transformadas equivale a trabalhar com a matriz de correlação.</p>
 </section>
-<section id="componentes-principais-por-variáveis-padronizadas." class="level2" data-number="10.3">
-<h2 data-number="10.3" class="anchored" data-anchor-id="componentes-principais-por-variáveis-padronizadas."><span class="header-section-number">10.3</span> Componentes principais por variáveis padronizadas.</h2>
-<p>Exemplo</p>
+<section id="número-de-componentes-principais-e-redução-da-dimensionalidade." class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="número-de-componentes-principais-e-redução-da-dimensionalidade."><span class="header-section-number">10.3</span> Número de componentes principais e ReduçãO da dimensionalidade.</h2>
+<p>A escolha do número ideal de componentes principais é uma etapa crucial ao aplicar a Análise de Componentes Principais (PCA) em um conjunto de dados. A seleção adequada de componentes pode garantir a retenção da maior parte da variância dos dados, ao mesmo tempo em que reduz a dimensionalidade do problema. Abaixo são apresentados alguns dos métodos atualmente utilizados para número <span class="math inline">\(d\)</span> de componentes retidas.</p>
+<ul>
+<li><em>Variância explicada </em></li>
+</ul>
+<p>Plotar a porcentagem de variância explicada de cada componente individual e a porcentagem de variância total capturada por todos os componentes principais. Este é o método mais avançado e eficaz que pode ser usado para selecionar o melhor número de componentes principais para o conjunto de dados. Neste método, criamos o seguinte tipo de gráfico:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Padronizacao dos dados e criacao do modelo PCA</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>pca_dados <span class="ot">&lt;-</span> <span class="fu">princomp</span>(<span class="fu">scale</span>(dados <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">select_if</span>(is.numeric)))</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Scree plot para numero de variaveis</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>factoextra<span class="sc">::</span><span class="fu">fviz_eig</span>(pca_dados,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">addlabels =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">linecolor =</span> <span class="st">"Red"</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">50</span>)) <span class="sc">+</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a> ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Dimensões"</span>, <span class="at">y =</span> <span class="st">"Porcentagem de Variância Explicada"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figuras_naosupervisionado/var_explicada.png" class="img-fluid figure-img" alt="Screeplot para seleção de número de clusters"></p>
+</figure>
+</div>
+<p>O número de barras é igual ao número de variáveis no conjunto de dados original. Neste gráfico, cada barra mostra a porcentagem de variância explicada de cada componente individual. Ao observar esse gráfico, podemos decidir quantas componentes devem ser mantidas com base em algum critério como porcentagem mínima que deseja-se manter, exemplo 80% ou 90%, mantendo por exemplo 8 ou 7 componentes. Ou ainda podemos nos basear na linha vermelha usando o método do cotovelo aplicado em aprendizado não supervisionado.</p>
+<ul>
+<li><em>Seguir a regra de Kaiser</em></li>
+</ul>
+<p>De acordo com a regra de Kaiser, é recomendado manter todos os componentes com autovalores maiores que 1.</p>
+<p>Você pode obter os autovalores da seguinte forma:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pca_dados<span class="sc">$</span>sdev <span class="sc">^</span><span class="dv">2</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Em seguida, você pode selecionar os componentes com autovalores maiores que 1. Ao seguir essa regra, é melhor combinar isso com o gráfico de porcentagem de variância explicada discutido no Método anterior. Às vezes, um autovalor ligeiramente menor que 1 (por exemplo, 0.95) pode capturar uma quantidade significativa de variância nos dados. Portanto, é melhor mantê-lo também se ele mostrar uma barra relativamente alta no gráfico de porcentagem de variância explicada.</p>
+<ul>
+<li><em>Métrica de avaliação de desempenho</em></li>
+</ul>
+<p>Este método só pode ser usado se você planeja realizar tarefas de regressão ou classificação com o conjunto de dados reduzido (transformado) após aplicar o PCA.</p>
+<p>Usando o gráfico discutido no Método de variância explicada, você pode selecionar o número inicial de componentes principais e obter o conjunto de dados reduzido (transformado). Em seguida, você constrói um modelo de regressão ou classificação e mede seu desempenho por meio do RMSE ou da pontuação de precisão. Em seguida, você altera ligeiramente o número de componentes principais, constrói o modelo novamente e mede a pontuação de desempenho. Após repetir essas etapas várias vezes, você pode selecionar o melhor número de componentes principais que realmente oferece a melhor pontuação de desempenho.</p>
+<p>Observe que a pontuação de desempenho do modelo depende de outros fatores também. Por exemplo, depende do estado aleatório da divisão dos conjuntos de treinamento e teste, quantidade de dados, desequilíbrio de classes, número de árvores no modelo (se o modelo for uma floresta aleatória ou uma variante similar), número de iterações definidas durante a otimização, valores discrepantes e valores ausentes nos dados, etc. Portanto, tenha cuidado ao usar este método!</p>
 </section>
-<section id="número-de-componentes-principais." class="level2" data-number="10.4">
-<h2 data-number="10.4" class="anchored" data-anchor-id="número-de-componentes-principais."><span class="header-section-number">10.4</span> Número de componentes principais.</h2>
-<p>Exemplo</p>
-</section>
-<section id="redução-de-dimensionalidade-com-o-pca." class="level2" data-number="10.5">
-<h2 data-number="10.5" class="anchored" data-anchor-id="redução-de-dimensionalidade-com-o-pca."><span class="header-section-number">10.5</span> Redução de dimensionalidade com o PCA.</h2>
-<p>Exemplo</p>
-</section>
-<section id="interpretação-do-componentes-principais-de-uma-amostra." class="level2" data-number="10.6">
-<h2 data-number="10.6" class="anchored" data-anchor-id="interpretação-do-componentes-principais-de-uma-amostra."><span class="header-section-number">10.6</span> Interpretação do componentes principais de uma amostra.</h2>
-<p>Exemplo</p>
+<section id="interpretação-do-componentes-principais-de-uma-amostra." class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="interpretação-do-componentes-principais-de-uma-amostra."><span class="header-section-number">10.4</span> Interpretação do componentes principais de uma amostra.</h2>
+<p>Após realizar a Análise de Componentes Principais (PCA) em um conjunto de dados, é importante interpretar os componentes principais resultantes para entender a estrutura e os padrões presentes nos dados. A interpretação dos componentes principais envolve analisar os coeficientes de ponderação das variáveis originais em cada componente, ou loadings, como apresentado nas sessões anteriores.</p>
+<p>Uma forma comum de interpretar os loadings é observar os valores absolutos e as diferenças entre eles. Valores absolutos altos indicam uma forte contribuição da variável para a respectiva componente principal, enquanto valores baixos indicam uma contribuição fraca. Além disso, diferenças significativas entre os valores absolutos dos loadings de uma variável em diferentes componentes podem indicar a presença de padrões específicos relacionados a essa variável.</p>
+<p>Por exemplo, suponha que estamos analisando um conjunto de dados com indicadores de saúde que inclui variáveis como taxa de mortalidade infantil, taxa de natalidade, gastos com saúde per capita, entre outras. Após realizar a PCA, obtemos as componentes principais. Podemos então examinar os loadings para interpretar os padrões presentes nos dados.</p>
+<p>Suponha que a primeira componente principal tenha altos loadings positivos para as variáveis de taxa de natalidade e gastos com saúde per capita, enquanto tem um loading negativo para a taxa de mortalidade infantil. Isso indica que a primeira componente principal está capturando um padrão em que países com maiores taxas de natalidade e maiores gastos com saúde per capita tendem a ter menores taxas de mortalidade infantil.</p>
+<p>Da mesma forma, a segunda componente principal pode ter altos loadings positivos para as variáveis de incidência de doenças e taxa de vacinação, indicando que ela está capturando um padrão em que países com maiores taxas de incidência de doenças e maiores taxas de vacinação tendem a ter menores valores nessa componente principal.</p>
+<p>A interpretação dos componentes principais também pode ser facilitada ao observar os valores dos coeficientes de correlação entre as variáveis originais e as componentes principais. Esses coeficientes de correlação indicam a força e a direção da relação entre cada variável e cada componente. Valores absolutos altos indicam uma correlação forte, enquanto valores próximos a zero indicam uma correlação fraca.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
