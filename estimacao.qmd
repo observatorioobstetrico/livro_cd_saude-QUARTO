@@ -8,7 +8,7 @@ Apesar de, no presente caso, termos acesso aos dados de toda a população de ge
 
 ### Experimentos e Espaço amostral
 
-Vamos observar a ocorência de saturação baixa de oxigênio no sangue dentre as  gestantes e puérperas diagnosticadas com COVID-19 no período de março de 2020 a dezembro de 2021, representado pela variável `saturacao`, por meio de um sorteio, nçao considerando os casos em que a variável é `NA`.
+Vamos observar a ocorência de saturação baixa de oxigênio no sangue dentre as gestantes e puérperas diagnosticadas com COVID-19 no período de março de 2020 a dezembro de 2021, representado pela variável `saturacao`, por meio de um sorteio, nçao considerando os casos em que a variável é `NA`.
 
 ```{r}
 dados <- readr::read_rds("dados/dados_covid[LIMPO].rds")
@@ -33,13 +33,11 @@ unique(dados$saturacao)
 
 ```
 
-Analisando a saída acima, observamos que as possibilidades de respostas são `"não"` e `"sim"`, o que denominamos de **espaço amostral**, denotado por $\Omega$ e caracterizado como o conjunto de todos os resultados possíveis de um experimento $\epsilon$. Assim, nesse caso 
-$$
+Analisando a saída acima, observamos que as possibilidades de respostas são `"não"` e `"sim"`, o que denominamos de **espaço amostral**, denotado por $\Omega$ e caracterizado como o conjunto de todos os resultados possíveis de um experimento $\epsilon$. Assim, nesse caso $$
 \Omega=\{sim, não\}
 $$
 
-A partir desse conceito, podemos também observar subconjuntos desse espaço amostral, definidos como **eventos**. Por exemplo, podemos definir o evento $A$ como a ocorrência de baixa saturação de oxigênio. $A: \{sim\}$. A cada evento podemos atribuir um número que avalia quão verossível será a ocorrência de $A$ quando o experimento $\epsilon$ for realizado, essa medida é chamada de probabilidade sendo denotada por $P(A)$. Dentre outras, essa probabilidade satisfaz as seguintes propriedades: 
-$$ 
+A partir desse conceito, podemos também observar subconjuntos desse espaço amostral, definidos como **eventos**. Por exemplo, podemos definir o evento $A$ como a ocorrência de baixa saturação de oxigênio. $A: \{sim\}$. A cada evento podemos atribuir um número que avalia quão verossível será a ocorrência de $A$ quando o experimento $\epsilon$ for realizado, essa medida é chamada de probabilidade sendo denotada por $P(A)$. Dentre outras, essa probabilidade satisfaz as seguintes propriedades: $$ 
 \begin{align}
 \text{I) }  0 \leq P(A) \leq 1 \\
 \text{II) } P(\Omega)=1
@@ -62,24 +60,21 @@ Para continuar a abordagem dos conceitos relacionados às variáveis aleatórias
 
 Uma variável é considerada discreta se $R_x$ for um conjunto finito ou infinito enumerável. O número de indivíduos com saturação baixa em uma amostra de tamanho 3, por exemplo, é uma variável aleatória discreta, já que podemos listar todos os seus possíveis valores.
 
-Agora vamos pensar em como podemos analisar a distribuição de uma variável aleatória discreta $X$. Já que conhecemos os seus possíveis valores, podemos associar a cada um deles uma probabilidade de ocorrência, formando assim uma **função massa de probabilidade**  de $X$, definida como
-$$
+Agora vamos pensar em como podemos analisar a distribuição de uma variável aleatória discreta $X$. Já que conhecemos os seus possíveis valores, podemos associar a cada um deles uma probabilidade de ocorrência, formando assim uma **função massa de probabilidade** de $X$, definida como $$
 p(x_i)=P[X=x_i]
-$$
-Essa função satisfaz as seguintes propriedades:
-$$
+$$ Essa função satisfaz as seguintes propriedades: $$
 \begin{align}
 \text{I) }  p(x_i)\geq 0, \hspace{0.3cm} \forall i \\
 \text{II) } \sum_{i=1}^{\infty}p(x_i)=1 
 \end{align}
-$$
-Para exemplificar, vamos analisar a variável `variante`, que indica a variante de covid-19 adquirida podendo ser original, gama ou delta. Retirando aleatoriamente dois indivíduos dessa população com reposição, consideremos a variável aletória $Y$ como o número de indivíduos com variante gama sorteados. Sabemos que as possibilidades são obter 0, 1 ou 2 indivíduo com a variante mencionada. Assim, temos o espaço amostral $\Omega = {0, 1, 2}$. Vamos agora calcular as probabilidades para cada um desses elementos. Para isso, é útil considerar o evento $C$ como a retirada da variante gama.
+$$ Para exemplificar, vamos analisar a variável `variante`, que indica a variante de covid-19 adquirida podendo ser original, gama ou delta. Retirando aleatoriamente dois indivíduos dessa população com reposição, consideremos a variável aletória $Y$ como o número de indivíduos com variante gama sorteados. Sabemos que as possibilidades são obter 0, 1 ou 2 indivíduo com a variante mencionada. Assim, temos o espaço amostral $\Omega = {0, 1, 2}$. Vamos agora calcular as probabilidades para cada um desses elementos. Para isso, é útil considerar o evento $C$ como a retirada da variante gama.
 
 Primeiramente, vamos obter a proporção da variante gama na população:
 
 ```{r}
 p_gama <- length(which(dados$variante=="gama"))/length(dados$variante); p_gama
 ```
+
 Logo, sabemos que a probabilidade de um caso de variante delta ser retirado é de 0.5148282 e de não ser a variante delta é seu complementar $1-0.5148282=0.4851718$, ou seja, $P(C)=0.5148282$ e $P(\bar{C})=0.4851718$ Sendo o resultado da primeira retirada e da segunda independentes, calculamos:
 
 $$
@@ -91,7 +86,6 @@ p(2) = P(Y=2) = P(C)P(C) = 0.2650481
 $$
 
 Vamos interpretar esses visualmente, usando um gráfico em que o eixo x apresenta os valores possíveis da variável $Y$ e o eixo y as respectivas probabilidades de ocorrência.
-
 
 ```{r}
 y <- c(0, 1, 2)
@@ -108,9 +102,7 @@ ggplot(data=df, aes(x = as.factor(y), y = py)) +
   theme_classic()
 ```
 
-
-Além disso, outra informação útil é a sua **função de distribuição acumulada**, que descreve a probabilidade da variável aleatória $X$ ser menor ou igual a $x$, ou seja, $F(x_i)=P(X \leq x_i), \hspace{0.3 cm} \forall i$. Pensando no exemplo anterioir, podemos obter a sua função de distribuição acumulada:
-$$
+Além disso, outra informação útil é a sua **função de distribuição acumulada**, que descreve a probabilidade da variável aleatória $X$ ser menor ou igual a $x$, ou seja, $F(x_i)=P(X \leq x_i), \hspace{0.3 cm} \forall i$. Pensando no exemplo anterioir, podemos obter a sua função de distribuição acumulada: $$
 F(y) =
     \begin{cases}
     0 & se \ y < 0; \\
@@ -119,6 +111,7 @@ F(y) =
     1 & se \ y \geq 2.
     \end{cases}
 $$
+
 ```{r}
 library(dplyr)
 df <- df %>%
@@ -136,29 +129,26 @@ ggplot(data=df, aes(x = y, y = fy)) +
 ylim(0, 1) 
 ```
 
-
-Outra medida relevante quando o assunto é variáveis aleatórias é a chamada **esperança**, definida como o valor esperado da variável aleatória, ou seja, o resultado esperado dessa variável aleatória em média a longo prazo.
-$$
+Outra medida relevante quando o assunto é variáveis aleatórias é a chamada **esperança**, definida como o valor esperado da variável aleatória, ou seja, o resultado esperado dessa variável aleatória em média a longo prazo. $$
 E(X)=\sum_{x_i \in R_x} x_i p(x_i)
-$$
-Também podemos interpretar a esperança como uma média ponderada dos elementos do espaço amostral da varíável aleatória $X$, em que os "pesos" são as suas respectivas probabilidades.
+$$ Também podemos interpretar a esperança como uma média ponderada dos elementos do espaço amostral da varíável aleatória $X$, em que os "pesos" são as suas respectivas probabilidades.
 
-Assim, para o exemplo anterior, calculamos a sua esperança como:
-$$
+Assim, para o exemplo anterior, calculamos a sua esperança como: $$
 \begin{align}
 E(Y)=0P(Y=0)+1P(Y=1)+2P(Y=2) \\
-E(Y)= 0.4995602	+ 0.5300962	= 1.029656
+E(Y)= 0.4995602 + 0.5300962 = 1.029656
 \end{align}
-$$
-Interpretando esse resultado, repetindo esse experimento infinitas vezes, a média dos resultados seria igual a 0.7646083. Ou seja, em média, esperamos que 1.029656 indivíduos apresentem a variante gama ao selecionarmos dois deles aleatoriamente nessa população.
+$$ Interpretando esse resultado, repetindo esse experimento infinitas vezes, a média dos resultados seria igual a 0.7646083. Ou seja, em média, esperamos que 1.029656 indivíduos apresentem a variante gama ao selecionarmos dois deles aleatoriamente nessa população.
 
 A esperança também pode ser calculada usando o *RStudio*, usando a função `weighted.mean`, em que o primeiro argumento é um vetor que armazena os valores, e o segundo um vetor que armazena suas respectivas probabilidaes.
 
 ```{r}
 weighted.mean(x=df$y, w=df$py)
 ```
+
 Para a esperança, vamos destacar algumas algumas propriedades. Sendo $X$ e $Y$ variáveis aleatórias e $c$ uma constante,
 
+```{=tex}
 \begin{align}
 \text{I)} \ E(c)=c \\
 \text{II)} \ E(cX)=cE(X) \\
@@ -166,21 +156,21 @@ Para a esperança, vamos destacar algumas algumas propriedades. Sendo $X$ e $Y$ 
 \text{IV)} \ E(X-Y)=E(X)-E(Y) \\
 \text{V)} \ E(X+c)=E(X)+c
 \end{align}
-
-
-É importante também avaliar a variabilidade desses resultados, para isso vamos usar a **variância**
-$$
+```
+É importante também avaliar a variabilidade desses resultados, para isso vamos usar a **variância** $$
 Var(X)=E(X^2)-[E(X)]^2, \ \text{sendo} \ E(X^2)=\sum_{x_i\in R_x}x^2p(x_i)
-$$
-Dessa forma, para a variável aleatória $Y$, teremos:
+$$ Dessa forma, para a variável aleatória $Y$, teremos:
+
 ```{r}
 variancia = weighted.mean(x=(df$y)^2, w=df$py) - weighted.mean(x=df$y, w=df$py)^2
 variancia
 ```
+
 Logo, $Var(Y)=0.4995603$.
 
 Assim como a esperança, a variância também satisfaz algumas propriedades:
 
+```{=tex}
 \begin{align}
 \text{I)} \ Var(c)=0 \\
 \text{II) } \ Var(cX)=c^2Var(X) \\
@@ -188,7 +178,7 @@ Assim como a esperança, a variância também satisfaz algumas propriedades:
 \text{IV)} \ Var(X-y)=Var(X) + Var(Y) \\
 \text{V)} \ Var(X+c)=Var(X)
 \end{align}
-
+```
 #### Variáveis aleatórias contínuas
 
 Uma variável aleatória é classifcada como contínua quando pode assumir infinitos ou um número grande finito de valores dentro de um intervalo, ou seja, quando $R_x$ forma um conjunto não-enumerável. Como exemplo podemos citar a idade das gestantes e puérperas diagnosticadas com COVID-19 no período de março de 2020 a dezembro de 2021, representada pela variável `idade_anos`.
@@ -200,8 +190,7 @@ $$
 \text{I)} \ f(x)\geq0 \ \forall x\in R_x \\
 \text{II)} \ \int_{-\infty}^{\infty}f(x)dx=1
 \end{align}
-$$
-A seguir apresentamos graficamente a função densidade de probabilidade das idades das gestantes e puérperas diagnosticadas com COVID-19 no de março de 2020 a dezembro de 2021.
+$$ A seguir apresentamos graficamente a função densidade de probabilidade das idades das gestantes e puérperas diagnosticadas com COVID-19 no de março de 2020 a dezembro de 2021.
 
 ```{r}
 ggplot(data=dados, aes(x=idade_anos)) +
@@ -227,21 +216,19 @@ ggplot(dados, aes(x = idade_anos)) +
   labs(x = "Idade (anos)", y = "Densidade") +
   theme_minimal()
 ```
+
 Sendo $f(y)$ a função densidade de probabilidade de $Y$, calculamos essa área usando
 
 $$
 P(20\leq Y \leq 30)=\int_{20}^{30} f(y)dy
-$$
-Logo, para obtermos a probabilidade de ocorrência de um intervalo $(a,b)$, calculamos a área abaixo de $f(x)$ e acima do eixo x entre $a$ e $b$, como a seguir
+$$ Logo, para obtermos a probabilidade de ocorrência de um intervalo $(a,b)$, calculamos a área abaixo de $f(x)$ e acima do eixo x entre $a$ e $b$, como a seguir
 
 $$
 P(a\leq X \leq b)=\int_a^bf(x)dx
-$$
-Pensando agora na **função de distribuição acumulada**, podemos obter $F(x)=P(X<=x)$ como a área abaixo de $f(x)$ e em que x esteja no intervalo $(-\infty, x]$, assim, calculamos por
-$$
+$$ Pensando agora na **função de distribuição acumulada**, podemos obter $F(x)=P(X<=x)$ como a área abaixo de $f(x)$ e em que x esteja no intervalo $(-\infty, x]$, assim, calculamos por $$
 F(x)=P(X\leq x)=\int_{-\infty}^{x}f(x)dx
-$$
-Se, no exemplo anterior queremos calcular a probabilidade da idade de um indivíduo sorteado ao acaso ser menor ou igual a 20, desejamos calcular a área
+$$ Se, no exemplo anterior queremos calcular a probabilidade da idade de um indivíduo sorteado ao acaso ser menor ou igual a 20, desejamos calcular a área
+
 ```{r}
 densidade <- density(dados$idade_anos)
 
@@ -256,17 +243,17 @@ ggplot(dados, aes(x = idade_anos)) +
   labs(x = "Idade (anos)", y = "Densidade") +
   theme_minimal()
 ```
-Essa área é obtida calculando a integral
-$$
-P(Y\leq 20)=\int_{10}^{20}f(y)dy
-$$
-Assim como no caso das variáveis aleatórias discretas, também podemos calcular a esperança e variância para as contínuas, apresentando as mesmas propriedades.
 
+Essa área é obtida calculando a integral $$
+P(Y\leq 20)=\int_{10}^{20}f(y)dy
+$$ Assim como no caso das variáveis aleatórias discretas, também podemos calcular a esperança e variância para as contínuas, apresentando as mesmas propriedades.
+
+```{=tex}
 \begin{align}
 E(X)=\int_{-\infty}^{\infty}xf(x)dx \\
 Var(X)=E(X^2)-[E(X)]^2, \ \text{onde} \ E(X^2)=\int^{\infty}_{-\infty}x^2f(x)dx
 \end{align}
-
+```
 ## Estimadores e estimativas
 
 Agora que estamos a parte de algumas definições que serão importantes para o entendimento do capítulo, podemos iniciar com o seu conteúdo propriamente dito. Em primeiro lugar, chamamos de **estimador** qualquer estatística cujos valores são utilizados para se estimar um parâmetro ou uma função de um parâmetro. Dessa forma, temos, portanto, que todo estimador será, também, uma variável aleatória, uma vez que eles são funções das variáveis aleatórias que compõem nossa amostra. Quando coletamos a amostra, observamos os valores das variáveis aleatórias que a compõem e os substituímos na expressão do estimador, obtemos o que chamamos de **estimativa**. Estimativas não são valores aleatórios, mas sim realizações de variáveis aleatórias (dos estimadores).

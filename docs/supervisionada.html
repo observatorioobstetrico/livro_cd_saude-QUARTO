@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,7 +17,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
 </style>
@@ -64,7 +64,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
@@ -73,16 +72,11 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./supervisionada.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
       </button>
     </div>
   </nav>
@@ -90,110 +84,95 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Ciência de Dados Aplicada à Saúde Materno-Infantil</a> 
     </div>
       </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
+      <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Procurar"></div>
+        <div id="quarto-search" class="" title="Search"></div>
         </div>
-        </div>
+      </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Prefácio</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Prefácio</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Sumário</span></a>
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">Sumário</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></span></a>
+  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./manipulacao_dados.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Manipulação de dados</span></span></a>
+  <a href="./manipulacao_dados.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Manipulação de dados</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tabulacao.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tabulação de dados</span></span></a>
+  <a href="./tabulacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tabulação de dados</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./descritiva.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análise exploratória dos dados</span></span></a>
+  <a href="./descritiva.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análise exploratória dos dados</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./estimacao.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Conceitos básicos de probabilidade</span></span></a>
+  <a href="./estimacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estimação</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./testes_np.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Testes não-paramétricos</span></span></a>
+  <a href="./testes_np.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Testes não-paramétricos</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./supervisionada.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></span></a>
+  <a href="./supervisionada.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./introducao_algebra.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Alguns conceitos básicos de algebra</span></span></a>
+  <a href="./introducao_algebra.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Alguns conceitos básicos de algebra</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./naosupervisionado.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Aprendizado Não Supervisionado</span></span></a>
+  <a href="./naosupervisionado.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Aprendizado Não Supervisionado</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./PCA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Análise de Componentes Principais (PCA).</span></span></a>
+  <a href="./PCA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Análise de Componentes Principais (PCA).</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Apêndices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar seção">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Apêndices</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorialr.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Tutorial de R</span></span></a>
+  <a href="./tutorialr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Tutorial de R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Referências</span></a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">Referências</a>
   </div>
 </li>
       </ul>
@@ -201,30 +180,29 @@ ul.task-list li input[type="checkbox"] {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#conceitos-iniciais" id="toc-conceitos-iniciais" class="nav-link active" data-scroll-target="#conceitos-iniciais"><span class="header-section-number">7.1</span> Conceitos iniciais</a>
+  <li><a href="#conceitos-iniciais" id="toc-conceitos-iniciais" class="nav-link active" data-scroll-target="#conceitos-iniciais"><span class="toc-section-number">7.1</span>  Conceitos iniciais</a>
   <ul class="collapse">
-  <li><a href="#dificuldades-gerais-do-machine-learnig" id="toc-dificuldades-gerais-do-machine-learnig" class="nav-link" data-scroll-target="#dificuldades-gerais-do-machine-learnig"><span class="header-section-number">7.1.1</span> Dificuldades gerais do machine learnig</a></li>
-  <li><a href="#modelo-de-regressão-linear" id="toc-modelo-de-regressão-linear" class="nav-link" data-scroll-target="#modelo-de-regressão-linear"><span class="header-section-number">7.1.2</span> Modelo de Regressão Linear</a></li>
-  <li><a href="#modelo-de-regressão-logística" id="toc-modelo-de-regressão-logística" class="nav-link" data-scroll-target="#modelo-de-regressão-logística"><span class="header-section-number">7.1.3</span> Modelo de Regressão logística</a></li>
-  <li><a href="#medidas-de-desempenho" id="toc-medidas-de-desempenho" class="nav-link" data-scroll-target="#medidas-de-desempenho"><span class="header-section-number">7.1.4</span> Medidas de desempenho</a></li>
-  <li><a href="#curva-auc-roc" id="toc-curva-auc-roc" class="nav-link" data-scroll-target="#curva-auc-roc"><span class="header-section-number">7.1.5</span> Curva AUC-ROC</a></li>
-  <li><a href="#validação-cruzada-cross-validation" id="toc-validação-cruzada-cross-validation" class="nav-link" data-scroll-target="#validação-cruzada-cross-validation"><span class="header-section-number">7.1.6</span> Validação Cruzada (Cross-Validation)</a></li>
-  <li><a href="#hiperparâmetros" id="toc-hiperparâmetros" class="nav-link" data-scroll-target="#hiperparâmetros"><span class="header-section-number">7.1.7</span> Hiperparâmetros</a></li>
+  <li><a href="#dificuldades-gerais-do-machine-learnig" id="toc-dificuldades-gerais-do-machine-learnig" class="nav-link" data-scroll-target="#dificuldades-gerais-do-machine-learnig"><span class="toc-section-number">7.1.1</span>  Dificuldades gerais do machine learnig</a></li>
+  <li><a href="#modelo-de-regressão-linear" id="toc-modelo-de-regressão-linear" class="nav-link" data-scroll-target="#modelo-de-regressão-linear"><span class="toc-section-number">7.1.2</span>  Modelo de Regressão Linear</a></li>
+  <li><a href="#modelo-de-regressão-logística" id="toc-modelo-de-regressão-logística" class="nav-link" data-scroll-target="#modelo-de-regressão-logística"><span class="toc-section-number">7.1.3</span>  Modelo de Regressão logística</a></li>
+  <li><a href="#medidas-de-desempenho" id="toc-medidas-de-desempenho" class="nav-link" data-scroll-target="#medidas-de-desempenho"><span class="toc-section-number">7.1.4</span>  Medidas de desempenho</a></li>
+  <li><a href="#curva-auc-roc" id="toc-curva-auc-roc" class="nav-link" data-scroll-target="#curva-auc-roc"><span class="toc-section-number">7.1.5</span>  Curva AUC-ROC</a></li>
+  <li><a href="#validação-cruzada-cross-validation" id="toc-validação-cruzada-cross-validation" class="nav-link" data-scroll-target="#validação-cruzada-cross-validation"><span class="toc-section-number">7.1.6</span>  Validação Cruzada (Cross-Validation)</a></li>
+  <li><a href="#hiperparâmetros" id="toc-hiperparâmetros" class="nav-link" data-scroll-target="#hiperparâmetros"><span class="toc-section-number">7.1.7</span>  Hiperparâmetros</a></li>
   </ul></li>
-  <li><a href="#agoritmos-de-aprendizado-de-máquina" id="toc-agoritmos-de-aprendizado-de-máquina" class="nav-link" data-scroll-target="#agoritmos-de-aprendizado-de-máquina"><span class="header-section-number">7.2</span> Agoritmos de Aprendizado de máquina</a>
+  <li><a href="#agoritmos-de-aprendizado-de-máquina" id="toc-agoritmos-de-aprendizado-de-máquina" class="nav-link" data-scroll-target="#agoritmos-de-aprendizado-de-máquina"><span class="toc-section-number">7.2</span>  Agoritmos de Aprendizado de máquina</a>
   <ul class="collapse">
-  <li><a href="#árvores-de-decisão" id="toc-árvores-de-decisão" class="nav-link" data-scroll-target="#árvores-de-decisão"><span class="header-section-number">7.2.1</span> Árvores de Decisão</a></li>
-  <li><a href="#algoritmos-de-boosting" id="toc-algoritmos-de-boosting" class="nav-link" data-scroll-target="#algoritmos-de-boosting"><span class="header-section-number">7.2.2</span> Algoritmos de boosting</a></li>
-  <li><a href="#support-vector-machine-svm" id="toc-support-vector-machine-svm" class="nav-link" data-scroll-target="#support-vector-machine-svm"><span class="header-section-number">7.2.3</span> Support Vector Machine (SVM)</a></li>
+  <li><a href="#árvores-de-decisão" id="toc-árvores-de-decisão" class="nav-link" data-scroll-target="#árvores-de-decisão"><span class="toc-section-number">7.2.1</span>  Árvores de Decisão</a></li>
+  <li><a href="#algoritmos-de-boosting" id="toc-algoritmos-de-boosting" class="nav-link" data-scroll-target="#algoritmos-de-boosting"><span class="toc-section-number">7.2.2</span>  Algoritmos de boosting</a></li>
+  <li><a href="#support-vector-machine-svm" id="toc-support-vector-machine-svm" class="nav-link" data-scroll-target="#support-vector-machine-svm"><span class="toc-section-number">7.2.3</span>  Support Vector Machine (SVM)</a></li>
   </ul></li>
-  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="header-section-number">7.3</span> Considerações finais</a></li>
+  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"><span class="toc-section-number">7.3</span>  Considerações finais</a></li>
   </ul>
 </nav>
     </div>
@@ -233,7 +211,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></h1>
 </div>
 
 
@@ -290,7 +268,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/linear.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption class="figure-caption">Fonte: https://is.gd/Z9yiHp</figcaption>
+<p></p><figcaption class="figure-caption">Fonte: https://is.gd/Z9yiHp</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -322,7 +300,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/logistica.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption class="figure-caption">Fonte: https://is.gd/87NSTU</figcaption>
+<p></p><figcaption class="figure-caption">Fonte: https://is.gd/87NSTU</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -406,39 +384,32 @@ R^2 = 1 - \frac{\sum(y_i - {\hat{y_i}})^2} {\sum(y_i - {\bar{y}})^2}
 <p>Matriz de confusão é uma matriz usada para avaliar o desempenho de um modelo de classificação. A matriz compara os valores de destino reais com os previstos pelo modelo. A matriz é N x N onde é N é o número de classes. Para um problema de classificação binária teríamos uma matriz 2 x 2. As matrizes de confusão revelam quando um modelo confunde consistentemente duas classes, simplificando a determinação da probabilidade de os resultados de um modelo serem confiáveis.</p>
 <div class="cell">
 <div class="cell-output-display">
-<table class="table table-bordered table-sm table-striped small" data-quarto-postprocess="true">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th" style="text-align: left; empty-cells: hide; border-bottom: hidden;"></th>
-<th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-bottom: hidden; padding-bottom: 0; padding-left: 3px; padding-right: 3px; padding-right: 4px; padding-left: 4px; background-color: white !important;"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
-Observado
-</div></th>
+
+<table class="table table-bordered" style="font-size: 20px; width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; padding-right: 4px; padding-left: 4px; background-color: white !important;" colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Observado</div></th>
 </tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th" style="text-align: left; background-color: white !important;">Predito</th>
-<th data-quarto-table-cell-role="th" style="text-align: left; background-color: white !important;">Negativo</th>
-<th data-quarto-table-cell-role="th" style="text-align: left; background-color: white !important;">Positivo</th>
-</tr>
-</thead>
+  <tr>
+   <th style="text-align:left;background-color: white !important;text-align: center;"> Predito </th>
+   <th style="text-align:left;background-color: white !important;text-align: center;"> Negativo      </th>
+   <th style="text-align:left;background-color: white !important;text-align: center;"> Positivo  </th>
+  </tr>
+ </thead>
 <tbody>
-<tr class="odd">
-<td style="text-align: left; background-color: white !important; width: 3in; font-weight: bold;">Negativo</td>
-<td style="text-align: left; background-color: white !important; width: 3in;">Verdadeiro Negativo (TN)</td>
-<td style="text-align: left; background-color: white !important; width: 2in;">Falso Negativo (FN)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left; background-color: white !important; width: 3in; font-weight: bold;">Positivo</td>
-<td style="text-align: left; background-color: white !important; width: 3in;">Falso Positivo (FP)</td>
-<td style="text-align: left; background-color: white !important; width: 2in;">Verdadeiro Positivo (TP)</td>
-</tr>
+  <tr>
+   <td style="text-align:left;background-color: white !important;text-align: center;width: 3in; font-weight: bold;"> Negativo </td>
+   <td style="text-align:left;background-color: white !important;text-align: center;width: 3in; "> Verdadeiro Negativo (TN) </td>
+   <td style="text-align:left;background-color: white !important;text-align: center;width: 2in; "> Falso Negativo (FN) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;background-color: white !important;text-align: center;width: 3in; font-weight: bold;"> Positivo </td>
+   <td style="text-align:left;background-color: white !important;text-align: center;width: 3in; "> Falso Positivo (FP) </td>
+   <td style="text-align:left;background-color: white !important;text-align: center;width: 2in; "> Verdadeiro Positivo (TP) </td>
+  </tr>
 </tbody>
 </table>
-
 
 </div>
 </div>
@@ -461,7 +432,7 @@ Observado
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/curvaROC.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption class="figure-caption">Fonte: https://is.gd/iyWHe8</figcaption>
+<p></p><figcaption class="figure-caption">Fonte: https://is.gd/iyWHe8</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -518,7 +489,7 @@ Observado
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/arvore_decisao.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption class="figure-caption">Árvore de Decisçao</figcaption>
+<p></p><figcaption class="figure-caption">Árvore de Decisçao</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -691,23 +662,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
+    target: function(trigger) {
+      return trigger.previousElementSibling;
     }
   });
   clipboard.on('success', function(e) {
@@ -772,92 +729,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
