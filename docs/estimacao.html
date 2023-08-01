@@ -293,7 +293,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 data-number="5.1" class="anchored" data-anchor-id="conceitos-básicos-de-probabilidade"><span class="header-section-number">5.1</span> Conceitos básicos de probabilidade</h2>
 <section id="experimentos-e-espaço-amostral" class="level3" data-number="5.1.1">
 <h3 data-number="5.1.1" class="anchored" data-anchor-id="experimentos-e-espaço-amostral"><span class="header-section-number">5.1.1</span> Experimentos e Espaço amostral</h3>
-<p>Vamos observar a ocorência de saturação baixa de oxigênio no sangue dentre as gestantes e puérperas diagnosticadas com COVID-19 no período de março de 2020 a dezembro de 2021, representado pela variável <code>saturacao</code>, por meio de um sorteio, nçao considerando os casos em que a variável é <code>NA</code>.</p>
+<p>Vamos observar a ocorrência de saturação baixa de oxigênio no sangue dentre as gestantes e puérperas diagnosticadas com COVID-19 no período de março de 2020 a dezembro de 2021. A variável que representa esse sintoma é <code>saturacao</code> e vamos considerar que o caso será selecionado por meio de um sorteio dentre os válidos.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_rds</span>(<span class="st">"dados/dados_covid[LIMPO].rds"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(dados, <span class="sc">!</span><span class="fu">is.na</span>(saturacao))</span>
@@ -307,16 +307,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) <span class="fu">print</span>(<span class="fu">sample</span>(dados<span class="sc">$</span>saturacao, <span class="dv">1</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "sim"
-[1] "não"
+<pre><code>[1] "não"
 [1] "não"
 [1] "não"
 [1] "não"
 [1] "sim"
 [1] "não"
-[1] "sim"
 [1] "não"
-[1] "não"</code></pre>
+[1] "não"
+[1] "sim"
+[1] "sim"</code></pre>
 </div>
 </div>
 <p>Podemos perceber que, mesmo sendo executado sob as mesmas condições, o sorteio de cada caso pode nos fornecer resultados distintos. Esse exemplo ilustra um <strong>experimento aletório</strong> <span class="math inline">\(\epsilon\)</span>, definido formalmente como experimentos que, ao serem repetidos sob as mesmas circunstâncias, podem fornecer resultados diferentes.</p>
@@ -330,7 +330,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Analisando a saída acima, observamos que as possibilidades de respostas são <code>"não"</code> e <code>"sim"</code>, o que denominamos de <strong>espaço amostral</strong>, denotado por <span class="math inline">\(\Omega\)</span> e caracterizado como o conjunto de todos os resultados possíveis de um experimento <span class="math inline">\(\epsilon\)</span>. Assim, nesse caso <span class="math display">\[
 \Omega=\{sim, não\}
 \]</span></p>
-<p>A partir desse conceito, podemos também observar subconjuntos desse espaço amostral, definidos como <strong>eventos</strong>. Por exemplo, podemos definir o evento <span class="math inline">\(A\)</span> como a ocorrência de baixa saturação de oxigênio. <span class="math inline">\(A: \{sim\}\)</span>. A cada evento podemos atribuir um número que avalia quão verossível será a ocorrência de <span class="math inline">\(A\)</span> quando o experimento <span class="math inline">\(\epsilon\)</span> for realizado, essa medida é chamada de probabilidade sendo denotada por <span class="math inline">\(P(A)\)</span>. Dentre outras, essa probabilidade satisfaz as seguintes propriedades: <span class="math display">\[
+<p>A partir desse conceito, podemos também observar subconjuntos desse espaço amostral, definidos como <strong>eventos</strong>. Por exemplo, podemos definir o evento <span class="math inline">\(A\)</span> como a ocorrência de baixa saturação de oxigênio. <span class="math display">\[A: \{sim\}\]</span>. A cada evento podemos atribuir um número que avalia quão verossível será a ocorrência de <span class="math inline">\(A\)</span> quando o experimento <span class="math inline">\(\epsilon\)</span> for realizado, essa medida é chamada de probabilidade, sendo denotada por <span class="math inline">\(P(A)\)</span>. Segundo a interpretação frequentista, podemos compreender a medida de probabilidade como o limite da razão entre o número de vezes que o evento ocorre e o número total <span class="math inline">\(n\)</span> de experimentos realizados quando <span class="math inline">\(n \rightarrow \infty\)</span>. Essa medida satisfaz as seguintes propriedades:</p>
+<p><span class="math display">\[
 \begin{align}
 \text{I) }  0 \leq P(A) \leq 1 \\
 \text{II) } P(\Omega)=1
@@ -339,7 +340,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="variáveis-aleatórias" class="level3" data-number="5.1.2">
 <h3 data-number="5.1.2" class="anchored" data-anchor-id="variáveis-aleatórias"><span class="header-section-number">5.1.2</span> Variáveis Aleatórias</h3>
-<p>Em muitos casos, o espaço amostral de um experimento não será numérico. Por exemplo, se retirarmos três. Por exemplo, retirando três indivíduos da população e observando a sua saturação de oxigênio, obtemos <span class="math inline">\(\Omega=\{(x_1 x_2 x_3)|x_i=\text{sim ou não }, i=1,2,3\}\)</span>. Porém, é muitas vezes é útil que os resultados dessa variável sejam registrados como números, posssibilitando a realização de algumas mensurações. Aqui, por exemplo, ao invés de registrar a categoria da saturação de cada um dos três indivíduos, podemos tomar o número de indivíduos cuja respota é “sim”, astribuindo o valor 1 a aqueles que apresentam saturação de oxigênio baixa e o valor zero aos que não apresentam. Isso se enquadra como uma <strong>variável aleatória</strong>, ou seja, uma função <span class="math inline">\(X\)</span> que associa a cada elemento <span class="math inline">\(\omega \in \Omega\)</span> , um número real <span class="math inline">\(X(\omega)\)</span>.</p>
+<p>Em muitos casos, o espaço amostral de um experimento não será numérico. Por exemplo, retirando três indivíduos da população e observando a sua saturação de oxigênio, obtemos <span class="math inline">\(\Omega=\{(x_1 x_2 x_3)|x_i=\text{sim ou não }, i=1,2,3\}\)</span>. Porém, muitas vezes é útil que os resultados dessa variável sejam registrados como números, possibilitando a realização de algumas mensurações. Aqui, por exemplo, ao invés de registrar a categoria da saturação de cada um dos três indivíduos, podemos tomar o número de indivíduos cuja respota é “sim”, atribuindo o valor 1 a aqueles que apresentam saturação de oxigênio baixa e o valor zero aos que não apresentam. Isso se enquadra como uma <strong>variável aleatória</strong>, ou seja, uma função <span class="math inline">\(X\)</span> que associa a cada elemento <span class="math inline">\(\omega \in \Omega\)</span> um número real <span class="math inline">\(X(\omega)\)</span>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -355,22 +356,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="variáveis-aleatórias-discretas" class="level4" data-number="5.1.2.1">
 <h4 data-number="5.1.2.1" class="anchored" data-anchor-id="variáveis-aleatórias-discretas"><span class="header-section-number">5.1.2.1</span> Variáveis aleatórias discretas</h4>
 <p>Uma variável é considerada discreta se <span class="math inline">\(R_x\)</span> for um conjunto finito ou infinito enumerável. O número de indivíduos com saturação baixa em uma amostra de tamanho 3, por exemplo, é uma variável aleatória discreta, já que podemos listar todos os seus possíveis valores.</p>
-<p>Agora vamos pensar em como podemos analisar a distribuição de uma variável aleatória discreta <span class="math inline">\(X\)</span>. Já que conhecemos os seus possíveis valores, podemos associar a cada um deles uma probabilidade de ocorrência, formando assim uma <strong>função massa de probabilidade</strong> de <span class="math inline">\(X\)</span>, definida como <span class="math display">\[
+<p>Agora vamos pensar em como podemos analisar a distribuição de uma variável aleatória discreta <span class="math inline">\(X\)</span>. Já que conhecemos os seus possíveis valores, podemos associar a cada um deles uma probabilidade de ocorrência, formando assim uma <strong>função massa de probabilidade</strong> de <span class="math inline">\(X\)</span>, definida como</p>
+<p><span class="math display">\[
 p(x_i)=P[X=x_i]
-\]</span> Essa função satisfaz as seguintes propriedades: <span class="math display">\[
+\]</span></p>
+<p>Essa função satisfaz as seguintes propriedades:</p>
+<p><span class="math display">\[
 \begin{align}
 \text{I) }  p(x_i)\geq 0, \hspace{0.3cm} \forall i \\
 \text{II) } \sum_{i=1}^{\infty}p(x_i)=1
 \end{align}
-\]</span> Para exemplificar, vamos analisar a variável <code>variante</code>, que indica a variante de covid-19 adquirida podendo ser original, gama ou delta. Retirando aleatoriamente dois indivíduos dessa população com reposição, consideremos a variável aletória <span class="math inline">\(Y\)</span> como o número de indivíduos com variante gama sorteados. Sabemos que as possibilidades são obter 0, 1 ou 2 indivíduo com a variante mencionada. Assim, temos o espaço amostral <span class="math inline">\(\Omega = {0, 1, 2}\)</span>. Vamos agora calcular as probabilidades para cada um desses elementos. Para isso, é útil considerar o evento <span class="math inline">\(C\)</span> como a retirada da variante gama.</p>
+\]</span></p>
+<p>Para exemplificar, vamos analisar a variável <code>variante</code>, que indica a variante de COVID-19 adquirida, podendo ser original, gama ou delta. Retirando aleatoriamente dois indivíduos dessa população com reposição, consideremos a variável aletória <span class="math inline">\(Y\)</span> como o número de indivíduos com variante gama sorteados. Sabemos que as possibilidades são obter 0, 1 ou 2 indivíduos com a variante mencionada. Assim, temos <span class="math inline">\(R_x = {0, 1, 2}\)</span>. Vamos agora calcular as probabilidades para cada um desses elementos. Para isso, é útil considerar o evento <span class="math inline">\(C\)</span> como a retirada da variante gama.</p>
 <p>Primeiramente, vamos obter a proporção da variante gama na população:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>p_gama <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">which</span>(dados<span class="sc">$</span>variante<span class="sc">==</span><span class="st">"gama"</span>))<span class="sc">/</span><span class="fu">length</span>(dados<span class="sc">$</span>variante); p_gama</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>p_gama <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">which</span>(dados<span class="sc">$</span>variante<span class="sc">==</span><span class="st">"gama"</span>))<span class="sc">/</span><span class="fu">length</span>(dados<span class="sc">$</span>variante)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>p_gama</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5148282</code></pre>
 </div>
 </div>
-<p>Logo, sabemos que a probabilidade de um caso de variante delta ser retirado é de 0.5148282 e de não ser a variante delta é seu complementar <span class="math inline">\(1-0.5148282=0.4851718\)</span>, ou seja, <span class="math inline">\(P(C)=0.5148282\)</span> e <span class="math inline">\(P(\bar{C})=0.4851718\)</span> Sendo o resultado da primeira retirada e da segunda independentes, calculamos:</p>
+<p>Logo, sabemos que a probabilidade de um caso de variante gama ser retirado é de 0.5148282 e de não ser a variante gama é seu complementar <span class="math inline">\(1-0.5148282=0.4851718\)</span>, ou seja, <span class="math inline">\(P(C)=0.5148282\)</span> e <span class="math inline">\(P(\bar{C})=0.4851718\)</span>. Sendo o resultado da primeira retirada e da segunda independentes, calculamos:</p>
 <p><span class="math display">\[
 \begin{align}
 p(0)= P(Y=0) = P(\bar{C})P(\bar{C}) = 0.2353917 \\
@@ -378,7 +384,7 @@ p(1)= P(Y=1) = P(C)P(\bar{C}) + P(\bar{C})P(C) = 0.4995602 \\
 p(2) = P(Y=2) = P(C)P(C) = 0.2650481
 \end{align}
 \]</span></p>
-<p>Vamos interpretar esses visualmente, usando um gráfico em que o eixo x apresenta os valores possíveis da variável <span class="math inline">\(Y\)</span> e o eixo y as respectivas probabilidades de ocorrência.</p>
+<p>Vamos interpretar essas informações visualmente, usando um gráfico em que o eixo x apresenta os valores possíveis da variável <span class="math inline">\(Y\)</span> e o eixo y as respectivas probabilidades de ocorrência.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>py <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.2353917</span>, <span class="fl">0.4995602</span>, <span class="fl">0.2650481</span>)</span>
@@ -392,16 +398,11 @@ p(2) = P(Y=2) = P(C)P(C) = 0.2650481
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>df, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.factor</span>(y), <span class="at">y =</span> py)) <span class="sc">+</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"black"</span>, <span class="at">width =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"y"</span>, <span class="at">y =</span> <span class="st">"p(y)"</span>) <span class="sc">+</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="estimacao_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Além disso, outra informação útil é a sua <strong>função de distribuição acumulada</strong>, que descreve a probabilidade da variável aleatória <span class="math inline">\(X\)</span> ser menor ou igual a <span class="math inline">\(x\)</span>, ou seja, <span class="math inline">\(F(x_i)=P(X \leq x_i), \hspace{0.3 cm} \forall i\)</span>. Pensando no exemplo anterioir, podemos obter a sua função de distribuição acumulada: <span class="math display">\[
+<p>Além disso, outra informação útil é a sua <strong>função de distribuição acumulada</strong>, que descreve a probabilidade da variável aleatória <span class="math inline">\(X\)</span> ser menor ou igual a <span class="math inline">\(x\)</span>, ou seja, <span class="math inline">\(F(x_i)=P(X \leq x_i), \hspace{0.3 cm} \forall i\)</span>. Pensando no exemplo anterior, podemos obter a sua função de distribuição acumulada: <span class="math display">\[
 F(y) =
     \begin{cases}
     0 &amp; se \ y &lt; 0; \\
@@ -411,7 +412,7 @@ F(y) =
     \end{cases}
 \]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'dplyr'</code></pre>
@@ -426,23 +427,17 @@ Attaching package: 'dplyr'</code></pre>
 
     intersect, setdiff, setequal, union</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(df, <span class="at">fy =</span> <span class="fu">cumsum</span>(py))</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(df, <span class="at">Fy =</span> <span class="fu">cumsum</span>(py))</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  y        py        fy
+<pre><code>  y        py        Fy
 1 0 0.2353917 0.2353917
 2 1 0.4995602 0.7349519
 3 2 0.2650481 1.0000000</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>df, <span class="fu">aes</span>(<span class="at">x =</span> y, <span class="at">y =</span> fy)) <span class="sc">+</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_step</span>() <span class="sc">+</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Valores"</span>, <span class="at">y =</span> <span class="st">"Probabilidade Acumulada"</span>, <span class="at">title =</span> <span class="st">"Função de Distribuição Acumulada"</span>) <span class="sc">+</span> </span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">1</span>) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="estimacao_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -458,7 +453,7 @@ E(Y)= 0.4995602 + 0.5300962 = 1.029656
 \]</span> Interpretando esse resultado, repetindo esse experimento infinitas vezes, a média dos resultados seria igual a 0.7646083. Ou seja, em média, esperamos que 1.029656 indivíduos apresentem a variante gama ao selecionarmos dois deles aleatoriamente nessa população.</p>
 <p>A esperança também pode ser calculada usando o <em>RStudio</em>, usando a função <code>weighted.mean</code>, em que o primeiro argumento é um vetor que armazena os valores, e o segundo um vetor que armazena suas respectivas probabilidaes.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">weighted.mean</span>(<span class="at">x=</span>df<span class="sc">$</span>y, <span class="at">w=</span>df<span class="sc">$</span>py)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">weighted.mean</span>(<span class="at">x=</span>df<span class="sc">$</span>y, <span class="at">w=</span>df<span class="sc">$</span>py)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.029656</code></pre>
 </div>
@@ -475,8 +470,8 @@ E(Y)= 0.4995602 + 0.5300962 = 1.029656
 Var(X)=E(X^2)-[E(X)]^2, \ \text{sendo} \ E(X^2)=\sum_{x_i\in R_x}x^2p(x_i)
 \]</span> Dessa forma, para a variável aleatória <span class="math inline">\(Y\)</span>, teremos:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>variancia <span class="ot">=</span> <span class="fu">weighted.mean</span>(<span class="at">x=</span>(df<span class="sc">$</span>y)<span class="sc">^</span><span class="dv">2</span>, <span class="at">w=</span>df<span class="sc">$</span>py) <span class="sc">-</span> <span class="fu">weighted.mean</span>(<span class="at">x=</span>df<span class="sc">$</span>y, <span class="at">w=</span>df<span class="sc">$</span>py)<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>variancia</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>variancia <span class="ot">=</span> <span class="fu">weighted.mean</span>(<span class="at">x=</span>(df<span class="sc">$</span>y)<span class="sc">^</span><span class="dv">2</span>, <span class="at">w=</span>df<span class="sc">$</span>py) <span class="sc">-</span> <span class="fu">weighted.mean</span>(<span class="at">x=</span>df<span class="sc">$</span>y, <span class="at">w=</span>df<span class="sc">$</span>py)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>variancia</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4995603</code></pre>
 </div>
@@ -490,11 +485,64 @@ Var(X)=E(X^2)-[E(X)]^2, \ \text{sendo} \ E(X^2)=\sum_{x_i\in R_x}x^2p(x_i)
 \text{IV)} \ Var(X-y)=Var(X) + Var(Y) \\
 \text{V)} \ Var(X+c)=Var(X)
 \end{align}\]</span>
+<section id="modelos-de-probabilidade-discretos" class="level5" data-number="5.1.2.1.1">
+<h5 data-number="5.1.2.1.1" class="anchored" data-anchor-id="modelos-de-probabilidade-discretos"><span class="header-section-number">5.1.2.1.1</span> Modelos de probabilidade discretos</h5>
+<p>Algumas variáveis aleatórias se adaptam a modelos de probabilidade já definidos, que serão descritos a seguir.</p>
+<section id="modelo-bernoulli" class="level6" data-number="5.1.2.1.1.1">
+<h6 data-number="5.1.2.1.1.1" class="anchored" data-anchor-id="modelo-bernoulli"><span class="header-section-number">5.1.2.1.1.1</span> Modelo Bernoulli</h6>
+<p>O modelo Bernoulli é utilizado quando queremos descrever a ocorrêcia ou não de um evento, que consideramos como sendo o “sucesso”. Assim, seu espaço amostral apresenta apenas dois elementos: o valor 1 representando a ocorrência do “sucesso” e o valor 0 indicando o “fracasso”, ou seja, a não ocorrência do sucesso. Para cada experimento alestório, definimos qual será o evento denominado de “sucesso”. Por exemplo, pensando na ocorrência ou não de cardiopatia em uma gestante ou puérpera diagnosticada com COVID-19 de março de 2020 a dezembro de 2021, podemos definir a presença de cardiopatia como o evento que chamamos de “sucesso” e a não presença como o “fracasso”, usando o modelo Bernoulli para compreeder o comportamento dessa variável.</p>
+<p>Desse modo, tconsiderando uma probabilidade <span class="math inline">\(p\)</span> de sucesso, a variável aleatória <span class="math inline">\(X\)</span> apresenta a seguinte função massa de probabilidade</p>
+<span class="math display">\[\begin{align}
+p(0)=1-p \\
+p(1)=p
+\end{align}\]</span>
+<p>Também podemos definir a esperança e variância como:</p>
+<p><span class="math display">\[
+E(X)=p
+\]</span> <span class="math display">\[
+Var(X)=p-p^2=p(1-p)
+\]</span></p>
+</section>
+<section id="modelo-binomial" class="level6" data-number="5.1.2.1.1.2">
+<h6 data-number="5.1.2.1.1.2" class="anchored" data-anchor-id="modelo-binomial"><span class="header-section-number">5.1.2.1.1.2</span> Modelo Binomial</h6>
+<p>Vamos supor que agora queremos analisar a presença ou não de cardiopatia em vinte indivíduos selecionados aleatoriamente. Teremos uma repetição de vinte eventos Bernoulli, já que vamos analisar se houve ou não “sucesso”, nesse caso, a ocorrência de cardiopatia em cada um dos indivíduos. Assim, a nossa variável de interesse será o número de indivíduos que apresentam cardiopatia dentre esse grupo. Logo, no modelo Binomial, a variável aleatória <span class="math inline">\(X\)</span> representa o número de “sucessos” em <span class="math inline">\(n\)</span> ensaios, ou seja, em <span class="math inline">\(n\)</span> repetições independentes de um evento Bernoulli com probabilidade de sucesso <span class="math inline">\(p\)</span>. A sua função massa de probabilidade é escrita como</p>
+<p><span class="math display">\[
+P(X=x)= \binom nx p^x(1-p)^{n-x}
+\]</span> Similarmente, também escrevemos a sua esperança e variância como</p>
+<p><span class="math display">\[
+E(X)=np
+\]</span> <span class="math display">\[
+Var(X)=np(1-p)
+\]</span></p>
+</section>
+<section id="modelo-hipergeométrico" class="level6" data-number="5.1.2.1.1.3">
+<h6 data-number="5.1.2.1.1.3" class="anchored" data-anchor-id="modelo-hipergeométrico"><span class="header-section-number">5.1.2.1.1.3</span> Modelo Hipergeométrico</h6>
+<p>Ainda considerando o exemplo anterior, vamos pensar agora que esses indivíduos são selecionados sem reposição, ou seja, um mesmo indivíduo não pode ser selecionado mais de uma vez. Assim, é evidente que a probabilidade de se retirar um indivíduo com cardiopatia é alterada a cada sorteio, diferente do modelo binomial. Dessa forma, o modelo hipergeométrico descreve a variável aleatória que representa o número de sucessos em <span class="math inline">\(n\)</span> repetições de ensaios Bernoulli dependentes. Em uma população de <span class="math inline">\(N\)</span> elementos onde <span class="math inline">\(k\)</span> apresentam a característica definida como sucesso, a função massa de probabilidade será <span class="math display">\[
+P(X=x)= \frac{ \binom Kx \binom {N-k}{n-x}}{\binom Nn }
+\]</span> Também definimos a sua esperança e variância como</p>
+<p><span class="math display">\[
+E(X)=np
+\]</span> <span class="math display">\[
+Var(X)=np(1-p)\frac{N-n}{N-1}
+\]</span></p>
+</section>
+<section id="modelo-poisson" class="level6" data-number="5.1.2.1.1.4">
+<h6 data-number="5.1.2.1.1.4" class="anchored" data-anchor-id="modelo-poisson"><span class="header-section-number">5.1.2.1.1.4</span> Modelo Poisson</h6>
+<p>Pense agora no número de óbitos de gestantes e puérperas mensalmente por COVID-19. Nesse caso estamos interessados em saber o número de ocorrências de um evento em um determinado período de tempo, variável que é descrita pelo modelo Poisson. Para sabermos a distribuição dessa variável aleatória <span class="math inline">\(X\)</span>, basta conhecermos a média de eventos <span class="math inline">\(\lambda\)</span> nesse dado intervalo de tempo, visto que sua função massa de probabilidade é dada por</p>
+<p><span class="math display">\[
+P(X=x)= \frac{e^{-\lambda}\lambda^x}{x!}, \ \lambda&gt;0
+\]</span> A esperança e variância de <span class="math inline">\(X\)</span> podem ser escritas como <span class="math display">\[
+E(X)=\lambda
+\]</span> <span class="math display">\[
+Var(X)=\lambda
+\]</span></p>
+</section>
+</section>
 </section>
 <section id="variáveis-aleatórias-contínuas" class="level4" data-number="5.1.2.2">
 <h4 data-number="5.1.2.2" class="anchored" data-anchor-id="variáveis-aleatórias-contínuas"><span class="header-section-number">5.1.2.2</span> Variáveis aleatórias contínuas</h4>
-<p>Uma variável aleatória é classifcada como contínua quando pode assumir infinitos ou um número grande finito de valores dentro de um intervalo, ou seja, quando <span class="math inline">\(R_x\)</span> forma um conjunto não-enumerável. Como exemplo podemos citar a idade das gestantes e puérperas diagnosticadas com COVID-19 no período de março de 2020 a dezembro de 2021, representada pela variável <code>idade_anos</code>.</p>
-<p>Como não conseguimos listar todos os possíveis valores de uma variável aleatória contínua <span class="math inline">\(X\)</span>, também não podemos atribuir uma probabilide de ocorrência a cada valor. Desse modo, calculamos as probabilides de intervalos, que corresponde à área abaixo da <strong>função densidade de probabilidade</strong> <span class="math inline">\(f(x)\)</span>. Essa função satisfaz as seguintes propriedades:</p>
+<p>Uma variável aleatória é classifcada como contínua quando pode assumir infinitos ou um número grande finito de valores dentro de um intervalo, ou seja, quando <span class="math inline">\(R_x\)</span> forma um conjunto não-enumerável. Como exemplo, podemos citar a idade das gestantes e puérperas diagnosticadas com COVID-19 no período de março de 2020 a dezembro de 2021, representada pela variável <code>idade_anos</code>.</p>
+<p>Como não conseguimos listar todos os possíveis valores de uma variável aleatória contínua <span class="math inline">\(X\)</span>, também não podemos atribuir uma probabildade de ocorrência a cada valor. Desse modo, calculamos as probabilides de intervalos, que corresponde à área abaixo da <strong>função densidade de probabilidade</strong> <span class="math inline">\(f(x)\)</span>. Essa função satisfaz as seguintes propriedades:</p>
 <p><span class="math display">\[
 \begin{align}
 \text{I)} \ f(x)\geq0 \ \forall x\in R_x \\
@@ -502,28 +550,17 @@ Var(X)=E(X^2)-[E(X)]^2, \ \text{sendo} \ E(X^2)=\sum_{x_i\in R_x}x^2p(x_i)
 \end{align}
 \]</span> A seguir apresentamos graficamente a função densidade de probabilidade das idades das gestantes e puérperas diagnosticadas com COVID-19 no de março de 2020 a dezembro de 2021.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>dados, <span class="fu">aes</span>(<span class="at">x=</span>idade_anos)) <span class="sc">+</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill=</span><span class="st">"lightblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Idade (anos)"</span>, <span class="at">y =</span> <span class="st">"Densidade"</span>) <span class="sc">+</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"ggplot2"</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>dados, <span class="fu">aes</span>(<span class="at">x=</span>idade_anos)) <span class="sc">+</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill=</span><span class="st">"lightblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Idade (anos)"</span>, <span class="at">y =</span> <span class="st">"Densidade"</span>) <span class="sc">+</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="estimacao_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Sabemos que a área colorida corresponde a 1, pois estamos considerando todos as possíveis idades, mas vamos agora analisar o caso em que queremos saber a probabilidade de, sorteando uma dessas pessoas ao acaso, a sua idade estar entre 20 e 30 anos. Já que sabemos que a probabilidade corresponde à área abaixo do gráfico, podemos concluir que é equivalente a calcular a área colorida abaixo</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>densidade <span class="ot">&lt;-</span> <span class="fu">density</span>(dados<span class="sc">$</span>idade_anos)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>area_colorida <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> densidade<span class="sc">$</span>x, <span class="at">y =</span> densidade<span class="sc">$</span>y)</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>area_colorida <span class="ot">&lt;-</span> <span class="fu">subset</span>(area_colorida, x <span class="sc">&gt;=</span> <span class="dv">20</span> <span class="sc">&amp;</span> x <span class="sc">&lt;=</span> <span class="dv">30</span>)</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(<span class="at">x =</span> idade_anos)) <span class="sc">+</span></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="at">data =</span> area_colorida,</span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>              <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">ymin =</span> <span class="dv">0</span>, <span class="at">ymax =</span> y),</span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">fill =</span> <span class="st">"lightblue"</span>) <span class="sc">+</span></span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Idade (anos)"</span>, <span class="at">y =</span> <span class="st">"Densidade"</span>) <span class="sc">+</span></span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="estimacao_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -538,18 +575,6 @@ P(a\leq X \leq b)=\int_a^bf(x)dx
 F(x)=P(X\leq x)=\int_{-\infty}^{x}f(x)dx
 \]</span> Se, no exemplo anterior queremos calcular a probabilidade da idade de um indivíduo sorteado ao acaso ser menor ou igual a 20, desejamos calcular a área</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>densidade <span class="ot">&lt;-</span> <span class="fu">density</span>(dados<span class="sc">$</span>idade_anos)</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>area_colorida <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> densidade<span class="sc">$</span>x, <span class="at">y =</span> densidade<span class="sc">$</span>y)</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>area_colorida <span class="ot">&lt;-</span> <span class="fu">subset</span>(area_colorida, x <span class="sc">&gt;=</span> <span class="dv">0</span> <span class="sc">&amp;</span> x <span class="sc">&lt;=</span> <span class="dv">20</span>)</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(<span class="at">x =</span> idade_anos)) <span class="sc">+</span></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="at">data =</span> area_colorida,</span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>              <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">ymin =</span> <span class="dv">0</span>, <span class="at">ymax =</span> y),</span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">fill =</span> <span class="st">"lightblue"</span>) <span class="sc">+</span></span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Idade (anos)"</span>, <span class="at">y =</span> <span class="st">"Densidade"</span>) <span class="sc">+</span></span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="estimacao_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -561,6 +586,90 @@ P(Y\leq 20)=\int_{10}^{20}f(y)dy
 E(X)=\int_{-\infty}^{\infty}xf(x)dx \\
 Var(X)=E(X^2)-[E(X)]^2, \ \text{onde} \ E(X^2)=\int^{\infty}_{-\infty}x^2f(x)dx
 \end{align}\]</span>
+<section id="modelos-de-probabilidade-contínuos" class="level5" data-number="5.1.2.2.1">
+<h5 data-number="5.1.2.2.1" class="anchored" data-anchor-id="modelos-de-probabilidade-contínuos"><span class="header-section-number">5.1.2.2.1</span> Modelos de probabilidade contínuos</h5>
+<section id="modelo-uniforme" class="level6" data-number="5.1.2.2.1.1">
+<h6 data-number="5.1.2.2.1.1" class="anchored" data-anchor-id="modelo-uniforme"><span class="header-section-number">5.1.2.2.1.1</span> Modelo Uniforme</h6>
+<p>Quando os elementos do espaço amostral de uma variável aleatória contínua <span class="math inline">\(X\)</span> de <span class="math inline">\(R_x =[a, b]\)</span> têm mesma probailidade de ocorrência, dizemos que essa variável apresenta distribuição uniforme no intervalo <span class="math inline">\([a, b]\)</span>. Assim, sua função densidade de probabilidade é dada por</p>
+<p><span class="math display">\[
+f(x) =
+    \begin{cases}
+    \frac{1}{b-a}, &amp; \ a \leq x \leq b \\
+    0, &amp; c.c.
+    \end{cases}
+\]</span> Da mesma forma, sua esperança e variância são</p>
+<p><span class="math display">\[
+E(X)=\frac{a+b}{2}
+\]</span></p>
+<p><span class="math display">\[
+Var(X)=\frac{(b-a)^2}{12}
+\]</span></p>
+<p>Para facilitar a compreensão dessa distribuição, vamos visualizar a sua função densidade de probabilidade. A seguir vamos simular uma distribuição uniforme no intervalo <span class="math inline">\([0, 5]\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>uniforme <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1000000</span>, <span class="at">min=</span><span class="dv">0</span>, <span class="at">max=</span><span class="dv">5</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>df_unif <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(uniforme)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>df_unif, <span class="fu">aes</span>(<span class="at">x=</span>uniforme)) <span class="sc">+</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill=</span><span class="st">"lightblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Valores da distribuição uniforme"</span>, <span class="at">y =</span> <span class="st">"Densidade"</span>) <span class="sc">+</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="fl">0.4</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="estimacao_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="modelo-exponencial" class="level6" data-number="5.1.2.2.1.2">
+<h6 data-number="5.1.2.2.1.2" class="anchored" data-anchor-id="modelo-exponencial"><span class="header-section-number">5.1.2.2.1.2</span> Modelo exponencial</h6>
+<p>Essa distribuição é amplamente utilizada para quando descrever o tempo entre as ocorrências de um evento, fazendo sentido que assuma apenas valores positivos. Dessa forma, percebemos que há uma relação entre o modelo exponencial e o de poisson, visto que a distribuição exponencial é usada para modelar o tempo entre eventos de uma distribuição Poisson, sendo que o eventos ocorrem de forma independente e a taxa média <span class="math inline">\(\lambda\)</span> é constante. A sua função densidade de probabilidade é</p>
+<p><span class="math display">\[
+f(x) =
+    \begin{cases}
+    \lambda e^{-\lambda x}, &amp; x \geq 0 \\
+    0, &amp; c.c.
+    \end{cases}
+\]</span> Considerando <span class="math inline">\(\lambda=1\)</span>, representamos <span class="math inline">\(f(x)\)</span> graficamente como</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>exponencial <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="dv">100000</span>, <span class="dv">1</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>df_exp <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(exponencial)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>df_exp, <span class="fu">aes</span>(<span class="at">x=</span>exponencial)) <span class="sc">+</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill=</span><span class="st">"lightblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Valores da distribuição exponencial"</span>, <span class="at">y =</span> <span class="st">"Densidade"</span>) <span class="sc">+</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="estimacao_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Também podemos escrever a sua esperança e variância como <span class="math display">\[
+E(X)=\frac{1}{\lambda}
+\]</span> <span class="math display">\[
+Var(X)=\frac{1}{\lambda^2}
+\]</span></p>
+</section>
+<section id="modelo-normal-ou-gaussiano" class="level6" data-number="5.1.2.2.1.3">
+<h6 data-number="5.1.2.2.1.3" class="anchored" data-anchor-id="modelo-normal-ou-gaussiano"><span class="header-section-number">5.1.2.2.1.3</span> Modelo Normal ou Gaussiano</h6>
+<p>A distribuição normal é de grande importantância, já que é empregada cmo aproximação para diversos fenômenos naturais, como, por exemplo o peso de recém-nascidos, a pressão arterial em uma população saudável ou o tempo de internação hospitalar. Essa distribuição de parâmetros <span class="math inline">\(\mu\)</span> e <span class="math inline">\(\sigma^2\)</span> apresenta a seguinte função de distribuição de probabilidade</p>
+<p><span class="math display">\[
+  f(x)= \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}, \ -\infty \leq x \leq \infty
+\]</span></p>
+<p>Quando a distribuição normal apresenta parâmetros <span class="math inline">\(\mu=0\)</span> e <span class="math inline">\(\sigma^2=1\)</span>, dizemos que é uma distribuição normal padrão, denotada como sendo a variável aleatória <span class="math inline">\(Z\)</span>, cuja função de densidade é apresentada abaixo</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2402</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>normal <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000000</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>df_normal <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(normal)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>df_normal, <span class="fu">aes</span>(<span class="at">x=</span>normal)) <span class="sc">+</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill=</span><span class="st">"lightblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Valores da distribuição normal"</span>, <span class="at">y =</span> <span class="st">"Densidade"</span>) <span class="sc">+</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="estimacao_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Analisando o gráfico acima, observamos que os dados se concentram em torno da média, os dados estarão mais dispersos conforme o aumento de <span class="math inline">\(\sigma^2\)</span> e que a distribuição é simétrica, ou seja, <span class="math inline">\(f(\mu-x)=f(\mu+x)\)</span>.</p>
+</section>
+</section>
 </section>
 </section>
 </section>
@@ -583,16 +692,16 @@ Var(X)=E(X^2)-[E(X)]^2, \ \text{onde} \ E(X^2)=\int^{\infty}_{-\infty}x^2f(x)dx
 <h3 data-number="5.3.1" class="anchored" data-anchor-id="estimação-pontual-da-média-de-uma-população"><span class="header-section-number">5.3.1</span> Estimação pontual da média de uma população</h3>
 <p>Voltando aos exemplos apresentados na introdução do capítulo, suponha, primeiramente, que nosso parâmetro de interesse seja a idade média das gestantes e puérperas hospitalizadas por COVID-19 que vieram a óbito por conta dessa doença no período de março de 2020 a dezembro de 2021, a qual denotaremos por <span class="math inline">\(\mu\)</span>. Como temos acesso a todos os registros dessa população, o valor desse parâmetro não é desconhecido, mas isso servirá de auxílio para exemplificar os métodos que aqui serão empregados. Criando um vetor contendo todos os elementos da população, temos:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_rds</span>(<span class="st">"dados/dados_covid[LIMPO].rds"</span>)</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>populacao1 <span class="ot">&lt;-</span> dados<span class="sc">$</span>idade_anos[<span class="fu">which</span>(dados<span class="sc">$</span>evolucao <span class="sc">==</span> <span class="st">"óbito"</span>)]</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(populacao1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_rds</span>(<span class="st">"dados/dados_covid[LIMPO].rds"</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>populacao1 <span class="ot">&lt;-</span> dados<span class="sc">$</span>idade_anos[<span class="fu">which</span>(dados<span class="sc">$</span>evolucao <span class="sc">==</span> <span class="st">"óbito"</span>)]</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(populacao1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1266</code></pre>
 </div>
 </div>
 <p>O processo envolvido na criação do vetor <code>populacao1</code> é o seguinte: dentro do data frame <code>dados</code>, que contém todos os registros de nossa população, estamos selecionando o valor da variável <code>idade_anos</code> de todas as pacientes para as quais o valor da variável <code>evolucao</code> é “óbito”. O tamanho desse vetor, obtido por meio da função <code>length()</code>, do pacote básico <code>{base}</code>, é de 1266. Ou seja, a população de gestantes e puérperas hospitalizadas por COVID-19 que vieram a óbito por conta dessa doença no período considerado é composta por 1266 elementos. Para calcular o valor da idade média dessas mulheres, podemos utilizar a função <code>mean()</code>, também do pacote básico <code>{base}</code>, que calcula a média aritmética de um dado vetor.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(populacao1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(populacao1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 31.80806</code></pre>
 </div>
@@ -604,9 +713,9 @@ Var(X)=E(X^2)-[E(X)]^2, \ \text{onde} \ E(X^2)=\int^{\infty}_{-\infty}x^2f(x)dx
 <p>Antes da realização da amostragem, denotamos as variáveis a serem selecionadas por <span class="math inline">\(X_1, X_2, ..., X_{n}\)</span>, sendo <span class="math inline">\(X_i\)</span> a variável aleatória que representa a idade da <span class="math inline">\(i\)</span>-ésima gestante ou puérpera hospitalizada pela COVID-19 e que faleceu em decorrência dessa doença, com <span class="math inline">\(i = 1, 2, ..., n\)</span>. Dizemos que essa sequência de variáveis aleatórias forma uma amostra aleatória de tamanho <span class="math inline">\(n\)</span>. Sendo, novamente, <span class="math inline">\(\mu\)</span> o parâmetro que representa a idade média da população em questão, e denotando por <span class="math inline">\(\sigma^2\)</span> o parâmetro que representa a variância populacional das idades dessas gestantes e puérperas, temos, ainda, que <span class="math inline">\(E(X_i) = \mu\)</span> e que <span class="math inline">\(Var(X_i) = \sigma^2\)</span>.</p>
 <p>Dentro do R, podemos obter uma amostra aleatória de tamanho, digamos, <span class="math inline">\(n = 30\)</span>, a partir da função <code>sample()</code>, do pacote básico <code>{base}</code>. Utilizaremos três argumentos dessa função: o primeiro, <code>x</code>, recebe o vetor de elementos do qual a amostra será retirada; o segundo, <code>size</code>, recebe o número de itens a serem sorteados; por fim, o terceiro argumento, <code>replace</code>, receberá o valor <code>TRUE</code>, indicando que a amostragem deve ser realizada com reposição. O código utilizado para a realização desse processo, bem como a amostra obtida, podem ser vistos abaixo.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">43</span>)</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>amostra1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="at">x =</span> populacao1, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>amostra1</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">43</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>amostra1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="at">x =</span> populacao1, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>amostra1</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 32 27 37 38 39 32 30 24 29 30 34 40 33 17 34 35 32 38 23 24 33 38 18 25 26
 [26] 32 25 36 29 32</code></pre>
@@ -614,21 +723,21 @@ Var(X)=E(X^2)-[E(X)]^2, \ \text{onde} \ E(X^2)=\int^{\infty}_{-\infty}x^2f(x)dx
 </div>
 <p>É importante ressaltar que, enquanto <span class="math inline">\(X_1, X_2, ..., X_{30}\)</span> são variáveis aleatórias, os valores guardados no vetor <code>amostra1</code> representam realizações das mesmas. Dessa forma, temos, para a amostra sorteada, que <span class="math inline">\(x_1 = 32\)</span>, <span class="math inline">\(x_2 = 27\)</span>, <span class="math inline">\(x_3 = 37\)</span> e assim por diante. Essas realizações seriam, muito provavalmente, diferentes caso desempenhássemos o procedimento de retirada da amostra novamente. No presente caso, o código acima sempre resultará nos mesmos elementos, uma vez que estamos fixando a semente inicial do gerador de números pseudo-aleatórios do R por meio da função <code>set.seed()</code>, do pacote básico <code>{base}</code>. Desfixando a semente inicial do sorteio, entretanto, o resultado obtido através da função <code>sample()</code> seria diferente a cada vez que rodássemos o bloco de código. Observe.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="at">x =</span> populacao1, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="at">x =</span> populacao1, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 33 33 27 17 27 24 28 29 30 32 32 31 41 25 30 26 41 26 27 33 27 33 24 39 36
 [26] 30 40 32 28 23</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="at">x =</span> populacao1, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="at">x =</span> populacao1, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 33 42 32 29 32 30 30 39 35 48 32 26 27 42 23 29 31 37 27 32 25 41 43 22 21
 [26] 30 34 22 30 37</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="at">x =</span> populacao1, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="at">x =</span> populacao1, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 22 33 32 30 30 31 36 37 37 23 28 33 38 40 21 23 38 33 23 37 27 31 43 39 41
 [26] 36 35 39 39 45</code></pre>
@@ -674,7 +783,7 @@ Var(\bar{X}) = Var\left(\frac{\sum_{i = 1}^{n} X_i}{n}\right) = \frac{1}{n^2} Va
 \]</span></p>
 <p>Substituindo os valores da amostra coletada e calculando sua média aritmética, obtemos:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(amostra1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(amostra1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 30.73333</code></pre>
 </div>
@@ -686,12 +795,12 @@ Var(\bar{X}) = Var\left(\frac{\sum_{i = 1}^{n} X_i}{n}\right) = \frac{1}{n^2} Va
 <h3 data-number="5.3.2" class="anchored" data-anchor-id="estimação-pontual-da-proporção-populacional"><span class="header-section-number">5.3.2</span> Estimação pontual da proporção populacional</h3>
 <p>Para o segundo exemplo, suponha que o parâmetro no qual temos interesse seja a proporção válida de gestantes e puérperas hospitalizadas por COVID-19 no período de março de 2020 a dezembro de 2021 que apresentaram diarreia como um de seus sintomas. Representaremos esse parâmetro por <span class="math inline">\(p\)</span>. Assim como no exemplo anterior, podemos calcular seu valor, uma vez que temos acesso a todos os registros dessa população. Note que, como estamos tratando da proporção válida, precisamos que nossa população seja composta apenas pelas mulheres para as quais o valor da variável <code>diarreia</code> foi preenchido de forma válida (ou seja, com <code>sim</code> ou <code>não</code>). Assim, temos:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>populacao2 <span class="ot">&lt;-</span> dados<span class="sc">$</span>diarreia[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">is.na</span>(dados<span class="sc">$</span>diarreia) <span class="sc">&amp;</span> dados<span class="sc">$</span>diarreia <span class="sc">!=</span> <span class="st">"ignorado"</span>)]</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(populacao2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>populacao2 <span class="ot">&lt;-</span> dados<span class="sc">$</span>diarreia[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">is.na</span>(dados<span class="sc">$</span>diarreia) <span class="sc">&amp;</span> dados<span class="sc">$</span>diarreia <span class="sc">!=</span> <span class="st">"ignorado"</span>)]</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(populacao2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 8472</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(populacao2, <span class="dv">20</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(populacao2, <span class="dv">20</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "não" "não" "não" "não" "não" "não" "não" "não" "não" "não" "não" "não"
 [13] "não" "sim" "não" "não" "não" "não" "não" "não"</code></pre>
@@ -699,15 +808,15 @@ Var(\bar{X}) = Var\left(\frac{\sum_{i = 1}^{n} X_i}{n}\right) = \frac{1}{n^2} Va
 </div>
 <p>Observando as saídas acima, podemos notar que nossa população é formada por 8.472 elementos, que assumem valor <code>sim</code>, quando a gestante ou puérpera apresentou diarreia como um dos sintomas da COVID-19, e <code>não</code>, quando esse sintoma não foi apresentado. Para facilitar nosso trabalho a partir daqui, transformaremos os valores <code>sim</code> em 1 e os valores <code>não</code> em 0, utilizando para isso a função <code>ifelse()</code>, do pacote básico <code>{base}</code>. Essa função recebe três argumentos: o primeiro, <code>test</code>, recebe um vetor lógico; o segundo, <code>yes</code>, recebe o valor que a função deve retornar quando o dado elemento desse vetor lógico for verdadeiro; por fim, o terceiro argumento, <code>no</code>, recebe o valor que a função deve retornar quando o dado elemento do vetor lógico for falso. Observe o código e a saída abaixo.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>populacao2_transformada <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(populacao2 <span class="sc">==</span> <span class="st">"sim"</span>, <span class="at">yes =</span> <span class="dv">1</span>, <span class="at">no =</span> <span class="dv">0</span>)</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(populacao2_transformada, <span class="dv">20</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>populacao2_transformada <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(populacao2 <span class="sc">==</span> <span class="st">"sim"</span>, <span class="at">yes =</span> <span class="dv">1</span>, <span class="at">no =</span> <span class="dv">0</span>)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(populacao2_transformada, <span class="dv">20</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0</code></pre>
 </div>
 </div>
 <p>Calculando, por fim, a proporção desejada, que nada mais será do que a média aritmética do vetor <code>populacao2_transformada</code>, uma vez que ele é formado por zeros e uns, temos:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(populacao2_transformada)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(populacao2_transformada)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.128305</code></pre>
 </div>
@@ -731,16 +840,16 @@ Var(\hat{p}) = Var \left( \frac{\sum_{i = 1}^{n} Y_i}{n} \right) = \frac{1}{n^2}
 \]</span></p>
 <p>Observe que, quanto maior o valor do tamanho de amostra <span class="math inline">\(n\)</span>, menor é o valor da variânica de <span class="math inline">\(\hat{p}\)</span>. Essa informação, aliada ao fato de <span class="math inline">\(\hat{p}\)</span> ser não viciado, nos permite concluir que o estimador em questão é consistente. Investigadas as propriedades do estimador, podemos partir para a retirada da amostra, utilizando novamente a função <code>sample()</code> para simular uma amostra de tamanho <span class="math inline">\(n = 30\)</span> obtida por meio da AAS com reposição. A amostra coletada pode ser vista abaixo.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">43</span>)</span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>amostra2 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="at">x =</span> populacao2_transformada, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>amostra2</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">43</span>)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>amostra2 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="at">x =</span> populacao2_transformada, <span class="at">size =</span> <span class="dv">30</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>amostra2</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0</code></pre>
 </div>
 </div>
 <p>Aplicando os valores obtidos no estimador da proporção amostral, que nada mais é do que a média aritmética da amostra, temos:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(amostra2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(amostra2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1333333</code></pre>
 </div>
@@ -763,11 +872,11 @@ Var(\hat{p}) = Var \left( \frac{\sum_{i = 1}^{n} Y_i}{n} \right) = \frac{1}{n^2}
 </ul>
 <p>Médias e variâncias não são, todavia, tudo aquilo que precisamos para determinar a distribuição amostral de estimadores. Precisamos, também, determinar sua “forma”. Para isso, coletaremos várias amostras e construiremos histogramas das distribuições de <span class="math inline">\(\bar{X}\)</span> e <span class="math inline">\(\hat{p}\)</span> para diferentes tamanhos de amostra. Comecemos simulando <span class="math inline">\(M\)</span> = 100 amostras, cada uma com tamanho <span class="math inline">\(n\)</span> = 15, da população de idades de gestantes e puérperas hospitalizadas e falecidas em decorrência da COVID-19 no período em estudo, a qual chamamos de <code>populacao1</code>. Utilizaremos para isso a função <code>replicate()</code>, do pacote básico <code>{base}</code>. Essa função recebe dois argumentos: o primeiro, <code>n</code>, recebe o número de replicações a serem feitas, enquanto o segundo, <code>expr</code>, recebe a expressão que será replicada. O resultado, guardado no objeto <code>amostras_pop1</code>, é uma matriz na qual o elemento <span class="math inline">\([a_{ij}]\)</span> representa o <span class="math inline">\(i\)</span>-ésimo elemento da <span class="math inline">\(j\)</span>-ésima amostra, com <span class="math inline">\(i = 1, 2, ..., 15\)</span> e <span class="math inline">\(j = 1, 2, ..., 100\)</span>. As cinco primeiras colunas dessa matriz podem ser vistas abaixo.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">43</span>)</span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">15</span></span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>amostras_pop1 <span class="ot">&lt;-</span> <span class="fu">replicate</span>(M, <span class="at">expr =</span> <span class="fu">sample</span>(<span class="at">x =</span> populacao1, <span class="at">size =</span> n, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>amostras_pop1[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">43</span>)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>amostras_pop1 <span class="ot">&lt;-</span> <span class="fu">replicate</span>(M, <span class="at">expr =</span> <span class="fu">sample</span>(<span class="at">x =</span> populacao1, <span class="at">size =</span> n, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>amostras_pop1[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      [,1] [,2] [,3] [,4] [,5]
  [1,]   32   35   33   26   33
@@ -789,9 +898,9 @@ Var(\hat{p}) = Var \left( \frac{\sum_{i = 1}^{n} Y_i}{n} \right) = \frac{1}{n^2}
 </div>
 <p>Repetimos o mesmo processo para a população de gestantes e puérperas com preenchimento válido da variável <code>diarreia</code>, que chamamos de <code>populacao2_transformada</code>. Novamente, as cinco primeiras colunas da matriz de amostras, que agora denominamos <code>amostras_pop2</code>, podem ser vistas abaixo.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">43</span>)</span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>amostras_pop2 <span class="ot">&lt;-</span> <span class="fu">replicate</span>(M, <span class="at">expr =</span> <span class="fu">sample</span>(<span class="at">x =</span> populacao2_transformada, <span class="at">size =</span> n, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>amostras_pop2[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">43</span>)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>amostras_pop2 <span class="ot">&lt;-</span> <span class="fu">replicate</span>(M, <span class="at">expr =</span> <span class="fu">sample</span>(<span class="at">x =</span> populacao2_transformada, <span class="at">size =</span> n, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>amostras_pop2[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      [,1] [,2] [,3] [,4] [,5]
  [1,]    0    0    0    0    0
@@ -813,102 +922,102 @@ Var(\hat{p}) = Var \left( \frac{\sum_{i = 1}^{n} Y_i}{n} \right) = \frac{1}{n^2}
 </div>
 <p>Com as amostras em mãos, o próximo passo é calcular o valor do respectivo estimador em cada uma delas. Realizaremos esse processo com a função <code>apply()</code>, também do pacote básico <code>{base}</code>, a qual permite que apliquemos qualquer função em todas as linhas ou colunas de uma matriz. Utilizaremos três de seus argumentos: o primeiro, <code>X</code>, recebe a matriz na qual queremos aplicar a função; o segundo, <code>MARGIN</code>, recebe a direção em que a função será aplicada (1 caso queiramos que a função seja aplicada nas linhas da matriz, ou 2 caso queiramos a aplicar em suas colunas); por fim, o terceiro, <code>FUN</code>, recebe a função que queremos aplicar. O código utilizado nesse processo, bem como parte dos vetores obtidos, podem ser vistos abaixo.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>x_barras <span class="ot">&lt;-</span> <span class="fu">apply</span>(<span class="at">X =</span> amostras_pop1, <span class="at">MARGIN =</span> <span class="dv">2</span>, <span class="at">FUN =</span> mean)</span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(x_barras)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>x_barras <span class="ot">&lt;-</span> <span class="fu">apply</span>(<span class="at">X =</span> amostras_pop1, <span class="at">MARGIN =</span> <span class="dv">2</span>, <span class="at">FUN =</span> mean)</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(x_barras)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 31.73333 29.73333 29.26667 31.00000 33.33333 30.73333</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>p_chapeus <span class="ot">&lt;-</span> <span class="fu">apply</span>(<span class="at">X =</span> amostras_pop2, <span class="at">MARGIN =</span> <span class="dv">2</span>, <span class="at">FUN =</span> mean)</span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(p_chapeus)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>p_chapeus <span class="ot">&lt;-</span> <span class="fu">apply</span>(<span class="at">X =</span> amostras_pop2, <span class="at">MARGIN =</span> <span class="dv">2</span>, <span class="at">FUN =</span> mean)</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(p_chapeus)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1333333 0.1333333 0.0000000 0.2666667 0.1333333 0.2000000</code></pre>
 </div>
 </div>
 <p>Por fim, criemos os histogramas da distribuição de cada estimador. Como já discutimos sobre a criação de histogramas no capítulo de Estatística Descritiva, o código abaixo deve ser familiar.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x_barra =</span> x_barras), <span class="fu">aes</span>(<span class="at">x =</span> x_barra))  <span class="sc">+</span> </span>
-<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(</span>
-<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(density)),</span>
-<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"lightblue"</span>,</span>
-<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">bins =</span> <span class="dv">15</span>,</span>
-<span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"black"</span></span>
-<span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb60-10"><a href="#cb60-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">26</span>, <span class="dv">36</span>)) <span class="sc">+</span></span>
-<span id="cb60-11"><a href="#cb60-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb60-12"><a href="#cb60-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Idade média das gestantes e puérperas"</span>, </span>
-<span id="cb60-13"><a href="#cb60-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Densidade"</span>,</span>
-<span id="cb60-14"><a href="#cb60-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribuição amostral da médias amostrais para n = 15"</span></span>
-<span id="cb60-15"><a href="#cb60-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb60-16"><a href="#cb60-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(x_barras), <span class="at">linetype =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb60-17"><a href="#cb60-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(</span>
-<span id="cb60-18"><a href="#cb60-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">geom =</span> <span class="st">"text"</span>,</span>
-<span id="cb60-19"><a href="#cb60-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="dv">34</span>, </span>
-<span id="cb60-20"><a href="#cb60-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fl">0.3</span>,</span>
-<span id="cb60-21"><a href="#cb60-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">paste</span>(<span class="st">"Valor médio das estimativas:"</span>, <span class="fu">round</span>(<span class="fu">mean</span>(x_barras), <span class="dv">3</span>))</span>
-<span id="cb60-22"><a href="#cb60-22" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="estimacao_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">p_chapeu =</span> p_chapeus), <span class="fu">aes</span>(<span class="at">x =</span> p_chapeu))  <span class="sc">+</span> </span>
-<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(</span>
-<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(density)),</span>
-<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"steelblue"</span>, </span>
-<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">bins =</span> <span class="dv">15</span>, </span>
-<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"black"</span></span>
-<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>)) <span class="sc">+</span></span>
-<span id="cb61-9"><a href="#cb61-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb61-10"><a href="#cb61-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Proporção de gestantes ou puérperas com diarreia como sintoma"</span>, </span>
-<span id="cb61-11"><a href="#cb61-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Densidade"</span>,</span>
-<span id="cb61-12"><a href="#cb61-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribuição amostral das proporções amostrais para n = 15"</span></span>
-<span id="cb61-13"><a href="#cb61-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
-<span id="cb61-14"><a href="#cb61-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(p_chapeus), <span class="at">linetype =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb61-15"><a href="#cb61-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(</span>
-<span id="cb61-16"><a href="#cb61-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">geom =</span> <span class="st">"text"</span>,</span>
-<span id="cb61-17"><a href="#cb61-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fl">0.23</span>, </span>
-<span id="cb61-18"><a href="#cb61-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="dv">9</span>,</span>
-<span id="cb61-19"><a href="#cb61-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">paste</span>(<span class="st">"Valor médio das estimativas:"</span>, <span class="fu">round</span>(<span class="fu">mean</span>(p_chapeus), <span class="dv">3</span>))</span>
-<span id="cb61-20"><a href="#cb61-20" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="estimacao_files/figure-html/unnamed-chunk-30-2.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>Observando os histogramas, podemos notar que, mesmo para um tamanho de amostra pequeno como <span class="math inline">\(n\)</span> = 15, a distribuição de <span class="math inline">\(\bar{X}\)</span> se assemelha à distribuição normal, visto que apresenta o característico formato aproximado de sino e uma quase simetria em torno de sua média. Essa combinação de fatores nos sugere que <span class="math inline">\(X_1, X_2, ..., X_{15}\)</span>, as variáveis aleatórias que compõem as amostras da população de idades, seguem, também, uma distribuição simétrica em torno da média. Além disso, o valor médio das estimativas <span class="math inline">\(\bar{x}\)</span>, de 31,843, está muito próximo do verdadeiro valor do parâmetro populacional <span class="math inline">\(\mu\)</span>, que sabemos ser de 31,81 anos. Esse resultado já era esperado, uma vez que a distribuição de <span class="math inline">\(\bar{X}\)</span> está centrada em <span class="math inline">\(\mu\)</span>. Pouco podemos dizer, entretanto, do histograma da distribuição amostral de <span class="math inline">\(\hat{p}\)</span> até o momento; apenas que sua média está muito próxima do verdadeiro valor de <span class="math inline">\(p\)</span>, que sabemos ser de 0,128, como já era esperado pelo mesmo motivo. Aumentemos, então, o tamanho das amostras, e observemos os resultados obtidos. Como a única modificação será o valor da variável <code>n</code>, ocultaremos os códigos utilizados para evitar uma maior poluição visual. Dessa forma, para <span class="math inline">\(n\)</span> = 30, temos:</p>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="estimacao_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid" width="672"></p>
-</div>
-<div class="cell-output-display">
-<p><img src="estimacao_files/figure-html/unnamed-chunk-31-2.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>Para <span class="math inline">\(n = 50\)</span>,</p>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="estimacao_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid" width="672"></p>
-</div>
-<div class="cell-output-display">
-<p><img src="estimacao_files/figure-html/unnamed-chunk-32-2.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>Para <span class="math inline">\(n = 100\)</span>,</p>
-<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x_barra =</span> x_barras), <span class="fu">aes</span>(<span class="at">x =</span> x_barra))  <span class="sc">+</span> </span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(</span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(density)),</span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"lightblue"</span>,</span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">bins =</span> <span class="dv">15</span>,</span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"black"</span></span>
+<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb59-10"><a href="#cb59-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">26</span>, <span class="dv">36</span>)) <span class="sc">+</span></span>
+<span id="cb59-11"><a href="#cb59-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb59-12"><a href="#cb59-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Idade média das gestantes e puérperas"</span>, </span>
+<span id="cb59-13"><a href="#cb59-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Densidade"</span>,</span>
+<span id="cb59-14"><a href="#cb59-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribuição amostral da médias amostrais para n = 15"</span></span>
+<span id="cb59-15"><a href="#cb59-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb59-16"><a href="#cb59-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(x_barras), <span class="at">linetype =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb59-17"><a href="#cb59-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(</span>
+<span id="cb59-18"><a href="#cb59-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">geom =</span> <span class="st">"text"</span>,</span>
+<span id="cb59-19"><a href="#cb59-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="dv">34</span>, </span>
+<span id="cb59-20"><a href="#cb59-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fl">0.3</span>,</span>
+<span id="cb59-21"><a href="#cb59-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">paste</span>(<span class="st">"Valor médio das estimativas:"</span>, <span class="fu">round</span>(<span class="fu">mean</span>(x_barras), <span class="dv">3</span>))</span>
+<span id="cb59-22"><a href="#cb59-22" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="estimacao_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid" width="672"></p>
 </div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">p_chapeu =</span> p_chapeus), <span class="fu">aes</span>(<span class="at">x =</span> p_chapeu))  <span class="sc">+</span> </span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(density)),</span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"steelblue"</span>, </span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">bins =</span> <span class="dv">15</span>, </span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"black"</span></span>
+<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb60-10"><a href="#cb60-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Proporção de gestantes ou puérperas com diarreia como sintoma"</span>, </span>
+<span id="cb60-11"><a href="#cb60-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Densidade"</span>,</span>
+<span id="cb60-12"><a href="#cb60-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribuição amostral das proporções amostrais para n = 15"</span></span>
+<span id="cb60-13"><a href="#cb60-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb60-14"><a href="#cb60-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(p_chapeus), <span class="at">linetype =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb60-15"><a href="#cb60-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(</span>
+<span id="cb60-16"><a href="#cb60-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">geom =</span> <span class="st">"text"</span>,</span>
+<span id="cb60-17"><a href="#cb60-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fl">0.23</span>, </span>
+<span id="cb60-18"><a href="#cb60-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="dv">9</span>,</span>
+<span id="cb60-19"><a href="#cb60-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">paste</span>(<span class="st">"Valor médio das estimativas:"</span>, <span class="fu">round</span>(<span class="fu">mean</span>(p_chapeus), <span class="dv">3</span>))</span>
+<span id="cb60-20"><a href="#cb60-20" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="estimacao_files/figure-html/unnamed-chunk-33-2.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Por fim, para <span class="math inline">\(n = 200\)</span>,</p>
+<p>Observando os histogramas, podemos notar que, mesmo para um tamanho de amostra pequeno como <span class="math inline">\(n\)</span> = 15, a distribuição de <span class="math inline">\(\bar{X}\)</span> se assemelha à distribuição normal, visto que apresenta o característico formato aproximado de sino e uma quase simetria em torno de sua média. Essa combinação de fatores nos sugere que <span class="math inline">\(X_1, X_2, ..., X_{15}\)</span>, as variáveis aleatórias que compõem as amostras da população de idades, seguem, também, uma distribuição simétrica em torno da média. Além disso, o valor médio das estimativas <span class="math inline">\(\bar{x}\)</span>, de 31,843, está muito próximo do verdadeiro valor do parâmetro populacional <span class="math inline">\(\mu\)</span>, que sabemos ser de 31,81 anos. Esse resultado já era esperado, uma vez que a distribuição de <span class="math inline">\(\bar{X}\)</span> está centrada em <span class="math inline">\(\mu\)</span>. Pouco podemos dizer, entretanto, do histograma da distribuição amostral de <span class="math inline">\(\hat{p}\)</span> até o momento; apenas que sua média está muito próxima do verdadeiro valor de <span class="math inline">\(p\)</span>, que sabemos ser de 0,128, como já era esperado pelo mesmo motivo. Aumentemos, então, o tamanho das amostras, e observemos os resultados obtidos. Como a única modificação será o valor da variável <code>n</code>, ocultaremos os códigos utilizados para evitar uma maior poluição visual. Dessa forma, para <span class="math inline">\(n\)</span> = 30, temos:</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="estimacao_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid" width="672"></p>
 </div>
 <div class="cell-output-display">
 <p><img src="estimacao_files/figure-html/unnamed-chunk-34-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Para <span class="math inline">\(n = 50\)</span>,</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="estimacao_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="estimacao_files/figure-html/unnamed-chunk-35-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Para <span class="math inline">\(n = 100\)</span>,</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="estimacao_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="estimacao_files/figure-html/unnamed-chunk-36-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Por fim, para <span class="math inline">\(n = 200\)</span>,</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="estimacao_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="estimacao_files/figure-html/unnamed-chunk-37-2.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Observe que, conforme aumentamos o tamanho das amostras, os histogramas de ambos os estimadores tendem a se concentrar cada vez mais em torno de suas respectivas médias, uma vez que as variância das estimativas se torna cada vez menor. Dessa forma, podemos concluir que estimativas obtidas a partir de tamanhos de amostra maiores têm uma maior probabilidade de “acertarem” o verdadeiro valor do parâmetro que estão estimando. É também notável que mesmo os histogramas das proporções amostrais aparentam convergir para o formato da distribuição normal conforme o valor de <span class="math inline">\(n\)</span> aumenta. Esse fato, por incrível que pareça, não é coincidência: ele é decorrência direta do <strong>Teorema Central do Limite</strong> (TCL), o qual afirma que, independente da distribuição da população, quanto maior o tamanho amostral, mais próxima será a distribuição amostral da média de uma distribuição normal. Vale lembrar que a proporção amostral nada mais é do que um caso particular da média amostral em que os valores observados na amostra contém apenas zeros e uns, o que explica a aplicação do TCL nesse caso. Para sermos mais precisos, podemos dizer de forma aproximada que, para tamanhos suficientemente grandes de amostra,</p>
@@ -977,41 +1086,41 @@ IC(\mu,\ 1 - \alpha) = \left(\bar{X} - z_{1 - \alpha/2}\frac{\sigma}{\sqrt{n}};\
 <h4 data-number="5.4.1.1" class="anchored" data-anchor-id="um-exemplo-numérico"><span class="header-section-number">5.4.1.1</span> Um exemplo numérico</h4>
 <p>Substituindo as letras por números, e continuando o exemplo em que estávamos, vamos, agora, obter, através do R, um intervalo de 95% confiança para <span class="math inline">\(\mu\)</span>. Lembre-se que aqui <span class="math inline">\(\mu\)</span> é a média populacional das idades das gestantes e puérperas hospitalizadas e falecidas em decorrência da COVID-19 no período de março de 2020 a dezembro de 2021. Como precisamos que nossa amostra seja suficientemente grande para que possamos aplicar o TCL, utilizaremos <span class="math inline">\(n = 50\)</span>, uma vez que, observando os histogramas criados na seção de Distribuição Amostral, a distribuição de <span class="math inline">\(bar{X}\)</span> já se aproxima satisfatóriamente bem da distribuição normal a partir desse ponto. Além disso, como a expressão do intervalo de confiança obtido acima leva em consideração que a variância populacional é conhecida, precisaremos, também, dessa informação. Para calculá-la, teremos de multiplicar o resultado da função <code>var()</code> por <span class="math inline">\(\frac{N - 1}{N}\)</span>, sendo <span class="math inline">\(N\)</span> o tamanho da população, uma vez que essa função utiliza <span class="math inline">\(N - 1\)</span> como denominador para o cálculo da variância. Observe o código abaixo.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>sigma2 <span class="ot">&lt;-</span> <span class="fu">var</span>(populacao1) <span class="sc">*</span> (<span class="fu">length</span>(populacao1) <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">/</span><span class="fu">length</span>(populacao1)</span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>sigma2</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>sigma2 <span class="ot">&lt;-</span> <span class="fu">var</span>(populacao1) <span class="sc">*</span> (<span class="fu">length</span>(populacao1) <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">/</span><span class="fu">length</span>(populacao1)</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>sigma2</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 45.97659</code></pre>
 </div>
 </div>
 <p>Obtendo uma amostra de tamanho <span class="math inline">\(n = 50\)</span> por meio da função <code>sample()</code>, e a armazenando no vetor <code>amostra_ic_media</code>, temos:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">34</span>)</span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>amostra_ic_media <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="at">x =</span> populacao1, <span class="at">size =</span> <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(amostra_ic_media, <span class="dv">20</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">34</span>)</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>amostra_ic_media <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="at">x =</span> populacao1, <span class="at">size =</span> <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(amostra_ic_media, <span class="dv">20</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 26 39 32 35 35 35 31 21 25 40 33 32 19 22 19 30 40 31 38 36</code></pre>
 </div>
 </div>
 <p>Nesse próximo passo, criaremos uma função, a qual chamaremos de <code>ic_media_caso1()</code>, que calculará intervalos de confiança para o parâmetro <span class="math inline">\(\mu\)</span> quando a variância populacional é conhecida e <span class="math inline">\(\bar{X}\)</span> segue distribuição normal (ou aproximadamente normal). A função possuirá três argumentos: <code>dados</code>, que receberá o vetor de valores observados na amostra; <code>sigma</code>, que receberá o valor do desvio padrão populacional; e <code>alpha</code>, que receberá o valor necessário para se obter o coeficiente de confiança associado ao intervalo, que nesse caso será de 0,05. Utilizaremos a já explicada função <code>qnorm()</code> para encontrar o valor do quantil de ordem <span class="math inline">\(1 - \alpha\)</span> da normal padrão (não utilizaremos os argumentos <code>mean</code> e <code>sigma</code> dessa função, uma vez que seus valores padrões são, respectivamente, 1 e 0). O limite inferior do intervalo será guardado no vetor <code>limite_inferior</code>, enquanto o superior será guardado em <code>limite_superior</code>. A função retornará um data frame contendo algumas medidas referentes à amostra e o intervalo de confiança propriamente dito. O resultado do processo pode ser visto abaixo.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>ic_media_caso1 <span class="ot">&lt;-</span> <span class="cf">function</span>(amostra, sigma, alfa) {</span>
-<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>  media <span class="ot">&lt;-</span> <span class="fu">mean</span>(amostra)</span>
-<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(amostra)</span>
-<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>  z <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">qnorm</span>(<span class="at">p =</span> <span class="dv">1</span> <span class="sc">-</span> alfa<span class="sc">/</span><span class="dv">2</span>), <span class="dv">3</span>)</span>
-<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>  limite_inferior <span class="ot">&lt;-</span> <span class="fu">round</span>(media <span class="sc">-</span> z <span class="sc">*</span> sigma<span class="sc">/</span><span class="fu">sqrt</span>(n), <span class="dv">3</span>)</span>
-<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a>  limite_superior <span class="ot">&lt;-</span> <span class="fu">round</span>(media <span class="sc">+</span> z <span class="sc">*</span> sigma<span class="sc">/</span><span class="fu">sqrt</span>(n), <span class="dv">3</span>)</span>
-<span id="cb66-7"><a href="#cb66-7" aria-hidden="true" tabindex="-1"></a>  amplitude <span class="ot">&lt;-</span> limite_superior <span class="sc">-</span> limite_inferior</span>
-<span id="cb66-8"><a href="#cb66-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(</span>
-<span id="cb66-9"><a href="#cb66-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.frame</span>(</span>
-<span id="cb66-10"><a href="#cb66-10" aria-hidden="true" tabindex="-1"></a>      n, </span>
-<span id="cb66-11"><a href="#cb66-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">estimativa_pontual =</span> media,</span>
-<span id="cb66-12"><a href="#cb66-12" aria-hidden="true" tabindex="-1"></a>      limite_inferior, </span>
-<span id="cb66-13"><a href="#cb66-13" aria-hidden="true" tabindex="-1"></a>      limite_superior,</span>
-<span id="cb66-14"><a href="#cb66-14" aria-hidden="true" tabindex="-1"></a>      amplitude)</span>
-<span id="cb66-15"><a href="#cb66-15" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb66-16"><a href="#cb66-16" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb66-17"><a href="#cb66-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-18"><a href="#cb66-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ic_media_caso1</span>(<span class="at">amostra =</span> amostra_ic_media, <span class="at">sigma =</span> <span class="fu">sqrt</span>(sigma2), <span class="at">alfa =</span> <span class="fl">0.05</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>ic_media_caso1 <span class="ot">&lt;-</span> <span class="cf">function</span>(amostra, sigma, alfa) {</span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>  media <span class="ot">&lt;-</span> <span class="fu">mean</span>(amostra)</span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(amostra)</span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>  z <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">qnorm</span>(<span class="at">p =</span> <span class="dv">1</span> <span class="sc">-</span> alfa<span class="sc">/</span><span class="dv">2</span>), <span class="dv">3</span>)</span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>  limite_inferior <span class="ot">&lt;-</span> <span class="fu">round</span>(media <span class="sc">-</span> z <span class="sc">*</span> sigma<span class="sc">/</span><span class="fu">sqrt</span>(n), <span class="dv">3</span>)</span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>  limite_superior <span class="ot">&lt;-</span> <span class="fu">round</span>(media <span class="sc">+</span> z <span class="sc">*</span> sigma<span class="sc">/</span><span class="fu">sqrt</span>(n), <span class="dv">3</span>)</span>
+<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a>  amplitude <span class="ot">&lt;-</span> limite_superior <span class="sc">-</span> limite_inferior</span>
+<span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(</span>
+<span id="cb65-9"><a href="#cb65-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.frame</span>(</span>
+<span id="cb65-10"><a href="#cb65-10" aria-hidden="true" tabindex="-1"></a>      n, </span>
+<span id="cb65-11"><a href="#cb65-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">estimativa_pontual =</span> media,</span>
+<span id="cb65-12"><a href="#cb65-12" aria-hidden="true" tabindex="-1"></a>      limite_inferior, </span>
+<span id="cb65-13"><a href="#cb65-13" aria-hidden="true" tabindex="-1"></a>      limite_superior,</span>
+<span id="cb65-14"><a href="#cb65-14" aria-hidden="true" tabindex="-1"></a>      amplitude)</span>
+<span id="cb65-15"><a href="#cb65-15" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb65-16"><a href="#cb65-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb65-17"><a href="#cb65-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-18"><a href="#cb65-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ic_media_caso1</span>(<span class="at">amostra =</span> amostra_ic_media, <span class="at">sigma =</span> <span class="fu">sqrt</span>(sigma2), <span class="at">alfa =</span> <span class="fl">0.05</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   n estimativa_pontual limite_inferior limite_superior amplitude
 1 50              32.16          30.281          34.039     3.758</code></pre>
@@ -1063,26 +1172,26 @@ IC(\mu,\ 1 - \alpha) = \left(\bar{X} - t_{(n-1;\;1 - \alpha/2)} \frac{S}{\sqrt{n
 <h4 data-number="5.4.2.1" class="anchored" data-anchor-id="um-exemplo-numérico-1"><span class="header-section-number">5.4.2.1</span> Um exemplo numérico</h4>
 <p>Para demonstrar a diferença entre o intervalo de confiança derivado acima e aquele derivado no exemplo anterior, podemos aproveitar o mesmo exemplo sobre a média das idades das gestantes e puérperas previamente discutido. Novamente, criaremos uma função, a qual chamaremos de <code>ic_media_caso2()</code>, que retornará o intervalo de confiança para a média populacional quando a variância populacional é desconhecida e <span class="math inline">\(\bar{X}\)</span> segue distribuição normal (ou aproximadamente normal). A função se dará de forma similar àquela criada anteriormente, sendo as únicas diferenças o cálculo do desvio padrão amostral, feito com a função <code>sd()</code>, do pacote básico <code>{stats}</code> e a obtenção do quantil da distribuição T de Student através da função <code>qt()</code>, do mesmo pacote. O resultado do processo pode ser visto abaixo. Lembre-se que o vetor <code>amostra_ic_media</code> foi criado no exemplo anterior.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>ic_media_caso2 <span class="ot">&lt;-</span> <span class="cf">function</span>(dados, alfa) {</span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>  media <span class="ot">&lt;-</span> <span class="fu">mean</span>(dados)</span>
-<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(dados)</span>
-<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>  S <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">sd</span>(dados), <span class="dv">3</span>)</span>
-<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>  t <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="dv">1</span> <span class="sc">-</span> alfa<span class="sc">/</span><span class="dv">2</span>, n <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a>  limite_inferior <span class="ot">&lt;-</span> <span class="fu">round</span>(media <span class="sc">-</span> t <span class="sc">*</span> S<span class="sc">/</span><span class="fu">sqrt</span>(n), <span class="dv">3</span>)</span>
-<span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a>  limite_superior <span class="ot">&lt;-</span> <span class="fu">round</span>(media <span class="sc">+</span> t <span class="sc">*</span> S<span class="sc">/</span><span class="fu">sqrt</span>(n), <span class="dv">3</span>)</span>
-<span id="cb68-8"><a href="#cb68-8" aria-hidden="true" tabindex="-1"></a>  amplitude <span class="ot">&lt;-</span> limite_superior <span class="sc">-</span> limite_inferior</span>
-<span id="cb68-9"><a href="#cb68-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(</span>
-<span id="cb68-10"><a href="#cb68-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.frame</span>(</span>
-<span id="cb68-11"><a href="#cb68-11" aria-hidden="true" tabindex="-1"></a>      n,</span>
-<span id="cb68-12"><a href="#cb68-12" aria-hidden="true" tabindex="-1"></a>      S, </span>
-<span id="cb68-13"><a href="#cb68-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">estimativa_pontual =</span> media,</span>
-<span id="cb68-14"><a href="#cb68-14" aria-hidden="true" tabindex="-1"></a>      limite_inferior,</span>
-<span id="cb68-15"><a href="#cb68-15" aria-hidden="true" tabindex="-1"></a>      limite_superior,</span>
-<span id="cb68-16"><a href="#cb68-16" aria-hidden="true" tabindex="-1"></a>      amplitude)</span>
-<span id="cb68-17"><a href="#cb68-17" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb68-18"><a href="#cb68-18" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb68-19"><a href="#cb68-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-20"><a href="#cb68-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ic_media_caso2</span>(<span class="at">dados =</span> amostra_ic_media, <span class="at">alfa =</span> <span class="fl">0.05</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>ic_media_caso2 <span class="ot">&lt;-</span> <span class="cf">function</span>(dados, alfa) {</span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>  media <span class="ot">&lt;-</span> <span class="fu">mean</span>(dados)</span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(dados)</span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>  S <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">sd</span>(dados), <span class="dv">3</span>)</span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>  t <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="dv">1</span> <span class="sc">-</span> alfa<span class="sc">/</span><span class="dv">2</span>, n <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a>  limite_inferior <span class="ot">&lt;-</span> <span class="fu">round</span>(media <span class="sc">-</span> t <span class="sc">*</span> S<span class="sc">/</span><span class="fu">sqrt</span>(n), <span class="dv">3</span>)</span>
+<span id="cb67-7"><a href="#cb67-7" aria-hidden="true" tabindex="-1"></a>  limite_superior <span class="ot">&lt;-</span> <span class="fu">round</span>(media <span class="sc">+</span> t <span class="sc">*</span> S<span class="sc">/</span><span class="fu">sqrt</span>(n), <span class="dv">3</span>)</span>
+<span id="cb67-8"><a href="#cb67-8" aria-hidden="true" tabindex="-1"></a>  amplitude <span class="ot">&lt;-</span> limite_superior <span class="sc">-</span> limite_inferior</span>
+<span id="cb67-9"><a href="#cb67-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(</span>
+<span id="cb67-10"><a href="#cb67-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.frame</span>(</span>
+<span id="cb67-11"><a href="#cb67-11" aria-hidden="true" tabindex="-1"></a>      n,</span>
+<span id="cb67-12"><a href="#cb67-12" aria-hidden="true" tabindex="-1"></a>      S, </span>
+<span id="cb67-13"><a href="#cb67-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">estimativa_pontual =</span> media,</span>
+<span id="cb67-14"><a href="#cb67-14" aria-hidden="true" tabindex="-1"></a>      limite_inferior,</span>
+<span id="cb67-15"><a href="#cb67-15" aria-hidden="true" tabindex="-1"></a>      limite_superior,</span>
+<span id="cb67-16"><a href="#cb67-16" aria-hidden="true" tabindex="-1"></a>      amplitude)</span>
+<span id="cb67-17"><a href="#cb67-17" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb67-18"><a href="#cb67-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb67-19"><a href="#cb67-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-20"><a href="#cb67-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ic_media_caso2</span>(<span class="at">dados =</span> amostra_ic_media, <span class="at">alfa =</span> <span class="fl">0.05</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   n     S estimativa_pontual limite_inferior limite_superior amplitude
 1 50 6.634              32.16          30.275          34.045      3.77</code></pre>
