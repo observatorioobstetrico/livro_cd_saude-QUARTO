@@ -59,7 +59,7 @@ $$
 
 Onde $\sigma_{ii}$ representa a variância do elemento $X_i$ do vetor aleatório e $\sigma_{ij} = E[(X_i- \mu_i)(X_j - \mu_j)]$ a covariância entre as componentes $X_i$ e $X_j$, $\forall\quad i,j = 1,\dots,p$. A matriz de covariância é uma matriz simétrica, sua transposta é igual a ela mesma, ou seja $\boldsymbol\Sigma = \boldsymbol\Sigma'$. Sendo tambem não negativa definida, $a'\boldsymbol\Sigma a \geq 0$ para todo vetor de constantes pertencentes aos reais. A matriz de covariância pode ser facilmente calcula utilizando a função `cov()` da linguagem **R**.
 
-### Matriz de correlação 
+### Matriz de correlação
 
 A matriz de correlação do vetor $\boldsymbol{X}$ é denotada por,
 
@@ -110,7 +110,7 @@ Uma importante relação entre autovalores e autovetores é dada pela equação 
 
 ### Equação característica
 
-A equação característica de uma matriz quadrada $\boldsymbol{\Sigma}$ de ordem $p$ é definida como a equação polinomial de grau $p$ dada por: 
+A equação característica de uma matriz quadrada $\boldsymbol{\Sigma}$ de ordem $p$ é definida como a equação polinomial de grau $p$ dada por:
 
 $$
 det(\lambda \boldsymbol I - \boldsymbol\Sigma) = 0.
@@ -213,7 +213,7 @@ Após encontrar os autovalores de uma matriz $\boldsymbol{\Sigma}$, é important
 
 $$
 ||\boldsymbol{e}_i|| = \sqrt{e^2_{i1} + e^2_{i2} + \dots + e^2_{ip}} = 1.
-$$ 
+$$
 
 Dessa forma, garantimos que os autovetores estão no mesmo espaço de dimensão $p$ que as variáveis originais. Para o exemplo então, temos:
 

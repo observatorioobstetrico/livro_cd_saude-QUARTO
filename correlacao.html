@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>correlacao</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="correlacao_files/libs/clipboard/clipboard.min.js"></script>
+<script src="correlacao_files/libs/quarto-html/quarto.js"></script>
+<script src="correlacao_files/libs/quarto-html/popper.min.js"></script>
+<script src="correlacao_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="correlacao_files/libs/quarto-html/anchor.min.js"></script>
+<link href="correlacao_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="correlacao_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="correlacao_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="correlacao_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="correlacao_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="correlação" class="level1">
+<h1>Correlação</h1>
+<section id="introdução" class="level2">
+<h2 class="anchored" data-anchor-id="introdução">Introdução</h2>
+<p>A correlação estatística é uma medida quantitativa que descreve o grau de associação ou relacionamento entre duas variáveis. Ela busca identificar se existe uma relação entre essas variáveis e determinar a direção e a intensidade dessa relação.</p>
+<p>Na análise estatística, as variáveis podem ser qualquer tipo de informação mensurável, como idade, altura, renda, tipo de parto, entre outras. A correlação estatística nos permite entender se existe uma relação consistente entre essas variáveis. Por exemplo, podemos investigar se a prática regular de exercícios está relacionada à redução do risco de doenças cardíacas.</p>
+<p>Um ponto a ser mencionado é que a correlação não é usada para prever o valor de uma variável a partir de outra. Embora a correlação estatística seja uma medida útil para determinar o grau de associação entre duas variáveis, ela não fornece informações suficientes para fazer previsões precisas sobre os valores específicos de uma variável com base em outra. Isso ocorre porque a correlação mede apenas a relação estatística entre as variáveis, sem estabelecer uma relação <strong>causal</strong> ou fornecer informações sobre a direção precisa da relação.</p>
+<p>Aqui também podemos abrir um espaço para falar sobre uma frase que, se você tem um certo contato com a área da estatística, certamente já ouviu: “correlação não implica causalidade”. Essa frase ressalta a importância de entender que, mesmo que duas variáveis estejam correlacionadas, isso não significa necessariamente que uma variável cause diretamente mudanças na outra. Em outras palavras, a existência de uma correlação entre duas variáveis não estabelece uma relação de causa e efeito entre elas. Fatores não considerados poder influenciar as variáveis analisadas.</p>
+<p>Um exemplo clássico é a relação entre o consumo de sorvete e afogamentos na praia no verão. Não podemos afirmar que comer sorvete está causando afogamentos ou o contrário. Durante o verão, as temperaturas são mais altas, o que leva tanto ao aumento do consumo de sorvete quanto à maior probabilidade das pessoas irem à praia para nadar e se refrescar. A temperatura é um fator que influencia tanto o consumo de sorvete quanto o comportamento de nadar no mar.</p>
+<p>Para fazer previsões precisas sobre o valor de uma variável com base em outra, são necessárias técnicas mais avançadas, como regressão linear ou modelos de aprendizado de máquina. Esses métodos consideram outros fatores além da correlação.</p>
+<p>Portanto, é importante estar sempre atento as limitações das correlações para ocorrer equivocos na hora de analisar os dados. A correlação fornece um indicador inicial de associação, mas não é suficiente para estabelecer relações de causa e efeito ou fazer previsões de uma variável com base em outra.</p>
+<p>A correlação estatística é frequentemente representada por um valor chamado coeficiente de correlação. Esse coeficiente varia de -1 a +1. Um valor de -1 indica uma correlação perfeita negativa, quando uma aumenta, a outra diminui de forma consistente. Um valor de +1 indica uma correlação perfeita positiva, onde as variáveis variam na mesma direção (aumentam ou diminuem juntas). Um valor próximo a 0 sugere que não há uma relação linear aparente entre as variáveis.</p>
+<p>Pesquisadores e analistas podem obter informações valiosas para tomada de decisões e previsões com base em correlações estatísticas. Por exemplo, na área da saúde, a correlação entre fatores de risco e incidência de doenças pode auxiliar na identificação de medidas preventivas.</p>
+<p>Em geral, a correlação estatística é uma ferramenta essencial para compreender as relações entre variáveis e explorar padrões e tendências nos dados.</p>
+<p>Para os exemplos neste capítulo iremos utilizar a base de dados de <strong>indicadores obstétricos</strong> para os exemplos com variáveis quantitativas e a base <strong>Dados de COVID-19 em gestantes e puérperas</strong> para os exemplos com variáveis qualitativas. No capítulo de introdução você pode ver mais detalhes sobre as bases.</p>
+</section>
+<section id="diagramas-de-dispresão" class="level2">
+<h2 class="anchored" data-anchor-id="diagramas-de-dispresão">Diagramas de dispresão</h2>
+<p><em>“Um diagrama de dispersão mostra a relação entre duas variáveis quantitativas, medidas nos mesmos indivíduos. Os valores de uma variável aparecem no eixo horizontal e os valores da outra variável aparecem no eixo vertical. Cada indivíduo nos dados aparece como o ponto no gráfico determinado pelos valores de ambas as variáveis para tal indivíduo”. (MOORE, 2011, p.77).</em></p>
+<p>Um diagrama de dispersão é uma ferramenta construída utilizando um sistema de coordenadas cartesianas, em que os valores de uma variável são plotados no eixo horizontal (eixo X) e os valores da outra variável são plotados no eixo vertical (eixo Y). Cada ponto no gráfico representa um indivíduo específico e é determinado pelos valores correspondentes das duas variáveis para aquele indivíduo.</p>
+<p>Ao observar um diagrama de dispersão, podemos visualmente analisar a tendência ou padrão dos pontos no gráfico. Dependendo da relação entre as variáveis, os pontos podem formar um padrão linear (indicando uma correlação positiva ou negativa), uma dispersão aleatória (indicando ausência de correlação) ou um padrão não linear (indicando uma relação complexa).</p>
+<p>Em resumo, um diagrama de dispersão é uma ferramenta gráfica que nos permite visualizar a relação entre duas variáveis quantitativas em um conjunto de dados. Ele oferece uma representação visual simples e intuitiva, facilitando a identificação de padrões, tendências e possíveis associações entre as variáveis em estudo.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="figures/diagrama_cor.png" class="img-fluid" style="width:60.0%"></p>
+</div>
+</div>
+<p>Como dito anteriormente, também vamos trabalhar com a parte prática no R. Uma maneira fácil de criar diagramas no R é utilizando o famoso pacote. Como já discutimos sobre a criação de diagramas de dispersão no capítulo de Estatística Descritiva, não vamos nos aprofudnar na explicação do código. Vamos apenas deixar um exemplo para relembrar como pode plotar este tipo de gráfico usando o pacote <code>ggplot2</code> . Para o exemplo abaixo iremos utilizar a base <strong>Dados de COVID-19 em gestantes e puérperas.</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_rds</span>(<span class="st">"dados/dados_indicadores.rds"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">|&gt;</span> </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(porc_peso_menor_2500, porc_premat)) <span class="sc">+</span> </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"darkorchid4"</span>) <span class="sc">+</span> </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="correlacao_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="medindo-o-grau-de-relacionamento-de-duas-variáveis" class="level2">
+<h2 class="anchored" data-anchor-id="medindo-o-grau-de-relacionamento-de-duas-variáveis">Medindo o grau de relacionamento de duas variáveis</h2>
+<p>O grau de relacionamento entre duas variáveis pode ser medido usando o coeficiente de correlação, que é uma medida estatística comumente utilizada. O coeficiente de correlação quantifica a força e a direção da relação linear entre as variáveis. Existem pelo menos 17 maneiras diferentes de medir o grau de relacionamento entre duas variáveis!</p>
+<p>Algumas maneiras são:</p>
+<ul>
+<li><p><strong>Correlação de Pearson:</strong> o método mais comum de correlação, aplicável quando ambas as variáveis são quantitativas.</p></li>
+<li><p><strong>Correlação de postos de Spearman:</strong> aplicável quando ambas as variáveis são quantitativas ou ordinais.</p></li>
+<li><p><strong>Correlação de Kendall:</strong> semelhante a correlação de postos de Spearman.</p></li>
+<li><p><strong>Correlação biponderada:</strong> medida de similaridade baseada na mediana e não na média, sendo assim menos sensível a <em>outliers.</em></p></li>
+<li><p><strong>Correlação bisserial:</strong> correlação entre uma variável dicotômica e uma variável quantitativa.</p></li>
+<li><p><strong>Correlação polisserial:</strong> correlação entre uma variável politômica e uma variável quantitativa.</p></li>
+<li><p><strong>Correlação tetracórica:</strong> é a correlação entre duas variáveis quantitativas não-observáveis (latentes) que foram medidas em uma escala dicotômica. Assume-se que a distribuição conjunta de (X,Y) tem distribuição normal bivariada.</p></li>
+</ul>
+<p>Neste capítulo vamos nos aprofundar em dois tipos de correlação: de Pearson e de postos de Spearman.</p>
+<section id="correlação-de-pearson" class="level3">
+<h3 class="anchored" data-anchor-id="correlação-de-pearson">Correlação de Pearson</h3>
+<p>O coeficiênte de correlação de Pearson, também denominado na literatura por correlação produto-momento, é uma medida da força de uma associação linear entre duas variáveis quantitativas.</p>
+<p>O coeficiente de correlação de Pearson amostral, representado por <em>r</em>, varia de -1 a +1. Um valor de +1 indica uma correlação positiva perfeita, o que significa que as variáveis têm uma relação linear positiva consistente: quando uma variável aumenta, a outra também aumenta de maneira proporcional. Analogamente, um valor de -1 indica uma correlação negativa perfeita, ou seja, as variáveis têm uma relação linear negativa constante: quando uma variável aumenta, a outra diminui de maneira proporcional. Um valor de 0 indica ausência de correlação linear.<br>
+<br>
+O cálculo do coeficiente de correlação de Pearson envolve a covariância entre as duas variáveis e os desvios padrão de cada variável. Essa medida considera tanto a dispersão dos valores individuais quanto a relação entre eles.</p>
+<p>Definição: dado <em>n</em> pares numéricos <span class="math inline">\((x_1, y_1)...(x_n, y_n)\)</span> o coeficiente de correlação amostral <em>r</em> é dado por:</p>
+<p><span class="math display">\[
+r = \frac{S_{XY}}{\sqrt{S_{XX}}\sqrt{S_{YY}}},  
+\]</span></p>
+<p>em que</p>
+<ul>
+<li><p><span class="math inline">\(S_{XX} = S^2_{X} = \sum^n_{i=1}\frac{(x_i-\bar{x})^2}{n-1},\)</span></p></li>
+<li><p><span class="math inline">\(S_{YY} = S^2_{Y} = \sum^n_{i=1}\frac{(y_i-\bar{y})^2}{n-1},\)</span></p></li>
+<li><p><span class="math inline">\(S_{XY} = \sum^n_{i=1}\frac{(x_i-\bar{x})(y_i-\bar{y})}{n-1}.\)</span></p></li>
+</ul>
+<p>O termo <span class="math inline">\(S_{XY}\)</span> é conhecido por covariância amostral, tendo como algumas características:</p>
+<ul>
+<li><p>Essa medida varia nos reais.</p></li>
+<li><p>É dependente das unidades de medida em que as variáveis X e Y foram medidas (desvantagem).</p></li>
+<li><p>Também é uma medida de associação linear.</p></li>
+</ul>
+<p>Fórmula alternativa para o cálculo de <em>r:</em></p>
+<p><span class="math display">\[
+r = \frac{\sum^n_{i=1}x_iy_i-n\bar{x}\bar{y}}{\sqrt{[\sum^n_{i=1}x^2_i-n\bar{x}^2][\sum^n_{i=1}y^2_i-n\bar{y}^2]}}
+\]</span></p>
+<p>Algumas propriedades do coeficiente de correlação de Pearson:</p>
+<ul>
+<li><p>Como já mencionado, o coeficiente de correlação de Pearson varia entre -1 e +1. Um valor de -1 indica uma correlação negativa perfeita, +1 indica uma correlação positiva perfeita e 0 indica ausência de correlação linear.</p></li>
+<li><p>O coeficiente de correlação de Pearson independe das unidades com as quais x e y são medidos. Isso significa que ele não é afetado por mudanças nas unidades de medida ou por transformações lineares das variáveis.</p></li>
+<li><p>O coeficiente de correlação de Pearson é simétrico, o que significa que a correlação entre as variáveis X e Y é a mesma que a correlação entre as variáveis Y e X.</p></li>
+<li><p>O coeficiente de correlação de Pearson é sensível a valores extremos ou outliers nos dados. Se houver pontos discrepantes que se afastem da tendência linear geral, eles podem influenciar significativamente o valor do coeficiente de correlação.</p></li>
+<li><p>E por último, mas não menos importante: O coeficiente de correlação de Pearson mede apenas a relação linear entre as variáveis. Ele pode não capturar relações não lineares, mesmo que existam associações substanciais entre as variáveis por meio de outras formas funcionais.</p></li>
+</ul>
+<section id="quando-é-possível-dizer-que-existe-uma-correlação-forte-entre-as-variáveis-e-quando-a-correlação-é-fraca" class="level4">
+<h4 class="anchored" data-anchor-id="quando-é-possível-dizer-que-existe-uma-correlação-forte-entre-as-variáveis-e-quando-a-correlação-é-fraca">Quando é possível dizer que existe uma correlação forte entre as variáveis e quando a correlação é fraca?</h4>
+<p>Quanto mais forte a associação das duas variáveis, mais próximo o coeficiente de correlação de Pearson, estará de +1 ou -1, dependendo se a relação é positiva ou negativa, respectivamente. Alguns autores sugeriram algumas maneiras de interpretar esses valores.</p>
+<ul>
+<li><p>Devore (2014) sugere:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Valor da correlação</th>
+<th>Interpretação</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>| <em>r</em> | <span class="math inline">\(\leq\)</span> 0.5</td>
+<td>Fraco</td>
+</tr>
+<tr class="even">
+<td>0.5 <span class="math inline">\(&lt;\)</span> | <em>r |</em> <span class="math inline">\(&lt;\)</span> 0.8</td>
+<td>Moderado</td>
+</tr>
+<tr class="odd">
+<td>| <em>r</em> | <span class="math inline">\(\geq\)</span> 0.8</td>
+<td>Forte</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>Hinkle, Wiersma &amp; Jurs (2003) sugerem (adaptado):</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Valor da correlação</th>
+<th>Interpretação</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>| <em>r</em> | <span class="math inline">\(&lt;\)</span> 0.3</td>
+<td>Desprezível</td>
+</tr>
+<tr class="even">
+<td>0.3 <span class="math inline">\(\leq\)</span> | <em>r</em> | <span class="math inline">\(&lt;\)</span> 0.5</td>
+<td>Fraco</td>
+</tr>
+<tr class="odd">
+<td>0.5 <span class="math inline">\(\leq\)</span> | <em>r</em> | <span class="math inline">\(&lt;\)</span> 0.7</td>
+<td>Moderado</td>
+</tr>
+<tr class="even">
+<td>0.7 <span class="math inline">\(\leq\)</span> | <em>r</em> | <span class="math inline">\(&lt;\)</span> 0.9</td>
+<td>Forte</td>
+</tr>
+<tr class="odd">
+<td>| <em>r</em> | <span class="math inline">\(\geq\)</span> 0.9</td>
+<td>Muito forte</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+<p>Lembre-se que <em>r</em> é um coeficiente de correlação amostral de Pearson, ou seja, uma estimativa da correlação populacional <span class="math inline">\(\rho\)</span>. Assim, a teoria dos testes de hipóteses pode ser utilizada para verificar se com base na estimativa <em>r</em> é possível conclur pela ausência ou não da correlação de Pearson populacional. Para isso, considera-se os pares (<span class="math inline">\(x_i, y_i\)</span>) como sendo tirados de uma população bivariada de pares em que (X, Y) tem uma função de probabilidade (f.p.) ou função densidade de probabilidade (f.d.p.) conjunta.</p>
+<p>O coeficiente de correlação populacional entre duas variáveis aleatórias X e Y é dada por:</p>
+<p><span class="math display">\[
+\rho = \rho (X, Y) = \frac{Cov(X, Y)}{\sigma_X \sigma_Y},
+\]</span></p>
+<p>em que <span class="math display">\[Cov(X, Y) = E[(X- \mu_X)(Y-\mu_Y)]\]</span></p>
+<p>pode ser desenvolvida como</p>
+<ul>
+<li><p><span class="math inline">\(\sum_x \sum_y (x-\mu_X)(y-\mu_Y) p(x,y)\)</span>, se X, Y discretos;</p></li>
+<li><p><span class="math inline">\(\int_{-\infty}^\infty \int_{-\infty}^\infty (x-\mu_X)(y-\mu_Y) f(x,y) \partial x \partial y\)</span>, se X, Y continuos</p></li>
+</ul>
+<p>Uma suposição que também deve ser feita para que o teste de hipóteses para <span class="math inline">\(\rho\)</span> possa ser executado é que a distribuição de probabilidade conjunta de (X, Y) é dada pela <strong>normal bivariada</strong>. Vejamos agora como é a função densidade de (X, Y) dada pela normal bivariada.</p>
+<p>A distribuição de probabilidades conjunta de (X, Y) é definida por:</p>
+<p><span class="math display">\[
+f(x,y) = \frac{1}{2\pi \sigma_X \sigma_Y \sqrt{1-\rho^2}} e^{- [(\frac{x-\mu_X}{\sigma_X})^2 -2\rho(\frac{x-\mu_X}{\sigma_X})(\frac{y-\mu_Y}{\sigma_Y}) + (\frac{y-\mu_Y}{\sigma_Y})^2]}
+\]</span></p>
+<p>com <em>x, y</em> <span class="math inline">\(\in \mathbb{R}\)</span> em que <span class="math inline">\(\mu_X\)</span> e <span class="math inline">\(\sigma_X\)</span> são a média e o desvio-padrão de <strong>X</strong>, <span class="math inline">\(\mu_Y\)</span> e <span class="math inline">\(\sigma_Y\)</span> são a média e o desvio-padrão de <strong>Y</strong> e <span class="math inline">\(\rho\)</span> é o coeficiente de correlação entre X e Y.</p>
+</section>
+<section id="propiedades" class="level4">
+<h4 class="anchored" data-anchor-id="propiedades">Propiedades</h4>
+<ul>
+<li><p>As distribuições marginais de <em>X</em> e <em>Y</em> tem distribuição normal univariada.</p></li>
+<li><p>As distribuições condicionais <em>Y | X</em> e <em>X | Y</em> tem distribuição normal univariada. Ou seja, condicionando uma das variáveis, a distribuição da outra também e normal.</p></li>
+<li><p>Quando <span class="math inline">\(\rho = 0\)</span>, a função de densidadade conjunta <em>f(x, y)</em> pode ser fatorada como <em>f(x) f(y)</em>, o que implica que as variáveis aleatórias X e Y são independentes.</p></li>
+<li><p>No geral, se X e Y forem variáveis aleatória <strong>independentes</strong> quaisquer então <span class="math inline">\(\rho = 0\)</span></p></li>
+<li><p>No geral, <strong>não</strong> é verdade que se <span class="math inline">\(\rho = 0\)</span> então X e Y são variáveis aleatórias independentes. Aqui destaca-se que a correlação zero não garante a independência entre as variáveis aleatórias.</p></li>
+</ul>
+</section>
+<section id="hipóteses" class="level4">
+<h4 class="anchored" data-anchor-id="hipóteses">Hipóteses</h4>
+<ul>
+<li><p><span class="math inline">\(H_0 : \rho = 0\)</span> (não há correlação linear)</p></li>
+<li><p><span class="math inline">\(H_a: \rho &gt; 0\)</span> ou <span class="math inline">\(\rho &lt; 0\)</span> ou <span class="math inline">\(\rho \ne 0\)</span></p></li>
+</ul>
+<p>A estatística do teste é dada por:</p>
+<p><span class="math display">\[
+t = \frac{r\sqrt{n-2}}{\sqrt{1-r^2}}
+\]</span></p>
+<p>Valor crítico do teste:</p>
+<p>Sob <span class="math inline">\(H_0\)</span> verdadeira, a estatística <em>t</em> tem uma distribuição t-Student com n - 2 graus de liberdade. Dessa forma, valores críticos do teste são obtidos da tabela t-Student com n - 2 graus de liberdade.</p>
+</section>
+<section id="correlação-de-pearson-no-r" class="level4">
+<h4 class="anchored" data-anchor-id="correlação-de-pearson-no-r">Correlação de Pearson no R</h4>
+<p>No software R é possível calcular correlações de maneiras relativamente fáceis. Uma das formas mais rápidas e fáceis é utilzando a função <code>cor()</code> do próprio CRAN do R. Você pode verificar a documentação completa dessa função <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/cor">aqui</a>. Essa função possui alguns argumentos, sendo os principais:</p>
+<ul>
+<li><p><em>x</em>: um vetor númerico, matriz ou dataframe</p></li>
+<li><p><em>y</em>: um vetor númerico, matriz ou dataframe com dimensões compatíveis para “x”. O padrão é equivalente a “y = x” (mais eficiente).</p></li>
+<li><p><em>method</em>: uma cadeia de caracteres indicando qual coeficiente de correlação (ou covariância) deve ser calculado (“pearson” (default), “kendall” ou “spearman”). &nbsp;</p></li>
+</ul>
+<p>Para o primeiro exemplo vamos calcular a correlação entre as variáveis <code>porc_peso_menor_2500</code> e <code>porc_premat</code> .</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(dados<span class="sc">$</span>porc_peso_menor_2500, dados<span class="sc">$</span>porc_premat, <span class="at">method =</span> <span class="st">"pearson"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.471422</code></pre>
+</div>
+</div>
+<p>Veja que a saída é o valor da correlação, que neste caso foi de <em>0,47</em>. Este valor, com base nas tabelas anteriores, é considerado uma correlação fraca.</p>
+<p>Como citado anteriormente, o argumento <em>x</em> pode ser um dataframe, isso permite calcular a correlação simultanea entre as variáveis do banco de dados. Lembre-se que o argumento precisa ser númerico. Selecionamos apenas as variáveis da coluna 4 em diante, deixando de fora a variável <code>uf</code> , <code>municipio</code> e <code>codigo</code> .</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">cor</span>(dados[,<span class="dv">4</span><span class="sc">:</span><span class="dv">14</span>], <span class="at">method =</span> <span class="st">"pearson"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 7%">
+<col style="width: 5%">
+<col style="width: 9%">
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 6%">
+<col style="width: 10%">
+<col style="width: 5%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">nascidos_vivos</th>
+<th style="text-align: right;">porc_premat</th>
+<th style="text-align: right;">porc_gesta_multipla</th>
+<th style="text-align: right;">porc_cesarea</th>
+<th style="text-align: right;">porc_0_consulta</th>
+<th style="text-align: right;">porc_7mais_consulta</th>
+<th style="text-align: right;">porc_apgar1_menor_7</th>
+<th style="text-align: right;">porc_apgar5_menor_7</th>
+<th style="text-align: right;">porc_anomalia</th>
+<th style="text-align: right;">porc_peso_menor_2500</th>
+<th style="text-align: right;">porc_fem</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">nascidos_vivos</td>
+<td style="text-align: right;">1.0000000</td>
+<td style="text-align: right;">0.0087667</td>
+<td style="text-align: right;">0.0114727</td>
+<td style="text-align: right;">-0.0396942</td>
+<td style="text-align: right;">0.0218503</td>
+<td style="text-align: right;">-0.0429517</td>
+<td style="text-align: right;">0.0017156</td>
+<td style="text-align: right;">-0.0052061</td>
+<td style="text-align: right;">0.0165024</td>
+<td style="text-align: right;">0.0262794</td>
+<td style="text-align: right;">0.0017368</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">porc_premat</td>
+<td style="text-align: right;">0.0087667</td>
+<td style="text-align: right;">1.0000000</td>
+<td style="text-align: right;">0.2702382</td>
+<td style="text-align: right;">0.0010048</td>
+<td style="text-align: right;">0.0617685</td>
+<td style="text-align: right;">-0.0629478</td>
+<td style="text-align: right;">0.1198173</td>
+<td style="text-align: right;">0.0988236</td>
+<td style="text-align: right;">0.0677685</td>
+<td style="text-align: right;">0.4714220</td>
+<td style="text-align: right;">0.0065741</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">porc_gesta_multipla</td>
+<td style="text-align: right;">0.0114727</td>
+<td style="text-align: right;">0.2702382</td>
+<td style="text-align: right;">1.0000000</td>
+<td style="text-align: right;">0.1032576</td>
+<td style="text-align: right;">-0.0480217</td>
+<td style="text-align: right;">0.0894464</td>
+<td style="text-align: right;">0.0706529</td>
+<td style="text-align: right;">0.0522301</td>
+<td style="text-align: right;">0.0167000</td>
+<td style="text-align: right;">0.3800594</td>
+<td style="text-align: right;">0.0227140</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">porc_cesarea</td>
+<td style="text-align: right;">-0.0396942</td>
+<td style="text-align: right;">0.0010048</td>
+<td style="text-align: right;">0.1032576</td>
+<td style="text-align: right;">1.0000000</td>
+<td style="text-align: right;">-0.2069008</td>
+<td style="text-align: right;">0.4170415</td>
+<td style="text-align: right;">-0.1422882</td>
+<td style="text-align: right;">-0.1195010</td>
+<td style="text-align: right;">-0.0050339</td>
+<td style="text-align: right;">0.0357249</td>
+<td style="text-align: right;">-0.0029110</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">porc_0_consulta</td>
+<td style="text-align: right;">0.0218503</td>
+<td style="text-align: right;">0.0617685</td>
+<td style="text-align: right;">-0.0480217</td>
+<td style="text-align: right;">-0.2069008</td>
+<td style="text-align: right;">1.0000000</td>
+<td style="text-align: right;">-0.3891113</td>
+<td style="text-align: right;">0.0219250</td>
+<td style="text-align: right;">0.0658877</td>
+<td style="text-align: right;">-0.0347719</td>
+<td style="text-align: right;">-0.0153331</td>
+<td style="text-align: right;">-0.0135948</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">porc_7mais_consulta</td>
+<td style="text-align: right;">-0.0429517</td>
+<td style="text-align: right;">-0.0629478</td>
+<td style="text-align: right;">0.0894464</td>
+<td style="text-align: right;">0.4170415</td>
+<td style="text-align: right;">-0.3891113</td>
+<td style="text-align: right;">1.0000000</td>
+<td style="text-align: right;">-0.0428351</td>
+<td style="text-align: right;">-0.0755027</td>
+<td style="text-align: right;">0.0300719</td>
+<td style="text-align: right;">0.0530526</td>
+<td style="text-align: right;">-0.0131028</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">porc_apgar1_menor_7</td>
+<td style="text-align: right;">0.0017156</td>
+<td style="text-align: right;">0.1198173</td>
+<td style="text-align: right;">0.0706529</td>
+<td style="text-align: right;">-0.1422882</td>
+<td style="text-align: right;">0.0219250</td>
+<td style="text-align: right;">-0.0428351</td>
+<td style="text-align: right;">1.0000000</td>
+<td style="text-align: right;">0.3950857</td>
+<td style="text-align: right;">0.0534130</td>
+<td style="text-align: right;">0.1636157</td>
+<td style="text-align: right;">-0.0393211</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">porc_apgar5_menor_7</td>
+<td style="text-align: right;">-0.0052061</td>
+<td style="text-align: right;">0.0988236</td>
+<td style="text-align: right;">0.0522301</td>
+<td style="text-align: right;">-0.1195010</td>
+<td style="text-align: right;">0.0658877</td>
+<td style="text-align: right;">-0.0755027</td>
+<td style="text-align: right;">0.3950857</td>
+<td style="text-align: right;">1.0000000</td>
+<td style="text-align: right;">0.0612535</td>
+<td style="text-align: right;">0.1186371</td>
+<td style="text-align: right;">-0.0182849</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">porc_anomalia</td>
+<td style="text-align: right;">0.0165024</td>
+<td style="text-align: right;">0.0677685</td>
+<td style="text-align: right;">0.0167000</td>
+<td style="text-align: right;">-0.0050339</td>
+<td style="text-align: right;">-0.0347719</td>
+<td style="text-align: right;">0.0300719</td>
+<td style="text-align: right;">0.0534130</td>
+<td style="text-align: right;">0.0612535</td>
+<td style="text-align: right;">1.0000000</td>
+<td style="text-align: right;">0.0688200</td>
+<td style="text-align: right;">0.0063300</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">porc_peso_menor_2500</td>
+<td style="text-align: right;">0.0262794</td>
+<td style="text-align: right;">0.4714220</td>
+<td style="text-align: right;">0.3800594</td>
+<td style="text-align: right;">0.0357249</td>
+<td style="text-align: right;">-0.0153331</td>
+<td style="text-align: right;">0.0530526</td>
+<td style="text-align: right;">0.1636157</td>
+<td style="text-align: right;">0.1186371</td>
+<td style="text-align: right;">0.0688200</td>
+<td style="text-align: right;">1.0000000</td>
+<td style="text-align: right;">0.0497711</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">porc_fem</td>
+<td style="text-align: right;">0.0017368</td>
+<td style="text-align: right;">0.0065741</td>
+<td style="text-align: right;">0.0227140</td>
+<td style="text-align: right;">-0.0029110</td>
+<td style="text-align: right;">-0.0135948</td>
+<td style="text-align: right;">-0.0131028</td>
+<td style="text-align: right;">-0.0393211</td>
+<td style="text-align: right;">-0.0182849</td>
+<td style="text-align: right;">0.0063300</td>
+<td style="text-align: right;">0.0497711</td>
+<td style="text-align: right;">1.0000000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Veja que a saída acima é a correlação entre todas as variáveis. Na diagonal principal temos a correlação da variável com ela mesmo, por isso o valor é “1”. Note também que temos a presença de correlações positivas e negativas, onde, a maioria das correlações são próximas de 0. Note que nos dois exemplos específicamos o método <em>pearson.</em> Para utilizar o método de correlação de Spearman, basta indicar no argumento.</p>
+</section>
+</section>
+<section id="correlação-de-spearman" class="level3">
+<h3 class="anchored" data-anchor-id="correlação-de-spearman">Correlação de Spearman</h3>
+<p>Também conhecida como correlação de postos, a correlação de Spearman é uma medida estatística que avalia a relação entre duas variáveis. Diferentemente da correlação de Pearson, que é baseada nos valores brutos das variáveis, a correlação de Spearman utiliza a ordem ou posição relativa dos valores, tornando-a adequada para analisar relações não-lineares ou quando os dados não seguem uma distribuição normal.</p>
+<p>Com correlação de Spearman é possível obter uma medida de intensidade da associação entre X e Y sem fazer nenhuma pressuposição sobre a distribuição da população através de métodos não-paramétricos. Em outras palavras, não é necessário assumir que os dados seguem nenhuma distribuição específica. Isso torna a correlação de postos uma excelente ferramenta quando a distribuição dos dados não é conhecida.</p>
+<p>O coeficiente populacional de Spearman, denotado por <span class="math inline">\(\rho_s\)</span>, é uma medida de correlação não-paramétrica. Sua versão amostral é denotada por <span class="math inline">\(r_S\)</span>.Essa medida, assim como na correlação de Pearson, também varia de -1 a 1, onde -1 indica uma correlação perfeitamente negativa e 1 indica uma correlação perfeitamente positiva.</p>
+<p>A correlação de Spearman pode ser usado para avaliar associações de variáveis medidas no mínimo na escala ordinal. A escola ordinal é uma escala de medição que classifica as observações ordenadas, sem necessariamente quantificar a magnitude das diferenças entre as categorias. A correlação de Spearman é apropriada para esse tipo de escala, pois se baseia na classificação das observações em ordem crescente ou decrescente e compara as classificações das duas variáveis.</p>
+<p>A correlaçao de postos quantifica a força e a direção da relação entre duas variáveis, com base na ordem ou posição relativa dos valores e não em seus valores brutos. Ela avalia a relação <strong>monotônica</strong> entre duas variáveis pareadas. Em uma relação monotônica, as variáveis tendem a mudar juntas mas não necessariamente a uma taxa constante, diferente por exemplo de uma relação linear.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="figures/cor_spearman.png" class="img-fluid" style="width:60.0%"></p>
+</div>
+</div>
+<p>O coeficiente de correlação de Sperarman é calculado atribuindo postos as observações. Postos podem ser definidos da seguinte forma:</p>
+<ul>
+<li><p>Os dados estão <strong>ordenados</strong> quando estão arranjados de acordo com algum critério, tal como do menor para o maior, ou do melhor para o pior.</p></li>
+<li><p>Um <strong>posto</strong> é um número atribuído a um item amostral individual de acordo com a sua posição na lista ordenada. Ao primeiro item atribui-se o posto 1, ao segundo item, posto 2, e assim por diante.</p></li>
+<li><p>Se ocorrer um empate nos postos, o procedimento usual consiste em achar a média dos postos envolvidos e atribuir esse posto médio a cada um dos itens empatados.</p></li>
+</ul>
+<p>O teste de correlação de Spearman consite em testar as seguintes hipóteses:</p>
+<ul>
+<li><p><span class="math inline">\(H_0: \rho_s= 0\)</span></p></li>
+<li><p><span class="math inline">\(H_1: \rho_s \ne 0\)</span></p></li>
+</ul>
+<p>Existem duas formas de calcular a estatística do teste, quando não há empates e quando há empates.</p>
+<ul>
+<li><strong>Sem empates:</strong> Depois de converter os dados amostrais em cada amostra em postos, se não existem postos empatados para a primeira variável e nem para a segunda variável, o valor exato da estatística do teste é dada por:</li>
+</ul>
+<p><span class="math display">\[
+r_s = 1 - \frac{6 \sum d^2}{n(n^2-1)}
+\]</span></p>
+<ul>
+<li><strong>Com empates:</strong> Depois de converter os dados amostrais em cada amostra em postos, se qualquer das variáveis tiverem empates entre seus postos, o valor exato da estatística do teste é dada pela fórmula de correlação de Pearson substituindo os dados amostrais pelos respectivos postos.</li>
+</ul>
+<p><span class="math display">\[
+r_s = \frac{\sum_{i=1}^n R(X)_iR(Y)_i - nR(\bar{X})R(\bar{Y})}{\sqrt{[\sum_{i=1}^n R(X)_i^2 - nR(\bar{X})^2][\sum_{i=1}^n R(Y)_i^2 -nR(\bar{Y})^2]}}
+\]</span></p>
+<p>onde <em>n</em> é o número de pares de dados e <em>d</em> é a diferença entre os postos de cada par.</p>
+<p>O valor crítico pode ser dividido de duas formas, para amostrar pequenas (<span class="math inline">\(n \leq 30\)</span>) e amostras grandes (<span class="math inline">\(n &gt; 30\)</span>). Para amostras pequenas, o valores críticos podem ser encontrados na Tabela A-9 do livro XXX. Já para amostras grandes, os valores são obtidos fazendo:</p>
+<p><span class="math display">\[
+r_c = &nbsp;\pm \frac{Z_{1-\alpha/2}}{\sqrt{n-1}}
+\]</span></p>
+<p>Onde <span class="math inline">\(Z_{1-\alpha/2}\)</span> é o quantil da normal padrão, se teste bilateral. Para teste unilateral, substitua <span class="math inline">\(Z_{1-\alpha/2}\)</span> por <span class="math inline">\(Z_{1-\alpha}\)</span>.</p>
+</section>
+<section id="conclusões" class="level3">
+<h3 class="anchored" data-anchor-id="conclusões">Conclusões</h3>
+<p>O objetivo deste capítulo foi dar uma idéia geral do que é correlação, nos aprofundando nos dois métodos mais utilizados. Como mencionado anteriormente, existem diversas maneirar de calcular a correlação, onde cada uma irá se adequar melhor ao seu caso.</p>
+</section>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

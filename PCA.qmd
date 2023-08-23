@@ -1,7 +1,7 @@
-
 # Análise de Componentes Principais (PCA).
 
 ## Introdução.
+
 A Análise de Componentes Principais (PCA) é uma técnica que busca resumir a variação presente em um conjunto de dados multivariados através de combinações lineares de suas variáveis originais, que são correlacionadas. O objetivo principal é reduzir a dimensionalidade dos dados, representando um grande número de variáveis originais em um número menor de componentes principais. Essas novas variáveis são ordenadas em ordem decrescente de importância, de modo que a primeira componente principal capture a maior quantidade possível da variabilidade total dos dados, e as subsequentes capturem cada vez menos.
 
 A primeira componente principal é calculada de forma a maximizar a variância explicada pelos dados, ou seja, ela é a direção ao longo da qual os dados apresentam a maior variação possível. As demais componentes são ortogonais à primeira e são combinações lineares das variáveis originais, indicando a importância relativa de cada variável naquele componente. Note então, que por essa definição já podemos perceber a relação com os autovetores e autovetores associados.
@@ -27,7 +27,7 @@ Y_p
 \end{split}
 $$
 
-a primeira componente principal. 
+a primeira componente principal.
 
 Os elementos na matriz $\boldsymbol{O}$, denominados loadings, representam as relações entre as variáveis originais e as componentes principais. Cada coluna da matriz $\boldsymbol{O}$ corresponde a uma componente principal, e as linhas correspondem às variáveis originais. Os elementos $e_{ij}$ são os coeficientes de ponderação que indicam a contribuição de cada variável para cada componente principal. Em outras palavras, eles representam a importância relativa das variáveis na construção das componentes principais.
 
@@ -46,8 +46,7 @@ Ou seja, as componentes principais são construídas de forma que elas sejam nã
 
 $$
 \frac{\lambda_j}{\sum_{i=1}^p \lambda_i}; \qquad \forall j =1,\dots,p.
-$$
- Essa definição é muito útil para reduzir a dimensionalidade dos dados, pois nos permite capturar uma proporção significativa da variabilidade total com um número menor de componentes. Dessa forma, para algum $p$ significativamente grande, podemos utilizar $d < p$ componentes ao invés das $p$ variáveis originais, considerando que, podemos descrever uma proporção relativamente alta da variância com essas $d$ componentes.
+$$ Essa definição é muito útil para reduzir a dimensionalidade dos dados, pois nos permite capturar uma proporção significativa da variabilidade total com um número menor de componentes. Dessa forma, para algum $p$ significativamente grande, podemos utilizar $d < p$ componentes ao invés das $p$ variáveis originais, considerando que, podemos descrever uma proporção relativamente alta da variância com essas $d$ componentes.
 
 Se $Y_i = \boldsymbol{e'_iX}, i =1\dots,p$ são as componentes principais obtidas da matriz de covariância, então
 
@@ -55,8 +54,7 @@ $$
 \rho_{Y_i,X_j} = \frac{e_{ij}\sqrt{\lambda_i}}{\sigma_{jj}}, \quad \forall i,j=1,\dots p, 
 $$
 
-São os coeficientes de correlação entre a componente $Y_i$ e a variável $X_j$. Esse valor auxiliará na compreensão entre a relação indivídual de $X_j$ a uma componente principal $Y_i$, porém não explica a relação desta variável em presença das outras. Por isso, alguns altores recomendam o uso único do valor de $e_{ij}$ para compreender a relação variável-componente. Ambos os resultados serão importântes para compreensão da componente. 
-Observe abaixo a aplicação de todos os conceitos discutidos no software utilizado ( _R_ ), com os devidos comentários.
+São os coeficientes de correlação entre a componente $Y_i$ e a variável $X_j$. Esse valor auxiliará na compreensão entre a relação indivídual de $X_j$ a uma componente principal $Y_i$, porém não explica a relação desta variável em presença das outras. Por isso, alguns altores recomendam o uso único do valor de $e_{ij}$ para compreender a relação variável-componente. Ambos os resultados serão importântes para compreensão da componente. Observe abaixo a aplicação de todos os conceitos discutidos no software utilizado ( *R* ), com os devidos comentários.
 
 ```{r eval = FALSE}
 #Importacao dos dados
@@ -83,31 +81,31 @@ coef_correlacao <- autovetores * sqrt(autovalores) / matriz_cov
 pca_dados <- princomp((dados |> dplyr::select_if(is.numeric)))
 ```
 
-Onde a função `princomp` é uma função em _R_ que realiza a análise de componentes principais. Essa função retorna um objeto do tipo "princomp", que contém várias informações sobre a análise realizada. Alguns dos principais elementos retornados por essa função são:
+Onde a função `princomp` é uma função em *R* que realiza a análise de componentes principais. Essa função retorna um objeto do tipo "princomp", que contém várias informações sobre a análise realizada. Alguns dos principais elementos retornados por essa função são:
 
-- `sdev`: Vetor contendo os desvios padrão estimados das componentes principais.
+-   `sdev`: Vetor contendo os desvios padrão estimados das componentes principais.
 
-- `loadings`: Matriz de carga, que contém os coeficientes de ponderação das variáveis originais em cada componente principal. Cada coluna representa um componente principal, e as linhas correspondem às variáveis originais.
+-   `loadings`: Matriz de carga, que contém os coeficientes de ponderação das variáveis originais em cada componente principal. Cada coluna representa um componente principal, e as linhas correspondem às variáveis originais.
 
-- `center`: Vetor contendo as médias das variáveis originais usadas na análise.
+-   `center`: Vetor contendo as médias das variáveis originais usadas na análise.
 
-- `scale`: Vetor contendo os desvios padrão das variáveis originais usadas na análise.
+-   `scale`: Vetor contendo os desvios padrão das variáveis originais usadas na análise.
 
-- `n.obs`: Número de observações usadas na análise.
+-   `n.obs`: Número de observações usadas na análise.
 
-- `scores`: Matriz de escores, que contém os valores das observações nas componentes principais. Cada coluna representa um componente principal, e as linhas correspondem às observações.
+-   `scores`: Matriz de escores, que contém os valores das observações nas componentes principais. Cada coluna representa um componente principal, e as linhas correspondem às observações.
 
-- `call`: A chamada da função princomp.
+-   `call`: A chamada da função princomp.
 
 As componentes principais podem ser obtidas a partir de variáveis padronizadas. A padronização das variáveis é comumente realizada na análise de componentes principais para garantir que as variáveis tenham a mesma escala e evitar que uma variável com maior variabilidade domine a análise em detrimento das outras. Bem como estudado em variáveis aleatórias, a padronização das variáveis é feita subtraindo-se a média de cada variável e dividindo-se pelo desvio padrão. Dessa forma, todas as variáveis terão média zero e desvio padrão igual a um.
 
-No código  anterior, a padronização das variáveis não foi realizada, porem é recomendado padronizar as variáveis antes de realizar qualquer análise de componentes principais, isso pode ser feito de maneira simples utilizando o comando `scale`. Ao realizar essa transformação, trabalhar com a matriz de covariâncias das variáveis transformadas equivale a trabalhar com a matriz de correlação.
+No código anterior, a padronização das variáveis não foi realizada, porem é recomendado padronizar as variáveis antes de realizar qualquer análise de componentes principais, isso pode ser feito de maneira simples utilizando o comando `scale`. Ao realizar essa transformação, trabalhar com a matriz de covariâncias das variáveis transformadas equivale a trabalhar com a matriz de correlação.
 
 ## Número de componentes principais e ReduçãO da dimensionalidade.
 
 A escolha do número ideal de componentes principais é uma etapa crucial ao aplicar a Análise de Componentes Principais (PCA) em um conjunto de dados. A seleção adequada de componentes pode garantir a retenção da maior parte da variância dos dados, ao mesmo tempo em que reduz a dimensionalidade do problema. Abaixo são apresentados alguns dos métodos atualmente utilizados para número $d$ de componentes retidas.
 
-- *Variância explicada * 
+-   *Variância explicada*
 
 Plotar a porcentagem de variância explicada de cada componente individual e a porcentagem de variância total capturada por todos os componentes principais. Este é o método mais avançado e eficaz que pode ser usado para selecionar o melhor número de componentes principais para o conjunto de dados. Neste método, criamos o seguinte tipo de gráfico:
 
@@ -127,24 +125,25 @@ factoextra::fviz_eig(pca_dados,
 
 O número de barras é igual ao número de variáveis no conjunto de dados original. Neste gráfico, cada barra mostra a porcentagem de variância explicada de cada componente individual. Ao observar esse gráfico, podemos decidir quantas componentes devem ser mantidas com base em algum critério como porcentagem mínima que deseja-se manter, exemplo 80% ou 90%, mantendo por exemplo 8 ou 7 componentes. Ou ainda podemos nos basear na linha vermelha usando o método do cotovelo aplicado em aprendizado não supervisionado.
 
-- *Seguir a regra de Kaiser*
+-   *Seguir a regra de Kaiser*
 
 De acordo com a regra de Kaiser, é recomendado manter todos os componentes com autovalores maiores que 1.
 
 Você pode obter os autovalores da seguinte forma:
+
 ```{r eval = FALSE}
 pca_dados$sdev ^2
 ```
+
 Em seguida, você pode selecionar os componentes com autovalores maiores que 1. Ao seguir essa regra, é melhor combinar isso com o gráfico de porcentagem de variância explicada discutido no Método anterior. Às vezes, um autovalor ligeiramente menor que 1 (por exemplo, 0.95) pode capturar uma quantidade significativa de variância nos dados. Portanto, é melhor mantê-lo também se ele mostrar uma barra relativamente alta no gráfico de porcentagem de variância explicada.
 
-- *Métrica de avaliação de desempenho*
+-   *Métrica de avaliação de desempenho*
 
 Este método só pode ser usado se você planeja realizar tarefas de regressão ou classificação com o conjunto de dados reduzido (transformado) após aplicar o PCA.
 
 Usando o gráfico discutido no Método de variância explicada, você pode selecionar o número inicial de componentes principais e obter o conjunto de dados reduzido (transformado). Em seguida, você constrói um modelo de regressão ou classificação e mede seu desempenho por meio do RMSE ou da pontuação de precisão. Em seguida, você altera ligeiramente o número de componentes principais, constrói o modelo novamente e mede a pontuação de desempenho. Após repetir essas etapas várias vezes, você pode selecionar o melhor número de componentes principais que realmente oferece a melhor pontuação de desempenho.
 
 Observe que a pontuação de desempenho do modelo depende de outros fatores também. Por exemplo, depende do estado aleatório da divisão dos conjuntos de treinamento e teste, quantidade de dados, desequilíbrio de classes, número de árvores no modelo (se o modelo for uma floresta aleatória ou uma variante similar), número de iterações definidas durante a otimização, valores discrepantes e valores ausentes nos dados, etc. Portanto, tenha cuidado ao usar este método!
-
 
 ## Interpretação do componentes principais de uma amostra.
 
