@@ -15,6 +15,7 @@ book:
     - manipulacao_dados.qmd
     - tabulacao.qmd
     - descritiva.qmd
+    - correlacao.qmd
     - estimacao.qmd
     - testes_np.qmd
     - supervisionada.qmd

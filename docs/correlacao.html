@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.353">
@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>correlacao</title>
+<title>Ciência de Dados Aplicada à Saúde Materno-Infantil - 5&nbsp; Correlação</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,34 +57,227 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="correlacao_files/libs/clipboard/clipboard.min.js"></script>
-<script src="correlacao_files/libs/quarto-html/quarto.js"></script>
-<script src="correlacao_files/libs/quarto-html/popper.min.js"></script>
-<script src="correlacao_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="correlacao_files/libs/quarto-html/anchor.min.js"></script>
-<link href="correlacao_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="correlacao_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="correlacao_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="correlacao_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="correlacao_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./estimacao.html" rel="next">
+<link href="./descritiva.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar"
+  }
+}</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
-<body class="fullcontent">
+<body class="nav-sidebar floating">
 
-<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./correlacao.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Correlação</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Ciência de Dados Aplicada à Saúde Materno-Infantil</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Procurar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefácio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sumário</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./manipulacao_dados.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Manipulação de dados</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tabulacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tabulação de dados</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./descritiva.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análise exploratória dos dados</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./correlacao.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Correlação</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./estimacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Estimação</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testes_np.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Testes não-paramétricos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./supervisionada.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./introducao_algebra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Alguns conceitos básicos de algebra</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./naosupervisionado.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Aprendizado Não Supervisionado</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./PCA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Análise de Componentes Principais (PCA).</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Apêndices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorialr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Tutorial de R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referências</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução"><span class="header-section-number">5.1</span> Introdução</a></li>
+  <li><a href="#diagramas-de-dispresão" id="toc-diagramas-de-dispresão" class="nav-link" data-scroll-target="#diagramas-de-dispresão"><span class="header-section-number">5.2</span> Diagramas de dispresão</a></li>
+  <li><a href="#medindo-o-grau-de-relacionamento-de-duas-variáveis" id="toc-medindo-o-grau-de-relacionamento-de-duas-variáveis" class="nav-link" data-scroll-target="#medindo-o-grau-de-relacionamento-de-duas-variáveis"><span class="header-section-number">5.3</span> Medindo o grau de relacionamento de duas variáveis</a>
+  <ul class="collapse">
+  <li><a href="#correlação-de-pearson" id="toc-correlação-de-pearson" class="nav-link" data-scroll-target="#correlação-de-pearson"><span class="header-section-number">5.3.1</span> Correlação de Pearson</a></li>
+  <li><a href="#correlação-de-spearman" id="toc-correlação-de-spearman" class="nav-link" data-scroll-target="#correlação-de-spearman"><span class="header-section-number">5.3.2</span> Correlação de Spearman</a></li>
+  <li><a href="#conclusões" id="toc-conclusões" class="nav-link" data-scroll-target="#conclusões"><span class="header-section-number">5.3.3</span> Conclusões</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Correlação</span></h1>
+</div>
 
 
-<section id="correlação" class="level1">
-<h1>Correlação</h1>
-<section id="introdução" class="level2">
-<h2 class="anchored" data-anchor-id="introdução">Introdução</h2>
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="introdução" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">5.1</span> Introdução</h2>
 <p>A correlação estatística é uma medida quantitativa que descreve o grau de associação ou relacionamento entre duas variáveis. Ela busca identificar se existe uma relação entre essas variáveis e determinar a direção e a intensidade dessa relação.</p>
 <p>Na análise estatística, as variáveis podem ser qualquer tipo de informação mensurável, como idade, altura, renda, tipo de parto, entre outras. A correlação estatística nos permite entender se existe uma relação consistente entre essas variáveis. Por exemplo, podemos investigar se a prática regular de exercícios está relacionada à redução do risco de doenças cardíacas.</p>
 <p>Um ponto a ser mencionado é que a correlação não é usada para prever o valor de uma variável a partir de outra. Embora a correlação estatística seja uma medida útil para determinar o grau de associação entre duas variáveis, ela não fornece informações suficientes para fazer previsões precisas sobre os valores específicos de uma variável com base em outra. Isso ocorre porque a correlação mede apenas a relação estatística entre as variáveis, sem estabelecer uma relação <strong>causal</strong> ou fornecer informações sobre a direção precisa da relação.</p>
@@ -97,8 +290,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Em geral, a correlação estatística é uma ferramenta essencial para compreender as relações entre variáveis e explorar padrões e tendências nos dados.</p>
 <p>Para os exemplos neste capítulo iremos utilizar a base de dados de <strong>indicadores obstétricos</strong> para os exemplos com variáveis quantitativas e a base <strong>Dados de COVID-19 em gestantes e puérperas</strong> para os exemplos com variáveis qualitativas. No capítulo de introdução você pode ver mais detalhes sobre as bases.</p>
 </section>
-<section id="diagramas-de-dispresão" class="level2">
-<h2 class="anchored" data-anchor-id="diagramas-de-dispresão">Diagramas de dispresão</h2>
+<section id="diagramas-de-dispresão" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="diagramas-de-dispresão"><span class="header-section-number">5.2</span> Diagramas de dispresão</h2>
 <p><em>“Um diagrama de dispersão mostra a relação entre duas variáveis quantitativas, medidas nos mesmos indivíduos. Os valores de uma variável aparecem no eixo horizontal e os valores da outra variável aparecem no eixo vertical. Cada indivíduo nos dados aparece como o ponto no gráfico determinado pelos valores de ambas as variáveis para tal indivíduo”. (MOORE, 2011, p.77).</em></p>
 <p>Um diagrama de dispersão é uma ferramenta construída utilizando um sistema de coordenadas cartesianas, em que os valores de uma variável são plotados no eixo horizontal (eixo X) e os valores da outra variável são plotados no eixo vertical (eixo Y). Cada ponto no gráfico representa um indivíduo específico e é determinado pelos valores correspondentes das duas variáveis para aquele indivíduo.</p>
 <p>Ao observar um diagrama de dispersão, podemos visualmente analisar a tendência ou padrão dos pontos no gráfico. Dependendo da relação entre as variáveis, os pontos podem formar um padrão linear (indicando uma correlação positiva ou negativa), uma dispersão aleatória (indicando ausência de correlação) ou um padrão não linear (indicando uma relação complexa).</p>
@@ -117,14 +310,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">|&gt;</span> </span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(porc_peso_menor_2500, porc_premat)) <span class="sc">+</span> </span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"darkorchid4"</span>) <span class="sc">+</span> </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="correlacao_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
-<section id="medindo-o-grau-de-relacionamento-de-duas-variáveis" class="level2">
-<h2 class="anchored" data-anchor-id="medindo-o-grau-de-relacionamento-de-duas-variáveis">Medindo o grau de relacionamento de duas variáveis</h2>
+<section id="medindo-o-grau-de-relacionamento-de-duas-variáveis" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="medindo-o-grau-de-relacionamento-de-duas-variáveis"><span class="header-section-number">5.3</span> Medindo o grau de relacionamento de duas variáveis</h2>
 <p>O grau de relacionamento entre duas variáveis pode ser medido usando o coeficiente de correlação, que é uma medida estatística comumente utilizada. O coeficiente de correlação quantifica a força e a direção da relação linear entre as variáveis. Existem pelo menos 17 maneiras diferentes de medir o grau de relacionamento entre duas variáveis!</p>
 <p>Algumas maneiras são:</p>
 <ul>
@@ -137,8 +330,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Correlação tetracórica:</strong> é a correlação entre duas variáveis quantitativas não-observáveis (latentes) que foram medidas em uma escala dicotômica. Assume-se que a distribuição conjunta de (X,Y) tem distribuição normal bivariada.</p></li>
 </ul>
 <p>Neste capítulo vamos nos aprofundar em dois tipos de correlação: de Pearson e de postos de Spearman.</p>
-<section id="correlação-de-pearson" class="level3">
-<h3 class="anchored" data-anchor-id="correlação-de-pearson">Correlação de Pearson</h3>
+<section id="correlação-de-pearson" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="correlação-de-pearson"><span class="header-section-number">5.3.1</span> Correlação de Pearson</h3>
 <p>O coeficiênte de correlação de Pearson, também denominado na literatura por correlação produto-momento, é uma medida da força de uma associação linear entre duas variáveis quantitativas.</p>
 <p>O coeficiente de correlação de Pearson amostral, representado por <em>r</em>, varia de -1 a +1. Um valor de +1 indica uma correlação positiva perfeita, o que significa que as variáveis têm uma relação linear positiva consistente: quando uma variável aumenta, a outra também aumenta de maneira proporcional. Analogamente, um valor de -1 indica uma correlação negativa perfeita, ou seja, as variáveis têm uma relação linear negativa constante: quando uma variável aumenta, a outra diminui de maneira proporcional. Um valor de 0 indica ausência de correlação linear.<br>
 <br>
@@ -171,8 +364,8 @@ r = \frac{\sum^n_{i=1}x_iy_i-n\bar{x}\bar{y}}{\sqrt{[\sum^n_{i=1}x^2_i-n\bar{x}^
 <li><p>O coeficiente de correlação de Pearson é sensível a valores extremos ou outliers nos dados. Se houver pontos discrepantes que se afastem da tendência linear geral, eles podem influenciar significativamente o valor do coeficiente de correlação.</p></li>
 <li><p>E por último, mas não menos importante: O coeficiente de correlação de Pearson mede apenas a relação linear entre as variáveis. Ele pode não capturar relações não lineares, mesmo que existam associações substanciais entre as variáveis por meio de outras formas funcionais.</p></li>
 </ul>
-<section id="quando-é-possível-dizer-que-existe-uma-correlação-forte-entre-as-variáveis-e-quando-a-correlação-é-fraca" class="level4">
-<h4 class="anchored" data-anchor-id="quando-é-possível-dizer-que-existe-uma-correlação-forte-entre-as-variáveis-e-quando-a-correlação-é-fraca">Quando é possível dizer que existe uma correlação forte entre as variáveis e quando a correlação é fraca?</h4>
+<section id="quando-é-possível-dizer-que-existe-uma-correlação-forte-entre-as-variáveis-e-quando-a-correlação-é-fraca" class="level4" data-number="5.3.1.1">
+<h4 data-number="5.3.1.1" class="anchored" data-anchor-id="quando-é-possível-dizer-que-existe-uma-correlação-forte-entre-as-variáveis-e-quando-a-correlação-é-fraca"><span class="header-section-number">5.3.1.1</span> Quando é possível dizer que existe uma correlação forte entre as variáveis e quando a correlação é fraca?</h4>
 <p>Quanto mais forte a associação das duas variáveis, mais próximo o coeficiente de correlação de Pearson, estará de +1 ou -1, dependendo se a relação é positiva ou negativa, respectivamente. Alguns autores sugeriram algumas maneiras de interpretar esses valores.</p>
 <ul>
 <li><p>Devore (2014) sugere:</p>
@@ -248,8 +441,8 @@ f(x,y) = \frac{1}{2\pi \sigma_X \sigma_Y \sqrt{1-\rho^2}} e^{- [(\frac{x-\mu_X}{
 \]</span></p>
 <p>com <em>x, y</em> <span class="math inline">\(\in \mathbb{R}\)</span> em que <span class="math inline">\(\mu_X\)</span> e <span class="math inline">\(\sigma_X\)</span> são a média e o desvio-padrão de <strong>X</strong>, <span class="math inline">\(\mu_Y\)</span> e <span class="math inline">\(\sigma_Y\)</span> são a média e o desvio-padrão de <strong>Y</strong> e <span class="math inline">\(\rho\)</span> é o coeficiente de correlação entre X e Y.</p>
 </section>
-<section id="propiedades" class="level4">
-<h4 class="anchored" data-anchor-id="propiedades">Propiedades</h4>
+<section id="propiedades" class="level4" data-number="5.3.1.2">
+<h4 data-number="5.3.1.2" class="anchored" data-anchor-id="propiedades"><span class="header-section-number">5.3.1.2</span> Propiedades</h4>
 <ul>
 <li><p>As distribuições marginais de <em>X</em> e <em>Y</em> tem distribuição normal univariada.</p></li>
 <li><p>As distribuições condicionais <em>Y | X</em> e <em>X | Y</em> tem distribuição normal univariada. Ou seja, condicionando uma das variáveis, a distribuição da outra também e normal.</p></li>
@@ -258,8 +451,8 @@ f(x,y) = \frac{1}{2\pi \sigma_X \sigma_Y \sqrt{1-\rho^2}} e^{- [(\frac{x-\mu_X}{
 <li><p>No geral, <strong>não</strong> é verdade que se <span class="math inline">\(\rho = 0\)</span> então X e Y são variáveis aleatórias independentes. Aqui destaca-se que a correlação zero não garante a independência entre as variáveis aleatórias.</p></li>
 </ul>
 </section>
-<section id="hipóteses" class="level4">
-<h4 class="anchored" data-anchor-id="hipóteses">Hipóteses</h4>
+<section id="hipóteses" class="level4" data-number="5.3.1.3">
+<h4 data-number="5.3.1.3" class="anchored" data-anchor-id="hipóteses"><span class="header-section-number">5.3.1.3</span> Hipóteses</h4>
 <ul>
 <li><p><span class="math inline">\(H_0 : \rho = 0\)</span> (não há correlação linear)</p></li>
 <li><p><span class="math inline">\(H_a: \rho &gt; 0\)</span> ou <span class="math inline">\(\rho &lt; 0\)</span> ou <span class="math inline">\(\rho \ne 0\)</span></p></li>
@@ -271,8 +464,8 @@ t = \frac{r\sqrt{n-2}}{\sqrt{1-r^2}}
 <p>Valor crítico do teste:</p>
 <p>Sob <span class="math inline">\(H_0\)</span> verdadeira, a estatística <em>t</em> tem uma distribuição t-Student com n - 2 graus de liberdade. Dessa forma, valores críticos do teste são obtidos da tabela t-Student com n - 2 graus de liberdade.</p>
 </section>
-<section id="correlação-de-pearson-no-r" class="level4">
-<h4 class="anchored" data-anchor-id="correlação-de-pearson-no-r">Correlação de Pearson no R</h4>
+<section id="correlação-de-pearson-no-r" class="level4" data-number="5.3.1.4">
+<h4 data-number="5.3.1.4" class="anchored" data-anchor-id="correlação-de-pearson-no-r"><span class="header-section-number">5.3.1.4</span> Correlação de Pearson no R</h4>
 <p>No software R é possível calcular correlações de maneiras relativamente fáceis. Uma das formas mais rápidas e fáceis é utilzando a função <code>cor()</code> do próprio CRAN do R. Você pode verificar a documentação completa dessa função <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/cor">aqui</a>. Essa função possui alguns argumentos, sendo os principais:</p>
 <ul>
 <li><p><em>x</em>: um vetor númerico, matriz ou dataframe</p></li>
@@ -281,7 +474,7 @@ t = \frac{r\sqrt{n-2}}{\sqrt{1-r^2}}
 </ul>
 <p>Para o primeiro exemplo vamos calcular a correlação entre as variáveis <code>porc_peso_menor_2500</code> e <code>porc_premat</code> .</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(dados<span class="sc">$</span>porc_peso_menor_2500, dados<span class="sc">$</span>porc_premat, <span class="at">method =</span> <span class="st">"pearson"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(dados<span class="sc">$</span>porc_peso_menor_2500, dados<span class="sc">$</span>porc_premat, <span class="at">method =</span> <span class="st">"pearson"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.471422</code></pre>
 </div>
@@ -289,7 +482,7 @@ t = \frac{r\sqrt{n-2}}{\sqrt{1-r^2}}
 <p>Veja que a saída é o valor da correlação, que neste caso foi de <em>0,47</em>. Este valor, com base nas tabelas anteriores, é considerado uma correlação fraca.</p>
 <p>Como citado anteriormente, o argumento <em>x</em> pode ser um dataframe, isso permite calcular a correlação simultanea entre as variáveis do banco de dados. Lembre-se que o argumento precisa ser númerico. Selecionamos apenas as variáveis da coluna 4 em diante, deixando de fora a variável <code>uf</code> , <code>municipio</code> e <code>codigo</code> .</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">cor</span>(dados[,<span class="dv">4</span><span class="sc">:</span><span class="dv">14</span>], <span class="at">method =</span> <span class="st">"pearson"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">cor</span>(dados[,<span class="dv">4</span><span class="sc">:</span><span class="dv">14</span>], <span class="at">method =</span> <span class="st">"pearson"</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
 <colgroup>
@@ -484,8 +677,8 @@ t = \frac{r\sqrt{n-2}}{\sqrt{1-r^2}}
 <p>Veja que a saída acima é a correlação entre todas as variáveis. Na diagonal principal temos a correlação da variável com ela mesmo, por isso o valor é “1”. Note também que temos a presença de correlações positivas e negativas, onde, a maioria das correlações são próximas de 0. Note que nos dois exemplos específicamos o método <em>pearson.</em> Para utilizar o método de correlação de Spearman, basta indicar no argumento.</p>
 </section>
 </section>
-<section id="correlação-de-spearman" class="level3">
-<h3 class="anchored" data-anchor-id="correlação-de-spearman">Correlação de Spearman</h3>
+<section id="correlação-de-spearman" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="correlação-de-spearman"><span class="header-section-number">5.3.2</span> Correlação de Spearman</h3>
 <p>Também conhecida como correlação de postos, a correlação de Spearman é uma medida estatística que avalia a relação entre duas variáveis. Diferentemente da correlação de Pearson, que é baseada nos valores brutos das variáveis, a correlação de Spearman utiliza a ordem ou posição relativa dos valores, tornando-a adequada para analisar relações não-lineares ou quando os dados não seguem uma distribuição normal.</p>
 <p>Com correlação de Spearman é possível obter uma medida de intensidade da associação entre X e Y sem fazer nenhuma pressuposição sobre a distribuição da população através de métodos não-paramétricos. Em outras palavras, não é necessário assumir que os dados seguem nenhuma distribuição específica. Isso torna a correlação de postos uma excelente ferramenta quando a distribuição dos dados não é conhecida.</p>
 <p>O coeficiente populacional de Spearman, denotado por <span class="math inline">\(\rho_s\)</span>, é uma medida de correlação não-paramétrica. Sua versão amostral é denotada por <span class="math inline">\(r_S\)</span>.Essa medida, assim como na correlação de Pearson, também varia de -1 a 1, onde -1 indica uma correlação perfeitamente negativa e 1 indica uma correlação perfeitamente positiva.</p>
@@ -527,15 +720,15 @@ r_c = &nbsp;\pm \frac{Z_{1-\alpha/2}}{\sqrt{n-1}}
 \]</span></p>
 <p>Onde <span class="math inline">\(Z_{1-\alpha/2}\)</span> é o quantil da normal padrão, se teste bilateral. Para teste unilateral, substitua <span class="math inline">\(Z_{1-\alpha/2}\)</span> por <span class="math inline">\(Z_{1-\alpha}\)</span>.</p>
 </section>
-<section id="conclusões" class="level3">
-<h3 class="anchored" data-anchor-id="conclusões">Conclusões</h3>
+<section id="conclusões" class="level3" data-number="5.3.3">
+<h3 data-number="5.3.3" class="anchored" data-anchor-id="conclusões"><span class="header-section-number">5.3.3</span> Conclusões</h3>
 <p>O objetivo deste capítulo foi dar uma idéia geral do que é correlação, nos aprofundando nos dois métodos mais utilizados. Como mencionado anteriormente, existem diversas maneirar de calcular a correlação, onde cada uma irá se adequar melhor ao seu caso.</p>
-</section>
+
+
 </section>
 </section>
 
-</main>
-<!-- /main column -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -590,12 +783,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "Copiada");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "Copiada");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
@@ -769,6 +962,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./descritiva.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análise exploratória dos dados</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./estimacao.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Estimação</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 
