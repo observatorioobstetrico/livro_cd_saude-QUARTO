@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Ciência de Dados Aplicada à Saúde Materno-Infantil - 10&nbsp; Aprendizado Não Supervisionado</title>
+<title>Ciência de Dados Aplicada à Saúde Materno-Infantil - 9&nbsp; Aprendizado Não Supervisionado</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -84,7 +84,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./PCA.html" rel="next">
-<link href="./introducao_algebra.html" rel="prev">
+<link href="./supervisionada.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -129,7 +129,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./naosupervisionado.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Aprendizado Não Supervisionado</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./naosupervisionado.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Aprendizado Não Supervisionado</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -216,20 +216,14 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./introducao_algebra.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Introdução à Algebra Linear</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./naosupervisionado.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Aprendizado Não Supervisionado</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Aprendizado Não Supervisionado</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./PCA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Análise de Componentes Principais (PCA).</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Análise de Componentes Principais (PCA).</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -250,7 +244,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./introducao_algebra.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Introdução à Algebra Linear</span></span></a>
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Introdução à Algebra Linear</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -271,15 +265,15 @@ div.csl-indent {
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#clustering-ou-agrupamentos" id="toc-clustering-ou-agrupamentos" class="nav-link active" data-scroll-target="#clustering-ou-agrupamentos"><span class="header-section-number">10.0.1</span> Clustering ou Agrupamentos</a></li>
-  <li><a href="#redução-de-dimensionalidade" id="toc-redução-de-dimensionalidade" class="nav-link" data-scroll-target="#redução-de-dimensionalidade"><span class="header-section-number">10.0.2</span> Redução de dimensionalidade</a></li>
-  <li><a href="#análise-de-agrupamentos" id="toc-análise-de-agrupamentos" class="nav-link" data-scroll-target="#análise-de-agrupamentos"><span class="header-section-number">10.1</span> Análise de Agrupamentos</a>
+  <li><a href="#clustering-ou-agrupamentos" id="toc-clustering-ou-agrupamentos" class="nav-link active" data-scroll-target="#clustering-ou-agrupamentos"><span class="header-section-number">9.0.1</span> Clustering ou Agrupamentos</a></li>
+  <li><a href="#redução-de-dimensionalidade" id="toc-redução-de-dimensionalidade" class="nav-link" data-scroll-target="#redução-de-dimensionalidade"><span class="header-section-number">9.0.2</span> Redução de dimensionalidade</a></li>
+  <li><a href="#análise-de-agrupamentos" id="toc-análise-de-agrupamentos" class="nav-link" data-scroll-target="#análise-de-agrupamentos"><span class="header-section-number">9.1</span> Análise de Agrupamentos</a>
   <ul class="collapse">
-  <li><a href="#métodos-por-particionamento" id="toc-métodos-por-particionamento" class="nav-link" data-scroll-target="#métodos-por-particionamento"><span class="header-section-number">10.1.1</span> Métodos por Particionamento</a></li>
-  <li><a href="#métodos-hierárquicos" id="toc-métodos-hierárquicos" class="nav-link" data-scroll-target="#métodos-hierárquicos"><span class="header-section-number">10.1.2</span> Métodos Hierárquicos</a></li>
-  <li><a href="#dbscan" id="toc-dbscan" class="nav-link" data-scroll-target="#dbscan"><span class="header-section-number">10.1.3</span> DBSCAN</a></li>
-  <li><a href="#agrupamento-espectral" id="toc-agrupamento-espectral" class="nav-link" data-scroll-target="#agrupamento-espectral"><span class="header-section-number">10.1.4</span> Agrupamento Espectral</a></li>
-  <li><a href="#validação-do-modelo" id="toc-validação-do-modelo" class="nav-link" data-scroll-target="#validação-do-modelo"><span class="header-section-number">10.1.5</span> Validação do Modelo</a></li>
+  <li><a href="#métodos-por-particionamento" id="toc-métodos-por-particionamento" class="nav-link" data-scroll-target="#métodos-por-particionamento"><span class="header-section-number">9.1.1</span> Métodos por Particionamento</a></li>
+  <li><a href="#métodos-hierárquicos" id="toc-métodos-hierárquicos" class="nav-link" data-scroll-target="#métodos-hierárquicos"><span class="header-section-number">9.1.2</span> Métodos Hierárquicos</a></li>
+  <li><a href="#dbscan" id="toc-dbscan" class="nav-link" data-scroll-target="#dbscan"><span class="header-section-number">9.1.3</span> DBSCAN</a></li>
+  <li><a href="#agrupamento-espectral" id="toc-agrupamento-espectral" class="nav-link" data-scroll-target="#agrupamento-espectral"><span class="header-section-number">9.1.4</span> Agrupamento Espectral</a></li>
+  <li><a href="#validação-do-modelo" id="toc-validação-do-modelo" class="nav-link" data-scroll-target="#validação-do-modelo"><span class="header-section-number">9.1.5</span> Validação do Modelo</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -289,7 +283,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Aprendizado Não Supervisionado</span></h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Aprendizado Não Supervisionado</span></h1>
 </div>
 
 
@@ -306,18 +300,18 @@ div.csl-indent {
 
 <p>O aprendizado de máquina pode ser dividido em duas categorias principais: aprendizado supervisionado e aprendizado não supervisionado. O aprendizado supervisionado é uma abordagem que utiliza um conjunto de dados rotulados para treinar um modelo de aprendizado de máquina. Por outro lado, o aprendizado não supervisionado não utiliza rótulos, mas em vez disso, tenta encontrar padrões e estruturas no conjunto de dados sem qualquer orientação externa.</p>
 <p>Em geral, o aprendizado não supervisionado é usado quando não há classificação sobre os dados disponível ou quando os dados rotulados são muito escassos. Ele pode ser usado para várias tarefas, incluindo clustering (agrupamento) e redução de dimensionalidade.</p>
-<section id="clustering-ou-agrupamentos" class="level3" data-number="10.0.1">
-<h3 data-number="10.0.1" class="anchored" data-anchor-id="clustering-ou-agrupamentos"><span class="header-section-number">10.0.1</span> Clustering ou Agrupamentos</h3>
+<section id="clustering-ou-agrupamentos" class="level3" data-number="9.0.1">
+<h3 data-number="9.0.1" class="anchored" data-anchor-id="clustering-ou-agrupamentos"><span class="header-section-number">9.0.1</span> Clustering ou Agrupamentos</h3>
 <p>O clustering é uma técnica de aprendizado não supervisionado em que os dados são agrupados com base em sua similaridade. Em outras palavras, os dados que são mais semelhantes são postos em uma mesma classificação, enquanto os dados que são diferentes são agrupados em classificações diferentes.</p>
 <p>Existem vários algoritmos de clustering disponíveis, incluindo o algoritmo k-means, o clustering hierárquico e o DBSCAN. O algoritmo k-means é um dos algoritmos de clustering mais populares por conta da sua fácil compreensão e aplicação, além de sua eficiência.</p>
 </section>
-<section id="redução-de-dimensionalidade" class="level3" data-number="10.0.2">
-<h3 data-number="10.0.2" class="anchored" data-anchor-id="redução-de-dimensionalidade"><span class="header-section-number">10.0.2</span> Redução de dimensionalidade</h3>
+<section id="redução-de-dimensionalidade" class="level3" data-number="9.0.2">
+<h3 data-number="9.0.2" class="anchored" data-anchor-id="redução-de-dimensionalidade"><span class="header-section-number">9.0.2</span> Redução de dimensionalidade</h3>
 <p>A redução de dimensionalidade é uma técnica de aprendizado não supervisionado usada para reduzir o número de variáveis em um conjunto de dados. Ou seja, reduz a dimensionalidade do espaço de características dos dados, enquanto tenta preservar a maior parte da informação original. A redução de dimensionalidade pode ser usada para simplificar o modelo e, portanto, torná-lo mais fácil de interpretar ou para acelerar o treinamento do modelo.</p>
 <p>Existem vários algoritmos de redução de dimensionalidade disponíveis, incluindo a Análise de Componentes Principais (PCA), a Análise Fatorial e a T-SNE. O PCA é um dos algoritmos de redução de dimensionalidade mais populares e será o aqui trabalhado.</p>
 </section>
-<section id="análise-de-agrupamentos" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="análise-de-agrupamentos"><span class="header-section-number">10.1</span> Análise de Agrupamentos</h2>
+<section id="análise-de-agrupamentos" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="análise-de-agrupamentos"><span class="header-section-number">9.1</span> Análise de Agrupamentos</h2>
 <p>Como descrito anteriormente e reforçado aqui, na análise de agrupamento, buscamos identificar regiões no espaço dos dados que possuam um grande número de observações próximas umas das outras. Essas regiões são chamadas de clusters. A ideia é agrupar indivíduos que sejam semelhantes entre si e diferentes dos indivíduos em outros clusters. Essa técnica é chamada de aprendizado não supervisionado, pois não utilizamos uma variável específica como referência para avaliar o resultado do agrupamento.</p>
 <p>Formalmente, os clusters são definidos da seguinte forma:</p>
 <ul>
@@ -362,8 +356,8 @@ A =
 <p>Outra abordagem interessante é considerar a densidade dos pontos no espaço. Nesse caso, procuramos identificar regiões mais densas separadas por áreas menos povoadas. Esses métodos, conhecidos como baseados em densidade, oferecem uma perspectiva diferente na análise dos dados, aqui será considerado o DBSCAN.</p>
 <p>Também existe uma classe de métodos que utiliza técnicas de decomposição espectral. Esses métodos reduzem a dimensionalidade dos dados, preservando as informações relevantes dos grupos presentes. São os chamados agrupamentos espectrais, que exploram as propriedades dos autovalores e autovetores da matriz de similaridade dos dados.</p>
 <p>Cada uma dessas abordagens possui suas próprias características, vantagens e limitações.</p>
-<section id="métodos-por-particionamento" class="level3" data-number="10.1.1">
-<h3 data-number="10.1.1" class="anchored" data-anchor-id="métodos-por-particionamento"><span class="header-section-number">10.1.1</span> Métodos por Particionamento</h3>
+<section id="métodos-por-particionamento" class="level3" data-number="9.1.1">
+<h3 data-number="9.1.1" class="anchored" data-anchor-id="métodos-por-particionamento"><span class="header-section-number">9.1.1</span> Métodos por Particionamento</h3>
 <p>Os métodos por particionamento são comumente utilizados para agrupar dados, onde cada partição representa um cluster. Esses métodos são baseados em distância e envolvem a realocação iterativa das observações entre os clusters para obter um particionamento otimizado.</p>
 <p>A escolha do número de clusters é um aspecto importante, pois influencia diretamente a qualidade do agrupamento. Uma abordagem comum é o método do cotovelo, que considera a relação entre a variância total intraclusters e o número de grupos criados. O método do cotovelo considera que aumentar o número de clusters reduz a variância, mas em algum ponto, não há melhora significativa na granularidade do agrupamento. Esse ponto ótimo, que indica o número adequado de clusters, é identificado no gráfico por uma curva tracejada.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -376,8 +370,8 @@ A =
 <p>A variância total intraclusters é calculada como a soma das distâncias euclidianas quadráticas entre as observações e os respectivos centróides, utilizando a fórmula:</p>
 <p><span class="math display">\[\sum_{l=1}^{K} \sum_{i \in \mathcal{C}_l} |\mathbf{x}_i - \mathbf{c}_l|^2\]</span></p>
 <p>Essas são algumas das abordagens dos métodos por particionamento, aqui será considerado o k-médias e o k-medóides com os algorítmos PAM e CLARA, que serão apresentados a seguir com exemplos de aplicações.</p>
-<section id="k-médias" class="level4" data-number="10.1.1.1">
-<h4 data-number="10.1.1.1" class="anchored" data-anchor-id="k-médias"><span class="header-section-number">10.1.1.1</span> K-médias</h4>
+<section id="k-médias" class="level4" data-number="9.1.1.1">
+<h4 data-number="9.1.1.1" class="anchored" data-anchor-id="k-médias"><span class="header-section-number">9.1.1.1</span> K-médias</h4>
 <p>O K-médias é um método amplamente utilizado para agrupamento de dados. Ele busca encontrar K partições dos dados, minimizando a variância. O algoritmo de <span class="citation" data-cites="lloyd1982least">(<a href="references.html#ref-lloyd1982least" role="doc-biblioref">Lloyd 1982</a>)</span> é comumente usado para realizar o K-médias. Ele envolve os seguintes passos:</p>
 <ol type="1">
 <li><p>escolha dos K centróides iniciais;</p></li>
@@ -415,8 +409,8 @@ A =
 <li><p><code>Within_cluster_sum_of_squares</code>: É um valor que representa a soma dos quadrados das distâncias de cada observação em relação ao seu respectivo centróide. Essa medida indica a variabilidade dos dados dentro de cada cluster. Quanto menor o valor, mais compacto e homogêneo é o cluster.</p></li>
 </ul>
 </section>
-<section id="k-medóides" class="level4" data-number="10.1.1.2">
-<h4 data-number="10.1.1.2" class="anchored" data-anchor-id="k-medóides"><span class="header-section-number">10.1.1.2</span> K-medóides</h4>
+<section id="k-medóides" class="level4" data-number="9.1.1.2">
+<h4 data-number="9.1.1.2" class="anchored" data-anchor-id="k-medóides"><span class="header-section-number">9.1.1.2</span> K-medóides</h4>
 <p>Em situações com valores extremos, os algoritmos K-medóides surgem como uma alternativa ao cálculo do centróide, evitando a influência excessiva desses valores na representação central de cada grupo. O algoritmo PAM (Partitioning Around Medoids) proposto por <span class="citation" data-cites="kaufman2009finding">(<a href="references.html#ref-kaufman2009finding" role="doc-biblioref">Kaufman e Rousseeuw 2009</a>)</span> considera um custo para as trocas de medóides a cada iteração. O custo é calculado como a diferença da variância total intragrupo considerando um novo medóide (observação não medóide) em comparação com o medóide atual. A variância total intragrupo é uma medida da dispersão dos pontos dentro de um grupo.</p>
 <p>Para realizar o agrupamento, o algoritmo PAM segue os seguintes passos:</p>
 <ol type="1">
@@ -476,8 +470,8 @@ A =
 <p>Esses resultados fornecem detalhes sobre os medóides finais escolhidos, a atribuição dos clusters para cada observação, o valor objetivo do agrupamento, as distâncias de isolamento, informações adicionais sobre os clusters, as subamostras utilizadas e a chamada original da função.</p>
 </section>
 </section>
-<section id="métodos-hierárquicos" class="level3" data-number="10.1.2">
-<h3 data-number="10.1.2" class="anchored" data-anchor-id="métodos-hierárquicos"><span class="header-section-number">10.1.2</span> Métodos Hierárquicos</h3>
+<section id="métodos-hierárquicos" class="level3" data-number="9.1.2">
+<h3 data-number="9.1.2" class="anchored" data-anchor-id="métodos-hierárquicos"><span class="header-section-number">9.1.2</span> Métodos Hierárquicos</h3>
 <p>Os métodos hierárquicos são utilizados para agrupar dados em diferentes níveis de granularidade. Existem duas abordagens principais: aglomerativa e divisiva.</p>
 <p>Na abordagem aglomerativa, os grupos são construídos a partir do nível mais baixo, onde cada observação forma um cluster separado, até atingir o nível mais alto, onde todos os dados estão em um único grupo. A fusão dos clusters ocorre com base na dissimilaridade entre eles. As medidas de dissimilaridade mais utilizadas, entre dois grupos, também conhecidas como linkages, podem ser definidas da seguinte forma:</p>
 <ul>
@@ -597,8 +591,8 @@ d(C_l,C_{l'}) = \frac{n_ln_{l'}}{n_l + n_{l'}} d^2(c_l,c_{l'}) .
 <span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>diana_res <span class="ot">&lt;-</span> <span class="fu">cutree</span>(diana , <span class="at">k =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="dbscan" class="level3" data-number="10.1.3">
-<h3 data-number="10.1.3" class="anchored" data-anchor-id="dbscan"><span class="header-section-number">10.1.3</span> DBSCAN</h3>
+<section id="dbscan" class="level3" data-number="9.1.3">
+<h3 data-number="9.1.3" class="anchored" data-anchor-id="dbscan"><span class="header-section-number">9.1.3</span> DBSCAN</h3>
 <p>O método DBSCAN (Density-Based Spatial Clustering of Applications with Noise) é um algoritmo de agrupamento que foi proposto para encontrar clusters com formas arbitrárias, ou seja, clusters que não necessariamente possuem uma forma esférica ou convexa. Ele busca identificar as regiões mais densas do espaço vetorial separadas por regiões com menos objetos, como é possível ver na figura abaixo sua eficiência em relação a outros métodos.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -650,8 +644,8 @@ d(C_l,C_{l'}) = \frac{n_ln_{l'}}{n_l + n_{l'}} d^2(c_l,c_{l'}) .
 </ul>
 <p>Uma técnica relacionada ao DBSCAN que lida com a limitação dos parâmetros globais é o algoritmo OPTICS (Ordering Points To Identify the Clustering Structure), proposto por <span class="citation" data-cites="ankerst1999optics">(<a href="references.html#ref-ankerst1999optics" role="doc-biblioref">Ankerst et al. 1999</a>)</span>. O OPTICS ordena os dados de forma que as observações em grupos mais densos estarão mais próximas na ordenação. Esse algoritmo pode ser uma opção para explorar diferentes densidades de pontos em diferentes clusters.</p>
 </section>
-<section id="agrupamento-espectral" class="level3" data-number="10.1.4">
-<h3 data-number="10.1.4" class="anchored" data-anchor-id="agrupamento-espectral"><span class="header-section-number">10.1.4</span> Agrupamento Espectral</h3>
+<section id="agrupamento-espectral" class="level3" data-number="9.1.4">
+<h3 data-number="9.1.4" class="anchored" data-anchor-id="agrupamento-espectral"><span class="header-section-number">9.1.4</span> Agrupamento Espectral</h3>
 <p>Agrupar conjuntos de dados com alta dimensionalidade pode ser desafiador para alguns métodos de agrupamento. A grande quantidade de variáveis em alta dimensão pode aumentar significativamente o custo computacional e dificultar a separação adequada dos grupos. Nesse contexto, os métodos de agrupamento espectral surgem como uma abordagem promissora, pois permitem reduzir a dimensionalidade dos dados sem perder a informação contida nas variáveis, além de melhorar a separação entre grupos que podem não estar claramente distintos devido à alta dimensionalidade.</p>
 <p>Os algoritmos de agrupamento espectral usam uma medida de dissimilaridade para representar o conjunto de dados como um grafo. Nessa representação, os vértices do grafo correspondem às observações (<span class="math inline">\(V = v_1, ..., v_N\)</span>), e as arestas (<span class="math inline">\(A\)</span>) são definidas por uma matriz de similaridade, onde <span class="math inline">\(a(x_i, x_{i'})\)</span> representa o peso da aresta que conecta os vértices <span class="math inline">\(x_i\)</span> e <span class="math inline">\(x_{i'}\)</span>. O agrupamento em <span class="math inline">\(K\)</span> clusters é então formulado como um problema de corte de arestas, que pode ser computacionalmente complexo. Para contornar essa complexidade, é aplicada a teoria espectral.</p>
 <p>O algoritmo de Ng, Jordan e Weiss (NJW) é um exemplo de algoritmo de agrupamento espectral. Ele requer a definição prévia de um parâmetro, assim como o algoritmo K-médias. Esse parâmetro é o número de grupos <span class="math inline">\(K\)</span> a serem formados. O algoritmo NJW segue os seguintes passos:</p>
@@ -695,12 +689,12 @@ d(C_l,C_{l'}) = \frac{n_ln_{l'}}{n_l + n_{l'}} d^2(c_l,c_{l'}) .
 </div>
 <p>A escolha dos parâmetros <span class="math inline">\(K\)</span> e <span class="math inline">\(\sigma\)</span> pode ser feita de forma arbitrária, dependendo do objetivo do estudo. No entanto, existem abordagens e técnicas disponíveis para auxiliar na seleção desses parâmetros. No exemplo acima , o parâmetro <span class="math inline">\(\sigma\)</span> foi fixado em 1, e o número de grupos <span class="math inline">\(K\)</span> foi escolhido com base na análise dos primeiros autovalores da matriz Laplaciana <span class="math inline">\(L\)</span>. O valor ótimo de <span class="math inline">\(K\)</span> é aquele em que ocorre uma queda significativa dos autovalores, uma vez que os maiores autovalores da matriz Laplaciana tendem a ser próximos de 1.</p>
 </section>
-<section id="validação-do-modelo" class="level3" data-number="10.1.5">
-<h3 data-number="10.1.5" class="anchored" data-anchor-id="validação-do-modelo"><span class="header-section-number">10.1.5</span> Validação do Modelo</h3>
+<section id="validação-do-modelo" class="level3" data-number="9.1.5">
+<h3 data-number="9.1.5" class="anchored" data-anchor-id="validação-do-modelo"><span class="header-section-number">9.1.5</span> Validação do Modelo</h3>
 <p>No problema do agrupamento, não é possível verificar o grau de acerto do resultado obtido, uma vez que os verdadeiros grupos não são conhecidos a priori. Portanto, é necessário aplicar algum tipo de validação à partição final.</p>
 <p>Quatro índices de avaliação interna da qualidade do agrupamento são os principais a serem utilizados atualmente: Davies-Bouldin (DB), Dunn (D), Silhueta (S) e Calinski-Harabasz (CH).</p>
-<section id="davies-bouldin-db" class="level4" data-number="10.1.5.1">
-<h4 data-number="10.1.5.1" class="anchored" data-anchor-id="davies-bouldin-db"><span class="header-section-number">10.1.5.1</span> Davies-Bouldin (DB):</h4>
+<section id="davies-bouldin-db" class="level4" data-number="9.1.5.1">
+<h4 data-number="9.1.5.1" class="anchored" data-anchor-id="davies-bouldin-db"><span class="header-section-number">9.1.5.1</span> Davies-Bouldin (DB):</h4>
 <p>O índice DB mede a similaridade média entre cada grupo e seu grupo mais similar dentre os demais clusters. A distância média <span class="math inline">\(\delta_l\)</span> de um grupo <span class="math inline">\(l\)</span> às suas observações é calculada em relação a um valor referencial <span class="math inline">\(m_l\)</span>. A fórmula para <span class="math inline">\(\delta_l\)</span> é:</p>
 <p><span class="math display">\[
 \delta_{l} = \left(\frac{1}{n_{l}} \sum_{i=1}^{n_{l}} \left \| x_{i} - m_{l} \right \|^q\right)^{\frac{1}{q}}.
@@ -725,8 +719,8 @@ DB = \frac{1}{K} \sum_{l=1}^{K} \max_{l \neq l'} \left( \frac{\delta_{l} + \delt
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>                      )<span class="sc">$</span>DB </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="dunn-d" class="level4" data-number="10.1.5.2">
-<h4 data-number="10.1.5.2" class="anchored" data-anchor-id="dunn-d"><span class="header-section-number">10.1.5.2</span> Dunn (D):</h4>
+<section id="dunn-d" class="level4" data-number="9.1.5.2">
+<h4 data-number="9.1.5.2" class="anchored" data-anchor-id="dunn-d"><span class="header-section-number">9.1.5.2</span> Dunn (D):</h4>
 <p>O índice D mede a razão entre a separação dos grupos e a variância dentro deles. A separação entre dois grupos <span class="math inline">\(l\)</span> e <span class="math inline">\(l'\)</span> é calculada pela distância do vizinho mais próximo, dessa forma buscamos valores grandes para essa medida de avaliação. A variância intragrupo é representada pelo diâmetro <span class="math inline">\(diam_l\)</span> do cluster. A fórmula para o índice D é:</p>
 <p><span class="math display">\[
 D = \frac{{\min_{l,l' \in \{1,...,K\}; l \neq l'} d(C_{l}, C_{l'})}}{{\max_{l \in \{1,...,K\}} diam_{l}}}.
@@ -736,8 +730,8 @@ D = \frac{{\min_{l,l' \in \{1,...,K\}; l \neq l'} d(C_{l}, C_{l'})}}{{\max_{l \i
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a> clValid<span class="sc">::</span><span class="fu">dunn</span>(<span class="at">distance =</span> dist_euclidian , k_medias<span class="sc">$</span>cluster)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="silhueta-s" class="level4" data-number="10.1.5.3">
-<h4 data-number="10.1.5.3" class="anchored" data-anchor-id="silhueta-s"><span class="header-section-number">10.1.5.3</span> Silhueta (S):</h4>
+<section id="silhueta-s" class="level4" data-number="9.1.5.3">
+<h4 data-number="9.1.5.3" class="anchored" data-anchor-id="silhueta-s"><span class="header-section-number">9.1.5.3</span> Silhueta (S):</h4>
 <p>O índice de Silhueta(S) mede a qualidade do agrupamento considerando as distâncias de cada ponto em relação às observações do mesmo grupo e aos demais clusters formados. Para cada observação <span class="math inline">\(i\)</span> pertencente ao grupo <span class="math inline">\(C_l\)</span>, definimos as medidas <span class="math inline">\(a_i\)</span> e <span class="math inline">\(b_i\)</span> da seguinte maneira:</p>
 <p>$$</p>
 <span class="math display">\[\begin{split}
@@ -759,8 +753,8 @@ S = \frac{1}{K} \sum_{l=1}^{K} \frac{1}{n_{l}} \sum_{i=1}^{n_{l}} s_i.
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>clusterSim<span class="sc">::</span><span class="fu">index.S</span>(dist_euclidian , k_medias<span class="sc">$</span>cluster)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="calinski-harabasz-ch" class="level4" data-number="10.1.5.4">
-<h4 data-number="10.1.5.4" class="anchored" data-anchor-id="calinski-harabasz-ch"><span class="header-section-number">10.1.5.4</span> Calinski-Harabasz (CH):</h4>
+<section id="calinski-harabasz-ch" class="level4" data-number="9.1.5.4">
+<h4 data-number="9.1.5.4" class="anchored" data-anchor-id="calinski-harabasz-ch"><span class="header-section-number">9.1.5.4</span> Calinski-Harabasz (CH):</h4>
 <p>O índice de Calinski-Harabasz (CH) considera a variância intra-grupo, chamada de <span class="math inline">\(WGGS_l\)</span>, de cada cluster <span class="math inline">\(C_l\)</span> gerado, levando em conta a distância quadrática de cada observação em relação ao seu valor de referência <span class="math inline">\(m_l\)</span>, que pode ser um centróide ou medóide. A variância intra-grupo total,<span class="math inline">\(WGGS\)</span>, é calculada como a soma das variâncias intra-grupo de cada cluster:</p>
 <p><span class="math display">\[
 WGGS = \sum_{l=1}^{K} \sum_{i=1}^{n_{l}} d^2(x_{i}, m_l).
@@ -1038,13 +1032,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./introducao_algebra.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Alguns conceitos básicos de algebra</span></span>
+      <a href="./supervisionada.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./PCA.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Análise de Componentes Principais (PCA).</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Análise de Componentes Principais (PCA).</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
