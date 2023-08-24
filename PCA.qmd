@@ -107,7 +107,7 @@ A escolha do número ideal de componentes principais é uma etapa crucial ao apl
 
 -   *Variância explicada*
 
-Plotar a porcentagem de variância explicada de cada componente individual e a porcentagem de variância total capturada por todos os componentes principais. Este é o método mais avançado e eficaz que pode ser usado para selecionar o melhor número de componentes principais para o conjunto de dados. Neste método, criamos o seguinte tipo de gráfico:
+Plotar a porcentagem de variância explicada de cada componente individual e a porcentagem de variância total capturada por todos os componentes principais. Este é o método mais avançado e eficaz que pode ser usado para selecionar o melhor número de componentes principais para o conjunto de dados. Neste método, criamos o seguinte tipo de gráfico apresentado na @fig-pca1.
 
 ```{r eval = FALSE}
 #Padronizacao dos dados e criacao do modelo PCA
@@ -121,7 +121,7 @@ factoextra::fviz_eig(pca_dados,
 
 ```
 
-![](figuras_naosupervisionado/var_explicada.png){fig-align="centering" fig-alt="Screeplot para seleção de número de clusters"}
+![Screeplot para seleção de número de clusters](figuras_naosupervisionado/var_explicada.png){#fig-pca1}
 
 O número de barras é igual ao número de variáveis no conjunto de dados original. Neste gráfico, cada barra mostra a porcentagem de variância explicada de cada componente individual. Ao observar esse gráfico, podemos decidir quantas componentes devem ser mantidas com base em algum critério como porcentagem mínima que deseja-se manter, exemplo 80% ou 90%, mantendo por exemplo 8 ou 7 componentes. Ou ainda podemos nos basear na linha vermelha usando o método do cotovelo aplicado em aprendizado não supervisionado.
 

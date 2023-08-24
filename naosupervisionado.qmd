@@ -92,9 +92,9 @@ Cada uma dessas abordagens possui suas próprias características, vantagens e l
 
 Os métodos por particionamento são comumente utilizados para agrupar dados, onde cada partição representa um cluster. Esses métodos são baseados em distância e envolvem a realocação iterativa das observações entre os clusters para obter um particionamento otimizado.
 
-A escolha do número de clusters é um aspecto importante, pois influencia diretamente a qualidade do agrupamento. Uma abordagem comum é o método do cotovelo, que considera a relação entre a variância total intraclusters e o número de grupos criados. O método do cotovelo considera que aumentar o número de clusters reduz a variância, mas em algum ponto, não há melhora significativa na granularidade do agrupamento. Esse ponto ótimo, que indica o número adequado de clusters, é identificado no gráfico por uma curva tracejada.
+A escolha do número de clusters é um aspecto importante, pois influencia diretamente a qualidade do agrupamento. Uma abordagem comum é o método do cotovelo, que considera a relação entre a variância total intraclusters e o número de grupos criados. O método do cotovelo considera que aumentar o número de clusters reduz a variância, mas em algum ponto, não há melhora significativa na granularidade do agrupamento. Esse ponto ótimo, que indica o número adequado de clusters, é identificado no gráfico por uma curva tracejada (veja @fig-screeplot).
 
-![](figuras_naosupervisionado/cotovelo.png){fig-align="centering" fig-alt="Screeplot para seleção de número de clusters"}
+![Screeplot para seleção de número de clusters](figuras_naosupervisionado/cotovelo.png){ #fig-screeplot}
 
 A variância total intraclusters é calculada utilizando as distâncias euclidianas quadráticas entre as observações e o centróide do respectivo grupo. O centróide $c_l$ de um grupo $C_l$ é obtido através da média das observações atribuídas a esse cluster, utilizando a fórmula:
 
@@ -294,9 +294,9 @@ Já na abordagem divisiva, tomando o algoritmo DIANA (Divisive Analysis), inicia
 
 5.  Repetem-se os passos 2 a 4 até que cada observação esteja em um grupo separado.
 
-No agrupamento hierárquico, a visualização dos clusters é feita por meio de um dendrograma, um gráfico ramificado que mostra as junções e divisões dos clusters. A altura do ramo no primeiro nó do dendrograma representa a dissimilaridade entre os grupos divididos. Para determinar o número de grupos a partir do dendrograma, busca-se uma grande diferença de altura (dissimilaridade) ao adicionar um cluster aos dados. Uma característica dos métodos hierárquicos é que as decisões de agrupamento ou divisão não são desfeitas, ou seja, não há troca de observações entre os clusters. Decisões de união ou divisão mal feitas podem resultar em grupos de baixa qualidade. Além disso, esses métodos não são bem dimensionados, pois cada decisão de mesclagem ou divisão requer a avaliação de muitos objetos ou clusters. Pelo exemplo abaixo, uma possível resposta de número adequado de clusters seria de dois ou três grupos.
+No agrupamento hierárquico, a visualização dos clusters é feita por meio de um dendrograma, um gráfico ramificado que mostra as junções e divisões dos clusters. A altura do ramo no primeiro nó do dendrograma representa a dissimilaridade entre os grupos divididos. Para determinar o número de grupos a partir do dendrograma, busca-se uma grande diferença de altura (dissimilaridade) ao adicionar um cluster aos dados. Uma característica dos métodos hierárquicos é que as decisões de agrupamento ou divisão não são desfeitas, ou seja, não há troca de observações entre os clusters. Decisões de união ou divisão mal feitas podem resultar em grupos de baixa qualidade. Além disso, esses métodos não são bem dimensionados, pois cada decisão de mesclagem ou divisão requer a avaliação de muitos objetos ou clusters. Pelo exemplo abaixo na @fig-dendrograma, uma possível resposta de número adequado de clusters seria de dois ou três grupos.
 
-![](figuras_naosupervisionado/dendograma.png){fig-align="centering" fig-alt="Exemplo de Dendrograma"}
+![Exemplo de Dendrograma](figuras_naosupervisionado/dendograma.png){#fig-dendrograma}
 
 Os agrupamentos hierárquicos podem ser obtidos de maneira rapida com o apoio computacional, onde inicialmente, com uso das funções `hclust` e `cluster::diana`, é obtido um objeto da classe "hclust" e da clase "diana" respectivamente, esses objetos contém informações sobre o agrupamento hierárquico realizado, incluindo a estrutura do dendrograma, as distâncias entre os objetos e outras propriedades relacionadas. Seguido pela seleção, com base no dendrograma, do número *K* ideal de clusters (Não necessariamente só um *K*), e o "corte" da árvore aglomerativa no valor ideal identificado. É apresentado abaixo para todos os métodos citados a aplicação para o *R*, supondo a distância utilizada como a euclidiana calculada no início do capítulo.
 
@@ -365,9 +365,9 @@ diana_res <- cutree(diana , k = 3:8)
 
 ### DBSCAN
 
-O método DBSCAN (Density-Based Spatial Clustering of Applications with Noise) é um algoritmo de agrupamento que foi proposto para encontrar clusters com formas arbitrárias, ou seja, clusters que não necessariamente possuem uma forma esférica ou convexa. Ele busca identificar as regiões mais densas do espaço vetorial separadas por regiões com menos objetos, como é possível ver na figura abaixo sua eficiência em relação a outros métodos.
+O método DBSCAN (Density-Based Spatial Clustering of Applications with Noise) é um algoritmo de agrupamento que foi proposto para encontrar clusters com formas arbitrárias, ou seja, clusters que não necessariamente possuem uma forma esférica ou convexa. Ele busca identificar as regiões mais densas do espaço vetorial separadas por regiões com menos objetos, como é possível ver na @fig-dbscan sua eficiência em relação a outros métodos.
 
-![](figuras_naosupervisionado/dbscan.png){fig-align="centering" fig-alt="Aplicação DBSCAN, Fonte: Boyke et al. (2021)"}
+![Aplicação DBSCAN, Fonte: Boyke et al. (2021)](figuras_naosupervisionado/dbscan.png){#fig-dbscan}
 
 A ideia geral do algoritmo DBSCAN é identificar os clusters de forma que a densidade de pontos ao redor de cada ponto de um grupo seja maior que um limite estabelecido. Ele utiliza dois parâmetros principais: $\epsilon$ e MinPts, para entendimento do agrupamento DBSCAN observe a definição dos seguintes termos:
 

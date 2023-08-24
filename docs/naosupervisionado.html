@@ -359,10 +359,11 @@ A =
 <section id="métodos-por-particionamento" class="level3" data-number="9.1.1">
 <h3 data-number="9.1.1" class="anchored" data-anchor-id="métodos-por-particionamento"><span class="header-section-number">9.1.1</span> Métodos por Particionamento</h3>
 <p>Os métodos por particionamento são comumente utilizados para agrupar dados, onde cada partição representa um cluster. Esses métodos são baseados em distância e envolvem a realocação iterativa das observações entre os clusters para obter um particionamento otimizado.</p>
-<p>A escolha do número de clusters é um aspecto importante, pois influencia diretamente a qualidade do agrupamento. Uma abordagem comum é o método do cotovelo, que considera a relação entre a variância total intraclusters e o número de grupos criados. O método do cotovelo considera que aumentar o número de clusters reduz a variância, mas em algum ponto, não há melhora significativa na granularidade do agrupamento. Esse ponto ótimo, que indica o número adequado de clusters, é identificado no gráfico por uma curva tracejada.</p>
-<div class="quarto-figure quarto-figure-center">
+<p>A escolha do número de clusters é um aspecto importante, pois influencia diretamente a qualidade do agrupamento. Uma abordagem comum é o método do cotovelo, que considera a relação entre a variância total intraclusters e o número de grupos criados. O método do cotovelo considera que aumentar o número de clusters reduz a variância, mas em algum ponto, não há melhora significativa na granularidade do agrupamento. Esse ponto ótimo, que indica o número adequado de clusters, é identificado no gráfico por uma curva tracejada (veja <a href="#fig-screeplot">Figura&nbsp;<span>9.1</span></a>).</p>
+<div id="fig-screeplot" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="figuras_naosupervisionado/cotovelo.png" class="img-fluid figure-img" alt="Screeplot para seleção de número de clusters"></p>
+<p><img src="figuras_naosupervisionado/cotovelo.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figura&nbsp;9.1: Screeplot para seleção de número de clusters</figcaption>
 </figure>
 </div>
 <p>A variância total intraclusters é calculada utilizando as distâncias euclidianas quadráticas entre as observações e o centróide do respectivo grupo. O centróide <span class="math inline">\(c_l\)</span> de um grupo <span class="math inline">\(C_l\)</span> é obtido através da média das observações atribuídas a esse cluster, utilizando a fórmula:</p>
@@ -521,10 +522,11 @@ d(C_l,C_{l'}) = \frac{n_ln_{l'}}{n_l + n_{l'}} d^2(c_l,c_{l'}) .
 <ol start="5" type="1">
 <li>Repetem-se os passos 2 a 4 até que cada observação esteja em um grupo separado.</li>
 </ol>
-<p>No agrupamento hierárquico, a visualização dos clusters é feita por meio de um dendrograma, um gráfico ramificado que mostra as junções e divisões dos clusters. A altura do ramo no primeiro nó do dendrograma representa a dissimilaridade entre os grupos divididos. Para determinar o número de grupos a partir do dendrograma, busca-se uma grande diferença de altura (dissimilaridade) ao adicionar um cluster aos dados. Uma característica dos métodos hierárquicos é que as decisões de agrupamento ou divisão não são desfeitas, ou seja, não há troca de observações entre os clusters. Decisões de união ou divisão mal feitas podem resultar em grupos de baixa qualidade. Além disso, esses métodos não são bem dimensionados, pois cada decisão de mesclagem ou divisão requer a avaliação de muitos objetos ou clusters. Pelo exemplo abaixo, uma possível resposta de número adequado de clusters seria de dois ou três grupos.</p>
-<div class="quarto-figure quarto-figure-center">
+<p>No agrupamento hierárquico, a visualização dos clusters é feita por meio de um dendrograma, um gráfico ramificado que mostra as junções e divisões dos clusters. A altura do ramo no primeiro nó do dendrograma representa a dissimilaridade entre os grupos divididos. Para determinar o número de grupos a partir do dendrograma, busca-se uma grande diferença de altura (dissimilaridade) ao adicionar um cluster aos dados. Uma característica dos métodos hierárquicos é que as decisões de agrupamento ou divisão não são desfeitas, ou seja, não há troca de observações entre os clusters. Decisões de união ou divisão mal feitas podem resultar em grupos de baixa qualidade. Além disso, esses métodos não são bem dimensionados, pois cada decisão de mesclagem ou divisão requer a avaliação de muitos objetos ou clusters. Pelo exemplo abaixo na <a href="#fig-dendrograma">Figura&nbsp;<span>9.2</span></a>, uma possível resposta de número adequado de clusters seria de dois ou três grupos.</p>
+<div id="fig-dendrograma" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="figuras_naosupervisionado/dendograma.png" class="img-fluid figure-img" alt="Exemplo de Dendrograma"></p>
+<p><img src="figuras_naosupervisionado/dendograma.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figura&nbsp;9.2: Exemplo de Dendrograma</figcaption>
 </figure>
 </div>
 <p>Os agrupamentos hierárquicos podem ser obtidos de maneira rapida com o apoio computacional, onde inicialmente, com uso das funções <code>hclust</code> e <code>cluster::diana</code>, é obtido um objeto da classe “hclust” e da clase “diana” respectivamente, esses objetos contém informações sobre o agrupamento hierárquico realizado, incluindo a estrutura do dendrograma, as distâncias entre os objetos e outras propriedades relacionadas. Seguido pela seleção, com base no dendrograma, do número <em>K</em> ideal de clusters (Não necessariamente só um <em>K</em>), e o “corte” da árvore aglomerativa no valor ideal identificado. É apresentado abaixo para todos os métodos citados a aplicação para o <em>R</em>, supondo a distância utilizada como a euclidiana calculada no início do capítulo.</p>
@@ -593,10 +595,11 @@ d(C_l,C_{l'}) = \frac{n_ln_{l'}}{n_l + n_{l'}} d^2(c_l,c_{l'}) .
 </section>
 <section id="dbscan" class="level3" data-number="9.1.3">
 <h3 data-number="9.1.3" class="anchored" data-anchor-id="dbscan"><span class="header-section-number">9.1.3</span> DBSCAN</h3>
-<p>O método DBSCAN (Density-Based Spatial Clustering of Applications with Noise) é um algoritmo de agrupamento que foi proposto para encontrar clusters com formas arbitrárias, ou seja, clusters que não necessariamente possuem uma forma esférica ou convexa. Ele busca identificar as regiões mais densas do espaço vetorial separadas por regiões com menos objetos, como é possível ver na figura abaixo sua eficiência em relação a outros métodos.</p>
-<div class="quarto-figure quarto-figure-center">
+<p>O método DBSCAN (Density-Based Spatial Clustering of Applications with Noise) é um algoritmo de agrupamento que foi proposto para encontrar clusters com formas arbitrárias, ou seja, clusters que não necessariamente possuem uma forma esférica ou convexa. Ele busca identificar as regiões mais densas do espaço vetorial separadas por regiões com menos objetos, como é possível ver na <a href="#fig-dbscan">Figura&nbsp;<span>9.3</span></a> sua eficiência em relação a outros métodos.</p>
+<div id="fig-dbscan" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="figuras_naosupervisionado/dbscan.png" class="img-fluid figure-img" alt="Aplicação DBSCAN, Fonte: Boyke et al. (2021)"></p>
+<p><img src="figuras_naosupervisionado/dbscan.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figura&nbsp;9.3: Aplicação DBSCAN, Fonte: Boyke et al.&nbsp;(2021)</figcaption>
 </figure>
 </div>
 <p>A ideia geral do algoritmo DBSCAN é identificar os clusters de forma que a densidade de pontos ao redor de cada ponto de um grupo seja maior que um limite estabelecido. Ele utiliza dois parâmetros principais: <span class="math inline">\(\epsilon\)</span> e MinPts, para entendimento do agrupamento DBSCAN observe a definição dos seguintes termos:</p>

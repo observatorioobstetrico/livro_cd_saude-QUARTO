@@ -376,7 +376,7 @@ Y_p
 <ul>
 <li><em>Variância explicada</em></li>
 </ul>
-<p>Plotar a porcentagem de variância explicada de cada componente individual e a porcentagem de variância total capturada por todos os componentes principais. Este é o método mais avançado e eficaz que pode ser usado para selecionar o melhor número de componentes principais para o conjunto de dados. Neste método, criamos o seguinte tipo de gráfico:</p>
+<p>Plotar a porcentagem de variância explicada de cada componente individual e a porcentagem de variância total capturada por todos os componentes principais. Este é o método mais avançado e eficaz que pode ser usado para selecionar o melhor número de componentes principais para o conjunto de dados. Neste método, criamos o seguinte tipo de gráfico apresentado na <a href="#fig-pca1">Figura&nbsp;<span>10.1</span></a>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Padronizacao dos dados e criacao do modelo PCA</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>pca_dados <span class="ot">&lt;-</span> <span class="fu">princomp</span>(<span class="fu">scale</span>(dados <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">select_if</span>(is.numeric)))</span>
@@ -387,9 +387,10 @@ Y_p
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">linecolor =</span> <span class="st">"Red"</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">50</span>)) <span class="sc">+</span></span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a> ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Dimensões"</span>, <span class="at">y =</span> <span class="st">"Porcentagem de Variância Explicada"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="quarto-figure quarto-figure-center">
+<div id="fig-pca1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="figuras_naosupervisionado/var_explicada.png" class="img-fluid figure-img" alt="Screeplot para seleção de número de clusters"></p>
+<p><img src="figuras_naosupervisionado/var_explicada.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figura&nbsp;10.1: Screeplot para seleção de número de clusters</figcaption>
 </figure>
 </div>
 <p>O número de barras é igual ao número de variáveis no conjunto de dados original. Neste gráfico, cada barra mostra a porcentagem de variância explicada de cada componente individual. Ao observar esse gráfico, podemos decidir quantas componentes devem ser mantidas com base em algum critério como porcentagem mínima que deseja-se manter, exemplo 80% ou 90%, mantendo por exemplo 8 ou 7 componentes. Ou ainda podemos nos basear na linha vermelha usando o método do cotovelo aplicado em aprendizado não supervisionado.</p>
