@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Ciência de Dados Aplicada à Saúde Materno-Infantil - 6&nbsp; Testes não-paramétricos</title>
+<title>Ciência de Dados Aplicada à Saúde Materno-Infantil - 7&nbsp; Testes não-paramétricos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -17,9 +17,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -46,43 +47,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -120,10 +91,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-matches-text": "mais correspondências neste documento",
     "search-clear-button-title": "Limpar",
     "search-detached-cancel-button-title": "Cancelar",
-    "search-submit-button-title": "Enviar"
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
@@ -132,11 +105,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Testes não-paramétricos</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./testes_np.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Testes não-paramétricos</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -144,95 +122,116 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Ciência de Dados Aplicada à Saúde Materno-Infantil</a> 
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
+        <div id="quarto-search" class="" title="Procurar"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Prefácio</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefácio</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">Sumário</a>
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sumário</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></a>
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./manipulacao_dados.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Manipulação de dados</span></a>
+  <a href="./manipulacao_dados.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Manipulação de dados</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tabulacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tabulação de dados</span></a>
+  <a href="./tabulacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Tabulação de dados</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./descritiva.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análise exploratória dos dados</span></a>
+  <a href="./descritiva.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análise exploratória dos dados</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./estimacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estimação</span></a>
+  <a href="./correlacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Correlação</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./testes_np.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Testes não-paramétricos</span></a>
+  <a href="./estimacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Estimação</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./supervisionada.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></a>
+  <a href="./testes_np.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Testes não-paramétricos</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./introducao_algebra.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Alguns conceitos básicos de algebra</span></a>
+  <a href="./supervisionada.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./naosupervisionado.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Aprendizado Não Supervisionado</span></a>
+  <a href="./introducao_algebra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Alguns conceitos básicos de algebra</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./PCA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Análise de Componentes Principais (PCA).</span></a>
+  <a href="./naosupervisionado.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Aprendizado Não Supervisionado</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./PCA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Análise de Componentes Principais (PCA).</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Apêndices</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Apêndices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar seção">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorialr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Tutorial de R</span></a>
+  <a href="./tutorialr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Tutorial de R</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">Referências</a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referências</span></a>
   </div>
 </li>
       </ul>
@@ -240,25 +239,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#grupos-não-pareados" id="toc-grupos-não-pareados" class="nav-link active" data-scroll-target="#grupos-não-pareados"><span class="toc-section-number">6.1</span>  Grupos não-pareados</a>
+  <li><a href="#grupos-não-pareados" id="toc-grupos-não-pareados" class="nav-link active" data-scroll-target="#grupos-não-pareados"><span class="header-section-number">7.1</span> Grupos não-pareados</a>
   <ul class="collapse">
-  <li><a href="#teste-de-mann-whitney" id="toc-teste-de-mann-whitney" class="nav-link" data-scroll-target="#teste-de-mann-whitney"><span class="toc-section-number">6.1.1</span>  Teste de Mann-Whitney</a></li>
-  <li><a href="#teste-de-kolmogorov-smirnov" id="toc-teste-de-kolmogorov-smirnov" class="nav-link" data-scroll-target="#teste-de-kolmogorov-smirnov"><span class="toc-section-number">6.1.2</span>  Teste de Kolmogorov-Smirnov</a></li>
-  <li><a href="#teste-de-kruskal-wallis" id="toc-teste-de-kruskal-wallis" class="nav-link" data-scroll-target="#teste-de-kruskal-wallis"><span class="toc-section-number">6.1.3</span>  Teste de Kruskal-Wallis</a></li>
+  <li><a href="#teste-de-mann-whitney" id="toc-teste-de-mann-whitney" class="nav-link" data-scroll-target="#teste-de-mann-whitney"><span class="header-section-number">7.1.1</span> Teste de Mann-Whitney</a></li>
+  <li><a href="#teste-de-kolmogorov-smirnov" id="toc-teste-de-kolmogorov-smirnov" class="nav-link" data-scroll-target="#teste-de-kolmogorov-smirnov"><span class="header-section-number">7.1.2</span> Teste de Kolmogorov-Smirnov</a></li>
+  <li><a href="#teste-de-kruskal-wallis" id="toc-teste-de-kruskal-wallis" class="nav-link" data-scroll-target="#teste-de-kruskal-wallis"><span class="header-section-number">7.1.3</span> Teste de Kruskal-Wallis</a></li>
   </ul></li>
-  <li><a href="#grupos-pareados" id="toc-grupos-pareados" class="nav-link" data-scroll-target="#grupos-pareados"><span class="toc-section-number">6.2</span>  Grupos pareados</a>
+  <li><a href="#grupos-pareados" id="toc-grupos-pareados" class="nav-link" data-scroll-target="#grupos-pareados"><span class="header-section-number">7.2</span> Grupos pareados</a>
   <ul class="collapse">
-  <li><a href="#teste-de-wilcoxon" id="toc-teste-de-wilcoxon" class="nav-link" data-scroll-target="#teste-de-wilcoxon"><span class="toc-section-number">6.2.1</span>  Teste de Wilcoxon</a></li>
-  <li><a href="#teste-de-mcnemar" id="toc-teste-de-mcnemar" class="nav-link" data-scroll-target="#teste-de-mcnemar"><span class="toc-section-number">6.2.2</span>  Teste de McNemar</a></li>
-  <li><a href="#teste-de-friedman" id="toc-teste-de-friedman" class="nav-link" data-scroll-target="#teste-de-friedman"><span class="toc-section-number">6.2.3</span>  Teste de Friedman</a></li>
+  <li><a href="#teste-de-wilcoxon" id="toc-teste-de-wilcoxon" class="nav-link" data-scroll-target="#teste-de-wilcoxon"><span class="header-section-number">7.2.1</span> Teste de Wilcoxon</a></li>
+  <li><a href="#teste-de-mcnemar" id="toc-teste-de-mcnemar" class="nav-link" data-scroll-target="#teste-de-mcnemar"><span class="header-section-number">7.2.2</span> Teste de McNemar</a></li>
+  <li><a href="#teste-de-friedman" id="toc-teste-de-friedman" class="nav-link" data-scroll-target="#teste-de-friedman"><span class="header-section-number">7.2.3</span> Teste de Friedman</a></li>
   </ul></li>
-  <li><a href="#materiais-complementares" id="toc-materiais-complementares" class="nav-link" data-scroll-target="#materiais-complementares"><span class="toc-section-number">6.3</span>  Materiais complementares</a></li>
+  <li><a href="#materiais-complementares" id="toc-materiais-complementares" class="nav-link" data-scroll-target="#materiais-complementares"><span class="header-section-number">7.3</span> Materiais complementares</a></li>
   </ul>
 </nav>
     </div>
@@ -267,7 +267,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Testes não-paramétricos</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Testes não-paramétricos</span></h1>
 </div>
 
 
@@ -286,11 +286,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Geralmente, a suposição de normalidade dos dados é violada quando o tamanho do grupo ou amostra é pequeno, ou quando os dados são assimétricos. Nesses casos, os resultados de um teste paramétrico podem não ser confiáveis, dado que suposições importantes relacionadas ao tamanho do grupo e simetria dos dados estarão sendo violadas, o que irá comprometer o teste.</p>
 <p>Os testes não-paramétricos são geralmente divididos conforme a quantidade de grupos sendo estudados. Os testes para um único grupo costumam ser utilizados para verificar se os dados são originados de uma população com alguma distribuição ou característica populacional específica, como a média ou mediana, por exemplo. Por outro lado, em testes para dois ou mais grupos podemos compará-los de acordo com algum critério específico do teste em questão. Tais testes de dois ou mais grupos são os quais iremos nos concentrar ao longo deste capítulo.</p>
 <p>Serão apresentados alguns dos testes não-paramétricos mais utilizados na área da saúde, sendo testes para grupos pareados e não-pareados. Além disso, devemos lembrar que os testes que serão apresentados não são os únicos, sendo importante avaliar com cuidado o problema que está sendo estudado para escolher o teste adequado.</p>
-<section id="grupos-não-pareados" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="grupos-não-pareados"><span class="header-section-number">6.1</span> Grupos não-pareados</h2>
+<section id="grupos-não-pareados" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="grupos-não-pareados"><span class="header-section-number">7.1</span> Grupos não-pareados</h2>
 <p>Para grupos não-pareados ou independentes, dentre os testes mais conhecidos e utilizados temos os testes de Mann-Whitney e Kolmogorov-Smirnov para dois grupos, e o de Kruskal-Wallis para três ou mais grupos.</p>
-<section id="teste-de-mann-whitney" class="level3" data-number="6.1.1">
-<h3 data-number="6.1.1" class="anchored" data-anchor-id="teste-de-mann-whitney"><span class="header-section-number">6.1.1</span> Teste de Mann-Whitney</h3>
+<section id="teste-de-mann-whitney" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="teste-de-mann-whitney"><span class="header-section-number">7.1.1</span> Teste de Mann-Whitney</h3>
 <p>O teste de Mann-Whitney é um teste estatístico não paramétrico usado para comparar dois grupos independentes, sendo o grau de medida pelo menos ordinal para variável de interesse e nominal para variável independente. Além disso, o teste é geralmente usado quando a variável resposta ou de interesse não é normalmente distribuída, sendo assim, uma alternativa não-paramétrica ao teste t para amostras independentes.</p>
 <p>Quando o resultado do teste for significativo, significa que ambos os grupos representam populações com distribuições diferentes. Caso a suposição de que ambas as distribuições são iguais seja feita, então podemos interpretar o teste como uma comparação de medianas, que ao ser significativo dizemos que as medianas são significativamente diferentes. Assim, considerando dois grupos independentes, as hipóteses podem ser definidas como:</p>
 <p><span class="math inline">\(H_0:\)</span> distribuição<span class="math inline">\(_1=\)</span> distribuição<span class="math inline">\(_2\)</span></p>
@@ -305,8 +305,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \hline
 \end{array}\]</span>
 <p>Onde está destacado em vermelho as idades das gestantes hospitalizadas no Hospital A e seus respectivos postos. Além disso, destacado em preto essa mesma informação para as gestantes hospitalizadas no Hospital B.</p>
-<section id="estatística-u" class="level4" data-number="6.1.1.1">
-<h4 data-number="6.1.1.1" class="anchored" data-anchor-id="estatística-u"><span class="header-section-number">6.1.1.1</span> Estatística <span class="math inline">\(U\)</span></h4>
+<section id="estatística-u" class="level4" data-number="7.1.1.1">
+<h4 data-number="7.1.1.1" class="anchored" data-anchor-id="estatística-u"><span class="header-section-number">7.1.1.1</span> Estatística <span class="math inline">\(U\)</span></h4>
 <p>O teste de Mann-Whitney também é chamado de teste <span class="math inline">\(U\)</span> de Mann-Whitney, pois calculamos o que chamamos de estatística <span class="math inline">\(U\)</span>, a qual é uma quantidade baseada na soma dos postos identificados de cada grupo calculada para fazer a avaliação das hipóteses.</p>
 <p>Agora, considere <span class="math inline">\(n_1\)</span> e <span class="math inline">\(n_2\)</span> como o número de observações do grupo 1 e grupo 2 respectivamente, em que, o grupo 1 será aquele com o menor número de observações (caso ambos os grupos tenham a mesma quantidade de observações, então <span class="math inline">\(n_1 = n_2\)</span>). Além disso, considere <span class="math inline">\(R_1\)</span> e <span class="math inline">\(R_2\)</span> como a soma dos postos identificados nos grupos 1 e 2 respectivamente, e <span class="math inline">\(N = n_1 + n_2\)</span> como o total de observações considerando ambos os grupos.</p>
 <p>Definido os termos necessários e considerando o exemplo apresentado, calculamos as seguintes quantidades:</p>
@@ -314,8 +314,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(U_2=n_1 n_2+\displaystyle \frac{n_2\left(n_2+1\right)}{2}-R_2=5 \cdot 7+\displaystyle \frac{7 \cdot\left(7+1\right)}{2}-56 = 7\)</span>.</p>
 <p>Tendo calculado <span class="math inline">\(U_1\)</span> e <span class="math inline">\(U_2\)</span> a estatística <span class="math inline">\(U\)</span> será o menor valor entre ambas, neste caso, <span class="math inline">\(U = U_2\)</span>. Podemos confirmar se todo procedimento foi feito corretamente ao verificar a relação <span class="math inline">\(n_1n_2 = U_1 + U_2\)</span>, a qual será <span class="math inline">\(5\cdot 7 = 28 + 7 = 35\)</span> no exemplo considerado.</p>
 </section>
-<section id="avaliação-das-hipóteses" class="level4" data-number="6.1.1.2">
-<h4 data-number="6.1.1.2" class="anchored" data-anchor-id="avaliação-das-hipóteses"><span class="header-section-number">6.1.1.2</span> Avaliação das hipóteses</h4>
+<section id="avaliação-das-hipóteses" class="level4" data-number="7.1.1.2">
+<h4 data-number="7.1.1.2" class="anchored" data-anchor-id="avaliação-das-hipóteses"><span class="header-section-number">7.1.1.2</span> Avaliação das hipóteses</h4>
 <p>Para avaliar as hipóteses precisamos calcular a quantidade <span class="math inline">\(U_c\)</span>, o qual é o valor crítico de <span class="math inline">\(U\)</span> necessário para decidir em relação às hipóteses. Este valor pode ser encontrado em tabelas de valores críticos da estatística U bilateral (ou unilateral a depender das hipóteses), ou podemos utilizar a função <code>qwilcox()</code> do R e subtrair o resultado por 1, para obtê-lo no caso bilateral. Para o exemplo dos hospitais temos <span class="math inline">\(n_1 = 5\)</span> e <span class="math inline">\(n_2 = 7\)</span>, considerando nível de 5% de significância, podemos utilizar a função <code>qwilcox()</code> para encontrar <span class="math inline">\(U_c\)</span> da seguinte forma:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qwilcox</span>(<span class="fl">0.05</span><span class="sc">/</span><span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">7</span>) <span class="sc">-</span> <span class="dv">1</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -326,8 +326,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Onde <span class="math inline">\(0.05/2\)</span> é o nível de significância dividido por dois devido ao teste ser bilateral, e subtraímos por <span class="math inline">\(1\)</span> como uma correção matemática por <span class="math inline">\(U\)</span> ser discreto e <code>qwilcox()</code> calcular quantis, e não valores críticos de <span class="math inline">\(U\)</span>. Assim, <span class="math inline">\(U_c = 5\)</span> no exemplo considerado.</p>
 <p>Assim, rejeitamos a hipótese nula quando o valor da estatística <span class="math inline">\(U\)</span> calculada for menor ou igual ao valor crítico de <span class="math inline">\(U\)</span>, ou seja, quando <span class="math inline">\(U \leq U_c\)</span>. Com os valores calculados de <span class="math inline">\(U = 7\)</span> e <span class="math inline">\(U_c = 5\)</span>, podemos concluir ao nível de 5% de significância que não há diferença significativa entre as distribuições das idades das gestantes hospitalizadas em ambos hospitais.</p>
 </section>
-<section id="empates" class="level4" data-number="6.1.1.3">
-<h4 data-number="6.1.1.3" class="anchored" data-anchor-id="empates"><span class="header-section-number">6.1.1.3</span> Empates</h4>
+<section id="empates" class="level4" data-number="7.1.1.3">
+<h4 data-number="7.1.1.3" class="anchored" data-anchor-id="empates"><span class="header-section-number">7.1.1.3</span> Empates</h4>
 <p>Dependendo do problema, pode existir valores repetidos observados, e ao ordená-los para identificar os postos, esses valores são considerados empates.</p>
 <span class="math display">\[\begin{array}{llllllllllll}
 \hline \text { Idades } &amp; 14 &amp; 21 &amp; \color{red}{25} &amp; \color{red}{25} &amp; \color{red}{34} &amp; \color{red}{36} &amp; 37 &amp; 39 &amp; \color{red}{44} &amp; \color{red}{46} &amp; \color{red}{48} &amp; \color{red}{50}\\
@@ -336,8 +336,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \end{array}\]</span>
 <p>Observe nesse exemplo que há um empate para idade de 25 anos. Nesse caso, ao ordenar os valores teríamos os postos 3 e 4 para esses valores repetidos, mas devemos atribuir a média desses postos para dar continuidade ao teste. Assim, temos <span class="math inline">\(\displaystyle \frac{3 + 4}{2}= 3,5\)</span>.</p>
 </section>
-<section id="estatística-u-normalizada" class="level4" data-number="6.1.1.4">
-<h4 data-number="6.1.1.4" class="anchored" data-anchor-id="estatística-u-normalizada"><span class="header-section-number">6.1.1.4</span> Estatística <span class="math inline">\(U\)</span> normalizada</h4>
+<section id="estatística-u-normalizada" class="level4" data-number="7.1.1.4">
+<h4 data-number="7.1.1.4" class="anchored" data-anchor-id="estatística-u-normalizada"><span class="header-section-number">7.1.1.4</span> Estatística <span class="math inline">\(U\)</span> normalizada</h4>
 <p>É tido como um consenso a utilização dos procedimentos apresentados até então sobre o teste Mann-Whitney no cenário em que <span class="math inline">\(n_1\)</span> e <span class="math inline">\(n_2\)</span> são menores ou iguais que 20. Por outro lado, no cenário em que <span class="math inline">\(n_1\)</span> e <span class="math inline">\(n_2\)</span> são grandes (<span class="math inline">\(&gt;20\)</span>), podemos aproximar a distribuição de <span class="math inline">\(U\)</span> para uma normal. Assim, calculamos a estatística <span class="math inline">\(Z_u\)</span> para avaliar as hipóteses da seguinte forma:</p>
 <p><span class="math display">\[Z_u = \displaystyle \frac{U-\displaystyle\frac{n_1  n_2}{2}}{\sqrt{\displaystyle\frac{n_1 n_2\left(n_1+n_2+1\right)}{12}}}.\]</span></p>
 <p>Esse procedimento nada mais é do que subtrair a média de <span class="math inline">\(U\)</span> e dividir pelo seu desvio padrão.</p>
@@ -348,8 +348,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math display">\[\sum_{i=1}^2\left(t_i^3-t_i\right) = (2^3 - 2) + (5^3 - 5) = 126.\]</span></p>
 <p>Dessa forma, podemos calcular <span class="math inline">\(Z_u\)</span> e então avaliar as hipóteses da mesma forma que avaliamos no cenário sem empates.</p>
 </section>
-<section id="como-aplicar-o-teste-no-r" class="level4" data-number="6.1.1.5">
-<h4 data-number="6.1.1.5" class="anchored" data-anchor-id="como-aplicar-o-teste-no-r"><span class="header-section-number">6.1.1.5</span> Como aplicar o teste no R</h4>
+<section id="como-aplicar-o-teste-no-r" class="level4" data-number="7.1.1.5">
+<h4 data-number="7.1.1.5" class="anchored" data-anchor-id="como-aplicar-o-teste-no-r"><span class="header-section-number">7.1.1.5</span> Como aplicar o teste no R</h4>
 <p>Na prática, tendo os dados em um formato de planilha, podemos carregá-los no software R e então aplicar o teste recorrendo a uma função específica, a qual irá efetuar os procedimentos formalmente explicados ao longo do texto e retornar um <em>valor-p</em>, o qual podemos utilizar para avaliar as hipóteses, onde, rejeitamos a hipótese nula caso <em>valor-p</em> <span class="math inline">\(\leq 0,05\)</span>, sendo 5% de nível de significância escolhido. Podemos usar a seguinte estrutura:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">wilcox.test</span>(x, y, <span class="at">correct =</span> <span class="cn">FALSE</span>,  <span class="at">alternative =</span> <span class="st">"two.sided"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -357,8 +357,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Os argumentos <code>x</code> e <code>y</code> são os vetores dos valores dos grupos a serem comparados. O argumento <code>correct</code> indica se o usuário quer que seja feito uma correção de continuidade do <em>valor-p</em> no caso de aproximação normal da estatística <span class="math inline">\(U\)</span>, o que geralmente não é feito, a menos que a estatística <span class="math inline">\(Z_u\)</span> esteja muito próxima do valor crítico utilizado. E por fim, o argumento <code>alternative</code> permite escolher o formato do teste de hipóteses desejado.</p>
 </section>
 </section>
-<section id="teste-de-kolmogorov-smirnov" class="level3" data-number="6.1.2">
-<h3 data-number="6.1.2" class="anchored" data-anchor-id="teste-de-kolmogorov-smirnov"><span class="header-section-number">6.1.2</span> Teste de Kolmogorov-Smirnov</h3>
+<section id="teste-de-kolmogorov-smirnov" class="level3" data-number="7.1.2">
+<h3 data-number="7.1.2" class="anchored" data-anchor-id="teste-de-kolmogorov-smirnov"><span class="header-section-number">7.1.2</span> Teste de Kolmogorov-Smirnov</h3>
 <p>Assim como o teste de Mann-Whitney, o teste de Kolmogorov-Smirnov é uma alternativa não paramétrica ao teste t para grupos independentes quando há a suspeita de não normalidade da variável de interesse. O teste possui grau de medida pelo menos ordinal, e é sensível a qualquer diferença de tendência central, dispersão, simetria ou curtose das distribuições.</p>
 <p>Visa verificar se ambos os grupos originaram-se de populações com a mesma distribuição. Para isso, é calculado a estatística de teste <span class="math inline">\(D\)</span> a partir das distribuições de frequências acumuladas dos grupos, e então, utiliza-se essa estatística <span class="math inline">\(D\)</span> para avaliar as hipóteses. Quanto maior a estatística, maior será a evidência para rejeitar a hipótese nula.</p>
 <p>Retornando ao exemplo das idades de gestantes hospitalizadas com Covid-19 em dois diferentes hospitais, as hipóteses para o teste bilateral terão a seguinte forma:</p>
@@ -369,8 +369,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Hospital A: <span class="math inline">\(\quad 22,22,25,27,29\)</span></p>
 <p>Hospital B: <span class="math inline">\(\quad 27,31,34,37,44\)</span></p>
 <p>Considerando as notações introduzidas no desenvolvimento do teste de Mann-Whitney, os tamanhos dos grupos são <span class="math inline">\(n_1 = 5\)</span> e <span class="math inline">\(n_2 = 5\)</span>. Vale lembrar que, usualmente, denotamos <span class="math inline">\(n_1\)</span> como sendo o tamanho do menor grupo, chamado de grupo 1. Como neste exemplo ambos possuem o mesmo tamanho, o grupo 1 sera composto dos valores das idades referentes as gestantes hospitalizadas no Hospital A.</p>
-<section id="estatística-d" class="level4" data-number="6.1.2.1">
-<h4 data-number="6.1.2.1" class="anchored" data-anchor-id="estatística-d"><span class="header-section-number">6.1.2.1</span> Estatística <span class="math inline">\(D\)</span></h4>
+<section id="estatística-d" class="level4" data-number="7.1.2.1">
+<h4 data-number="7.1.2.1" class="anchored" data-anchor-id="estatística-d"><span class="header-section-number">7.1.2.1</span> Estatística <span class="math inline">\(D\)</span></h4>
 <p>Precisamos calcular a estatística <span class="math inline">\(D\)</span> para avaliar as hipóteses. Essa estatística nada mais é do que o maior valor que encontrarmos ao realizar a diferença entre as proporções de frequências relativas acumuladas dos dois grupos. Para isso, construímos a seguinte tabela:</p>
 <span class="math display">\[\begin{array}{ccccc}
 \hline
@@ -389,8 +389,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>As colunas <span class="math inline">\(S_1\)</span> e <span class="math inline">\(S_2\)</span> são referentes as proporções das frequências relativas acumuladas das colunas Idades<sub>1</sub> e Idades<sub>2</sub> respectivamente. Note que, na primeira linha e coluna Idades<sub>1</sub> da tabela, temos uma frequência relativa de <span class="math inline">\(\displaystyle \frac{2}{5}\)</span> para Idades<sub>1</sub> <span class="math inline">\(= 22\)</span> devido a esse valor repetir uma vez. Na segunda linha temos uma frequência relativa de <span class="math inline">\(\displaystyle \frac{1}{5}\)</span> para Idades<sub>1</sub> <span class="math inline">\(= 25\)</span>, pois esse valor aparece uma única vez, que ao acumular com a frequência da linha anterior obtemos <span class="math inline">\(\displaystyle \frac{2}{5} + \displaystyle \frac{1}{5} = \displaystyle \frac{3}{5}\)</span>. Na terceira e quarta linha da tabela os valores da coluna Idades<sub>1</sub> também não se repetem, o que faz com que tenham uma frequência relativa de <span class="math inline">\(\displaystyle \frac{1}{5}\)</span> que ao acumular com as frequências anteriores resultam em <span class="math inline">\(\displaystyle \frac{4}{5}\)</span> e <span class="math inline">\(\displaystyle \frac{5}{5}\)</span>. Após a quarta linha não há mais valores para a coluna Idades<sub>1</sub>, portanto, a proporção das frequências relativas se mantêm em <span class="math inline">\(\displaystyle \frac{5}{5} = 1\)</span>. Além disso, na primeira e segunda linha as frequências relativas referentes a coluna Idades<sub>2</sub> são zeradas, pois não há valores para essa coluna nessas linhas, e por serem as primeiras linhas não há nenhuma frequência a ser acumulada. Isso muda a partir da terceira linha, onde a mesma lógica utilizada para construir as frequências relativas <span class="math inline">\(S_1\)</span> pode ser usada na construção de <span class="math inline">\(S_2\)</span>.</p>
 <p>Por fim, basta calcular os valores de <span class="math inline">\(S_1 - S_2\)</span> para todas as linhas da tabela. A estatística <span class="math inline">\(D\)</span> será o maior dentre esses valores, sendo <span class="math inline">\(D = 0,80\)</span> no exemplo abordado.</p>
 </section>
-<section id="avaliação-das-hipóteses-1" class="level4" data-number="6.1.2.2">
-<h4 data-number="6.1.2.2" class="anchored" data-anchor-id="avaliação-das-hipóteses-1"><span class="header-section-number">6.1.2.2</span> Avaliação das hipóteses</h4>
+<section id="avaliação-das-hipóteses-1" class="level4" data-number="7.1.2.2">
+<h4 data-number="7.1.2.2" class="anchored" data-anchor-id="avaliação-das-hipóteses-1"><span class="header-section-number">7.1.2.2</span> Avaliação das hipóteses</h4>
 <p>Para avaliar as hipóteses precisamos obter o valor crítico <span class="math inline">\(D_c\)</span>, o qual é um valor tabelado que pode ser verificado em Sheskin (2003) fazendo uso apenas das quantidades <span class="math inline">\(n_1\)</span>, <span class="math inline">\(n_2\)</span> e o nível de significância escolhido. Para <span class="math inline">\(n_1 = 5\)</span>, <span class="math inline">\(n_2 = 5\)</span> e o nível de significância de 5%, temos que <span class="math inline">\(D_c = 0,80\)</span>. Assim, em um teste de hipóteses bilateral rejeitamos a hipótese nula quando o valor absoluto da estatística <span class="math inline">\(D\)</span> for maior ou igual que o valor crítico, ou seja, quando <span class="math inline">\(|D| \geq D_c\)</span>. No exemplo, como <span class="math inline">\(D = 0,80\)</span> e <span class="math inline">\(D_c = 0,80\)</span>, poderíamos concluir que há evidências de que ambos os grupos se originaram de populações com distribuições diferentes.</p>
 <p>Embora não seja muito comum, testes de hipóteses unilaterais podem ser empregados:</p>
 <ol type="1">
@@ -398,8 +398,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Caso a hipótese alternativa seja <span class="math inline">\(H_{\mathrm{a}}:\)</span> distribuição<span class="math inline">\(_1 &lt;\)</span> distribuição<span class="math inline">\({ }_2\)</span>, o procedimento de avaliação da hipótese é o mesmo dos casos anteriores. Porém, para ser utilizado temos que respeitar a condição <span class="math inline">\(S_1 &lt; S_2\)</span> na linha da tabela referente a estatística <span class="math inline">\(D\)</span>, o que não ocorre no exemplo considerado, o que faz com que esse formato de hipótese seja inapropriado.</p></li>
 </ol>
 </section>
-<section id="como-aplicar-o-teste-no-r-1" class="level4" data-number="6.1.2.3">
-<h4 data-number="6.1.2.3" class="anchored" data-anchor-id="como-aplicar-o-teste-no-r-1"><span class="header-section-number">6.1.2.3</span> Como aplicar o teste no R</h4>
+<section id="como-aplicar-o-teste-no-r-1" class="level4" data-number="7.1.2.3">
+<h4 data-number="7.1.2.3" class="anchored" data-anchor-id="como-aplicar-o-teste-no-r-1"><span class="header-section-number">7.1.2.3</span> Como aplicar o teste no R</h4>
 <p>É fácil notar que com valores grandes de <span class="math inline">\(n_1\)</span> e <span class="math inline">\(n_2\)</span> a construção da tabela para encontrar a estatística <span class="math inline">\(D\)</span> se torna trabalhosa sem o auxílio computacional. Agora que a ideia de como o teste é construído foi formalmente explicada, podemos verificar como utilizá-lo no software R através de uma função específica. Segue abaixo a estrutura para efetuar o teste de Kolmogorov-Smirnov no R:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">ks.test</span>(x, y, <span class="at">alternative =</span> <span class="st">"two.sided"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -412,8 +412,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Os argumentos <code>x</code> e <code>alternative</code> são os mesmos, a diferença é que em vez de utilizar o argumento <code>y</code> utilizamos o argumento <code>"pnorm"</code>, o qual estamos especificando que queremos comparar a distribuição da população que deu origem ao grupo com a distribuição empírica normal.</p>
 </section>
 </section>
-<section id="teste-de-kruskal-wallis" class="level3" data-number="6.1.3">
-<h3 data-number="6.1.3" class="anchored" data-anchor-id="teste-de-kruskal-wallis"><span class="header-section-number">6.1.3</span> Teste de Kruskal-Wallis</h3>
+<section id="teste-de-kruskal-wallis" class="level3" data-number="7.1.3">
+<h3 data-number="7.1.3" class="anchored" data-anchor-id="teste-de-kruskal-wallis"><span class="header-section-number">7.1.3</span> Teste de Kruskal-Wallis</h3>
 <p>O teste de Kruskal-Wallis é uma extensão do teste de Mann-Whitney em que é possível contruí-lo utilizando a lógica de postos dos valores ordenados dos grupos do estudo, e comparar a distribuição desses grupos, os quais, nesse caso, podem ser mais do que dois. Além disso, é um teste sensível à mediana como o teste de Mann-Whitney, e requer que a variável de interesse seja no mínimo ordinal. Como os grupos precisam ser independentes e não é necessário assumir normalidade, o teste de Kruskal-Wallis é uma alternativa não-paramétrica a análise de variância de um fator (One-way ANOVA).</p>
 <p>Considere <span class="math inline">\(k\)</span> como sendo o número de grupos no estudo. Quando <span class="math inline">\(k = 2\)</span>, o teste de Kruskal-Wallis terá resultados equivalentes aos do teste de Mann-Whitney. Além disso, o teste verifica se as distribuições das populações das quais os grupos foram amostrados são iguais, mas caso a suposição de que a forma dessas distribuições é a mesma for feita, então, o teste pode ser interpretado com base na mediana. Assim, considerando <span class="math inline">\(k\)</span> grupos independentes, as hipóteses podem ser definidas como:</p>
 <p><span class="math inline">\(H_0:\)</span> Todos os <span class="math inline">\(k\)</span> grupos originam-se de populações com distribuições idênticas.</p>
@@ -430,16 +430,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \hline
 \end{array}\]</span>
 <p>Identificado os postos de cada observação, é possível obter algumas quantidades de interesse para a construção do teste. Considere <span class="math inline">\(R_1 = 22\)</span>, <span class="math inline">\(R_2 = 65\)</span> e <span class="math inline">\(R_3 = 33\)</span> como sendo a soma dos postos do grupo 1 (verde), grupo 2 (vermelho) e grupo 3 (preto) respectivamente. Além disso, considere <span class="math inline">\(N = n_1 + n_2 + n_3\)</span> como o total de observações registradas, que para o exemplo abordado é de <span class="math inline">\(N = 15\)</span>.</p>
-<section id="estatística-h" class="level4" data-number="6.1.3.1">
-<h4 data-number="6.1.3.1" class="anchored" data-anchor-id="estatística-h"><span class="header-section-number">6.1.3.1</span> Estatística <span class="math inline">\(H\)</span></h4>
+<section id="estatística-h" class="level4" data-number="7.1.3.1">
+<h4 data-number="7.1.3.1" class="anchored" data-anchor-id="estatística-h"><span class="header-section-number">7.1.3.1</span> Estatística <span class="math inline">\(H\)</span></h4>
 <p>Para avaliar as hipóteses é necessário calcular a estatística de teste <span class="math inline">\(H\)</span>, a qual é obtida a partir de uma aproximação pela distribuição qui-quadrado e possui a seguinte forma:</p>
 <p><span class="math display">\[H=\displaystyle \frac{12}{N(N+1)} \sum_{j=1}^k\left[\displaystyle \frac{\left(R_j\right)^2}{n_j}\right]-3(N+1).\]</span></p>
 <p>Note que a quantidade <span class="math inline">\(\sum_{j=1}^k\left[\displaystyle \frac{\left(R_j\right)^2}{n_j}\right]\)</span> indica, para cada grupo, a soma da razão entre o quadrado da soma dos postos e o número de observações, ou seja:</p>
 <p><span class="math display">\[\sum_{j=1}^k\left[\displaystyle \frac{\left(R_j\right)^2}{n_j}\right] = \displaystyle \frac{\left(R_1\right)^2}{n_1} + \displaystyle \frac{\left(R_2\right)^2}{n_2} + \displaystyle \frac{\left(R_3\right)^2}{n_3} = \displaystyle \frac{\left(22\right)^2}{5} + \displaystyle \frac{\left(65\right)^2}{5} + \displaystyle \frac{\left(33\right)^2}{5} = 1159,6.\]</span></p>
 <p>Assim, sabendo que <span class="math inline">\(N = 15\)</span> e <span class="math inline">\(\sum_{j=1}^k\left[\displaystyle \frac{\left(R_j\right)^2}{n_j}\right] = 1159,6\)</span> obtemos a estatística <span class="math inline">\(H = 9,98\)</span>.</p>
 </section>
-<section id="avaliação-das-hipóteses-2" class="level4" data-number="6.1.3.2">
-<h4 data-number="6.1.3.2" class="anchored" data-anchor-id="avaliação-das-hipóteses-2"><span class="header-section-number">6.1.3.2</span> Avaliação das hipóteses</h4>
+<section id="avaliação-das-hipóteses-2" class="level4" data-number="7.1.3.2">
+<h4 data-number="7.1.3.2" class="anchored" data-anchor-id="avaliação-das-hipóteses-2"><span class="header-section-number">7.1.3.2</span> Avaliação das hipóteses</h4>
 <p>Tendo calculado a estatística <span class="math inline">\(H\)</span>, basta obtermos o valor crítico <span class="math inline">\(H_c\)</span> para avaliar as hipóteses. O valor crítico <span class="math inline">\(H_c\)</span> pode ser obtido a partir da distribuição qui-quadrado com <span class="math inline">\(df = K-1\)</span> graus de liberdade quando há pelo menos cinco observações em cada grupo. Os valores críticos de uma qui-quadrado são quantidades tabeladas, assim, podemos acessá-los diretamente de uma tabela de pontos críticos dessa distribuição, ou, a partir da função <code>qchisq()</code> no r, sendo necessário especificar o grau de liberdade <code>df</code> e o nível de significância <code>p</code> com a estrutura <code>qchisq(p = 0.05, df = 2, lower.tail = FALSE)</code>, considerando o exemplo abordado. Quando existem menos que cinco observações nos grupos, o valor de <span class="math inline">\(H_c\)</span> pode ser obtido a partir de tabelas de valores exatos. Esses valores tabelados podem ser verificados em Sheskin (2003) ou pelo endereço <a href="https://www.dataanalytics.org.uk/critical-values-for-the-kruskal-wallis-test/">www.dataanalytics.org.uk/critical-values</a>.</p>
 <p>Considerando o nível de 5% de significância e grau de liberdade <span class="math inline">\(df = 2\)</span>, o valor crítico para o exemplo é de <span class="math inline">\(H_c = 5,99\)</span>. Além disso, rejeitamos a hipótese nula quando <span class="math inline">\(H \geq H_c\)</span>, como o valor da estatística de teste <span class="math inline">\(H\)</span> é de fato maior que o valor crítico <span class="math inline">\(H_c\)</span>, podemos concluir que há evidências de que pelo menos dois dos três grupos originam-se de populações com distribuições diferentes.</p>
 <p>Caso haja um número excessivo de empates, é recomendado utilizar uma correção para a estatística <span class="math inline">\(H\)</span> que considere essas repetições. A seguinte quantidade deve ser calculada:</p>
@@ -448,8 +448,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math display">\[\sum_{i=1}^s\left(t_i^3-t_i\right) = (2^3-2) + (3^3-3) + (2^3-2) + (2^3-2) = 42.\]</span></p>
 <p>Sabendo que <span class="math inline">\(N = 15\)</span>, o valor do fator de correção será <span class="math inline">\(C = 0.987\)</span>. Para obter a estatística <span class="math inline">\(H\)</span> corrigida, basta dividir pelo valor de <span class="math inline">\(C\)</span>, onde teremos <span class="math inline">\(\displaystyle \frac{H}{C} = 10,11\)</span>. Assim, para o exemplo abordado, as conclusões serão as mesmas feitas anteriormente ao avaliar as hipóteses com a estatística sem correção.</p>
 </section>
-<section id="como-aplicar-o-teste-no-r-2" class="level4" data-number="6.1.3.3">
-<h4 data-number="6.1.3.3" class="anchored" data-anchor-id="como-aplicar-o-teste-no-r-2"><span class="header-section-number">6.1.3.3</span> Como aplicar o teste no R</h4>
+<section id="como-aplicar-o-teste-no-r-2" class="level4" data-number="7.1.3.3">
+<h4 data-number="7.1.3.3" class="anchored" data-anchor-id="como-aplicar-o-teste-no-r-2"><span class="header-section-number">7.1.3.3</span> Como aplicar o teste no R</h4>
 <p>O teste pode ser facilmente aplicado no R ao utilizar a função <code>kruskal.test()</code>, a qual irá retornar o valor da estatística <span class="math inline">\(H\)</span> aproximada pela qui-quadrado, os graus de liberdade considerados e o <em>valor-p</em>. Assim, rejeita-se a hipótese nula quando <em>valor-p</em> <span class="math inline">\(\leq 0,05\)</span> considerando 5% de nível de significância. A função possui a seguinte estrutura:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">kruskal.test</span>(resposta <span class="sc">~</span> grupos, <span class="at">data =</span> dados)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -463,13 +463,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 </section>
 </section>
-<section id="grupos-pareados" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="grupos-pareados"><span class="header-section-number">6.2</span> Grupos pareados</h2>
+<section id="grupos-pareados" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="grupos-pareados"><span class="header-section-number">7.2</span> Grupos pareados</h2>
 <p>Grupos ou amostras são considerados pareados quando as observações em um grupo estão relacionadas ou emparelhadas com as observações de outro grupo. Isso significa que cada observação em um grupo é emparelhada ou relacionada com uma observação correspondente no outro grupo.</p>
 <p>Um exemplo comum de grupos pareados é quando o mesmo grupo de indivíduos é medido duas ou mais vezes em diferentes momentos, o que chamamos de amostras antes e depois. Outro cenário, é quando temos grupos não necessariamente com os mesmos indivíduos avaliados em diferentes momentos, mas com indivíduos diferentes em que conseguimos pareá-los de acordo com características em comum. Um exemplo de pareamento entre indivíduos de dois grupos é quando há o interesse em estudar a eficácia de um novo tratamento médico, onde cada paciente no grupo de tratamento é emparelhado com um paciente no grupo de controle com características semelhantes, formando assim, pares de observações pareadas.</p>
 <p>Dentre os testes não-paramétricos mais conhecidos e utilizados nestes cenários, temos os testes de Wilcoxon e McNemar para dois grupos, e o de Friedman para três ou mais grupos.</p>
-<section id="teste-de-wilcoxon" class="level3" data-number="6.2.1">
-<h3 data-number="6.2.1" class="anchored" data-anchor-id="teste-de-wilcoxon"><span class="header-section-number">6.2.1</span> Teste de Wilcoxon</h3>
+<section id="teste-de-wilcoxon" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="teste-de-wilcoxon"><span class="header-section-number">7.2.1</span> Teste de Wilcoxon</h3>
 <p>O teste de Wilcoxon é utilizado em problemas onde a variável de interesse pode ser ordenada (medida pelo menos ordinal) e há dois grupos dependentes a serem comparados. A hipótese a ser testada é se a mediana das diferenças dos valores pareados das populações que deram origem aos grupos é zero. O teste é usualmente aplicado quando as suposições sobre o teste t para dois grupos dependentes são violadas, principalmente em relação à normalidade dos dados, pois, pelo teste de Wilcoxon ser uma alternativa não-paramétrica ao teste t para duas amostras dependentes, as suposições requeridas são mais leves.</p>
 <p>O teste consiste em identificar as diferenças entre os valores pareados dos grupos, identificar os postos das diferenças absolutas, e então, atribuir os sinais originais das diferenças em cada posto (sinalização dos postos). Além disso, diferenças que resultaram em zero, não são consideradas na construção do teste.</p>
 <p>Sejam as seguintes hipóteses:</p>
@@ -504,8 +504,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Para o exemplo, temos <span class="math inline">\(R_{neg} = 5,5\)</span> e <span class="math inline">\(R_{pos} = 39,5\)</span>. Além disso, podemos verificar a seguinte relação:</p>
 <p><span class="math display">\[R_{neg} + R_{pos} =\displaystyle \frac{n(n+1)}{2}.\]</span></p>
 <p>Caso essa relação não for verdadeira, é um indicativo de que houve erro nos cálculos. Como houve um par de valores entre os grupos cuja diferença foi zero, o número de pares considerados no teste para o exemplo abordado será de <span class="math inline">\(n = 9\)</span>. Dessa forma, teremos <span class="math inline">\(\displaystyle \frac{n(n+1)}{2} = \displaystyle \frac{9(9+1)}{2} = 45\)</span> que corresponde ao valor de <span class="math inline">\(R_{neg} + R_{pos} = 5,5 + 39,5 = 45.\)</span></p>
-<section id="avaliação-das-hipóteses-3" class="level4" data-number="6.2.1.1">
-<h4 data-number="6.2.1.1" class="anchored" data-anchor-id="avaliação-das-hipóteses-3"><span class="header-section-number">6.2.1.1</span> Avaliação das hipóteses</h4>
+<section id="avaliação-das-hipóteses-3" class="level4" data-number="7.2.1.1">
+<h4 data-number="7.2.1.1" class="anchored" data-anchor-id="avaliação-das-hipóteses-3"><span class="header-section-number">7.2.1.1</span> Avaliação das hipóteses</h4>
 <p>Caso os valores das diferenças originaram-se de uma população cuja mediana é zero, espera-se que os valores de <span class="math inline">\(R_{neg}\)</span> e <span class="math inline">\(R_{pos}\)</span> sejam equivalentes ao valor esperado da estatística de teste de Wilcoxon, a qual denotaremos de estatística <span class="math inline">\(V\)</span>. O valor esperado possui a seguinte forma:</p>
 <p><span class="math display">\[\displaystyle \frac{n(n+1)}{4}.\]</span></p>
 <p>Assim, para o exemplo, o valor esperado da estatística de teste <span class="math inline">\(V\)</span> é de <span class="math inline">\(\displaystyle \frac{9(9+1)}{4} = 22,5\)</span>. Note que o valor esperado da estatística de teste <span class="math inline">\(V\)</span> parece ser razoavelmente diferente de <span class="math inline">\(R_{neg}\)</span> e <span class="math inline">\(R_{pos}.\)</span></p>
@@ -513,21 +513,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(H_{\mathrm{a}}:\)</span> A mediana das diferenças dos valores pareados é maior que zero.</p>
 <p>Assim, resta identificar se <span class="math inline">\(R_{pos}\)</span> é de fato significativamente maior que <span class="math inline">\(R_{neg}\)</span>.</p>
 </section>
-<section id="estatística-v" class="level4" data-number="6.2.1.2">
-<h4 data-number="6.2.1.2" class="anchored" data-anchor-id="estatística-v"><span class="header-section-number">6.2.1.2</span> Estatística <span class="math inline">\(V\)</span></h4>
+<section id="estatística-v" class="level4" data-number="7.2.1.2">
+<h4 data-number="7.2.1.2" class="anchored" data-anchor-id="estatística-v"><span class="header-section-number">7.2.1.2</span> Estatística <span class="math inline">\(V\)</span></h4>
 <p>A estatística <span class="math inline">\(V\)</span> de Wilcoxon nada mais é do que o menor dos valores entre <span class="math inline">\(R_{neg}\)</span> e <span class="math inline">\(R_{pos}\)</span>. Assim, para o exemplo em questão, a estatística de teste será <span class="math inline">\(V = R_{neg} = 5,5\)</span>.</p>
 <p>Para avaliar as hipóteses precisamos obter o valor crítico de <span class="math inline">\(V\)</span>, denotado por <span class="math inline">\(V_c\)</span>. Valores críticos de <span class="math inline">\(V\)</span> são quantidades tabeladas identificadas de acordo com a quantidade de postos utilizados no teste ou pares válidos, esses valores podem ser encontrados em Sheskin (2003). Assim, para <span class="math inline">\(n = 9\)</span> e nível de 5% de significância, o valor crítico de <span class="math inline">\(V\)</span> é de <span class="math inline">\(V_c = 8\)</span> para o teste unilateral.</p>
 <p>Rejeitamos a hipótese nula quando <span class="math inline">\(V \leq V_c\)</span>. Como <span class="math inline">\(R_{pos} &gt; R_{neg}\)</span>, <span class="math inline">\(V = 5,5\)</span> e <span class="math inline">\(V_c = 8\)</span>, podemos concluir, ao nível de 5% de significância, que os níveis de ansiedade registrados das gestantes antes do programa de atividades em grupo foram maiores do que após as atividades, ou seja, houve uma redução significativa nos níveis de ansiedade das gestantes em decorrência das atividades em grupo.</p>
 </section>
-<section id="estatística-v-normalizada" class="level4" data-number="6.2.1.3">
-<h4 data-number="6.2.1.3" class="anchored" data-anchor-id="estatística-v-normalizada"><span class="header-section-number">6.2.1.3</span> Estatística <span class="math inline">\(V\)</span> normalizada</h4>
+<section id="estatística-v-normalizada" class="level4" data-number="7.2.1.3">
+<h4 data-number="7.2.1.3" class="anchored" data-anchor-id="estatística-v-normalizada"><span class="header-section-number">7.2.1.3</span> Estatística <span class="math inline">\(V\)</span> normalizada</h4>
 <p>Na prática, quando <span class="math inline">\(n &gt; 30\)</span> podemos normalizar a estatística de teste <span class="math inline">\(V\)</span>, e então, avaliar as hipóteses baseado na distribuição normal padrão. A estatística de teste <span class="math inline">\(V\)</span> normalizada será denotada por <span class="math inline">\(Z_V\)</span>, e possui a seguinte forma:</p>
 <p><span class="math display">\[Z_T=\displaystyle \frac{T-\displaystyle\frac{n(n+1)}{4}}{\sqrt{\displaystyle\frac{n(n+1)(2 n+1)}{24}}}.\]</span></p>
 <p>Como <span class="math inline">\(n = 9\)</span>, temos que o valor da estatística <span class="math inline">\(V\)</span> normalizada é de <span class="math inline">\(Z_V = -2,01\)</span>. O valor crítico da estatística de teste normalizada é um valor tabelado o qual pode ser verificado em tabelas de valores críticos da distribuição normal padrão. Pode ser encontrada em Sheskin (2003), ou, obtido computacionalmente no R através da função <code>qnorm()</code>. Para o nível de 5% de significância, os valores críticos para normal padrão são muito conhecidos, sendo 1,96 e 1,65 para os testes bilaterais e unilaterais respectivamente.</p>
 <p>Rejeita-se a hipótese nula quando <span class="math inline">\(|Z_V|\geq Z_{crítico}\)</span>. Como <span class="math inline">\(R_{pos} &gt; R_{neg}\)</span>, <span class="math inline">\(Z_V = -2,01\)</span> e <span class="math inline">\(Z_{crítico} = 1,65\)</span>, então, podemos concluir que há evidências para a rejeição da hipótese nula, e a mesma interpretação feita anteriormente para o teste sem normalização permanece.</p>
 </section>
-<section id="como-aplicar-o-teste-no-r-3" class="level4" data-number="6.2.1.4">
-<h4 data-number="6.2.1.4" class="anchored" data-anchor-id="como-aplicar-o-teste-no-r-3"><span class="header-section-number">6.2.1.4</span> Como aplicar o teste no R</h4>
+<section id="como-aplicar-o-teste-no-r-3" class="level4" data-number="7.2.1.4">
+<h4 data-number="7.2.1.4" class="anchored" data-anchor-id="como-aplicar-o-teste-no-r-3"><span class="header-section-number">7.2.1.4</span> Como aplicar o teste no R</h4>
 <p>Para aplicar o teste de Wilcoxon no R podemos utilizar a mesma função e estrutura utilizada para o teste de Mann-Whitney. Utilizamos a seguinte estrutura:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">wilcox.test</span>(x, y, <span class="at">correct =</span> <span class="cn">FALSE</span>,  <span class="at">alternative =</span> <span class="st">"two.sided"</span>, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -536,8 +536,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>A função <code>wilcox.test()</code> neste caso irá retornar o valor da estatística de teste <span class="math inline">\(V\)</span> e o <em>valor-p</em>. A hipótese nula pode ser rejeitada quando <em>valor-p</em> <span class="math inline">\(\leq 0,05\)</span>, quando o nível de significância desejado for de 5%.</p>
 </section>
 </section>
-<section id="teste-de-mcnemar" class="level3" data-number="6.2.2">
-<h3 data-number="6.2.2" class="anchored" data-anchor-id="teste-de-mcnemar"><span class="header-section-number">6.2.2</span> Teste de McNemar</h3>
+<section id="teste-de-mcnemar" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="teste-de-mcnemar"><span class="header-section-number">7.2.2</span> Teste de McNemar</h3>
 <p>O teste de McNemar é usualmente utilizado em cenários onde a variável de interesse é categórica, dicotômica (duas categorias) e os grupos são dependentes (geralmente experimentos do tipo “antes-depois” de um evento de intervenção). O objetivo do teste é verificar a existência de diferenças significativas entre os grupos em relação à variável de interesse, e sua construção é feita tendo como base tabelas de contingência 2x2.</p>
 <p>Considere o exemplo abordado na construção do teste de Wilcoxon, onde, foi coletado os dados do nível de ansiedade de gestantes no terceiro trimestre gestacional, antes e depois, de um programa de atividades em grupo, sendo 0 indicando sem ansiedade e 10 indicando ansiedade severa. Porém, considere que o número de gestantes que participaram do programa foi de 100, e que o nível de ansiedade foi classificado como baixo ou alto (baixo: 0 a 5; alto: 6 a 10). Além disso, considere que as gestantes foram selecionadas de forma aleatória e que as categorias baixa e alta são mutualmente exclusivas. Os dados são apresentados na seguinte forma:</p>
 <span class="math display">\[\begin{array}{c|cc|c}
@@ -551,14 +551,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(H_0:\)</span> A proporção das observações da casela <span class="math inline">\(b\)</span> é igual a proporção das observações da casela <span class="math inline">\(c\)</span>, ou seja, <span class="math inline">\(\pi_b = \pi_c\)</span>.</p>
 <p><span class="math inline">\(H_{\mathrm{a}}:\)</span> A proporção das observações da casela <span class="math inline">\(b\)</span> difere da proporção das observações da casela <span class="math inline">\(c\)</span>, ou seja, <span class="math inline">\(\pi_b \neq \pi_c\)</span>.</p>
 <p>Os valores <span class="math inline">\(\pi_b\)</span> e <span class="math inline">\(\pi_c\)</span> podem ser estimados por <span class="math inline">\(p_b = \displaystyle \frac{b}{b + c}\)</span> e <span class="math inline">\(p_c = \displaystyle \frac{c}{b + c}\)</span> respectivamente. Para o exemplo considerado, temos <span class="math inline">\(p_b = 0,14\)</span> e <span class="math inline">\(p_c = 0,85\)</span>. Assim, como <span class="math inline">\(p_c &gt; p_b\)</span>, a hipótese unilateral <span class="math inline">\(H_{\mathrm{a}}: \pi_b &lt; \pi_c\)</span> é consistente com os dados e pode ser considerada.</p>
-<section id="estatística-m" class="level4" data-number="6.2.2.1">
-<h4 data-number="6.2.2.1" class="anchored" data-anchor-id="estatística-m"><span class="header-section-number">6.2.2.1</span> Estatística <span class="math inline">\(M\)</span></h4>
+<section id="estatística-m" class="level4" data-number="7.2.2.1">
+<h4 data-number="7.2.2.1" class="anchored" data-anchor-id="estatística-m"><span class="header-section-number">7.2.2.1</span> Estatística <span class="math inline">\(M\)</span></h4>
 <p>A estatística de teste utilizada no teste de McNemar é baseada na distribuição qui-quadrado e será denotada por <span class="math inline">\(M\)</span>. O cálculo da estatística <span class="math inline">\(M\)</span> pode ser feito da seguinte maneira:</p>
 <p><span class="math display">\[M = \displaystyle \frac{(b-c)^2}{b+c}.\]</span></p>
 <p>Note que essa estatística sempre será não-negativa, e caso o número de observações na casela <span class="math inline">\(b\)</span> e <span class="math inline">\(c\)</span> seja o mesmo, então, a estatística <span class="math inline">\(M\)</span> será zero. Para o exemplo considerado, teremos que o valor da estatística de teste será <span class="math inline">\(M = 34,79\)</span>.</p>
 </section>
-<section id="avaliação-das-hipóteses-4" class="level4" data-number="6.2.2.2">
-<h4 data-number="6.2.2.2" class="anchored" data-anchor-id="avaliação-das-hipóteses-4"><span class="header-section-number">6.2.2.2</span> Avaliação das hipóteses</h4>
+<section id="avaliação-das-hipóteses-4" class="level4" data-number="7.2.2.2">
+<h4 data-number="7.2.2.2" class="anchored" data-anchor-id="avaliação-das-hipóteses-4"><span class="header-section-number">7.2.2.2</span> Avaliação das hipóteses</h4>
 <p>Para avaliar as hipóteses precisamos obter o valor crítico da estatística <span class="math inline">\(M\)</span>, que será denotado por <span class="math inline">\(M_c\)</span>. Valores críticos de <span class="math inline">\(M\)</span> são os mesmos da distribuição qui-quadrado, os quais são valores tabelados podendo ser encontrados em Sheskin (2003), ou, podemos utilizar a função <code>qchisq()</code> no R para encontrá-los. A função <code>qchisq()</code> terá a seguinte forma:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">qchisq</span>(<span class="at">p =</span> <span class="fl">0.10</span>, <span class="at">df =</span> <span class="dv">1</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -570,8 +570,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Assim, rejeitamos a hipótese nula quando <span class="math inline">\(M \geq M_c\)</span>. Como <span class="math inline">\(M = 34,79\)</span> e <span class="math inline">\(M_c = 2,71\)</span>, então, ao nível de 5% de significância, há evidências de uma mudança significativa nos níveis de ansiedade das gestantes, onde a direção dessa mudança é de níveis altos de ansiedade para níveis baixos. É importante notar, que essa hipótese apenas é aceita, pois a relação <span class="math inline">\(p_c &gt; p_b\)</span> é consistente com os dados.</p>
 <p>Embora o exemplo utilizado seja de um experimento em que os grupos são formados a partir de dados obtidos das mesmas pessoas duas vezes (antes e depois da intervenção), em experimentos em que os grupos são formados de indivíduos diferentes, mas pareados por características em comum, o teste de McNemar pode ser aplicado normalmente.</p>
 </section>
-<section id="como-aplicar-o-teste-no-r-4" class="level4" data-number="6.2.2.3">
-<h4 data-number="6.2.2.3" class="anchored" data-anchor-id="como-aplicar-o-teste-no-r-4"><span class="header-section-number">6.2.2.3</span> Como aplicar o teste no R</h4>
+<section id="como-aplicar-o-teste-no-r-4" class="level4" data-number="7.2.2.3">
+<h4 data-number="7.2.2.3" class="anchored" data-anchor-id="como-aplicar-o-teste-no-r-4"><span class="header-section-number">7.2.2.3</span> Como aplicar o teste no R</h4>
 <p>Podemos aplicar o teste de McNemar facilmente no R ao utilizar a função <code>mcnemar.test()</code>, a qual irá retornar a estatística de teste, os graus de liberdades considerados e o <em>valor-p</em> calculado. Essa função possui a seguinte estrutura:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">mcnemar.test</span>(x, <span class="at">correct =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -579,8 +579,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>O argumento <code>x</code> é a tabela de contingência 2x2 considerada, e deve ser passada como um objeto do tipo matriz (ver apêndice). O argumento <code>correct</code> indica se o usuário quer que seja aplicado uma correção de continuidade na estatística de teste, o que é sempre recomendado na prática dado que o teste de McNemar utiliza uma distribuição contínua para aproximar uma distribuição de probabilidade discreta. Assim, aplicando o teste com a função <code>mcnemar.test()</code>, podemos rejeitar a hipótese nula quando <em>valor-p</em> <span class="math inline">\(\leq 0,05\)</span> considerando nível de 5% de significância, ou podemos obter o valor crítico da estatística de teste e avaliar <span class="math inline">\(M \geq M_c\)</span>.</p>
 </section>
 </section>
-<section id="teste-de-friedman" class="level3" data-number="6.2.3">
-<h3 data-number="6.2.3" class="anchored" data-anchor-id="teste-de-friedman"><span class="header-section-number">6.2.3</span> Teste de Friedman</h3>
+<section id="teste-de-friedman" class="level3" data-number="7.2.3">
+<h3 data-number="7.2.3" class="anchored" data-anchor-id="teste-de-friedman"><span class="header-section-number">7.2.3</span> Teste de Friedman</h3>
 <p>O teste de Friedman é utilizado para comparar mais de dois grupos dependentes, onde, sua construção de baseia em postos. Assim, a variável de interesse precisar ser pelo menos ordinal para ser possível identificar os postos. Além disso, é usado quando os pressupostos de normalidade não são atendidos, sendo uma alternativa não-paramétrica a análise de variância de um fator (One-way ANOVA) de medidas repetidas. O teste tem por objetivo verificar se as distribuições das populações as quais os grupos representam são iguais em relação à mediana, logo, teremos a seguinte estrutura de hipóteses:</p>
 <p><span class="math inline">\(H_0:\)</span> Todos os <span class="math inline">\(k\)</span> grupos originam-se de populações com medianas idênticas.</p>
 <p><span class="math inline">\(H_{\mathrm{a}}:\)</span> Pelo menos 2 grupos originam-se de populações com medianas diferentes.</p>
@@ -597,16 +597,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>A coluna Grupo<sub>1</sub> indica os níveis de ansiedade das gestantes (identificadas na coluna <em>Indivíduos</em>) registrados antes das atividades, sendo os valores na coluna Postos<sub>1</sub> seus respectivos postos. Além disso, a coluna Grupo<sub>2</sub> indica os níveis de ansiedade registrados após a atividade A, cujos postos são identificados na coluna Postos<sub>2</sub>. Para mais, a coluna Grupo<sub>3</sub> indica os níveis de ansiedade registrados das gestantes após a atividade B, sendo seus postos identificados na coluna Postos<sub>3</sub>. Por fim, detonamos a soma dos postos dos grupos por <span class="math inline">\(R_1\)</span>, <span class="math inline">\(R_2\)</span> e <span class="math inline">\(R_3\)</span>, onde aplicamos a soma de todos os valores para cada coluna Postos<sub>1</sub>, Postos<sub>2</sub> e Postos<sub>3</sub>. Assim, teremos <span class="math inline">\(R_1 = 14,5\)</span>, <span class="math inline">\(R_2 = 7,5\)</span> e <span class="math inline">\(R_3 = 8,0\)</span>.</p>
 <p>Note que o procedimento de identificação dos postos é feito para cada indivíduo em específico, ou seja, é identificado os postos dos valores (níveis de ansiedade) dos grupos por linha separadamente, de forma que os postos de cada linha não interferem os postos das outras. Caso houver empates dos valores, então, a média dos postos identificados caso não fossem empates será aplicado, da mesma forma em que é feito nos demais testes não-paramétricos abordados nesta seção.</p>
 <p>Embora o exemplo utilizado seja de um experimento onde os mesmos indivíduos passam por condições diferentes, e então, para cada condição é formado um novo grupo, cenários onde os grupos são formados por indivíduos diferentes, porém, pareados por características em comum, também são válidos para aplicação do teste de Friedman.</p>
-<section id="estatística-q" class="level4" data-number="6.2.3.1">
-<h4 data-number="6.2.3.1" class="anchored" data-anchor-id="estatística-q"><span class="header-section-number">6.2.3.1</span> Estatística <span class="math inline">\(Q\)</span></h4>
+<section id="estatística-q" class="level4" data-number="7.2.3.1">
+<h4 data-number="7.2.3.1" class="anchored" data-anchor-id="estatística-q"><span class="header-section-number">7.2.3.1</span> Estatística <span class="math inline">\(Q\)</span></h4>
 <p>Para avaliar as hipóteses devemos calcular a estatística de teste, a qual denotaremos de estatística <span class="math inline">\(Q\)</span>. A estatística <span class="math inline">\(Q\)</span> é aproximada a partir da distribuição qui-quadrado da seguinte forma:</p>
 <p><span class="math display">\[Q=\displaystyle \frac{12}{n k(k+1)}\left[\sum_{i = 1}^k\left(R_i\right)^2\right]-3 n(k+1).\]</span></p>
 <p>Experimentos do tipo “antes-depois” possuem a característica de serem geralmente avaliados os mesmos indivíduos mais de uma vez, assim, os grupos formados serão do mesmo tamanho, onde, teremos <span class="math inline">\(n_1 = n_2 = n_3 = n\)</span>, sendo <span class="math inline">\(n = 5\)</span> no exemplo considerado. O número de grupos é denotado por <span class="math inline">\(k\)</span>, assim, podemos calcular a seguinte quantidade:</p>
 <p><span class="math display">\[\displaystyle \sum_{i = 1}^k(R_i)^2 = (R_1)^2 + (R_2)^2 + (R_3)^2 = (14,5)^2 + (7,5)^2 + (8,0)^2 = 330,5.\]</span></p>
 <p>Com todos os termos identificados, a estatística para o teste de Friedman será <span class="math inline">\(Q = 6,1\)</span>.</p>
 </section>
-<section id="avaliação-das-hipóteses-5" class="level4" data-number="6.2.3.2">
-<h4 data-number="6.2.3.2" class="anchored" data-anchor-id="avaliação-das-hipóteses-5"><span class="header-section-number">6.2.3.2</span> Avaliação das hipóteses</h4>
+<section id="avaliação-das-hipóteses-5" class="level4" data-number="7.2.3.2">
+<h4 data-number="7.2.3.2" class="anchored" data-anchor-id="avaliação-das-hipóteses-5"><span class="header-section-number">7.2.3.2</span> Avaliação das hipóteses</h4>
 <p>Tendo calculado a estatística de teste, precisamos obter o valor crítico de <span class="math inline">\(Q\)</span> para avaliar as hipóteses, o qual será denotado por <span class="math inline">\(Q_c\)</span>. Como a estatística <span class="math inline">\(Q\)</span> é aproximada pela qui-quadrado, então, os valores críticos da distribuição qui-quadrado podem ser utilizados. Tais valores podem ser obtidos de forma tabelada, onde, tais tabelas podem ser encontradas em Sheskin (2003). Outra forma de obtê-los é através da função <code>qchisq()</code>, da mesma forma em que foi explicado na construção do teste de McNemar. Considerando que os graus de liberdade são <span class="math inline">\(k - 1\)</span>, então, ao nível de 5% de significância, teremos o seguinte valor crítico para o exemplo abordado:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">qchisq</span>(<span class="at">p =</span> <span class="fl">0.05</span>, <span class="at">df =</span> <span class="dv">2</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -616,8 +616,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Rejeitamos a hipótese nula quando <span class="math inline">\(Q \geq Q_c\)</span>, logo, dado que <span class="math inline">\(Q = 6,1\)</span> e <span class="math inline">\(Q_c = 5,99\)</span>, há evidências de que pelo menos dois grupos (condições as quais o nível de ansiedade foi registrado) diferem significativamente.</p>
 </section>
-<section id="correção-de-empates" class="level4" data-number="6.2.3.3">
-<h4 data-number="6.2.3.3" class="anchored" data-anchor-id="correção-de-empates"><span class="header-section-number">6.2.3.3</span> Correção de empates</h4>
+<section id="correção-de-empates" class="level4" data-number="7.2.3.3">
+<h4 data-number="7.2.3.3" class="anchored" data-anchor-id="correção-de-empates"><span class="header-section-number">7.2.3.3</span> Correção de empates</h4>
 <p>Caso houver um número excessivo de indivíduos onde ocorreu empates (muitas linhas da tabela em que tenham empates ou muitos empates em uma mesma linha), é recomendado utilizar um fator de correção para aplicar na estatística de teste, o qual, terá a seguinte forma:</p>
 <p><span class="math display">\[C=1- \displaystyle\frac{\sum_{i=1}^s\left(t_i^3-t_i\right)}{n\left(k^3-k\right)}.\]</span></p>
 <p>Note que a quantidade <span class="math inline">\(\displaystyle \sum_{i=1}^s\left(t_i^3-t_i\right)\)</span> é a mesma utilizada no fator de correção de empates para o teste de Kruskal-Wallis, onde, <span class="math inline">\(s\)</span> indica quantos conjuntos de empates ocorreram e <span class="math inline">\(t\)</span> o número total de empates no conjunto. Logo, para o exemplo considerado teremos:</p>
@@ -625,8 +625,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Assim, sabendo que <span class="math inline">\(n = 5\)</span> e <span class="math inline">\(k = 3\)</span>, o valor do fator de correção será <span class="math inline">\(C = 0,95\)</span>. Então, a estatística de teste <span class="math inline">\(Q\)</span> corrigida será <span class="math inline">\(Q_{corrigida} = \displaystyle \frac{Q}{C} = 6,42\)</span>.</p>
 <p>A avaliação das hipóteses é feita da mesma forma, onde, rejeitamos a hipótese nula quando <span class="math inline">\(Q_{corrigida} \geq Q_c\)</span>.</p>
 </section>
-<section id="como-aplicar-o-teste-no-r-5" class="level4" data-number="6.2.3.4">
-<h4 data-number="6.2.3.4" class="anchored" data-anchor-id="como-aplicar-o-teste-no-r-5"><span class="header-section-number">6.2.3.4</span> Como aplicar o teste no R</h4>
+<section id="como-aplicar-o-teste-no-r-5" class="level4" data-number="7.2.3.4">
+<h4 data-number="7.2.3.4" class="anchored" data-anchor-id="como-aplicar-o-teste-no-r-5"><span class="header-section-number">7.2.3.4</span> Como aplicar o teste no R</h4>
 <p>Podemos aplicar o teste de Friedman no R utilizando a função <code>friedman.test()</code>, a qual, possui a seguinte estrutura:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>stats<span class="sc">::</span><span class="fu">friedman.test</span>(y, groups, blocks)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -640,8 +640,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 </section>
 </section>
-<section id="materiais-complementares" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="materiais-complementares"><span class="header-section-number">6.3</span> Materiais complementares</h2>
+<section id="materiais-complementares" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="materiais-complementares"><span class="header-section-number">7.3</span> Materiais complementares</h2>
 <p>Livros e Artigos:</p>
 <ul>
 <li><p>Corder, Gregory W., and Dale I. Foreman. “Nonparametric statistics for non‐statisticians.” (2011).</p></li>
@@ -686,9 +686,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -753,6 +767,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -795,12 +895,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./estimacao.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estimação</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Estimação</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./supervisionada.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

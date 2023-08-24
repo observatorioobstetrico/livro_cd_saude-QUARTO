@@ -37,6 +37,6 @@ format:
     toc-depth: 3
   pdf:
     documentclass: scrreprt
-
+prefer-html: true
 editor: visual
 

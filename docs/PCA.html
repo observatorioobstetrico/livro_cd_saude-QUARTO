@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Ciência de Dados Aplicada à Saúde Materno-Infantil - 10&nbsp; Análise de Componentes Principais (PCA).</title>
+<title>Ciência de Dados Aplicada à Saúde Materno-Infantil - 11&nbsp; Análise de Componentes Principais (PCA).</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -110,7 +110,8 @@ div.csl-indent {
     "search-more-matches-text": "mais correspondências neste documento",
     "search-clear-button-title": "Limpar",
     "search-detached-cancel-button-title": "Cancelar",
-    "search-submit-button-title": "Enviar"
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
   }
 }</script>
 
@@ -128,10 +129,10 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./PCA.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Análise de Componentes Principais (PCA).</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./PCA.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Análise de Componentes Principais (PCA).</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -191,38 +192,44 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./correlacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Correlação</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./estimacao.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Conceitos básicos de probabilidade</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Estimação</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./testes_np.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Testes não-paramétricos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Testes não-paramétricos</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./supervisionada.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Aprendizado supervisionado</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./introducao_algebra.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Alguns conceitos básicos de algebra</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Alguns conceitos básicos de algebra</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./naosupervisionado.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Aprendizado Não Supervisionado</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Aprendizado Não Supervisionado</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./PCA.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Análise de Componentes Principais (PCA).</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Análise de Componentes Principais (PCA).</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -258,10 +265,10 @@ div.csl-indent {
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#introdução." id="toc-introdução." class="nav-link active" data-scroll-target="#introdução."><span class="header-section-number">10.1</span> Introdução.</a></li>
-  <li><a href="#como-realizar-a-análise-de-componentes-principais." id="toc-como-realizar-a-análise-de-componentes-principais." class="nav-link" data-scroll-target="#como-realizar-a-análise-de-componentes-principais."><span class="header-section-number">10.2</span> Como realizar a análise de componentes principais.</a></li>
-  <li><a href="#número-de-componentes-principais-e-redução-da-dimensionalidade." id="toc-número-de-componentes-principais-e-redução-da-dimensionalidade." class="nav-link" data-scroll-target="#número-de-componentes-principais-e-redução-da-dimensionalidade."><span class="header-section-number">10.3</span> Número de componentes principais e ReduçãO da dimensionalidade.</a></li>
-  <li><a href="#interpretação-do-componentes-principais-de-uma-amostra." id="toc-interpretação-do-componentes-principais-de-uma-amostra." class="nav-link" data-scroll-target="#interpretação-do-componentes-principais-de-uma-amostra."><span class="header-section-number">10.4</span> Interpretação do componentes principais de uma amostra.</a></li>
+  <li><a href="#introdução." id="toc-introdução." class="nav-link active" data-scroll-target="#introdução."><span class="header-section-number">11.1</span> Introdução.</a></li>
+  <li><a href="#como-realizar-a-análise-de-componentes-principais." id="toc-como-realizar-a-análise-de-componentes-principais." class="nav-link" data-scroll-target="#como-realizar-a-análise-de-componentes-principais."><span class="header-section-number">11.2</span> Como realizar a análise de componentes principais.</a></li>
+  <li><a href="#número-de-componentes-principais-e-redução-da-dimensionalidade." id="toc-número-de-componentes-principais-e-redução-da-dimensionalidade." class="nav-link" data-scroll-target="#número-de-componentes-principais-e-redução-da-dimensionalidade."><span class="header-section-number">11.3</span> Número de componentes principais e ReduçãO da dimensionalidade.</a></li>
+  <li><a href="#interpretação-do-componentes-principais-de-uma-amostra." id="toc-interpretação-do-componentes-principais-de-uma-amostra." class="nav-link" data-scroll-target="#interpretação-do-componentes-principais-de-uma-amostra."><span class="header-section-number">11.4</span> Interpretação do componentes principais de uma amostra.</a></li>
   </ul>
 </nav>
     </div>
@@ -270,7 +277,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Análise de Componentes Principais (PCA).</span></h1>
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Análise de Componentes Principais (PCA).</span></h1>
 </div>
 
 
@@ -285,15 +292,15 @@ div.csl-indent {
 
 </header>
 
-<section id="introdução." class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="introdução."><span class="header-section-number">10.1</span> Introdução.</h2>
+<section id="introdução." class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="introdução."><span class="header-section-number">11.1</span> Introdução.</h2>
 <p>A Análise de Componentes Principais (PCA) é uma técnica que busca resumir a variação presente em um conjunto de dados multivariados através de combinações lineares de suas variáveis originais, que são correlacionadas. O objetivo principal é reduzir a dimensionalidade dos dados, representando um grande número de variáveis originais em um número menor de componentes principais. Essas novas variáveis são ordenadas em ordem decrescente de importância, de modo que a primeira componente principal capture a maior quantidade possível da variabilidade total dos dados, e as subsequentes capturem cada vez menos.</p>
 <p>A primeira componente principal é calculada de forma a maximizar a variância explicada pelos dados, ou seja, ela é a direção ao longo da qual os dados apresentam a maior variação possível. As demais componentes são ortogonais à primeira e são combinações lineares das variáveis originais, indicando a importância relativa de cada variável naquele componente. Note então, que por essa definição já podemos perceber a relação com os autovetores e autovetores associados.</p>
 <p>O PCA tem diversas aplicações em áreas como estatística, engenharia e ciência de dados, sendo usado para resumir grandes conjuntos de dados, detectar padrões e estruturas latentes, identificar outliers e reduzir o ruído presente nos dados. Além disso, ele é comumente utilizado como uma técnica de pré-processamento de dados para outras técnicas de análise, como regressão e clustering.</p>
 <p>Uma aplicação comum do PCA é na identificação de variáveis latentes em um conjunto de dados, que não são diretamente observáveis, mas podem ser inferidas a partir de outras variáveis observáveis correlacionadas entre si.Um exemplo de variável latente na obstetrícia pode ser a “saúde fetal” ou até mesmo a “saúde materna”. Não pode ser diretamente medida ou observada, mas pode ser inferida a partir de múltiplas variáveis observáveis, como a frequência cardíaca fetal, a pressão arterial materna entre outras.</p>
 </section>
-<section id="como-realizar-a-análise-de-componentes-principais." class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="como-realizar-a-análise-de-componentes-principais."><span class="header-section-number">10.2</span> Como realizar a análise de componentes principais.</h2>
+<section id="como-realizar-a-análise-de-componentes-principais." class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="como-realizar-a-análise-de-componentes-principais."><span class="header-section-number">11.2</span> Como realizar a análise de componentes principais.</h2>
 <p>O primeiro passo é entender a definição matemática real das componentes principais. Seja <span class="math inline">\(\boldsymbol{X}\)</span> um vetor aleatório com <span class="math inline">\(\boldsymbol{\mu} = E(\boldsymbol{X})\)</span> e <span class="math inline">\(\boldsymbol \Sigma = Var(\boldsymbol{X})\)</span> e <span class="math inline">\((\lambda_i,e_i), i = 1,\dots,p\)</span> os pares de autovalores e autovetores normalizados associados de <span class="math inline">\(\Sigma\)</span>. Então,</p>
 <p><span class="math display">\[
 \begin{split}
@@ -363,15 +370,11 @@ Y_p
 <p>As componentes principais podem ser obtidas a partir de variáveis padronizadas. A padronização das variáveis é comumente realizada na análise de componentes principais para garantir que as variáveis tenham a mesma escala e evitar que uma variável com maior variabilidade domine a análise em detrimento das outras. Bem como estudado em variáveis aleatórias, a padronização das variáveis é feita subtraindo-se a média de cada variável e dividindo-se pelo desvio padrão. Dessa forma, todas as variáveis terão média zero e desvio padrão igual a um.</p>
 <p>No código anterior, a padronização das variáveis não foi realizada, porem é recomendado padronizar as variáveis antes de realizar qualquer análise de componentes principais, isso pode ser feito de maneira simples utilizando o comando <code>scale</code>. Ao realizar essa transformação, trabalhar com a matriz de covariâncias das variáveis transformadas equivale a trabalhar com a matriz de correlação.</p>
 </section>
-<section id="número-de-componentes-principais-e-redução-da-dimensionalidade." class="level2" data-number="10.3">
-<h2 data-number="10.3" class="anchored" data-anchor-id="número-de-componentes-principais-e-redução-da-dimensionalidade."><span class="header-section-number">10.3</span> Número de componentes principais e ReduçãO da dimensionalidade.</h2>
+<section id="número-de-componentes-principais-e-redução-da-dimensionalidade." class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="número-de-componentes-principais-e-redução-da-dimensionalidade."><span class="header-section-number">11.3</span> Número de componentes principais e ReduçãO da dimensionalidade.</h2>
 <p>A escolha do número ideal de componentes principais é uma etapa crucial ao aplicar a Análise de Componentes Principais (PCA) em um conjunto de dados. A seleção adequada de componentes pode garantir a retenção da maior parte da variância dos dados, ao mesmo tempo em que reduz a dimensionalidade do problema. Abaixo são apresentados alguns dos métodos atualmente utilizados para número <span class="math inline">\(d\)</span> de componentes retidas.</p>
 <ul>
-<<<<<<< HEAD
 <li><em>Variância explicada</em></li>
-=======
-<li><em>Variância explicada </em></li>
->>>>>>> c86644d775deabea6c8277c0dca82f155a29a052
 </ul>
 <p>Plotar a porcentagem de variância explicada de cada componente individual e a porcentagem de variância total capturada por todos os componentes principais. Este é o método mais avançado e eficaz que pode ser usado para selecionar o melhor número de componentes principais para o conjunto de dados. Neste método, criamos o seguinte tipo de gráfico:</p>
 <div class="cell">
@@ -406,8 +409,8 @@ Y_p
 <p>Usando o gráfico discutido no Método de variância explicada, você pode selecionar o número inicial de componentes principais e obter o conjunto de dados reduzido (transformado). Em seguida, você constrói um modelo de regressão ou classificação e mede seu desempenho por meio do RMSE ou da pontuação de precisão. Em seguida, você altera ligeiramente o número de componentes principais, constrói o modelo novamente e mede a pontuação de desempenho. Após repetir essas etapas várias vezes, você pode selecionar o melhor número de componentes principais que realmente oferece a melhor pontuação de desempenho.</p>
 <p>Observe que a pontuação de desempenho do modelo depende de outros fatores também. Por exemplo, depende do estado aleatório da divisão dos conjuntos de treinamento e teste, quantidade de dados, desequilíbrio de classes, número de árvores no modelo (se o modelo for uma floresta aleatória ou uma variante similar), número de iterações definidas durante a otimização, valores discrepantes e valores ausentes nos dados, etc. Portanto, tenha cuidado ao usar este método!</p>
 </section>
-<section id="interpretação-do-componentes-principais-de-uma-amostra." class="level2" data-number="10.4">
-<h2 data-number="10.4" class="anchored" data-anchor-id="interpretação-do-componentes-principais-de-uma-amostra."><span class="header-section-number">10.4</span> Interpretação do componentes principais de uma amostra.</h2>
+<section id="interpretação-do-componentes-principais-de-uma-amostra." class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="interpretação-do-componentes-principais-de-uma-amostra."><span class="header-section-number">11.4</span> Interpretação do componentes principais de uma amostra.</h2>
 <p>Após realizar a Análise de Componentes Principais (PCA) em um conjunto de dados, é importante interpretar os componentes principais resultantes para entender a estrutura e os padrões presentes nos dados. A interpretação dos componentes principais envolve analisar os coeficientes de ponderação das variáveis originais em cada componente, ou loadings, como apresentado nas sessões anteriores.</p>
 <p>Uma forma comum de interpretar os loadings é observar os valores absolutos e as diferenças entre eles. Valores absolutos altos indicam uma forte contribuição da variável para a respectiva componente principal, enquanto valores baixos indicam uma contribuição fraca. Além disso, diferenças significativas entre os valores absolutos dos loadings de uma variável em diferentes componentes podem indicar a presença de padrões específicos relacionados a essa variável.</p>
 <p>Por exemplo, suponha que estamos analisando um conjunto de dados com indicadores de saúde que inclui variáveis como taxa de mortalidade infantil, taxa de natalidade, gastos com saúde per capita, entre outras. Após realizar a PCA, obtemos as componentes principais. Podemos então examinar os loadings para interpretar os padrões presentes nos dados.</p>
@@ -660,7 +663,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./naosupervisionado.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Aprendizado Não Supervisionado</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Aprendizado Não Supervisionado</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
