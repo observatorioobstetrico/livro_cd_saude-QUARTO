@@ -19,12 +19,13 @@ book:
     - estimacao.qmd
     - testes_np.qmd
     - supervisionada.qmd
-    - introducao_algebra.qmd
     - naosupervisionado.qmd
     - PCA.qmd
   appendices: 
     - href: tutorialr.qmd
       text: Tutorial de R
+    - href: introducao_algebra.qmd
+      text: Introdução à Algebra Linear
     - href: references.qmd
       text: Referências 
   

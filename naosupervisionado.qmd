@@ -4,6 +4,7 @@ O aprendizado de máquina pode ser dividido em duas categorias principais: apren
 
 Em geral, o aprendizado não supervisionado é usado quando não há classificação sobre os dados disponível ou quando os dados rotulados são muito escassos. Ele pode ser usado para várias tarefas, incluindo clustering (agrupamento) e redução de dimensionalidade.
 
+
 ### Clustering ou Agrupamentos
 
 O clustering é uma técnica de aprendizado não supervisionado em que os dados são agrupados com base em sua similaridade. Em outras palavras, os dados que são mais semelhantes são postos em uma mesma classificação, enquanto os dados que são diferentes são agrupados em classificações diferentes.
@@ -404,9 +405,7 @@ Uma das vantagens do DBSCAN é sua capacidade de identificar outliers no conjunt
 
 3.  Repetir os passos 1 e 2 até que não haja mais observações "não visitadas".
 
-Os parâmetros $\epsilon$ e MinPts afetam diretamente o resultado do agrupamento, determinando o tamanho mínimo de cada grupo e a distância entre os clusters. Uma das limitações do DBSCAN é o fato de que esses parâmetros são globais, ou seja, definidos para todos os grupos formados, o que pode não ser ideal quando diferentes clusters possuem densidades de pontos distintas. Para a seleção do valor de MinPts é comum que seja baseado no problema em si ou
-conhecimento prévio. Porém, uma  proposta para seleção é o MinPts = 2×$p$ pode ser um bom valor para o parâmetro. Já o $\epsilon$ costuma ser baseado no número mínimo de pontos definido, em que é construído o gráfico das distâncias de cada ponto para os MinPts−1 vizinhos mais próximos e escolhido o valor "cotovelo", ou seja, onde começa a ocorrer um crescimento mais acentuado nas distâncias ordenadas. Abaixo vemos como esse método se dá de forma aplicada para o software de programação tanto da seleção do melhor $\epsilon$ quanto da aplicação do modelo.
-
+Os parâmetros $\epsilon$ e MinPts afetam diretamente o resultado do agrupamento, determinando o tamanho mínimo de cada grupo e a distância entre os clusters. Uma das limitações do DBSCAN é o fato de que esses parâmetros são globais, ou seja, definidos para todos os grupos formados, o que pode não ser ideal quando diferentes clusters possuem densidades de pontos distintas. Para a seleção do valor de MinPts é comum que seja baseado no problema em si ou conhecimento prévio. Porém, uma proposta para seleção é o MinPts = 2×$p$ pode ser um bom valor para o parâmetro. Já o $\epsilon$ costuma ser baseado no número mínimo de pontos definido, em que é construído o gráfico das distâncias de cada ponto para os MinPts−1 vizinhos mais próximos e escolhido o valor "cotovelo", ou seja, onde começa a ocorrer um crescimento mais acentuado nas distâncias ordenadas. Abaixo vemos como esse método se dá de forma aplicada para o software de programação tanto da seleção do melhor $\epsilon$ quanto da aplicação do modelo.
 
 ```{r eval=FALSE}
 ## selecao do melhor eps
@@ -418,17 +417,17 @@ conhecimento prévio. Porém, uma  proposta para seleção é o MinPts = 2×$p$ 
 
 Essa função retorna os seguintes elementos:
 
-- `cluster`: É um vetor que atribui um número de cluster a cada ponto de dados no conjunto de entrada. Os pontos que não pertencem a nenhum cluster são rotulados como "0" ou como "outlier".
+-   `cluster`: É um vetor que atribui um número de cluster a cada ponto de dados no conjunto de entrada. Os pontos que não pertencem a nenhum cluster são rotulados como "0" ou como "outlier".
 
-- `eps`: É o valor do raio (epsilon) usado no algoritmo. 
+-   `eps`: É o valor do raio (epsilon) usado no algoritmo.
 
-- `minPts`: É o número mínimo de pontos necessários para formar um cluster.
+-   `minPts`: É o número mínimo de pontos necessários para formar um cluster.
 
-- `border`: É um vetor lógico que indica se cada ponto é um ponto de borda. 
+-   `border`: É um vetor lógico que indica se cada ponto é um ponto de borda.
 
--  `reachability`: É um vetor que armazena os valores de _reachability distance_ de cada ponto.
- 
-- `core_dist`: É um vetor que contém as distâncias de densidade mínima( _core distance_ ) para cada ponto. 
+-   `reachability`: É um vetor que armazena os valores de *reachability distance* de cada ponto.
+
+-   `core_dist`: É um vetor que contém as distâncias de densidade mínima( *core distance* ) para cada ponto.
 
 Uma técnica relacionada ao DBSCAN que lida com a limitação dos parâmetros globais é o algoritmo OPTICS (Ordering Points To Identify the Clustering Structure), proposto por [@ankerst1999optics]. O OPTICS ordena os dados de forma que as observações em grupos mais densos estarão mais próximas na ordenação. Esse algoritmo pode ser uma opção para explorar diferentes densidades de pontos em diferentes clusters.
 
@@ -440,17 +439,17 @@ Os algoritmos de agrupamento espectral usam uma medida de dissimilaridade para r
 
 O algoritmo de Ng, Jordan e Weiss (NJW) é um exemplo de algoritmo de agrupamento espectral. Ele requer a definição prévia de um parâmetro, assim como o algoritmo K-médias. Esse parâmetro é o número de grupos $K$ a serem formados. O algoritmo NJW segue os seguintes passos:
 
-1. Calcula-se a matriz de similaridade $A$, usando um parâmetro escalar $\sigma$. A similaridade entre cada par de pontos $x_i$ e $x_{i'}$ é medida usando uma função de similaridade, como a função Gaussiana. A matriz $A$ é preenchida com os valores calculados.
+1.  Calcula-se a matriz de similaridade $A$, usando um parâmetro escalar $\sigma$. A similaridade entre cada par de pontos $x_i$ e $x_{i'}$ é medida usando uma função de similaridade, como a função Gaussiana. A matriz $A$ é preenchida com os valores calculados.
 
-2. Calcula-se a matriz de graus $D$, onde cada elemento $d_{ij}$ na diagonal principal representa a soma das similaridades da linha $i$ da matriz $A$. A matriz $D$ captura a estrutura de conectividade do conjunto de dados.
+2.  Calcula-se a matriz de graus $D$, onde cada elemento $d_{ij}$ na diagonal principal representa a soma das similaridades da linha $i$ da matriz $A$. A matriz $D$ captura a estrutura de conectividade do conjunto de dados.
 
-3. Constrói-se a matriz Laplaciana $L$, que é uma forma de normalização de $A$. No algoritmo NJW, a matriz Laplaciana é definida como $L = D^{(-1/2)}  𝐴  𝐷^{(-1/2)}$. Essa normalização realça as diferenças entre os grupos de dados.
+3.  Constrói-se a matriz Laplaciana $L$, que é uma forma de normalização de $A$. No algoritmo NJW, a matriz Laplaciana é definida como $L = D^{(-1/2)} 𝐴 𝐷^{(-1/2)}$. Essa normalização realça as diferenças entre os grupos de dados.
 
-4. Identificam-se os $K$ maiores autovalores de $L$ e seus respectivos autovetores associados, que são armazenados em uma matriz $Z$ de tamanho $N \times K$.
+4.  Identificam-se os $K$ maiores autovalores de $L$ e seus respectivos autovetores associados, que são armazenados em uma matriz $Z$ de tamanho $N \times K$.
 
-5. Define-se uma nova matriz $Y$, normalizada a partir de $Z$. Cada elemento $y_{ii'}$ de $Y$ é calculado dividindo-se o elemento $z_{ii'}$ de $Z$ pelo produto da raiz quadrada do elemento diagonal correspondente a $z_{ii}$  e a raiz quadrada do elemento diagonal correspondente a $z_{i'}$. Essa normalização ajusta as magnitudes dos dados.
+5.  Define-se uma nova matriz $Y$, normalizada a partir de $Z$. Cada elemento $y_{ii'}$ de $Y$ é calculado dividindo-se o elemento $z_{ii'}$ de $Z$ pelo produto da raiz quadrada do elemento diagonal correspondente a $z_{ii}$ e a raiz quadrada do elemento diagonal correspondente a $z_{i'}$. Essa normalização ajusta as magnitudes dos dados.
 
-6. Com a redução da dimensionalidade dos dados na matriz $Y$ (de tamanho $N \times K$), pode-se aplicar um algoritmo de agrupamento, como o K-médias, para realizar o agrupamento dos dados.
+6.  Com a redução da dimensionalidade dos dados na matriz $Y$ (de tamanho $N \times K$), pode-se aplicar um algoritmo de agrupamento, como o K-médias, para realizar o agrupamento dos dados.
 
 ```{r eval=FALSE}
 spectral_clustering <- function(data , # dados
@@ -486,7 +485,6 @@ spectral_clustering <- function(data , # dados
 
 A escolha dos parâmetros $K$ e $\sigma$ pode ser feita de forma arbitrária, dependendo do objetivo do estudo. No entanto, existem abordagens e técnicas disponíveis para auxiliar na seleção desses parâmetros. No exemplo acima , o parâmetro $\sigma$ foi fixado em 1, e o número de grupos $K$ foi escolhido com base na análise dos primeiros autovalores da matriz Laplaciana $L$. O valor ótimo de $K$ é aquele em que ocorre uma queda significativa dos autovalores, uma vez que os maiores autovalores da matriz Laplaciana tendem a ser próximos de 1.
 
-
 ### Validação do Modelo
 
 No problema do agrupamento, não é possível verificar o grau de acerto do resultado obtido, uma vez que os verdadeiros grupos não são conhecidos a priori. Portanto, é necessário aplicar algum tipo de validação à partição final.
@@ -507,12 +505,11 @@ $$
 \Delta_{ll'} = \left( \sum_{j=1}^{p} |m_{jl} - m_{jl'}|^{t} \right)^{\frac{1}{t}}.
 $$
 
-onde $t \in 	\mathbb{N}$ é pré-definido e geralmente adotado como $t = 1$ (distâncias absolutas) ou $t=2$ (distância euclidiana). Assim, o índice de Davies-Bouldin (DB) fica definido por:
+onde $t \in \mathbb{N}$ é pré-definido e geralmente adotado como $t = 1$ (distâncias absolutas) ou $t=2$ (distância euclidiana). Assim, o índice de Davies-Bouldin (DB) fica definido por:
 
 $$
 DB = \frac{1}{K} \sum_{l=1}^{K} \max_{l \neq l'} \left( \frac{\delta_{l} + \delta_{l'}}{\Delta_{ll'}} \right).
-$$
-Nesse caso, buscamos agrupar observações de forma a minimizar a variância intragrupo e maximizar a diferença entre eles. Portanto, valores menores do índice de Davies-Bouldin são considerados melhores. Observe a métrica aplicada ao conjunto de dados de agrupamento obtido pelo k-médias (As medidas seguintes também serão aplicadas ao mesmo conjunto).
+$$ Nesse caso, buscamos agrupar observações de forma a minimizar a variância intragrupo e maximizar a diferença entre eles. Portanto, valores menores do índice de Davies-Bouldin são considerados melhores. Observe a métrica aplicada ao conjunto de dados de agrupamento obtido pelo k-médias (As medidas seguintes também serão aplicadas ao mesmo conjunto).
 
 ```{r eval=FALSE}
 #Metrica DB usando Centroide
@@ -526,7 +523,6 @@ clusterSim::index.DB(dados_norm ,
                       )$DB 
 
 ```
-
 
 #### Dunn (D):
 
@@ -545,13 +541,16 @@ $$
 
 O índice de Silhueta(S) mede a qualidade do agrupamento considerando as distâncias de cada ponto em relação às observações do mesmo grupo e aos demais clusters formados. Para cada observação $i$ pertencente ao grupo $C_l$, definimos as medidas $a_i$ e $b_i$ da seguinte maneira:
 
-$$
+\$\$
+
+```{=tex}
 \begin{split}
 a_i = \frac{1}{n_{l}-1} \sum_{i' \neq i, i' \in C_{l}}^{n_l} d(x_{i}, x_{i'}),\\
 
 b_i = \min_{l \neq l'} \left( \frac{1}{n_{l'}} \sum_{i' \in C_{l'}}^{n_{l'}} d(x_{i}, x_{i'}) \right).
 \end{split}
-$$
+```
+\$\$
 
 onde $d(x_i,x_{i'})$ representa a distância entre as observações $x_i$ e $x_{i'}$. A partir dessas medidas, calculamos a silhueta $s_i$ da observação $i$, com $i = 1, ..., N$, usando a fórmula:
 
@@ -563,14 +562,12 @@ O coeficiente de Silhueta S global é obtido por:
 
 $$
 S = \frac{1}{K} \sum_{l=1}^{K} \frac{1}{n_{l}} \sum_{i=1}^{n_{l}} s_i.
-$$
-Dessa forma, valores maiores de S indicam agrupamentos mais densos e separados, o que é considerado um cenário adequado para um agrupamento bem-sucedido.
+$$ Dessa forma, valores maiores de S indicam agrupamentos mais densos e separados, o que é considerado um cenário adequado para um agrupamento bem-sucedido.
 
 ```{r eval=FALSE}
 #Metrica S
 clusterSim::index.S(dist_euclidian , k_medias$cluster)
 ```
-
 
 #### Calinski-Harabasz (CH):
 
@@ -603,4 +600,3 @@ clusterSim::index.G1(dados_norm , k_medias$cluster ,
 #Metrica CH usando centroide
 clusterSim::index.G1(dados_norm , k_medias$cluster)
 ```
-

@@ -1,6 +1,6 @@
 # Alguns conceitos básicos de algebra
 
-Para introduzir o campo do aprendizado não supervisionado, é importante entender alguns conceitos básicos de álgebra que são fundamentais para a compreensão dos algoritmos de análise de dados multivariada. Começaremos com vetores e matrizes e, em seguida, abordaremos a decomposição espectral. A partir daí, estaremos prontos para explorar a área da estatística multivariada ou aprendizado não supervisionado. Vale ressaltar que este livro não tem como objetivo demonstrar todos os conceitos algébricos necessários e nem se aprofundar demais no assunto. Para mais demonstrações e conceitos, consulte as obras de referência como [@anton2001algebra, e @johnson2002applied]
+Para alguns capítulos discutidos no livro, é importante entender alguns conceitos básicos de álgebra fundamentais. Começaremos com vetores e matrizes e, em seguida, abordaremos a decomposição espectral. Vale ressaltar que este livro não tem como objetivo demonstrar todos os conceitos algébricos necessários e nem se aprofundar demais no assunto. Para mais demonstrações e conceitos, consulte as obras de referência como [@anton2001algebra, e @johnson2002applied]
 
 ## Definições importantes
 
