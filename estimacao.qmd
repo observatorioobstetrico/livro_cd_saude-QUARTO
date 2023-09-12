@@ -1,3 +1,7 @@
+---
+bibliography: references.bib
+---
+
 # Estimação
 
 Neste capítulo, iniciando no mundo da Inferência Estatística, trataremos sobre o problema da **estimação**. É muito comum, no dia a dia, nos depararmos com situações em que temos interesse no valor de uma quantidade desconhecida a respeito de alguma população que estamos estudando. Utilizando os dados sobre a COVID-19 apresentados anteriormente, suponha, por exemplo, que tivéssemos interesse na idade média das gestantes e puérperas hospitalizadas por COVID-19 e que vieram a óbito por conta dessa doença no período de março de 2020 a dezembro de 2021, ou que nossa intenção fosse investigar a proporção de doentes que apresentaram diarreia como um de seus sintomas nesse mesmo período. A essas quantidades da população, que em geral são desconhecidas, damos, na Estatística, o nome de **parâmetro**.
@@ -46,7 +50,6 @@ $$
 \end{align}
 $$
 
-
 ### Variáveis Aleatórias
 
 Em muitos casos, o espaço amostral de um experimento não será numérico. Por exemplo, retirando três indivíduos da população e observando a sua saturação de oxigênio, obtemos $\Omega=\{(x_1 x_2 x_3)|x_i=\text{sim ou não }, i=1,2,3\}$. Porém, muitas vezes é útil que os resultados dessa variável sejam registrados como números, possibilitando a realização de algumas mensurações. Aqui, por exemplo, ao invés de registrar a categoria da saturação de cada um dos três indivíduos, podemos tomar o número de indivíduos cuja respota é "sim", atribuindo o valor 1 a aqueles que apresentam saturação de oxigênio baixa e o valor zero aos que não apresentam. Isso se enquadra como uma **variável aleatória**, ou seja, uma função $X$ que associa a cada elemento $\omega \in \Omega$ um número real $X(\omega)$.
@@ -63,11 +66,11 @@ Para continuar a abordagem dos conceitos relacionados às variáveis aleatórias
 
 Uma variável é considerada discreta se $R_x$ for um conjunto finito ou infinito enumerável. O número de indivíduos com saturação baixa em uma amostra de tamanho 3, por exemplo, é uma variável aleatória discreta, já que podemos listar todos os seus possíveis valores.
 
-Agora vamos pensar em como podemos analisar a distribuição de uma variável aleatória discreta $X$. Já que conhecemos os seus possíveis valores, podemos associar a cada um deles uma probabilidade de ocorrência, formando assim uma **função massa de probabilidade** de $X$, definida como 
+Agora vamos pensar em como podemos analisar a distribuição de uma variável aleatória discreta $X$. Já que conhecemos os seus possíveis valores, podemos associar a cada um deles uma probabilidade de ocorrência, formando assim uma **função massa de probabilidade** de $X$, definida como
 
 $$
 p(x_i)=P[X=x_i]
-$$ 
+$$
 
 Essa função satisfaz as seguintes propriedades:
 
@@ -76,7 +79,7 @@ $$
 \text{I) }  p(x_i)\geq 0, \hspace{0.3cm} \forall i \\
 \text{II) } \sum_{i=1}^{\infty}p(x_i)=1 
 \end{align}
-$$ 
+$$
 
 Para exemplificar, vamos analisar a variável `variante`, que indica a variante de COVID-19 adquirida, podendo ser original, gama ou delta. Retirando aleatoriamente dois indivíduos dessa população com reposição, consideremos a variável aletória $Y$ como o número de indivíduos com variante gama sorteados. Sabemos que as possibilidades são obter 0, 1 ou 2 indivíduos com a variante mencionada. Assim, temos $R_x = {0, 1, 2}$. Vamos agora calcular as probabilidades para cada um desses elementos. Para isso, é útil considerar o evento $C$ como a retirada da variante gama.
 
@@ -111,8 +114,7 @@ plot(y, py, type='h', lwd=4)
 
 ```
 
-Além disso, outra informação útil é a sua **função de distribuição acumulada**, que descreve a probabilidade da variável aleatória $X$ ser menor ou igual a $x$, ou seja, $F(x_i)=P(X \leq x_i), \hspace{0.3 cm} \forall i$. Pensando no exemplo anterior, podemos obter a sua função de distribuição acumulada:
-$$
+Além disso, outra informação útil é a sua **função de distribuição acumulada**, que descreve a probabilidade da variável aleatória $X$ ser menor ou igual a $x$, ou seja, $F(x_i)=P(X \leq x_i), \hspace{0.3 cm} \forall i$. Pensando no exemplo anterior, podemos obter a sua função de distribuição acumulada: $$
 F(y) =
     \begin{cases}
     0 & se \ y < 0; \\
@@ -210,7 +212,7 @@ $$
 E(X)=p
 $$ $$
 Var(X)=p-p^2=p(1-p)
-$$ 
+$$
 
 ###### Modelo Binomial
 
@@ -224,15 +226,13 @@ $$
 E(X)=np
 $$ $$
 Var(X)=np(1-p)
-$$ 
+$$
 
 ###### Modelo Hipergeométrico
 
-Ainda considerando o exemplo anterior, vamos pensar agora que esses indivíduos são selecionados sem reposição, ou seja, um mesmo indivíduo não pode ser selecionado mais de uma vez. Assim, é evidente que a probabilidade de se retirar um indivíduo com cardiopatia é alterada a cada sorteio, diferente do modelo binomial. Dessa forma, o modelo hipergeométrico descreve a variável aleatória que representa o número de sucessos em $n$ repetições de ensaios Bernoulli dependentes. Em uma população de $N$ elementos onde $k$ apresentam a característica definida como sucesso, a função massa de probabilidade será 
-$$
+Ainda considerando o exemplo anterior, vamos pensar agora que esses indivíduos são selecionados sem reposição, ou seja, um mesmo indivíduo não pode ser selecionado mais de uma vez. Assim, é evidente que a probabilidade de se retirar um indivíduo com cardiopatia é alterada a cada sorteio, diferente do modelo binomial. Dessa forma, o modelo hipergeométrico descreve a variável aleatória que representa o número de sucessos em $n$ repetições de ensaios Bernoulli dependentes. Em uma população de $N$ elementos onde $k$ apresentam a característica definida como sucesso, a função massa de probabilidade será $$
 P(X=x)= \frac{ \binom Kx \binom {N-k}{n-x}}{\binom Nn }
-$$
-Também definimos a sua esperança e variância como
+$$ Também definimos a sua esperança e variância como
 
 $$
 E(X)=np
@@ -263,8 +263,7 @@ $$
 \text{I)} \ f(x)\geq0 \ \forall x\in R_x \\
 \text{II)} \ \int_{-\infty}^{\infty}f(x)dx=1
 \end{align}
-$$ 
-A seguir apresentamos graficamente a função densidade de probabilidade das idades das gestantes e puérperas diagnosticadas com COVID-19 no de março de 2020 a dezembro de 2021.
+$$ A seguir apresentamos graficamente a função densidade de probabilidade das idades das gestantes e puérperas diagnosticadas com COVID-19 no de março de 2020 a dezembro de 2021.
 
 ```{r}
 library("ggplot2")
@@ -345,7 +344,7 @@ $$ Da mesma forma, sua esperança e variância são
 
 $$
 E(X)=\frac{a+b}{2}
-$$ 
+$$
 
 $$
 Var(X)=\frac{(b-a)^2}{12}
@@ -375,8 +374,7 @@ f(x) =
     \lambda e^{-\lambda x}, & x \geq 0 \\
     0, & c.c.
     \end{cases}
-$$
-Considerando $\lambda=1$, representamos $f(x)$ graficamente como
+$$ Considerando $\lambda=1$, representamos $f(x)$ graficamente como
 
 ```{r}
 exponencial <- rexp(100000, 1)
@@ -388,11 +386,10 @@ ggplot(data=df_exp, aes(x=exponencial)) +
   theme_minimal() 
 
 ```
-Também podemos escrever a sua esperança e variância como
-$$
+
+Também podemos escrever a sua esperança e variância como $$
 E(X)=\frac{1}{\lambda}
-$$
-$$
+$$ $$
 Var(X)=\frac{1}{\lambda^2}
 $$
 
@@ -437,9 +434,9 @@ Em um mundo ideal, parece ser intuitivo que nossa busca pelo melhor estimador se
 
 ## Estimação pontual
 
-Para iniciar esta seção, comecemos com uma definição. Chamamos de **estimação pontual** a técnica de estimação na qual utilizamos um único valor de uma estatística para representarmos, ou estimarmos, o valor desconhecido de um parâmetro de interesse. Chamamos essa estatística de **estimador pontual**, enquanto ao seu valor observado damos o nome de **estimativa pontual**. \[completar\]
+Para iniciar esta seção, comecemos com uma definição. Chamamos de **estimação pontual** a técnica de estimação na qual utilizamos um único valor de uma estatística para representarmos, ou estimarmos, o valor desconhecido de um parâmetro de interesse. Chamamos essa estatística de **estimador pontual**, enquanto ao seu valor observado damos o nome de **estimativa pontual**. Ao longo desta seção, trataremos de estimadores pontuais para a média e para a proporção populacionais, com exemplos que utilizam as bases de dados já apresentadas neste livro, fazendo discussões pertinentes a respeito da teoria de estimação conforme necessário.
 
-### Estimação pontual da média de uma população
+### Estimação pontual da média populacional
 
 Voltando aos exemplos apresentados na introdução do capítulo, suponha, primeiramente, que nosso parâmetro de interesse seja a idade média das gestantes e puérperas hospitalizadas por COVID-19 que vieram a óbito por conta dessa doença no período de março de 2020 a dezembro de 2021, a qual denotaremos por $\mu$. Como temos acesso a todos os registros dessa população, o valor desse parâmetro não é desconhecido, mas isso servirá de auxílio para exemplificar os métodos que aqui serão empregados. Criando um vetor contendo todos os elementos da população, temos:
 
@@ -549,7 +546,7 @@ mean(amostra1)
 
 Com isso, concluímos que uma estimativa pontual para a idade média das gestantes e puérperas que faleceram em decorrência da COVID-19 é de $30.73$. Esse valor é relativamente próximo do verdadeiro valor do parâmetro, o qual sabemos ser 31.81. Lembre-se, entretanto, que a estimativa obtida depende diretamente da amostra que foi coletada, uma vez que nosso estimador é uma função da amostra e, portanto, é uma variável aleatória. A cada vez que realizássemos um novo sorteio, o valor de nossa estimativa seria, muito provavelmente, diferente do anterior. Como nosso objetivo é fazer uma afirmação sobre o parâmetro $\mu$ a partir da amostra coletada, é interessante considerar que a validade dessa afirmação seria melhor compreendida se soubéssemos o que acontece com nosso estimador quando retiramos todas as amostras de mesmo tamanho possíveis de nossa população. Retomaremos essa discussão posteriormente. Buscaremos, agora, estimar um outro tipo de parâmetro: a **proporção populacional**.
 
-### Estimação pontual da proporção populacional
+### Estimação pontual da proporção populacional {#sec-pontual_prop}
 
 Para o segundo exemplo, suponha que o parâmetro no qual temos interesse seja a proporção válida de gestantes e puérperas hospitalizadas por COVID-19 no período de março de 2020 a dezembro de 2021 que apresentaram diarreia como um de seus sintomas. Representaremos esse parâmetro por $p$. Assim como no exemplo anterior, podemos calcular seu valor, uma vez que temos acesso a todos os registros dessa população. Note que, como estamos tratando da proporção válida, precisamos que nossa população seja composta apenas pelas mulheres para as quais o valor da variável `diarreia` foi preenchido de forma válida (ou seja, com `sim` ou `não`). Assim, temos:
 
@@ -596,11 +593,11 @@ Var(\hat{p}) = Var \left( \frac{\sum_{i = 1}^{n} Y_i}{n} \right) = \frac{1}{n^2}
 \end{align}
 $$
 
-Observe que, quanto maior o valor do tamanho de amostra $n$, menor é o valor da variânica de $\hat{p}$. Essa informação, aliada ao fato de $\hat{p}$ ser não viciado, nos permite concluir que o estimador em questão é consistente. Investigadas as propriedades do estimador, podemos partir para a retirada da amostra, utilizando novamente a função `sample()` para simular uma amostra de tamanho $n = 30$ obtida por meio da AAS com reposição. A amostra coletada pode ser vista abaixo.
+Observe que, quanto maior o valor do tamanho de amostra $n$, menor é o valor da variânica de $\hat{p}$. Essa informação, aliada ao fato de $\hat{p}$ ser não viciado, nos permite concluir que o estimador em questão é consistente. Investigadas as propriedades do estimador, podemos partir para a retirada da amostra, utilizando novamente a função `sample()` para simular uma amostra de tamanho $n = 50$ obtida por meio da AAS com reposição. A amostra coletada pode ser vista abaixo.
 
 ```{r}
-set.seed(43)
-amostra2 <- sample(x = populacao2_transformada, size = 30, replace = TRUE)
+set.seed(312)
+amostra2 <- sample(x = populacao2_transformada, size = 50, replace = TRUE)
 amostra2
 ```
 
@@ -610,11 +607,11 @@ Aplicando os valores obtidos no estimador da proporção amostral, que nada mais
 mean(amostra2)
 ```
 
-Com isso, concluímos que uma estimativa pontual para a proporção válida de gestantes e puérperas hospitalizadas pela COVID-19 no período em estudo e que apresentaram diarreia como um dos sintomas da doença é de 0,133, ou de 13,3%. Novamente, essa estimativa depende diretamente da amostra obtida; novas amostragens quase certamente resultariam em estimativas diferentes para o parâmetro. Com isso, volta à tona a reflexão levantada no final do exemplo anterior, de que a validade de nossa afirmação sobre o verdadeiro valor de $p$ seria melhor compreendida caso levássemos em consideração a distribuição de nosso estimador, $\hat{p}$. Conseguiríamos estudar o comportamento probabilístico de $\hat{p}$ caso aumentássemos o tamanho da amostra? A resposta, já adiantando, é sim. O que utilizamos para realizar esse estudo, entretanto, será visto na próxima seção.
+Com isso, concluímos que uma estimativa pontual para a proporção válida de gestantes e puérperas hospitalizadas pela COVID-19 no período em estudo e que apresentaram diarreia como um dos sintomas da doença é de 0,14, ou de 14%. Novamente, essa estimativa depende diretamente da amostra obtida; novas amostragens quase certamente resultariam em estimativas diferentes para o parâmetro. Com isso, volta à tona a reflexão levantada no final do exemplo anterior, de que a validade de nossa afirmação sobre o verdadeiro valor de $p$ seria melhor compreendida caso levássemos em consideração a distribuição de nosso estimador, $\hat{p}$. Conseguiríamos estudar o comportamento probabilístico de $\hat{p}$ caso aumentássemos o tamanho da amostra? A resposta, já adiantando, é sim. O que utilizamos para realizar esse estudo, entretanto, será visto na próxima seção.
 
-### A distribuição amostral de estimadores
+## A distribuição amostral de estimadores {#sec-dist_amostral}
 
-Como vimos ao longo das seções anteriores, o problema da Inferência Estatística que queremos resolver consiste em fazer uma afirmação sobre um certo parâmetro de uma determinada população por meio de uma amostra. Para encará-lo, decidimos que nossa afirmação será baseada em uma certa estatística $T$, para a qual demos o nome de estimador, que será uma função da amostra ($X_1, X_2, ..., X_n$). Quando coletamos a amostra, podemos obter um valor particular de $T$, digamos $t_0$, para o qual demos o nome de estimativa. E é com base nesse valor $t_0$ que faremos a afirmação sobre o parâmetro de interesse. Para entendermos melhor a incerteza por trás de nossa afirmação, entretanto, seria de nosso interesse determinar qual é a *distribuição* de $T$ quando a amostra, $X_1, X_2, ..., X_n$, assume todos os valores possíveis. Chamamos essa distribuição de **distribuição amostral da estatística T**. Bussab e Moretin (referência) esquematizam o procedimento para a obtenção da distribuição amostral da seguinte maneira:
+Como vimos ao longo das seções anteriores, o problema da Inferência Estatística que queremos resolver consiste em fazer uma afirmação sobre um certo parâmetro de uma determinada população por meio de uma amostra. Para encará-lo, decidimos que nossa afirmação será baseada em uma certa estatística $T$, para a qual demos o nome de estimador, que será uma função da amostra ($X_1, X_2, ..., X_n$). Quando coletamos a amostra, podemos obter um valor particular de $T$, digamos $t_0$, para o qual demos o nome de estimativa. E é com base nesse valor $t_0$ que faremos a afirmação sobre o parâmetro de interesse. Para entendermos melhor a incerteza por trás de nossa afirmação, entretanto, seria de nosso interesse determinar qual é a *distribuição* de $T$ quando a amostra, $X_1, X_2, ..., X_n$, assume todos os valores possíveis. Chamamos essa distribuição de **distribuição amostral da estatística $T$**. @morettin:2017 esquematizam o procedimento para a obtenção da distribuição amostral da seguinte maneira:
 
 1.  A partir de uma determinada população $X$, com certo parâmetro de interesse $\theta$, obtemos todas as amostras possíveis com um mesmo tamanho amostral $n$, de acordo com uma certa técnica de amostragem;
 
@@ -935,7 +932,7 @@ $$
 \bar{X} \sim N\left(\mu, \frac{\sigma^2}{n} \right) \text{ e } \hat{p}\sim N\left(p, \frac{p(1-p)}{n} \right).
 $$
 
-Com isso, aqui terminamos o conteúdo referente à estimação pontual.
+Com isso, aqui terminamos o conteúdo referente à estimação pontual. Toda a teoria aqui tratada servirá de base para o assunto que discutiremos na seção seguinte: a estimação intervalar.
 
 ## Estimação intervalar
 
@@ -951,21 +948,21 @@ $$
 \bar{X} \sim N \left(\mu, \frac{\sigma^2}{n} \right).
 $$
 
-Subtraindo de uma variável aleatória a sua média e dividindo o resultado por seu desvio padrão, obtemos o que chamamos de **variável aleatória padronizadas**. Uma variável aleatória padronizada tem média igual a zero e variância igual a um. Aplicando esse resultado em nosso estimador, $\bar{X}$, obtemos uma nova variável, a qual chamaremos de $Z$, cuja distribuição estará totalmente definida, o que será de grande utilidade na construção de nosso intervalo. Observe.
+Subtraindo de uma variável aleatória a sua média e dividindo o resultado por seu desvio padrão, obtemos o que chamamos de **variável aleatória padronizada**. Uma variável aleatória padronizada tem média igual a zero e variância igual a um. Aplicando esse resultado em nosso estimador, $\bar{X}$, obtemos uma nova variável, a qual chamaremos de $Z$, cuja distribuição estará totalmente definida, o que será de grande utilidade na construção de nosso intervalo. Observe.
 
 $$
 Z = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} = \frac{\sqrt{n}\left(\bar{X} - \mu\right)}{\sigma} \sim N(0, 1).
 $$ Como conhecemos a distribuição de probabilidade de $Z$, podemos, para um certo valor $\alpha$, com $0 < \alpha < 1$, encontrar valores $z_1$ e $z_2$, com $z_1 < z_2$, tais que
 
 $$
-P(z_1 < Z < z_2) = 1 - \alpha.  \qquad \qquad \text{(I)}
-$$
+P(z_1 < Z < z_2) = 1 - \alpha. 
+$$ {#eq-1}
 
 Chamamos o valor $1 - \alpha$ de **coeficiente de confiança**. Sua interpretação será feita posteriormente. Quanto à probabilidade acima, note que existem infinitos valores de $z_1$ e $z_2$ que a satisfazem. Como queremos encontrar um intervalo que contenha os valores mais plausíveis do parâmetro em estudo, é de nosso interesse que a **amplitude** desse intervalo seja a menor possível, sendo a amplitude de um intervalo definida como a diferença entre seus extremos superior e inferior. E, para que esse interesse seja cumprido, é necessário que os valores de $z_1$ e $z_2$ sejam os mais próximos possíveis. Para distribuições simétricas em torno do zero, como é o caso da distribuição normal padrão, podemos mostrar que a amplitude do intervalo será mínima se os valores de $z_1$ e $z_2$ forem opostos, ou seja, se $z_1 = -z_2$. Com isso, precisamos apenas encontrar um valor $z$ tal que
 
 $$
 P(Z \leqslant z) = 1 - \frac{\alpha}{2}
-$$
+$$ 
 
 A este valor, o qual denotamos por $z_{1 - \alpha/2}$, damos o nome de **quantil de ordem** $1 - \alpha/2$. Um quantil de ordem $k$ de uma variável aleatória, com $0 < k < 1$, nada mais é que o ponto tal que, quando nele aplicada a função de distribuição acumulada da variável, a probabilidade obtida é igual a $k$ (a ordem que o quantil representa). Em uma situação prática, na qual teríamos um valor definido de $\alpha$, poderíamos utilizar uma tabela da distribuição normal padrão para encontrar o valor de $z_{1 - \alpha/2}$, ou mesmo utilizar a função `qnorm()`, do pacote básico `{stats}`, para realizar esse processo. A função `qnorm()`, bem como a família de funções do R que seguem a estrutura "qnome_da_distribuição()", representa a função quantílica: para uma dada probabilidade e para dados valores dos parâmetros da distribuição, a função retorna o quantil cuja ordem é a probabilidade estipulada em seus arguementos. Com isso em mente, podemos reescrever $z_1$ e $z_2$ como sendo
 
@@ -973,13 +970,13 @@ $$
 z_1 = -z_{1 - \alpha/2} \text{ e } z_2 = z_{1 - \alpha/2}.
 $$
 
-Para que a explicação acima seja melhor absorvida, observe o gráfico a seguir, que representa a curva da densidade de probabilidade da distribuição normal padrão.
+Para que a explicação acima seja melhor absorvida, observe o gráfico a seguir, que representa a curva da densidade de probabilidade da distribuição normal padrão. Para uma confiança de $(100 - \alpha)\%$, a área em cada cauda da distribuição deverá ser de $\alpha/2$ para que o intervalo seja o menor possível.
 
-```{r echo=FALSE, fig.cap="**Figura w:** Para uma confiança de (100 - $\\alpha$)%, a área em cada cauda da distribuição deverá ser de $\\alpha$/2 para que o intervalo seja o menor possível.", out.width = '100%'}
+```{r echo=FALSE, out.width = '100%'}
 knitr::include_graphics("figuras_estimacao/normal_padrao.png")
 ```
 
-Voltando à probabilidade definida em $\text{(2)}$, a atualizando com os resultados obtidos e reescrevendo $Z$, temos:
+Voltando à probabilidade definida na @eq-1, atualizando-a com os resultados obtidos e reescrevendo $Z$, temos:
 
 $$
 P(z_1 < Z < z_2) = P \left(-z_{1 - \alpha/2} < \frac{\sqrt{n}\left(\bar{X} - \mu\right)}{\sigma}  < z_{1 - \alpha/2} \right)  = 1 - \alpha.
@@ -1008,7 +1005,7 @@ Por fim, antes de realizarmos um exemplo numérico, podemos fazer algumas consid
 
 #### Um exemplo numérico
 
-Substituindo as letras por números, e continuando o exemplo em que estávamos, vamos, agora, obter, através do R, um intervalo de 95% confiança para $\mu$. Lembre-se que aqui $\mu$ é a média populacional das idades das gestantes e puérperas hospitalizadas e falecidas em decorrência da COVID-19 no período de março de 2020 a dezembro de 2021. Como precisamos que nossa amostra seja suficientemente grande para que possamos aplicar o TCL, utilizaremos $n = 50$, uma vez que, observando os histogramas criados na seção de Distribuição Amostral, a distribuição de $bar{X}$ já se aproxima satisfatóriamente bem da distribuição normal a partir desse ponto. Além disso, como a expressão do intervalo de confiança obtido acima leva em consideração que a variância populacional é conhecida, precisaremos, também, dessa informação. Para calculá-la, teremos de multiplicar o resultado da função `var()` por $\frac{N - 1}{N}$, sendo $N$ o tamanho da população, uma vez que essa função utiliza $N - 1$ como denominador para o cálculo da variância. Observe o código abaixo.
+Substituindo as letras por números, e continuando o exemplo em que estávamos, vamos, agora, obter, através do R, um intervalo de 95% confiança para $\mu$. Lembre-se que, aqui, $\mu$ é a média populacional das idades das gestantes e puérperas hospitalizadas e falecidas em decorrência da COVID-19 no período de março de 2020 a dezembro de 2021. Como precisamos que nossa amostra seja suficientemente grande para que possamos aplicar o TCL, utilizaremos $n = 50$, uma vez que, como pudemos observar pelos histogramas criados na @sec-dist_amostral, a distribuição de $\bar{X}$ já se aproxima satisfatoriamente bem da distribuição normal a partir desse ponto. Além disso, como a expressão do intervalo de confiança obtido acima leva em consideração que a variância populacional é conhecida, precisaremos, também, dessa informação. Para calculá-la, teremos de multiplicar o resultado da função `var()` por $\frac{N - 1}{N}$, sendo $N$ o tamanho da população, uma vez que essa função utiliza $N - 1$ como denominador para o cálculo da variância. Observe o código abaixo.
 
 ```{r}
 sigma2 <- var(populacao1) * (length(populacao1) - 1)/length(populacao1)
@@ -1023,7 +1020,7 @@ amostra_ic_media <- sample(x = populacao1, size = 50, replace = TRUE)
 head(amostra_ic_media, 20)
 ```
 
-Nesse próximo passo, criaremos uma função, a qual chamaremos de `ic_media_caso1()`, que calculará intervalos de confiança para o parâmetro $\mu$ quando a variância populacional é conhecida e $\bar{X}$ segue distribuição normal (ou aproximadamente normal). A função possuirá três argumentos: `dados`, que receberá o vetor de valores observados na amostra; `sigma`, que receberá o valor do desvio padrão populacional; e `alpha`, que receberá o valor necessário para se obter o coeficiente de confiança associado ao intervalo, que nesse caso será de 0,05. Utilizaremos a já explicada função `qnorm()` para encontrar o valor do quantil de ordem $1 - \alpha$ da normal padrão (não utilizaremos os argumentos `mean` e `sigma` dessa função, uma vez que seus valores padrões são, respectivamente, 1 e 0). O limite inferior do intervalo será guardado no vetor `limite_inferior`, enquanto o superior será guardado em `limite_superior`. A função retornará um data frame contendo algumas medidas referentes à amostra e o intervalo de confiança propriamente dito. O resultado do processo pode ser visto abaixo.
+Nesse próximo passo, criaremos uma função, a qual chamaremos de `ic_media_caso1()`, que calculará intervalos de confiança para o parâmetro $\mu$ quando a variância populacional é conhecida e $\bar{X}$ segue distribuição normal (ou aproximadamente normal). A função possuirá três argumentos: `dados`, que receberá o vetor de valores observados na amostra; `sigma`, que receberá o valor do desvio padrão populacional; e `alfa`, que receberá o valor necessário para se obter o coeficiente de confiança associado ao intervalo, que nesse caso será de 0,05. Utilizaremos a já explicada função `qnorm()` para encontrar o valor do quantil de ordem $1 - \alpha$ da normal padrão (não utilizaremos os argumentos `mean` e `sigma` dessa função, uma vez que seus valores padrões são, respectivamente, 1 e 0). O limite inferior do intervalo será guardado no vetor `limite_inferior`, enquanto o superior será guardado em `limite_superior`. A função retornará um data frame contendo algumas medidas referentes à amostra e o intervalo de confiança propriamente dito. O resultado do processo pode ser visto abaixo.
 
 ```{r}
 ic_media_caso1 <- function(amostra, sigma, alfa) {
@@ -1039,7 +1036,8 @@ ic_media_caso1 <- function(amostra, sigma, alfa) {
       estimativa_pontual = media,
       limite_inferior, 
       limite_superior,
-      amplitude)
+      amplitude
+    )
   )
 }
 
@@ -1067,8 +1065,8 @@ T = \frac{\sqrt{n} \left(\bar{X} - \mu \right)}{S} \sim t_{n - 1},
 $$ onde $S$ é a raiz quadrada de $S^2$ e $t_{n - 1}$ representa a distribuição de probabilidade T de Student com $n - 1$ graus de liberdade. A demonstração desse resultado pode ser consultada no post do Observatório que referenciamos no início da seção. A partir daqui, o processo para obtermos a expressão do intervalo de confiança será muito semelhante ao que realizamos no exemplo anterior. Como a distribuição da variável aleatória $T$ é totalmente conhecida, uma vez que, em uma situação prática, o valor do tamanho da amostra $n$ estaria definido, podemos encontrar valores $t_{1_{(n-1)}}$ e $t_{2_{(n-1)}}$, com $t_{1_{(n-1)}} < t_{2_{(n-1)}}$, tais que
 
 $$
-P\left(t_{1_{(n-1)}} < T < t_{2_{(n-1)}} \right) = 1 - \alpha. \qquad \qquad \text{(II)}
-$$
+P\left(t_{1_{(n-1)}} < T < t_{2_{(n-1)}} \right) = 1 - \alpha.
+$$ {#eq-2}
 
 Como a distribuição T de Student, assim como a distribuição normal padrão, é simétrica em torno de zero, os valores de $t_1$ e $t_2$ que geram a menor amplitude possível para o intervalo de confiança serão dados por
 
@@ -1076,7 +1074,7 @@ $$
 t_{1_{(n-1)}} = -t_{(n - 1;\;1 -\alpha/2)} \text{ e } t_{2_{(n-1)}} = t_{(n - 1;\;1 -\alpha/2)}.
 $$
 
-Em outras palavras, para encontrarmos os valores desses pontos, basta que calculemos o quantil de ordem $1 - \alpha/2$ da distribuição T de Student com $n - 1$ graus de liberdade. Voltando à probabilidade definida em $\text{(II)}$, a atualizando com os resultados obtidos e reescrevendo $T$, temos:
+Em outras palavras, para encontrarmos os valores desses pontos, basta que calculemos o quantil de ordem $1 - \alpha/2$ da distribuição T de Student com $n - 1$ graus de liberdade. Voltando à probabilidade definida na @eq-2, atualizando-a com os resultados obtidos e reescrevendo $T$, temos:
 
 $$
 P\left(t_{1_{(n-1)}} < T < t_{2_{(n-1)}} \right) = P\left(-t_{(n - 1;\;1 -\alpha/2)} < \frac{\sqrt{n}\left(\bar{X} - \mu\right)}{S} < -t_{(n - 1;\;1 -\alpha/2)} \right) = 1 - \alpha.
@@ -1094,7 +1092,7 @@ P\left(-\bar{X} + -t_{(n - 1;\;1 -\alpha/2)} \frac{S}{\sqrt{n}} < - \mu < -\bar{
 \end{align} 
 $$
 
-Portanto, quando a variância populacional é desconhecida, um intervalo de confiança para $\mu$, com coeficiente de confiança de $1 - \alpha$, é dado por
+Portanto, quando a variância populacional é desconhecida, um intervalo de confiança para $\mu$, com coeficiente de confiança $1 - \alpha$, é dado por
 
 $$
 IC(\mu,\ 1 - \alpha) = \left(\bar{X} - t_{(n-1;\;1 - \alpha/2)} \frac{S}{\sqrt{n}}; \bar{X} + t_{(n-1;\;1 - \alpha/2)} \frac{S}{\sqrt{n}} \right).
@@ -1104,7 +1102,7 @@ Algo interessante a se observar é que, tanto o intervalo aleatório acima, quan
 
 #### Um exemplo numérico
 
-Para demonstrar a diferença entre o intervalo de confiança derivado acima e aquele derivado no exemplo anterior, podemos aproveitar o mesmo exemplo sobre a média das idades das gestantes e puérperas previamente discutido. Novamente, criaremos uma função, a qual chamaremos de `ic_media_caso2()`, que retornará o intervalo de confiança para a média populacional quando a variância populacional é desconhecida e $\bar{X}$ segue distribuição normal (ou aproximadamente normal). A função se dará de forma similar àquela criada anteriormente, sendo as únicas diferenças o cálculo do desvio padrão amostral, feito com a função `sd()`, do pacote básico `{stats}` e a obtenção do quantil da distribuição T de Student através da função `qt()`, do mesmo pacote. O resultado do processo pode ser visto abaixo. Lembre-se que o vetor `amostra_ic_media` foi criado no exemplo anterior.
+Para demonstrar a diferença entre o intervalo de confiança derivado acima e aquele derivado no exemplo anterior, podemos aproveitar o mesmo exemplo sobre a média das idades das gestantes e puérperas previamente discutido. Novamente, criaremos uma função, a qual chamaremos de `ic_media_caso2()`, que retornará o intervalo de confiança para a média populacional quando a variância populacional é desconhecida e $\bar{X}$ segue distribuição normal (ou aproximadamente normal). A função se dará de forma similar àquela criada anteriormente, sendo as únicas diferenças o cálculo do desvio padrão amostral, feito com a função `sd()`, do pacote básico `{stats}`, e a obtenção do quantil da distribuição T de Student através da função `qt()`, do mesmo pacote. O resultado do processo pode ser visto abaixo. Lembre-se que o vetor `amostra_ic_media` foi criado no exemplo anterior.
 
 ```{r}
 ic_media_caso2 <- function(dados, alfa) {
@@ -1122,7 +1120,8 @@ ic_media_caso2 <- function(dados, alfa) {
       estimativa_pontual = media,
       limite_inferior,
       limite_superior,
-      amplitude)
+      amplitude
+    )
   )
 }
 
@@ -1133,4 +1132,107 @@ Como podemos perceber, o intervalo de confiança obtido acima apresenta uma ampl
 
 ### Intervalos de confiança para a proporção populacional
 
-A fazer
+Para finalizarmos este capítulo, considere, assim como quando tratamos da estimação pontual da proporção populacional, que $Y$ seja a variável aleatória que recebe 1, caso a gestante ou puérpera tenha apresentado diarreia como um dos sintomas da COVID-19, ou 0, caso esse sintoma não tenha sido apresentado. Sabemos, assim, que $Y$ tem distribuição Bernoulli com parâmetro $p$, sendo $p$ a probabilidade de uma gestante ou puérpera apresentar diarreia como um dos sintomas da doença em questão. Suponha que seja de nosso interesse estimar de forma intervalar esse parâmetro $p$ e que, para isso, tenhamos coletado uma amostra aleatória de tamanho $n$ da variável aleatória $Y$. Como vimos na seção referente à distribuição amostral de estimadores, sabemos, como consequência do Teorema Central do Limite, que, quando o tamanho de amostra é suficientemente grande e de forma aproximada, 
+
+$$
+\hat{p} \sim N\left(p, \frac{p(1 - p)}{n}\right),
+$$
+sendo $\hat{p}$ o estimador da proporção amostral. Padronizando a variável aleatória $\hat{p}$, chamando a variável resultante de $Z$, obtemos que
+
+$$
+Z = \frac{\sqrt{n}(\hat{p} - p)}{\sqrt{p(1 - p)}} \sim N(0, 1). 
+$$ {#eq-3}
+
+A partir deste ponto, a construção do intevalo de confiança se assemelha ao processo que realizamos para encontrar intervalos de confiança para a média de uma população quando a variância populacional é conhecida, com exceção de uma leve - mas significativa - mudança que ficará evidente conforme as contas forem sendo realizadas. Assim, como conhecemos a distribuição aproximada de $Z$, podemos encontrar, conforme vimos anteriormente, um valor $z_{1 - \alpha/2}$ tal que
+
+$$
+P(-z_{1 - \alpha/2} < Z < z_{1 - \alpha/2}) = 1 - \alpha.
+$$ 
+
+Reescrevendo $Z$ conforme a expressão encontrada na @eq-3 e tentando isolar o parâmetro $p$, temos que
+
+$$
+\begin{align}
+& P(-z_{1 - \alpha/2} < Z < z_{1 - \alpha/2}) = P\left(-z_{1 - \alpha/2} < \frac{\sqrt{n}(\hat{p} - p)}{\sqrt{p(1 - p)}} < z_{1 - \alpha/2} \right) \\
+&                                            = P\left(-z_{1 - \alpha/2} \sqrt{\frac{p(1 - p)}{n}} < \hat{p} - p < z_{1 - \alpha/2} \sqrt{\frac{p(1 - p)}{n}}  \right) \\
+&                                            = P\left(\hat{p} - z_{1 - \alpha/2} \sqrt{\frac{p(1 - p)}{n}} < p < \hat{p} + z_{1 - \alpha/2} \sqrt{\frac{p(1 - p)}{n}}\right) = 1 - \alpha.
+\end{align} 
+$$ {#eq-4}
+
+Note, entretanto, que a probabilidade acima ainda depende de $p$, o que nos impossibilita de calcularmos o intervalo de confiança diretamente. Com isso, precisamos encontrar maneiras de contornar esse problema. A primeira delas envolve substituírmos a expressão desconhecida $p(1 - p)$ por seu valor máximo, $1/4$, que ocorre quando $p = 0,5$ (lembrando que $p$, por ser uma probabilidade, está limitado no intervalo $[0, 1]$). Com isso, a probabilidade descrita na @eq-4 se torna
+
+$$
+P\left(\hat{p} - z_{1 - \alpha/2} \sqrt{\frac{1}{4n}} < p < \hat{p} + z_{1 - \alpha/2} \sqrt{\frac{1}{4n}}\right) = 1 - \alpha
+$$
+
+e, com isso, um intervalo de confiança para $p$, com coeficiente de confiança $1 - \alpha$, é dado por
+
+$$
+IC(p,\ 1 - \alpha) = \left(\hat{p} - z_{1 - \alpha/2} \sqrt{\frac{1}{4n}}; \hat{p} + z_{1 - \alpha/2} \sqrt{\frac{1}{4n}} \right).
+$$ {#eq-5}
+
+Dizemos que o intervalo descito na @eq-5 é *conservador*, uma vez que, se $p$ não for igual a 0,5 e estiver próximo de zero ou de um, ele fornece um intervalo desnecessariamente maior, pois nesses casos o valor de $p(1 - p)$ seria menor que $1/4$ e, consequentemente, a amplitude do intervalo seria menor. Uma outra abordagem possível consiste em subsituir $p(1 - p)$ por seu estimador $\hat{p}(1 - \hat{p})$. Com isso, quando estivéssemos calculando o intervalo, utilizaríamos uma estimativa pontual de $p$ para que pudéssemos contornar a presença do valor desconhecido. Nesse caso, a probabilidade descrita na @eq-4 se torna
+
+$$
+P\left(\hat{p} - z_{1 - \alpha/2} \sqrt{\frac{\hat{p}}{n}} < p < \hat{p} + z_{1 - \alpha/2} \sqrt{\frac{\hat{p}}{n}}\right) = 1 - \alpha
+$$
+e, com isso, outro intervalo de confiança para $p$, com coeficiente de confiança $1 - \alpha$, é dado por
+
+$$
+IC(p,\ 1 - \alpha) = \left(\hat{p} - z_{1 - \alpha/2} \sqrt{\frac{\hat{p}}{n}}; \hat{p} + z_{1 - \alpha/2} \sqrt{\frac{\hat{p}}{n}} \right).
+$$ {#eq-6}
+
+Em comparação ao intervalo anterior, dizemos que o intervalo descrito na @eq-6 é *otimista*, "pois parte da crença de que a estimativa obtida está suficientemente próxima de $p$ de tal forma que a variância dada por $p(1 - p)/n$ é bem aproximada por $\hat{p}(1 - {p})/n$" [@magalhaes:2011]. Apesar de ambos os intervalos serem válidos, os intervalos otimistas tendem a apresentar uma amplitude menor que os intervalos conservadores, como veremos no exemplo a seguir. 
+
+### Um exemplo numérico
+
+Assim como nos outros dois exemplos de intervalos de confiança apresentados ao longo deste capítulo, podemos aproveitar a amostra obtida na @sec-pontual_prop para exemplificarmos os intervalos de confiança para a proporção populacional. Essa amostra, guardada no vetor `amostra2`, é composta por 50 observações, obtidas com reposição, da população de gestantes e puérperas hospitalizadas por COVID-19 no período de março de 2020 a dezembro de 2021, com as observações assumindo o valor 1, caso a gestante ou puérpera tenha apresentado diarreia como um dos sintomas da doença, ou 0, caso contrário. As primeiras dez observações dessa amostra podem ser vistas abaixo. 
+
+```{r}
+head(amostra2, 10)
+```
+
+De forma semelhante ao que fizemos para os demais intervalos de confiança, o primeiro passo será criar uma função, a qual denominaremos `ic_proporcao()`, que retornará um intervalo de confiança para a proporção populacional, válido para os casos em que o tamanho da amostra é grande o suficiente para que o TCL possa ser aplicado, a partir dos dados fornecidos, do $\alpha$ escolhido e do tipo de intervalo requisitado. A função possuirá três argumentos: `dados`, que receberá o vetor de observações; `alfa`, que receberá o valor necessário para se obter o coeficiente de confiança associado ao intervalo; e `tipo`, que definirá se o intervalo de confiança será conservador ou otimista. A estrutura da função será muito semelhante às duas outras funções que já criamos, sendo a principal diferença a presença da estrutura condicional `if/else` que permitirá que diferentes linhas de código serão rodadas de acordo com o tipo de intervalo escolhido. A função resultante desse processo pode ser vista abaixo.
+
+```{r}
+ic_proporcao <- function(dados, alfa, tipo) {
+  prop_amostral <- mean(dados)
+  n <- length(dados)
+  z <- qnorm(1 - alfa/2)
+  if (tipo == "conservador") {
+    limite_inferior <- round(prop_amostral - z * 1/sqrt(4*n), 3)
+    limite_superior <- round(prop_amostral + z * 1/sqrt(4*n), 3)
+    amplitude <- limite_superior - limite_inferior
+  } else if (tipo == "otimista") {
+    var <- prop_amostral * (1 - prop_amostral)
+    limite_inferior <- round(prop_amostral - z * sqrt(var/n), 3)
+    limite_superior <- round(prop_amostral + z * sqrt(var/n), 3)
+    amplitude <- limite_superior - limite_inferior
+  }
+  return(
+    data.frame(
+      n,
+      estimativa_pontual = prop_amostral,
+      limite_inferior,
+      limite_superior,
+      amplitude
+    )
+  )
+}
+
+ic_proporcao(dados = amostra2, alfa = 0.05, tipo = "conservador")
+ic_proporcao(dados = amostra2, alfa = 0.05, tipo = "otimista")
+```
+
+Como podemos perceber, apesar de ambos os intervalos conterem o verdadeiro valor do parâmetro, que sabemos ser de 0,128, o intervalo de confiança otimista apresenta uma amplitude consideravelmente menor que o intervalo conservador (0,192 contra 0,278), uma diferença possivelmente esperada quando levamos em consideração que o verdadeiro valor de $p$ é, de certa forma, próximo de zero. Os intervalos obtidos não foram, entretanto, muito satisfatórios: a amplitude de ambos ainda foi muito grande, o que os torna pouco informativos. Esse fato nos sugere que o tamanho de amostra não foi grande o suficiente para que pudéssemos extrair informações de maior qualidade dos dados. Como podemos ver abaixo, uma amostra de tamanho 200 nos fornece intervalos muito mais precisos. Note que, ainda assim, o desempenho do intervalo otimista supera o do intervalo conservador.
+
+```{r}
+set.seed(533)
+amostra3 <- sample(x = populacao2_transformada, size = 200, replace = TRUE)
+
+ic_proporcao(dados = amostra3, alfa = 0.05, tipo = "conservador")
+ic_proporcao(dados = amostra3, alfa = 0.05, tipo = "otimista")
+```
+
+
+Neste presente exemplo, obter uma amostra de tamanho maior é muito simples - basta que mudemos o valor de um argumento de uma função, uma vez que estamos em posse dos dados de toda a população. Na vida real, é claro, as coisas são completamente diferentes, e obter uma amostra maior pode ser, por vezes, inviável. Dessa forma, ao se planejar uma pesquisa, é preciso encontrar um ponto ideal que permita equilibrar custos, tempo e viabilidade com a precisão das informações que podem ser obtidas por meio da Estatística.
